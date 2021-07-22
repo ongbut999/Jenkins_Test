@@ -1,0 +1,384 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc12072a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Bfx\\Bfx_GetVersionInfo.src BSW\\src\\BSW\\Gen\\Bfx\\src\\Bfx_GetVersionInfo.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Bfx\\src\\Bfx_GetVersionInfo.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Bfx_GetVersionInfo.Bfx_GetVersionInfo',code,cluster('Bfx_GetVersionInfo')
+	.sect	'.text.Bfx_GetVersionInfo.Bfx_GetVersionInfo'
+	.align	2
+	
+	.global	Bfx_GetVersionInfo
+
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	     1  
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	     2  
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	     3  
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	     4  /*
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	     5   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	     6   * Includes
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	     7   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	     8   */
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	     9   
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    10   #define SRVLIBS
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    11   
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    12  #include "Bfx.h"
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    13  
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    14  /**
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    15   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    16   * Bfx_GetVersionInfo
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    17   *
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    18   * Macro to get version information including Vendor Id, Module Id and Version Info
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    19   *
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    20   * \param    versionInfo - pointer to structure Std_VersionInfoType
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    21   * \retval   void
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    22   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    23  */
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    24  #if (BFX_VERSIONINFOAPI == STD_ON)
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    25  
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    26      #define BFX_START_SEC_CODE
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    27      #include "Bfx_MemMap.h"
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    28      void Bfx_GetVersionInfo(Std_VersionInfoType* versionInfo)
+; Function Bfx_GetVersionInfo
+.L3:
+Bfx_GetVersionInfo:	.type	func
+
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    29      {
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    30          versionInfo->vendorID = BFX_VENDOR_ID;
+	mov	d15,#6
+.L24:
+	st.h	[a4],d15
+.L25:
+
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    31          versionInfo->moduleID = BFX_MODULE_ID;
+	mov	d15,#205
+.L26:
+	st.h	[a4]2,d15
+.L27:
+
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    32          versionInfo->sw_major_version = BFX_SW_MAJOR_VERSION;
+	mov	d15,#5
+.L28:
+	st.b	[a4]4,d15
+.L29:
+
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    33          versionInfo->sw_minor_version = BFX_SW_MINOR_VERSION;
+	mov	d15,#0
+.L30:
+	st.b	[a4]5,d15
+.L31:
+
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    34          versionInfo->sw_patch_version = BFX_SW_PATCH_VERSION;
+	mov	d15,#0
+.L32:
+	st.b	[a4]6,d15
+.L33:
+
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    35      }
+	ret
+.L13:
+	
+__Bfx_GetVersionInfo_function_end:
+	.size	Bfx_GetVersionInfo,__Bfx_GetVersionInfo_function_end-Bfx_GetVersionInfo
+.L12:
+	; End of function
+	
+	.calls	'Bfx_GetVersionInfo','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L5:
+	.word	1095
+	.half	3
+	.word	.L6
+	.byte	4
+.L4:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Bfx\\src\\Bfx_GetVersionInfo.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L7
+	.byte	2
+	.byte	'unsigned char',0,1,8,2
+	.byte	'unsigned short int',0,2,7,3
+	.byte	'Bfx_Prv_GetBit_u16u8_u8_Inl',0,3,1,207,2,22
+	.word	144
+	.byte	1,1,4
+	.byte	'Data',0,1,207,2,57
+	.word	161
+	.byte	4
+	.byte	'BitPn',0,1,207,2,69
+	.word	144
+	.byte	5,0,2
+	.byte	'unsigned int',0,4,7,3
+	.byte	'Bfx_Prv_GetBit_u32u8_u8_Inl',0,3,1,227,2,22
+	.word	144
+	.byte	1,1,4
+	.byte	'Data',0,1,227,2,57
+	.word	254
+	.byte	4
+	.byte	'BitPn',0,1,227,2,69
+	.word	144
+	.byte	5,0,3
+	.byte	'Bfx_Prv_GetBit_u8u8_u8_Inl',0,3,1,247,2,22
+	.word	144
+	.byte	1,1,4
+	.byte	'Data',0,1,247,2,55
+	.word	144
+	.byte	4
+	.byte	'BitPn',0,1,247,2,67
+	.word	144
+	.byte	5,0,6
+	.word	161
+	.byte	7
+	.byte	'Bfx_Prv_PutBit_u16u8u8_Inl',0,3,1,200,3,19,1,1,4
+	.byte	'Data',0,1,200,3,54
+	.word	411
+	.byte	4
+	.byte	'BitPn',0,1,200,3,66
+	.word	144
+	.byte	4
+	.byte	'Value',0,1,200,3,81
+	.word	144
+	.byte	5,0,6
+	.word	254
+	.byte	7
+	.byte	'Bfx_Prv_PutBit_u32u8u8_Inl',0,3,1,224,3,19,1,1,4
+	.byte	'Data',0,1,224,3,54
+	.word	497
+	.byte	4
+	.byte	'BitPn',0,1,224,3,66
+	.word	144
+	.byte	4
+	.byte	'Value',0,1,224,3,81
+	.word	144
+	.byte	5,0,6
+	.word	144
+	.byte	7
+	.byte	'Bfx_Prv_PutBit_u8u8u8_Inl',0,3,1,248,3,19,1,1,4
+	.byte	'Data',0,1,248,3,52
+	.word	583
+	.byte	4
+	.byte	'BitPn',0,1,248,3,64
+	.word	144
+	.byte	4
+	.byte	'Value',0,1,248,3,79
+	.word	144
+	.byte	5,0,3
+	.byte	'Bfx_Prv_TstParityEven_u32_u8_Inl',0,3,1,143,10,22
+	.word	144
+	.byte	1,1,4
+	.byte	'Data',0,1,143,10,62
+	.word	254
+	.byte	5,0,8
+	.word	183
+	.byte	9
+	.word	223
+	.byte	9
+	.word	237
+	.byte	5,0,8
+	.word	270
+	.byte	9
+	.word	310
+	.byte	9
+	.word	324
+	.byte	5,0,8
+	.word	341
+	.byte	9
+	.word	380
+	.byte	9
+	.word	394
+	.byte	5,0,8
+	.word	416
+	.byte	9
+	.word	451
+	.byte	9
+	.word	465
+	.byte	9
+	.word	480
+	.byte	5,0,8
+	.word	502
+	.byte	9
+	.word	537
+	.byte	9
+	.word	551
+	.byte	9
+	.word	566
+	.byte	5,0,8
+	.word	588
+	.byte	9
+	.word	622
+	.byte	9
+	.word	636
+	.byte	9
+	.word	651
+	.byte	5,0,8
+	.word	668
+	.byte	9
+	.word	713
+	.byte	5,0,10,2,206,1,9,8,11
+	.byte	'vendorID',0
+	.word	161
+	.byte	2,2,35,0,11
+	.byte	'moduleID',0
+	.word	161
+	.byte	2,2,35,2,11
+	.byte	'sw_major_version',0
+	.word	144
+	.byte	1,2,35,4,11
+	.byte	'sw_minor_version',0
+	.word	144
+	.byte	1,2,35,5,11
+	.byte	'sw_patch_version',0
+	.word	144
+	.byte	1,2,35,6,0
+.L14:
+	.byte	6
+	.word	858
+	.byte	12,1,6
+	.word	984
+	.byte	13
+	.byte	'__codeptr',0,3,1,1
+	.word	986
+	.byte	13
+	.byte	'uint8',0,4,81,25
+	.word	144
+	.byte	13
+	.byte	'uint16',0,4,91,25
+	.word	161
+	.byte	13
+	.byte	'uint32',0,4,106,24
+	.word	254
+	.byte	13
+	.byte	'boolean',0,4,127,25
+	.word	144
+	.byte	13
+	.byte	'Std_VersionInfoType',0,2,213,1,3
+	.word	858
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L6:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,46,1,3,8,32,13,58,15,59,15
+	.byte	57,15,73,19,54,15,39,12,0,0,4,5,0,3,8,58,15,59,15,57,15,73,19,0,0,5,11,0,0,0,6,15,0,73,19,0,0,7,46,1,3
+	.byte	8,32,13,58,15,59,15,57,15,54,15,39,12,0,0,8,46,1,49,19,0,0,9,5,0,49,19,0,0,10,19,1,58,15,59,15,57,15,11
+	.byte	15,0,0,11,13,0,3,8,73,19,11,15,56,9,0,0,12,21,0,54,15,0,0,13,22,0,3,8,58,15,59,15,57,15,73,19,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L7:
+	.word	.L17-.L16
+.L16:
+	.half	3
+	.word	.L19-.L18
+.L18:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Bfx\\api\\Bfx_Bit_Inl.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Bfx\\src\\Bfx_GetVersionInfo.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0,0
+.L19:
+.L17:
+	.sdecl	'.debug_info',debug,cluster('Bfx_GetVersionInfo')
+	.sect	'.debug_info'
+.L8:
+	.word	222
+	.half	3
+	.word	.L9
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Bfx\\src\\Bfx_GetVersionInfo.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L11,.L10
+	.byte	2
+	.word	.L4
+	.byte	3
+	.byte	'Bfx_GetVersionInfo',0,1,28,10,1,1,1
+	.word	.L3,.L13,.L2
+	.byte	4
+	.byte	'versionInfo',0,1,28,50
+	.word	.L14,.L15
+	.byte	5
+	.word	.L3,.L13
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Bfx_GetVersionInfo')
+	.sect	'.debug_abbrev'
+.L9:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Bfx_GetVersionInfo')
+	.sect	'.debug_line'
+.L10:
+	.word	.L21-.L20
+.L20:
+	.half	3
+	.word	.L23-.L22
+.L22:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Bfx\\src\\Bfx_GetVersionInfo.c',0,0,0,0,0
+.L23:
+	.byte	5,33,7,0,5,2
+	.word	.L3
+	.byte	3,29,1,5,31,9
+	.half	.L24-.L3
+	.byte	1,5,33,9
+	.half	.L25-.L24
+	.byte	3,1,1,5,31,9
+	.half	.L26-.L25
+	.byte	1,5,41,9
+	.half	.L27-.L26
+	.byte	3,1,1,5,39,9
+	.half	.L28-.L27
+	.byte	1,5,41,9
+	.half	.L29-.L28
+	.byte	3,1,1,5,39,9
+	.half	.L30-.L29
+	.byte	1,5,41,9
+	.half	.L31-.L30
+	.byte	3,1,1,5,39,9
+	.half	.L32-.L31
+	.byte	1,5,5,9
+	.half	.L33-.L32
+	.byte	3,1,1,7,9
+	.half	.L12-.L33
+	.byte	0,1,1
+.L21:
+	.sdecl	'.debug_ranges',debug,cluster('Bfx_GetVersionInfo')
+	.sect	'.debug_ranges'
+.L11:
+	.word	-1,.L3,0,.L12-.L3,0,0
+	.sdecl	'.debug_loc',debug,cluster('Bfx_GetVersionInfo')
+	.sect	'.debug_loc'
+.L2:
+	.word	-1,.L3,0,.L13-.L3
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L15:
+	.word	-1,.L3,0,.L13-.L3
+	.half	1
+	.byte	100
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L34:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Bfx_GetVersionInfo')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L34,.L3,.L13-.L3
+	.byte	8,18,8,19,8,21,8,22,8,23,0,0
+
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    36      #define BFX_STOP_SEC_CODE
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    37      #include "Bfx_MemMap.h"
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    38  
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    39  #endif
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    40  
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    41  /*********************************************************************************************************************/
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    42  
+; BSW\src\BSW\Gen\Bfx\src\Bfx_GetVersionInfo.c	    43  
+
+	; Module end

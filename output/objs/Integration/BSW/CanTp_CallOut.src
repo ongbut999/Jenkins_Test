@@ -1,0 +1,255 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc19272a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\Integration\\BSW\\CanTp_CallOut.src Integration\\BSW\\Src\\CanTp_CallOut.c"
+	.compiler_name		"ctc"
+	;source	'Integration\\BSW\\Src\\CanTp_CallOut.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.CanTp_CallOut.CanTp_XX_YY_ExternalFdSupportCallback',code,cluster('CanTp_XX_YY_ExternalFdSupportCallback')
+	.sect	'.text.CanTp_CallOut.CanTp_XX_YY_ExternalFdSupportCallback'
+	.align	2
+	
+	.global	CanTp_XX_YY_ExternalFdSupportCallback
+
+; Integration\BSW\Src\CanTp_CallOut.c	     1  /*
+; Integration\BSW\Src\CanTp_CallOut.c	     2   * This is a template file. It defines integration functions necessary to complete RTA-BSW.
+; Integration\BSW\Src\CanTp_CallOut.c	     3   * The integrator must complete the templates before deploying software containing functions defined in this file.
+; Integration\BSW\Src\CanTp_CallOut.c	     4   * Once templates have been completed, the integrator should delete the #error line.
+; Integration\BSW\Src\CanTp_CallOut.c	     5   * Note: The integrator is responsible for updates made to this file.
+; Integration\BSW\Src\CanTp_CallOut.c	     6   *
+; Integration\BSW\Src\CanTp_CallOut.c	     7   * To remove the following error define the macro NOT_READY_FOR_TESTING_OR_DEPLOYMENT with a compiler option (e.g. -D NOT_READY_FOR_TESTING_OR_DEPLOYMENT)
+; Integration\BSW\Src\CanTp_CallOut.c	     8   * The removal of the error only allows the user to proceed with the building phase
+; Integration\BSW\Src\CanTp_CallOut.c	     9   */
+; Integration\BSW\Src\CanTp_CallOut.c	    10  
+; Integration\BSW\Src\CanTp_CallOut.c	    11  
+; Integration\BSW\Src\CanTp_CallOut.c	    12   
+; Integration\BSW\Src\CanTp_CallOut.c	    13  #include "ComStack_Types.h"
+; Integration\BSW\Src\CanTp_CallOut.c	    14  #include "CanTp.h"
+; Integration\BSW\Src\CanTp_CallOut.c	    15  
+; Integration\BSW\Src\CanTp_CallOut.c	    16  #define CANTP_START_SEC_FDCALLOUT_CODE
+; Integration\BSW\Src\CanTp_CallOut.c	    17  #include "CanTp_MemMap.h"
+; Integration\BSW\Src\CanTp_CallOut.c	    18  /***********************************************************************************************************************
+; Integration\BSW\Src\CanTp_CallOut.c	    19   Function name    : CanTp_XX_YY_ExternalFdSupportCallback
+; Integration\BSW\Src\CanTp_CallOut.c	    20   Syntax           : CanTp_XX_YY_ExternalFdSupportCallback(RxPduId, PduInfoPtr, FdEnabled)
+; Integration\BSW\Src\CanTp_CallOut.c	    21   Description      : Function will be as a final call just before starting the functionality.
+; Integration\BSW\Src\CanTp_CallOut.c	    22   Parameter        : PduIdType, PduInfoType*, boolean
+; Integration\BSW\Src\CanTp_CallOut.c	    23   Return value     : Std_ReturnType
+; Integration\BSW\Src\CanTp_CallOut.c	    24  ***********************************************************************************************************************/
+; Integration\BSW\Src\CanTp_CallOut.c	    25  Std_ReturnType CanTp_XX_YY_ExternalFdSupportCallback(PduIdType RxPduId, const PduInfoType *PduInfoPtr,
+; Function CanTp_XX_YY_ExternalFdSupportCallback
+.L4:
+CanTp_XX_YY_ExternalFdSupportCallback:	.type	func
+
+; Integration\BSW\Src\CanTp_CallOut.c	    26                                                       const boolean FdEnabled)
+; Integration\BSW\Src\CanTp_CallOut.c	    27  {
+; Integration\BSW\Src\CanTp_CallOut.c	    28      (void)RxPduId;
+; Integration\BSW\Src\CanTp_CallOut.c	    29      (void)PduInfoPtr;
+; Integration\BSW\Src\CanTp_CallOut.c	    30      (void)FdEnabled;
+; Integration\BSW\Src\CanTp_CallOut.c	    31  
+; Integration\BSW\Src\CanTp_CallOut.c	    32      return E_OK;
+	mov	d2,#0
+.L30:
+	j	.L2
+
+; Integration\BSW\Src\CanTp_CallOut.c	    33  }
+.L2:
+	ret
+.L15:
+	
+__CanTp_XX_YY_ExternalFdSupportCallback_function_end:
+	.size	CanTp_XX_YY_ExternalFdSupportCallback,__CanTp_XX_YY_ExternalFdSupportCallback_function_end-CanTp_XX_YY_ExternalFdSupportCallback
+.L13:
+	; End of function
+	
+	.calls	'CanTp_XX_YY_ExternalFdSupportCallback','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L6:
+	.word	466
+	.half	3
+	.word	.L7
+	.byte	4
+.L5:
+	.byte	1
+	.byte	'Integration\\BSW\\Src\\CanTp_CallOut.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L8
+.L14:
+	.byte	2
+	.byte	'unsigned char',0,1,8
+.L16:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,3
+	.word	135
+	.byte	4,1,71,9,8,5
+	.byte	'SduDataPtr',0
+	.word	174
+	.byte	4,2,35,0,5
+	.byte	'SduLength',0
+	.word	152
+	.byte	2,2,35,4,0,6
+	.word	179
+.L18:
+	.byte	3
+	.word	224
+.L20:
+	.byte	6
+	.word	135
+	.byte	7,1,3
+	.word	239
+	.byte	8
+	.byte	'__codeptr',0,2,1,1
+	.word	241
+	.byte	8
+	.byte	'uint8',0,3,81,25
+	.word	135
+	.byte	8
+	.byte	'uint16',0,3,91,25
+	.word	152
+	.byte	8
+	.byte	'boolean',0,3,127,25
+	.word	135
+	.byte	8
+	.byte	'Std_ReturnType',0,4,199,1,15
+	.word	135
+	.byte	8
+	.byte	'PduIdType',0,5,22,19
+	.word	152
+	.byte	8
+	.byte	'PduLengthType',0,5,26,19
+	.word	152
+	.byte	8
+	.byte	'PduInfoType',0,1,75,3
+	.word	179
+	.byte	9,1,113,9,4,10
+	.byte	'TP_DATACONF',0,0,10
+	.byte	'TP_DATARETRY',0,1,10
+	.byte	'TP_CONFPENDING',0,2,0,8
+	.byte	'TpDataStateType',0,1,118,3
+	.word	393
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L7:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,19,1,58,15
+	.byte	59,15,57,15,11,15,0,0,5,13,0,3,8,73,19,11,15,56,9,0,0,6,38,0,73,19,0,0,7,21,0,54,15,0,0,8,22,0,3,8,58
+	.byte	15,59,15,57,15,73,19,0,0,9,4,1,58,15,59,15,57,15,11,15,0,0,10,40,0,3,8,28,13,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L8:
+	.word	.L23-.L22
+.L22:
+	.half	3
+	.word	.L25-.L24
+.L24:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'Integration\\BSW\\Src\\CanTp_CallOut.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0,0
+.L25:
+.L23:
+	.sdecl	'.debug_info',debug,cluster('CanTp_XX_YY_ExternalFdSupportCallback')
+	.sect	'.debug_info'
+.L9:
+	.word	277
+	.half	3
+	.word	.L10
+	.byte	4,1
+	.byte	'Integration\\BSW\\Src\\CanTp_CallOut.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L12,.L11
+	.byte	2
+	.word	.L5
+	.byte	3
+	.byte	'CanTp_XX_YY_ExternalFdSupportCallback',0,1,25,16
+	.word	.L14
+	.byte	1,1,1
+	.word	.L4,.L15,.L3
+	.byte	4
+	.byte	'RxPduId',0,1,25,64
+	.word	.L16,.L17
+	.byte	4
+	.byte	'PduInfoPtr',0,1,25,92
+	.word	.L18,.L19
+	.byte	4
+	.byte	'FdEnabled',0,1,26,68
+	.word	.L20,.L21
+	.byte	5
+	.word	.L4,.L15
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('CanTp_XX_YY_ExternalFdSupportCallback')
+	.sect	'.debug_abbrev'
+.L10:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('CanTp_XX_YY_ExternalFdSupportCallback')
+	.sect	'.debug_line'
+.L11:
+	.word	.L27-.L26
+.L26:
+	.half	3
+	.word	.L29-.L28
+.L28:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Integration\\BSW\\Src\\CanTp_CallOut.c',0,0,0,0,0
+.L29:
+	.byte	5,12,7,0,5,2
+	.word	.L4
+	.byte	3,31,1,5,5,9
+	.half	.L30-.L4
+	.byte	1,5,1,9
+	.half	.L2-.L30
+	.byte	3,1,1,7,9
+	.half	.L13-.L2
+	.byte	0,1,1
+.L27:
+	.sdecl	'.debug_ranges',debug,cluster('CanTp_XX_YY_ExternalFdSupportCallback')
+	.sect	'.debug_ranges'
+.L12:
+	.word	-1,.L4,0,.L13-.L4,0,0
+	.sdecl	'.debug_loc',debug,cluster('CanTp_XX_YY_ExternalFdSupportCallback')
+	.sect	'.debug_loc'
+.L3:
+	.word	-1,.L4,0,.L15-.L4
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L21:
+	.word	-1,.L4,0,.L15-.L4
+	.half	1
+	.byte	85
+	.word	0,0
+.L19:
+	.word	-1,.L4,0,.L15-.L4
+	.half	1
+	.byte	100
+	.word	0,0
+.L17:
+	.word	-1,.L4,0,.L15-.L4
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L31:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('CanTp_XX_YY_ExternalFdSupportCallback')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L31,.L4,.L15-.L4
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+; Integration\BSW\Src\CanTp_CallOut.c	    34  
+; Integration\BSW\Src\CanTp_CallOut.c	    35  #define CANTP_STOP_SEC_FDCALLOUT_CODE
+; Integration\BSW\Src\CanTp_CallOut.c	    36  #include "CanTp_MemMap.h"
+
+	; Module end

@@ -1,0 +1,4735 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc15396a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Dem\\src\\Dem_DebCtrBaseClass.src BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebCtrBaseClass.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebCtrBaseClass.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Dem_DebCtrBaseClass.Dem_DebCounterBaseClass_GetLimits',code,cluster('Dem_DebCounterBaseClass_GetLimits')
+	.sect	'.text.Dem_DebCtrBaseClass.Dem_DebCounterBaseClass_GetLimits'
+	.align	2
+	
+	.global	Dem_DebCounterBaseClass_GetLimits
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	     1  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	     2  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	     3  #include "Dem_DebCtrBaseClass.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	     4  #include "Dem_Deb.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	     5  #include "Dem_Events.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	     6  #include "Dem_EventStatus.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	     7  #include "Dem_Lib.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	     8  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	     9  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    10  #if(DEM_CFG_DEBCOUNTERBASECLASS == DEM_CFG_DEBCOUNTERBASECLASS_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    11  #define DEM_START_SEC_ROM_CODE
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    12  #include "Dem_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    13  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    14  #if(DEM_CFG_DEBCOUNTERBASECLASS == DEM_CFG_DEBCOUNTERBASECLASS_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    15  void Dem_DebCounterBaseClass_GetLimits(const void* paramSet, uint16 paramIndex,sint16_least* MinThreshold,sint16_least* MaxThreshold)
+; Function Dem_DebCounterBaseClass_GetLimits
+.L43:
+Dem_DebCounterBaseClass_GetLimits:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     1  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     2  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     3  #ifndef DEM_DEBCTRBASECLASS_H
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     4  #define DEM_DEBCTRBASECLASS_H
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     5  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     6  #include "Dem_Types.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     7  #include "Dem_Cfg_Deb.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     8  #include "Dem_DebSharing.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     9  #include "Dem_Cfg_Events.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    10  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    11  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    12  #if(DEM_CFG_DEBCOUNTERBASECLASS == DEM_CFG_DEBCOUNTERBASECLASS_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    13  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    14  typedef struct
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    15  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    16  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    17  	boolean isJumpDownEnabled;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    18  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    19  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    20  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    21  	boolean isJumpUpEnabled;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    22  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    23  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    24  #if(DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    25  	sint16 passedThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    26  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    27  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    28  #if(DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    29  	sint16 failedThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    30  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    31  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    32  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    33      sint16 jumpDownValue;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    34  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    35  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    36  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    37  	sint16 jumpUpValue;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    38  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    39  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    40  #if((DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD == DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD_ON)||\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    41      (DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    42      sint16 FDCThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    43  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    44  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    45  #if(DEM_CFG_SUSPICIOUS_SUPPORT)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    46      sint16 SuspiciousThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    47  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    48  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    49  	sint16 stepUp;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    50  	sint16 stepDown;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    51  } Dem_DebCounterBaseClass_ParamSet;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    52  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    53  #if(DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    54  #define DEM_DEB_MAXLIMIT(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    55  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    56  #define DEM_DEB_MAXLIMIT(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    57  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    58  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    59  #if(DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    60  #define DEM_DEB_MINLIMIT(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    61  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    62  #define DEM_DEB_MINLIMIT(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    63  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    64  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    65  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    66  #define DEM_DEB_JUPVALUE(X)         (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    67  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    68  #define DEM_DEB_JUPVALUE(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    69  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    70  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    71  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    72  #define DEM_DEB_JDOWNVALUE(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    73  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    74  #define DEM_DEB_JDOWNVALUE(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    75  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    76  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    77  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    78  #define DEM_DEB_ISJDOWN(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    79  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    80  #define DEM_DEB_ISJDOWN(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    81  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    82  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    83  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    84  #define DEM_DEB_ISJUMPUP(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    85  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    86  #define DEM_DEB_ISJUMPUP(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    87  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    88  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    89  #if((DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD == DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD_ON)||\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    90      (DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    91  #define DEM_DEB_FDCTHRESHOLD(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    92  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    93  #define DEM_DEB_FDCTHRESHOLD(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    94  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    95  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    96  #if(DEM_CFG_SUSPICIOUS_SUPPORT)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    97  #define DEM_DEB_SUSPICIOUSTHRESHOLD(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    98  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    99  #define DEM_DEB_SUSPICIOUSTHRESHOLD(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   100  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   101  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   102  #define DEM_DEBCOUNTERBASECLASS_INIT(ISJDOWN,	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   103  		ISJUP,                  				\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   104  		MINLIMIT, 	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   105  		MAXLIMIT,                          		\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   106  		JDOWN,                          		\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   107  		JUP,									\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   108          FDCTHRESHOLD,                           \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   109          SUSPICIOUSTHRESHOLD,                    \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   110  		STEPUP,									\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   111  		STEPDOWN )                              \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   112  	{                                       	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   113  		DEM_DEB_ISJDOWN(ISJDOWN)         		\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   114  		DEM_DEB_ISJUMPUP(ISJUP)        			\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   115  		DEM_DEB_MINLIMIT(MINLIMIT)          	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   116  		DEM_DEB_MAXLIMIT(MAXLIMIT)          	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   117  		DEM_DEB_JDOWNVALUE(JDOWN) 				\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   118  		DEM_DEB_JUPVALUE(JUP) 					\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   119          DEM_DEB_FDCTHRESHOLD(FDCTHRESHOLD)      \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   120          DEM_DEB_SUSPICIOUSTHRESHOLD(SUSPICIOUSTHRESHOLD)                   \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   121  		(STEPUP),              					\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   122  		(STEPDOWN)                          	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   123  	}											\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   124  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   125  /*** FUNCTIONS ****************************************************************/
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   126  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   127  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   128  /*-- FAILED THRESHOLD -------------------------------------------------------------*/
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   129  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   130  DEM_INLINE sint16 Dem_getDebCtrBaseClassFailedThreshold (const void* paramSet, uint16 paramIndex)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   131  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   132  #if(DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   133     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].failedThreshold;
+	mul	d15,d4,#12
+	addsc.a	a15,a4,d15,#0
+.L163:
+	ld.h	d15,[a15]2
+.L164:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   133     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].failedThreshold;      (inlined)
+	j	.L2
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   139  }      (inlined)
+.L2:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    16  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    17      *MaxThreshold = Dem_getDebCtrBaseClassFailedThreshold(paramSet,paramIndex);
+	st.w	[a6],d15
+.L75:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     1  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     2  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     3  #ifndef DEM_DEBCTRBASECLASS_H
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     4  #define DEM_DEBCTRBASECLASS_H
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     5  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     6  #include "Dem_Types.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     7  #include "Dem_Cfg_Deb.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     8  #include "Dem_DebSharing.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     9  #include "Dem_Cfg_Events.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    10  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    11  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    12  #if(DEM_CFG_DEBCOUNTERBASECLASS == DEM_CFG_DEBCOUNTERBASECLASS_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    13  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    14  typedef struct
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    15  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    16  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    17  	boolean isJumpDownEnabled;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    18  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    19  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    20  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    21  	boolean isJumpUpEnabled;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    22  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    23  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    24  #if(DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    25  	sint16 passedThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    26  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    27  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    28  #if(DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    29  	sint16 failedThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    30  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    31  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    32  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    33      sint16 jumpDownValue;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    34  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    35  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    36  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    37  	sint16 jumpUpValue;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    38  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    39  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    40  #if((DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD == DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD_ON)||\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    41      (DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    42      sint16 FDCThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    43  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    44  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    45  #if(DEM_CFG_SUSPICIOUS_SUPPORT)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    46      sint16 SuspiciousThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    47  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    48  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    49  	sint16 stepUp;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    50  	sint16 stepDown;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    51  } Dem_DebCounterBaseClass_ParamSet;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    52  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    53  #if(DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    54  #define DEM_DEB_MAXLIMIT(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    55  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    56  #define DEM_DEB_MAXLIMIT(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    57  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    58  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    59  #if(DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    60  #define DEM_DEB_MINLIMIT(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    61  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    62  #define DEM_DEB_MINLIMIT(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    63  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    64  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    65  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    66  #define DEM_DEB_JUPVALUE(X)         (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    67  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    68  #define DEM_DEB_JUPVALUE(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    69  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    70  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    71  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    72  #define DEM_DEB_JDOWNVALUE(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    73  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    74  #define DEM_DEB_JDOWNVALUE(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    75  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    76  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    77  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    78  #define DEM_DEB_ISJDOWN(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    79  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    80  #define DEM_DEB_ISJDOWN(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    81  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    82  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    83  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    84  #define DEM_DEB_ISJUMPUP(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    85  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    86  #define DEM_DEB_ISJUMPUP(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    87  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    88  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    89  #if((DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD == DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD_ON)||\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    90      (DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    91  #define DEM_DEB_FDCTHRESHOLD(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    92  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    93  #define DEM_DEB_FDCTHRESHOLD(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    94  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    95  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    96  #if(DEM_CFG_SUSPICIOUS_SUPPORT)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    97  #define DEM_DEB_SUSPICIOUSTHRESHOLD(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    98  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    99  #define DEM_DEB_SUSPICIOUSTHRESHOLD(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   100  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   101  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   102  #define DEM_DEBCOUNTERBASECLASS_INIT(ISJDOWN,	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   103  		ISJUP,                  				\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   104  		MINLIMIT, 	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   105  		MAXLIMIT,                          		\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   106  		JDOWN,                          		\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   107  		JUP,									\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   108          FDCTHRESHOLD,                           \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   109          SUSPICIOUSTHRESHOLD,                    \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   110  		STEPUP,									\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   111  		STEPDOWN )                              \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   112  	{                                       	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   113  		DEM_DEB_ISJDOWN(ISJDOWN)         		\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   114  		DEM_DEB_ISJUMPUP(ISJUP)        			\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   115  		DEM_DEB_MINLIMIT(MINLIMIT)          	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   116  		DEM_DEB_MAXLIMIT(MAXLIMIT)          	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   117  		DEM_DEB_JDOWNVALUE(JDOWN) 				\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   118  		DEM_DEB_JUPVALUE(JUP) 					\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   119          DEM_DEB_FDCTHRESHOLD(FDCTHRESHOLD)      \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   120          DEM_DEB_SUSPICIOUSTHRESHOLD(SUSPICIOUSTHRESHOLD)                   \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   121  		(STEPUP),              					\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   122  		(STEPDOWN)                          	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   123  	}											\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   124  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   125  /*** FUNCTIONS ****************************************************************/
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   126  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   127  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   128  /*-- FAILED THRESHOLD -------------------------------------------------------------*/
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   129  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   130  DEM_INLINE sint16 Dem_getDebCtrBaseClassFailedThreshold (const void* paramSet, uint16 paramIndex)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   131  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   132  #if(DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   133     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].failedThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   134  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   135     DEM_UNUSED_PARAM(paramSet);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   136     DEM_UNUSED_PARAM(paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   137     return DEM_CFG_DEFAULT_DEBCOUNTERCLASS_MAXLIMIT;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   138  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   139  }
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   140  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   141  /*-- PASSED THRESHOLD -------------------------------------------------------------*/
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   142  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   143  DEM_INLINE sint16 Dem_getDebCtrBaseClassPassedThreshold (const void* paramSet, uint16 paramIndex)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   144  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   145  #if(DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   146     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].passedThreshold;
+	mul	d15,d4,#12
+	addsc.a	a15,a4,d15,#0
+.L165:
+	ld.h	d15,[a15]
+.L166:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   146     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].passedThreshold;      (inlined)
+	j	.L3
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   152  }      (inlined)
+.L3:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    18      *MinThreshold = Dem_getDebCtrBaseClassPassedThreshold(paramSet,paramIndex);
+	st.w	[a5],d15
+.L167:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    19  }
+	ret
+.L60:
+	
+__Dem_DebCounterBaseClass_GetLimits_function_end:
+	.size	Dem_DebCounterBaseClass_GetLimits,__Dem_DebCounterBaseClass_GetLimits_function_end-Dem_DebCounterBaseClass_GetLimits
+.L54:
+	; End of function
+	
+	.sdecl	'.text.Dem_DebCtrBaseClass.Dem_DebCounterBaseClass_Filter',code,cluster('Dem_DebCounterBaseClass_Filter')
+	.sect	'.text.Dem_DebCtrBaseClass.Dem_DebCounterBaseClass_Filter'
+	.align	2
+	
+	.global	Dem_DebCounterBaseClass_Filter
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    20  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    21  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    22  uint8_least Dem_DebCounterBaseClass_Filter(Dem_EventIdType EventId, Dem_EventStatusType* status, const void* paramSet, uint16 paramIndex
+; Function Dem_DebCounterBaseClass_Filter
+.L45:
+Dem_DebCounterBaseClass_Filter:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    23                                             DEM_DEB_LOCAL_CALC_PARAMS)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    24  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    25  	sint32 maxThreshold = 0;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    26  	sint32 minThreshold = 0;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    27  	sint32 stepDown = 0;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    28  	sint32 stepUp = 0;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    29  	sint32 jumpUpValue = 0;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    30  	sint32 jumpDownValue = 0;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    31  	boolean isJumpUpEnabled = FALSE;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    32  	boolean isJumpDownEnabled = FALSE;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    33  	sint32 debLevel = 0;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    34  	uint8_least debAction = DEM_DEBACTION_NOOP;
+	mov	d3,#0
+.L100:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     1  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     2  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     3  #ifndef DEM_DEBCTRBASECLASS_H
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     4  #define DEM_DEBCTRBASECLASS_H
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     5  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     6  #include "Dem_Types.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     7  #include "Dem_Cfg_Deb.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     8  #include "Dem_DebSharing.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	     9  #include "Dem_Cfg_Events.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    10  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    11  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    12  #if(DEM_CFG_DEBCOUNTERBASECLASS == DEM_CFG_DEBCOUNTERBASECLASS_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    13  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    14  typedef struct
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    15  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    16  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    17  	boolean isJumpDownEnabled;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    18  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    19  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    20  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    21  	boolean isJumpUpEnabled;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    22  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    23  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    24  #if(DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    25  	sint16 passedThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    26  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    27  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    28  #if(DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    29  	sint16 failedThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    30  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    31  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    32  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    33      sint16 jumpDownValue;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    34  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    35  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    36  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    37  	sint16 jumpUpValue;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    38  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    39  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    40  #if((DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD == DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD_ON)||\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    41      (DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    42      sint16 FDCThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    43  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    44  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    45  #if(DEM_CFG_SUSPICIOUS_SUPPORT)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    46      sint16 SuspiciousThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    47  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    48  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    49  	sint16 stepUp;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    50  	sint16 stepDown;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    51  } Dem_DebCounterBaseClass_ParamSet;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    52  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    53  #if(DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    54  #define DEM_DEB_MAXLIMIT(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    55  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    56  #define DEM_DEB_MAXLIMIT(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    57  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    58  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    59  #if(DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    60  #define DEM_DEB_MINLIMIT(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    61  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    62  #define DEM_DEB_MINLIMIT(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    63  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    64  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    65  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    66  #define DEM_DEB_JUPVALUE(X)         (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    67  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    68  #define DEM_DEB_JUPVALUE(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    69  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    70  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    71  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    72  #define DEM_DEB_JDOWNVALUE(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    73  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    74  #define DEM_DEB_JDOWNVALUE(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    75  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    76  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    77  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    78  #define DEM_DEB_ISJDOWN(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    79  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    80  #define DEM_DEB_ISJDOWN(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    81  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    82  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    83  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    84  #define DEM_DEB_ISJUMPUP(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    85  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    86  #define DEM_DEB_ISJUMPUP(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    87  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    88  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    89  #if((DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD == DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD_ON)||\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    90      (DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    91  #define DEM_DEB_FDCTHRESHOLD(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    92  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    93  #define DEM_DEB_FDCTHRESHOLD(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    94  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    95  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    96  #if(DEM_CFG_SUSPICIOUS_SUPPORT)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    97  #define DEM_DEB_SUSPICIOUSTHRESHOLD(X)          (X),
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    98  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	    99  #define DEM_DEB_SUSPICIOUSTHRESHOLD(X)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   100  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   101  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   102  #define DEM_DEBCOUNTERBASECLASS_INIT(ISJDOWN,	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   103  		ISJUP,                  				\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   104  		MINLIMIT, 	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   105  		MAXLIMIT,                          		\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   106  		JDOWN,                          		\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   107  		JUP,									\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   108          FDCTHRESHOLD,                           \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   109          SUSPICIOUSTHRESHOLD,                    \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   110  		STEPUP,									\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   111  		STEPDOWN )                              \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   112  	{                                       	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   113  		DEM_DEB_ISJDOWN(ISJDOWN)         		\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   114  		DEM_DEB_ISJUMPUP(ISJUP)        			\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   115  		DEM_DEB_MINLIMIT(MINLIMIT)          	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   116  		DEM_DEB_MAXLIMIT(MAXLIMIT)          	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   117  		DEM_DEB_JDOWNVALUE(JDOWN) 				\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   118  		DEM_DEB_JUPVALUE(JUP) 					\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   119          DEM_DEB_FDCTHRESHOLD(FDCTHRESHOLD)      \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   120          DEM_DEB_SUSPICIOUSTHRESHOLD(SUSPICIOUSTHRESHOLD)                   \ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   121  		(STEPUP),              					\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   122  		(STEPDOWN)                          	\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   123  	}											\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   124  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   125  /*** FUNCTIONS ****************************************************************/
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   126  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   127  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   128  /*-- FAILED THRESHOLD -------------------------------------------------------------*/
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   129  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   130  DEM_INLINE sint16 Dem_getDebCtrBaseClassFailedThreshold (const void* paramSet, uint16 paramIndex)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   131  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   132  #if(DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MAXTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   133     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].failedThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   134  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   135     DEM_UNUSED_PARAM(paramSet);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   136     DEM_UNUSED_PARAM(paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   137     return DEM_CFG_DEFAULT_DEBCOUNTERCLASS_MAXLIMIT;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   138  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   139  }
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   140  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   141  /*-- PASSED THRESHOLD -------------------------------------------------------------*/
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   142  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   143  DEM_INLINE sint16 Dem_getDebCtrBaseClassPassedThreshold (const void* paramSet, uint16 paramIndex)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   144  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   145  #if(DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD == DEM_CFG_DEBCOUNTERBASECLASS_MINTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   146     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].passedThreshold;
+	mul	d15,d5,#12
+	addsc.a	a15,a5,d15,#0
+.L172:
+	ld.h	d6,[a15]
+.L173:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   146     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].passedThreshold;      (inlined)
+	j	.L4
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   152  }      (inlined)
+.L4:
+	mul	d15,d5,#12
+	addsc.a	a15,a5,d15,#0
+.L174:
+	ld.h	d7,[a15]2
+.L175:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   133     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].failedThreshold;      (inlined)
+	j	.L5
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   139  }      (inlined)
+.L5:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   147  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   148     DEM_UNUSED_PARAM(paramSet);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   149     DEM_UNUSED_PARAM(paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   150     return DEM_CFG_DEFAULT_DEBCOUNTERCLASS_MINLIMIT;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   151  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   152  }
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   153  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   154  /*-- JUMPUP VALUE -------------------------------------------------------------*/
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   155  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   156  DEM_INLINE sint16 Dem_getDebCtrBaseClassJumpUpValue (const void* paramSet, uint16 paramIndex)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   157  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   158  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPUPVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   159     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].jumpUpValue;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   160  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   161     DEM_UNUSED_PARAM(paramSet);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   162     DEM_UNUSED_PARAM(paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   163     return DEM_CFG_DEFAULT_DEBCOUNTERCLASS_JUMPUP_VALUE;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   164  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   165  }
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   166  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   167  /*-- JUMPDOWN VALUE -------------------------------------------------------------*/
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   168  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   169  DEM_INLINE sint16 Dem_getDebCtrBaseClassJumpDownValue (const void* paramSet, uint16 paramIndex)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   170  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   171  #if(DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE == DEM_CFG_DEBCOUNTERBASECLASS_JUMPDOWNVALUE_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   172     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].jumpDownValue;
+	mul	d15,d5,#12
+	addsc.a	a15,a5,d15,#0
+.L176:
+	ld.h	d9,[a15]4
+.L177:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   172     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].jumpDownValue;      (inlined)
+	j	.L6
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   178  }      (inlined)
+.L6:
+	mul	d15,d5,#12
+	addsc.a	a15,a5,d15,#0
+.L178:
+	ld.h	d8,[a15]6
+.L179:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   159     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].jumpUpValue;      (inlined)
+	j	.L7
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   165  }      (inlined)
+.L7:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   173  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   174     DEM_UNUSED_PARAM(paramSet);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   175     DEM_UNUSED_PARAM(paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   176     return DEM_CFG_DEFAULT_DEBCOUNTERCLASS_JUMPDOWN_VALUE;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   177  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   178  }
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   179  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   180  /*-- IS JUMPDOWN -------------------------------------------------------------*/
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   181  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   182  DEM_INLINE boolean Dem_getDebCtrBaseClassIsJumpDown (const void* paramSet, uint16 paramIndex)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   183  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   184  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPDOWN_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   185     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].isJumpDownEnabled;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   186  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   187     DEM_UNUSED_PARAM(paramSet);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   188     DEM_UNUSED_PARAM(paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   189     return DEM_CFG_DEFAULT_DEBCOUNTERCLASS_JUMPDOWN_ENABLED;
+	mov	d11,#1
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   189     return DEM_CFG_DEFAULT_DEBCOUNTERCLASS_JUMPDOWN_ENABLED;      (inlined)
+	j	.L8
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   191  }      (inlined)
+.L8:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   190  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   191  }
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   192  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   193  /*-- IS JUMPUP -------------------------------------------------------------*/
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   194  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   195  DEM_INLINE boolean Dem_getDebCtrBaseClassIsJumpUp (const void* paramSet, uint16 paramIndex)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   196  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   197  #if(DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP == DEM_CFG_DEBCOUNTERBASECLASS_ISJUMPUP_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   198     return ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].isJumpUpEnabled;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   199  #else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   200     DEM_UNUSED_PARAM(paramSet);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   201     DEM_UNUSED_PARAM(paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   202     return DEM_CFG_DEFAULT_DEBCOUNTERCLASS_JUMPUP_ENABLED;
+	mov	d10,#1
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   202     return DEM_CFG_DEFAULT_DEBCOUNTERCLASS_JUMPUP_ENABLED;      (inlined)
+	j	.L9
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.h	   204  }      (inlined)
+.L9:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    35  #if((DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD == DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD_ON)||\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    36     (DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    37  	sint32 FDCThreshold = 0;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    38  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    39  #if(DEM_CFG_SUSPICIOUS_SUPPORT)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    40      sint32 SuspiciousThreshold = 0;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    41  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    42  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    43      minThreshold = Dem_getDebCtrBaseClassPassedThreshold(paramSet, paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    44      maxThreshold = Dem_getDebCtrBaseClassFailedThreshold(paramSet, paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    45      jumpDownValue = Dem_getDebCtrBaseClassJumpDownValue(paramSet, paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    46      jumpUpValue = Dem_getDebCtrBaseClassJumpUpValue(paramSet, paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    47      isJumpDownEnabled = Dem_getDebCtrBaseClassIsJumpDown(paramSet, paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    48      isJumpUpEnabled = Dem_getDebCtrBaseClassIsJumpUp(paramSet, paramIndex);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    49      /* MR12 RULE 11.5 VIOLATION: a fast and resource optimized support of different debounce startegies is only possible through this mechanism  */
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    50      stepDown = ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].stepDown;
+	mul	d15,d5,#12
+	addsc.a	a15,a5,d15,#0
+.L180:
+	ld.h	d0,[a15]10
+.L141:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    51      /* MR12 RULE 11.5 VIOLATION: a fast and resource optimized support of different debounce startegies is only possible through this mechanism  */
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    52      stepUp = ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].stepUp;
+	ld.h	d5,[a15]8
+.L130:
+
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     1  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     2  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     3  #ifndef DEM_EVENTS_H
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     4  #define DEM_EVENTS_H
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     5  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     6  #include "Dem.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     7  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     8  #include "Dem_Array.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     9  #include "Dem_BitArray.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    10  #include "rba_DiagLib_Bits8.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    11  #include "rba_DiagLib_Bits16.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    12  #include "rba_DiagLib_Bits32.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    13  #include "Dem_ISO14229Byte.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    14  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    15  #include "Dem_Clear.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    16  #include "Dem_Cfg_Events.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    17  #include "Dem_Cfg_Deb.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    18  #include "Dem_Cfg_EvBuff.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    19  #include "Dem_Cfg_Nodes.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    20  #include "Dem_EventCategory.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    21  #include "Dem_StorageCondition.h"       // -> situationfilterCFG
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    22  #include "Dem_EnableCondition.h"         // -> enableconditionCFG
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    23  #include "Dem_Cfg_Main.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    24  #include "Dem_Cfg_OperationCycle.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    25  #include "Dem_Cfg_DistMem.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    26  #include "Dem_Cfg_StorageCondition.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    27  #include "Dem_Nvm.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    28  #include "Dem_IndicatorAttributes.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    29  #include "Dem_Indicator.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    30  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    31  #include "Dem_Cfg_Events_DataStructures.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    32  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    33  #if (DEM_CFG_EVT_ATTRIBUTE == DEM_CFG_EVT_ATTRIBUTE_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    34  #include "Dem_EventAttribute.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    35  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    36  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    37  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    38  typedef Std_ReturnType (* Dem_InitMForEAllowedFncType) (Dem_InitMonitorReasonType InitMonitorReason);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    39  typedef struct
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    40  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    41  /* Pointer to InitMonitorForEvent Callback */
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    42    uint16 Eventid;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    43    Dem_InitMForEAllowedFncType InitMForEAllwdCBFnc;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    44  }Dem_InitMonitorForE;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    45  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    46  typedef struct
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    47  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    48      Dem_EvtStateType  state;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    49      sint16 debounceLevel;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    50  } Dem_EvtState;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    51  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    52  typedef struct
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    53  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    54      Dem_EventStatusType lastReportedEvent;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    55  } Dem_EvtState8;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    56  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    57  typedef void (* Dem_EvtStatusChangeFncType) ( Dem_EventIdType EventId, Dem_UdsStatusByteType EventStatusOld, Dem_UdsStatusByteType EventStatusNew );
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    58  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    59  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    60  #define DEM_EVTPARAM_DEBPARAM_SHIFT   4u
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    61  #define DEM_EVTPARAM_DEBMETHOD_MASK   0x0Fu
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    62  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    63  /*----------------------------------------------------------------------------*/
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    64  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    65  #if (DEM_CFG_EVTCATEGORY == DEM_CFG_EVTCATEGORY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    66  typedef struct
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    67  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    68      Dem_EvtCategoryPrioType evtcatprio;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    69  } Dem_EvtCategoryPriority;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    70  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    71  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    72  /*----------------------------------------------------------------------------*/
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    73  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    74  #if(DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    75  #define DEM_EVTS_INIT_SEQUENTIALFAILURBUFFER(X)    ,(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    76  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    77  #define DEM_EVTS_INIT_SEQUENTIALFAILURBUFFER(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    78  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    79  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    80  #if (DEM_CFG_STORAGECONDITION == DEM_CFG_STORAGECONDITION_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    81  #define DEM_EVTS_INIT_STORAGECONDITION(X)          ,(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    82  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    83  #define DEM_EVTS_INIT_STORAGECONDITION(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    84  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    85  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    86  #if (DEM_CFG_ENABLECONDITION == DEM_CFG_ENABLECONDITION_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    87  #define DEM_EVTS_INIT_ENABLECONDITION(X)           ,(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    88  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    89  #define DEM_EVTS_INIT_ENABLECONDITION(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    90  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    91  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    92  #if (DEM_CFG_EVT_STATUS_CHANGE_NUM_CALLBACKS > 0)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    93  #define DEM_EVTS_INIT_CALLBACKEVENTSTATUSCHANGED(X)                ,(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    94  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    95  #define DEM_EVTS_INIT_CALLBACKEVENTSTATUSCHANGED(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    96  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    97  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    98  #if (DEM_CFG_EVT_CLEARALLOWEDCALLBACK != DEM_CFG_EVT_CLEARALLOWEDCALLBACK_OFF)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    99  #define DEM_EVTS_INIT_CALLBACKCLEARALLOWED(X)                ,(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   100  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   101  #define DEM_EVTS_INIT_CALLBACKCLEARALLOWED(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   102  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   103  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   104  #if (DEM_CFG_EVT_CLEARALLOWEDCALLBACK != DEM_CFG_EVT_CLEARALLOWEDCALLBACK_OFF)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   105  #define DEM_EVTS_INIT_CLEARALLOWEDBEHAVIOR(X)                ,(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   106  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   107  #define DEM_EVTS_INIT_CLEARALLOWEDBEHAVIOR(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   108  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   109  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   110  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   111  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   112  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   113  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   114  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   115  #define DEM_START_SEC_ROM_CONST
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   116  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   117  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   118  #if (DEM_CFG_EVTCATEGORY == DEM_CFG_EVTCATEGORY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   119  DEM_ARRAY_DECLARE_CONST(Dem_EvtCategoryPriority,Dem_EvtCategoryPrio,DEM_EVENTCATPRIO_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   120  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   121  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   122  #if(DEM_CFG_CALLBACK_INIT_MON_FOR_EVENT_SUPPORTED == TRUE)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   123  DEM_ARRAY_DECLARE_CONST(Dem_InitMonitorForE, Dem_Cfg_Callback_InitMForE_List, DEM_CFG_CALLBACK_INITMFORE_LISTLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   124  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   125  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   126  #if (DEM_CFG_EVT_ATTRIBUTE == DEM_CFG_EVT_ATTRIBUTE_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   127  DEM_ARRAY_DECLARE_CONST(Dem_EventAttributeType, Dem_AllEventsUserAttributes, DEM_EVENTID_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   128  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   129  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   130  #if (DEM_CFG_EVT_STATUS_CHANGE_NUM_CALLBACKS > 0)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   131  DEM_ARRAY_DECLARE_CONST(Dem_EvtStatusChangeFncType, Dem_AllEventsStatusChangedFnc, DEM_CFG_EVT_STATUS_CHANGE_NUM_CALLBACKS);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   132  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   133  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   134  #define DEM_STOP_SEC_ROM_CONST
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   135  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   136  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   137  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   138  #define DEM_START_SEC_SAVED_ZONE
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   139  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   140  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   141  #if(DEM_CFG_ALLOW_HISTORY == DEM_CFG_ALLOW_HISTORY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   142  DEM_BITARRAY_DECLARE  (Dem_AllEventsHistoryStatus, DEM_EVENTID_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   143  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   144  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   145  #define DEM_STOP_SEC_SAVED_ZONE
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   146  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   147  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   148  #define DEM_START_SEC_RAM_CLEARED
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   149  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   150  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   151  extern uint32 Dem_EvtIsAnyInitMonitoringRequestedMask;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   152  DEM_ARRAY_DECLARE(Dem_EvtState, Dem_AllEventsState, DEM_EVENTID_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   153  DEM_ARRAY_DECLARE(Dem_EvtState8, Dem_AllEventsState8, DEM_EVENTID_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   154  DEM_BITARRAY_DECLARE(Dem_AllEventsResetDebouncerRequested, DEM_EVENTID_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   155  DEM_BITARRAY_DECLARE(Dem_EventWasPassedReported,DEM_EVENTID_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   156  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   157  extern uint16 Dem_GlobalInitMonitoringCounter;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   158  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   159  #define DEM_STOP_SEC_RAM_CLEARED
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   160  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   161  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   162  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   163  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   164  /*** FUNCTIONS ****************************************************************/
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   165  DEM_INLINE Dem_boolean_least Dem_EvtGetHistoryStatus(Dem_EventIdType EventId)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   166  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   167  #if(DEM_CFG_ALLOW_HISTORY == DEM_CFG_ALLOW_HISTORY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   168      return Dem_BitArrayIsBitSet(Dem_AllEventsHistoryStatus, EventId);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   169  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   170      DEM_UNUSED_PARAM(EventId);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   171      return FALSE;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   172  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   173  }
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   174  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   175  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   176  DEM_INLINE void Dem_EvtSetHistoryStatus(Dem_EventIdType EventId, boolean newStatus)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   177  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   178  #if(DEM_CFG_ALLOW_HISTORY == DEM_CFG_ALLOW_HISTORY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   179      Dem_BitArrayOverwriteBit(Dem_AllEventsHistoryStatus, EventId, newStatus);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   180      Dem_NvMWriteBlockOnShutdown(DEM_NVM_ID_HISTORY_STATUS_BYTE);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   181  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   182      DEM_UNUSED_PARAM(EventId);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   183      DEM_UNUSED_PARAM(newStatus);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   184  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   185  }
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   186  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   187  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   188  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   189  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   190  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   191  /*-- DEBOUNCE LEVEL ----------------------------------------------------------*/
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   192  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   193  DEM_INLINE sint16 Dem_EvtGetDebounceLevel (Dem_EventIdType EventId)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   194  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   195     return Dem_AllEventsState[EventId].debounceLevel;
+	movh.a	a2,#@his(Dem_AllEventsState)
+	lea	a2,[a2]@los(Dem_AllEventsState)
+.L181:
+	addsc.a	a15,a2,d4,#2
+.L182:
+	ld.h	d15,[a15]2
+.L183:
+
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   195     return Dem_AllEventsState[EventId].debounceLevel;      (inlined)
+	j	.L10
+
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   196  }      (inlined)
+.L10:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    53      debLevel = Dem_EvtGetDebounceLevel(EventId);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    54  #if((DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD == DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD_ON)||\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    55      (DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    56  		FDCThreshold = ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].FDCThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    57  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    58  #if(DEM_CFG_SUSPICIOUS_SUPPORT)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    59  		/* MR12 RULE 11.5 VIOLATION: a fast and resource optimized support of different debounce startegies is only possible through this mechanism  */
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    60  	SuspiciousThreshold = ((const Dem_DebCounterBaseClass_ParamSet*) paramSet)[paramIndex].SuspiciousThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    61  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    62  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    63  #if (DEM_CFG_DISTURBANCE_MEMORY == DEM_CFG_DISTURBANCE_MEMORY_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    64  	if ((*status == DEM_EVENT_STATUS_PASSED) || (*status == DEM_EVENT_STATUS_PREPASSED))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    65  	{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    66  		if ((debLevel < maxThreshold) && (Dem_EvtGetLastReportedEvent(EventId) == DEM_EVENT_STATUS_PREFAILED))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    67  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    68  		    Dem_DistMemReportPassed(EventId);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    69  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    70  	}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    71  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    72  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    73  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    74  	switch (*status)
+	ld.bu	d1,[a4]
+.L184:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    75  	{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    76  	case DEM_EVENT_STATUS_PREPASSED:
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    77  	{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    78  		if (debLevel == minThreshold)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    79  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    80  #if(DEM_CFG_SUSPICIOUS_SUPPORT)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    81          if (SuspiciousThreshold != DEM_MAXSINT16)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    82          {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    83              debAction |= DEM_DEBACTION_RESETSUSPICIOUS;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    84          }
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    85  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    86  #if (DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    87          debAction |= DEM_DEBACTION_RESETFDCTHRESHOLDREACHED;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    88  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    89  			*status = DEM_EVENT_STATUS_PASSED;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    90  			return debAction;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    91  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    92  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    93              if (isJumpDownEnabled && (debLevel > jumpDownValue)	&&
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    94                      ((debLevel == maxThreshold) || (DEM_CFG_LIMIT_RELEVANTFOR_JUMPING != DEM_CFG_LIMIT_RELEVANTFOR_JUMPING_ON)))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    95  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    96  			debLevel = (jumpDownValue + stepDown);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    97  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    98  		else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	    99  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   100  			debLevel = (debLevel + stepDown);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   101  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   102  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   103  		if (debLevel <= minThreshold)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   104  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   105  			debLevel = minThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   106  			*status = DEM_EVENT_STATUS_PASSED;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   107  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   108  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   109  #if (DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   110          if ( debLevel < FDCThreshold)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   111          {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   112              debAction |= DEM_DEBACTION_RESETFDCTHRESHOLDREACHED;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   113          }
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   114  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   115  #if(DEM_CFG_SUSPICIOUS_SUPPORT)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   116  		if ((SuspiciousThreshold != DEM_MAXSINT16) && (debLevel < SuspiciousThreshold))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   117  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   118  		    debAction |= DEM_DEBACTION_RESETSUSPICIOUS;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   119  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   120  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   121  		break;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   122  	}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   123  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   124  	case DEM_EVENT_STATUS_PREFAILED:
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   125  	{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   126  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   127  		if (debLevel == maxThreshold)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   128  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   129  #if(DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   130              debAction |= DEM_DEBACTION_SETFDCTHRESHOLDREACHED;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   131  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   132  			*status = DEM_EVENT_STATUS_FAILED;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   133  			return debAction;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   134  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   135  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   136  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   137              if ((isJumpUpEnabled && (debLevel < jumpUpValue)) &&
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   138                      ((debLevel == minThreshold)  || (DEM_CFG_LIMIT_RELEVANTFOR_JUMPING != DEM_CFG_LIMIT_RELEVANTFOR_JUMPING_ON)))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   139  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   140  			debLevel = (jumpUpValue + stepUp);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   141  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   142  		else
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   143  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   144  			debLevel = (debLevel + stepUp);
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   145  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   146  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   147  		if (debLevel >= maxThreshold)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   148  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   149  			debLevel = maxThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   150  			*status = DEM_EVENT_STATUS_FAILED;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   151  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   152  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   153  #if ((DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD == DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD_ON)||\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   154  	(DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   155  		if ( debLevel >= FDCThreshold)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   156  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   157  			debAction |= DEM_DEBACTION_SETFDCTHRESHOLDREACHED;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   158  #if(DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD == DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD_ON)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   159  			if(*status != DEM_EVENT_STATUS_FAILED)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   160  			{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   161  				debAction |= DEM_DEBACTION_ALLOW_BUFFER_INSERT;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   162  			}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   163  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   164  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   165  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   166  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   167  #if(DEM_CFG_SUSPICIOUS_SUPPORT)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   168              if ((SuspiciousThreshold != DEM_MAXSINT16) && (debLevel < maxThreshold))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   169              {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   170                  if (debLevel >= SuspiciousThreshold)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   171                  {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   172                      debAction |= DEM_DEBACTION_SETSUSPICIOUS;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   173                  }
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   174              }
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   175  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   176  		break;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   177  	}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   178  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   179  	case DEM_EVENT_STATUS_PASSED:
+	mov	d2,#0
+	jeq	d2,d1,.L11
+.L185:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   180  	{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   181  #if(DEM_CFG_SUSPICIOUS_SUPPORT)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   182          if (SuspiciousThreshold != DEM_MAXSINT16)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   183          {
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   184              debAction |= DEM_DEBACTION_RESETSUSPICIOUS;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   185          }
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   186  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   187  #if (DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   188          debAction |= DEM_DEBACTION_RESETFDCTHRESHOLDREACHED;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   189  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   190  		if (debLevel == minThreshold)
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   191  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   192  			return debAction;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   193  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   194  		debLevel = minThreshold;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   195  		break;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   196  	}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   197  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   198  	case DEM_EVENT_STATUS_FAILED:
+	mov	d2,#1
+	jeq	d2,d1,.L12
+.L186:
+	mov	d2,#2
+	jeq	d2,d1,.L13
+.L187:
+	mov	d0,#3
+.L142:
+	jeq	d0,d1,.L14
+	j	.L15
+.L13:
+	jne	d15,d6,.L16
+.L188:
+	mov	d15,#0
+.L189:
+	st.b	[a4],d15
+.L190:
+	mov	d2,d3
+.L144:
+	j	.L17
+.L16:
+	jeq	d11,#0,.L18
+.L191:
+	jge	d9,d15,.L19
+.L192:
+	jeq	d15,d7,.L20
+.L193:
+	mov	d1,#1
+	jeq	d1,#0,.L21
+.L20:
+	add	d15,d9,d0
+.L145:
+	j	.L22
+.L21:
+.L19:
+.L18:
+	add	d15,d0
+.L22:
+	jlt	d6,d15,.L23
+.L194:
+	mov	d15,d6
+.L195:
+	mov	d0,#0
+.L143:
+	st.b	[a4],d0
+.L23:
+	j	.L24
+.L14:
+	jne	d15,d7,.L25
+.L196:
+	mov	d15,#1
+.L197:
+	st.b	[a4],d15
+.L198:
+	mov	d2,d3
+.L146:
+	j	.L26
+.L25:
+	jeq	d10,#0,.L27
+.L199:
+	jge	d15,d8,.L28
+.L200:
+	jeq	d15,d6,.L29
+.L201:
+	mov	d0,#1
+	jeq	d0,#0,.L30
+.L29:
+	add	d15,d8,d5
+.L147:
+	j	.L31
+.L30:
+.L28:
+.L27:
+	add	d15,d5
+.L31:
+	jlt	d15,d7,.L32
+.L202:
+	mov	d15,d7
+.L203:
+	mov	d0,#1
+.L204:
+	st.b	[a4],d0
+.L32:
+	j	.L33
+.L11:
+	jne	d15,d6,.L34
+.L205:
+	mov	d2,d3
+.L148:
+	j	.L35
+.L34:
+	mov	d15,d6
+.L149:
+	j	.L36
+.L12:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   199  	{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   200  #if((DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD == DEM_CFG_SUPPORTEVENTMEMORYENTRY_ONFDCTHRESHOLD_ON)||\ 
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   201      (DEM_CFG_SUPPORT_EVENT_FDCTHRESHOLDREACHED))
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   202              debAction |= DEM_DEBACTION_SETFDCTHRESHOLDREACHED;
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   203  #endif
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   204  		if (debLevel == maxThreshold)
+	jne	d15,d7,.L37
+.L206:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   205  		{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   206  			return debAction;
+	mov	d2,d3
+.L150:
+	j	.L38
+.L37:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   207  		}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   208  		debLevel = maxThreshold;
+	mov	d15,d7
+.L151:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   209  		break;
+	j	.L39
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   210  	}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   211  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   212  	default:
+.L15:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   213  	{
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   214  		return debAction;
+	mov	d2,d3
+.L152:
+	j	.L40
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   215  	}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   216  	}
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   217  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   218  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   219  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   220  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   221  	Dem_EvtSetDebounceLevel (EventId, (sint16) debLevel);
+.L39:
+.L36:
+.L33:
+.L24:
+
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     1  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     2  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     3  #ifndef DEM_EVENTS_H
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     4  #define DEM_EVENTS_H
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     5  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     6  #include "Dem.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     7  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     8  #include "Dem_Array.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	     9  #include "Dem_BitArray.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    10  #include "rba_DiagLib_Bits8.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    11  #include "rba_DiagLib_Bits16.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    12  #include "rba_DiagLib_Bits32.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    13  #include "Dem_ISO14229Byte.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    14  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    15  #include "Dem_Clear.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    16  #include "Dem_Cfg_Events.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    17  #include "Dem_Cfg_Deb.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    18  #include "Dem_Cfg_EvBuff.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    19  #include "Dem_Cfg_Nodes.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    20  #include "Dem_EventCategory.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    21  #include "Dem_StorageCondition.h"       // -> situationfilterCFG
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    22  #include "Dem_EnableCondition.h"         // -> enableconditionCFG
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    23  #include "Dem_Cfg_Main.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    24  #include "Dem_Cfg_OperationCycle.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    25  #include "Dem_Cfg_DistMem.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    26  #include "Dem_Cfg_StorageCondition.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    27  #include "Dem_Nvm.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    28  #include "Dem_IndicatorAttributes.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    29  #include "Dem_Indicator.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    30  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    31  #include "Dem_Cfg_Events_DataStructures.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    32  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    33  #if (DEM_CFG_EVT_ATTRIBUTE == DEM_CFG_EVT_ATTRIBUTE_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    34  #include "Dem_EventAttribute.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    35  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    36  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    37  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    38  typedef Std_ReturnType (* Dem_InitMForEAllowedFncType) (Dem_InitMonitorReasonType InitMonitorReason);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    39  typedef struct
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    40  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    41  /* Pointer to InitMonitorForEvent Callback */
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    42    uint16 Eventid;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    43    Dem_InitMForEAllowedFncType InitMForEAllwdCBFnc;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    44  }Dem_InitMonitorForE;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    45  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    46  typedef struct
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    47  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    48      Dem_EvtStateType  state;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    49      sint16 debounceLevel;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    50  } Dem_EvtState;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    51  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    52  typedef struct
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    53  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    54      Dem_EventStatusType lastReportedEvent;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    55  } Dem_EvtState8;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    56  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    57  typedef void (* Dem_EvtStatusChangeFncType) ( Dem_EventIdType EventId, Dem_UdsStatusByteType EventStatusOld, Dem_UdsStatusByteType EventStatusNew );
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    58  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    59  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    60  #define DEM_EVTPARAM_DEBPARAM_SHIFT   4u
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    61  #define DEM_EVTPARAM_DEBMETHOD_MASK   0x0Fu
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    62  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    63  /*----------------------------------------------------------------------------*/
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    64  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    65  #if (DEM_CFG_EVTCATEGORY == DEM_CFG_EVTCATEGORY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    66  typedef struct
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    67  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    68      Dem_EvtCategoryPrioType evtcatprio;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    69  } Dem_EvtCategoryPriority;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    70  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    71  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    72  /*----------------------------------------------------------------------------*/
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    73  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    74  #if(DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    75  #define DEM_EVTS_INIT_SEQUENTIALFAILURBUFFER(X)    ,(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    76  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    77  #define DEM_EVTS_INIT_SEQUENTIALFAILURBUFFER(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    78  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    79  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    80  #if (DEM_CFG_STORAGECONDITION == DEM_CFG_STORAGECONDITION_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    81  #define DEM_EVTS_INIT_STORAGECONDITION(X)          ,(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    82  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    83  #define DEM_EVTS_INIT_STORAGECONDITION(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    84  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    85  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    86  #if (DEM_CFG_ENABLECONDITION == DEM_CFG_ENABLECONDITION_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    87  #define DEM_EVTS_INIT_ENABLECONDITION(X)           ,(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    88  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    89  #define DEM_EVTS_INIT_ENABLECONDITION(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    90  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    91  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    92  #if (DEM_CFG_EVT_STATUS_CHANGE_NUM_CALLBACKS > 0)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    93  #define DEM_EVTS_INIT_CALLBACKEVENTSTATUSCHANGED(X)                ,(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    94  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    95  #define DEM_EVTS_INIT_CALLBACKEVENTSTATUSCHANGED(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    96  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    97  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    98  #if (DEM_CFG_EVT_CLEARALLOWEDCALLBACK != DEM_CFG_EVT_CLEARALLOWEDCALLBACK_OFF)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	    99  #define DEM_EVTS_INIT_CALLBACKCLEARALLOWED(X)                ,(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   100  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   101  #define DEM_EVTS_INIT_CALLBACKCLEARALLOWED(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   102  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   103  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   104  #if (DEM_CFG_EVT_CLEARALLOWEDCALLBACK != DEM_CFG_EVT_CLEARALLOWEDCALLBACK_OFF)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   105  #define DEM_EVTS_INIT_CLEARALLOWEDBEHAVIOR(X)                ,(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   106  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   107  #define DEM_EVTS_INIT_CLEARALLOWEDBEHAVIOR(X)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   108  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   109  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   110  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   111  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   112  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   113  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   114  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   115  #define DEM_START_SEC_ROM_CONST
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   116  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   117  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   118  #if (DEM_CFG_EVTCATEGORY == DEM_CFG_EVTCATEGORY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   119  DEM_ARRAY_DECLARE_CONST(Dem_EvtCategoryPriority,Dem_EvtCategoryPrio,DEM_EVENTCATPRIO_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   120  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   121  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   122  #if(DEM_CFG_CALLBACK_INIT_MON_FOR_EVENT_SUPPORTED == TRUE)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   123  DEM_ARRAY_DECLARE_CONST(Dem_InitMonitorForE, Dem_Cfg_Callback_InitMForE_List, DEM_CFG_CALLBACK_INITMFORE_LISTLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   124  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   125  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   126  #if (DEM_CFG_EVT_ATTRIBUTE == DEM_CFG_EVT_ATTRIBUTE_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   127  DEM_ARRAY_DECLARE_CONST(Dem_EventAttributeType, Dem_AllEventsUserAttributes, DEM_EVENTID_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   128  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   129  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   130  #if (DEM_CFG_EVT_STATUS_CHANGE_NUM_CALLBACKS > 0)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   131  DEM_ARRAY_DECLARE_CONST(Dem_EvtStatusChangeFncType, Dem_AllEventsStatusChangedFnc, DEM_CFG_EVT_STATUS_CHANGE_NUM_CALLBACKS);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   132  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   133  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   134  #define DEM_STOP_SEC_ROM_CONST
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   135  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   136  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   137  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   138  #define DEM_START_SEC_SAVED_ZONE
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   139  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   140  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   141  #if(DEM_CFG_ALLOW_HISTORY == DEM_CFG_ALLOW_HISTORY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   142  DEM_BITARRAY_DECLARE  (Dem_AllEventsHistoryStatus, DEM_EVENTID_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   143  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   144  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   145  #define DEM_STOP_SEC_SAVED_ZONE
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   146  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   147  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   148  #define DEM_START_SEC_RAM_CLEARED
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   149  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   150  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   151  extern uint32 Dem_EvtIsAnyInitMonitoringRequestedMask;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   152  DEM_ARRAY_DECLARE(Dem_EvtState, Dem_AllEventsState, DEM_EVENTID_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   153  DEM_ARRAY_DECLARE(Dem_EvtState8, Dem_AllEventsState8, DEM_EVENTID_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   154  DEM_BITARRAY_DECLARE(Dem_AllEventsResetDebouncerRequested, DEM_EVENTID_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   155  DEM_BITARRAY_DECLARE(Dem_EventWasPassedReported,DEM_EVENTID_ARRAYLENGTH);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   156  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   157  extern uint16 Dem_GlobalInitMonitoringCounter;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   158  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   159  #define DEM_STOP_SEC_RAM_CLEARED
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   160  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   161  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   162  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   163  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   164  /*** FUNCTIONS ****************************************************************/
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   165  DEM_INLINE Dem_boolean_least Dem_EvtGetHistoryStatus(Dem_EventIdType EventId)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   166  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   167  #if(DEM_CFG_ALLOW_HISTORY == DEM_CFG_ALLOW_HISTORY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   168      return Dem_BitArrayIsBitSet(Dem_AllEventsHistoryStatus, EventId);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   169  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   170      DEM_UNUSED_PARAM(EventId);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   171      return FALSE;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   172  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   173  }
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   174  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   175  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   176  DEM_INLINE void Dem_EvtSetHistoryStatus(Dem_EventIdType EventId, boolean newStatus)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   177  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   178  #if(DEM_CFG_ALLOW_HISTORY == DEM_CFG_ALLOW_HISTORY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   179      Dem_BitArrayOverwriteBit(Dem_AllEventsHistoryStatus, EventId, newStatus);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   180      Dem_NvMWriteBlockOnShutdown(DEM_NVM_ID_HISTORY_STATUS_BYTE);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   181  #else
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   182      DEM_UNUSED_PARAM(EventId);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   183      DEM_UNUSED_PARAM(newStatus);
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   184  #endif
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   185  }
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   186  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   187  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   188  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   189  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   190  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   191  /*-- DEBOUNCE LEVEL ----------------------------------------------------------*/
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   192  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   193  DEM_INLINE sint16 Dem_EvtGetDebounceLevel (Dem_EventIdType EventId)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   194  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   195     return Dem_AllEventsState[EventId].debounceLevel;
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   196  }
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   197  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   198  
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   199  DEM_INLINE void Dem_EvtSetDebounceLevel (Dem_EventIdType EventId, sint16 debounceLevel)
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   200  {
+; .\BSW\src\BSW\Gen\Dem\src\event\Dem_Events.h	   201     Dem_AllEventsState[EventId].debounceLevel = debounceLevel;
+	addsc.a	a15,a2,d4,#2
+.L207:
+	st.h	[a15]2,d15
+.L135:
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   222  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   223  	return debAction;
+	mov	d2,d3
+.L153:
+	j	.L41
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   224  }
+.L41:
+.L40:
+.L38:
+.L35:
+.L26:
+.L17:
+	ret
+.L82:
+	
+__Dem_DebCounterBaseClass_Filter_function_end:
+	.size	Dem_DebCounterBaseClass_Filter,__Dem_DebCounterBaseClass_Filter_function_end-Dem_DebCounterBaseClass_Filter
+.L59:
+	; End of function
+	
+	.calls	'Dem_DebCounterBaseClass_GetLimits','',0
+	.extern	Dem_AllEventsState
+	.calls	'Dem_DebCounterBaseClass_Filter','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L47:
+	.word	18736
+	.half	3
+	.word	.L48
+	.byte	4
+.L46:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebCtrBaseClass.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L49
+	.byte	2
+	.byte	'short int',0,2,5,3
+	.byte	'void',0,4
+	.word	162
+.L61:
+	.byte	5
+	.word	168
+.L63:
+	.byte	2
+	.byte	'unsigned short int',0,2,7
+.L68:
+	.byte	6
+	.byte	'Dem_getDebCtrBaseClassFailedThreshold',0,3,1,130,1,19
+	.word	149
+	.byte	1,1
+.L69:
+	.byte	7
+	.byte	'paramSet',0,1,130,1,70
+	.word	173
+.L71:
+	.byte	7
+	.byte	'paramIndex',0,1,130,1,87
+	.word	178
+.L73:
+	.byte	8,0
+.L74:
+	.byte	6
+	.byte	'Dem_getDebCtrBaseClassPassedThreshold',0,3,1,143,1,19
+	.word	149
+	.byte	1,1
+.L76:
+	.byte	7
+	.byte	'paramSet',0,1,143,1,70
+	.word	173
+.L78:
+	.byte	7
+	.byte	'paramIndex',0,1,143,1,87
+	.word	178
+.L80:
+	.byte	8,0
+.L111:
+	.byte	6
+	.byte	'Dem_getDebCtrBaseClassJumpUpValue',0,3,1,156,1,19
+	.word	149
+	.byte	1,1
+.L112:
+	.byte	7
+	.byte	'paramSet',0,1,156,1,66
+	.word	173
+.L114:
+	.byte	7
+	.byte	'paramIndex',0,1,156,1,83
+	.word	178
+.L116:
+	.byte	8,0
+.L105:
+	.byte	6
+	.byte	'Dem_getDebCtrBaseClassJumpDownValue',0,3,1,169,1,19
+	.word	149
+	.byte	1,1
+.L106:
+	.byte	7
+	.byte	'paramSet',0,1,169,1,68
+	.word	173
+.L108:
+	.byte	7
+	.byte	'paramIndex',0,1,169,1,85
+	.word	178
+.L110:
+	.byte	8,0
+.L95:
+	.byte	2
+	.byte	'unsigned char',0,1,8
+.L117:
+	.byte	6
+	.byte	'Dem_getDebCtrBaseClassIsJumpDown',0,3,1,182,1,20
+	.word	554
+	.byte	1,1
+.L118:
+	.byte	7
+	.byte	'paramSet',0,1,182,1,66
+	.word	173
+.L120:
+	.byte	7
+	.byte	'paramIndex',0,1,182,1,83
+	.word	178
+.L122:
+	.byte	8,0
+.L123:
+	.byte	6
+	.byte	'Dem_getDebCtrBaseClassIsJumpUp',0,3,1,195,1,20
+	.word	554
+	.byte	1,1
+.L124:
+	.byte	7
+	.byte	'paramSet',0,1,195,1,64
+	.word	173
+.L126:
+	.byte	7
+	.byte	'paramIndex',0,1,195,1,81
+	.word	178
+.L128:
+	.byte	8,0,2
+	.byte	'unsigned int',0,4,7,6
+	.byte	'rba_BswSrv_ByteOrderSwap32',0,3,2,125,21
+	.word	739
+	.byte	1,1,7
+	.byte	'Input_u32',0,2,125,55
+	.word	739
+	.byte	8,0,6
+	.byte	'rba_BswSrv_ByteOrderSwap16',0,3,2,150,1,21
+	.word	178
+	.byte	1,1,7
+	.byte	'Input_u16',0,2,150,1,55
+	.word	178
+	.byte	8,0,6
+	.byte	'Dem_LibGetParamBool',0,3,3,41,20
+	.word	554
+	.byte	1,1,7
+	.byte	'parameter',0,3,41,49
+	.word	554
+	.byte	8,0,6
+	.byte	'Dem_isDtcIdValid',0,3,4,152,1,30
+	.word	554
+	.byte	1,1,7
+	.byte	'id',0,4,152,1,62
+	.word	178
+	.byte	8,0,6
+	.byte	'Dem_DtcIdGetEventId',0,3,4,166,1,28
+	.word	178
+	.byte	1,1,7
+	.byte	'dtcid',0,4,166,1,63
+	.word	178
+	.byte	8,0,6
+	.byte	'Dem_DtcGroupIdIsValid',0,3,4,252,1,30
+	.word	554
+	.byte	1,1,7
+	.byte	'dtcGroupID',0,4,252,1,72
+	.word	554
+	.byte	8,0,5
+	.word	554
+	.byte	9
+	.byte	'rba_DiagLib_Bit8SetBit',0,3,5,36,19,1,1,7
+	.byte	'buffer',0,5,36,49
+	.word	1072
+	.byte	7
+	.byte	'bit_position',0,5,36,63
+	.word	554
+	.byte	8,0,9
+	.byte	'rba_DiagLib_Bit8ClearBit',0,3,5,42,19,1,1,7
+	.byte	'buffer',0,5,42,51
+	.word	1072
+	.byte	7
+	.byte	'bit_position',0,5,42,65
+	.word	554
+	.byte	8,0,9
+	.byte	'rba_DiagLib_Bit8OverwriteBit',0,3,5,48,19,1,1,7
+	.byte	'buffer',0,5,48,55
+	.word	1072
+	.byte	7
+	.byte	'bit_position',0,5,48,69
+	.word	554
+	.byte	7
+	.byte	'will_bit_be_set',0,5,48,91
+	.word	554
+	.byte	10,8,8,0,0,6
+	.byte	'rba_DiagLib_Bit8GetSingleBit',0,3,5,60,20
+	.word	554
+	.byte	1,1,7
+	.byte	'value',0,5,60,55
+	.word	554
+	.byte	7
+	.byte	'bit_position',0,5,60,68
+	.word	554
+	.byte	8,0,6
+	.byte	'rba_DiagLib_Bit8IsBitSet',0,3,5,64,22
+	.word	554
+	.byte	1,1,7
+	.byte	'value',0,5,64,53
+	.word	554
+	.byte	7
+	.byte	'bit_position',0,5,64,66
+	.word	554
+	.byte	10,8,0,0,6
+	.byte	'rba_DiagLib_Bit8GetBits',0,3,5,69,20
+	.word	554
+	.byte	1,1,7
+	.byte	'value',0,5,69,50
+	.word	554
+	.byte	7
+	.byte	'bit_position',0,5,69,63
+	.word	554
+	.byte	7
+	.byte	'number_of_bits',0,5,69,83
+	.word	554
+	.byte	8,0,9
+	.byte	'rba_DiagLib_Bit8ClearBits',0,3,5,77,19,1,1,7
+	.byte	'value',0,5,77,52
+	.word	1072
+	.byte	7
+	.byte	'bit_position',0,5,77,65
+	.word	554
+	.byte	7
+	.byte	'number_of_bits',0,5,77,85
+	.word	554
+	.byte	8,0,9
+	.byte	'rba_DiagLib_Bit8OverwriteBits',0,3,5,83,19,1,1,7
+	.byte	'value',0,5,83,56
+	.word	1072
+	.byte	7
+	.byte	'bit_position',0,5,83,69
+	.word	554
+	.byte	7
+	.byte	'number_of_bits',0,5,83,89
+	.word	554
+	.byte	7
+	.byte	'newValue',0,5,83,111
+	.word	554
+	.byte	10,8,0,0,5
+	.word	178
+	.byte	9
+	.byte	'rba_DiagLib_Bit16SetBit',0,3,6,36,19,1,1,7
+	.byte	'buffer',0,6,36,51
+	.word	1772
+	.byte	7
+	.byte	'bit_position',0,6,36,65
+	.word	554
+	.byte	8,0,9
+	.byte	'rba_DiagLib_Bit16ClearBit',0,3,6,42,19,1,1,7
+	.byte	'buffer',0,6,42,53
+	.word	1772
+	.byte	7
+	.byte	'bit_position',0,6,42,67
+	.word	554
+	.byte	8,0,6
+	.byte	'rba_DiagLib_Bit16GetSingleBit',0,3,6,60,21
+	.word	178
+	.byte	1,1,7
+	.byte	'value',0,6,60,58
+	.word	178
+	.byte	7
+	.byte	'bit_position',0,6,60,71
+	.word	554
+	.byte	8,0,6
+	.byte	'rba_DiagLib_Bit16IsBitSet',0,3,6,65,22
+	.word	554
+	.byte	1,1,7
+	.byte	'value',0,6,65,55
+	.word	178
+	.byte	7
+	.byte	'bit_position',0,6,65,68
+	.word	554
+	.byte	10,8,0,0,6
+	.byte	'rba_DiagLib_Bit16GetBits',0,3,6,70,21
+	.word	178
+	.byte	1,1,7
+	.byte	'value',0,6,70,53
+	.word	178
+	.byte	7
+	.byte	'bit_position',0,6,70,66
+	.word	554
+	.byte	7
+	.byte	'number_of_bits',0,6,70,86
+	.word	554
+	.byte	8,0,9
+	.byte	'rba_DiagLib_Bit16ClearBits',0,3,6,78,19,1,1,7
+	.byte	'value',0,6,78,54
+	.word	1772
+	.byte	7
+	.byte	'bit_position',0,6,78,67
+	.word	554
+	.byte	7
+	.byte	'number_of_bits',0,6,78,87
+	.word	554
+	.byte	8,0,5
+	.word	739
+	.byte	9
+	.byte	'rba_DiagLib_Bit32SetBit',0,3,7,36,19,1,1,7
+	.byte	'buffer',0,7,36,51
+	.word	2261
+	.byte	7
+	.byte	'bit_position',0,7,36,65
+	.word	554
+	.byte	8,0,9
+	.byte	'rba_DiagLib_Bit32ClearBit',0,3,7,42,19,1,1,7
+	.byte	'buffer',0,7,42,53
+	.word	2261
+	.byte	7
+	.byte	'bit_position',0,7,42,67
+	.word	554
+	.byte	8,0,6
+	.byte	'rba_DiagLib_Bit32GetSingleBit',0,3,7,60,21
+	.word	739
+	.byte	1,1,7
+	.byte	'value',0,7,60,58
+	.word	739
+	.byte	7
+	.byte	'bit_position',0,7,60,71
+	.word	554
+	.byte	8,0,6
+	.byte	'rba_DiagLib_Bit32IsBitSet',0,3,7,65,22
+	.word	554
+	.byte	1,1,7
+	.byte	'value',0,7,65,55
+	.word	739
+	.byte	7
+	.byte	'bit_position',0,7,65,68
+	.word	554
+	.byte	10,8,0,0,9
+	.byte	'rba_DiagLib_Bit32ClearBits',0,3,7,78,19,1,1,7
+	.byte	'value',0,7,78,54
+	.word	2261
+	.byte	7
+	.byte	'bit_position',0,7,78,67
+	.word	554
+	.byte	7
+	.byte	'number_of_bits',0,7,78,87
+	.word	554
+	.byte	8,0,9
+	.byte	'Dem_BitArraySetBit',0,3,8,33,17,1,1,7
+	.byte	'buffer',0,8,33,36
+	.word	2261
+	.byte	7
+	.byte	'bit_position',0,8,33,75
+	.word	739
+	.byte	8,0,9
+	.byte	'Dem_BitArrayClearBit',0,3,8,46,17,1,1,7
+	.byte	'buffer',0,8,46,38
+	.word	2261
+	.byte	7
+	.byte	'bit_position',0,8,46,77
+	.word	739
+	.byte	8,0,9
+	.byte	'Dem_BitArrayOverwriteBit',0,3,8,61,17,1,1,7
+	.byte	'buffer',0,8,61,42
+	.word	2261
+	.byte	7
+	.byte	'bit_position',0,8,62,25
+	.word	739
+	.byte	7
+	.byte	'will_bit_be_set',0,8,62,57
+	.word	554
+	.byte	10,8,8,0,0,4
+	.word	739
+	.byte	5
+	.word	2881
+	.byte	6
+	.byte	'Dem_BitArrayIsBitSet',0,3,8,75,30
+	.word	554
+	.byte	1,1,7
+	.byte	'buffer',0,8,75,51
+	.word	2886
+	.byte	7
+	.byte	'bit_position',0,8,75,95
+	.word	739
+	.byte	8,0,6
+	.byte	'Dem_ISO14229ByteIsTestFailed',0,3,9,122,30
+	.word	554
+	.byte	1,1,7
+	.byte	'self',0,9,122,66
+	.word	554
+	.byte	10,8,0,0,6
+	.byte	'Dem_ISO14229ByteIsTestFailedTOC',0,3,9,129,1,30
+	.word	554
+	.byte	1,1,7
+	.byte	'self',0,9,129,1,69
+	.word	554
+	.byte	10,8,0,0,6
+	.byte	'Dem_ISO14229ByteIsTestCompleteTOC',0,3,9,157,1,30
+	.word	554
+	.byte	1,1,7
+	.byte	'self',0,9,157,1,71
+	.word	554
+	.byte	10,8,0,0,6
+	.byte	'Dem_ISO14229ByteIsPendingDTC',0,3,9,164,1,30
+	.word	554
+	.byte	1,1,7
+	.byte	'self',0,9,164,1,66
+	.word	554
+	.byte	10,8,0,0,6
+	.byte	'Dem_ISO14229ByteIsWarningIndicatorRequested',0,3,9,177,1,30
+	.word	554
+	.byte	1,1,7
+	.byte	'self',0,9,177,1,81
+	.word	554
+	.byte	10,8,0,0,9
+	.byte	'Dem_ISO14229ByteSetTestFailed',0,3,9,186,1,17,1,1,7
+	.byte	'self',0,9,186,1,55
+	.word	1072
+	.byte	7
+	.byte	'setOrReset',0,9,186,1,79
+	.word	554
+	.byte	10,8,0,0,9
+	.byte	'Dem_ISO14229ByteSetTestFailedTOC',0,3,9,193,1,17,1,1,7
+	.byte	'self',0,9,193,1,58
+	.word	1072
+	.byte	7
+	.byte	'setOrReset',0,9,193,1,82
+	.word	554
+	.byte	10,8,0,0,9
+	.byte	'Dem_ISO14229ByteSetTestFailedSLC',0,3,9,200,1,17,1,1,7
+	.byte	'self',0,9,200,1,58
+	.word	1072
+	.byte	7
+	.byte	'setOrReset',0,9,200,1,82
+	.word	554
+	.byte	10,8,0,0,9
+	.byte	'Dem_ISO14229ByteSetTestCompleteTOC',0,3,9,214,1,17,1,1,7
+	.byte	'self',0,9,214,1,60
+	.word	1072
+	.byte	7
+	.byte	'setOrReset',0,9,214,1,84
+	.word	554
+	.byte	10,8,0,0,9
+	.byte	'Dem_ISO14229ByteSetTestCompleteSLC',0,3,9,221,1,17,1,1,7
+	.byte	'self',0,9,221,1,60
+	.word	1072
+	.byte	7
+	.byte	'setOrReset',0,9,221,1,84
+	.word	554
+	.byte	10,8,0,0,9
+	.byte	'Dem_ISO14229ByteSetPendingDTC',0,3,9,228,1,17,1,1,7
+	.byte	'self',0,9,228,1,55
+	.word	1072
+	.byte	7
+	.byte	'setOrReset',0,9,228,1,79
+	.word	554
+	.byte	10,8,0,0,9
+	.byte	'Dem_ISO14229ByteSetConfirmedDTC',0,3,9,235,1,17,1,1,7
+	.byte	'self',0,9,235,1,57
+	.word	1072
+	.byte	7
+	.byte	'setOrReset',0,9,235,1,81
+	.word	554
+	.byte	10,8,0,0,9
+	.byte	'Dem_ISO14229ByteSetWarningIndicatorRequested',0,3,9,242,1,17,1,1,7
+	.byte	'self',0,9,242,1,70
+	.word	1072
+	.byte	7
+	.byte	'setOrReset',0,9,242,1,94
+	.word	554
+	.byte	10,8,0,0,6
+	.byte	'Dem_EnCoAreAllFulfilled',0,3,10,32,30
+	.word	554
+	.byte	1,1,7
+	.byte	'enableConditionList',0,10,32,68
+	.word	554
+	.byte	8,0,6
+	.byte	'Dem_NvMGetNvMBlocKId',0,3,11,49,28
+	.word	178
+	.byte	1,1,7
+	.byte	'id',0,11,49,68
+	.word	554
+	.byte	8,0,6
+	.byte	'rba_DiagLib_ByteOrderUtils_SwapByteOrderS',0,3,12,36,21
+	.word	178
+	.byte	1,1,7
+	.byte	'val',0,12,36,70
+	.word	178
+	.byte	10,8,0,0,6
+	.byte	'rba_DiagLib_ByteOrderUtils_SwapByteOrderL',0,3,12,41,21
+	.word	739
+	.byte	1,1,7
+	.byte	'val',0,12,41,70
+	.word	739
+	.byte	10,8,0,0,6
+	.byte	'Dem_EvtParam_GetOperationCycleID',0,3,13,122,20
+	.word	554
+	.byte	1,1,7
+	.byte	'indx',0,13,122,69
+	.word	178
+	.byte	8,0,6
+	.byte	'Dem_EvtParam_GetAgingCycleID',0,3,13,129,1,20
+	.word	554
+	.byte	1,1,7
+	.byte	'indx',0,13,129,1,65
+	.word	178
+	.byte	8,0,6
+	.byte	'Dem_EvtParam_GetFailureCycleID',0,3,13,136,1,20
+	.word	554
+	.byte	1,1,7
+	.byte	'indx',0,13,136,1,67
+	.word	178
+	.byte	8,0,6
+	.byte	'Dem_EvtParam_GetDebounceMethodIndex',0,3,13,149,1,20
+	.word	554
+	.byte	1,1,7
+	.byte	'indx',0,13,149,1,72
+	.word	178
+	.byte	8,0,6
+	.byte	'Dem_EvtParam_GetDebounceParamSettingIndex',0,3,13,155,1,21
+	.word	178
+	.byte	1,1,7
+	.byte	'indx',0,13,155,1,79
+	.word	178
+	.byte	10,8,0,0,6
+	.byte	'Dem_EvtParam_GetEnableConditions',0,3,13,208,1,27
+	.word	554
+	.byte	1,1,7
+	.byte	'indx',0,13,208,1,76
+	.word	178
+	.byte	8,0
+.L129:
+	.byte	6
+	.byte	'Dem_EvtGetDebounceLevel',0,3,14,193,1,19
+	.word	149
+	.byte	1,1
+.L131:
+	.byte	7
+	.byte	'EventId',0,14,193,1,60
+	.word	178
+.L133:
+	.byte	8,0
+.L134:
+	.byte	9
+	.byte	'Dem_EvtSetDebounceLevel',0,3,14,199,1,17,1,1
+.L136:
+	.byte	7
+	.byte	'EventId',0,14,199,1,58
+	.word	178
+.L138:
+	.byte	7
+	.byte	'debounceLevel',0,14,199,1,74
+	.word	149
+.L140:
+	.byte	8,0,6
+	.byte	'Dem_EvtGetLastReportedEvent',0,3,14,219,1,32
+	.word	554
+	.byte	1,1,7
+	.byte	'EventId',0,14,219,1,77
+	.word	178
+	.byte	8,0,9
+	.byte	'Dem_EvtIncreaseGlobalInitMonitoringCounter',0,3,14,227,3,17,1,1,8,0,9
+	.byte	'Dem_EvtSetAnyInitMonitoring',0,3,14,233,3,17,1,1,7
+	.byte	'reason',0,14,233,3,72
+	.word	554
+	.byte	10,8,0,0,6
+	.byte	'Dem_EvtIsSuppressed',0,3,14,244,4,30
+	.word	554
+	.byte	1,1,7
+	.byte	'EventId',0,14,244,4,67
+	.word	178
+	.byte	10,8,0,0
+.L81:
+	.byte	2
+	.byte	'unsigned long int',0,4,7,6
+	.byte	'Dem_DebHandleDebounceAction__processBits',0,3,15,101,30
+	.word	554
+	.byte	1,1,7
+	.byte	'EventId',0,15,101,87
+	.word	178
+	.byte	7
+	.byte	'debAction',0,15,101,120
+	.word	4888
+	.byte	8,0,6
+	.byte	'Dem_EvtGetIsoByte',0,3,16,42,34
+	.word	554
+	.byte	1,1,7
+	.byte	'EventId',0,16,42,69
+	.word	178
+	.byte	8,0,11
+	.word	200
+	.byte	12
+	.word	250
+	.byte	12
+	.word	268
+	.byte	8,0,11
+	.word	290
+	.byte	12
+	.word	340
+	.byte	12
+	.word	358
+	.byte	8,0,11
+	.word	380
+	.byte	12
+	.word	426
+	.byte	12
+	.word	444
+	.byte	8,0,11
+	.word	466
+	.byte	12
+	.word	514
+	.byte	12
+	.word	532
+	.byte	8,0,11
+	.word	571
+	.byte	12
+	.word	616
+	.byte	12
+	.word	634
+	.byte	8,0,11
+	.word	656
+	.byte	12
+	.word	699
+	.byte	12
+	.word	717
+	.byte	8,0,2
+	.byte	'long int',0,4,5
+.L65:
+	.byte	5
+	.word	5146
+.L84:
+	.byte	5
+	.word	554
+.L88:
+	.byte	2
+	.byte	'int',0,4,5,11
+	.word	755
+	.byte	12
+	.word	793
+	.byte	8,0,11
+	.word	813
+	.byte	12
+	.word	852
+	.byte	8,0,11
+	.word	873
+	.byte	12
+	.word	904
+	.byte	8,0,11
+	.word	924
+	.byte	12
+	.word	953
+	.byte	8,0,11
+	.word	967
+	.byte	12
+	.word	999
+	.byte	8,0,11
+	.word	1016
+	.byte	12
+	.word	1050
+	.byte	8,0,11
+	.word	1077
+	.byte	12
+	.word	1107
+	.byte	12
+	.word	1122
+	.byte	8,0,11
+	.word	1145
+	.byte	12
+	.word	1177
+	.byte	12
+	.word	1192
+	.byte	8,0,11
+	.word	1215
+	.byte	12
+	.word	1251
+	.byte	12
+	.word	1266
+	.byte	12
+	.word	1287
+	.byte	10,13
+	.word	1077
+	.byte	12
+	.word	1107
+	.byte	12
+	.word	1122
+	.byte	14
+	.word	1143
+	.byte	0,8,13
+	.word	1145
+	.byte	12
+	.word	1177
+	.byte	12
+	.word	1192
+	.byte	14
+	.word	1213
+	.byte	0,8,0,0,11
+	.word	1316
+	.byte	12
+	.word	1356
+	.byte	12
+	.word	1370
+	.byte	8,0,11
+	.word	1393
+	.byte	12
+	.word	1429
+	.byte	12
+	.word	1443
+	.byte	10,13
+	.word	1316
+	.byte	12
+	.word	1356
+	.byte	12
+	.word	1370
+	.byte	14
+	.word	1391
+	.byte	0,8,0,0,11
+	.word	1468
+	.byte	12
+	.word	1503
+	.byte	12
+	.word	1517
+	.byte	12
+	.word	1538
+	.byte	8,0,11
+	.word	1563
+	.byte	12
+	.word	1596
+	.byte	12
+	.word	1610
+	.byte	12
+	.word	1631
+	.byte	8,0,11
+	.word	1656
+	.byte	12
+	.word	1693
+	.byte	12
+	.word	1707
+	.byte	12
+	.word	1728
+	.byte	12
+	.word	1751
+	.byte	10,13
+	.word	1563
+	.byte	12
+	.word	1596
+	.byte	12
+	.word	1610
+	.byte	12
+	.word	1631
+	.byte	14
+	.word	1654
+	.byte	0,8,0,0,11
+	.word	1777
+	.byte	12
+	.word	1808
+	.byte	12
+	.word	1823
+	.byte	8,0,11
+	.word	1846
+	.byte	12
+	.word	1879
+	.byte	12
+	.word	1894
+	.byte	8,0,11
+	.word	1917
+	.byte	12
+	.word	1958
+	.byte	12
+	.word	1972
+	.byte	8,0,11
+	.word	1995
+	.byte	12
+	.word	2032
+	.byte	12
+	.word	2046
+	.byte	10,13
+	.word	1917
+	.byte	12
+	.word	1958
+	.byte	12
+	.word	1972
+	.byte	14
+	.word	1993
+	.byte	0,8,0,0,11
+	.word	2071
+	.byte	12
+	.word	2107
+	.byte	12
+	.word	2121
+	.byte	12
+	.word	2142
+	.byte	8,0,11
+	.word	2167
+	.byte	12
+	.word	2201
+	.byte	12
+	.word	2215
+	.byte	12
+	.word	2236
+	.byte	8,0,11
+	.word	2266
+	.byte	12
+	.word	2297
+	.byte	12
+	.word	2312
+	.byte	8,0,11
+	.word	2335
+	.byte	12
+	.word	2368
+	.byte	12
+	.word	2383
+	.byte	8,0,11
+	.word	2406
+	.byte	12
+	.word	2447
+	.byte	12
+	.word	2461
+	.byte	8,0,11
+	.word	2484
+	.byte	12
+	.word	2521
+	.byte	12
+	.word	2535
+	.byte	10,13
+	.word	2406
+	.byte	12
+	.word	2447
+	.byte	12
+	.word	2461
+	.byte	14
+	.word	2482
+	.byte	0,8,0,0,11
+	.word	2560
+	.byte	12
+	.word	2594
+	.byte	12
+	.word	2608
+	.byte	12
+	.word	2629
+	.byte	8,0,11
+	.word	2654
+	.byte	12
+	.word	2680
+	.byte	12
+	.word	2695
+	.byte	8,0,11
+	.word	2718
+	.byte	12
+	.word	2746
+	.byte	12
+	.word	2761
+	.byte	8,0,11
+	.word	2784
+	.byte	12
+	.word	2816
+	.byte	12
+	.word	2831
+	.byte	12
+	.word	2852
+	.byte	10,13
+	.word	2654
+	.byte	12
+	.word	2680
+	.byte	12
+	.word	2695
+	.byte	14
+	.word	2716
+	.byte	0,8,13
+	.word	2718
+	.byte	12
+	.word	2746
+	.byte	12
+	.word	2761
+	.byte	14
+	.word	2782
+	.byte	0,8,0,0,11
+	.word	2891
+	.byte	12
+	.word	2923
+	.byte	12
+	.word	2938
+	.byte	8,0,11
+	.word	2961
+	.byte	12
+	.word	3001
+	.byte	10,13
+	.word	1393
+	.byte	12
+	.word	1429
+	.byte	12
+	.word	1443
+	.byte	15
+	.word	1464
+	.byte	13
+	.word	1316
+	.byte	12
+	.word	1356
+	.byte	12
+	.word	1370
+	.byte	14
+	.word	1391
+	.byte	0,14
+	.word	1465
+	.byte	0,0,8,0,0,11
+	.word	3018
+	.byte	12
+	.word	3062
+	.byte	10,13
+	.word	1393
+	.byte	12
+	.word	1429
+	.byte	12
+	.word	1443
+	.byte	15
+	.word	1464
+	.byte	13
+	.word	1316
+	.byte	12
+	.word	1356
+	.byte	12
+	.word	1370
+	.byte	14
+	.word	1391
+	.byte	0,14
+	.word	1465
+	.byte	0,0,8,0,0,11
+	.word	3080
+	.byte	12
+	.word	3126
+	.byte	10,13
+	.word	1393
+	.byte	12
+	.word	1429
+	.byte	12
+	.word	1443
+	.byte	15
+	.word	1464
+	.byte	13
+	.word	1316
+	.byte	12
+	.word	1356
+	.byte	12
+	.word	1370
+	.byte	14
+	.word	1391
+	.byte	0,14
+	.word	1465
+	.byte	0,0,8,0,0,11
+	.word	3144
+	.byte	12
+	.word	3185
+	.byte	10,13
+	.word	1393
+	.byte	12
+	.word	1429
+	.byte	12
+	.word	1443
+	.byte	15
+	.word	1464
+	.byte	13
+	.word	1316
+	.byte	12
+	.word	1356
+	.byte	12
+	.word	1370
+	.byte	14
+	.word	1391
+	.byte	0,14
+	.word	1465
+	.byte	0,0,8,0,0,11
+	.word	3203
+	.byte	12
+	.word	3259
+	.byte	10,13
+	.word	1393
+	.byte	12
+	.word	1429
+	.byte	12
+	.word	1443
+	.byte	15
+	.word	1464
+	.byte	13
+	.word	1316
+	.byte	12
+	.word	1356
+	.byte	12
+	.word	1370
+	.byte	14
+	.word	1391
+	.byte	0,14
+	.word	1465
+	.byte	0,0,8,0,0,11
+	.word	3277
+	.byte	12
+	.word	3315
+	.byte	12
+	.word	3329
+	.byte	10,13
+	.word	1215
+	.byte	12
+	.word	1251
+	.byte	12
+	.word	1266
+	.byte	12
+	.word	1287
+	.byte	15
+	.word	1311
+	.byte	13
+	.word	1077
+	.byte	12
+	.word	1107
+	.byte	12
+	.word	1122
+	.byte	14
+	.word	1143
+	.byte	0,14
+	.word	1312
+	.byte	13
+	.word	1145
+	.byte	12
+	.word	1177
+	.byte	12
+	.word	1192
+	.byte	14
+	.word	1213
+	.byte	0,14
+	.word	1313
+	.byte	0,0,8,0,0,11
+	.word	3353
+	.byte	12
+	.word	3394
+	.byte	12
+	.word	3408
+	.byte	10,13
+	.word	1215
+	.byte	12
+	.word	1251
+	.byte	12
+	.word	1266
+	.byte	12
+	.word	1287
+	.byte	15
+	.word	1311
+	.byte	13
+	.word	1077
+	.byte	12
+	.word	1107
+	.byte	12
+	.word	1122
+	.byte	14
+	.word	1143
+	.byte	0,14
+	.word	1312
+	.byte	13
+	.word	1145
+	.byte	12
+	.word	1177
+	.byte	12
+	.word	1192
+	.byte	14
+	.word	1213
+	.byte	0,14
+	.word	1313
+	.byte	0,0,8,0,0,11
+	.word	3432
+	.byte	12
+	.word	3473
+	.byte	12
+	.word	3487
+	.byte	10,13
+	.word	1215
+	.byte	12
+	.word	1251
+	.byte	12
+	.word	1266
+	.byte	12
+	.word	1287
+	.byte	15
+	.word	1311
+	.byte	13
+	.word	1077
+	.byte	12
+	.word	1107
+	.byte	12
+	.word	1122
+	.byte	14
+	.word	1143
+	.byte	0,14
+	.word	1312
+	.byte	13
+	.word	1145
+	.byte	12
+	.word	1177
+	.byte	12
+	.word	1192
+	.byte	14
+	.word	1213
+	.byte	0,14
+	.word	1313
+	.byte	0,0,8,0,0,11
+	.word	3511
+	.byte	12
+	.word	3554
+	.byte	12
+	.word	3568
+	.byte	10,13
+	.word	1215
+	.byte	12
+	.word	1251
+	.byte	12
+	.word	1266
+	.byte	12
+	.word	1287
+	.byte	15
+	.word	1311
+	.byte	13
+	.word	1077
+	.byte	12
+	.word	1107
+	.byte	12
+	.word	1122
+	.byte	14
+	.word	1143
+	.byte	0,14
+	.word	1312
+	.byte	13
+	.word	1145
+	.byte	12
+	.word	1177
+	.byte	12
+	.word	1192
+	.byte	14
+	.word	1213
+	.byte	0,14
+	.word	1313
+	.byte	0,0,8,0,0,11
+	.word	3592
+	.byte	12
+	.word	3635
+	.byte	12
+	.word	3649
+	.byte	10,13
+	.word	1215
+	.byte	12
+	.word	1251
+	.byte	12
+	.word	1266
+	.byte	12
+	.word	1287
+	.byte	15
+	.word	1311
+	.byte	13
+	.word	1077
+	.byte	12
+	.word	1107
+	.byte	12
+	.word	1122
+	.byte	14
+	.word	1143
+	.byte	0,14
+	.word	1312
+	.byte	13
+	.word	1145
+	.byte	12
+	.word	1177
+	.byte	12
+	.word	1192
+	.byte	14
+	.word	1213
+	.byte	0,14
+	.word	1313
+	.byte	0,0,8,0,0,11
+	.word	3673
+	.byte	12
+	.word	3711
+	.byte	12
+	.word	3725
+	.byte	10,13
+	.word	1215
+	.byte	12
+	.word	1251
+	.byte	12
+	.word	1266
+	.byte	12
+	.word	1287
+	.byte	15
+	.word	1311
+	.byte	13
+	.word	1077
+	.byte	12
+	.word	1107
+	.byte	12
+	.word	1122
+	.byte	14
+	.word	1143
+	.byte	0,14
+	.word	1312
+	.byte	13
+	.word	1145
+	.byte	12
+	.word	1177
+	.byte	12
+	.word	1192
+	.byte	14
+	.word	1213
+	.byte	0,14
+	.word	1313
+	.byte	0,0,8,0,0,11
+	.word	3749
+	.byte	12
+	.word	3789
+	.byte	12
+	.word	3803
+	.byte	10,13
+	.word	1215
+	.byte	12
+	.word	1251
+	.byte	12
+	.word	1266
+	.byte	12
+	.word	1287
+	.byte	15
+	.word	1311
+	.byte	13
+	.word	1077
+	.byte	12
+	.word	1107
+	.byte	12
+	.word	1122
+	.byte	14
+	.word	1143
+	.byte	0,14
+	.word	1312
+	.byte	13
+	.word	1145
+	.byte	12
+	.word	1177
+	.byte	12
+	.word	1192
+	.byte	14
+	.word	1213
+	.byte	0,14
+	.word	1313
+	.byte	0,0,8,0,0,11
+	.word	3827
+	.byte	12
+	.word	3880
+	.byte	12
+	.word	3894
+	.byte	10,13
+	.word	1215
+	.byte	12
+	.word	1251
+	.byte	12
+	.word	1266
+	.byte	12
+	.word	1287
+	.byte	15
+	.word	1311
+	.byte	13
+	.word	1077
+	.byte	12
+	.word	1107
+	.byte	12
+	.word	1122
+	.byte	14
+	.word	1143
+	.byte	0,14
+	.word	1312
+	.byte	13
+	.word	1145
+	.byte	12
+	.word	1177
+	.byte	12
+	.word	1192
+	.byte	14
+	.word	1213
+	.byte	0,14
+	.word	1313
+	.byte	0,0,8,0,0,11
+	.word	3918
+	.byte	12
+	.word	3953
+	.byte	8,0,11
+	.word	3983
+	.byte	12
+	.word	4015
+	.byte	8,0,11
+	.word	4028
+	.byte	12
+	.word	4081
+	.byte	10,13
+	.word	813
+	.byte	12
+	.word	852
+	.byte	14
+	.word	871
+	.byte	0,8,0,0,11
+	.word	4097
+	.byte	12
+	.word	4150
+	.byte	10,13
+	.word	755
+	.byte	12
+	.word	793
+	.byte	14
+	.word	811
+	.byte	0,8,0,0,11
+	.word	4166
+	.byte	12
+	.word	4210
+	.byte	8,0,11
+	.word	4225
+	.byte	12
+	.word	4266
+	.byte	8,0,11
+	.word	4282
+	.byte	12
+	.word	4325
+	.byte	8,0,11
+	.word	4341
+	.byte	12
+	.word	4389
+	.byte	8,0,11
+	.word	4405
+	.byte	12
+	.word	4459
+	.byte	10,13
+	.word	2071
+	.byte	12
+	.word	2107
+	.byte	12
+	.word	2121
+	.byte	12
+	.word	2142
+	.byte	14
+	.word	2165
+	.byte	0,8,0,0,11
+	.word	4477
+	.byte	12
+	.word	4522
+	.byte	8,0,11
+	.word	4538
+	.byte	12
+	.word	4574
+	.byte	8,0,11
+	.word	4593
+	.byte	12
+	.word	4625
+	.byte	12
+	.word	4642
+	.byte	8,0,11
+	.word	4667
+	.byte	12
+	.word	4707
+	.byte	8,0,11
+	.word	4726
+	.byte	8,0,11
+	.word	4779
+	.byte	12
+	.word	4815
+	.byte	10,13
+	.word	2266
+	.byte	12
+	.word	2297
+	.byte	12
+	.word	2312
+	.byte	14
+	.word	2333
+	.byte	0,8,0,0,11
+	.word	4835
+	.byte	12
+	.word	4867
+	.byte	10,13
+	.word	1393
+	.byte	12
+	.word	1429
+	.byte	12
+	.word	1443
+	.byte	15
+	.word	1464
+	.byte	13
+	.word	1316
+	.byte	12
+	.word	1356
+	.byte	12
+	.word	1370
+	.byte	14
+	.word	1391
+	.byte	0,14
+	.word	1465
+	.byte	0,0,8,0,0,11
+	.word	4909
+	.byte	12
+	.word	4961
+	.byte	12
+	.word	4977
+	.byte	8,0,11
+	.word	4997
+	.byte	12
+	.word	5026
+	.byte	8,0,16,1,5
+	.word	7322
+	.byte	17
+	.byte	'__codeptr',0,17,1,1
+	.word	7324
+	.byte	2
+	.byte	'char',0,1,6,17
+	.byte	'sint8',0,18,76,25
+	.word	7347
+	.byte	17
+	.byte	'uint8',0,18,81,25
+	.word	554
+	.byte	17
+	.byte	'sint16',0,18,86,25
+	.word	149
+	.byte	17
+	.byte	'uint16',0,18,91,25
+	.word	178
+	.byte	17
+	.byte	'sint32',0,18,96,24
+	.word	5168
+	.byte	17
+	.byte	'uint32',0,18,106,24
+	.word	739
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,17
+	.byte	'uint64',0,18,111,30
+	.word	7443
+	.byte	17
+	.byte	'boolean',0,18,127,25
+	.word	554
+	.byte	17
+	.byte	'uint8_least',0,18,137,1,25
+	.word	4888
+	.byte	17
+	.byte	'sint16_least',0,18,142,1,25
+	.word	5146
+	.byte	17
+	.byte	'uint16_least',0,18,147,1,25
+	.word	4888
+	.byte	17
+	.byte	'StatusType',0,19,191,1,27
+	.word	554
+	.byte	17
+	.byte	'Std_ReturnType',0,19,199,1,15
+	.word	554
+	.byte	18,19,206,1,9,8,19
+	.byte	'vendorID',0
+	.word	178
+	.byte	2,2,35,0,19
+	.byte	'moduleID',0
+	.word	178
+	.byte	2,2,35,2,19
+	.byte	'sw_major_version',0
+	.word	554
+	.byte	1,2,35,4,19
+	.byte	'sw_minor_version',0
+	.word	554
+	.byte	1,2,35,5,19
+	.byte	'sw_patch_version',0
+	.word	554
+	.byte	1,2,35,6,0,17
+	.byte	'Std_VersionInfoType',0,19,213,1,3
+	.word	7609
+	.byte	17
+	.byte	'Dem_ComponentIdType',0,20,20,15
+	.word	554
+	.byte	17
+	.byte	'PduIdType',0,21,22,19
+	.word	178
+	.byte	17
+	.byte	'PduLengthType',0,21,26,19
+	.word	178
+	.byte	20,22,113,9,4,21
+	.byte	'TP_DATACONF',0,0,21
+	.byte	'TP_DATARETRY',0,1,21
+	.byte	'TP_CONFPENDING',0,2,0,17
+	.byte	'TpDataStateType',0,22,118,3
+	.word	7827
+	.byte	17
+	.byte	'Can_IdType',0,23,32,16
+	.word	739
+	.byte	17
+	.byte	'Can_HwHandleType',0,23,43,16
+	.word	178
+	.byte	18,24,93,9,8,19
+	.byte	'Class',0
+	.word	554
+	.byte	1,2,35,0,19
+	.byte	'TIN',0
+	.word	554
+	.byte	1,2,35,1,19
+	.byte	'ReturnAddress',0
+	.word	739
+	.byte	4,2,35,4,0,17
+	.byte	'OsTrapInfoType',0,24,97,3
+	.word	7947
+	.byte	22,68
+	.word	739
+	.byte	23,16,0,18,24,154,1,9,68,19
+	.byte	'store',0
+	.word	8027
+	.byte	68,2,35,0,0,22,68
+	.word	8036
+	.byte	23,0,0,17
+	.byte	'Os_JumpBufType',0,24,156,1,3
+	.word	8058
+	.byte	17
+	.byte	'Os_StackTraceType',0,24,174,1,18
+	.word	739
+	.byte	18,24,175,1,9,8,19
+	.byte	'sp',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	'ctx',0
+	.word	739
+	.byte	4,2,35,4,0,17
+	.byte	'Os_StackValueType',0,24,175,1,63
+	.word	8118
+	.byte	17
+	.byte	'Os_StackSizeType',0,24,176,1,27
+	.word	8118
+	.byte	24,1,1,5
+	.word	8203
+	.byte	17
+	.byte	'Os_VoidVoidFunctionType',0,24,179,1,16
+	.word	8206
+	.byte	17
+	.byte	'ApplicationType',0,24,193,1,23
+	.word	554
+	.byte	25
+	.byte	'Os_ApplicationConfigurationType_s',0,24,198,1,16,2,19
+	.byte	'app_id',0
+	.word	554
+	.byte	1,2,35,0,19
+	.byte	'access',0
+	.word	554
+	.byte	1,2,35,1,0,17
+	.byte	'Os_ApplicationConfigurationType',0,24,201,1,3
+	.word	8269
+	.byte	17
+	.byte	'Os_CoreStateType',0,24,203,1,16
+	.word	739
+	.byte	17
+	.byte	'AreaIdType',0,24,204,1,16
+	.word	178
+	.byte	17
+	.byte	'Os_PeripheralAddressType',0,24,212,1,22
+	.word	739
+	.byte	17
+	.byte	'TickType',0,24,221,1,22
+	.word	739
+	.byte	17
+	.byte	'Os_StopwatchTickType',0,24,225,1,22
+	.word	739
+	.byte	17
+	.byte	'Os_Lockable',0,24,234,1,18
+	.word	2261
+	.byte	17
+	.byte	'CoreIdType',0,24,236,1,16
+	.word	178
+	.byte	17
+	.byte	'SpinlockIdType',0,24,237,1,16
+	.word	178
+	.byte	20,24,239,1,9,4,21
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,21
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,17
+	.byte	'TryToGetSpinlockType',0,24,239,1,74
+	.word	8576
+	.byte	20,24,174,2,9,4,21
+	.byte	'APPLICATION_ACCESSIBLE',0,0,21
+	.byte	'APPLICATION_RESTARTING',0,1,21
+	.byte	'APPLICATION_TERMINATED',0,2,0,17
+	.byte	'ApplicationStateType',0,24,174,2,92
+	.word	8669
+	.byte	5
+	.word	162
+	.byte	26,1,1,27
+	.word	554
+	.byte	27
+	.word	8781
+	.byte	0,5
+	.word	8786
+	.byte	17
+	.byte	'Os_FunctionEntryType',0,24,183,2,16
+	.word	8800
+	.byte	25
+	.byte	'Os_MeterInfoType_s',0,24,193,2,16,48,19
+	.byte	'elapsed',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	'previous',0
+	.word	739
+	.byte	4,2,35,4,19
+	.byte	'max',0
+	.word	739
+	.byte	4,2,35,8,19
+	.byte	'cumulative',0
+	.word	739
+	.byte	4,2,35,12,19
+	.byte	'stackbase',0
+	.word	8118
+	.byte	8,2,35,16,19
+	.byte	'stackusage',0
+	.word	8118
+	.byte	8,2,35,24,19
+	.byte	'stackmax',0
+	.word	8118
+	.byte	8,2,35,32,19
+	.byte	'stackbudget',0
+	.word	8118
+	.byte	8,2,35,40,0,17
+	.byte	'Os_MeterInfoType',0,24,202,2,3
+	.word	8835
+	.byte	5
+	.word	8835
+	.byte	17
+	.byte	'Os_MeterInfoRefType',0,24,203,2,50
+	.word	9033
+	.byte	17
+	.byte	'EventMaskType',0,24,206,2,15
+	.word	554
+	.byte	17
+	.byte	'Os_imaskType',0,24,211,2,16
+	.word	739
+	.byte	25
+	.byte	'Os_ISRDynType_s',0,24,213,2,16,48,19
+	.byte	'meter',0
+	.word	8835
+	.byte	48,2,35,0,0,17
+	.byte	'Os_ISRDynType',0,24,215,2,3
+	.word	9112
+	.byte	5
+	.word	9112
+	.byte	4
+	.word	9173
+	.byte	25
+	.byte	'Os_ISRType_s',0,24,216,2,16,24,19
+	.byte	'entry_function',0
+	.word	8211
+	.byte	4,2,35,0,19
+	.byte	'dynamic',0
+	.word	9178
+	.byte	4,2,35,4,19
+	.byte	'imask',0
+	.word	739
+	.byte	4,2,35,8,19
+	.byte	'stackbudget',0
+	.word	8118
+	.byte	8,2,35,12,19
+	.byte	'access',0
+	.word	554
+	.byte	1,2,35,20,19
+	.byte	'application',0
+	.word	554
+	.byte	1,2,35,21,0,17
+	.byte	'Os_ISRType',0,24,223,2,3
+	.word	9183
+	.byte	5
+	.word	8203
+	.byte	4
+	.word	9183
+	.byte	5
+	.word	9342
+	.byte	17
+	.byte	'ISRType',0,24,224,2,46
+	.word	9347
+	.byte	17
+	.byte	'Os_bitmask',0,24,239,2,22
+	.word	739
+	.byte	17
+	.byte	'Os_pset0Type',0,24,240,2,20
+	.word	739
+	.byte	17
+	.byte	'Os_pset1Type',0,24,241,2,20
+	.word	739
+	.byte	17
+	.byte	'Os_pset2Type',0,24,242,2,20
+	.word	739
+	.byte	28,24,243,2,9,4,19
+	.byte	'p0',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	'p1',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	'p2',0
+	.word	739
+	.byte	4,2,35,0,0,17
+	.byte	'Os_psetType',0,24,247,2,3
+	.word	9455
+	.byte	28,24,249,2,9,4,19
+	.byte	't0',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	't1',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	't2',0
+	.word	739
+	.byte	4,2,35,0,0,17
+	.byte	'Os_tpmaskType',0,24,253,2,3
+	.word	9519
+	.byte	17
+	.byte	'Os_ActivationCountType',0,24,254,2,23
+	.word	554
+	.byte	25
+	.byte	'Os_TaskDynType_s',0,24,128,3,16,120,19
+	.byte	'terminate_jump_buf',0
+	.word	8067
+	.byte	68,2,35,0,19
+	.byte	'meter',0
+	.word	8835
+	.byte	48,2,35,68,19
+	.byte	'activation_count',0
+	.word	554
+	.byte	1,2,35,116,0,17
+	.byte	'Os_TaskDynType',0,24,132,3,3
+	.word	9617
+	.byte	22,68
+	.word	8036
+	.byte	23,0,0,5
+	.word	9617
+	.byte	4
+	.word	9743
+	.byte	25
+	.byte	'Os_TaskType_s',0,24,134,3,16,40,19
+	.byte	'dynamic',0
+	.word	9748
+	.byte	4,2,35,0,19
+	.byte	'entry_function',0
+	.word	8211
+	.byte	4,2,35,4,19
+	.byte	'pset',0
+	.word	9455
+	.byte	4,2,35,8,19
+	.byte	'base_tpmask',0
+	.word	9519
+	.byte	4,2,35,12,19
+	.byte	'tpmask',0
+	.word	9519
+	.byte	4,2,35,16,19
+	.byte	'core_id',0
+	.word	178
+	.byte	2,2,35,20,19
+	.byte	'index',0
+	.word	739
+	.byte	4,2,35,24,19
+	.byte	'stackbudget',0
+	.word	8118
+	.byte	8,2,35,28,19
+	.byte	'activation_count',0
+	.word	554
+	.byte	1,2,35,36,19
+	.byte	'access',0
+	.word	554
+	.byte	1,2,35,37,19
+	.byte	'application',0
+	.word	554
+	.byte	1,2,35,38,0,17
+	.byte	'Os_TaskType',0,24,146,3,3
+	.word	9753
+	.byte	4
+	.word	9753
+	.byte	5
+	.word	10003
+	.byte	17
+	.byte	'TaskType',0,24,147,3,47
+	.word	10008
+	.byte	29
+	.byte	'Os_TaskStateType',0,24,155,3,6,4,21
+	.byte	'SUSPENDED',0,0,21
+	.byte	'READY',0,1,21
+	.byte	'WAITING',0,2,21
+	.byte	'RUNNING',0,3,0,17
+	.byte	'TaskStateType',0,24,156,3,31
+	.word	10031
+	.byte	28,24,167,3,3,4,19
+	.byte	'tpmask',0
+	.word	9519
+	.byte	4,2,35,0,0,25
+	.byte	'Os_ResourceDynType_s',0,24,166,3,16,4,19
+	.byte	'saved_priority',0
+	.word	10118
+	.byte	4,2,35,0,0,17
+	.byte	'Os_ResourceDynType',0,24,170,3,3
+	.word	10141
+	.byte	5
+	.word	10141
+	.byte	4
+	.word	10221
+	.byte	25
+	.byte	'Os_ResourceType_s',0,24,171,3,16,12,19
+	.byte	'dynamic',0
+	.word	10226
+	.byte	4,2,35,0,19
+	.byte	'tpmask',0
+	.word	9519
+	.byte	4,2,35,4,19
+	.byte	'access',0
+	.word	554
+	.byte	1,2,35,8,0,17
+	.byte	'Os_ResourceType',0,24,175,3,3
+	.word	10231
+	.byte	18,24,181,3,9,12,19
+	.byte	'maxallowedvalue',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	'ticksperbase',0
+	.word	739
+	.byte	4,2,35,4,19
+	.byte	'mincycle',0
+	.word	739
+	.byte	4,2,35,8,0,17
+	.byte	'AlarmBaseType',0,24,185,3,3
+	.word	10330
+	.byte	18,24,206,3,9,8,19
+	.byte	'Running',0
+	.word	554
+	.byte	1,2,35,0,19
+	.byte	'Pending',0
+	.word	554
+	.byte	1,2,35,1,19
+	.byte	'Delay',0
+	.word	739
+	.byte	4,2,35,4,0,17
+	.byte	'Os_CounterStatusType',0,24,210,3,3
+	.word	10425
+	.byte	30
+	.word	554
+	.byte	1,1,5
+	.word	10511
+	.byte	17
+	.byte	'Os_CounterIncrAdvType',0,24,217,3,22
+	.word	10518
+	.byte	25
+	.byte	's_swd',0,24,222,3,12,4,19
+	.byte	'count',0
+	.word	739
+	.byte	4,2,35,0,0,28,24,221,3,3,4,19
+	.byte	'sw',0
+	.word	10554
+	.byte	4,2,35,0,0,25
+	.byte	'Os_CounterDynType_s',0,24,220,3,16,4,19
+	.byte	'type_dependent',0
+	.word	10582
+	.byte	4,2,35,0,0,17
+	.byte	'Os_CounterDynType',0,24,226,3,3
+	.word	10601
+	.byte	5
+	.word	10601
+	.byte	4
+	.word	10679
+	.byte	25
+	.byte	'Os_CounterType_s',0,24,227,3,16,28,19
+	.byte	'dynamic',0
+	.word	10684
+	.byte	4,2,35,0,19
+	.byte	'advincr',0
+	.word	10523
+	.byte	4,2,35,4,19
+	.byte	'base',0
+	.word	10330
+	.byte	12,2,35,8,19
+	.byte	'core',0
+	.word	8781
+	.byte	4,2,35,20,19
+	.byte	'access',0
+	.word	554
+	.byte	1,2,35,24,19
+	.byte	'application',0
+	.word	554
+	.byte	1,2,35,25,0,17
+	.byte	'Os_CounterType',0,24,234,3,3
+	.word	10689
+	.byte	5
+	.word	10511
+	.byte	4
+	.word	10689
+	.byte	5
+	.word	10841
+	.byte	17
+	.byte	'CounterType',0,24,235,3,52
+	.word	10846
+	.byte	29
+	.byte	'Os_ScheduleTableStatusType',0,24,240,3,6,4,21
+	.byte	'SCHEDULETABLE_STOPPED',0,0,21
+	.byte	'SCHEDULETABLE_NEXT',0,1,21
+	.byte	'SCHEDULETABLE_WAITING',0,2,21
+	.byte	'SCHEDULETABLE_RUNNING',0,3,21
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,17
+	.byte	'ScheduleTableStatusType',0,24,241,3,41
+	.word	10872
+	.byte	4
+	.word	.L154-.L47
+	.byte	5
+	.word	11072
+	.byte	17
+	.byte	'ScheduleTableType',0,24,128,4,58
+	.word	11077
+	.byte	25
+	.byte	'Os_ScheduleTableDynType_s',0,24,130,4,16,16,19
+	.byte	'match',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	'next',0
+	.word	11082
+	.byte	4,2,35,4,19
+	.byte	'state',0
+	.word	10872
+	.byte	4,2,35,8,19
+	.byte	'config',0
+	.word	178
+	.byte	2,2,35,12,0,5
+	.word	11109
+	.byte	4
+	.word	11202
+.L154:
+	.byte	25
+	.byte	'Os_ScheduleTableType_s',0,24,247,3,16,16,19
+	.byte	'dynamic',0
+	.word	11207
+	.byte	4,2,35,0,19
+	.byte	'counter',0
+	.word	10851
+	.byte	4,2,35,4,19
+	.byte	'repeat',0
+	.word	554
+	.byte	1,2,35,8,19
+	.byte	'config',0
+	.word	178
+	.byte	2,2,35,10,19
+	.byte	'initial',0
+	.word	554
+	.byte	1,2,35,12,19
+	.byte	'access',0
+	.word	554
+	.byte	1,2,35,13,19
+	.byte	'application',0
+	.word	554
+	.byte	1,2,35,14,0,17
+	.byte	'Os_ScheduleTableType',0,24,255,3,3
+	.word	11212
+	.byte	4
+	.word	11212
+	.byte	5
+	.word	11392
+	.byte	4
+	.word	10689
+	.byte	5
+	.word	11402
+	.byte	31
+	.word	8511
+	.byte	31
+	.word	9455
+	.byte	31
+	.word	9352
+	.byte	31
+	.word	10013
+	.byte	31
+	.word	9519
+	.byte	31
+	.word	554
+	.byte	31
+	.word	10013
+	.byte	25
+	.byte	'Os_ControlledCoreType_s',0,24,251,6,16,112,19
+	.byte	'TrapInfo',0
+	.word	7947
+	.byte	8,2,35,0,19
+	.byte	'lock_taskaccess',0
+	.word	11412
+	.byte	4,2,35,8,19
+	.byte	'ReadyTasks',0
+	.word	11417
+	.byte	4,2,35,12,19
+	.byte	'RunningISR',0
+	.word	11422
+	.byte	4,2,35,16,19
+	.byte	'RunningTask',0
+	.word	11427
+	.byte	4,2,35,20,19
+	.byte	'RunningTPMask',0
+	.word	11432
+	.byte	4,2,35,24,19
+	.byte	'CurrentMeteredObject',0
+	.word	9038
+	.byte	4,2,35,28,19
+	.byte	'IdleMeter',0
+	.word	8835
+	.byte	48,2,35,32,19
+	.byte	'AppAccess',0
+	.word	554
+	.byte	1,2,35,80,19
+	.byte	'AppOverride',0
+	.word	11437
+	.byte	1,2,35,81,19
+	.byte	'GetStackValueAdjust',0
+	.word	8118
+	.byte	8,2,35,84,19
+	.byte	'InErrorHook',0
+	.word	554
+	.byte	1,2,35,92,19
+	.byte	'ChainTaskRef',0
+	.word	11442
+	.byte	4,2,35,96,19
+	.byte	'GetStackUsageAdjust',0
+	.word	8118
+	.byte	8,2,35,100,19
+	.byte	'InProtectionHook',0
+	.word	554
+	.byte	1,2,35,108,19
+	.byte	'CoreIsActive',0
+	.word	554
+	.byte	1,2,35,109,19
+	.byte	'InShutdownHook',0
+	.word	554
+	.byte	1,2,35,110,0,17
+	.byte	'Os_ControlledCoreType',0,24,141,7,3
+	.word	11447
+	.byte	5
+	.word	739
+	.byte	4
+	.word	9183
+	.byte	5
+	.word	11903
+	.byte	4
+	.word	9753
+	.byte	5
+	.word	11913
+	.byte	5
+	.word	8835
+	.byte	25
+	.byte	'Os_AnyCoreType_s',0,24,151,7,16,96,19
+	.byte	'DisableAllImask',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	'SuspendAllImask',0
+	.word	739
+	.byte	4,2,35,4,19
+	.byte	'SuspendOSImask',0
+	.word	739
+	.byte	4,2,35,8,19
+	.byte	'DisableAllCount',0
+	.word	739
+	.byte	4,2,35,12,19
+	.byte	'SuspendAllCount',0
+	.word	739
+	.byte	4,2,35,16,19
+	.byte	'SuspendOSCount',0
+	.word	739
+	.byte	4,2,35,20,19
+	.byte	'RestartJumpBuf',0
+	.word	8067
+	.byte	68,2,35,24,19
+	.byte	'Restartable',0
+	.word	554
+	.byte	1,2,35,92,0,17
+	.byte	'Os_AnyCoreType',0,24,160,7,3
+	.word	11928
+	.byte	17
+	.byte	'Can_TxObjPriorityClassType',0,25,219,3,16
+	.word	739
+	.byte	25
+	.byte	'Can_TxHwObjectConfigType',0,25,231,3,16,8,19
+	.byte	'MsgObjId',0
+	.word	554
+	.byte	1,2,35,0,19
+	.byte	'HwControllerId',0
+	.word	554
+	.byte	1,2,35,1,19
+	.byte	'TxObjPriorityClass',0
+	.word	739
+	.byte	4,2,35,4,0,17
+	.byte	'Can_TxHwObjectConfigType',0,25,252,3,3
+	.word	12205
+	.byte	25
+	.byte	'Can_RxHwObjectConfigType',0,25,129,4,16,12,19
+	.byte	'MaskRef',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	'MsgId',0
+	.word	739
+	.byte	4,2,35,4,19
+	.byte	'MsgObjId',0
+	.word	554
+	.byte	1,2,35,8,19
+	.byte	'HwControllerId',0
+	.word	554
+	.byte	1,2,35,9,0,17
+	.byte	'Can_RxHwObjectConfigType',0,25,147,4,3
+	.word	12341
+	.byte	22,4
+	.word	554
+	.byte	23,3,0,25
+	.byte	'Can_ControllerMOMapConfigType',0,25,181,4,16,4,19
+	.byte	'ControllerMOMap',0
+	.word	12481
+	.byte	4,2,35,0,0,17
+	.byte	'Can_ControllerMOMapConfigType',0,25,184,4,3
+	.word	12490
+	.byte	25
+	.byte	'Can_NPCRValueType',0,25,188,4,16,2,19
+	.byte	'Can_NPCRValue',0
+	.word	178
+	.byte	2,2,35,0,0,17
+	.byte	'Can_NPCRValueType',0,25,191,4,3
+	.word	12591
+	.byte	25
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,25,194,4,16,8,19
+	.byte	'CanControllerBaudrate',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	'CanControllerBaudrateCfg',0
+	.word	178
+	.byte	2,2,35,4,0,17
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,25,198,4,3
+	.word	12666
+	.byte	4
+	.word	12666
+	.byte	5
+	.word	12831
+	.byte	25
+	.byte	'Can_BaudrateConfigPtrType',0,25,201,4,16,4,19
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	12836
+	.byte	4,2,35,0,0,17
+	.byte	'Can_BaudrateConfigPtrType',0,25,204,4,3
+	.word	12841
+	.byte	25
+	.byte	'Can_EventHandlingType',0,25,226,4,16,4,19
+	.byte	'CanEventType',0
+	.word	12481
+	.byte	4,2,35,0,0,17
+	.byte	'Can_EventHandlingType',0,25,229,4,3
+	.word	12941
+	.byte	17
+	.byte	'Rte_TransformerErrorCode',0,26,130,1,15
+	.word	554
+	.byte	17
+	.byte	'Rte_TransformerClass',0,26,131,1,15
+	.word	554
+	.byte	18,26,168,1,9,12,19
+	.byte	'in',0
+	.word	8781
+	.byte	4,2,35,0,19
+	.byte	'out',0
+	.word	8781
+	.byte	4,2,35,4,19
+	.byte	'used',0
+	.word	178
+	.byte	2,2,35,8,19
+	.byte	'lost_data',0
+	.word	554
+	.byte	1,2,35,10,0,17
+	.byte	'Rte_QDynType',0,26,173,1,3
+	.word	13087
+	.byte	20,26,175,1,9,4,21
+	.byte	'RTE_DRA',0,0,21
+	.byte	'RTE_WOWP',0,1,21
+	.byte	'RTE_TASK',0,2,21
+	.byte	'RTE_ARE',0,3,21
+	.byte	'RTE_EV',0,4,21
+	.byte	'RTE_MSI',0,5,0,17
+	.byte	'Rte_NotificationType',0,26,182,1,3
+	.word	13174
+	.byte	22,128,8
+	.word	554
+	.byte	23,255,7,0,17
+	.byte	'Impl_NVM_DstPtrType_1024',0,27,50,15
+	.word	13272
+	.byte	17
+	.byte	'CanIf_u32_impl',0,27,69,16
+	.word	739
+	.byte	17
+	.byte	'CanIf_u16_impl',0,27,71,16
+	.word	178
+	.byte	17
+	.byte	'CanIf_u8_impl',0,27,73,15
+	.word	554
+	.byte	17
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,27,88,15
+	.word	554
+	.byte	17
+	.byte	'CanIf_PduModeType_Enum_impl',0,27,90,15
+	.word	554
+	.byte	18,27,92,9,2,19
+	.byte	'DeviceMode',0
+	.word	554
+	.byte	1,2,35,0,19
+	.byte	'ChannelMode',0
+	.word	554
+	.byte	1,2,35,1,0,17
+	.byte	'CanIf_ControllerStateType_struct_impl',0,27,95,3
+	.word	13463
+	.byte	17
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,27,100,15
+	.word	554
+	.byte	17
+	.byte	'CanSM_boolean_Impl',0,27,120,15
+	.word	554
+	.byte	17
+	.byte	'CanSM_u8_Impl',0,27,123,15
+	.word	554
+	.byte	17
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,27,128,1,15
+	.word	554
+	.byte	17
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,27,132,1,15
+	.word	554
+	.byte	17
+	.byte	'CanSM_u16_Impl',0,27,136,1,16
+	.word	178
+	.byte	17
+	.byte	'CanSM_TimerStateType_Enum_impl',0,27,138,1,15
+	.word	554
+	.byte	18,27,140,1,9,4,19
+	.byte	'cntTick_u16',0
+	.word	178
+	.byte	2,2,35,0,19
+	.byte	'stTimer',0
+	.word	554
+	.byte	1,2,35,2,0,17
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,27,143,1,3
+	.word	13804
+	.byte	17
+	.byte	'Com_impl_u16',0,27,154,1,16
+	.word	178
+	.byte	17
+	.byte	'Com_impl_u8',0,27,157,1,15
+	.word	554
+	.byte	17
+	.byte	'ComM_uint32_Impl',0,27,173,1,16
+	.word	739
+	.byte	17
+	.byte	'ComM_uint16_Impl',0,27,175,1,16
+	.word	178
+	.byte	17
+	.byte	'ComM_uint8_Impl',0,27,177,1,15
+	.word	554
+	.byte	17
+	.byte	'ComM_bool_Impl',0,27,179,1,15
+	.word	554
+	.byte	18,27,181,1,9,24,19
+	.byte	'ChannelState_e',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	'LightTimeoutCtr_u32',0
+	.word	739
+	.byte	4,2,35,4,19
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	178
+	.byte	2,2,35,8,19
+	.byte	'ChannelMode_u8',0
+	.word	554
+	.byte	1,2,35,10,19
+	.byte	'BusSmMode_u8',0
+	.word	554
+	.byte	1,2,35,11,19
+	.byte	'UserRequestCtr_u8',0
+	.word	554
+	.byte	1,2,35,12,19
+	.byte	'PassiveRequestState_u8',0
+	.word	554
+	.byte	1,2,35,13,19
+	.byte	'PncRequestCtr_u8',0
+	.word	554
+	.byte	1,2,35,14,19
+	.byte	'InhibitionReqStatus_u8',0
+	.word	554
+	.byte	1,2,35,15,19
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	554
+	.byte	1,2,35,16,19
+	.byte	'DiagnosticRequestState_b',0
+	.word	554
+	.byte	1,2,35,17,19
+	.byte	'CommunicationAllowed_b',0
+	.word	554
+	.byte	1,2,35,18,19
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	554
+	.byte	1,2,35,19,19
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	554
+	.byte	1,2,35,20,19
+	.byte	'NmNetworkModeStatus_b',0
+	.word	554
+	.byte	1,2,35,21,0,17
+	.byte	'ComM_ChannelStruct_Impl',0,27,197,1,3
+	.word	14036
+	.byte	18,27,206,1,9,10,19
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	178
+	.byte	2,2,35,0,19
+	.byte	'LimitToNoComCtr_u16',0
+	.word	178
+	.byte	2,2,35,2,19
+	.byte	'RequestedUserMode_t',0
+	.word	554
+	.byte	1,2,35,4,19
+	.byte	'IndicatedUserMode_t',0
+	.word	554
+	.byte	1,2,35,5,19
+	.byte	'numChannelsInFullCom_u8',0
+	.word	554
+	.byte	1,2,35,6,19
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	554
+	.byte	1,2,35,7,19
+	.byte	'numChannelsInNoCom_u8',0
+	.word	554
+	.byte	1,2,35,8,0,17
+	.byte	'ComM_UserStruct_Impl',0,27,214,1,3
+	.word	14540
+	.byte	17
+	.byte	'Dcm_IOOperationResponseType',0,27,252,1,15
+	.word	554
+	.byte	17
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	27,138,2,15
+	.word	554
+	.byte	17
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,27,146,2,15
+	.word	554
+	.byte	17
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,27,150,2,15
+	.word	554
+	.byte	17
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,27,154,2,15
+	.word	554
+	.byte	17
+	.byte	'Dem_DTCFormatType',0,27,160,2,15
+	.word	554
+	.byte	17
+	.byte	'Dem_DTCOriginType',0,27,162,2,15
+	.word	554
+	.byte	17
+	.byte	'Dem_EventIdType',0,27,168,2,16
+	.word	178
+	.byte	17
+	.byte	'Dem_EventStatusType',0,27,170,2,15
+	.word	554
+	.byte	17
+	.byte	'Dem_InitMonitorReasonType',0,27,176,2,15
+	.word	554
+	.byte	17
+	.byte	'Dem_OperationCycleIdType',0,27,179,2,15
+	.word	554
+	.byte	17
+	.byte	'Dem_UdsStatusByteType',0,27,185,2,15
+	.word	554
+	.byte	17
+	.byte	'NvM_BlockIdType',0,27,215,2,16
+	.word	178
+	.byte	17
+	.byte	'NvM_RequestResultType',0,27,225,2,15
+	.word	554
+	.byte	17
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,27,243,3,34
+	.word	13283
+	.byte	22,128,8
+	.word	554
+	.byte	23,255,7,0,17
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,27,246,3,34
+	.word	13283
+	.byte	17
+	.byte	'Dem_DTCGroupIdType',0,28,49,15
+	.word	554
+	.byte	17
+	.byte	'Dem_DtcIdType',0,28,50,16
+	.word	178
+	.byte	17
+	.byte	'Dem_DtcCodeType',0,28,55,16
+	.word	739
+	.byte	17
+	.byte	'Dem_boolean_least',0,28,60,17
+	.word	554
+	.byte	17
+	.byte	'Dem_EventCategoryType',0,28,62,15
+	.word	554
+	.byte	17
+	.byte	'Dem_DTCSeverityType',0,28,217,1,15
+	.word	554
+	.byte	17
+	.byte	'Dem_DebugDataType',0,28,131,3,16
+	.word	739
+	.byte	17
+	.byte	'Dem_DTCKindType',0,28,145,3,16
+	.word	554
+	.byte	17
+	.byte	'Dem_TriggerType',0,28,167,3,15
+	.word	554
+	.byte	17
+	.byte	'Dem_EvtStateType',0,29,151,1,15
+	.word	554
+	.byte	5
+	.word	554
+	.byte	32
+	.word	4888
+	.byte	1,1,27
+	.word	178
+	.byte	27
+	.word	15883
+	.byte	27
+	.word	173
+	.byte	27
+	.word	178
+	.byte	0,5
+	.word	15888
+	.byte	17
+	.byte	'Dem_DebFilter',0,30,12,23
+	.word	15916
+	.byte	5
+	.word	5146
+	.byte	26,1,1,27
+	.word	173
+	.byte	27
+	.word	178
+	.byte	27
+	.word	15943
+	.byte	27
+	.word	15943
+	.byte	0,5
+	.word	15948
+	.byte	17
+	.byte	'Dem_DebGetLimits',0,30,13,23
+	.word	15972
+	.byte	26,1,1,27
+	.word	178
+	.byte	27
+	.word	173
+	.byte	27
+	.word	178
+	.byte	0,5
+	.word	16002
+	.byte	17
+	.byte	'Dem_DebCyclic',0,30,14,16
+	.word	16021
+	.byte	17
+	.byte	'Dem_DebouncedActionType',0,30,35,21
+	.word	4888
+	.byte	17
+	.byte	'rba_BswSrv_uint64',0,2,66,28
+	.word	7443
+	.byte	17
+	.byte	'Dem_EventIdIterator',0,4,27,22
+	.word	4888
+	.byte	17
+	.byte	'Dem_DtcIdIterator',0,4,197,1,22
+	.word	4888
+	.byte	17
+	.byte	'Dem_DtcGroupIdIterator',0,4,230,1,21
+	.word	4888
+	.byte	4
+	.word	178
+	.byte	5
+	.word	16193
+	.byte	18,4,171,2,9,8,19
+	.byte	'it',0
+	.word	16198
+	.byte	4,2,35,0,19
+	.byte	'end',0
+	.word	16198
+	.byte	4,2,35,4,0,17
+	.byte	'Dem_EventIdListIterator',0,4,174,2,3
+	.word	16203
+	.byte	18,4,213,2,9,4,19
+	.byte	'it',0
+	.word	178
+	.byte	2,2,35,0,19
+	.byte	'end',0
+	.word	178
+	.byte	2,2,35,2,0,17
+	.byte	'Dem_DtcIdListIterator',0,4,216,2,3
+	.word	16268
+	.byte	17
+	.byte	'Dem_EnCoList',0,31,31,15
+	.word	554
+	.byte	17
+	.byte	'Dem_OperationCycleList',0,32,23,15
+	.word	554
+	.byte	17
+	.byte	'Dem_StoCoList',0,33,32,15
+	.word	554
+	.byte	20,34,31,9,4,21
+	.byte	'MEMIF_JOB_OK',0,0,21
+	.byte	'MEMIF_JOB_FAILED',0,1,21
+	.byte	'MEMIF_JOB_PENDING',0,2,21
+	.byte	'MEMIF_JOB_CANCELED',0,3,21
+	.byte	'MEMIF_BLOCK_INCONSISTENT',0,4,21
+	.byte	'MEMIF_BLOCK_INVALID',0,5,0,17
+	.byte	'MemIf_JobResultType',0,34,39,2
+	.word	16405
+	.byte	20,35,49,9,4,21
+	.byte	'NVM_PRV_ACTIVITY_NOT_INIT',0,0,21
+	.byte	'NVM_PRV_ACTIVITY_IDLE',0,1,21
+	.byte	'NVM_PRV_ACTIVITY_ARBITRATE',0,2,21
+	.byte	'NVM_PRV_ACTIVITY_JOB_START',0,3,21
+	.byte	'NVM_PRV_ACTIVITY_POLL_RESULT',0,4,21
+	.byte	'NVM_PRV_ACTIVITY_JOB_COMPLETE',0,5,21
+	.byte	'NVM_PRV_ACTIVITY_RESULT_EVAL',0,6,0,17
+	.byte	'NvM_Prv_Activities_ten',0,35,58,3
+	.word	16563
+	.byte	20,35,104,9,4,21
+	.byte	'NvM_Prv_idJob_Idle_e',0,0,21
+	.byte	'NvM_Prv_idJob_Read_e',0,1,21
+	.byte	'NvM_Prv_idJob_Write_e',0,2,21
+	.byte	'NvM_Prv_idJob_Erase_e',0,3,21
+	.byte	'NvM_Prv_idJob_Restore_e',0,4,21
+	.byte	'NvM_Prv_idJob_Maintain_e',0,5,21
+	.byte	'NvM_Prv_idJob_Validate_e',0,6,21
+	.byte	'NvM_Prv_idJob_Invalidate_e',0,7,21
+	.byte	'NvM_Prv_idJob_ReadIdConfigForReadAll_e',0,8,21
+	.byte	'NvM_Prv_idJob_InvalidateForFirstInitAll_e',0,9,21
+	.byte	'NvM_Prv_idJob_RestoreForImplicitRecovery_e',0,10,21
+	.byte	'NvM_Prv_idJob_InvalidateForRemoveNonResistant_e',0,11,21
+	.byte	'NvM_Prv_idJob_Invalid_e',0,12,21
+	.byte	'NvM_Prv_idJob_Count_e',0,13,0,17
+	.byte	'NvM_Prv_idJob_ten',0,35,115,3
+	.word	16804
+	.byte	17
+	.byte	'NvM_Prv_ServiceBit_tuo',0,35,168,1,16
+	.word	178
+	.byte	17
+	.byte	'NvM_Prv_idService_tuo',0,35,173,1,15
+	.word	554
+	.byte	17
+	.byte	'NvM_Prv_idQueue_tuo',0,35,206,1,15
+	.word	554
+	.byte	18,35,210,1,9,12,19
+	.byte	'idService_uo',0
+	.word	554
+	.byte	1,2,35,0,19
+	.byte	'idBlock_uo',0
+	.word	178
+	.byte	2,2,35,2,19
+	.byte	'ServiceBit_uo',0
+	.word	178
+	.byte	2,2,35,4,19
+	.byte	'BlockData_pv',0
+	.word	8781
+	.byte	4,2,35,8,0,17
+	.byte	'NvM_Prv_QueueEntry_tst',0,35,225,1,3
+	.word	17361
+	.byte	18,35,227,1,9,20,19
+	.byte	'idJob_en',0
+	.word	16804
+	.byte	4,2,35,0,19
+	.byte	'idBlock_uo',0
+	.word	178
+	.byte	2,2,35,4,19
+	.byte	'RamBlock_pu8',0
+	.word	1072
+	.byte	4,2,35,8,19
+	.byte	'idxDataset_u8',0
+	.word	554
+	.byte	1,2,35,12,19
+	.byte	'Result_en',0
+	.word	16405
+	.byte	4,2,35,16,0,17
+	.byte	'NvM_Prv_JobData_tst',0,35,240,1,3
+	.word	17487
+	.byte	17
+	.byte	'Dem_EvMemOccurrenceCounterType',0,36,90,21
+	.word	554
+	.byte	17
+	.byte	'Dem_EvMemAgingCounterType',0,36,99,21
+	.word	554
+	.byte	18,36,133,1,3,4,19
+	.byte	'Status',0
+	.word	178
+	.byte	2,2,35,0,19
+	.byte	'EventId',0
+	.word	178
+	.byte	2,2,35,2,0,28,36,131,1,9,4,19
+	.byte	'Data',0
+	.word	17698
+	.byte	4,2,35,0,0,17
+	.byte	'Dem_EvMemHdrType',0,36,141,1,4
+	.word	17738
+	.byte	22,7
+	.word	554
+	.byte	23,6,0,18,36,144,1,9,20,19
+	.byte	'Hdr',0
+	.word	17738
+	.byte	4,2,35,0,19
+	.byte	'Data',0
+	.word	17785
+	.byte	7,2,35,4,19
+	.byte	'FailureCounter',0
+	.word	554
+	.byte	1,2,35,11,19
+	.byte	'FreezeFrameCounter',0
+	.word	554
+	.byte	1,2,35,12,19
+	.byte	'AgingCounter',0
+	.word	554
+	.byte	1,2,35,13,19
+	.byte	'OccurrenceCounter',0
+	.word	554
+	.byte	1,2,35,14,19
+	.byte	'Trigger',0
+	.word	554
+	.byte	1,2,35,15,19
+	.byte	'TimeId',0
+	.word	739
+	.byte	4,2,35,16,0,17
+	.byte	'Dem_EvMemEventMemoryType',0,36,213,1,4
+	.word	17794
+	.byte	22,5
+	.word	554
+	.byte	23,4,0,22,10
+	.word	178
+	.byte	23,4,0,18,37,9,9,18,19
+	.byte	'OperationCycleStates',0
+	.word	554
+	.byte	1,2,35,0,19
+	.byte	'OperationCycleQualified',0
+	.word	554
+	.byte	1,2,35,1,19
+	.byte	'Overflow',0
+	.word	17996
+	.byte	5,2,35,2,19
+	.byte	'DtcIdsByOccurrenceTime',0
+	.word	18005
+	.byte	10,2,35,8,0,17
+	.byte	'Dem_GenericNvDataType',0,37,24,4
+	.word	18014
+	.byte	17
+	.byte	'Dem_NvmBlockIdType',0,38,14,34
+	.word	554
+	.byte	28,38,16,9,20,19
+	.byte	'evMemData',0
+	.word	17794
+	.byte	20,2,35,0,19
+	.byte	'genericNvData',0
+	.word	18014
+	.byte	18,2,35,0,0,17
+	.byte	'Dem_NvMStorageBufferData',0,38,37,3
+	.word	18190
+	.byte	17
+	.byte	'Dem_NvmBlockStatusType',0,38,59,15
+	.word	554
+	.byte	17
+	.byte	'Dem_NvmResultType',0,38,78,31
+	.word	554
+	.byte	32
+	.word	554
+	.byte	1,1,27
+	.word	15883
+	.byte	0,5
+	.word	18328
+	.byte	17
+	.byte	'Dem_EvtClearAllowedFncType',0,13,12,26
+	.word	18341
+	.byte	32
+	.word	554
+	.byte	1,1,27
+	.word	554
+	.byte	0,5
+	.word	18381
+	.byte	17
+	.byte	'Dem_InitMForEAllowedFncType',0,14,38,27
+	.word	18394
+	.byte	18,14,46,9,4,19
+	.byte	'state',0
+	.word	554
+	.byte	1,2,35,0,19
+	.byte	'debounceLevel',0
+	.word	149
+	.byte	2,2,35,2,0,17
+	.byte	'Dem_EvtState',0,14,50,3
+	.word	18435
+	.byte	22,24
+	.word	18435
+	.byte	23,5,0,33
+	.byte	'Dem_AllEventsState',0,14,152,1,1
+	.word	18500
+	.byte	1,1,28,39,37,9,4,19
+	.byte	'EnforceAlignment',0
+	.word	739
+	.byte	4,2,35,0,19
+	.byte	'Buffer',0
+	.word	12481
+	.byte	4,2,35,0,0,17
+	.byte	'Dem_EvBuffEnvDataAlignedType',0,39,47,3
+	.word	18539
+	.byte	18,39,49,9,16,19
+	.byte	'envData',0
+	.word	18539
+	.byte	4,2,35,0,19
+	.byte	'eventType',0
+	.word	554
+	.byte	1,2,35,4,19
+	.byte	'eventId',0
+	.word	178
+	.byte	2,2,35,6,19
+	.byte	'debug0',0
+	.word	739
+	.byte	4,2,35,8,19
+	.byte	'debug1',0
+	.word	739
+	.byte	4,2,35,12,0,17
+	.byte	'Dem_EvBuffEvent',0,39,75,2
+	.word	18624
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L48:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,59,0,3,8,0,0,4,38,0,73,19,0
+	.byte	0,5,15,0,73,19,0,0,6,46,1,3,8,32,13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,7,5,0,3,8,58,15,59,15,57,15
+	.byte	73,19,0,0,8,11,0,0,0,9,46,1,3,8,32,13,58,15,59,15,57,15,54,15,39,12,0,0,10,11,1,0,0,11,46,1,49,19,0,0
+	.byte	12,5,0,49,19,0,0,13,29,1,49,19,0,0,14,11,0,49,19,0,0,15,11,1,49,19,0,0,16,21,0,54,15,0,0,17,22,0,3,8,58
+	.byte	15,59,15,57,15,73,19,0,0,18,19,1,58,15,59,15,57,15,11,15,0,0,19,13,0,3,8,73,19,11,15,56,9,0,0,20,4,1,58
+	.byte	15,59,15,57,15,11,15,0,0,21,40,0,3,8,28,13,0,0,22,1,1,11,15,73,19,0,0,23,33,0,47,15,0,0,24,21,0,54,15
+	.byte	39,12,0,0,25,19,1,3,8,58,15,59,15,57,15,11,15,0,0,26,21,1,54,15,39,12,0,0,27,5,0,73,19,0,0,28,23,1,58
+	.byte	15,59,15,57,15,11,15,0,0,29,4,1,3,8,58,15,59,15,57,15,11,15,0,0,30,21,0,73,19,54,15,39,12,0,0,31,53,0
+	.byte	73,19,0,0,32,21,1,73,19,54,15,39,12,0,0,33,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L49:
+	.word	.L156-.L155
+.L155:
+	.half	3
+	.word	.L158-.L157
+.L157:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebCtrBaseClass.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\lib\\Dem_Lib.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\map\\Dem_Mapping.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits8.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits16.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits32.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\lib\\Dem_BitArray.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\lib\\Dem_ISO14229Byte.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\enco\\Dem_EnableCondition.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\nvm\\Dem_Nvm.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_ByteOrderUtils.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_Events_DataStructures.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\event\\Dem_Events.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_Deb.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\event\\Dem_EventStatus.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebCtrBaseClass.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_NodeId.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\api\\Dem_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_Events.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebBase.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_EnableCondition.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_OperationCycle.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_StorageCondition.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\MemIf\\api\\MemIf_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\NvM\\api\\NvM_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemTypes.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\main\\Dem_GenericNvData.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\nvm\\Dem_Nvm_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\evbuff\\Dem_EvBuffEvent.h',0,0,0,0,0
+.L158:
+.L156:
+	.sdecl	'.debug_info',debug,cluster('Dem_DebCounterBaseClass_GetLimits')
+	.sect	'.debug_info'
+.L50:
+	.word	403
+	.half	3
+	.word	.L51
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebCtrBaseClass.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L53,.L52
+	.byte	2
+	.word	.L46
+	.byte	3
+	.byte	'Dem_DebCounterBaseClass_GetLimits',0,1,15,6,1,1,1
+	.word	.L43,.L60,.L42
+	.byte	4
+	.byte	'paramSet',0,1,15,52
+	.word	.L61,.L62
+	.byte	4
+	.byte	'paramIndex',0,1,15,69
+	.word	.L63,.L64
+	.byte	4
+	.byte	'MinThreshold',0,1,15,94
+	.word	.L65,.L66
+	.byte	4
+	.byte	'MaxThreshold',0,1,15,121
+	.word	.L65,.L67
+	.byte	5
+	.word	.L43,.L60
+	.byte	6
+	.word	.L68,.L43,.L2
+	.byte	7
+	.word	.L69,.L70
+	.byte	7
+	.word	.L71,.L72
+	.byte	8
+	.word	.L73,.L43,.L2
+	.byte	0,6
+	.word	.L74,.L75,.L3
+	.byte	7
+	.word	.L76,.L77
+	.byte	7
+	.word	.L78,.L79
+	.byte	8
+	.word	.L80,.L75,.L3
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_DebCounterBaseClass_GetLimits')
+	.sect	'.debug_abbrev'
+.L51:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,29,1,49
+	.byte	16,17,1,18,1,0,0,7,5,0,49,16,2,6,0,0,8,11,0,49,16,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_DebCounterBaseClass_GetLimits')
+	.sect	'.debug_line'
+.L52:
+	.word	.L160-.L159
+.L159:
+	.half	3
+	.word	.L162-.L161
+.L161:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebCtrBaseClass.c',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebCtrBaseClass.h',0,0,0,0,0
+.L162:
+	.byte	4,2,5,63,7,0,5,2
+	.word	.L43
+	.byte	3,132,1,1,5,75,9
+	.half	.L163-.L43
+	.byte	1,5,4,9
+	.half	.L164-.L163
+	.byte	1,4,1,5,19,9
+	.half	.L2-.L164
+	.byte	3,140,127,1,4,2,5,63,9
+	.half	.L75-.L2
+	.byte	3,129,1,1,5,75,9
+	.half	.L165-.L75
+	.byte	1,5,4,9
+	.half	.L166-.L165
+	.byte	1,4,1,5,19,9
+	.half	.L3-.L166
+	.byte	3,128,127,1,5,1,9
+	.half	.L167-.L3
+	.byte	3,1,1,7,9
+	.half	.L54-.L167
+	.byte	0,1,1
+.L160:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_DebCounterBaseClass_GetLimits')
+	.sect	'.debug_ranges'
+.L53:
+	.word	-1,.L43,0,.L54-.L43,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_DebCounterBaseClass_Filter')
+	.sect	'.debug_info'
+.L55:
+	.word	895
+	.half	3
+	.word	.L56
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebCtrBaseClass.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L58,.L57
+	.byte	2
+	.word	.L46
+	.byte	3
+	.byte	'Dem_DebCounterBaseClass_Filter',0,1,22,13
+	.word	.L81
+	.byte	1,1,1
+	.word	.L45,.L82,.L44
+	.byte	4
+	.byte	'EventId',0,1,22,60
+	.word	.L63,.L83
+	.byte	4
+	.byte	'status',0,1,22,90
+	.word	.L84,.L85
+	.byte	4
+	.byte	'paramSet',0,1,22,110
+	.word	.L61,.L86
+	.byte	4
+	.byte	'paramIndex',0,1,22,127
+	.word	.L63,.L87
+	.byte	5
+	.word	.L45,.L82
+	.byte	6
+	.byte	'maxThreshold',0,1,25,9
+	.word	.L88,.L89
+	.byte	6
+	.byte	'minThreshold',0,1,26,9
+	.word	.L88,.L90
+	.byte	6
+	.byte	'stepDown',0,1,27,9
+	.word	.L88,.L91
+	.byte	6
+	.byte	'stepUp',0,1,28,9
+	.word	.L88,.L92
+	.byte	6
+	.byte	'jumpUpValue',0,1,29,9
+	.word	.L88,.L93
+	.byte	6
+	.byte	'jumpDownValue',0,1,30,9
+	.word	.L88,.L94
+	.byte	6
+	.byte	'isJumpUpEnabled',0,1,31,10
+	.word	.L95,.L96
+	.byte	6
+	.byte	'isJumpDownEnabled',0,1,32,10
+	.word	.L95,.L97
+	.byte	6
+	.byte	'debLevel',0,1,33,9
+	.word	.L88,.L98
+	.byte	6
+	.byte	'debAction',0,1,34,14
+	.word	.L81,.L99
+	.byte	7
+	.word	.L74,.L100,.L4
+	.byte	8
+	.word	.L76,.L101
+	.byte	8
+	.word	.L78,.L102
+	.byte	9
+	.word	.L80,.L100,.L4
+	.byte	0,7
+	.word	.L68,.L4,.L5
+	.byte	8
+	.word	.L69,.L103
+	.byte	8
+	.word	.L71,.L104
+	.byte	9
+	.word	.L73,.L4,.L5
+	.byte	0,7
+	.word	.L105,.L5,.L6
+	.byte	8
+	.word	.L106,.L107
+	.byte	8
+	.word	.L108,.L109
+	.byte	9
+	.word	.L110,.L5,.L6
+	.byte	0,7
+	.word	.L111,.L6,.L7
+	.byte	8
+	.word	.L112,.L113
+	.byte	8
+	.word	.L114,.L115
+	.byte	9
+	.word	.L116,.L6,.L7
+	.byte	0,7
+	.word	.L117,.L7,.L8
+	.byte	8
+	.word	.L118,.L119
+	.byte	8
+	.word	.L120,.L121
+	.byte	9
+	.word	.L122,.L7,.L8
+	.byte	0,7
+	.word	.L123,.L8,.L9
+	.byte	8
+	.word	.L124,.L125
+	.byte	8
+	.word	.L126,.L127
+	.byte	9
+	.word	.L128,.L8,.L9
+	.byte	0,7
+	.word	.L129,.L130,.L10
+	.byte	8
+	.word	.L131,.L132
+	.byte	9
+	.word	.L133,.L130,.L10
+	.byte	0,7
+	.word	.L134,.L24,.L135
+	.byte	8
+	.word	.L136,.L137
+	.byte	8
+	.word	.L138,.L139
+	.byte	9
+	.word	.L140,.L24,.L135
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_DebCounterBaseClass_Filter')
+	.sect	'.debug_abbrev'
+.L56:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,7,29,1,49,16,17,1,18,1,0,0,8,5,0,49,16,2,6,0,0,9,11,0,49,16,17
+	.byte	1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_DebCounterBaseClass_Filter')
+	.sect	'.debug_line'
+.L57:
+	.word	.L169-.L168
+.L168:
+	.half	3
+	.word	.L171-.L170
+.L170:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebCtrBaseClass.c',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebCtrBaseClass.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\event\\Dem_Events.h',0,0,0,0,0
+.L171:
+	.byte	5,24,7,0,5,2
+	.word	.L45
+	.byte	3,33,1,4,2,5,63,9
+	.half	.L100-.L45
+	.byte	3,240,0,1,5,75,9
+	.half	.L172-.L100
+	.byte	1,5,4,9
+	.half	.L173-.L172
+	.byte	1,5,63,9
+	.half	.L4-.L173
+	.byte	3,115,1,5,75,9
+	.half	.L174-.L4
+	.byte	1,5,4,9
+	.half	.L175-.L174
+	.byte	1,5,63,9
+	.half	.L5-.L175
+	.byte	3,39,1,5,75,9
+	.half	.L176-.L5
+	.byte	1,5,4,9
+	.half	.L177-.L176
+	.byte	1,5,63,9
+	.half	.L6-.L177
+	.byte	3,115,1,5,75,9
+	.half	.L178-.L6
+	.byte	1,5,4,9
+	.half	.L179-.L178
+	.byte	1,9
+	.half	.L7-.L179
+	.byte	3,30,1,9
+	.half	.L8-.L7
+	.byte	3,13,1,4,1,5,68,9
+	.half	.L9-.L8
+	.byte	3,232,126,1,5,80,9
+	.half	.L180-.L9
+	.byte	1,5,78,9
+	.half	.L141-.L180
+	.byte	3,2,1,4,3,5,11,9
+	.half	.L130-.L141
+	.byte	3,143,1,1,5,29,9
+	.half	.L181-.L130
+	.byte	1,5,38,9
+	.half	.L182-.L181
+	.byte	1,5,4,9
+	.half	.L183-.L182
+	.byte	1,4,1,5,10,9
+	.half	.L10-.L183
+	.byte	3,135,127,1,5,7,9
+	.half	.L184-.L10
+	.byte	3,233,0,1,9
+	.half	.L185-.L184
+	.byte	3,19,1,9
+	.half	.L186-.L185
+	.byte	3,134,127,1,9
+	.half	.L187-.L186
+	.byte	3,48,1,5,3,9
+	.half	.L13-.L187
+	.byte	3,82,1,5,14,7,9
+	.half	.L188-.L13
+	.byte	3,11,1,5,12,9
+	.half	.L189-.L188
+	.byte	1,5,4,9
+	.half	.L190-.L189
+	.byte	3,1,1,5,17,9
+	.half	.L16-.L190
+	.byte	3,3,1,5,48,7,9
+	.half	.L191-.L16
+	.byte	1,5,22,7,9
+	.half	.L192-.L191
+	.byte	3,1,1,5,87,7,9
+	.half	.L193-.L192
+	.byte	1,5,30,9
+	.half	.L20-.L193
+	.byte	3,2,1,5,41,9
+	.half	.L145-.L20
+	.byte	1,5,25,9
+	.half	.L18-.L145
+	.byte	3,4,1,5,3,9
+	.half	.L22-.L18
+	.byte	3,3,1,5,13,7,9
+	.half	.L194-.L22
+	.byte	3,2,1,5,14,9
+	.half	.L195-.L194
+	.byte	3,1,1,5,12,9
+	.half	.L143-.L195
+	.byte	1,5,3,9
+	.half	.L23-.L143
+	.byte	3,15,1,9
+	.half	.L14-.L23
+	.byte	3,6,1,5,14,7,9
+	.half	.L196-.L14
+	.byte	3,5,1,5,12,9
+	.half	.L197-.L196
+	.byte	1,5,4,9
+	.half	.L198-.L197
+	.byte	3,1,1,5,18,9
+	.half	.L25-.L198
+	.byte	3,4,1,5,47,7,9
+	.half	.L199-.L25
+	.byte	1,5,22,7,9
+	.half	.L200-.L199
+	.byte	3,1,1,5,88,7,9
+	.half	.L201-.L200
+	.byte	1,5,28,9
+	.half	.L29-.L201
+	.byte	3,2,1,5,37,9
+	.half	.L147-.L29
+	.byte	1,5,25,9
+	.half	.L27-.L147
+	.byte	3,4,1,5,3,9
+	.half	.L31-.L27
+	.byte	3,3,1,5,13,7,9
+	.half	.L202-.L31
+	.byte	3,2,1,5,14,9
+	.half	.L203-.L202
+	.byte	3,1,1,5,12,9
+	.half	.L204-.L203
+	.byte	1,5,3,9
+	.half	.L32-.L204
+	.byte	3,26,1,9
+	.half	.L11-.L32
+	.byte	3,14,1,5,4,7,9
+	.half	.L205-.L11
+	.byte	3,2,1,5,12,9
+	.half	.L34-.L205
+	.byte	3,2,1,5,3,9
+	.half	.L149-.L34
+	.byte	3,1,1,9
+	.half	.L12-.L149
+	.byte	3,9,1,5,4,7,9
+	.half	.L206-.L12
+	.byte	3,2,1,5,12,9
+	.half	.L37-.L206
+	.byte	3,2,1,5,3,9
+	.half	.L151-.L37
+	.byte	3,1,1,9
+	.half	.L15-.L151
+	.byte	3,5,1,4,3,5,22,9
+	.half	.L24-.L15
+	.byte	3,115,1,5,46,9
+	.half	.L207-.L24
+	.byte	1,4,1,5,2,9
+	.half	.L135-.L207
+	.byte	3,22,1,5,1,9
+	.half	.L17-.L135
+	.byte	3,1,1,7,9
+	.half	.L59-.L17
+	.byte	0,1,1
+.L169:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_DebCounterBaseClass_Filter')
+	.sect	'.debug_ranges'
+.L58:
+	.word	-1,.L45,0,.L59-.L45,0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_DebCounterBaseClass_Filter')
+	.sect	'.debug_loc'
+.L44:
+	.word	-1,.L45,0,.L82-.L45
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L83:
+	.word	-1,.L45,0,.L82-.L45
+	.half	1
+	.byte	84
+	.word	0,0
+.L132:
+	.word	0,0
+.L137:
+	.word	0,0
+.L99:
+	.word	-1,.L45,.L100-.L45,.L82-.L45
+	.half	1
+	.byte	83
+	.word	.L144-.L45,.L16-.L45
+	.half	1
+	.byte	82
+	.word	.L146-.L45,.L25-.L45
+	.half	1
+	.byte	82
+	.word	.L148-.L45,.L34-.L45
+	.half	1
+	.byte	82
+	.word	.L150-.L45,.L37-.L45
+	.half	1
+	.byte	82
+	.word	.L152-.L45,.L24-.L45
+	.half	1
+	.byte	82
+	.word	.L153-.L45,.L17-.L45
+	.half	1
+	.byte	82
+	.word	0,0
+.L98:
+	.word	-1,.L45,.L145-.L45,.L14-.L45
+	.half	1
+	.byte	95
+	.word	.L147-.L45,.L11-.L45
+	.half	1
+	.byte	95
+	.word	.L149-.L45,.L12-.L45
+	.half	1
+	.byte	95
+	.word	.L151-.L45,.L15-.L45
+	.half	1
+	.byte	95
+	.word	.L24-.L45,.L17-.L45
+	.half	1
+	.byte	95
+	.word	0,0
+.L139:
+	.word	0,0
+.L97:
+	.word	0,0
+.L96:
+	.word	0,0
+.L94:
+	.word	0,0
+.L93:
+	.word	0,0
+.L89:
+	.word	0,0
+.L90:
+	.word	0,0
+.L87:
+	.word	-1,.L45,0,.L130-.L45
+	.half	1
+	.byte	85
+	.word	0,0
+.L104:
+	.word	0,0
+.L102:
+	.word	0,0
+.L115:
+	.word	0,0
+.L109:
+	.word	0,0
+.L121:
+	.word	0,0
+.L127:
+	.word	0,0
+.L86:
+	.word	-1,.L45,0,.L82-.L45
+	.half	1
+	.byte	101
+	.word	0,0
+.L103:
+	.word	0,0
+.L101:
+	.word	0,0
+.L113:
+	.word	0,0
+.L107:
+	.word	0,0
+.L119:
+	.word	0,0
+.L125:
+	.word	0,0
+.L85:
+	.word	-1,.L45,0,.L82-.L45
+	.half	1
+	.byte	100
+	.word	0,0
+.L91:
+	.word	-1,.L45,.L141-.L45,.L142-.L45
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L13-.L45,.L143-.L45
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L11-.L45,.L15-.L45
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L92:
+	.word	-1,.L45,.L130-.L45,.L82-.L45
+	.half	1
+	.byte	85
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_DebCounterBaseClass_GetLimits')
+	.sect	'.debug_loc'
+.L42:
+	.word	-1,.L43,0,.L60-.L43
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L67:
+	.word	-1,.L43,0,.L60-.L43
+	.half	1
+	.byte	102
+	.word	0,0
+.L66:
+	.word	-1,.L43,0,.L60-.L43
+	.half	1
+	.byte	101
+	.word	0,0
+.L64:
+	.word	-1,.L43,0,.L60-.L43
+	.half	1
+	.byte	84
+	.word	0,0
+.L72:
+	.word	0,0
+.L79:
+	.word	0,0
+.L62:
+	.word	-1,.L43,0,.L60-.L43
+	.half	1
+	.byte	100
+	.word	0,0
+.L70:
+	.word	0,0
+.L77:
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L208:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Dem_DebCounterBaseClass_GetLimits')
+	.sect	'.debug_frame'
+	.word	20
+	.word	.L208,.L43,.L60-.L43
+	.byte	8,18,8,19,8,23,0,0
+	.sdecl	'.debug_frame',debug,cluster('Dem_DebCounterBaseClass_Filter')
+	.sect	'.debug_frame'
+	.word	20
+	.word	.L208,.L45,.L82-.L45
+	.byte	8,19,8,22,8,23,0,0
+
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   225  #define DEM_STOP_SEC_ROM_CODE
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   226  #include "Dem_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   227  
+; BSW\src\BSW\Gen\Dem\src\deb\Dem_DebCtrBaseClass.c	   228  #endif
+
+	; Module end

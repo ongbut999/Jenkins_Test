@@ -1,0 +1,567 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc18956a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\Integration\\BSW\\rba_BswSrv_MemCopy.src Integration\\BSW\\Src\\rba_BswSrv_MemCopy.c"
+	.compiler_name		"ctc"
+	;source	'Integration\\BSW\\Src\\rba_BswSrv_MemCopy.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.rba_BswSrv_MemCopy.rba_BswSrv_MemCopy',code,cluster('rba_BswSrv_MemCopy')
+	.sect	'.text.rba_BswSrv_MemCopy.rba_BswSrv_MemCopy'
+	.align	2
+	
+	.global	rba_BswSrv_MemCopy
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	     1  /*
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	     2   * This is a template file. It defines integration functions necessary to complete RTA-BSW.
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	     3   * The integrator must complete the templates before deploying software containing functions defined in this file.
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	     4   * Once templates have been completed, the integrator should delete the #error line.
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	     5   * Note: The integrator is responsible for updates made to this file.
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	     6   *
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	     7   * To remove the following error define the macro NOT_READY_FOR_TESTING_OR_DEPLOYMENT with a compiler option (e.g. -D NOT_READY_FOR_TESTING_OR_DEPLOYMENT)
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	     8   * The removal of the error only allows the user to proceed with the building phase
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	     9   */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    10  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    11  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    12  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    13  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    14  /*
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    15   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    16   * Includes
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    17   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    18   */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    19  #include "rba_BswSrv.h"
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    20  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    21  /*
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    22   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    23   * Defines
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    24   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    25   */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    26  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    27  /*
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    28   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    29   * Variables
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    30   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    31   */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    32  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    33  /*
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    34   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    35   * Functions
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    36   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    37   */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    38  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    39  #define RBA_BSWSRV_START_SEC_CODE
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    40  #include "rba_BswSrv_MemMap.h"
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    41  /**
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    42   ***********************************************************************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    43   * \brief Memcopy with the same parameters as C90-memcpy
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    44   *
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    45   * This function implements Memcopy with the same parameters as C90-memcpy
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    46   * It copies 32 bit data, if possible. So it is save to copy structures which require consistent 32 bit data.
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    47   *
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    48   * \param[in]       void* xDest_pv, const void* xSrc_pcv, uint32 numBytes_u32
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    49   * \return          void*
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    50   ***********************************************************************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    51   */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    52   
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    53  void* rba_BswSrv_MemCopy(void* xDest_pv, const void* xSrc_pcv, uint32 numBytes_u32)
+; Function rba_BswSrv_MemCopy
+.L12:
+rba_BswSrv_MemCopy:	.type	func
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    54  {
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    55      uint32* xDest_pu32       = (uint32*)xDest_pv;
+	mov.aa	a15,a4
+.L42:
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    56      const uint32* xSrc_pcu32 = (const uint32*)xSrc_pcv;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    57      uint16* xDest_pu16;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    58      const uint16* xSrc_pcu16;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    59      uint8* xDest_pu8;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    60      const uint8* xSrc_pcu8;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    61      uint32 ctLoop_u32;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    62  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    63      /* 32 bit aligned copy */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    64      /* MISRA RULE 11.3 VIOLATION: cast cannot be avoided here */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    65      if ((numBytes_u32 >= 4) && ((((uint32)xDest_pu32 | (uint32)xSrc_pcu32) & 0x03) == 0))
+	jlt.u	d4,#4,.L2
+.L61:
+	mov.d	d15,a4
+.L43:
+	mov.d	d0,a5
+.L45:
+	or	d15,d0
+.L44:
+	and	d15,#3
+.L62:
+	jne	d15,#0,.L3
+.L63:
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    66      {
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    67          ctLoop_u32 = numBytes_u32 / 4;
+	sh	d15,d4,#-2
+.L46:
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    68          numBytes_u32 &= 0x03;
+	and	d4,d4,#3
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    69          do
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    70          {
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    71              *xDest_pu32 = *xSrc_pcu32;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    72              xDest_pu32++;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    73              xSrc_pcu32++;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    74              ctLoop_u32--;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    75          } while(ctLoop_u32 > 0);
+.L4:
+	ld.w	d0,[a5]
+.L64:
+	st.w	[a15],d0
+.L65:
+	add.a	a15,#4
+.L66:
+	add.a	a5,#4
+.L67:
+	add	d15,#-1
+.L68:
+	jne	d15,#0,.L4
+.L3:
+.L2:
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    76      }
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    77      /* MISRA RULE 11.4 VIOLATION: cast cannot be avoided here */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    78      xDest_pu16 = (uint16*)xDest_pu32;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    79      xSrc_pcu16 = (const uint16*)xSrc_pcu32;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    80  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    81      /* 16 bit aligned copy */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    82      /* MISRA RULE 11.3 VIOLATION: cast cannot be avoided here */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    83      if ((numBytes_u32 >= 2) && ((((uint32)xDest_pu16 | (uint32)xSrc_pcu16) & 0x01) == 0))
+	jlt.u	d4,#2,.L5
+.L69:
+	mov.d	d15,a15
+.L47:
+	mov.d	d0,a5
+.L49:
+	or	d15,d0
+.L48:
+	jnz.t	d15:0,.L6
+.L70:
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    84      {
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    85          ctLoop_u32 = numBytes_u32 / 2;
+	sh	d15,d4,#-1
+.L50:
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    86          numBytes_u32 &= 0x01;
+	and	d4,d4,#1
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    87          do
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    88          {
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    89              *xDest_pu16 = *xSrc_pcu16;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    90              xDest_pu16++;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    91              xSrc_pcu16++;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    92              ctLoop_u32--;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    93          } while(ctLoop_u32 > 0);
+.L7:
+	ld.hu	d0,[a5]0
+.L71:
+	st.h	[a15],d0
+.L72:
+	add.a	a15,#2
+.L73:
+	add.a	a5,#2
+.L74:
+	add	d15,#-1
+.L75:
+	jne	d15,#0,.L7
+.L6:
+.L5:
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    94      }
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    95      /* MISRA RULE 11.4 VIOLATION: cast cannot be avoided here */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    96      xDest_pu8 = (uint8*)xDest_pu16;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    97      xSrc_pcu8 = (const uint8*)xSrc_pcu16;
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    98  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	    99      /* 8 bit copy for remaining data */
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   100      for(ctLoop_u32 = 0; ctLoop_u32 < numBytes_u32; ctLoop_u32++)
+	mov	d15,#0
+.L51:
+	j	.L8
+.L9:
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   101      {
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   102          *xDest_pu8 = *xSrc_pcu8;
+	ld.bu	d0,[a5]
+.L76:
+	st.b	[a15],d0
+.L77:
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   103          xDest_pu8++;
+	add.a	a15,#1
+.L78:
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   104          xSrc_pcu8++;
+	add.a	a5,#1
+.L79:
+	add	d15,#1
+.L8:
+	jlt.u	d15,d4,.L9
+.L80:
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   105      }
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   106      return xDest_pv;
+	mov.aa	a2,a4
+.L52:
+	j	.L10
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   107  }
+.L10:
+	ret
+.L23:
+	
+__rba_BswSrv_MemCopy_function_end:
+	.size	rba_BswSrv_MemCopy,__rba_BswSrv_MemCopy_function_end-rba_BswSrv_MemCopy
+.L21:
+	; End of function
+	
+	.calls	'rba_BswSrv_MemCopy','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L14:
+	.word	379
+	.half	3
+	.word	.L15
+	.byte	4
+.L13:
+	.byte	1
+	.byte	'Integration\\BSW\\Src\\rba_BswSrv_MemCopy.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L16
+	.byte	2
+	.byte	'void',0
+.L22:
+	.byte	3
+	.word	140
+	.byte	4
+	.word	140
+.L25:
+	.byte	3
+	.word	151
+.L27:
+	.byte	5
+	.byte	'unsigned int',0,4,7
+.L29:
+	.byte	3
+	.word	161
+	.byte	4
+	.word	161
+.L31:
+	.byte	3
+	.word	182
+	.byte	5
+	.byte	'unsigned short int',0,2,7
+.L33:
+	.byte	3
+	.word	192
+	.byte	4
+	.word	192
+.L35:
+	.byte	3
+	.word	219
+	.byte	5
+	.byte	'unsigned char',0,1,8
+.L37:
+	.byte	3
+	.word	229
+	.byte	4
+	.word	229
+.L39:
+	.byte	3
+	.word	251
+	.byte	6,1,3
+	.word	261
+	.byte	7
+	.byte	'__codeptr',0,1,1,1
+	.word	263
+	.byte	7
+	.byte	'uint8',0,2,81,25
+	.word	229
+	.byte	7
+	.byte	'uint16',0,2,91,25
+	.word	192
+	.byte	7
+	.byte	'uint32',0,2,106,24
+	.word	161
+	.byte	5
+	.byte	'unsigned long long int',0,8,7,7
+	.byte	'rba_BswSrv_uint64',0,3,66,28
+	.word	330
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L15:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,59,0,3,8,0,0,3,15,0,73,19,0,0,4,38,0,73,19,0,0,5,36,0
+	.byte	3,8,11,15,62,15,0,0,6,21,0,54,15,0,0,7,22,0,3,8,58,15,59,15,57,15,73,19,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L16:
+	.word	.L54-.L53
+.L53:
+	.half	3
+	.word	.L56-.L55
+.L55:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Integration\\BSW\\Src\\rba_BswSrv_MemCopy.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0,0
+.L56:
+.L54:
+	.sdecl	'.debug_info',debug,cluster('rba_BswSrv_MemCopy')
+	.sect	'.debug_info'
+.L17:
+	.word	425
+	.half	3
+	.word	.L18
+	.byte	4,1
+	.byte	'Integration\\BSW\\Src\\rba_BswSrv_MemCopy.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L20,.L19
+	.byte	2
+	.word	.L13
+	.byte	3
+	.byte	'rba_BswSrv_MemCopy',0,1,53,7
+	.word	.L22
+	.byte	1,1,1
+	.word	.L12,.L23,.L11
+	.byte	4
+	.byte	'xDest_pv',0,1,53,32
+	.word	.L22,.L24
+	.byte	4
+	.byte	'xSrc_pcv',0,1,53,54
+	.word	.L25,.L26
+	.byte	4
+	.byte	'numBytes_u32',0,1,53,71
+	.word	.L27,.L28
+	.byte	5
+	.word	.L12,.L23
+	.byte	6
+	.byte	'xDest_pu32',0,1,55,13
+	.word	.L29,.L30
+	.byte	6
+	.byte	'xSrc_pcu32',0,1,56,19
+	.word	.L31,.L32
+	.byte	6
+	.byte	'xDest_pu16',0,1,57,13
+	.word	.L33,.L34
+	.byte	6
+	.byte	'xSrc_pcu16',0,1,58,19
+	.word	.L35,.L36
+	.byte	6
+	.byte	'xDest_pu8',0,1,59,12
+	.word	.L37,.L38
+	.byte	6
+	.byte	'xSrc_pcu8',0,1,60,18
+	.word	.L39,.L40
+	.byte	6
+	.byte	'ctLoop_u32',0,1,61,12
+	.word	.L27,.L41
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('rba_BswSrv_MemCopy')
+	.sect	'.debug_abbrev'
+.L18:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('rba_BswSrv_MemCopy')
+	.sect	'.debug_line'
+.L19:
+	.word	.L58-.L57
+.L57:
+	.half	3
+	.word	.L60-.L59
+.L59:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Integration\\BSW\\Src\\rba_BswSrv_MemCopy.c',0,0,0,0,0
+.L60:
+	.byte	5,30,7,0,5,2
+	.word	.L12
+	.byte	3,54,1,5,9,9
+	.half	.L42-.L12
+	.byte	3,10,1,5,43,7,9
+	.half	.L61-.L42
+	.byte	1,5,64,9
+	.half	.L43-.L61
+	.byte	1,5,54,9
+	.half	.L45-.L43
+	.byte	1,5,76,9
+	.half	.L44-.L45
+	.byte	1,5,84,9
+	.half	.L62-.L44
+	.byte	1,5,22,7,9
+	.half	.L63-.L62
+	.byte	3,2,1,9
+	.half	.L46-.L63
+	.byte	3,1,1,5,27,9
+	.half	.L4-.L46
+	.byte	3,3,1,5,25,9
+	.half	.L64-.L4
+	.byte	1,5,23,9
+	.half	.L65-.L64
+	.byte	3,1,1,9
+	.half	.L66-.L65
+	.byte	3,1,1,9
+	.half	.L67-.L66
+	.byte	3,1,1,5,32,9
+	.half	.L68-.L67
+	.byte	3,1,1,5,9,7,9
+	.half	.L2-.L68
+	.byte	3,8,1,5,43,7,9
+	.half	.L69-.L2
+	.byte	1,5,64,9
+	.half	.L47-.L69
+	.byte	1,5,54,9
+	.half	.L49-.L47
+	.byte	1,5,84,9
+	.half	.L48-.L49
+	.byte	1,5,22,7,9
+	.half	.L70-.L48
+	.byte	3,2,1,9
+	.half	.L50-.L70
+	.byte	3,1,1,5,27,9
+	.half	.L7-.L50
+	.byte	3,3,1,5,25,9
+	.half	.L71-.L7
+	.byte	1,5,23,9
+	.half	.L72-.L71
+	.byte	3,1,1,9
+	.half	.L73-.L72
+	.byte	3,1,1,9
+	.half	.L74-.L73
+	.byte	3,1,1,5,32,9
+	.half	.L75-.L74
+	.byte	3,1,1,5,20,7,9
+	.half	.L5-.L75
+	.byte	3,7,1,5,50,9
+	.half	.L51-.L5
+	.byte	1,5,22,9
+	.half	.L9-.L51
+	.byte	3,2,1,5,20,9
+	.half	.L76-.L9
+	.byte	1,5,18,9
+	.half	.L77-.L76
+	.byte	3,1,1,9
+	.half	.L78-.L77
+	.byte	3,1,1,5,62,9
+	.half	.L79-.L78
+	.byte	3,124,1,5,50,9
+	.half	.L8-.L79
+	.byte	1,5,5,7,9
+	.half	.L80-.L8
+	.byte	3,6,1,5,1,9
+	.half	.L10-.L80
+	.byte	3,1,1,7,9
+	.half	.L21-.L10
+	.byte	0,1,1
+.L58:
+	.sdecl	'.debug_ranges',debug,cluster('rba_BswSrv_MemCopy')
+	.sect	'.debug_ranges'
+.L20:
+	.word	-1,.L12,0,.L21-.L12,0,0
+	.sdecl	'.debug_loc',debug,cluster('rba_BswSrv_MemCopy')
+	.sect	'.debug_loc'
+.L41:
+	.word	-1,.L12,.L46-.L12,.L2-.L12
+	.half	1
+	.byte	95
+	.word	.L50-.L12,.L5-.L12
+	.half	1
+	.byte	95
+	.word	.L51-.L12,.L23-.L12
+	.half	1
+	.byte	95
+	.word	0,0
+.L28:
+	.word	-1,.L12,0,.L23-.L12
+	.half	1
+	.byte	84
+	.word	0,0
+.L11:
+	.word	-1,.L12,0,.L23-.L12
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L34:
+	.word	0,0
+.L30:
+	.word	-1,.L12,.L42-.L12,.L23-.L12
+	.half	1
+	.byte	111
+	.word	.L47-.L12,.L48-.L12
+	.half	1
+	.byte	95
+	.word	0,0
+.L38:
+	.word	0,0
+.L24:
+	.word	-1,.L12,0,.L23-.L12
+	.half	1
+	.byte	100
+	.word	.L43-.L12,.L44-.L12
+	.half	1
+	.byte	95
+	.word	.L52-.L12,.L23-.L12
+	.half	1
+	.byte	98
+	.word	0,0
+.L36:
+	.word	-1,.L12,0,.L23-.L12
+	.half	1
+	.byte	101
+	.word	0,0
+.L32:
+	.word	-1,.L12,0,.L23-.L12
+	.half	1
+	.byte	101
+	.word	.L49-.L12,.L7-.L12
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L40:
+	.word	-1,.L12,0,.L23-.L12
+	.half	1
+	.byte	101
+	.word	0,0
+.L26:
+	.word	-1,.L12,0,.L23-.L12
+	.half	1
+	.byte	101
+	.word	.L45-.L12,.L4-.L12
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L81:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('rba_BswSrv_MemCopy')
+	.sect	'.debug_frame'
+	.word	20
+	.word	.L81,.L12,.L23-.L12
+	.byte	8,19,8,22,8,23,0,0
+
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   108  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   109  #define RBA_BSWSRV_STOP_SEC_CODE
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   110  #include "rba_BswSrv_MemMap.h"
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   111  
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   112  /*<BASDKey>
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   113  **********************************************************************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   114  * $History__:$
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   115  **********************************************************************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCopy.c	   116  </BASDKey>*/
+
+	; Module end

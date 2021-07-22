@@ -1,0 +1,36 @@
+
+
+Starting script insert_ECU_Addresses.pl!
+
+
+Step 0 check the requested MAP file pattern !
+
+
+Reading Input file : Adr_Files\Characteristics.Adr !
+
+
+Reading Input file : Adr_Files\Measurements.Adr !
+All Variables from file Adr_Files\Characteristics.Adr replaced with values from MAP file 
+All Variables from file Adr_Files\Measurements.Adr replaced with values from MAP file 
+
+Ending script insert_ECU_Addresses.pl!
+
+
+Starting script insert_segment_sizes.pl!
+Address of segment PFLASH0_CALIB found in Asap_Main_mc_out_temp.a2l
+Size of segment PFLASH0_CALIB found in Asap_Main_mc_out_temp.a2l
+Address of segment PFLASH0_CPU0_PRIVATE found in Asap_Main_mc_out_temp.a2l
+Size of segment PFLASH0_CPU0_PRIVATE found in Asap_Main_mc_out_temp.a2l
+Number of address found: 2
+Number of size found: 2
+Segment PFLASH0_CPU0_PRIVATE found in map file. Address is: 0x80038500. Size is: 0x000309a8
+Segment PFLASH0_CPU0_PRIVATE found in map file. Address is: 0x80068ea8. Size is: 0x00000001
+Segment PFLASH0_CALIB found in map file. Address is: 0x801c0000. Size is: 0x00004000
+      0x801c0000 /*WARNING! __calpage_start  found in elf file */ /* __calpage_start */
+
+      0x00004000 /*WARNING! __calpage_size  found in elf file */ /* must equal to size of block used for calibration */
+
+        0x80038500  
+
+        0x000309a9   /*TODO: use linker value since this varies depending on processor*/
+

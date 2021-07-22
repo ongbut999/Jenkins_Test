@@ -1,0 +1,1945 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc19356a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\Integration\\BSW\\Nvm_MultiBlockCallback.src Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c"
+	.compiler_name		"ctc"
+	;source	'Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Nvm_MultiBlockCallback.IC_BswM_NvM_ReadAll',code,cluster('IC_BswM_NvM_ReadAll')
+	.sect	'.text.Nvm_MultiBlockCallback.IC_BswM_NvM_ReadAll'
+	.align	2
+	
+	.global	IC_BswM_NvM_ReadAll
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	     1  #include "NvM.h"
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	     2  #include "Rte_NvM_Type.h"
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	     3  #include "TimingCalculation.h"
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	     4  #include "MemIf.h"
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	     5  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	     6  uint16 ReadAllcounter,WriteAllcounter,WriteAllcounter2;
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	     7  static uint32 NvM_WriteAll_ElapsedTime = 0;
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	     8  static uint32 NvM_ReadAll_ElapsedTime = 0;
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	     9  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    10  void IC_BswM_NvM_ReadAll ( void )
+; Function IC_BswM_NvM_ReadAll
+.L9:
+IC_BswM_NvM_ReadAll:	.type	func
+	sub.a	a10,#8
+.L46:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    11  {
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    12  	NvM_Rb_StatusType status_NvM;
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    13  	MemIf_StatusType stMemIf_en;
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    14  	uint32 *CRC_ptr;
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    15  	uint32 CRC_data;
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    16  	uint32 CRC_cal;
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    17  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    18  	ReadAllcounter=0;
+	movh.a	a15,#@his(ReadAllcounter)
+	lea	a15,[a15]@los(ReadAllcounter)
+.L63:
+	mov	d15,#0
+.L64:
+	st.h	[a15],d15
+.L65:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    19  	/* disable detection and report of timeout for FLS */
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    20  	Fls_ControlTimeoutDet(0);
+	mov	d4,#0
+	call	Fls_17_Pmu_ControlTimeoutDet
+.L66:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    21  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    22  	IC_SetCurrentTime();
+	call	IC_SetCurrentTime
+.L67:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    23  	NvM_ReadAll();
+	call	NvM_ReadAll
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    24  	do
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    25  	{
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    26  		NvM_MainFunction();
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    27  		MemIf_Rb_MainFunction();
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    28  		NvM_Rb_GetStatus(&status_NvM);
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    29  		stMemIf_en = MemIf_Rb_GetStatus();
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    30  		ReadAllcounter++;
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    31  	} while ( (status_NvM == NVM_RB_STATUS_BUSY ) || (stMemIf_en == MEMIF_BUSY));
+.L2:
+.L3:
+	call	NvM_MainFunction
+.L68:
+	call	MemIf_Rb_MainFunction
+.L69:
+	lea	a4,[a10]0
+	call	NvM_Rb_GetStatus
+.L70:
+	call	MemIf_Rb_GetStatus
+.L47:
+	ld.hu	d15,[a15]0
+.L71:
+	add	d15,#1
+	st.h	[a15],d15
+.L72:
+	ld.w	d15,[a10]
+.L73:
+	jeq	d15,#2,.L3
+.L74:
+	jeq	d2,#2,.L2
+.L75:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    32  	NvM_ReadAll_ElapsedTime = IC_GetElapsedTime();
+	movh.a	a15,#@his(NvM_ReadAll_ElapsedTime)
+	lea	a15,[a15]@los(NvM_ReadAll_ElapsedTime)
+.L76:
+	call	IC_GetElapsedTime
+.L48:
+	st.w	[a15],d2
+.L77:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    33  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    34  	/* enable detection and report of timeout for FLS */
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    35  	Fls_ControlTimeoutDet(1);
+	mov	d4,#1
+	call	Fls_17_Pmu_ControlTimeoutDet
+.L78:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    36  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    37  }
+	ret
+.L36:
+	
+__IC_BswM_NvM_ReadAll_function_end:
+	.size	IC_BswM_NvM_ReadAll,__IC_BswM_NvM_ReadAll_function_end-IC_BswM_NvM_ReadAll
+.L20:
+	; End of function
+	
+	.sdecl	'.text.Nvm_MultiBlockCallback.IC_BswM_NvM_WriteAll',code,cluster('IC_BswM_NvM_WriteAll')
+	.sect	'.text.Nvm_MultiBlockCallback.IC_BswM_NvM_WriteAll'
+	.align	2
+	
+	.global	IC_BswM_NvM_WriteAll
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    38  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    39  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    40  void IC_BswM_NvM_WriteAll ( void )
+; Function IC_BswM_NvM_WriteAll
+.L11:
+IC_BswM_NvM_WriteAll:	.type	func
+	sub.a	a10,#8
+.L49:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    41  {
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    42  	NvM_Rb_StatusType status_NvM;
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    43  	MemIf_StatusType stMemIf_en;
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    44  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    45  	WriteAllcounter=0;
+	movh.a	a15,#@his(WriteAllcounter)
+	lea	a15,[a15]@los(WriteAllcounter)
+.L83:
+	mov	d15,#0
+.L84:
+	st.h	[a15],d15
+.L85:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    46  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    47  	/*
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    48  	 * Here RTE scheduling is stopped, so WdgM won't be triggered anymore.
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    49  	 * we need to prevent the Wdg from reseting the CPU.
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    50  	 * WDG_SLOW_MODE so Wdg increases the hardware timeout period
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    51  	 */
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    52  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    53  	/* disable detection and report of timeout for FLS */
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    54  	Fls_ControlTimeoutDet(0);
+	mov	d4,#0
+	call	Fls_17_Pmu_ControlTimeoutDet
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    55  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    56  	do
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    57  	{
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    58  		NvM_MainFunction();
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    59  		MemIf_Rb_MainFunction();
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    60  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    61  		NvM_Rb_GetStatus(&status_NvM);
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    62  		stMemIf_en = MemIf_Rb_GetStatus();
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    63  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    64  		WriteAllcounter++;
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    65  		
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    66  	} while ( (status_NvM == NVM_RB_STATUS_BUSY ) || (stMemIf_en == MEMIF_BUSY));
+.L4:
+.L5:
+	call	NvM_MainFunction
+.L86:
+	call	MemIf_Rb_MainFunction
+.L87:
+	lea	a4,[a10]0
+	call	NvM_Rb_GetStatus
+.L88:
+	call	MemIf_Rb_GetStatus
+.L50:
+	ld.hu	d15,[a15]0
+.L89:
+	add	d15,#1
+	st.h	[a15],d15
+.L90:
+	ld.w	d15,[a10]
+.L91:
+	jeq	d15,#2,.L5
+.L92:
+	jeq	d2,#2,.L4
+.L93:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    67  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    68  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    69  	/* in case of page swap is required a second loop to complete the
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    70  	 * write of the updated block after the page swap
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    71  	 */
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    72  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    73  	IC_SetCurrentTime();
+	call	IC_SetCurrentTime
+.L51:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    74  	NvM_WriteAll();
+	call	NvM_WriteAll
+.L94:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    75  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    76  	do
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    77  	{
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    78  		NvM_MainFunction();
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    79  		MemIf_Rb_MainFunction();
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    80  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    81  		NvM_Rb_GetStatus(&status_NvM);
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    82  		stMemIf_en = MemIf_Rb_GetStatus();
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    83  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    84  		WriteAllcounter2++;
+	movh.a	a15,#@his(WriteAllcounter2)
+	lea	a15,[a15]@los(WriteAllcounter2)
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    85  	} while ( (status_NvM == NVM_RB_STATUS_BUSY ) || (stMemIf_en == MEMIF_BUSY));
+.L6:
+.L7:
+	call	NvM_MainFunction
+.L95:
+	call	MemIf_Rb_MainFunction
+.L96:
+	lea	a4,[a10]0
+	call	NvM_Rb_GetStatus
+.L97:
+	call	MemIf_Rb_GetStatus
+.L52:
+	ld.hu	d15,[a15]0
+.L98:
+	add	d15,#1
+	st.h	[a15],d15
+.L99:
+	ld.w	d15,[a10]
+.L100:
+	jeq	d15,#2,.L7
+.L101:
+	jeq	d2,#2,.L6
+.L102:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    86  	NvM_WriteAll_ElapsedTime = IC_GetElapsedTime();
+	movh.a	a15,#@his(NvM_WriteAll_ElapsedTime)
+	lea	a15,[a15]@los(NvM_WriteAll_ElapsedTime)
+.L103:
+	call	IC_GetElapsedTime
+.L53:
+	st.w	[a15],d2
+.L104:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    87  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    88  	/* enable detection and report of timeout for FLS */
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    89  	Fls_ControlTimeoutDet(1);
+	mov	d4,#1
+	call	Fls_17_Pmu_ControlTimeoutDet
+.L105:
+
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    90  
+; Integration\BSW\Src\Nvm_MultiBlockCallback.c	    91  }
+	ret
+.L41:
+	
+__IC_BswM_NvM_WriteAll_function_end:
+	.size	IC_BswM_NvM_WriteAll,__IC_BswM_NvM_WriteAll_function_end-IC_BswM_NvM_WriteAll
+.L25:
+	; End of function
+	
+	.sdecl	'.bss.Nvm_MultiBlockCallback.ReadAllcounter',data,cluster('ReadAllcounter')
+	.sect	'.bss.Nvm_MultiBlockCallback.ReadAllcounter'
+	.global	ReadAllcounter
+	.align	2
+ReadAllcounter:	.type	object
+	.size	ReadAllcounter,2
+	.space	2
+	.sdecl	'.bss.Nvm_MultiBlockCallback.WriteAllcounter',data,cluster('WriteAllcounter')
+	.sect	'.bss.Nvm_MultiBlockCallback.WriteAllcounter'
+	.global	WriteAllcounter
+	.align	2
+WriteAllcounter:	.type	object
+	.size	WriteAllcounter,2
+	.space	2
+	.sdecl	'.bss.Nvm_MultiBlockCallback.WriteAllcounter2',data,cluster('WriteAllcounter2')
+	.sect	'.bss.Nvm_MultiBlockCallback.WriteAllcounter2'
+	.global	WriteAllcounter2
+	.align	2
+WriteAllcounter2:	.type	object
+	.size	WriteAllcounter2,2
+	.space	2
+	.sdecl	'.data.Nvm_MultiBlockCallback.NvM_WriteAll_ElapsedTime',data,cluster('NvM_WriteAll_ElapsedTime')
+	.sect	'.data.Nvm_MultiBlockCallback.NvM_WriteAll_ElapsedTime'
+	.align	4
+NvM_WriteAll_ElapsedTime:	.type	object
+	.size	NvM_WriteAll_ElapsedTime,4
+	.space	4
+	.sdecl	'.data.Nvm_MultiBlockCallback.NvM_ReadAll_ElapsedTime',data,cluster('NvM_ReadAll_ElapsedTime')
+	.sect	'.data.Nvm_MultiBlockCallback.NvM_ReadAll_ElapsedTime'
+	.align	4
+NvM_ReadAll_ElapsedTime:	.type	object
+	.size	NvM_ReadAll_ElapsedTime,4
+	.space	4
+	.calls	'IC_BswM_NvM_ReadAll','Fls_17_Pmu_ControlTimeoutDet'
+	.calls	'IC_BswM_NvM_ReadAll','IC_SetCurrentTime'
+	.calls	'IC_BswM_NvM_ReadAll','NvM_ReadAll'
+	.calls	'IC_BswM_NvM_ReadAll','NvM_MainFunction'
+	.calls	'IC_BswM_NvM_ReadAll','MemIf_Rb_MainFunction'
+	.calls	'IC_BswM_NvM_ReadAll','NvM_Rb_GetStatus'
+	.calls	'IC_BswM_NvM_ReadAll','MemIf_Rb_GetStatus'
+	.calls	'IC_BswM_NvM_ReadAll','IC_GetElapsedTime'
+	.calls	'IC_BswM_NvM_WriteAll','Fls_17_Pmu_ControlTimeoutDet'
+	.calls	'IC_BswM_NvM_WriteAll','NvM_MainFunction'
+	.calls	'IC_BswM_NvM_WriteAll','MemIf_Rb_MainFunction'
+	.calls	'IC_BswM_NvM_WriteAll','NvM_Rb_GetStatus'
+	.calls	'IC_BswM_NvM_WriteAll','MemIf_Rb_GetStatus'
+	.calls	'IC_BswM_NvM_WriteAll','IC_SetCurrentTime'
+	.calls	'IC_BswM_NvM_WriteAll','NvM_WriteAll'
+	.calls	'IC_BswM_NvM_WriteAll','IC_GetElapsedTime'
+	.calls	'IC_BswM_NvM_ReadAll','',8
+	.extern	NvM_Rb_GetStatus
+	.extern	NvM_ReadAll
+	.extern	NvM_WriteAll
+	.extern	NvM_MainFunction
+	.extern	IC_SetCurrentTime
+	.extern	IC_GetElapsedTime
+	.extern	Fls_17_Pmu_ControlTimeoutDet
+	.extern	MemIf_Rb_GetStatus
+	.extern	MemIf_Rb_MainFunction
+	.calls	'IC_BswM_NvM_WriteAll','',8
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L13:
+	.word	10764
+	.half	3
+	.word	.L14
+	.byte	4
+.L12:
+	.byte	1
+	.byte	'Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L15
+	.byte	2
+	.byte	'unsigned char',0,1,8
+.L37:
+	.byte	3,2,32,9,4,4
+	.byte	'NVM_RB_STATUS_UNINIT',0,0,4
+	.byte	'NVM_RB_STATUS_IDLE',0,1,4
+	.byte	'NVM_RB_STATUS_BUSY',0,2,0,5
+	.word	161
+	.byte	6
+	.byte	'NvM_Rb_GetStatus',0,1,255,1,23
+	.word	144
+	.byte	1,1,1,1,7
+	.byte	'StatusPtr',0,1,255,1,59
+	.word	232
+	.byte	0,8
+	.byte	'NvM_ReadAll',0,1,238,2,13,1,1,1,1,8
+	.byte	'NvM_WriteAll',0,1,247,2,13,1,1,1,1,8
+	.byte	'NvM_MainFunction',0,1,139,3,13,1,1,1,1,8
+	.byte	'IC_SetCurrentTime',0,3,14,40,1,1,1,1
+.L45:
+	.byte	2
+	.byte	'unsigned int',0,4,7,9
+	.byte	'IC_GetElapsedTime',0,3,15,42
+	.word	382
+	.byte	1,1,1,1,10
+	.byte	'Fls_17_Pmu_ControlTimeoutDet',0,4,225,10,13,1,1,1,1,7
+	.byte	'Param',0,4,225,10,48
+	.word	144
+	.byte	0
+.L39:
+	.byte	3,6,23,9,4,4
+	.byte	'MEMIF_UNINIT',0,0,4
+	.byte	'MEMIF_IDLE',0,1,4
+	.byte	'MEMIF_BUSY',0,2,4
+	.byte	'MEMIF_BUSY_INTERNAL',0,3,0,9
+	.byte	'MemIf_Rb_GetStatus',0,5,64,25
+	.word	482
+	.byte	1,1,1,1,8
+	.byte	'MemIf_Rb_MainFunction',0,5,68,13,1,1,1,1,11,1,5
+	.word	612
+	.byte	12
+	.byte	'__codeptr',0,7,1,1
+	.word	614
+	.byte	2
+	.byte	'char',0,1,6,12
+	.byte	'sint8',0,8,76,25
+	.word	637
+	.byte	12
+	.byte	'uint8',0,8,81,25
+	.word	144
+.L44:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,12
+	.byte	'uint16',0,8,91,25
+	.word	673
+	.byte	12
+	.byte	'uint32',0,8,106,24
+	.word	382
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,12
+	.byte	'uint64',0,8,111,30
+	.word	725
+	.byte	12
+	.byte	'boolean',0,8,127,25
+	.word	144
+	.byte	12
+	.byte	'StatusType',0,9,191,1,27
+	.word	144
+	.byte	12
+	.byte	'Std_ReturnType',0,9,199,1,15
+	.word	144
+	.byte	13,9,206,1,9,8,14
+	.byte	'vendorID',0
+	.word	673
+	.byte	2,2,35,0,14
+	.byte	'moduleID',0
+	.word	673
+	.byte	2,2,35,2,14
+	.byte	'sw_major_version',0
+	.word	144
+	.byte	1,2,35,4,14
+	.byte	'sw_minor_version',0
+	.word	144
+	.byte	1,2,35,5,14
+	.byte	'sw_patch_version',0
+	.word	144
+	.byte	1,2,35,6,0,12
+	.byte	'Std_VersionInfoType',0,9,213,1,3
+	.word	826
+	.byte	12
+	.byte	'PduIdType',0,10,22,19
+	.word	673
+	.byte	12
+	.byte	'PduLengthType',0,10,26,19
+	.word	673
+	.byte	3,11,113,9,4,4
+	.byte	'TP_DATACONF',0,0,4
+	.byte	'TP_DATARETRY',0,1,4
+	.byte	'TP_CONFPENDING',0,2,0,12
+	.byte	'TpDataStateType',0,11,118,3
+	.word	1016
+	.byte	12
+	.byte	'Can_IdType',0,12,32,16
+	.word	382
+	.byte	12
+	.byte	'Can_HwHandleType',0,12,43,16
+	.word	673
+	.byte	13,13,93,9,8,14
+	.byte	'Class',0
+	.word	144
+	.byte	1,2,35,0,14
+	.byte	'TIN',0
+	.word	144
+	.byte	1,2,35,1,14
+	.byte	'ReturnAddress',0
+	.word	382
+	.byte	4,2,35,4,0,12
+	.byte	'OsTrapInfoType',0,13,97,3
+	.word	1136
+	.byte	15,68
+	.word	382
+	.byte	16,16,0,13,13,154,1,9,68,14
+	.byte	'store',0
+	.word	1216
+	.byte	68,2,35,0,0,15,68
+	.word	1225
+	.byte	16,0,0,12
+	.byte	'Os_JumpBufType',0,13,156,1,3
+	.word	1247
+	.byte	12
+	.byte	'Os_StackTraceType',0,13,174,1,18
+	.word	382
+	.byte	13,13,175,1,9,8,14
+	.byte	'sp',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	'ctx',0
+	.word	382
+	.byte	4,2,35,4,0,12
+	.byte	'Os_StackValueType',0,13,175,1,63
+	.word	1307
+	.byte	12
+	.byte	'Os_StackSizeType',0,13,176,1,27
+	.word	1307
+	.byte	17,1,1,5
+	.word	1392
+	.byte	12
+	.byte	'Os_VoidVoidFunctionType',0,13,179,1,16
+	.word	1395
+	.byte	12
+	.byte	'ApplicationType',0,13,193,1,23
+	.word	144
+	.byte	18
+	.byte	'Os_ApplicationConfigurationType_s',0,13,198,1,16,2,14
+	.byte	'app_id',0
+	.word	144
+	.byte	1,2,35,0,14
+	.byte	'access',0
+	.word	144
+	.byte	1,2,35,1,0,12
+	.byte	'Os_ApplicationConfigurationType',0,13,201,1,3
+	.word	1458
+	.byte	12
+	.byte	'Os_CoreStateType',0,13,203,1,16
+	.word	382
+	.byte	12
+	.byte	'AreaIdType',0,13,204,1,16
+	.word	673
+	.byte	12
+	.byte	'Os_PeripheralAddressType',0,13,212,1,22
+	.word	382
+	.byte	12
+	.byte	'TickType',0,13,221,1,22
+	.word	382
+	.byte	12
+	.byte	'Os_StopwatchTickType',0,13,225,1,22
+	.word	382
+	.byte	5
+	.word	382
+	.byte	12
+	.byte	'Os_Lockable',0,13,234,1,18
+	.word	1700
+	.byte	12
+	.byte	'CoreIdType',0,13,236,1,16
+	.word	673
+	.byte	12
+	.byte	'SpinlockIdType',0,13,237,1,16
+	.word	673
+	.byte	3,13,239,1,9,4,4
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,4
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,12
+	.byte	'TryToGetSpinlockType',0,13,239,1,74
+	.word	1770
+	.byte	3,13,174,2,9,4,4
+	.byte	'APPLICATION_ACCESSIBLE',0,0,4
+	.byte	'APPLICATION_RESTARTING',0,1,4
+	.byte	'APPLICATION_TERMINATED',0,2,0,12
+	.byte	'ApplicationStateType',0,13,174,2,92
+	.word	1863
+	.byte	19
+	.byte	'void',0,5
+	.word	1975
+	.byte	20,1,1,21
+	.word	144
+	.byte	21
+	.word	1981
+	.byte	0,5
+	.word	1986
+	.byte	12
+	.byte	'Os_FunctionEntryType',0,13,183,2,16
+	.word	2000
+	.byte	18
+	.byte	'Os_MeterInfoType_s',0,13,193,2,16,48,14
+	.byte	'elapsed',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	'previous',0
+	.word	382
+	.byte	4,2,35,4,14
+	.byte	'max',0
+	.word	382
+	.byte	4,2,35,8,14
+	.byte	'cumulative',0
+	.word	382
+	.byte	4,2,35,12,14
+	.byte	'stackbase',0
+	.word	1307
+	.byte	8,2,35,16,14
+	.byte	'stackusage',0
+	.word	1307
+	.byte	8,2,35,24,14
+	.byte	'stackmax',0
+	.word	1307
+	.byte	8,2,35,32,14
+	.byte	'stackbudget',0
+	.word	1307
+	.byte	8,2,35,40,0,12
+	.byte	'Os_MeterInfoType',0,13,202,2,3
+	.word	2035
+	.byte	5
+	.word	2035
+	.byte	12
+	.byte	'Os_MeterInfoRefType',0,13,203,2,50
+	.word	2233
+	.byte	12
+	.byte	'EventMaskType',0,13,206,2,15
+	.word	144
+	.byte	12
+	.byte	'Os_imaskType',0,13,211,2,16
+	.word	382
+	.byte	18
+	.byte	'Os_ISRDynType_s',0,13,213,2,16,48,14
+	.byte	'meter',0
+	.word	2035
+	.byte	48,2,35,0,0,12
+	.byte	'Os_ISRDynType',0,13,215,2,3
+	.word	2312
+	.byte	5
+	.word	2312
+	.byte	22
+	.word	2373
+	.byte	18
+	.byte	'Os_ISRType_s',0,13,216,2,16,24,14
+	.byte	'entry_function',0
+	.word	1400
+	.byte	4,2,35,0,14
+	.byte	'dynamic',0
+	.word	2378
+	.byte	4,2,35,4,14
+	.byte	'imask',0
+	.word	382
+	.byte	4,2,35,8,14
+	.byte	'stackbudget',0
+	.word	1307
+	.byte	8,2,35,12,14
+	.byte	'access',0
+	.word	144
+	.byte	1,2,35,20,14
+	.byte	'application',0
+	.word	144
+	.byte	1,2,35,21,0,12
+	.byte	'Os_ISRType',0,13,223,2,3
+	.word	2383
+	.byte	5
+	.word	1392
+	.byte	22
+	.word	2383
+	.byte	5
+	.word	2542
+	.byte	12
+	.byte	'ISRType',0,13,224,2,46
+	.word	2547
+	.byte	12
+	.byte	'Os_bitmask',0,13,239,2,22
+	.word	382
+	.byte	12
+	.byte	'Os_pset0Type',0,13,240,2,20
+	.word	382
+	.byte	12
+	.byte	'Os_pset1Type',0,13,241,2,20
+	.word	382
+	.byte	12
+	.byte	'Os_pset2Type',0,13,242,2,20
+	.word	382
+	.byte	23,13,243,2,9,4,14
+	.byte	'p0',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	'p1',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	'p2',0
+	.word	382
+	.byte	4,2,35,0,0,12
+	.byte	'Os_psetType',0,13,247,2,3
+	.word	2655
+	.byte	23,13,249,2,9,4,14
+	.byte	't0',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	't1',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	't2',0
+	.word	382
+	.byte	4,2,35,0,0,12
+	.byte	'Os_tpmaskType',0,13,253,2,3
+	.word	2719
+	.byte	12
+	.byte	'Os_ActivationCountType',0,13,254,2,23
+	.word	144
+	.byte	18
+	.byte	'Os_TaskDynType_s',0,13,128,3,16,120,14
+	.byte	'terminate_jump_buf',0
+	.word	1256
+	.byte	68,2,35,0,14
+	.byte	'meter',0
+	.word	2035
+	.byte	48,2,35,68,14
+	.byte	'activation_count',0
+	.word	144
+	.byte	1,2,35,116,0,12
+	.byte	'Os_TaskDynType',0,13,132,3,3
+	.word	2817
+	.byte	15,68
+	.word	1225
+	.byte	16,0,0,5
+	.word	2817
+	.byte	22
+	.word	2943
+	.byte	18
+	.byte	'Os_TaskType_s',0,13,134,3,16,40,14
+	.byte	'dynamic',0
+	.word	2948
+	.byte	4,2,35,0,14
+	.byte	'entry_function',0
+	.word	1400
+	.byte	4,2,35,4,14
+	.byte	'pset',0
+	.word	2655
+	.byte	4,2,35,8,14
+	.byte	'base_tpmask',0
+	.word	2719
+	.byte	4,2,35,12,14
+	.byte	'tpmask',0
+	.word	2719
+	.byte	4,2,35,16,14
+	.byte	'core_id',0
+	.word	673
+	.byte	2,2,35,20,14
+	.byte	'index',0
+	.word	382
+	.byte	4,2,35,24,14
+	.byte	'stackbudget',0
+	.word	1307
+	.byte	8,2,35,28,14
+	.byte	'activation_count',0
+	.word	144
+	.byte	1,2,35,36,14
+	.byte	'access',0
+	.word	144
+	.byte	1,2,35,37,14
+	.byte	'application',0
+	.word	144
+	.byte	1,2,35,38,0,12
+	.byte	'Os_TaskType',0,13,146,3,3
+	.word	2953
+	.byte	22
+	.word	2953
+	.byte	5
+	.word	3203
+	.byte	12
+	.byte	'TaskType',0,13,147,3,47
+	.word	3208
+	.byte	24
+	.byte	'Os_TaskStateType',0,13,155,3,6,4,4
+	.byte	'SUSPENDED',0,0,4
+	.byte	'READY',0,1,4
+	.byte	'WAITING',0,2,4
+	.byte	'RUNNING',0,3,0,12
+	.byte	'TaskStateType',0,13,156,3,31
+	.word	3231
+	.byte	23,13,167,3,3,4,14
+	.byte	'tpmask',0
+	.word	2719
+	.byte	4,2,35,0,0,18
+	.byte	'Os_ResourceDynType_s',0,13,166,3,16,4,14
+	.byte	'saved_priority',0
+	.word	3318
+	.byte	4,2,35,0,0,12
+	.byte	'Os_ResourceDynType',0,13,170,3,3
+	.word	3341
+	.byte	5
+	.word	3341
+	.byte	22
+	.word	3421
+	.byte	18
+	.byte	'Os_ResourceType_s',0,13,171,3,16,12,14
+	.byte	'dynamic',0
+	.word	3426
+	.byte	4,2,35,0,14
+	.byte	'tpmask',0
+	.word	2719
+	.byte	4,2,35,4,14
+	.byte	'access',0
+	.word	144
+	.byte	1,2,35,8,0,12
+	.byte	'Os_ResourceType',0,13,175,3,3
+	.word	3431
+	.byte	13,13,181,3,9,12,14
+	.byte	'maxallowedvalue',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	'ticksperbase',0
+	.word	382
+	.byte	4,2,35,4,14
+	.byte	'mincycle',0
+	.word	382
+	.byte	4,2,35,8,0,12
+	.byte	'AlarmBaseType',0,13,185,3,3
+	.word	3530
+	.byte	13,13,206,3,9,8,14
+	.byte	'Running',0
+	.word	144
+	.byte	1,2,35,0,14
+	.byte	'Pending',0
+	.word	144
+	.byte	1,2,35,1,14
+	.byte	'Delay',0
+	.word	382
+	.byte	4,2,35,4,0,12
+	.byte	'Os_CounterStatusType',0,13,210,3,3
+	.word	3625
+	.byte	25
+	.word	144
+	.byte	1,1,5
+	.word	3711
+	.byte	12
+	.byte	'Os_CounterIncrAdvType',0,13,217,3,22
+	.word	3718
+	.byte	18
+	.byte	's_swd',0,13,222,3,12,4,14
+	.byte	'count',0
+	.word	382
+	.byte	4,2,35,0,0,23,13,221,3,3,4,14
+	.byte	'sw',0
+	.word	3754
+	.byte	4,2,35,0,0,18
+	.byte	'Os_CounterDynType_s',0,13,220,3,16,4,14
+	.byte	'type_dependent',0
+	.word	3782
+	.byte	4,2,35,0,0,12
+	.byte	'Os_CounterDynType',0,13,226,3,3
+	.word	3801
+	.byte	5
+	.word	3801
+	.byte	22
+	.word	3879
+	.byte	18
+	.byte	'Os_CounterType_s',0,13,227,3,16,28,14
+	.byte	'dynamic',0
+	.word	3884
+	.byte	4,2,35,0,14
+	.byte	'advincr',0
+	.word	3723
+	.byte	4,2,35,4,14
+	.byte	'base',0
+	.word	3530
+	.byte	12,2,35,8,14
+	.byte	'core',0
+	.word	1981
+	.byte	4,2,35,20,14
+	.byte	'access',0
+	.word	144
+	.byte	1,2,35,24,14
+	.byte	'application',0
+	.word	144
+	.byte	1,2,35,25,0,12
+	.byte	'Os_CounterType',0,13,234,3,3
+	.word	3889
+	.byte	5
+	.word	3711
+	.byte	22
+	.word	3889
+	.byte	5
+	.word	4041
+	.byte	12
+	.byte	'CounterType',0,13,235,3,52
+	.word	4046
+	.byte	24
+	.byte	'Os_ScheduleTableStatusType',0,13,240,3,6,4,4
+	.byte	'SCHEDULETABLE_STOPPED',0,0,4
+	.byte	'SCHEDULETABLE_NEXT',0,1,4
+	.byte	'SCHEDULETABLE_WAITING',0,2,4
+	.byte	'SCHEDULETABLE_RUNNING',0,3,4
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,12
+	.byte	'ScheduleTableStatusType',0,13,241,3,41
+	.word	4072
+	.byte	22
+	.word	.L54-.L13
+	.byte	5
+	.word	4272
+	.byte	12
+	.byte	'ScheduleTableType',0,13,128,4,58
+	.word	4277
+	.byte	18
+	.byte	'Os_ScheduleTableDynType_s',0,13,130,4,16,16,14
+	.byte	'match',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	'next',0
+	.word	4282
+	.byte	4,2,35,4,14
+	.byte	'state',0
+	.word	4072
+	.byte	4,2,35,8,14
+	.byte	'config',0
+	.word	673
+	.byte	2,2,35,12,0,5
+	.word	4309
+	.byte	22
+	.word	4402
+.L54:
+	.byte	18
+	.byte	'Os_ScheduleTableType_s',0,13,247,3,16,16,14
+	.byte	'dynamic',0
+	.word	4407
+	.byte	4,2,35,0,14
+	.byte	'counter',0
+	.word	4051
+	.byte	4,2,35,4,14
+	.byte	'repeat',0
+	.word	144
+	.byte	1,2,35,8,14
+	.byte	'config',0
+	.word	673
+	.byte	2,2,35,10,14
+	.byte	'initial',0
+	.word	144
+	.byte	1,2,35,12,14
+	.byte	'access',0
+	.word	144
+	.byte	1,2,35,13,14
+	.byte	'application',0
+	.word	144
+	.byte	1,2,35,14,0,12
+	.byte	'Os_ScheduleTableType',0,13,255,3,3
+	.word	4412
+	.byte	22
+	.word	4412
+	.byte	5
+	.word	4592
+	.byte	22
+	.word	3889
+	.byte	5
+	.word	4602
+	.byte	26
+	.word	1705
+	.byte	26
+	.word	2655
+	.byte	26
+	.word	2552
+	.byte	26
+	.word	3213
+	.byte	26
+	.word	2719
+	.byte	26
+	.word	144
+	.byte	26
+	.word	3213
+	.byte	18
+	.byte	'Os_ControlledCoreType_s',0,13,251,6,16,112,14
+	.byte	'TrapInfo',0
+	.word	1136
+	.byte	8,2,35,0,14
+	.byte	'lock_taskaccess',0
+	.word	4612
+	.byte	4,2,35,8,14
+	.byte	'ReadyTasks',0
+	.word	4617
+	.byte	4,2,35,12,14
+	.byte	'RunningISR',0
+	.word	4622
+	.byte	4,2,35,16,14
+	.byte	'RunningTask',0
+	.word	4627
+	.byte	4,2,35,20,14
+	.byte	'RunningTPMask',0
+	.word	4632
+	.byte	4,2,35,24,14
+	.byte	'CurrentMeteredObject',0
+	.word	2238
+	.byte	4,2,35,28,14
+	.byte	'IdleMeter',0
+	.word	2035
+	.byte	48,2,35,32,14
+	.byte	'AppAccess',0
+	.word	144
+	.byte	1,2,35,80,14
+	.byte	'AppOverride',0
+	.word	4637
+	.byte	1,2,35,81,14
+	.byte	'GetStackValueAdjust',0
+	.word	1307
+	.byte	8,2,35,84,14
+	.byte	'InErrorHook',0
+	.word	144
+	.byte	1,2,35,92,14
+	.byte	'ChainTaskRef',0
+	.word	4642
+	.byte	4,2,35,96,14
+	.byte	'GetStackUsageAdjust',0
+	.word	1307
+	.byte	8,2,35,100,14
+	.byte	'InProtectionHook',0
+	.word	144
+	.byte	1,2,35,108,14
+	.byte	'CoreIsActive',0
+	.word	144
+	.byte	1,2,35,109,14
+	.byte	'InShutdownHook',0
+	.word	144
+	.byte	1,2,35,110,0,12
+	.byte	'Os_ControlledCoreType',0,13,141,7,3
+	.word	4647
+	.byte	5
+	.word	382
+	.byte	22
+	.word	2383
+	.byte	5
+	.word	5103
+	.byte	22
+	.word	2953
+	.byte	5
+	.word	5113
+	.byte	5
+	.word	2035
+	.byte	18
+	.byte	'Os_AnyCoreType_s',0,13,151,7,16,96,14
+	.byte	'DisableAllImask',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	'SuspendAllImask',0
+	.word	382
+	.byte	4,2,35,4,14
+	.byte	'SuspendOSImask',0
+	.word	382
+	.byte	4,2,35,8,14
+	.byte	'DisableAllCount',0
+	.word	382
+	.byte	4,2,35,12,14
+	.byte	'SuspendAllCount',0
+	.word	382
+	.byte	4,2,35,16,14
+	.byte	'SuspendOSCount',0
+	.word	382
+	.byte	4,2,35,20,14
+	.byte	'RestartJumpBuf',0
+	.word	1256
+	.byte	68,2,35,24,14
+	.byte	'Restartable',0
+	.word	144
+	.byte	1,2,35,92,0,12
+	.byte	'Os_AnyCoreType',0,13,160,7,3
+	.word	5128
+	.byte	12
+	.byte	'unsigned_int',0,14,116,22
+	.word	382
+	.byte	12
+	.byte	'Can_TxObjPriorityClassType',0,15,219,3,16
+	.word	382
+	.byte	18
+	.byte	'Can_TxHwObjectConfigType',0,15,231,3,16,8,14
+	.byte	'MsgObjId',0
+	.word	144
+	.byte	1,2,35,0,14
+	.byte	'HwControllerId',0
+	.word	144
+	.byte	1,2,35,1,14
+	.byte	'TxObjPriorityClass',0
+	.word	382
+	.byte	4,2,35,4,0,12
+	.byte	'Can_TxHwObjectConfigType',0,15,252,3,3
+	.word	5426
+	.byte	18
+	.byte	'Can_RxHwObjectConfigType',0,15,129,4,16,12,14
+	.byte	'MaskRef',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	'MsgId',0
+	.word	382
+	.byte	4,2,35,4,14
+	.byte	'MsgObjId',0
+	.word	144
+	.byte	1,2,35,8,14
+	.byte	'HwControllerId',0
+	.word	144
+	.byte	1,2,35,9,0,12
+	.byte	'Can_RxHwObjectConfigType',0,15,147,4,3
+	.word	5562
+	.byte	15,4
+	.word	144
+	.byte	16,3,0,18
+	.byte	'Can_ControllerMOMapConfigType',0,15,181,4,16,4,14
+	.byte	'ControllerMOMap',0
+	.word	5702
+	.byte	4,2,35,0,0,12
+	.byte	'Can_ControllerMOMapConfigType',0,15,184,4,3
+	.word	5711
+	.byte	18
+	.byte	'Can_NPCRValueType',0,15,188,4,16,2,14
+	.byte	'Can_NPCRValue',0
+	.word	673
+	.byte	2,2,35,0,0,12
+	.byte	'Can_NPCRValueType',0,15,191,4,3
+	.word	5812
+	.byte	18
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,15,194,4,16,8,14
+	.byte	'CanControllerBaudrate',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	'CanControllerBaudrateCfg',0
+	.word	673
+	.byte	2,2,35,4,0,12
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,15,198,4,3
+	.word	5887
+	.byte	22
+	.word	5887
+	.byte	5
+	.word	6052
+	.byte	18
+	.byte	'Can_BaudrateConfigPtrType',0,15,201,4,16,4,14
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	6057
+	.byte	4,2,35,0,0,12
+	.byte	'Can_BaudrateConfigPtrType',0,15,204,4,3
+	.word	6062
+	.byte	18
+	.byte	'Can_EventHandlingType',0,15,226,4,16,4,14
+	.byte	'CanEventType',0
+	.word	5702
+	.byte	4,2,35,0,0,12
+	.byte	'Can_EventHandlingType',0,15,229,4,3
+	.word	6162
+	.byte	12
+	.byte	'Rte_TransformerErrorCode',0,16,130,1,15
+	.word	144
+	.byte	12
+	.byte	'Rte_TransformerClass',0,16,131,1,15
+	.word	144
+	.byte	13,16,168,1,9,12,14
+	.byte	'in',0
+	.word	1981
+	.byte	4,2,35,0,14
+	.byte	'out',0
+	.word	1981
+	.byte	4,2,35,4,14
+	.byte	'used',0
+	.word	673
+	.byte	2,2,35,8,14
+	.byte	'lost_data',0
+	.word	144
+	.byte	1,2,35,10,0,12
+	.byte	'Rte_QDynType',0,16,173,1,3
+	.word	6308
+	.byte	3,16,175,1,9,4,4
+	.byte	'RTE_DRA',0,0,4
+	.byte	'RTE_WOWP',0,1,4
+	.byte	'RTE_TASK',0,2,4
+	.byte	'RTE_ARE',0,3,4
+	.byte	'RTE_EV',0,4,4
+	.byte	'RTE_MSI',0,5,0,12
+	.byte	'Rte_NotificationType',0,16,182,1,3
+	.word	6395
+	.byte	15,128,8
+	.word	144
+	.byte	16,255,7,0,12
+	.byte	'Impl_NVM_DstPtrType_1024',0,17,50,15
+	.word	6493
+	.byte	12
+	.byte	'CanIf_u32_impl',0,17,69,16
+	.word	382
+	.byte	12
+	.byte	'CanIf_u16_impl',0,17,71,16
+	.word	673
+	.byte	12
+	.byte	'CanIf_u8_impl',0,17,73,15
+	.word	144
+	.byte	12
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,17,88,15
+	.word	144
+	.byte	12
+	.byte	'CanIf_PduModeType_Enum_impl',0,17,90,15
+	.word	144
+	.byte	13,17,92,9,2,14
+	.byte	'DeviceMode',0
+	.word	144
+	.byte	1,2,35,0,14
+	.byte	'ChannelMode',0
+	.word	144
+	.byte	1,2,35,1,0,12
+	.byte	'CanIf_ControllerStateType_struct_impl',0,17,95,3
+	.word	6684
+	.byte	12
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,17,100,15
+	.word	144
+	.byte	12
+	.byte	'CanSM_boolean_Impl',0,17,120,15
+	.word	144
+	.byte	12
+	.byte	'CanSM_u8_Impl',0,17,123,15
+	.word	144
+	.byte	12
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,17,128,1,15
+	.word	144
+	.byte	12
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,17,132,1,15
+	.word	144
+	.byte	12
+	.byte	'CanSM_u16_Impl',0,17,136,1,16
+	.word	673
+	.byte	12
+	.byte	'CanSM_TimerStateType_Enum_impl',0,17,138,1,15
+	.word	144
+	.byte	13,17,140,1,9,4,14
+	.byte	'cntTick_u16',0
+	.word	673
+	.byte	2,2,35,0,14
+	.byte	'stTimer',0
+	.word	144
+	.byte	1,2,35,2,0,12
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,17,143,1,3
+	.word	7025
+	.byte	12
+	.byte	'Com_impl_u16',0,17,154,1,16
+	.word	673
+	.byte	12
+	.byte	'Com_impl_u8',0,17,157,1,15
+	.word	144
+	.byte	12
+	.byte	'ComM_uint32_Impl',0,17,173,1,16
+	.word	382
+	.byte	12
+	.byte	'ComM_uint16_Impl',0,17,175,1,16
+	.word	673
+	.byte	12
+	.byte	'ComM_uint8_Impl',0,17,177,1,15
+	.word	144
+	.byte	12
+	.byte	'ComM_bool_Impl',0,17,179,1,15
+	.word	144
+	.byte	13,17,181,1,9,24,14
+	.byte	'ChannelState_e',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	'LightTimeoutCtr_u32',0
+	.word	382
+	.byte	4,2,35,4,14
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	673
+	.byte	2,2,35,8,14
+	.byte	'ChannelMode_u8',0
+	.word	144
+	.byte	1,2,35,10,14
+	.byte	'BusSmMode_u8',0
+	.word	144
+	.byte	1,2,35,11,14
+	.byte	'UserRequestCtr_u8',0
+	.word	144
+	.byte	1,2,35,12,14
+	.byte	'PassiveRequestState_u8',0
+	.word	144
+	.byte	1,2,35,13,14
+	.byte	'PncRequestCtr_u8',0
+	.word	144
+	.byte	1,2,35,14,14
+	.byte	'InhibitionReqStatus_u8',0
+	.word	144
+	.byte	1,2,35,15,14
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	144
+	.byte	1,2,35,16,14
+	.byte	'DiagnosticRequestState_b',0
+	.word	144
+	.byte	1,2,35,17,14
+	.byte	'CommunicationAllowed_b',0
+	.word	144
+	.byte	1,2,35,18,14
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	144
+	.byte	1,2,35,19,14
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	144
+	.byte	1,2,35,20,14
+	.byte	'NmNetworkModeStatus_b',0
+	.word	144
+	.byte	1,2,35,21,0,12
+	.byte	'ComM_ChannelStruct_Impl',0,17,197,1,3
+	.word	7257
+	.byte	13,17,206,1,9,10,14
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	673
+	.byte	2,2,35,0,14
+	.byte	'LimitToNoComCtr_u16',0
+	.word	673
+	.byte	2,2,35,2,14
+	.byte	'RequestedUserMode_t',0
+	.word	144
+	.byte	1,2,35,4,14
+	.byte	'IndicatedUserMode_t',0
+	.word	144
+	.byte	1,2,35,5,14
+	.byte	'numChannelsInFullCom_u8',0
+	.word	144
+	.byte	1,2,35,6,14
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	144
+	.byte	1,2,35,7,14
+	.byte	'numChannelsInNoCom_u8',0
+	.word	144
+	.byte	1,2,35,8,0,12
+	.byte	'ComM_UserStruct_Impl',0,17,214,1,3
+	.word	7761
+	.byte	12
+	.byte	'Dcm_IOOperationResponseType',0,17,252,1,15
+	.word	144
+	.byte	12
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	17,138,2,15
+	.word	144
+	.byte	12
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,17,146,2,15
+	.word	144
+	.byte	12
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,17,150,2,15
+	.word	144
+	.byte	12
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,17,154,2,15
+	.word	144
+	.byte	12
+	.byte	'NvM_BlockIdType',0,17,215,2,16
+	.word	673
+	.byte	12
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,17,243,3,34
+	.word	6504
+	.byte	15,128,8
+	.word	144
+	.byte	16,255,7,0,12
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,17,246,3,34
+	.word	6504
+	.byte	12
+	.byte	'MemIf_StatusType',0,6,29,2
+	.word	482
+	.byte	3,6,31,9,4,4
+	.byte	'MEMIF_JOB_OK',0,0,4
+	.byte	'MEMIF_JOB_FAILED',0,1,4
+	.byte	'MEMIF_JOB_PENDING',0,2,4
+	.byte	'MEMIF_JOB_CANCELED',0,3,4
+	.byte	'MEMIF_BLOCK_INCONSISTENT',0,4,4
+	.byte	'MEMIF_BLOCK_INVALID',0,5,0,12
+	.byte	'MemIf_JobResultType',0,6,39,2
+	.word	8629
+	.byte	3,6,41,9,4,4
+	.byte	'MEMIF_MODE_SLOW',0,0,4
+	.byte	'MEMIF_MODE_FAST',0,1,0,12
+	.byte	'MemIf_ModeType',0,6,45,2
+	.word	8787
+	.byte	12
+	.byte	'NvM_Rb_StatusType',0,2,37,3
+	.word	161
+	.byte	3,2,49,9,4,4
+	.byte	'NVM_PRV_ACTIVITY_NOT_INIT',0,0,4
+	.byte	'NVM_PRV_ACTIVITY_IDLE',0,1,4
+	.byte	'NVM_PRV_ACTIVITY_ARBITRATE',0,2,4
+	.byte	'NVM_PRV_ACTIVITY_JOB_START',0,3,4
+	.byte	'NVM_PRV_ACTIVITY_POLL_RESULT',0,4,4
+	.byte	'NVM_PRV_ACTIVITY_JOB_COMPLETE',0,5,4
+	.byte	'NVM_PRV_ACTIVITY_RESULT_EVAL',0,6,0,12
+	.byte	'NvM_Prv_Activities_ten',0,2,58,3
+	.word	8878
+	.byte	3,2,104,9,4,4
+	.byte	'NvM_Prv_idJob_Idle_e',0,0,4
+	.byte	'NvM_Prv_idJob_Read_e',0,1,4
+	.byte	'NvM_Prv_idJob_Write_e',0,2,4
+	.byte	'NvM_Prv_idJob_Erase_e',0,3,4
+	.byte	'NvM_Prv_idJob_Restore_e',0,4,4
+	.byte	'NvM_Prv_idJob_Maintain_e',0,5,4
+	.byte	'NvM_Prv_idJob_Validate_e',0,6,4
+	.byte	'NvM_Prv_idJob_Invalidate_e',0,7,4
+	.byte	'NvM_Prv_idJob_ReadIdConfigForReadAll_e',0,8,4
+	.byte	'NvM_Prv_idJob_InvalidateForFirstInitAll_e',0,9,4
+	.byte	'NvM_Prv_idJob_RestoreForImplicitRecovery_e',0,10,4
+	.byte	'NvM_Prv_idJob_InvalidateForRemoveNonResistant_e',0,11,4
+	.byte	'NvM_Prv_idJob_Invalid_e',0,12,4
+	.byte	'NvM_Prv_idJob_Count_e',0,13,0,12
+	.byte	'NvM_Prv_idJob_ten',0,2,115,3
+	.word	9119
+	.byte	12
+	.byte	'NvM_Prv_ServiceBit_tuo',0,2,168,1,16
+	.word	673
+	.byte	12
+	.byte	'NvM_Prv_idService_tuo',0,2,173,1,15
+	.word	144
+	.byte	12
+	.byte	'NvM_Prv_idQueue_tuo',0,2,206,1,15
+	.word	144
+	.byte	13,2,210,1,9,12,14
+	.byte	'idService_uo',0
+	.word	144
+	.byte	1,2,35,0,14
+	.byte	'idBlock_uo',0
+	.word	673
+	.byte	2,2,35,2,14
+	.byte	'ServiceBit_uo',0
+	.word	673
+	.byte	2,2,35,4,14
+	.byte	'BlockData_pv',0
+	.word	1981
+	.byte	4,2,35,8,0,12
+	.byte	'NvM_Prv_QueueEntry_tst',0,2,225,1,3
+	.word	9676
+	.byte	5
+	.word	144
+	.byte	13,2,227,1,9,20,14
+	.byte	'idJob_en',0
+	.word	9119
+	.byte	4,2,35,0,14
+	.byte	'idBlock_uo',0
+	.word	673
+	.byte	2,2,35,4,14
+	.byte	'RamBlock_pu8',0
+	.word	9802
+	.byte	4,2,35,8,14
+	.byte	'idxDataset_u8',0
+	.word	144
+	.byte	1,2,35,12,14
+	.byte	'Result_en',0
+	.word	8629
+	.byte	4,2,35,16,0,12
+	.byte	'NvM_Prv_JobData_tst',0,2,240,1,3
+	.word	9807
+	.byte	12
+	.byte	'Fls_LengthType',0,4,173,3,16
+	.word	382
+	.byte	18
+	.byte	'Fls_JobStartType',0,4,175,3,16,1,27
+	.byte	'Reserved1',0,1
+	.word	144
+	.byte	1,7,2,35,0,27
+	.byte	'Write',0,1
+	.word	144
+	.byte	1,6,2,35,0,27
+	.byte	'Erase',0,1
+	.word	144
+	.byte	1,5,2,35,0,27
+	.byte	'Read',0,1
+	.word	144
+	.byte	1,4,2,35,0,27
+	.byte	'Compare',0,1
+	.word	144
+	.byte	1,3,2,35,0,27
+	.byte	'Reserved2',0,1
+	.word	144
+	.byte	3,0,2,35,0,0,12
+	.byte	'Fls_JobStartType',0,4,183,3,3
+	.word	9969
+	.byte	12
+	.byte	'Fls_17_Pmu_Job_Type',0,4,187,3,15
+	.word	144
+	.byte	22
+	.word	144
+	.byte	5
+	.word	10159
+	.byte	15,2
+	.word	144
+	.byte	16,1,0,18
+	.byte	'Fls_17_Pmu_StateType',0,4,198,3,16,48,14
+	.byte	'FlsReadAddress',0
+	.word	382
+	.byte	4,2,35,0,14
+	.byte	'FlsWriteAddress',0
+	.word	382
+	.byte	4,2,35,4,14
+	.byte	'FlsEraseTimeoutCycleCount',0
+	.word	382
+	.byte	4,2,35,8,14
+	.byte	'FlsWriteTimeoutCycleCount',0
+	.word	382
+	.byte	4,2,35,12,14
+	.byte	'FlsReadLength',0
+	.word	382
+	.byte	4,2,35,16,14
+	.byte	'FlsWriteLength',0
+	.word	382
+	.byte	4,2,35,20,14
+	.byte	'FlsReadBufferPtr',0
+	.word	9802
+	.byte	4,2,35,24,14
+	.byte	'FlsWriteBufferPtr',0
+	.word	10164
+	.byte	4,2,35,28,14
+	.byte	'FlsJobResult',0
+	.word	8629
+	.byte	4,2,35,32,14
+	.byte	'FlsMode',0
+	.word	8787
+	.byte	4,2,35,36,14
+	.byte	'NotifCaller',0
+	.word	144
+	.byte	1,2,35,40,14
+	.byte	'JobStarted',0
+	.word	9969
+	.byte	1,2,35,41,14
+	.byte	'FlsJobType',0
+	.word	10169
+	.byte	2,2,35,42,14
+	.byte	'FlsOper',0
+	.word	144
+	.byte	1,2,35,44,14
+	.byte	'FlsTimeoutErr',0
+	.word	144
+	.byte	1,2,35,45,14
+	.byte	'FlsTimeoutControl',0
+	.word	144
+	.byte	1,2,35,46,0,12
+	.byte	'Fls_17_Pmu_StateType',0,4,130,4,3
+	.word	10178
+	.byte	12
+	.byte	'Fls_NotifFunctionPtrType',0,4,137,4,16
+	.word	1395
+	.byte	22
+	.word	382
+	.byte	5
+	.word	10656
+	.byte	20,1,1,21
+	.word	382
+	.byte	21
+	.word	382
+	.byte	21
+	.word	10661
+	.byte	21
+	.word	144
+	.byte	0,5
+	.word	10666
+	.byte	12
+	.byte	'Fls_WriteCmdPtrType',0,4,139,4,16
+	.word	10690
+	.byte	20,1,1,21
+	.word	382
+	.byte	0,5
+	.word	10724
+	.byte	12
+	.byte	'Fls_EraseCmdPtrType',0,4,144,4,16
+	.word	10733
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L14:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,4,1,58,15,59,15,57,15,11,15
+	.byte	0,0,4,40,0,3,8,28,13,0,0,5,15,0,73,19,0,0,6,46,1,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0
+	.byte	0,7,5,0,3,8,58,15,59,15,57,15,73,19,0,0,8,46,0,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0,9,46
+	.byte	0,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,10,46,1,3,8,58,15,59,15,57,15,54,15,39,12,63
+	.byte	12,60,12,0,0,11,21,0,54,15,0,0,12,22,0,3,8,58,15,59,15,57,15,73,19,0,0,13,19,1,58,15,59,15,57,15,11,15
+	.byte	0,0,14,13,0,3,8,73,19,11,15,56,9,0,0,15,1,1,11,15,73,19,0,0,16,33,0,47,15,0,0,17,21,0,54,15,39,12,0,0
+	.byte	18,19,1,3,8,58,15,59,15,57,15,11,15,0,0,19,59,0,3,8,0,0,20,21,1,54,15,39,12,0,0,21,5,0,73,19,0,0,22,38
+	.byte	0,73,19,0,0,23,23,1,58,15,59,15,57,15,11,15,0,0,24,4,1,3,8,58,15,59,15,57,15,11,15,0,0,25,21,0,73,19,54
+	.byte	15,39,12,0,0,26,53,0,73,19,0,0,27,13,0,3,8,11,15,73,19,13,15,12,15,56,9,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L15:
+	.word	.L56-.L55
+.L55:
+	.half	3
+	.word	.L58-.L57
+.L57:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\NvM\\api\\NvM.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\NvM\\api\\NvM_Types.h',0,0,0,0
+	.byte	'.\\Integration\\ECU\\include\\TimingCalculation.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Fls\\inc\\Fls_17_Pmu.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\MemIf\\api\\MemIf.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\MemIf\\api\\MemIf_Types.h',0,0,0,0
+	.byte	'Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Integration\\TargetIntegration\\TC275\\Include\\Mcal_TcLib.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0,0
+.L58:
+.L56:
+	.sdecl	'.debug_info',debug,cluster('IC_BswM_NvM_ReadAll')
+	.sect	'.debug_info'
+.L16:
+	.word	246
+	.half	3
+	.word	.L17
+	.byte	4,1
+	.byte	'Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L19,.L18
+	.byte	2
+	.word	.L12
+	.byte	3
+	.byte	'IC_BswM_NvM_ReadAll',0,1,10,6,1,1,1
+	.word	.L9,.L36,.L8
+	.byte	4
+	.word	.L9,.L36
+	.byte	5
+	.byte	'status_NvM',0,1,12,20
+	.word	.L37,.L38
+	.byte	5
+	.byte	'stMemIf_en',0,1,13,19
+	.word	.L39,.L40
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('IC_BswM_NvM_ReadAll')
+	.sect	'.debug_abbrev'
+.L17:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('IC_BswM_NvM_ReadAll')
+	.sect	'.debug_line'
+.L18:
+	.word	.L60-.L59
+.L59:
+	.half	3
+	.word	.L62-.L61
+.L61:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c',0,0,0,0,0
+.L62:
+	.byte	5,6,7,0,5,2
+	.word	.L9
+	.byte	3,9,1,5,2,9
+	.half	.L46-.L9
+	.byte	3,8,1,5,17,9
+	.half	.L63-.L46
+	.byte	1,5,16,9
+	.half	.L64-.L63
+	.byte	1,5,2,9
+	.half	.L65-.L64
+	.byte	3,2,1,5,19,9
+	.half	.L66-.L65
+	.byte	3,2,1,5,13,9
+	.half	.L67-.L66
+	.byte	3,1,1,5,19,9
+	.half	.L3-.L67
+	.byte	3,3,1,5,24,9
+	.half	.L68-.L3
+	.byte	3,1,1,5,21,9
+	.half	.L69-.L68
+	.byte	3,1,1,5,34,9
+	.half	.L70-.L69
+	.byte	3,1,1,5,3,9
+	.half	.L47-.L70
+	.byte	3,1,1,5,17,9
+	.half	.L71-.L47
+	.byte	1,5,13,9
+	.half	.L72-.L71
+	.byte	3,1,1,5,12,9
+	.half	.L73-.L72
+	.byte	1,5,63,7,9
+	.half	.L74-.L73
+	.byte	1,5,2,7,9
+	.half	.L75-.L74
+	.byte	3,1,1,5,45,9
+	.half	.L76-.L75
+	.byte	1,5,26,9
+	.half	.L48-.L76
+	.byte	1,5,2,9
+	.half	.L77-.L48
+	.byte	3,3,1,5,1,9
+	.half	.L78-.L77
+	.byte	3,2,1,7,9
+	.half	.L20-.L78
+	.byte	0,1,1
+.L60:
+	.sdecl	'.debug_ranges',debug,cluster('IC_BswM_NvM_ReadAll')
+	.sect	'.debug_ranges'
+.L19:
+	.word	-1,.L9,0,.L20-.L9,0,0
+	.sdecl	'.debug_info',debug,cluster('IC_BswM_NvM_WriteAll')
+	.sect	'.debug_info'
+.L21:
+	.word	247
+	.half	3
+	.word	.L22
+	.byte	4,1
+	.byte	'Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L24,.L23
+	.byte	2
+	.word	.L12
+	.byte	3
+	.byte	'IC_BswM_NvM_WriteAll',0,1,40,6,1,1,1
+	.word	.L11,.L41,.L10
+	.byte	4
+	.word	.L11,.L41
+	.byte	5
+	.byte	'status_NvM',0,1,42,20
+	.word	.L37,.L42
+	.byte	5
+	.byte	'stMemIf_en',0,1,43,19
+	.word	.L39,.L43
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('IC_BswM_NvM_WriteAll')
+	.sect	'.debug_abbrev'
+.L22:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('IC_BswM_NvM_WriteAll')
+	.sect	'.debug_line'
+.L23:
+	.word	.L80-.L79
+.L79:
+	.half	3
+	.word	.L82-.L81
+.L81:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c',0,0,0,0,0
+.L82:
+	.byte	5,6,7,0,5,2
+	.word	.L11
+	.byte	3,39,1,5,2,9
+	.half	.L49-.L11
+	.byte	3,5,1,5,18,9
+	.half	.L83-.L49
+	.byte	1,5,17,9
+	.half	.L84-.L83
+	.byte	1,5,2,9
+	.half	.L85-.L84
+	.byte	3,9,1,5,19,9
+	.half	.L5-.L85
+	.byte	3,4,1,5,24,9
+	.half	.L86-.L5
+	.byte	3,1,1,5,21,9
+	.half	.L87-.L86
+	.byte	3,2,1,5,34,9
+	.half	.L88-.L87
+	.byte	3,1,1,5,3,9
+	.half	.L50-.L88
+	.byte	3,2,1,5,18,9
+	.half	.L89-.L50
+	.byte	1,5,13,9
+	.half	.L90-.L89
+	.byte	3,2,1,5,12,9
+	.half	.L91-.L90
+	.byte	1,5,63,7,9
+	.half	.L92-.L91
+	.byte	1,5,19,7,9
+	.half	.L93-.L92
+	.byte	3,7,1,5,14,9
+	.half	.L51-.L93
+	.byte	3,1,1,5,3,9
+	.half	.L94-.L51
+	.byte	3,10,1,5,19,9
+	.half	.L7-.L94
+	.byte	3,122,1,5,24,9
+	.half	.L95-.L7
+	.byte	3,1,1,5,21,9
+	.half	.L96-.L95
+	.byte	3,2,1,5,34,9
+	.half	.L97-.L96
+	.byte	3,1,1,5,3,9
+	.half	.L52-.L97
+	.byte	3,2,1,5,19,9
+	.half	.L98-.L52
+	.byte	1,5,13,9
+	.half	.L99-.L98
+	.byte	3,1,1,5,12,9
+	.half	.L100-.L99
+	.byte	1,5,63,7,9
+	.half	.L101-.L100
+	.byte	1,5,2,7,9
+	.half	.L102-.L101
+	.byte	3,1,1,5,46,9
+	.half	.L103-.L102
+	.byte	1,5,27,9
+	.half	.L53-.L103
+	.byte	1,5,2,9
+	.half	.L104-.L53
+	.byte	3,3,1,5,1,9
+	.half	.L105-.L104
+	.byte	3,2,1,7,9
+	.half	.L25-.L105
+	.byte	0,1,1
+.L80:
+	.sdecl	'.debug_ranges',debug,cluster('IC_BswM_NvM_WriteAll')
+	.sect	'.debug_ranges'
+.L24:
+	.word	-1,.L11,0,.L25-.L11,0,0
+	.sdecl	'.debug_info',debug,cluster('ReadAllcounter')
+	.sect	'.debug_info'
+.L26:
+	.word	172
+	.half	3
+	.word	.L27
+	.byte	4,1
+	.byte	'Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L12
+	.byte	3
+	.byte	'ReadAllcounter',0,7,6,8
+	.word	.L44
+	.byte	1,5,3
+	.word	ReadAllcounter
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('ReadAllcounter')
+	.sect	'.debug_abbrev'
+.L27:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('WriteAllcounter')
+	.sect	'.debug_info'
+.L28:
+	.word	173
+	.half	3
+	.word	.L29
+	.byte	4,1
+	.byte	'Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L12
+	.byte	3
+	.byte	'WriteAllcounter',0,7,6,23
+	.word	.L44
+	.byte	1,5,3
+	.word	WriteAllcounter
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('WriteAllcounter')
+	.sect	'.debug_abbrev'
+.L29:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('WriteAllcounter2')
+	.sect	'.debug_info'
+.L30:
+	.word	174
+	.half	3
+	.word	.L31
+	.byte	4,1
+	.byte	'Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L12
+	.byte	3
+	.byte	'WriteAllcounter2',0,7,6,39
+	.word	.L44
+	.byte	1,5,3
+	.word	WriteAllcounter2
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('WriteAllcounter2')
+	.sect	'.debug_abbrev'
+.L31:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_WriteAll_ElapsedTime')
+	.sect	'.debug_info'
+.L32:
+	.word	181
+	.half	3
+	.word	.L33
+	.byte	4,1
+	.byte	'Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L12
+	.byte	3
+	.byte	'NvM_WriteAll_ElapsedTime',0,7,7,15
+	.word	.L45
+	.byte	5,3
+	.word	NvM_WriteAll_ElapsedTime
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_WriteAll_ElapsedTime')
+	.sect	'.debug_abbrev'
+.L33:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_ReadAll_ElapsedTime')
+	.sect	'.debug_info'
+.L34:
+	.word	180
+	.half	3
+	.word	.L35
+	.byte	4,1
+	.byte	'Integration\\BSW\\Src\\Nvm_MultiBlockCallback.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L12
+	.byte	3
+	.byte	'NvM_ReadAll_ElapsedTime',0,7,8,15
+	.word	.L45
+	.byte	5,3
+	.word	NvM_ReadAll_ElapsedTime
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_ReadAll_ElapsedTime')
+	.sect	'.debug_abbrev'
+.L35:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_loc',debug,cluster('IC_BswM_NvM_ReadAll')
+	.sect	'.debug_loc'
+.L8:
+	.word	-1,.L9,0,.L46-.L9
+	.half	2
+	.byte	138,0
+	.word	.L46-.L9,.L36-.L9
+	.half	2
+	.byte	138,8
+	.word	.L36-.L9,.L36-.L9
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L40:
+	.word	-1,.L9,.L47-.L9,.L48-.L9
+	.half	1
+	.byte	82
+	.word	0,0
+.L38:
+	.word	-1,.L9,0,.L36-.L9
+	.half	2
+	.byte	145,120
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('IC_BswM_NvM_WriteAll')
+	.sect	'.debug_loc'
+.L10:
+	.word	-1,.L11,0,.L49-.L11
+	.half	2
+	.byte	138,0
+	.word	.L49-.L11,.L41-.L11
+	.half	2
+	.byte	138,8
+	.word	.L41-.L11,.L41-.L11
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L43:
+	.word	-1,.L11,.L50-.L11,.L51-.L11
+	.half	1
+	.byte	82
+	.word	.L52-.L11,.L53-.L11
+	.half	1
+	.byte	82
+	.word	0,0
+.L42:
+	.word	-1,.L11,0,.L41-.L11
+	.half	2
+	.byte	145,120
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L106:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('IC_BswM_NvM_ReadAll')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L106,.L9,.L36-.L9
+	.byte	4
+	.word	(.L46-.L9)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L36-.L46)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('IC_BswM_NvM_WriteAll')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L106,.L11,.L41-.L11
+	.byte	4
+	.word	(.L49-.L11)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L41-.L49)/2
+	.byte	19,0,8,26,0,0
+
+
+	; Module end

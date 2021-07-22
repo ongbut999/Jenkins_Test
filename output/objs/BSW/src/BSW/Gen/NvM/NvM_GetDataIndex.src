@@ -1,0 +1,1992 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc16304a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\NvM\\NvM_GetDataIndex.src BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_GetDataIndex.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_GetDataIndex.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.NvM_GetDataIndex.NvM_GetDataIndex',code,cluster('NvM_GetDataIndex')
+	.sect	'.text.NvM_GetDataIndex.NvM_GetDataIndex'
+	.align	2
+	
+	.global	NvM_GetDataIndex
+
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	     1  
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	     2  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	     3   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	     4   * Includes
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	     5   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	     6  */
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	     7  #include "NvM.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	     8  #include "Rte_NvM.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	     9  
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    10  #include "NvM_Prv_BlockData.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    11  #include "NvM_Prv_ErrorDetection.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    12  
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    13  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    14   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    15   * Code
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    16   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    17  */
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    18  #define NVM_START_SEC_CODE
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    19  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    20  
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    21  /* MR12 RULE 8.3 VIOLATION: The parameter identifiers in Rte's generated declaration of this depend on Rte vendor */
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    22  Std_ReturnType NvM_GetDataIndex(NvM_BlockIdType BlockId, uint8 *DataIndexPtr)
+; Function NvM_GetDataIndex
+.L10:
+NvM_GetDataIndex:	.type	func
+	mov	d15,d4
+.L34:
+	mov.aa	a15,a4
+.L36:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    23  {
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    24      // TRACE[NVM449] Service for getting the currently set DataIndex of a dataset NVRAM block
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    25      Std_ReturnType stReturn_uo = E_NOT_OK;
+	mov	d8,#1
+.L37:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    26  
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    27      // TRACE[NVM602] Report the DET error NVM_E_NOT_INITIALIZED when the NVM is not yet initialized
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    28      if (NvM_Prv_ErrorDetection_IsNvmInitialized(NVM_SERVICE_ID_GET_DATA_INDEX, BlockId))
+	mov	d4,#2
+.L32:
+	mov	d5,d15
+.L38:
+	call	NvM_Prv_ErrorDetection_IsNvmInitialized
+.L33:
+	jeq	d2,#0,.L2
+.L57:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    29      {
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    30          // TRACE[NVM604] Report the DET error NVM_E_PARAM_BLOCK_ID when the passed BlockID is out of range
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    31          if (NvM_Prv_ErrorDetection_IsBlockIdValid(NVM_SERVICE_ID_GET_DATA_INDEX, BlockId, FALSE))
+	mov	d4,#2
+.L58:
+	mov	d6,#0
+	mov	d5,d15
+.L39:
+	call	NvM_Prv_ErrorDetection_IsBlockIdValid
+.L40:
+	jeq	d2,#0,.L3
+.L59:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    32          {
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    33              // TRACE[NVM188] If the NvMDevErrorDetect switch is enabled API parameter checking is enabled
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    34              // TRACE[NVM605] Report the DET error NVM_E_PARAM_DATA when a NULL pointer is passed
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    35              //               via the parameter DataIndexPtr
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    36              if (NvM_Prv_ErrorDetection_IsPtrValidForDataIdx(NVM_SERVICE_ID_GET_DATA_INDEX, BlockId, DataIndexPtr))
+	mov	d4,#2
+.L60:
+	mov	d5,d15
+.L41:
+	mov.aa	a4,a15
+.L43:
+	call	NvM_Prv_ErrorDetection_IsPtrValidForDataIdx
+.L42:
+	jeq	d2,#0,.L4
+.L61:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    37              {
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    38                  // Parameters are valid
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    39                  stReturn_uo = E_OK;
+	mov	d8,#0
+.L62:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    40                  if (NvM_Prv_ErrorDetection_IsBlockTypeDataset(NVM_SERVICE_ID_GET_DATA_INDEX, BlockId))
+	mov	d4,#2
+.L63:
+	mov	d5,d15
+.L44:
+	call	NvM_Prv_ErrorDetection_IsBlockTypeDataset
+.L45:
+	jeq	d2,#0,.L5
+.L28:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	     1  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	     2  #ifndef NVM_PRV_BLOCKDATA_H
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	     3  #define NVM_PRV_BLOCKDATA_H
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	     4  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	     5  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	     6   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	     7   * Includes
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	     8   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	     9   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    10  #include "NvM_Prv_BlockDescriptor.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    11  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    12  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    13   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    14   * Defines/Macros
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    15   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    16   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    17  // Definitions for giving special block IDs some semantics
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    18  // ------------------------------------------------------------------------------------------------
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    19  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    20   * Definition of the reserved block ID used for multi block operations.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    21   * TRACE[NVM471]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    22   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    23  #define NVM_PRV_MULTI_BLOCK         (0u)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    24  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    25  #if (NVM_RB_AUX_INTERFACE == STD_ON)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    26  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    27   * Definition of the block ID used for administrative information related to operations triggered by auxiliary users
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    28   * (for this use case, an additional admin block has been reserved behind all "regular" admin blocks)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    29   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    30  # define NVM_PRV_AUX_ADMIN_BLOCK    NVM_CFG_NR_BLOCKS
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    31  #endif
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    32  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    33  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    34   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    35   * Type definitions
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    36   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    37   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    38  typedef boolean (*NvM_Prv_Block_IsNvmEnqueuingForMulti_tpfct)(NvM_BlockIdType idBlock_uo);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    39  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    40  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    41   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    42   * Constants
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    43   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    44   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    45  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    46  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    47   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    48   * Variables
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    49   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    50   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    51  // Declaration of variables containing administrative data for all NVRAM blocks.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    52  // ------------------------------------------------------------------------------------------------
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    53  // TRACE[NVM135] Administrative block is private
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    54  #define NVM_START_SEC_VAR_SAVED_ZONE_8
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    55  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    56  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    57   * Declaration of the array containing attribute/status information of all NVRAM blocks.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    58   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    59  extern uint8 NvM_Prv_stBlock_rAwAM_au8[NVM_CFG_NR_BLOCKS];
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    60  #define NVM_STOP_SEC_VAR_SAVED_ZONE_8
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    61  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    62  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    63  #define NVM_START_SEC_VAR_CLEARED_16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    64  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    65  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    66   * Declaration of the array containing all requests pending on each NVRAM block.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    67   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    68  extern uint16 NvM_Prv_stRequests_rAMwAM_au16[NVM_PRV_NR_BLOCKS_ADMIN];
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    69  #define NVM_STOP_SEC_VAR_CLEARED_16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    70  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    71  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    72  #define NVM_START_SEC_VAR_CLEARED_8
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    73  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    74  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    75   * Declaration of the array containing results of the last asynchronous request for all NVRAM blocks.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    76   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    77  extern NvM_RequestResultType NvM_Prv_stRequestResult_rAwAM_au8[NVM_PRV_NR_BLOCKS_ADMIN];
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    78  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    79   * Declaration of the array containing indexes for all NVRAM block.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    80   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    81  extern uint8 NvM_Prv_idxDataSet_rAMwA_au8[NVM_PRV_NR_BLOCKS_ADMIN];
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    82  #define NVM_STOP_SEC_VAR_CLEARED_8
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    83  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    84  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    85  # define NVM_START_SEC_VAR_SAVED_ZONE_16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    86  # include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    87  extern uint16 NvM_Prv_idConfigStored_rMwM_u16;   // RAM block of the config ID block
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    88  # define NVM_STOP_SEC_VAR_SAVED_ZONE_16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    89  # include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    90  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    91  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    92   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    93   * Extern declarations
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    94   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    95   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    96  #define NVM_START_SEC_CODE
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    97  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    98  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	    99  extern void NvM_Prv_Block_InitializeData(boolean isSavedZoneDataLost_b);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   100  #if (NVM_RB_AUX_INTERFACE == STD_ON)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   101  extern void NvM_Prv_Block_InitializeDataAux(void);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   102  #endif
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   103  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   104  extern void NvM_Prv_Block_SetIsNvmEnqueuingForMulti(NvM_Prv_Block_IsNvmEnqueuingForMulti_tpfct IsNvmEnqueuingForMulti_pfct);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   105  extern boolean NvM_Prv_Block_IsNvmEnqueuingForMulti(NvM_BlockIdType idBlock_uo);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   106  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   107  #define NVM_STOP_SEC_CODE
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   108  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   109  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   110  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   111  **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   112  * Inline functions
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   113  **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   114  */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   115  LOCAL_INLINE boolean NvM_Prv_Block_IsPRamBlockValid(NvM_BlockIdType idBlock_uo)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   116  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   117      return ((NvM_Prv_stBlock_rAwAM_au8[idBlock_uo] & NVM_BLOCK_STATE_RAM_VALID) != 0u);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   118  }
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   119  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   120  LOCAL_INLINE boolean NvM_Prv_Block_IsChanged(NvM_BlockIdType idBlock_uo)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   121  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   122      return ((NvM_Prv_stBlock_rAwAM_au8[idBlock_uo] & NVM_BLOCK_STATE_RAM_CHANGED) != 0u);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   123  }
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   124  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   125  LOCAL_INLINE boolean NvM_Prv_Block_IsTrgWriteAllActive(NvM_BlockIdType idBlock_uo)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   126  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   127      boolean isTrgWriteAllActive_b = FALSE;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   128  #if (NVM_RB_SET_WRITEALL_TRIGGER_API == STD_ON)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   129      isTrgWriteAllActive_b = (NvM_Prv_stBlock_rAwAM_au8[idBlock_uo] & NVM_RB_BLOCK_STATE_MASK_TRG_WRITEALL) != 0u;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   130  #endif
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   131      return isTrgWriteAllActive_b;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   132  }
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   133  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   134  LOCAL_INLINE boolean NvM_Prv_Block_IsRomDataAmbiguous(NvM_BlockIdType idBlock_uo)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   135  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   136      return ((NULL_PTR != NvM_Prv_GetRomBlockAddress(idBlock_uo)) &&
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   137              (NVM_BLOCK_DATASET == NvM_Prv_GetBlockType(idBlock_uo)) &&
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   138              (NvM_Prv_idxDataSet_rAMwA_au8[idBlock_uo] < NvM_Prv_GetNrNonVolatileBlocks(idBlock_uo))
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   139             );
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   140  }
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   141  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   142  LOCAL_INLINE boolean NvM_Prv_Block_IsInRom(NvM_BlockIdType idBlock_uo, uint8 idxDataset_u8)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   143  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   144      return ((NVM_BLOCK_DATASET == NvM_Prv_GetBlockType(idBlock_uo)) &&
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   145              (idxDataset_u8 >= NvM_Prv_GetNrNonVolatileBlocks(idBlock_uo)));
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   146  }
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   147  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   148  LOCAL_INLINE boolean NvM_Prv_Block_IsWriteProtected(NvM_BlockIdType idBlock_uo)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   149  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   150      return ((NvM_Prv_stBlock_rAwAM_au8[idBlock_uo] & NVM_BLOCK_STATE_WRITE_PROT) != 0u);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   151  }
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   152  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   153  LOCAL_INLINE boolean NvM_Prv_Block_IsWriteable(NvM_BlockIdType idBlock_uo, uint8 idxDataset_u8)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   154  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   155      boolean IsBlockInRom_b = NvM_Prv_Block_IsInRom(idBlock_uo, idxDataset_u8);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   156      return (!NvM_Prv_Block_IsWriteProtected(idBlock_uo) && !IsBlockInRom_b);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   157  }
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   158  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   159  LOCAL_INLINE uint8 NvM_Prv_Block_GetIdxDataset(NvM_BlockIdType idBlock_uo)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   160  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   161      return NvM_Prv_idxDataSet_rAMwA_au8[idBlock_uo];
+	movh.a	a2,#@his(NvM_Prv_idxDataSet_rAMwA_au8)
+	lea	a2,[a2]@los(NvM_Prv_idxDataSet_rAMwA_au8)
+.L64:
+	addsc.a	a2,a2,d15,#0
+	ld.bu	d15,[a2]
+.L35:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   161      return NvM_Prv_idxDataSet_rAMwA_au8[idBlock_uo];      (inlined)
+	j	.L6
+
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockData.h	   162  }      (inlined)
+.L6:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    41                  {
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    42                      // TRACE[NVM021] Get the current data index of the selected block
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    43                      //               if its management type is NVM_BLOCK_DATASET
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    44                      // No SchM lock can and should be done here to allow calling this function from NvM callbacks
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    45                      // without deadlocks
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    46                      *DataIndexPtr = NvM_Prv_Block_GetIdxDataset(BlockId);
+	st.b	[a15],d15
+.L65:
+	j	.L7
+.L5:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    47                  }
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    48                  else
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    49                  {
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    50                      // TRACE[NVM265] For blocks with other management types, set the index pointed to
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    51                      //               by DataIndexPtr to zero
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    52                      *DataIndexPtr = 0;
+	mov	d15,#0
+.L46:
+	st.b	[a15],d15
+.L7:
+.L4:
+.L3:
+.L2:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    53                  }
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    54              }
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    55          }
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    56      }
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    57      // Return whether this operation was successful
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    58      return stReturn_uo;
+	mov	d2,d8
+.L47:
+	j	.L8
+
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    59  }
+.L8:
+	ret
+.L21:
+	
+__NvM_GetDataIndex_function_end:
+	.size	NvM_GetDataIndex,__NvM_GetDataIndex_function_end-NvM_GetDataIndex
+.L19:
+	; End of function
+	
+	.calls	'NvM_GetDataIndex','NvM_Prv_ErrorDetection_IsNvmInitialized'
+	.calls	'NvM_GetDataIndex','NvM_Prv_ErrorDetection_IsBlockIdValid'
+	.calls	'NvM_GetDataIndex','NvM_Prv_ErrorDetection_IsPtrValidForDataIdx'
+	.calls	'NvM_GetDataIndex','NvM_Prv_ErrorDetection_IsBlockTypeDataset'
+	.extern	NvM_Prv_idxDataSet_rAMwA_au8
+	.extern	NvM_Prv_ErrorDetection_IsPtrValidForDataIdx
+	.extern	NvM_Prv_ErrorDetection_IsNvmInitialized
+	.extern	NvM_Prv_ErrorDetection_IsBlockIdValid
+	.extern	NvM_Prv_ErrorDetection_IsBlockTypeDataset
+	.calls	'NvM_GetDataIndex','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L12:
+	.word	12721
+	.half	3
+	.word	.L13
+	.byte	4
+.L11:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_GetDataIndex.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L14
+	.byte	2,2,40,9,4,3
+	.byte	'NVM_BLOCK_NATIVE',0,0,3
+	.byte	'NVM_BLOCK_REDUNDANT',0,1,3
+	.byte	'NVM_BLOCK_DATASET',0,2,0
+.L22:
+	.byte	4
+	.byte	'unsigned short int',0,2,7,5
+	.byte	'NvM_Prv_GetBlockType',0,3,1,212,3,38
+	.word	142
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,1,212,3,75
+	.word	209
+	.byte	7,0
+.L20:
+	.byte	4
+	.byte	'unsigned char',0,1,8,5
+	.byte	'NvM_Prv_GetNrNonVolatileBlocks',0,3,1,232,3,20
+	.word	286
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,1,232,3,67
+	.word	209
+	.byte	7,0,8
+	.byte	'void',0,9
+	.word	368
+	.byte	10
+	.word	374
+	.byte	5
+	.byte	'NvM_Prv_GetRomBlockAddress',0,3,1,173,4,26
+	.word	379
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,1,173,4,69
+	.word	209
+	.byte	7,0,5
+	.byte	'NvM_Prv_Block_IsInRom',0,3,3,142,1,22
+	.word	286
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,3,142,1,60
+	.word	209
+	.byte	6
+	.byte	'idxDataset_u8',0,3,142,1,78
+	.word	286
+	.byte	11,7,7,0,0,5
+	.byte	'NvM_Prv_Block_IsWriteProtected',0,3,3,148,1,22
+	.word	286
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,3,148,1,69
+	.word	209
+	.byte	7,0
+.L27:
+	.byte	5
+	.byte	'NvM_Prv_Block_GetIdxDataset',0,3,3,159,1,20
+	.word	286
+	.byte	1,1
+.L29:
+	.byte	6
+	.byte	'idBlock_uo',0,3,159,1,64
+	.word	209
+.L31:
+	.byte	7,0
+.L24:
+	.byte	10
+	.word	286
+	.byte	12
+	.word	231
+	.byte	13
+	.word	264
+	.byte	7,0,12
+	.word	303
+	.byte	13
+	.word	346
+	.byte	7,0,12
+	.word	384
+	.byte	13
+	.word	423
+	.byte	7,0,12
+	.word	445
+	.byte	13
+	.word	479
+	.byte	13
+	.word	499
+	.byte	11,14
+	.word	231
+	.byte	13
+	.word	264
+	.byte	15
+	.word	284
+	.byte	0,7,14
+	.word	303
+	.byte	13
+	.word	346
+	.byte	15
+	.word	366
+	.byte	0,7,0,0,12
+	.word	527
+	.byte	13
+	.word	570
+	.byte	7,0,12
+	.word	592
+	.byte	13
+	.word	632
+	.byte	7,0,9
+	.word	286
+	.byte	10
+	.word	771
+	.byte	16
+	.byte	'NvM_Prv_ErrorDetection_IsPtrValidForDataIdx',0,4,69,16
+	.word	286
+	.byte	1,1,1,1,6
+	.byte	'idService_uo',0,4,69,82
+	.word	286
+	.byte	6
+	.byte	'idBlock_uo',0,4,70,76
+	.word	209
+	.byte	6
+	.byte	'ptrDataIdx_pcu8',0,4,71,73
+	.word	776
+	.byte	0,16
+	.byte	'NvM_Prv_ErrorDetection_IsNvmInitialized',0,4,89,16
+	.word	286
+	.byte	1,1,1,1,6
+	.byte	'idService_uo',0,4,89,78
+	.word	286
+	.byte	6
+	.byte	'idBlock_uo',0,4,90,72
+	.word	209
+	.byte	0,16
+	.byte	'NvM_Prv_ErrorDetection_IsBlockIdValid',0,4,91,16
+	.word	286
+	.byte	1,1,1,1,6
+	.byte	'idService_uo',0,4,91,76
+	.word	286
+	.byte	6
+	.byte	'idBlock_uo',0,4,92,70
+	.word	209
+	.byte	6
+	.byte	'isMultiBlockAllowed_b',0,4,93,62
+	.word	286
+	.byte	0,16
+	.byte	'NvM_Prv_ErrorDetection_IsBlockTypeDataset',0,4,99,16
+	.word	286
+	.byte	1,1,1,1,6
+	.byte	'idService_uo',0,4,99,80
+	.word	286
+	.byte	6
+	.byte	'idBlock_uo',0,4,100,74
+	.word	209
+	.byte	0,17,1,10
+	.word	1211
+	.byte	18
+	.byte	'__codeptr',0,5,1,1
+	.word	1213
+	.byte	4
+	.byte	'char',0,1,6,18
+	.byte	'sint8',0,6,76,25
+	.word	1236
+	.byte	18
+	.byte	'uint8',0,6,81,25
+	.word	286
+	.byte	18
+	.byte	'uint16',0,6,91,25
+	.word	209
+	.byte	4
+	.byte	'unsigned int',0,4,7,18
+	.byte	'uint32',0,6,106,24
+	.word	1287
+	.byte	4
+	.byte	'unsigned long long int',0,8,7,18
+	.byte	'uint64',0,6,111,30
+	.word	1318
+	.byte	18
+	.byte	'boolean',0,6,127,25
+	.word	286
+	.byte	18
+	.byte	'StatusType',0,7,191,1,27
+	.word	286
+	.byte	18
+	.byte	'Std_ReturnType',0,7,199,1,15
+	.word	286
+	.byte	19,7,206,1,9,8,20
+	.byte	'vendorID',0
+	.word	209
+	.byte	2,2,35,0,20
+	.byte	'moduleID',0
+	.word	209
+	.byte	2,2,35,2,20
+	.byte	'sw_major_version',0
+	.word	286
+	.byte	1,2,35,4,20
+	.byte	'sw_minor_version',0
+	.word	286
+	.byte	1,2,35,5,20
+	.byte	'sw_patch_version',0
+	.word	286
+	.byte	1,2,35,6,0,18
+	.byte	'Std_VersionInfoType',0,7,213,1,3
+	.word	1419
+	.byte	18
+	.byte	'PduIdType',0,8,22,19
+	.word	209
+	.byte	18
+	.byte	'PduLengthType',0,8,26,19
+	.word	209
+	.byte	2,9,113,9,4,3
+	.byte	'TP_DATACONF',0,0,3
+	.byte	'TP_DATARETRY',0,1,3
+	.byte	'TP_CONFPENDING',0,2,0,18
+	.byte	'TpDataStateType',0,9,118,3
+	.word	1609
+	.byte	18
+	.byte	'Can_IdType',0,10,32,16
+	.word	1287
+	.byte	18
+	.byte	'Can_HwHandleType',0,10,43,16
+	.word	209
+	.byte	19,11,93,9,8,20
+	.byte	'Class',0
+	.word	286
+	.byte	1,2,35,0,20
+	.byte	'TIN',0
+	.word	286
+	.byte	1,2,35,1,20
+	.byte	'ReturnAddress',0
+	.word	1287
+	.byte	4,2,35,4,0,18
+	.byte	'OsTrapInfoType',0,11,97,3
+	.word	1729
+	.byte	21,68
+	.word	1287
+	.byte	22,16,0,19,11,154,1,9,68,20
+	.byte	'store',0
+	.word	1809
+	.byte	68,2,35,0,0,21,68
+	.word	1818
+	.byte	22,0,0,18
+	.byte	'Os_JumpBufType',0,11,156,1,3
+	.word	1840
+	.byte	18
+	.byte	'Os_StackTraceType',0,11,174,1,18
+	.word	1287
+	.byte	19,11,175,1,9,8,20
+	.byte	'sp',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	'ctx',0
+	.word	1287
+	.byte	4,2,35,4,0,18
+	.byte	'Os_StackValueType',0,11,175,1,63
+	.word	1900
+	.byte	18
+	.byte	'Os_StackSizeType',0,11,176,1,27
+	.word	1900
+	.byte	23,1,1,10
+	.word	1985
+	.byte	18
+	.byte	'Os_VoidVoidFunctionType',0,11,179,1,16
+	.word	1988
+	.byte	18
+	.byte	'ApplicationType',0,11,193,1,23
+	.word	286
+	.byte	24
+	.byte	'Os_ApplicationConfigurationType_s',0,11,198,1,16,2,20
+	.byte	'app_id',0
+	.word	286
+	.byte	1,2,35,0,20
+	.byte	'access',0
+	.word	286
+	.byte	1,2,35,1,0,18
+	.byte	'Os_ApplicationConfigurationType',0,11,201,1,3
+	.word	2051
+	.byte	18
+	.byte	'Os_CoreStateType',0,11,203,1,16
+	.word	1287
+	.byte	18
+	.byte	'AreaIdType',0,11,204,1,16
+	.word	209
+	.byte	18
+	.byte	'Os_PeripheralAddressType',0,11,212,1,22
+	.word	1287
+	.byte	18
+	.byte	'TickType',0,11,221,1,22
+	.word	1287
+	.byte	18
+	.byte	'Os_StopwatchTickType',0,11,225,1,22
+	.word	1287
+	.byte	10
+	.word	1287
+	.byte	18
+	.byte	'Os_Lockable',0,11,234,1,18
+	.word	2293
+	.byte	18
+	.byte	'CoreIdType',0,11,236,1,16
+	.word	209
+	.byte	18
+	.byte	'SpinlockIdType',0,11,237,1,16
+	.word	209
+	.byte	2,11,239,1,9,4,3
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,3
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,18
+	.byte	'TryToGetSpinlockType',0,11,239,1,74
+	.word	2363
+	.byte	2,11,174,2,9,4,3
+	.byte	'APPLICATION_ACCESSIBLE',0,0,3
+	.byte	'APPLICATION_RESTARTING',0,1,3
+	.byte	'APPLICATION_TERMINATED',0,2,0,18
+	.byte	'ApplicationStateType',0,11,174,2,92
+	.word	2456
+	.byte	10
+	.word	368
+	.byte	25,1,1,26
+	.word	286
+	.byte	26
+	.word	2568
+	.byte	0,10
+	.word	2573
+	.byte	18
+	.byte	'Os_FunctionEntryType',0,11,183,2,16
+	.word	2587
+	.byte	24
+	.byte	'Os_MeterInfoType_s',0,11,193,2,16,48,20
+	.byte	'elapsed',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	'previous',0
+	.word	1287
+	.byte	4,2,35,4,20
+	.byte	'max',0
+	.word	1287
+	.byte	4,2,35,8,20
+	.byte	'cumulative',0
+	.word	1287
+	.byte	4,2,35,12,20
+	.byte	'stackbase',0
+	.word	1900
+	.byte	8,2,35,16,20
+	.byte	'stackusage',0
+	.word	1900
+	.byte	8,2,35,24,20
+	.byte	'stackmax',0
+	.word	1900
+	.byte	8,2,35,32,20
+	.byte	'stackbudget',0
+	.word	1900
+	.byte	8,2,35,40,0,18
+	.byte	'Os_MeterInfoType',0,11,202,2,3
+	.word	2622
+	.byte	10
+	.word	2622
+	.byte	18
+	.byte	'Os_MeterInfoRefType',0,11,203,2,50
+	.word	2820
+	.byte	18
+	.byte	'EventMaskType',0,11,206,2,15
+	.word	286
+	.byte	18
+	.byte	'Os_imaskType',0,11,211,2,16
+	.word	1287
+	.byte	24
+	.byte	'Os_ISRDynType_s',0,11,213,2,16,48,20
+	.byte	'meter',0
+	.word	2622
+	.byte	48,2,35,0,0,18
+	.byte	'Os_ISRDynType',0,11,215,2,3
+	.word	2899
+	.byte	10
+	.word	2899
+	.byte	9
+	.word	2960
+	.byte	24
+	.byte	'Os_ISRType_s',0,11,216,2,16,24,20
+	.byte	'entry_function',0
+	.word	1993
+	.byte	4,2,35,0,20
+	.byte	'dynamic',0
+	.word	2965
+	.byte	4,2,35,4,20
+	.byte	'imask',0
+	.word	1287
+	.byte	4,2,35,8,20
+	.byte	'stackbudget',0
+	.word	1900
+	.byte	8,2,35,12,20
+	.byte	'access',0
+	.word	286
+	.byte	1,2,35,20,20
+	.byte	'application',0
+	.word	286
+	.byte	1,2,35,21,0,18
+	.byte	'Os_ISRType',0,11,223,2,3
+	.word	2970
+	.byte	10
+	.word	1985
+	.byte	9
+	.word	2970
+	.byte	10
+	.word	3129
+	.byte	18
+	.byte	'ISRType',0,11,224,2,46
+	.word	3134
+	.byte	18
+	.byte	'Os_bitmask',0,11,239,2,22
+	.word	1287
+	.byte	18
+	.byte	'Os_pset0Type',0,11,240,2,20
+	.word	1287
+	.byte	18
+	.byte	'Os_pset1Type',0,11,241,2,20
+	.word	1287
+	.byte	18
+	.byte	'Os_pset2Type',0,11,242,2,20
+	.word	1287
+	.byte	27,11,243,2,9,4,20
+	.byte	'p0',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	'p1',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	'p2',0
+	.word	1287
+	.byte	4,2,35,0,0,18
+	.byte	'Os_psetType',0,11,247,2,3
+	.word	3242
+	.byte	27,11,249,2,9,4,20
+	.byte	't0',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	't1',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	't2',0
+	.word	1287
+	.byte	4,2,35,0,0,18
+	.byte	'Os_tpmaskType',0,11,253,2,3
+	.word	3306
+	.byte	18
+	.byte	'Os_ActivationCountType',0,11,254,2,23
+	.word	286
+	.byte	24
+	.byte	'Os_TaskDynType_s',0,11,128,3,16,120,20
+	.byte	'terminate_jump_buf',0
+	.word	1849
+	.byte	68,2,35,0,20
+	.byte	'meter',0
+	.word	2622
+	.byte	48,2,35,68,20
+	.byte	'activation_count',0
+	.word	286
+	.byte	1,2,35,116,0,18
+	.byte	'Os_TaskDynType',0,11,132,3,3
+	.word	3404
+	.byte	21,68
+	.word	1818
+	.byte	22,0,0,10
+	.word	3404
+	.byte	9
+	.word	3530
+	.byte	24
+	.byte	'Os_TaskType_s',0,11,134,3,16,40,20
+	.byte	'dynamic',0
+	.word	3535
+	.byte	4,2,35,0,20
+	.byte	'entry_function',0
+	.word	1993
+	.byte	4,2,35,4,20
+	.byte	'pset',0
+	.word	3242
+	.byte	4,2,35,8,20
+	.byte	'base_tpmask',0
+	.word	3306
+	.byte	4,2,35,12,20
+	.byte	'tpmask',0
+	.word	3306
+	.byte	4,2,35,16,20
+	.byte	'core_id',0
+	.word	209
+	.byte	2,2,35,20,20
+	.byte	'index',0
+	.word	1287
+	.byte	4,2,35,24,20
+	.byte	'stackbudget',0
+	.word	1900
+	.byte	8,2,35,28,20
+	.byte	'activation_count',0
+	.word	286
+	.byte	1,2,35,36,20
+	.byte	'access',0
+	.word	286
+	.byte	1,2,35,37,20
+	.byte	'application',0
+	.word	286
+	.byte	1,2,35,38,0,18
+	.byte	'Os_TaskType',0,11,146,3,3
+	.word	3540
+	.byte	9
+	.word	3540
+	.byte	10
+	.word	3790
+	.byte	18
+	.byte	'TaskType',0,11,147,3,47
+	.word	3795
+	.byte	28
+	.byte	'Os_TaskStateType',0,11,155,3,6,4,3
+	.byte	'SUSPENDED',0,0,3
+	.byte	'READY',0,1,3
+	.byte	'WAITING',0,2,3
+	.byte	'RUNNING',0,3,0,18
+	.byte	'TaskStateType',0,11,156,3,31
+	.word	3818
+	.byte	27,11,167,3,3,4,20
+	.byte	'tpmask',0
+	.word	3306
+	.byte	4,2,35,0,0,24
+	.byte	'Os_ResourceDynType_s',0,11,166,3,16,4,20
+	.byte	'saved_priority',0
+	.word	3905
+	.byte	4,2,35,0,0,18
+	.byte	'Os_ResourceDynType',0,11,170,3,3
+	.word	3928
+	.byte	10
+	.word	3928
+	.byte	9
+	.word	4008
+	.byte	24
+	.byte	'Os_ResourceType_s',0,11,171,3,16,12,20
+	.byte	'dynamic',0
+	.word	4013
+	.byte	4,2,35,0,20
+	.byte	'tpmask',0
+	.word	3306
+	.byte	4,2,35,4,20
+	.byte	'access',0
+	.word	286
+	.byte	1,2,35,8,0,18
+	.byte	'Os_ResourceType',0,11,175,3,3
+	.word	4018
+	.byte	19,11,181,3,9,12,20
+	.byte	'maxallowedvalue',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	'ticksperbase',0
+	.word	1287
+	.byte	4,2,35,4,20
+	.byte	'mincycle',0
+	.word	1287
+	.byte	4,2,35,8,0,18
+	.byte	'AlarmBaseType',0,11,185,3,3
+	.word	4117
+	.byte	19,11,206,3,9,8,20
+	.byte	'Running',0
+	.word	286
+	.byte	1,2,35,0,20
+	.byte	'Pending',0
+	.word	286
+	.byte	1,2,35,1,20
+	.byte	'Delay',0
+	.word	1287
+	.byte	4,2,35,4,0,18
+	.byte	'Os_CounterStatusType',0,11,210,3,3
+	.word	4212
+	.byte	29
+	.word	286
+	.byte	1,1,10
+	.word	4298
+	.byte	18
+	.byte	'Os_CounterIncrAdvType',0,11,217,3,22
+	.word	4305
+	.byte	24
+	.byte	's_swd',0,11,222,3,12,4,20
+	.byte	'count',0
+	.word	1287
+	.byte	4,2,35,0,0,27,11,221,3,3,4,20
+	.byte	'sw',0
+	.word	4341
+	.byte	4,2,35,0,0,24
+	.byte	'Os_CounterDynType_s',0,11,220,3,16,4,20
+	.byte	'type_dependent',0
+	.word	4369
+	.byte	4,2,35,0,0,18
+	.byte	'Os_CounterDynType',0,11,226,3,3
+	.word	4388
+	.byte	10
+	.word	4388
+	.byte	9
+	.word	4466
+	.byte	24
+	.byte	'Os_CounterType_s',0,11,227,3,16,28,20
+	.byte	'dynamic',0
+	.word	4471
+	.byte	4,2,35,0,20
+	.byte	'advincr',0
+	.word	4310
+	.byte	4,2,35,4,20
+	.byte	'base',0
+	.word	4117
+	.byte	12,2,35,8,20
+	.byte	'core',0
+	.word	2568
+	.byte	4,2,35,20,20
+	.byte	'access',0
+	.word	286
+	.byte	1,2,35,24,20
+	.byte	'application',0
+	.word	286
+	.byte	1,2,35,25,0,18
+	.byte	'Os_CounterType',0,11,234,3,3
+	.word	4476
+	.byte	10
+	.word	4298
+	.byte	9
+	.word	4476
+	.byte	10
+	.word	4628
+	.byte	18
+	.byte	'CounterType',0,11,235,3,52
+	.word	4633
+	.byte	28
+	.byte	'Os_ScheduleTableStatusType',0,11,240,3,6,4,3
+	.byte	'SCHEDULETABLE_STOPPED',0,0,3
+	.byte	'SCHEDULETABLE_NEXT',0,1,3
+	.byte	'SCHEDULETABLE_WAITING',0,2,3
+	.byte	'SCHEDULETABLE_RUNNING',0,3,3
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,18
+	.byte	'ScheduleTableStatusType',0,11,241,3,41
+	.word	4659
+	.byte	9
+	.word	.L48-.L12
+	.byte	10
+	.word	4859
+	.byte	18
+	.byte	'ScheduleTableType',0,11,128,4,58
+	.word	4864
+	.byte	24
+	.byte	'Os_ScheduleTableDynType_s',0,11,130,4,16,16,20
+	.byte	'match',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	'next',0
+	.word	4869
+	.byte	4,2,35,4,20
+	.byte	'state',0
+	.word	4659
+	.byte	4,2,35,8,20
+	.byte	'config',0
+	.word	209
+	.byte	2,2,35,12,0,10
+	.word	4896
+	.byte	9
+	.word	4989
+.L48:
+	.byte	24
+	.byte	'Os_ScheduleTableType_s',0,11,247,3,16,16,20
+	.byte	'dynamic',0
+	.word	4994
+	.byte	4,2,35,0,20
+	.byte	'counter',0
+	.word	4638
+	.byte	4,2,35,4,20
+	.byte	'repeat',0
+	.word	286
+	.byte	1,2,35,8,20
+	.byte	'config',0
+	.word	209
+	.byte	2,2,35,10,20
+	.byte	'initial',0
+	.word	286
+	.byte	1,2,35,12,20
+	.byte	'access',0
+	.word	286
+	.byte	1,2,35,13,20
+	.byte	'application',0
+	.word	286
+	.byte	1,2,35,14,0,18
+	.byte	'Os_ScheduleTableType',0,11,255,3,3
+	.word	4999
+	.byte	9
+	.word	4999
+	.byte	10
+	.word	5179
+	.byte	9
+	.word	4476
+	.byte	10
+	.word	5189
+	.byte	30
+	.word	2298
+	.byte	30
+	.word	3242
+	.byte	30
+	.word	3139
+	.byte	30
+	.word	3800
+	.byte	30
+	.word	3306
+	.byte	30
+	.word	286
+	.byte	30
+	.word	3800
+	.byte	24
+	.byte	'Os_ControlledCoreType_s',0,11,251,6,16,112,20
+	.byte	'TrapInfo',0
+	.word	1729
+	.byte	8,2,35,0,20
+	.byte	'lock_taskaccess',0
+	.word	5199
+	.byte	4,2,35,8,20
+	.byte	'ReadyTasks',0
+	.word	5204
+	.byte	4,2,35,12,20
+	.byte	'RunningISR',0
+	.word	5209
+	.byte	4,2,35,16,20
+	.byte	'RunningTask',0
+	.word	5214
+	.byte	4,2,35,20,20
+	.byte	'RunningTPMask',0
+	.word	5219
+	.byte	4,2,35,24,20
+	.byte	'CurrentMeteredObject',0
+	.word	2825
+	.byte	4,2,35,28,20
+	.byte	'IdleMeter',0
+	.word	2622
+	.byte	48,2,35,32,20
+	.byte	'AppAccess',0
+	.word	286
+	.byte	1,2,35,80,20
+	.byte	'AppOverride',0
+	.word	5224
+	.byte	1,2,35,81,20
+	.byte	'GetStackValueAdjust',0
+	.word	1900
+	.byte	8,2,35,84,20
+	.byte	'InErrorHook',0
+	.word	286
+	.byte	1,2,35,92,20
+	.byte	'ChainTaskRef',0
+	.word	5229
+	.byte	4,2,35,96,20
+	.byte	'GetStackUsageAdjust',0
+	.word	1900
+	.byte	8,2,35,100,20
+	.byte	'InProtectionHook',0
+	.word	286
+	.byte	1,2,35,108,20
+	.byte	'CoreIsActive',0
+	.word	286
+	.byte	1,2,35,109,20
+	.byte	'InShutdownHook',0
+	.word	286
+	.byte	1,2,35,110,0,18
+	.byte	'Os_ControlledCoreType',0,11,141,7,3
+	.word	5234
+	.byte	10
+	.word	1287
+	.byte	9
+	.word	2970
+	.byte	10
+	.word	5690
+	.byte	9
+	.word	3540
+	.byte	10
+	.word	5700
+	.byte	10
+	.word	2622
+	.byte	24
+	.byte	'Os_AnyCoreType_s',0,11,151,7,16,96,20
+	.byte	'DisableAllImask',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	'SuspendAllImask',0
+	.word	1287
+	.byte	4,2,35,4,20
+	.byte	'SuspendOSImask',0
+	.word	1287
+	.byte	4,2,35,8,20
+	.byte	'DisableAllCount',0
+	.word	1287
+	.byte	4,2,35,12,20
+	.byte	'SuspendAllCount',0
+	.word	1287
+	.byte	4,2,35,16,20
+	.byte	'SuspendOSCount',0
+	.word	1287
+	.byte	4,2,35,20,20
+	.byte	'RestartJumpBuf',0
+	.word	1849
+	.byte	68,2,35,24,20
+	.byte	'Restartable',0
+	.word	286
+	.byte	1,2,35,92,0,18
+	.byte	'Os_AnyCoreType',0,11,160,7,3
+	.word	5715
+	.byte	18
+	.byte	'Can_TxObjPriorityClassType',0,12,219,3,16
+	.word	1287
+	.byte	24
+	.byte	'Can_TxHwObjectConfigType',0,12,231,3,16,8,20
+	.byte	'MsgObjId',0
+	.word	286
+	.byte	1,2,35,0,20
+	.byte	'HwControllerId',0
+	.word	286
+	.byte	1,2,35,1,20
+	.byte	'TxObjPriorityClass',0
+	.word	1287
+	.byte	4,2,35,4,0,18
+	.byte	'Can_TxHwObjectConfigType',0,12,252,3,3
+	.word	5992
+	.byte	24
+	.byte	'Can_RxHwObjectConfigType',0,12,129,4,16,12,20
+	.byte	'MaskRef',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	'MsgId',0
+	.word	1287
+	.byte	4,2,35,4,20
+	.byte	'MsgObjId',0
+	.word	286
+	.byte	1,2,35,8,20
+	.byte	'HwControllerId',0
+	.word	286
+	.byte	1,2,35,9,0,18
+	.byte	'Can_RxHwObjectConfigType',0,12,147,4,3
+	.word	6128
+	.byte	21,4
+	.word	286
+	.byte	22,3,0,24
+	.byte	'Can_ControllerMOMapConfigType',0,12,181,4,16,4,20
+	.byte	'ControllerMOMap',0
+	.word	6268
+	.byte	4,2,35,0,0,18
+	.byte	'Can_ControllerMOMapConfigType',0,12,184,4,3
+	.word	6277
+	.byte	24
+	.byte	'Can_NPCRValueType',0,12,188,4,16,2,20
+	.byte	'Can_NPCRValue',0
+	.word	209
+	.byte	2,2,35,0,0,18
+	.byte	'Can_NPCRValueType',0,12,191,4,3
+	.word	6378
+	.byte	24
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,12,194,4,16,8,20
+	.byte	'CanControllerBaudrate',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	'CanControllerBaudrateCfg',0
+	.word	209
+	.byte	2,2,35,4,0,18
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,12,198,4,3
+	.word	6453
+	.byte	9
+	.word	6453
+	.byte	10
+	.word	6618
+	.byte	24
+	.byte	'Can_BaudrateConfigPtrType',0,12,201,4,16,4,20
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	6623
+	.byte	4,2,35,0,0,18
+	.byte	'Can_BaudrateConfigPtrType',0,12,204,4,3
+	.word	6628
+	.byte	24
+	.byte	'Can_EventHandlingType',0,12,226,4,16,4,20
+	.byte	'CanEventType',0
+	.word	6268
+	.byte	4,2,35,0,0,18
+	.byte	'Can_EventHandlingType',0,12,229,4,3
+	.word	6728
+	.byte	18
+	.byte	'Rte_TransformerErrorCode',0,13,130,1,15
+	.word	286
+	.byte	18
+	.byte	'Rte_TransformerClass',0,13,131,1,15
+	.word	286
+	.byte	19,13,168,1,9,12,20
+	.byte	'in',0
+	.word	2568
+	.byte	4,2,35,0,20
+	.byte	'out',0
+	.word	2568
+	.byte	4,2,35,4,20
+	.byte	'used',0
+	.word	209
+	.byte	2,2,35,8,20
+	.byte	'lost_data',0
+	.word	286
+	.byte	1,2,35,10,0,18
+	.byte	'Rte_QDynType',0,13,173,1,3
+	.word	6874
+	.byte	2,13,175,1,9,4,3
+	.byte	'RTE_DRA',0,0,3
+	.byte	'RTE_WOWP',0,1,3
+	.byte	'RTE_TASK',0,2,3
+	.byte	'RTE_ARE',0,3,3
+	.byte	'RTE_EV',0,4,3
+	.byte	'RTE_MSI',0,5,0,18
+	.byte	'Rte_NotificationType',0,13,182,1,3
+	.word	6961
+	.byte	10
+	.word	6874
+	.byte	24
+	.byte	'Rte_QCmnType',0,13,184,1,16,24,20
+	.byte	'dynamic',0
+	.word	7059
+	.byte	4,2,35,0,20
+	.byte	'copy',0
+	.word	286
+	.byte	1,2,35,4,20
+	.byte	'queue_size',0
+	.word	209
+	.byte	2,2,35,6,20
+	.byte	'element_size',0
+	.word	209
+	.byte	2,2,35,8,20
+	.byte	'buffer_start',0
+	.word	2568
+	.byte	4,2,35,12,20
+	.byte	'buffer_end',0
+	.word	2568
+	.byte	4,2,35,16,20
+	.byte	'notification_type',0
+	.word	6961
+	.byte	4,2,35,20,0,18
+	.byte	'Rte_QCmnType',0,13,192,1,3
+	.word	7064
+	.byte	18
+	.byte	'Rte_AlarmRefType',0,13,224,1,32
+	.word	1287
+	.byte	18
+	.byte	'Rte_AlarmIndexType',0,13,226,1,32
+	.word	209
+	.byte	21,128,8
+	.word	286
+	.byte	22,255,7,0,18
+	.byte	'Impl_NVM_DstPtrType_1024',0,14,50,15
+	.word	7302
+	.byte	18
+	.byte	'CanIf_u32_impl',0,14,69,16
+	.word	1287
+	.byte	18
+	.byte	'CanIf_u16_impl',0,14,71,16
+	.word	209
+	.byte	18
+	.byte	'CanIf_u8_impl',0,14,73,15
+	.word	286
+	.byte	18
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,14,88,15
+	.word	286
+	.byte	18
+	.byte	'CanIf_PduModeType_Enum_impl',0,14,90,15
+	.word	286
+	.byte	19,14,92,9,2,20
+	.byte	'DeviceMode',0
+	.word	286
+	.byte	1,2,35,0,20
+	.byte	'ChannelMode',0
+	.word	286
+	.byte	1,2,35,1,0,18
+	.byte	'CanIf_ControllerStateType_struct_impl',0,14,95,3
+	.word	7493
+	.byte	18
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,14,100,15
+	.word	286
+	.byte	18
+	.byte	'CanSM_boolean_Impl',0,14,120,15
+	.word	286
+	.byte	18
+	.byte	'CanSM_u8_Impl',0,14,123,15
+	.word	286
+	.byte	18
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,14,128,1,15
+	.word	286
+	.byte	18
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,14,132,1,15
+	.word	286
+	.byte	18
+	.byte	'CanSM_u16_Impl',0,14,136,1,16
+	.word	209
+	.byte	18
+	.byte	'CanSM_TimerStateType_Enum_impl',0,14,138,1,15
+	.word	286
+	.byte	19,14,140,1,9,4,20
+	.byte	'cntTick_u16',0
+	.word	209
+	.byte	2,2,35,0,20
+	.byte	'stTimer',0
+	.word	286
+	.byte	1,2,35,2,0,18
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,14,143,1,3
+	.word	7834
+	.byte	18
+	.byte	'Com_impl_u16',0,14,154,1,16
+	.word	209
+	.byte	18
+	.byte	'Com_impl_u8',0,14,157,1,15
+	.word	286
+	.byte	18
+	.byte	'ComM_uint32_Impl',0,14,173,1,16
+	.word	1287
+	.byte	18
+	.byte	'ComM_uint16_Impl',0,14,175,1,16
+	.word	209
+	.byte	18
+	.byte	'ComM_uint8_Impl',0,14,177,1,15
+	.word	286
+	.byte	18
+	.byte	'ComM_bool_Impl',0,14,179,1,15
+	.word	286
+	.byte	19,14,181,1,9,24,20
+	.byte	'ChannelState_e',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	'LightTimeoutCtr_u32',0
+	.word	1287
+	.byte	4,2,35,4,20
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	209
+	.byte	2,2,35,8,20
+	.byte	'ChannelMode_u8',0
+	.word	286
+	.byte	1,2,35,10,20
+	.byte	'BusSmMode_u8',0
+	.word	286
+	.byte	1,2,35,11,20
+	.byte	'UserRequestCtr_u8',0
+	.word	286
+	.byte	1,2,35,12,20
+	.byte	'PassiveRequestState_u8',0
+	.word	286
+	.byte	1,2,35,13,20
+	.byte	'PncRequestCtr_u8',0
+	.word	286
+	.byte	1,2,35,14,20
+	.byte	'InhibitionReqStatus_u8',0
+	.word	286
+	.byte	1,2,35,15,20
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	286
+	.byte	1,2,35,16,20
+	.byte	'DiagnosticRequestState_b',0
+	.word	286
+	.byte	1,2,35,17,20
+	.byte	'CommunicationAllowed_b',0
+	.word	286
+	.byte	1,2,35,18,20
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	286
+	.byte	1,2,35,19,20
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	286
+	.byte	1,2,35,20,20
+	.byte	'NmNetworkModeStatus_b',0
+	.word	286
+	.byte	1,2,35,21,0,18
+	.byte	'ComM_ChannelStruct_Impl',0,14,197,1,3
+	.word	8066
+	.byte	19,14,206,1,9,10,20
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	209
+	.byte	2,2,35,0,20
+	.byte	'LimitToNoComCtr_u16',0
+	.word	209
+	.byte	2,2,35,2,20
+	.byte	'RequestedUserMode_t',0
+	.word	286
+	.byte	1,2,35,4,20
+	.byte	'IndicatedUserMode_t',0
+	.word	286
+	.byte	1,2,35,5,20
+	.byte	'numChannelsInFullCom_u8',0
+	.word	286
+	.byte	1,2,35,6,20
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	286
+	.byte	1,2,35,7,20
+	.byte	'numChannelsInNoCom_u8',0
+	.word	286
+	.byte	1,2,35,8,0,18
+	.byte	'ComM_UserStruct_Impl',0,14,214,1,3
+	.word	8570
+	.byte	18
+	.byte	'Dcm_IOOperationResponseType',0,14,252,1,15
+	.word	286
+	.byte	18
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	14,138,2,15
+	.word	286
+	.byte	18
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,14,146,2,15
+	.word	286
+	.byte	18
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,14,150,2,15
+	.word	286
+	.byte	18
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,14,154,2,15
+	.word	286
+	.byte	18
+	.byte	'NvM_BlockIdType',0,14,215,2,16
+	.word	209
+	.byte	18
+	.byte	'NvM_RequestResultType',0,14,225,2,15
+	.word	286
+	.byte	18
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,14,243,3,34
+	.word	7313
+	.byte	21,128,8
+	.word	286
+	.byte	22,255,7,0,18
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,14,246,3,34
+	.word	7313
+	.byte	2,15,31,9,4,3
+	.byte	'MEMIF_JOB_OK',0,0,3
+	.byte	'MEMIF_JOB_FAILED',0,1,3
+	.byte	'MEMIF_JOB_PENDING',0,2,3
+	.byte	'MEMIF_JOB_CANCELED',0,3,3
+	.byte	'MEMIF_BLOCK_INCONSISTENT',0,4,3
+	.byte	'MEMIF_BLOCK_INVALID',0,5,0,18
+	.byte	'MemIf_JobResultType',0,15,39,2
+	.word	9444
+	.byte	18
+	.byte	'NvM_BlockManagementType',0,2,45,3
+	.word	142
+	.byte	2,2,49,9,4,3
+	.byte	'NVM_PRV_ACTIVITY_NOT_INIT',0,0,3
+	.byte	'NVM_PRV_ACTIVITY_IDLE',0,1,3
+	.byte	'NVM_PRV_ACTIVITY_ARBITRATE',0,2,3
+	.byte	'NVM_PRV_ACTIVITY_JOB_START',0,3,3
+	.byte	'NVM_PRV_ACTIVITY_POLL_RESULT',0,4,3
+	.byte	'NVM_PRV_ACTIVITY_JOB_COMPLETE',0,5,3
+	.byte	'NVM_PRV_ACTIVITY_RESULT_EVAL',0,6,0,18
+	.byte	'NvM_Prv_Activities_ten',0,2,58,3
+	.word	9634
+	.byte	2,2,104,9,4,3
+	.byte	'NvM_Prv_idJob_Idle_e',0,0,3
+	.byte	'NvM_Prv_idJob_Read_e',0,1,3
+	.byte	'NvM_Prv_idJob_Write_e',0,2,3
+	.byte	'NvM_Prv_idJob_Erase_e',0,3,3
+	.byte	'NvM_Prv_idJob_Restore_e',0,4,3
+	.byte	'NvM_Prv_idJob_Maintain_e',0,5,3
+	.byte	'NvM_Prv_idJob_Validate_e',0,6,3
+	.byte	'NvM_Prv_idJob_Invalidate_e',0,7,3
+	.byte	'NvM_Prv_idJob_ReadIdConfigForReadAll_e',0,8,3
+	.byte	'NvM_Prv_idJob_InvalidateForFirstInitAll_e',0,9,3
+	.byte	'NvM_Prv_idJob_RestoreForImplicitRecovery_e',0,10,3
+	.byte	'NvM_Prv_idJob_InvalidateForRemoveNonResistant_e',0,11,3
+	.byte	'NvM_Prv_idJob_Invalid_e',0,12,3
+	.byte	'NvM_Prv_idJob_Count_e',0,13,0,18
+	.byte	'NvM_Prv_idJob_ten',0,2,115,3
+	.word	9875
+	.byte	18
+	.byte	'NvM_Prv_ServiceBit_tuo',0,2,168,1,16
+	.word	209
+	.byte	18
+	.byte	'NvM_Prv_idService_tuo',0,2,173,1,15
+	.word	286
+	.byte	18
+	.byte	'NvM_Prv_idQueue_tuo',0,2,206,1,15
+	.word	286
+	.byte	19,2,210,1,9,12,20
+	.byte	'idService_uo',0
+	.word	286
+	.byte	1,2,35,0,20
+	.byte	'idBlock_uo',0
+	.word	209
+	.byte	2,2,35,2,20
+	.byte	'ServiceBit_uo',0
+	.word	209
+	.byte	2,2,35,4,20
+	.byte	'BlockData_pv',0
+	.word	2568
+	.byte	4,2,35,8,0,18
+	.byte	'NvM_Prv_QueueEntry_tst',0,2,225,1,3
+	.word	10432
+	.byte	19,2,227,1,9,20,20
+	.byte	'idJob_en',0
+	.word	9875
+	.byte	4,2,35,0,20
+	.byte	'idBlock_uo',0
+	.word	209
+	.byte	2,2,35,4,20
+	.byte	'RamBlock_pu8',0
+	.word	654
+	.byte	4,2,35,8,20
+	.byte	'idxDataset_u8',0
+	.word	286
+	.byte	1,2,35,12,20
+	.byte	'Result_en',0
+	.word	9444
+	.byte	4,2,35,16,0,18
+	.byte	'NvM_Prv_JobData_tst',0,2,240,1,3
+	.word	10558
+	.byte	18
+	.byte	'Rte_TaskRefType',0,16,184,1,32
+	.word	3800
+	.byte	18
+	.byte	'Rte_EventRefType',0,16,185,1,32
+	.word	286
+	.byte	18
+	.byte	'Rte_EventType',0,16,186,1,32
+	.word	1287
+	.byte	18
+	.byte	'Rte_REActCounterType',0,16,252,1,15
+	.word	286
+	.byte	10
+	.word	286
+	.byte	18
+	.byte	'Rte_REActCounterRefType',0,16,253,1,58
+	.word	10800
+	.byte	19,16,255,1,9,8,20
+	.byte	'task',0
+	.word	10696
+	.byte	4,2,35,0,20
+	.byte	'acnt',0
+	.word	10805
+	.byte	4,2,35,4,0,18
+	.byte	'Rte_REContainerType',0,16,130,2,3
+	.word	10838
+	.byte	9
+	.word	3540
+	.byte	10
+	.word	10902
+	.byte	10
+	.word	286
+	.byte	9
+	.word	10838
+	.byte	10
+	.word	10917
+	.byte	18
+	.byte	'Rte_REContainerRefType',0,16,132,2,60
+	.word	10922
+	.byte	18
+	.byte	'Rte_MSICounterType',0,16,149,2,16
+	.word	209
+	.byte	10
+	.word	209
+	.byte	18
+	.byte	'Rte_MSICounterRefType',0,16,150,2,56
+	.word	10987
+	.byte	18
+	.byte	'Rte_MSIPendingFlagType',0,16,152,2,17
+	.word	286
+	.byte	10
+	.word	286
+	.byte	18
+	.byte	'Rte_MSIPendingFlagRefType',0,16,153,2,60
+	.word	11055
+	.byte	19,16,163,2,9,24,20
+	.byte	'counter',0
+	.word	10992
+	.byte	4,2,35,0,20
+	.byte	'incCounter',0
+	.word	286
+	.byte	1,2,35,4,20
+	.byte	'pending',0
+	.word	11060
+	.byte	4,2,35,8,20
+	.byte	'osTask',0
+	.word	10696
+	.byte	4,2,35,12,20
+	.byte	'acnt',0
+	.word	10805
+	.byte	4,2,35,16,20
+	.byte	'osEvent',0
+	.word	286
+	.byte	1,2,35,20,20
+	.byte	'MSIInit',0
+	.word	209
+	.byte	2,2,35,22,0,18
+	.byte	'Rte_MSITableEntry',0,16,172,2,3
+	.word	11095
+	.byte	10
+	.word	209
+	.byte	10
+	.word	286
+	.byte	18
+	.byte	'Rte_TaskArrayIndex',0,16,179,2,16
+	.word	286
+	.byte	18
+	.byte	'Rte_NrWaitingTasks',0,16,180,2,16
+	.word	286
+	.byte	19,16,182,2,9,4,20
+	.byte	'pending',0
+	.word	286
+	.byte	1,2,35,0,20
+	.byte	'count',0
+	.word	286
+	.byte	1,2,35,1,20
+	.byte	'firstWaitingTask',0
+	.word	286
+	.byte	1,2,35,2,0,18
+	.byte	'Rte_WaitableDatum',0,16,186,2,3
+	.word	11313
+	.byte	10
+	.word	11313
+	.byte	19,16,226,2,9,12,20
+	.byte	'event_id',0
+	.word	1287
+	.byte	4,2,35,0,20
+	.byte	'wd',0
+	.word	11405
+	.byte	4,2,35,4,20
+	.byte	'timeout',0
+	.word	1287
+	.byte	4,2,35,8,0,18
+	.byte	'Rte_WOWP_NotificationType',0,16,230,2,3
+	.word	11410
+	.byte	9
+	.word	11410
+	.byte	10
+	.word	11499
+	.byte	18
+	.byte	'Rte_WOWP_NotificationRefType',0,16,232,2,66
+	.word	11504
+	.byte	18
+	.byte	'Rte_ARE_NotificationType',0,16,234,2,29
+	.word	10838
+	.byte	24
+	.byte	'Rte_QTaskType',0,16,243,2,16,28,20
+	.byte	'cmn',0
+	.word	7064
+	.byte	24,2,35,0,20
+	.byte	'task',0
+	.word	10696
+	.byte	4,2,35,24,0,18
+	.byte	'Rte_QTaskType',0,16,246,2,3
+	.word	11581
+	.byte	24
+	.byte	'Rte_QREType',0,16,250,2,16,28,20
+	.byte	'cmn',0
+	.word	7064
+	.byte	24,2,35,0,20
+	.byte	're',0
+	.word	10927
+	.byte	4,2,35,24,0,18
+	.byte	'Rte_QREType',0,16,253,2,3
+	.word	11652
+	.byte	9
+	.word	10838
+	.byte	10
+	.word	11717
+	.byte	24
+	.byte	'Rte_QWWPType',0,16,129,3,16,28,20
+	.byte	'cmn',0
+	.word	7064
+	.byte	24,2,35,0,20
+	.byte	'wwp',0
+	.word	11509
+	.byte	4,2,35,24,0,18
+	.byte	'Rte_QWWPType',0,16,132,3,3
+	.word	11727
+	.byte	9
+	.word	11410
+	.byte	10
+	.word	11795
+	.byte	24
+	.byte	'Rte_QEvType',0,16,136,3,16,36,20
+	.byte	'cmn',0
+	.word	7064
+	.byte	24,2,35,0,20
+	.byte	'task',0
+	.word	10696
+	.byte	4,2,35,24,20
+	.byte	'mask',0
+	.word	286
+	.byte	1,2,35,28,20
+	.byte	'acnt',0
+	.word	10805
+	.byte	4,2,35,32,0,18
+	.byte	'Rte_QEvType',0,16,141,3,3
+	.word	11805
+	.byte	24
+	.byte	'Rte_QMSIType',0,16,145,3,16,48,20
+	.byte	'cmn',0
+	.word	7064
+	.byte	24,2,35,0,20
+	.byte	'task',0
+	.word	10696
+	.byte	4,2,35,24,20
+	.byte	'mask',0
+	.word	286
+	.byte	1,2,35,28,20
+	.byte	'acnt',0
+	.word	10805
+	.byte	4,2,35,32,20
+	.byte	'msiCounter',0
+	.word	10992
+	.byte	4,2,35,36,20
+	.byte	'msiPending',0
+	.word	11060
+	.byte	4,2,35,40,20
+	.byte	'msiLimit',0
+	.word	209
+	.byte	2,2,35,44,0,18
+	.byte	'Rte_QMSIType',0,16,153,3,3
+	.word	11900
+	.byte	31
+	.word	286
+	.byte	1,1,26
+	.word	2568
+	.byte	0,10
+	.word	12055
+	.byte	18
+	.byte	'NvM_Prv_ExplicitSync_Copy_tpfct',0,1,29,26
+	.word	12068
+	.byte	2,1,34,9,4,3
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL',0,1,3
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL',0,2,3
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_FIRST_INIT_ALL',0,4,3
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_INIT_AT_LAYOUT_CHANGE',0,8,3
+	.byte	'NVM_PRV_BLOCK_FLAG_WRITE_PROTECTED',0,16,3
+	.byte	'NVM_PRV_BLOCK_FLAG_WRITE_ONCE',0,32,3
+	.byte	'NVM_PRV_BLOCK_FLAG_RESISTANT_TO_CHANGED_SW',0,192,0,3
+	.byte	'NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM',0,128,1,3
+	.byte	'NVM_PRV_BLOCK_FLAG_USE_AUTO_VALIDATION',0,128,2,3
+	.byte	'NVM_PRV_BLOCK_FLAG_USE_VARIABLE_BLOCK_LENGTH',0,128,4,3
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_MIGRATION',0,128,8,3
+	.byte	'NVM_PRV_BLOCK_FLAG_RAM_INIT_UNCONDITIONAL',0,128,16,0,18
+	.byte	'NvM_Prv_BlockConfiguration_ten',0,1,85,3
+	.word	12113
+	.byte	21,14
+	.word	286
+	.byte	22,13,0,32
+	.byte	'NvM_Prv_idxDataSet_rAMwA_au8',0,3,81,14
+	.word	12676
+	.byte	1,1,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L13:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,4,1,58,15,59,15,57,15,11,15,0,0,3,40,0,3,8,28,13,0,0,4
+	.byte	36,0,3,8,11,15,62,15,0,0,5,46,1,3,8,32,13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,6,5,0,3,8,58,15,59,15
+	.byte	57,15,73,19,0,0,7,11,0,0,0,8,59,0,3,8,0,0,9,38,0,73,19,0,0,10,15,0,73,19,0,0,11,11,1,0,0,12,46,1,49,19
+	.byte	0,0,13,5,0,49,19,0,0,14,29,1,49,19,0,0,15,11,0,49,19,0,0,16,46,1,3,8,58,15,59,15,57,15,73,19,54,15,39
+	.byte	12,63,12,60,12,0,0,17,21,0,54,15,0,0,18,22,0,3,8,58,15,59,15,57,15,73,19,0,0,19,19,1,58,15,59,15,57,15
+	.byte	11,15,0,0,20,13,0,3,8,73,19,11,15,56,9,0,0,21,1,1,11,15,73,19,0,0,22,33,0,47,15,0,0,23,21,0,54,15,39,12
+	.byte	0,0,24,19,1,3,8,58,15,59,15,57,15,11,15,0,0,25,21,1,54,15,39,12,0,0,26,5,0,73,19,0,0,27,23,1,58,15,59
+	.byte	15,57,15,11,15,0,0,28,4,1,3,8,58,15,59,15,57,15,11,15,0,0,29,21,0,73,19,54,15,39,12,0,0,30,53,0,73,19
+	.byte	0,0,31,21,1,73,19,54,15,39,12,0,0,32,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L14:
+	.word	.L50-.L49
+.L49:
+	.half	3
+	.word	.L52-.L51
+.L51:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv_BlockDescriptor.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\NvM\\api\\NvM_Types.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv_BlockData.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv_ErrorDetection.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_GetDataIndex.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\MemIf\\api\\MemIf_Types.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0,0
+.L52:
+.L50:
+	.sdecl	'.debug_info',debug,cluster('NvM_GetDataIndex')
+	.sect	'.debug_info'
+.L15:
+	.word	304
+	.half	3
+	.word	.L16
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_GetDataIndex.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L18,.L17
+	.byte	2
+	.word	.L11
+	.byte	3
+	.byte	'NvM_GetDataIndex',0,1,22,16
+	.word	.L20
+	.byte	1,1,1
+	.word	.L10,.L21,.L9
+	.byte	4
+	.byte	'BlockId',0,1,22,49
+	.word	.L22,.L23
+	.byte	4
+	.byte	'DataIndexPtr',0,1,22,65
+	.word	.L24,.L25
+	.byte	5
+	.word	.L10,.L21
+	.byte	6
+	.byte	'stReturn_uo',0,1,25,20
+	.word	.L20,.L26
+	.byte	7
+	.word	.L27,.L28,.L6
+	.byte	8
+	.word	.L29,.L30
+	.byte	9
+	.word	.L31,.L28,.L6
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_GetDataIndex')
+	.sect	'.debug_abbrev'
+.L16:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,7,29,1,49,16,17,1,18,1,0,0,8,5,0,49,16,2,6,0,0,9,11,0,49,16,17
+	.byte	1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('NvM_GetDataIndex')
+	.sect	'.debug_line'
+.L17:
+	.word	.L54-.L53
+.L53:
+	.half	3
+	.word	.L56-.L55
+.L55:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_GetDataIndex.c',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv_BlockData.h',0,0,0,0,0
+.L56:
+	.byte	5,16,7,0,5,2
+	.word	.L10
+	.byte	3,21,1,5,32,9
+	.half	.L36-.L10
+	.byte	3,3,1,5,49,9
+	.half	.L37-.L36
+	.byte	3,3,1,5,80,9
+	.half	.L32-.L37
+	.byte	1,5,5,9
+	.half	.L33-.L32
+	.byte	1,5,51,7,9
+	.half	.L57-.L33
+	.byte	3,3,1,5,91,9
+	.half	.L58-.L57
+	.byte	1,5,9,9
+	.half	.L40-.L58
+	.byte	1,5,61,7,9
+	.half	.L59-.L40
+	.byte	3,5,1,5,101,9
+	.half	.L60-.L59
+	.byte	1,5,13,9
+	.half	.L42-.L60
+	.byte	1,5,29,7,9
+	.half	.L61-.L42
+	.byte	3,3,1,5,63,9
+	.half	.L62-.L61
+	.byte	3,1,1,5,94,9
+	.half	.L63-.L62
+	.byte	1,5,17,9
+	.half	.L45-.L63
+	.byte	1,4,2,5,12,7,9
+	.half	.L28-.L45
+	.byte	3,249,0,1,5,40,9
+	.half	.L64-.L28
+	.byte	1,5,5,9
+	.half	.L35-.L64
+	.byte	1,4,1,5,35,9
+	.half	.L6-.L35
+	.byte	3,141,127,1,5,73,9
+	.half	.L65-.L6
+	.byte	1,5,37,9
+	.half	.L5-.L65
+	.byte	3,6,1,5,35,9
+	.half	.L46-.L5
+	.byte	1,5,5,9
+	.half	.L2-.L46
+	.byte	3,6,1,5,1,9
+	.half	.L8-.L2
+	.byte	3,1,1,7,9
+	.half	.L19-.L8
+	.byte	0,1,1
+.L54:
+	.sdecl	'.debug_ranges',debug,cluster('NvM_GetDataIndex')
+	.sect	'.debug_ranges'
+.L18:
+	.word	-1,.L10,0,.L19-.L10,0,0
+	.sdecl	'.debug_loc',debug,cluster('NvM_GetDataIndex')
+	.sect	'.debug_loc'
+.L23:
+	.word	-1,.L10,0,.L32-.L10
+	.half	1
+	.byte	84
+	.word	.L34-.L10,.L35-.L10
+	.half	1
+	.byte	95
+	.word	.L38-.L10,.L33-.L10
+	.half	1
+	.byte	85
+	.word	.L39-.L10,.L40-.L10
+	.half	1
+	.byte	85
+	.word	.L41-.L10,.L42-.L10
+	.half	1
+	.byte	85
+	.word	.L44-.L10,.L45-.L10
+	.half	1
+	.byte	85
+	.word	.L5-.L10,.L46-.L10
+	.half	1
+	.byte	95
+	.word	0,0
+.L25:
+	.word	-1,.L10,0,.L33-.L10
+	.half	1
+	.byte	100
+	.word	.L36-.L10,.L21-.L10
+	.half	1
+	.byte	111
+	.word	.L43-.L10,.L42-.L10
+	.half	1
+	.byte	100
+	.word	0,0
+.L9:
+	.word	-1,.L10,0,.L21-.L10
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L30:
+	.word	0,0
+.L26:
+	.word	-1,.L10,.L37-.L10,.L21-.L10
+	.half	1
+	.byte	88
+	.word	.L47-.L10,.L21-.L10
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L66:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('NvM_GetDataIndex')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L66,.L10,.L21-.L10
+
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    60  
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    61  #define NVM_STOP_SEC_CODE
+; BSW\src\BSW\Gen\NvM\src\NvM_GetDataIndex.c	    62  #include "NvM_MemMap.h"
+
+	; Module end

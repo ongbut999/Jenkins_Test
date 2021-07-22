@@ -1,0 +1,2404 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc17088a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Xcp\\Xcp_Init.src BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_Init.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_Init.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Xcp_Init.Xcp_Init',code,cluster('Xcp_Init')
+	.sect	'.text.Xcp_Init.Xcp_Init'
+	.align	2
+	
+	.global	Xcp_Init
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	     1  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	     2  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	     3  * Includes
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	     4  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	     5  #include "Xcp.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	     6  #include "Xcp_Priv.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	     7  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	     8  #if ((XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON) && (XCP_EDRAM_CONFIGURED == STD_ON))
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	     9  # include "rba_Memlay.h" /* for ED RAM #define RBA_MEMLAY_EDRAM_START */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    10  # ifdef RBA_MEMLAY_EDRAM_START
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    11  #  include "rba_Eec.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    12  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    13  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    14  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    15  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    16  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    17  * Variables
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    18  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    19  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    20  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    21  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    22  * Functions
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    23  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    24  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    25  LOCAL_INLINE void Xcp_InitRam(void);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    26  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    27  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    28  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    29  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    30  /* Begin section for code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    31  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    32  #define XCP_START_SEC_CODE
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    33  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    34  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    35  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    36  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    37  This service initializes interfaces and variables of the XCP layer
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    38  \param[in]  Xcp_ConfigPtr   pointer to the xcp config structure
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    39  \return     -
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    40  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    41  void Xcp_Init(const Xcp_ConfigType* Xcp_ConfigPtr)
+; Function Xcp_Init
+Xcp_Init:	.type	func
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    42  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    43    /*Start of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    44    XCP_RTM_TIMETRACK_START()
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    45  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    46    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    47    uint8 protLayerId;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    48    uint8 l_transportlayer_u8;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    49  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    50    XCP_PARAM_UNUSED(Xcp_ConfigPtr);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    51  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    52  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    53    /* check whether sizeof(DAQ), sizeof(ODT) and sizeof(ODTENTRY) match calculation for A2L (see Xcp_CodeFileConstants.ext) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    54    /* MR12 RULE 14.3 VIOLATION: The condition will only be true in case of error. To have a simple DET-Reporting function this condition is encapsulated into a macro and cannot be left out */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    55    XCP_DET_REPORT_ERROR((XCP_SIZEOF_DAQ != XCP_DAQ_SIZE), XCP_INITIALIZE_SID, XCP_E_DAQ_SIZE_MISMATCH);
+.L2:
+	mov	d15,#0
+	jeq	d15,#0,.L3
+	mov	d4,#212
+	mov	d5,#0
+	mov	d6,#0
+	mov	d7,#48
+	call	Det_ReportError
+.L40:
+	j	.L4
+.L3:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    56  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    57    /* MR12 RULE 14.3 VIOLATION: The condition will only be true in case of error. To have a simple DET-Reporting function this condition is encapsulated into a macro and cannot be left out */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    58    XCP_DET_REPORT_ERROR((XCP_SIZEOF_ODT != XCP_ODT_SIZE), XCP_INITIALIZE_SID, XCP_E_ODT_SIZE_MISMATCH);
+.L5:
+	mov	d15,#0
+	jeq	d15,#0,.L6
+	mov	d4,#212
+	mov	d5,#0
+	mov	d6,#0
+	mov	d7,#49
+	call	Det_ReportError
+.L41:
+	j	.L7
+.L6:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    59  # if (XCP_ADDR_LEN == 4)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    60    /* 32bit */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    61    /* MR12 RULE 14.3 VIOLATION: The condition will only be true in case of error. To have a simple DET-Reporting function this condition is encapsulated into a macro and cannot be left out */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    62    XCP_DET_REPORT_ERROR((XCP_SIZEOF_ODT_ENTRY != XCP_ODT_ENTRY_SIZE), XCP_INITIALIZE_SID, XCP_E_ODTENTRY_SIZE_MISMATCH);
+.L8:
+	mov	d15,#0
+	jeq	d15,#0,.L9
+	mov	d4,#212
+	mov	d5,#0
+	mov	d6,#0
+	mov	d7,#50
+	call	Det_ReportError
+.L42:
+	j	.L10
+.L9:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    63  # else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    64    /* 64bit - A2L is currently always generated for 32bit, so skip the check */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    65  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    66  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    67  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    68    /* NOINIT section not used (most cases): Initialization is always done */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    69    /* NOINIT section used (special cases):  Initialization is done for first startup */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    70    if (Xcp_GlobalNoInit.InitStatus_u8 == XCP_UNINIT)
+	movh.a	a15,#@his(Xcp_GlobalNoInit)
+	lea	a15,[a15]@los(Xcp_GlobalNoInit)
+.L71:
+	lea	a12,[a15]11
+	ld.bu	d15,[a12]
+.L72:
+	jne	d15,#0,.L11
+.L37:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    71    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    72  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    73      /* initialize ram pointer and size */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    74      Xcp_InitRam();
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    75  # if(XCP_DAQRAM_SHIFTING == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    76      Xcp_GlobalNoInit.DaqConfigActiveOnPl_u8 = XCP_INVALID_PROTLAYER_ID;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    77  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    78  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    79      /* Turn on XCP by default, can be disabled at a later time */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    80      Xcp_GlobalNoInit.EnabledResources_u8 = XCP_RESOURCE_ENABLED;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    81  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    82      /* initialize protocol layers for first connect */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    83      for (protLayerId = 0; protLayerId < XCP_PL_IDS; protLayerId++)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    84      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    85        /* set TransportId to 0xFF */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    86        XCP_ACTIVE_TL_ID(protLayerId) = 0xFFu;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    87  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    88        Xcp_NoInit[protLayerId].DaqConfig.DaqListSending_u16 = XCP_DAQLIST_UNDEF;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    89  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    90  #if(XCP_SEED_AND_KEY == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    91        Xcp_InitSeedKey(protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    92  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    93      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    94      /* reset all transportlayer -> protocol layer references */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    95      for (l_transportlayer_u8 = 0; l_transportlayer_u8 < XCP_TL_IDS; l_transportlayer_u8++)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    96      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    97        Xcp_GlobalNoInit.Tl2PlRef_au8[l_transportlayer_u8] = XCP_INVALID_PROTLAYER_ID;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    98      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	    99  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   100    Xcp_GlobalNoInit.DaqTransmissionStopped_b = TRUE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   101  # if (XCP_SYNCHRONOUS_DATA_STIMULATION_STIM == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   102    Xcp_GlobalNoInit.StimTransmissionStopped_b = TRUE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   103  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   104  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   105    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   106  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   107    /* Initializations after every reset */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   108    /* Init for all protocol layers */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   109    for (protLayerId = 0; protLayerId < XCP_PL_IDS; protLayerId++)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   110    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   111      /* Clear all available queues */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   112      Xcp_QueClearAll(protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   113      /* nothing to send, clear Wait4TxConfCtr */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   114      Xcp_Cleared[protLayerId].Wait4TxConfCtr_u8 = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   115      /* Set background activities to none */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   116      Xcp_Cleared[protLayerId].BgActivityState = XCP_BG_IDLE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   117  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   118      /* Call init functions */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   119  #if ( (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON) \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   120     || ((XCP_CALIBRATION_CAL == STD_ON) && (XCP_UPLOAD_DOWNLOAD_MEMORY_ACCESS_BY_APPL == STD_ON)) )
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   121      /* Call application function to initialize and cancel application background activities */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   122      (void)XcpAppl_Init(Xcp_GlobalNoInit.InitStatus_u8, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   123  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   124      Xcp_InitUpload(protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   125  #if(XCP_CALIBRATION_CAL == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   126      Xcp_InitDownload(protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   127  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   128  #if (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   129      Xcp_InitChecksum(protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   130  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   131  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   132  #if (XCP_DEV_ERROR_DETECT == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   133      /* Debug counter reset */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   134      Xcp_Cleared[protLayerId].Debug.Xcp_Debug_TransmitOkCtr = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   135      Xcp_Cleared[protLayerId].Debug.Xcp_Debug_TransmitNotOkCtr = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   136      Xcp_Cleared[protLayerId].Debug.Xcp_Debug_SendResTxConfCtr = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   137      Xcp_Cleared[protLayerId].Debug.Xcp_Debug_SendResCtr = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   138      Xcp_Cleared[protLayerId].Debug.Xcp_Debug_SendEvTxConfCtr = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   139      Xcp_Cleared[protLayerId].Debug.Xcp_Debug_SendEvCtr = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   140      Xcp_Cleared[protLayerId].Debug.Xcp_Debug_TxConfCtr = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   141  # if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   142      Xcp_Cleared[protLayerId].Debug.Xcp_Debug_SendDaqTxConfCtr = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   143      Xcp_Cleared[protLayerId].Debug.Xcp_Debug_SendDaqCtr = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   144  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   145  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   146    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   147  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   148    /* call all transportlayer init functions */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   149    for (l_transportlayer_u8 = 0; l_transportlayer_u8 < XCP_TL_IDS; l_transportlayer_u8++)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   150    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   151      Xcp_PlCfgConst.TlCfg[l_transportlayer_u8].TLInit_pfct(l_transportlayer_u8, Xcp_GlobalNoInit.InitStatus_u8);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   152    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   153  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   154  #if (XCP_RESUME_MODE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   155    if(Xcp_GlobalNoInit.InitStatus_u8 != XCP_INIT)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   156    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   157        Xcp_ResumeModeActivate();
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   158    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   159  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   160    /* XCP initialisation finished */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   161    Xcp_GlobalNoInit.InitStatus_u8 = XCP_INIT;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   162  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   163    /*End of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   164    XCP_RTM_TIMETRACK_FINISH()
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   165  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   166  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   167  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   168  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   169  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   170  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   171  Xcp_InitRam initializes the DAQ dynamic memory,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   172  so the protocol layers will have access to the memory sections in PD and ED (if available).
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   173  \param[in]  -
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   174  \return     -
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   175  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   176  LOCAL_INLINE void Xcp_InitRam(void)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   177  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   178  # if (XCP_DAQRAM_LIMIT_ED > 0u)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   179  #  ifdef RBA_MEMLAY_EDRAM_START
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   180    /* DAQ RAM Emulation Device */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   181    if (rba_Eec_EdRamAvailable() != 0u)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   182    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   183      /* overwrite only, when ED RAM is available */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   184      Xcp_GlobalNoInit.DaqRamSections[0].DaqRamFreeSize_u32  = XCP_DAQRAM_LIMIT_ED;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   185    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   186  #  endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   187  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   188  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   189  # if (XCP_DAQRAM_LIMIT > 0u)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   190    /* DAQ RAM Production Device */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   191    Xcp_GlobalNoInit.DaqRamSections[XCP_MAX_DAQRAMSECTIONS - 1u].DaqRamFreeSize_u32  = XCP_DAQRAM_LIMIT;
+	mov	d15,#1024
+.L73:
+	st.w	[a15],d15
+.L38:
+	mov	d15,#5
+.L74:
+	st.b	[a15]10,d15
+.L75:
+	mov	d8,#0
+.L43:
+	j	.L12
+.L13:
+	movh.a	a2,#@his(Xcp_NoInit)
+	lea	a2,[a2]@los(Xcp_NoInit)
+	mul	d15,d8,#80
+	addsc.a	a2,a2,d15,#0
+.L76:
+	mov	d15,#255
+.L77:
+	st.b	[a2]4,d15
+.L78:
+	mov.u	d15,#65535
+.L79:
+	st.h	[a2]74,d15
+.L80:
+	mov	d4,d8
+.L44:
+	call	Xcp_InitSeedKey
+.L45:
+	add	d8,#1
+.L12:
+	jeq	d8,#0,.L13
+.L81:
+	mov	d15,#0
+.L46:
+	j	.L14
+.L15:
+	lea	a2,[a15]9
+.L82:
+	add.a	a2,#0
+.L83:
+	mov	d0,#255
+.L84:
+	st.b	[a2],d0
+.L85:
+	add	d15,#1
+.L14:
+	jeq	d15,#0,.L15
+.L86:
+	mov	d15,#1
+.L47:
+	st.b	[a15]8,d15
+.L11:
+	mov	d8,#0
+.L48:
+	j	.L16
+.L17:
+	mov	d4,d8
+.L50:
+	call	Xcp_QueClearAll
+.L51:
+	movh.a	a15,#@his(Xcp_Cleared)
+	lea	a15,[a15]@los(Xcp_Cleared)
+.L87:
+	mov	d0,#336
+	mul	d0,d8
+	addsc.a	a15,a15,d0,#0
+.L88:
+	mov	d0,#0
+.L89:
+	st.b	[a15],d0
+.L90:
+	mov	d15,#0
+.L91:
+	st.w	[a15]8,d15
+.L92:
+	ld.bu	d4,[a12]
+.L93:
+	mov	d5,d8
+.L52:
+	call	XcpAppl_Init
+.L53:
+	mov	d4,d8
+.L54:
+	call	Xcp_InitUpload
+.L55:
+	mov	d4,d8
+.L56:
+	call	Xcp_InitDownload
+.L57:
+	mov	d4,d8
+.L58:
+	call	Xcp_InitChecksum
+.L59:
+	mov	d0,#0
+.L94:
+	st.h	[a15]316,d0
+.L95:
+	mov	d0,#0
+.L96:
+	st.h	[a15]318,d0
+.L97:
+	mov	d0,#0
+.L98:
+	st.h	[a15]320,d0
+.L99:
+	mov	d15,#0
+.L100:
+	st.h	[a15]322,d15
+.L101:
+	mov	d15,#0
+.L102:
+	st.h	[a15]324,d15
+.L103:
+	mov	d15,#0
+.L104:
+	st.h	[a15]326,d15
+.L105:
+	mov	d15,#0
+.L106:
+	st.h	[a15]332,d15
+.L107:
+	mov	d15,#0
+.L108:
+	st.h	[a15]328,d15
+.L109:
+	mov	d15,#0
+.L110:
+	st.h	[a15]330,d15
+.L111:
+	add	d8,#1
+.L16:
+	jeq	d8,#0,.L17
+.L112:
+	mov	d8,#0
+.L49:
+	j	.L18
+.L19:
+	movh.a	a15,#@his(Xcp_PlCfgConst)
+	lea	a15,[a15]@los(Xcp_PlCfgConst)
+.L113:
+	mul	d15,d8,#56
+	addsc.a	a15,a15,d15,#0
+.L114:
+	ld.a	a15,[a15]4
+.L115:
+	ld.bu	d5,[a12]
+	mov	d4,d8
+.L60:
+	calli	a15
+.L61:
+	add	d8,#1
+.L18:
+	jeq	d8,#0,.L19
+.L116:
+	mov	d15,#1
+.L117:
+	st.b	[a12],d15
+.L10:
+.L7:
+.L4:
+	ret
+.L30:
+	
+__Xcp_Init_function_end:
+	.size	Xcp_Init,__Xcp_Init_function_end-Xcp_Init
+.L29:
+	; End of function
+	
+	.calls	'Xcp_Init','Det_ReportError'
+	.calls	'Xcp_Init','Xcp_InitSeedKey'
+	.calls	'Xcp_Init','Xcp_QueClearAll'
+	.calls	'Xcp_Init','XcpAppl_Init'
+	.calls	'Xcp_Init','Xcp_InitUpload'
+	.calls	'Xcp_Init','Xcp_InitDownload'
+	.calls	'Xcp_Init','Xcp_InitChecksum'
+	.calls	'Xcp_Init','__INDIRECT__'
+	.extern	Xcp_PlCfgConst
+	.extern	XcpAppl_Init
+	.extern	Det_ReportError
+	.extern	Xcp_NoInit
+	.extern	Xcp_GlobalNoInit
+	.extern	Xcp_Cleared
+	.extern	Xcp_InitChecksum
+	.extern	Xcp_InitSeedKey
+	.extern	Xcp_InitUpload
+	.extern	Xcp_InitDownload
+	.extern	Xcp_QueClearAll
+	.extern	__INDIRECT__
+	.calls	'Xcp_Init','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L22:
+	.word	14762
+	.half	3
+	.word	.L23
+	.byte	4
+.L21:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_Init.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L24
+.L36:
+	.byte	2
+	.byte	'Xcp_InitRam',0,3,1,176,1,19,1,1
+.L39:
+	.byte	3,0
+.L33:
+	.byte	4
+	.byte	'unsigned char',0,1,8,5,2,134,3,9,1,6
+	.byte	'Dummy_u8',0
+	.word	156
+	.byte	1,2,35,0,0,7
+	.word	173
+.L31:
+	.byte	8
+	.word	198
+	.byte	9
+	.byte	'XcpAppl_Init',0,3,205,1,23
+	.word	156
+	.byte	1,1,1,1,10
+	.byte	'XcpInitStatus',0,3,205,1,42
+	.word	156
+	.byte	10
+	.byte	'ProtocolLayerId',0,3,205,1,63
+	.word	156
+	.byte	0,4
+	.byte	'unsigned short int',0,2,7,9
+	.byte	'Det_ReportError',0,4,112,16
+	.word	156
+	.byte	1,1,1,1,10
+	.byte	'ModuleId',0,4,112,39
+	.word	283
+	.byte	10
+	.byte	'InstanceId',0,4,112,55
+	.word	156
+	.byte	10
+	.byte	'ApiId',0,4,112,73
+	.word	156
+	.byte	10
+	.byte	'ErrorId',0,4,112,86
+	.word	156
+	.byte	0,11
+	.byte	'Xcp_InitChecksum',0,5,239,4,13,1,1,1,1,10
+	.byte	'protLayerId',0,5,239,4,36
+	.word	156
+	.byte	0,11
+	.byte	'Xcp_InitSeedKey',0,5,242,4,13,1,1,1,1,10
+	.byte	'protLayerId',0,5,242,4,35
+	.word	156
+	.byte	0,11
+	.byte	'Xcp_InitUpload',0,5,244,4,13,1,1,1,1,10
+	.byte	'protLayerId',0,5,244,4,34
+	.word	156
+	.byte	0,11
+	.byte	'Xcp_InitDownload',0,5,246,4,13,1,1,1,1,10
+	.byte	'protLayerId',0,5,246,4,36
+	.word	156
+	.byte	0,11
+	.byte	'Xcp_QueClearAll',0,5,182,5,13,1,1,1,1,10
+	.byte	'protLayerId',0,5,182,5,35
+	.word	156
+	.byte	0,12
+	.word	134
+	.byte	3,0,13
+	.byte	'__INDIRECT__',0,1,1,1,1,1,1,14,1,8
+	.word	663
+	.byte	15
+	.byte	'__codeptr',0,1,1,1
+	.word	665
+	.byte	4
+	.byte	'char',0,1,6,15
+	.byte	'sint8',0,6,76,25
+	.word	688
+	.byte	15
+	.byte	'uint8',0,6,81,25
+	.word	156
+	.byte	15
+	.byte	'uint16',0,6,91,25
+	.word	283
+	.byte	4
+	.byte	'unsigned int',0,4,7,15
+	.byte	'uint32',0,6,106,24
+	.word	739
+	.byte	4
+	.byte	'unsigned long long int',0,8,7,15
+	.byte	'uint64',0,6,111,30
+	.word	770
+	.byte	15
+	.byte	'boolean',0,6,127,25
+	.word	156
+	.byte	15
+	.byte	'StatusType',0,7,191,1,27
+	.word	156
+	.byte	15
+	.byte	'Std_ReturnType',0,7,199,1,15
+	.word	156
+	.byte	5,7,206,1,9,8,6
+	.byte	'vendorID',0
+	.word	283
+	.byte	2,2,35,0,6
+	.byte	'moduleID',0
+	.word	283
+	.byte	2,2,35,2,6
+	.byte	'sw_major_version',0
+	.word	156
+	.byte	1,2,35,4,6
+	.byte	'sw_minor_version',0
+	.word	156
+	.byte	1,2,35,5,6
+	.byte	'sw_patch_version',0
+	.word	156
+	.byte	1,2,35,6,0,15
+	.byte	'Std_VersionInfoType',0,7,213,1,3
+	.word	871
+	.byte	15
+	.byte	'PduIdType',0,8,22,19
+	.word	283
+	.byte	15
+	.byte	'PduLengthType',0,8,26,19
+	.word	283
+	.byte	16,9,113,9,4,17
+	.byte	'TP_DATACONF',0,0,17
+	.byte	'TP_DATARETRY',0,1,17
+	.byte	'TP_CONFPENDING',0,2,0,15
+	.byte	'TpDataStateType',0,9,118,3
+	.word	1061
+	.byte	16,2,225,1,9,4,17
+	.byte	'XCP_STATE_DISCONNECTED',0,0,17
+	.byte	'XCP_STATE_DISCONNECTING',0,1,17
+	.byte	'XCP_STATE_CONNECTED',0,2,17
+	.byte	'XCP_STATE_RESUME',0,3,17
+	.byte	'XCP_STATE_DISABLED',0,240,1,0,15
+	.byte	'Xcp_State_t',0,2,231,1,2
+	.word	1137
+	.byte	15
+	.byte	'Xcp_ConfigType',0,2,137,3,2
+	.word	173
+	.byte	15
+	.byte	'Xcp_AddrValue',0,2,165,3,23
+	.word	739
+	.byte	5,2,168,3,9,8,6
+	.byte	'AddrValue',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	'Extension',0
+	.word	156
+	.byte	1,2,35,4,0,15
+	.byte	'Xcp_AddrType_t',0,2,172,3,3
+	.word	1326
+	.byte	15
+	.byte	'Xcp_PduIdType',0,2,174,3,15
+	.word	156
+	.byte	16,2,177,3,9,4,17
+	.byte	'XCP_ERR_CMD_SYNCH',0,0,17
+	.byte	'XCP_ERR_CMD_BUSY',0,16,17
+	.byte	'XCP_ERR_DAQ_ACTIVE',0,17,17
+	.byte	'XCP_ERR_PGM_ACTIVE',0,18,17
+	.byte	'XCP_ERR_CMD_UNKNOWN',0,32,17
+	.byte	'XCP_ERR_CMD_SYNTAX',0,33,17
+	.byte	'XCP_ERR_OUT_OF_RANGE',0,34,17
+	.byte	'XCP_ERR_WRITE_PROTECTED',0,35,17
+	.byte	'XCP_ERR_ACCESS_DENIED',0,36,17
+	.byte	'XCP_ERR_ACCESS_LOCKED',0,37,17
+	.byte	'XCP_ERR_PAGE_NOT_VALID',0,38,17
+	.byte	'XCP_ERR_MODE_NOT_VALID',0,39,17
+	.byte	'XCP_ERR_SEGMENT_NOT_VALID',0,40,17
+	.byte	'XCP_ERR_SEQUENCE',0,41,17
+	.byte	'XCP_ERR_DAQ_CONFIG',0,42,17
+	.byte	'XCP_ERR_MEMORY_OVERFLOW',0,48,17
+	.byte	'XCP_ERR_GENERIC',0,49,17
+	.byte	'XCP_ERR_VERIFY',0,50,17
+	.byte	'XCP_ERR_RES_TEMP_NOT_ACCESS',0,51,17
+	.byte	'XCP_ERR_SUBCMD_UNKNOWN',0,52,17
+	.byte	'XCP_REPEAT_COMMAND',0,252,1,17
+	.byte	'XCP_NO_ACCESS_HIDE',0,253,1,17
+	.byte	'XCP_NO_RESPONSE',0,254,1,17
+	.byte	'XCP_NO_ERROR',0,255,1,0,15
+	.byte	'Xcp_ErrorCode',0,2,204,3,2
+	.word	1418
+	.byte	16,2,207,3,9,4,17
+	.byte	'XCP_DAQ_STATE_NO_DAQ',0,0,17
+	.byte	'XCP_DAQ_STATE_FREE_DAQ',0,1,17
+	.byte	'XCP_DAQ_STATE_ALLOC_DAQ',0,2,17
+	.byte	'XCP_DAQ_STATE_ALLOC_ODT',0,3,17
+	.byte	'XCP_DAQ_STATE_ALLOC_ODT_ENTRY',0,4,17
+	.byte	'XCP_DAQ_STATE_WRITE_DAQ',0,5,17
+	.byte	'XCP_DAQ_STATE_PREPARE_START',0,6,17
+	.byte	'XCP_DAQ_STATE_SHIFTING',0,7,17
+	.byte	'XCP_DAQ_STATE_STOP_REQUESTED',0,8,17
+	.byte	'XCP_DAQ_STATE_READY_TO_RUN',0,9,17
+	.byte	'XCP_DAQ_STATE_RUNNING',0,10,0,15
+	.byte	'Xcp_DaqState_t',0,2,220,3,2
+	.word	1982
+	.byte	16,2,223,3,9,4,17
+	.byte	'XCP_DAQ_NO_OVERLOAD_INDICATION',0,0,17
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_PID',0,1,17
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_EVENT',0,2,0,15
+	.byte	'Xcp_Overload_t',0,2,228,3,2
+	.word	2310
+	.byte	16,2,233,3,9,4,17
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_ABSOLUTE',0,1,17
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_BYTE',0,2,17
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD',0,3,17
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD_ALIGNED',0,4,0,15
+	.byte	'Xcp_IdField_t',0,2,239,3,2
+	.word	2444
+	.byte	16,2,242,3,9,4,17
+	.byte	'XCP_ODT_OPTIMIZATION_OM_DEFAULT',0,0,17
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_16',0,1,17
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_32',0,2,17
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_64',0,3,17
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_ALIGNMENT',0,4,17
+	.byte	'XCP_ODT_OPTIMIZATION_OM_MAX_ENTRY_SIZE',0,5,0,15
+	.byte	'Xcp_OdtOptimizationType_t',0,2,250,3,2
+	.word	2661
+	.byte	16,2,253,3,9,4,17
+	.byte	'XCP_CONSISTENCY_ODT',0,0,17
+	.byte	'XCP_CONSISTENCY_DAQ',0,1,17
+	.byte	'XCP_CONSISTENCY_EVENT',0,2,17
+	.byte	'XCP_CONSISTENCY_NONE',0,3,0,15
+	.byte	'Xcp_Consistency_t',0,2,131,4,2
+	.word	2937
+	.byte	16,2,134,4,9,4,17
+	.byte	'XCP_TIMESTAMP_TYPE_NO_TIME_STAMP',0,0,17
+	.byte	'XCP_TIMESTAMP_TYPE_ONE_BYTE',0,1,17
+	.byte	'XCP_TIMESTAMP_TYPE_TWO_BYTE',0,2,17
+	.byte	'XCP_TIMESTAMP_TYPE_FOUR_BYTE',0,4,0,15
+	.byte	'Xcp_Timestamp_t',0,2,140,4,2
+	.word	3062
+	.byte	18,8
+	.word	156
+	.byte	19,7,0,5,2,174,4,9,12,6
+	.byte	'Buffer_au8',0
+	.word	3220
+	.byte	8,2,35,0,6
+	.byte	'Length_u32',0
+	.word	739
+	.byte	4,2,35,8,0,15
+	.byte	'Xcp_Cto8_t',0,2,178,4,2
+	.word	3229
+	.byte	8
+	.word	156
+	.byte	5,9,71,9,8,6
+	.byte	'SduDataPtr',0
+	.word	3296
+	.byte	4,2,35,0,6
+	.byte	'SduLength',0
+	.word	283
+	.byte	2,2,35,4,0,7
+	.word	3301
+	.byte	8
+	.word	3346
+	.byte	20
+	.word	156
+	.byte	1,1,21
+	.word	3351
+	.byte	21
+	.word	156
+	.byte	21
+	.word	156
+	.byte	0,8
+	.word	3356
+	.byte	22,1,1,21
+	.word	156
+	.byte	21
+	.word	156
+	.byte	0,8
+	.word	3384
+	.byte	22,1,1,21
+	.word	156
+	.byte	0,8
+	.word	3403
+	.byte	20
+	.word	156
+	.byte	1,1,21
+	.word	156
+	.byte	0,8
+	.word	3417
+	.byte	8
+	.word	3301
+	.byte	22,1,1,21
+	.word	3351
+	.byte	21
+	.word	3435
+	.byte	21
+	.word	156
+	.byte	0,8
+	.word	3440
+	.byte	20
+	.word	156
+	.byte	1,1,21
+	.word	156
+	.byte	21
+	.word	283
+	.byte	21
+	.word	156
+	.byte	0,8
+	.word	3464
+	.byte	5,10,164,1,9,56,6
+	.byte	'TLTransmit_pfct',0
+	.word	3379
+	.byte	4,2,35,0,6
+	.byte	'TLInit_pfct',0
+	.word	3398
+	.byte	4,2,35,4,6
+	.byte	'TLConnect_pfct',0
+	.word	3412
+	.byte	4,2,35,8,6
+	.byte	'TLDisconnect_pfct',0
+	.word	3430
+	.byte	4,2,35,12,6
+	.byte	'TLTransportLayerCmd_pfct',0
+	.word	3459
+	.byte	4,2,35,16,6
+	.byte	'TLGetTxPduId_pfct',0
+	.word	3487
+	.byte	4,2,35,20,6
+	.byte	'MaxCto_u8',0
+	.word	156
+	.byte	1,2,35,24,6
+	.byte	'MaxDto_u16',0
+	.word	283
+	.byte	2,2,35,26,6
+	.byte	'TimestampType_en',0
+	.word	3062
+	.byte	4,2,35,28,6
+	.byte	'IdFieldType_en',0
+	.word	2444
+	.byte	4,2,35,32,6
+	.byte	'OverloadType_en',0
+	.word	2310
+	.byte	4,2,35,36,6
+	.byte	'OdtOptimizationType_en',0
+	.word	2661
+	.byte	4,2,35,40,6
+	.byte	'Consistency_en',0
+	.word	2937
+	.byte	4,2,35,44,6
+	.byte	'PdRam_u32',0
+	.word	739
+	.byte	4,2,35,48,6
+	.byte	'EdRam_u32',0
+	.word	739
+	.byte	4,2,35,52,0,15
+	.byte	'Xcp_PL_TL_Cfg_t',0,10,184,1,2
+	.word	3492
+	.byte	16,10,188,1,9,4,17
+	.byte	'XCP_RAMSECTION_INVALID',0,0,17
+	.byte	'XCP_RAMSECTION_PD',0,1,17
+	.byte	'XCP_RAMSECTION_ED',0,2,0,15
+	.byte	'Xcp_RamSectionType_t',0,10,193,1,2
+	.word	3890
+	.byte	5,10,195,1,9,12,6
+	.byte	'DaqRamPtr_pu8',0
+	.word	3296
+	.byte	4,2,35,0,6
+	.byte	'DaqRamTotalSize_u32',0
+	.word	739
+	.byte	4,2,35,4,6
+	.byte	'RamSectionType_en',0
+	.word	3890
+	.byte	4,2,35,8,0,15
+	.byte	'Xcp_DaqRamSection_Cfg_t',0,10,200,1,2
+	.word	3992
+	.byte	18,1
+	.word	156
+	.byte	19,0,0,5,10,203,1,9,8,6
+	.byte	'DaqRamFreeSize_u32',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	'PLConnected_ab',0
+	.word	4111
+	.byte	1,2,35,4,0,15
+	.byte	'Xcp_DaqRamSections_t',0,10,207,1,2
+	.word	4120
+	.byte	5,10,230,1,9,4,6
+	.byte	'EventChannelDirection_u8',0
+	.word	156
+	.byte	1,2,35,0,6
+	.byte	'EventChannelTimeCycle_u8',0
+	.word	156
+	.byte	1,2,35,1,6
+	.byte	'EventChannelTimeUnit_u8',0
+	.word	156
+	.byte	1,2,35,2,6
+	.byte	'EventChannelPriority_u8',0
+	.word	156
+	.byte	1,2,35,3,0,15
+	.byte	'Xcp_EventChannel_Cfg_t',0,10,236,1,2
+	.word	4209
+	.byte	18,56
+	.word	3492
+	.byte	19,0,0,18,12
+	.word	3992
+	.byte	19,0,0,18,12
+	.word	4209
+	.byte	19,2,0,5,10,240,1,9,80,6
+	.byte	'TlCfg',0
+	.word	4382
+	.byte	56,2,35,0,6
+	.byte	'DaqRamCfg',0
+	.word	4391
+	.byte	12,2,35,56,6
+	.byte	'EventChannelCfg',0
+	.word	4400
+	.byte	12,2,35,68,0,15
+	.byte	'Xcp_PlCfgConst_t',0,10,131,2,2
+	.word	4409
+	.byte	7
+	.word	4409
+	.byte	23
+	.byte	'Xcp_PlCfgConst',0,10,140,2,31
+	.word	4501
+	.byte	1,1,15
+	.byte	'rba_BswSrv_uint64',0,11,66,28
+	.word	770
+	.byte	15
+	.byte	'Can_IdType',0,12,32,16
+	.word	739
+	.byte	15
+	.byte	'Can_HwHandleType',0,12,43,16
+	.word	283
+	.byte	5,13,93,9,8,6
+	.byte	'Class',0
+	.word	156
+	.byte	1,2,35,0,6
+	.byte	'TIN',0
+	.word	156
+	.byte	1,2,35,1,6
+	.byte	'ReturnAddress',0
+	.word	739
+	.byte	4,2,35,4,0,15
+	.byte	'OsTrapInfoType',0,13,97,3
+	.word	4602
+	.byte	18,68
+	.word	739
+	.byte	19,16,0,5,13,154,1,9,68,6
+	.byte	'store',0
+	.word	4682
+	.byte	68,2,35,0,0,18,68
+	.word	4691
+	.byte	19,0,0,15
+	.byte	'Os_JumpBufType',0,13,156,1,3
+	.word	4713
+	.byte	15
+	.byte	'Os_StackTraceType',0,13,174,1,18
+	.word	739
+	.byte	5,13,175,1,9,8,6
+	.byte	'sp',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	'ctx',0
+	.word	739
+	.byte	4,2,35,4,0,15
+	.byte	'Os_StackValueType',0,13,175,1,63
+	.word	4773
+	.byte	15
+	.byte	'Os_StackSizeType',0,13,176,1,27
+	.word	4773
+	.byte	24,1,1,8
+	.word	4858
+	.byte	15
+	.byte	'Os_VoidVoidFunctionType',0,13,179,1,16
+	.word	4861
+	.byte	15
+	.byte	'ApplicationType',0,13,193,1,23
+	.word	156
+	.byte	25
+	.byte	'Os_ApplicationConfigurationType_s',0,13,198,1,16,2,6
+	.byte	'app_id',0
+	.word	156
+	.byte	1,2,35,0,6
+	.byte	'access',0
+	.word	156
+	.byte	1,2,35,1,0,15
+	.byte	'Os_ApplicationConfigurationType',0,13,201,1,3
+	.word	4924
+	.byte	15
+	.byte	'Os_CoreStateType',0,13,203,1,16
+	.word	739
+	.byte	15
+	.byte	'AreaIdType',0,13,204,1,16
+	.word	283
+	.byte	15
+	.byte	'Os_PeripheralAddressType',0,13,212,1,22
+	.word	739
+	.byte	15
+	.byte	'TickType',0,13,221,1,22
+	.word	739
+	.byte	15
+	.byte	'Os_StopwatchTickType',0,13,225,1,22
+	.word	739
+	.byte	8
+	.word	739
+	.byte	15
+	.byte	'Os_Lockable',0,13,234,1,18
+	.word	5166
+	.byte	15
+	.byte	'CoreIdType',0,13,236,1,16
+	.word	283
+	.byte	15
+	.byte	'SpinlockIdType',0,13,237,1,16
+	.word	283
+	.byte	16,13,239,1,9,4,17
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,17
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,15
+	.byte	'TryToGetSpinlockType',0,13,239,1,74
+	.word	5236
+	.byte	16,13,174,2,9,4,17
+	.byte	'APPLICATION_ACCESSIBLE',0,0,17
+	.byte	'APPLICATION_RESTARTING',0,1,17
+	.byte	'APPLICATION_TERMINATED',0,2,0,15
+	.byte	'ApplicationStateType',0,13,174,2,92
+	.word	5329
+	.byte	26
+	.byte	'void',0,8
+	.word	5441
+	.byte	22,1,1,21
+	.word	156
+	.byte	21
+	.word	5447
+	.byte	0,8
+	.word	5452
+	.byte	15
+	.byte	'Os_FunctionEntryType',0,13,183,2,16
+	.word	5466
+	.byte	25
+	.byte	'Os_MeterInfoType_s',0,13,193,2,16,48,6
+	.byte	'elapsed',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	'previous',0
+	.word	739
+	.byte	4,2,35,4,6
+	.byte	'max',0
+	.word	739
+	.byte	4,2,35,8,6
+	.byte	'cumulative',0
+	.word	739
+	.byte	4,2,35,12,6
+	.byte	'stackbase',0
+	.word	4773
+	.byte	8,2,35,16,6
+	.byte	'stackusage',0
+	.word	4773
+	.byte	8,2,35,24,6
+	.byte	'stackmax',0
+	.word	4773
+	.byte	8,2,35,32,6
+	.byte	'stackbudget',0
+	.word	4773
+	.byte	8,2,35,40,0,15
+	.byte	'Os_MeterInfoType',0,13,202,2,3
+	.word	5501
+	.byte	8
+	.word	5501
+	.byte	15
+	.byte	'Os_MeterInfoRefType',0,13,203,2,50
+	.word	5699
+	.byte	15
+	.byte	'EventMaskType',0,13,206,2,15
+	.word	156
+	.byte	15
+	.byte	'Os_imaskType',0,13,211,2,16
+	.word	739
+	.byte	25
+	.byte	'Os_ISRDynType_s',0,13,213,2,16,48,6
+	.byte	'meter',0
+	.word	5501
+	.byte	48,2,35,0,0,15
+	.byte	'Os_ISRDynType',0,13,215,2,3
+	.word	5778
+	.byte	8
+	.word	5778
+	.byte	7
+	.word	5839
+	.byte	25
+	.byte	'Os_ISRType_s',0,13,216,2,16,24,6
+	.byte	'entry_function',0
+	.word	4866
+	.byte	4,2,35,0,6
+	.byte	'dynamic',0
+	.word	5844
+	.byte	4,2,35,4,6
+	.byte	'imask',0
+	.word	739
+	.byte	4,2,35,8,6
+	.byte	'stackbudget',0
+	.word	4773
+	.byte	8,2,35,12,6
+	.byte	'access',0
+	.word	156
+	.byte	1,2,35,20,6
+	.byte	'application',0
+	.word	156
+	.byte	1,2,35,21,0,15
+	.byte	'Os_ISRType',0,13,223,2,3
+	.word	5849
+	.byte	8
+	.word	4858
+	.byte	7
+	.word	5849
+	.byte	8
+	.word	6008
+	.byte	15
+	.byte	'ISRType',0,13,224,2,46
+	.word	6013
+	.byte	15
+	.byte	'Os_bitmask',0,13,239,2,22
+	.word	739
+	.byte	15
+	.byte	'Os_pset0Type',0,13,240,2,20
+	.word	739
+	.byte	15
+	.byte	'Os_pset1Type',0,13,241,2,20
+	.word	739
+	.byte	15
+	.byte	'Os_pset2Type',0,13,242,2,20
+	.word	739
+	.byte	27,13,243,2,9,4,6
+	.byte	'p0',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	'p1',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	'p2',0
+	.word	739
+	.byte	4,2,35,0,0,15
+	.byte	'Os_psetType',0,13,247,2,3
+	.word	6121
+	.byte	27,13,249,2,9,4,6
+	.byte	't0',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	't1',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	't2',0
+	.word	739
+	.byte	4,2,35,0,0,15
+	.byte	'Os_tpmaskType',0,13,253,2,3
+	.word	6185
+	.byte	15
+	.byte	'Os_ActivationCountType',0,13,254,2,23
+	.word	156
+	.byte	25
+	.byte	'Os_TaskDynType_s',0,13,128,3,16,120,6
+	.byte	'terminate_jump_buf',0
+	.word	4722
+	.byte	68,2,35,0,6
+	.byte	'meter',0
+	.word	5501
+	.byte	48,2,35,68,6
+	.byte	'activation_count',0
+	.word	156
+	.byte	1,2,35,116,0,15
+	.byte	'Os_TaskDynType',0,13,132,3,3
+	.word	6283
+	.byte	18,68
+	.word	4691
+	.byte	19,0,0,8
+	.word	6283
+	.byte	7
+	.word	6409
+	.byte	25
+	.byte	'Os_TaskType_s',0,13,134,3,16,40,6
+	.byte	'dynamic',0
+	.word	6414
+	.byte	4,2,35,0,6
+	.byte	'entry_function',0
+	.word	4866
+	.byte	4,2,35,4,6
+	.byte	'pset',0
+	.word	6121
+	.byte	4,2,35,8,6
+	.byte	'base_tpmask',0
+	.word	6185
+	.byte	4,2,35,12,6
+	.byte	'tpmask',0
+	.word	6185
+	.byte	4,2,35,16,6
+	.byte	'core_id',0
+	.word	283
+	.byte	2,2,35,20,6
+	.byte	'index',0
+	.word	739
+	.byte	4,2,35,24,6
+	.byte	'stackbudget',0
+	.word	4773
+	.byte	8,2,35,28,6
+	.byte	'activation_count',0
+	.word	156
+	.byte	1,2,35,36,6
+	.byte	'access',0
+	.word	156
+	.byte	1,2,35,37,6
+	.byte	'application',0
+	.word	156
+	.byte	1,2,35,38,0,15
+	.byte	'Os_TaskType',0,13,146,3,3
+	.word	6419
+	.byte	7
+	.word	6419
+	.byte	8
+	.word	6669
+	.byte	15
+	.byte	'TaskType',0,13,147,3,47
+	.word	6674
+	.byte	28
+	.byte	'Os_TaskStateType',0,13,155,3,6,4,17
+	.byte	'SUSPENDED',0,0,17
+	.byte	'READY',0,1,17
+	.byte	'WAITING',0,2,17
+	.byte	'RUNNING',0,3,0,15
+	.byte	'TaskStateType',0,13,156,3,31
+	.word	6697
+	.byte	27,13,167,3,3,4,6
+	.byte	'tpmask',0
+	.word	6185
+	.byte	4,2,35,0,0,25
+	.byte	'Os_ResourceDynType_s',0,13,166,3,16,4,6
+	.byte	'saved_priority',0
+	.word	6784
+	.byte	4,2,35,0,0,15
+	.byte	'Os_ResourceDynType',0,13,170,3,3
+	.word	6807
+	.byte	8
+	.word	6807
+	.byte	7
+	.word	6887
+	.byte	25
+	.byte	'Os_ResourceType_s',0,13,171,3,16,12,6
+	.byte	'dynamic',0
+	.word	6892
+	.byte	4,2,35,0,6
+	.byte	'tpmask',0
+	.word	6185
+	.byte	4,2,35,4,6
+	.byte	'access',0
+	.word	156
+	.byte	1,2,35,8,0,15
+	.byte	'Os_ResourceType',0,13,175,3,3
+	.word	6897
+	.byte	5,13,181,3,9,12,6
+	.byte	'maxallowedvalue',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	'ticksperbase',0
+	.word	739
+	.byte	4,2,35,4,6
+	.byte	'mincycle',0
+	.word	739
+	.byte	4,2,35,8,0,15
+	.byte	'AlarmBaseType',0,13,185,3,3
+	.word	6996
+	.byte	5,13,206,3,9,8,6
+	.byte	'Running',0
+	.word	156
+	.byte	1,2,35,0,6
+	.byte	'Pending',0
+	.word	156
+	.byte	1,2,35,1,6
+	.byte	'Delay',0
+	.word	739
+	.byte	4,2,35,4,0,15
+	.byte	'Os_CounterStatusType',0,13,210,3,3
+	.word	7091
+	.byte	29
+	.word	156
+	.byte	1,1,8
+	.word	7177
+	.byte	15
+	.byte	'Os_CounterIncrAdvType',0,13,217,3,22
+	.word	7184
+	.byte	25
+	.byte	's_swd',0,13,222,3,12,4,6
+	.byte	'count',0
+	.word	739
+	.byte	4,2,35,0,0,27,13,221,3,3,4,6
+	.byte	'sw',0
+	.word	7220
+	.byte	4,2,35,0,0,25
+	.byte	'Os_CounterDynType_s',0,13,220,3,16,4,6
+	.byte	'type_dependent',0
+	.word	7248
+	.byte	4,2,35,0,0,15
+	.byte	'Os_CounterDynType',0,13,226,3,3
+	.word	7267
+	.byte	8
+	.word	7267
+	.byte	7
+	.word	7345
+	.byte	25
+	.byte	'Os_CounterType_s',0,13,227,3,16,28,6
+	.byte	'dynamic',0
+	.word	7350
+	.byte	4,2,35,0,6
+	.byte	'advincr',0
+	.word	7189
+	.byte	4,2,35,4,6
+	.byte	'base',0
+	.word	6996
+	.byte	12,2,35,8,6
+	.byte	'core',0
+	.word	5447
+	.byte	4,2,35,20,6
+	.byte	'access',0
+	.word	156
+	.byte	1,2,35,24,6
+	.byte	'application',0
+	.word	156
+	.byte	1,2,35,25,0,15
+	.byte	'Os_CounterType',0,13,234,3,3
+	.word	7355
+	.byte	8
+	.word	7177
+	.byte	7
+	.word	7355
+	.byte	8
+	.word	7507
+	.byte	15
+	.byte	'CounterType',0,13,235,3,52
+	.word	7512
+	.byte	28
+	.byte	'Os_ScheduleTableStatusType',0,13,240,3,6,4,17
+	.byte	'SCHEDULETABLE_STOPPED',0,0,17
+	.byte	'SCHEDULETABLE_NEXT',0,1,17
+	.byte	'SCHEDULETABLE_WAITING',0,2,17
+	.byte	'SCHEDULETABLE_RUNNING',0,3,17
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,15
+	.byte	'ScheduleTableStatusType',0,13,241,3,41
+	.word	7538
+	.byte	7
+	.word	.L62-.L22
+	.byte	8
+	.word	7738
+	.byte	15
+	.byte	'ScheduleTableType',0,13,128,4,58
+	.word	7743
+	.byte	25
+	.byte	'Os_ScheduleTableDynType_s',0,13,130,4,16,16,6
+	.byte	'match',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	'next',0
+	.word	7748
+	.byte	4,2,35,4,6
+	.byte	'state',0
+	.word	7538
+	.byte	4,2,35,8,6
+	.byte	'config',0
+	.word	283
+	.byte	2,2,35,12,0,8
+	.word	7775
+	.byte	7
+	.word	7868
+.L62:
+	.byte	25
+	.byte	'Os_ScheduleTableType_s',0,13,247,3,16,16,6
+	.byte	'dynamic',0
+	.word	7873
+	.byte	4,2,35,0,6
+	.byte	'counter',0
+	.word	7517
+	.byte	4,2,35,4,6
+	.byte	'repeat',0
+	.word	156
+	.byte	1,2,35,8,6
+	.byte	'config',0
+	.word	283
+	.byte	2,2,35,10,6
+	.byte	'initial',0
+	.word	156
+	.byte	1,2,35,12,6
+	.byte	'access',0
+	.word	156
+	.byte	1,2,35,13,6
+	.byte	'application',0
+	.word	156
+	.byte	1,2,35,14,0,15
+	.byte	'Os_ScheduleTableType',0,13,255,3,3
+	.word	7878
+	.byte	7
+	.word	7878
+	.byte	8
+	.word	8058
+	.byte	7
+	.word	7355
+	.byte	8
+	.word	8068
+	.byte	30
+	.word	5171
+	.byte	30
+	.word	6121
+	.byte	30
+	.word	6018
+	.byte	30
+	.word	6679
+	.byte	30
+	.word	6185
+	.byte	30
+	.word	156
+	.byte	30
+	.word	6679
+	.byte	25
+	.byte	'Os_ControlledCoreType_s',0,13,251,6,16,112,6
+	.byte	'TrapInfo',0
+	.word	4602
+	.byte	8,2,35,0,6
+	.byte	'lock_taskaccess',0
+	.word	8078
+	.byte	4,2,35,8,6
+	.byte	'ReadyTasks',0
+	.word	8083
+	.byte	4,2,35,12,6
+	.byte	'RunningISR',0
+	.word	8088
+	.byte	4,2,35,16,6
+	.byte	'RunningTask',0
+	.word	8093
+	.byte	4,2,35,20,6
+	.byte	'RunningTPMask',0
+	.word	8098
+	.byte	4,2,35,24,6
+	.byte	'CurrentMeteredObject',0
+	.word	5704
+	.byte	4,2,35,28,6
+	.byte	'IdleMeter',0
+	.word	5501
+	.byte	48,2,35,32,6
+	.byte	'AppAccess',0
+	.word	156
+	.byte	1,2,35,80,6
+	.byte	'AppOverride',0
+	.word	8103
+	.byte	1,2,35,81,6
+	.byte	'GetStackValueAdjust',0
+	.word	4773
+	.byte	8,2,35,84,6
+	.byte	'InErrorHook',0
+	.word	156
+	.byte	1,2,35,92,6
+	.byte	'ChainTaskRef',0
+	.word	8108
+	.byte	4,2,35,96,6
+	.byte	'GetStackUsageAdjust',0
+	.word	4773
+	.byte	8,2,35,100,6
+	.byte	'InProtectionHook',0
+	.word	156
+	.byte	1,2,35,108,6
+	.byte	'CoreIsActive',0
+	.word	156
+	.byte	1,2,35,109,6
+	.byte	'InShutdownHook',0
+	.word	156
+	.byte	1,2,35,110,0,15
+	.byte	'Os_ControlledCoreType',0,13,141,7,3
+	.word	8113
+	.byte	8
+	.word	739
+	.byte	7
+	.word	5849
+	.byte	8
+	.word	8569
+	.byte	7
+	.word	6419
+	.byte	8
+	.word	8579
+	.byte	8
+	.word	5501
+	.byte	25
+	.byte	'Os_AnyCoreType_s',0,13,151,7,16,96,6
+	.byte	'DisableAllImask',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	'SuspendAllImask',0
+	.word	739
+	.byte	4,2,35,4,6
+	.byte	'SuspendOSImask',0
+	.word	739
+	.byte	4,2,35,8,6
+	.byte	'DisableAllCount',0
+	.word	739
+	.byte	4,2,35,12,6
+	.byte	'SuspendAllCount',0
+	.word	739
+	.byte	4,2,35,16,6
+	.byte	'SuspendOSCount',0
+	.word	739
+	.byte	4,2,35,20,6
+	.byte	'RestartJumpBuf',0
+	.word	4722
+	.byte	68,2,35,24,6
+	.byte	'Restartable',0
+	.word	156
+	.byte	1,2,35,92,0,15
+	.byte	'Os_AnyCoreType',0,13,160,7,3
+	.word	8594
+	.byte	15
+	.byte	'Can_TxObjPriorityClassType',0,14,219,3,16
+	.word	739
+	.byte	25
+	.byte	'Can_TxHwObjectConfigType',0,14,231,3,16,8,6
+	.byte	'MsgObjId',0
+	.word	156
+	.byte	1,2,35,0,6
+	.byte	'HwControllerId',0
+	.word	156
+	.byte	1,2,35,1,6
+	.byte	'TxObjPriorityClass',0
+	.word	739
+	.byte	4,2,35,4,0,15
+	.byte	'Can_TxHwObjectConfigType',0,14,252,3,3
+	.word	8871
+	.byte	25
+	.byte	'Can_RxHwObjectConfigType',0,14,129,4,16,12,6
+	.byte	'MaskRef',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	'MsgId',0
+	.word	739
+	.byte	4,2,35,4,6
+	.byte	'MsgObjId',0
+	.word	156
+	.byte	1,2,35,8,6
+	.byte	'HwControllerId',0
+	.word	156
+	.byte	1,2,35,9,0,15
+	.byte	'Can_RxHwObjectConfigType',0,14,147,4,3
+	.word	9007
+	.byte	18,4
+	.word	156
+	.byte	19,3,0,25
+	.byte	'Can_ControllerMOMapConfigType',0,14,181,4,16,4,6
+	.byte	'ControllerMOMap',0
+	.word	9147
+	.byte	4,2,35,0,0,15
+	.byte	'Can_ControllerMOMapConfigType',0,14,184,4,3
+	.word	9156
+	.byte	25
+	.byte	'Can_NPCRValueType',0,14,188,4,16,2,6
+	.byte	'Can_NPCRValue',0
+	.word	283
+	.byte	2,2,35,0,0,15
+	.byte	'Can_NPCRValueType',0,14,191,4,3
+	.word	9257
+	.byte	25
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,14,194,4,16,8,6
+	.byte	'CanControllerBaudrate',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	'CanControllerBaudrateCfg',0
+	.word	283
+	.byte	2,2,35,4,0,15
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,14,198,4,3
+	.word	9332
+	.byte	7
+	.word	9332
+	.byte	8
+	.word	9497
+	.byte	25
+	.byte	'Can_BaudrateConfigPtrType',0,14,201,4,16,4,6
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	9502
+	.byte	4,2,35,0,0,15
+	.byte	'Can_BaudrateConfigPtrType',0,14,204,4,3
+	.word	9507
+	.byte	25
+	.byte	'Can_EventHandlingType',0,14,226,4,16,4,6
+	.byte	'CanEventType',0
+	.word	9147
+	.byte	4,2,35,0,0,15
+	.byte	'Can_EventHandlingType',0,14,229,4,3
+	.word	9607
+	.byte	15
+	.byte	'Rte_TransformerErrorCode',0,15,130,1,15
+	.word	156
+	.byte	15
+	.byte	'Rte_TransformerClass',0,15,131,1,15
+	.word	156
+	.byte	5,15,168,1,9,12,6
+	.byte	'in',0
+	.word	5447
+	.byte	4,2,35,0,6
+	.byte	'out',0
+	.word	5447
+	.byte	4,2,35,4,6
+	.byte	'used',0
+	.word	283
+	.byte	2,2,35,8,6
+	.byte	'lost_data',0
+	.word	156
+	.byte	1,2,35,10,0,15
+	.byte	'Rte_QDynType',0,15,173,1,3
+	.word	9753
+	.byte	16,15,175,1,9,4,17
+	.byte	'RTE_DRA',0,0,17
+	.byte	'RTE_WOWP',0,1,17
+	.byte	'RTE_TASK',0,2,17
+	.byte	'RTE_ARE',0,3,17
+	.byte	'RTE_EV',0,4,17
+	.byte	'RTE_MSI',0,5,0,15
+	.byte	'Rte_NotificationType',0,15,182,1,3
+	.word	9840
+	.byte	18,128,8
+	.word	156
+	.byte	19,255,7,0,15
+	.byte	'Impl_NVM_DstPtrType_1024',0,16,50,15
+	.word	9938
+	.byte	15
+	.byte	'CanIf_u32_impl',0,16,69,16
+	.word	739
+	.byte	15
+	.byte	'CanIf_u16_impl',0,16,71,16
+	.word	283
+	.byte	15
+	.byte	'CanIf_u8_impl',0,16,73,15
+	.word	156
+	.byte	15
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,16,88,15
+	.word	156
+	.byte	15
+	.byte	'CanIf_PduModeType_Enum_impl',0,16,90,15
+	.word	156
+	.byte	5,16,92,9,2,6
+	.byte	'DeviceMode',0
+	.word	156
+	.byte	1,2,35,0,6
+	.byte	'ChannelMode',0
+	.word	156
+	.byte	1,2,35,1,0,15
+	.byte	'CanIf_ControllerStateType_struct_impl',0,16,95,3
+	.word	10129
+	.byte	15
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,16,100,15
+	.word	156
+	.byte	15
+	.byte	'CanSM_boolean_Impl',0,16,120,15
+	.word	156
+	.byte	15
+	.byte	'CanSM_u8_Impl',0,16,123,15
+	.word	156
+	.byte	15
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,16,128,1,15
+	.word	156
+	.byte	15
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,16,132,1,15
+	.word	156
+	.byte	15
+	.byte	'CanSM_u16_Impl',0,16,136,1,16
+	.word	283
+	.byte	15
+	.byte	'CanSM_TimerStateType_Enum_impl',0,16,138,1,15
+	.word	156
+	.byte	5,16,140,1,9,4,6
+	.byte	'cntTick_u16',0
+	.word	283
+	.byte	2,2,35,0,6
+	.byte	'stTimer',0
+	.word	156
+	.byte	1,2,35,2,0,15
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,16,143,1,3
+	.word	10470
+	.byte	15
+	.byte	'Com_impl_u16',0,16,154,1,16
+	.word	283
+	.byte	15
+	.byte	'Com_impl_u8',0,16,157,1,15
+	.word	156
+	.byte	15
+	.byte	'ComM_uint32_Impl',0,16,173,1,16
+	.word	739
+	.byte	15
+	.byte	'ComM_uint16_Impl',0,16,175,1,16
+	.word	283
+	.byte	15
+	.byte	'ComM_uint8_Impl',0,16,177,1,15
+	.word	156
+	.byte	15
+	.byte	'ComM_bool_Impl',0,16,179,1,15
+	.word	156
+	.byte	5,16,181,1,9,24,6
+	.byte	'ChannelState_e',0
+	.word	739
+	.byte	4,2,35,0,6
+	.byte	'LightTimeoutCtr_u32',0
+	.word	739
+	.byte	4,2,35,4,6
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	283
+	.byte	2,2,35,8,6
+	.byte	'ChannelMode_u8',0
+	.word	156
+	.byte	1,2,35,10,6
+	.byte	'BusSmMode_u8',0
+	.word	156
+	.byte	1,2,35,11,6
+	.byte	'UserRequestCtr_u8',0
+	.word	156
+	.byte	1,2,35,12,6
+	.byte	'PassiveRequestState_u8',0
+	.word	156
+	.byte	1,2,35,13,6
+	.byte	'PncRequestCtr_u8',0
+	.word	156
+	.byte	1,2,35,14,6
+	.byte	'InhibitionReqStatus_u8',0
+	.word	156
+	.byte	1,2,35,15,6
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	156
+	.byte	1,2,35,16,6
+	.byte	'DiagnosticRequestState_b',0
+	.word	156
+	.byte	1,2,35,17,6
+	.byte	'CommunicationAllowed_b',0
+	.word	156
+	.byte	1,2,35,18,6
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	156
+	.byte	1,2,35,19,6
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	156
+	.byte	1,2,35,20,6
+	.byte	'NmNetworkModeStatus_b',0
+	.word	156
+	.byte	1,2,35,21,0,15
+	.byte	'ComM_ChannelStruct_Impl',0,16,197,1,3
+	.word	10702
+	.byte	5,16,206,1,9,10,6
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	283
+	.byte	2,2,35,0,6
+	.byte	'LimitToNoComCtr_u16',0
+	.word	283
+	.byte	2,2,35,2,6
+	.byte	'RequestedUserMode_t',0
+	.word	156
+	.byte	1,2,35,4,6
+	.byte	'IndicatedUserMode_t',0
+	.word	156
+	.byte	1,2,35,5,6
+	.byte	'numChannelsInFullCom_u8',0
+	.word	156
+	.byte	1,2,35,6,6
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	156
+	.byte	1,2,35,7,6
+	.byte	'numChannelsInNoCom_u8',0
+	.word	156
+	.byte	1,2,35,8,0,15
+	.byte	'ComM_UserStruct_Impl',0,16,214,1,3
+	.word	11206
+	.byte	15
+	.byte	'Dcm_IOOperationResponseType',0,16,252,1,15
+	.word	156
+	.byte	15
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	16,138,2,15
+	.word	156
+	.byte	15
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,16,146,2,15
+	.word	156
+	.byte	15
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,16,150,2,15
+	.word	156
+	.byte	15
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,16,154,2,15
+	.word	156
+	.byte	15
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,16,243,3,34
+	.word	9949
+	.byte	18,128,8
+	.word	156
+	.byte	19,255,7,0,15
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,16,246,3,34
+	.word	9949
+	.byte	16,5,216,1,9,4,17
+	.byte	'XCP_BG_IDLE',0,0,17
+	.byte	'XCP_BG_CHKSUM',0,1,17
+	.byte	'XCP_BG_MEM_WRITE',0,2,17
+	.byte	'XCP_BG_REPEAT_CMD',0,3,17
+	.byte	'XCP_BG_DO_DISCONNECT',0,4,17
+	.byte	'XCP_BG_CANCEL_REQ',0,5,0,15
+	.byte	'Xcp_BgActivity_t',0,5,224,1,3
+	.word	12024
+	.byte	22,1,1,21
+	.word	3351
+	.byte	21
+	.word	156
+	.byte	0,8
+	.word	12169
+	.byte	15
+	.byte	'Xcp_CmdFunctionPtr',0,5,230,1,16
+	.word	12183
+	.byte	5,5,241,1,9,8,6
+	.byte	'WritePos_u16',0
+	.word	283
+	.byte	2,2,35,0,6
+	.byte	'ReadPos_u16',0
+	.word	283
+	.byte	2,2,35,2,6
+	.byte	'ReadPos_OdtNum_u16',0
+	.word	283
+	.byte	2,2,35,4,6
+	.byte	'QueSize_u16',0
+	.word	283
+	.byte	2,2,35,6,0,15
+	.byte	'Xcp_Que_t',0,5,247,1,3
+	.word	12216
+	.byte	5,5,250,1,9,24,6
+	.byte	'XcpState_en',0
+	.word	1137
+	.byte	4,2,35,0,6
+	.byte	'ConnectedTlId_u8',0
+	.word	156
+	.byte	1,2,35,4,6
+	.byte	'ResourceProtStatus_u8',0
+	.word	156
+	.byte	1,2,35,5,6
+	.byte	'Mta',0
+	.word	1326
+	.byte	8,2,35,8,6
+	.byte	'MaxDto_u16',0
+	.word	283
+	.byte	2,2,35,16,6
+	.byte	'MaxDtoAligned_u16',0
+	.word	283
+	.byte	2,2,35,18,6
+	.byte	'MaxCto_u8',0
+	.word	156
+	.byte	1,2,35,20,0,15
+	.byte	'Xcp_Session_t',0,5,138,2,2
+	.word	12334
+	.byte	5,5,149,2,9,12,6
+	.byte	'Buffer_au8',0
+	.word	3220
+	.byte	8,2,35,0,6
+	.byte	'Length_u32',0
+	.word	739
+	.byte	4,2,35,8,0,15
+	.byte	'Xcp_CtoMax_t',0,5,153,2,2
+	.word	12521
+	.byte	18,255,1
+	.word	156
+	.byte	19,254,1,0,5,5,157,2,9,132,2,6
+	.byte	'UploadRunning_b',0
+	.word	156
+	.byte	1,2,35,0,6
+	.byte	'RemainingSize_u8',0
+	.word	156
+	.byte	1,2,35,1,6
+	.byte	'DownloadSize_u8',0
+	.word	156
+	.byte	1,2,35,2,6
+	.byte	'ReceivedSize_u8',0
+	.word	156
+	.byte	1,2,35,3,6
+	.byte	'DownloadBuffer_au8',0
+	.word	12590
+	.byte	255,1,2,35,4,0,15
+	.byte	'Xcp_Mem_t',0,5,178,2,2
+	.word	12601
+	.byte	5,5,183,2,9,2,6
+	.byte	'SeedWaitingKey_b',0
+	.word	156
+	.byte	1,2,35,0,6
+	.byte	'SeedRemaingSize_u8',0
+	.word	156
+	.byte	1,2,35,1,0,15
+	.byte	'Xcp_SeedAndKey_t',0,5,187,2,2
+	.word	12758
+	.byte	5,5,192,2,9,4,6
+	.byte	'BlockSize_u32',0
+	.word	739
+	.byte	4,2,35,0,0,15
+	.byte	'Xcp_Checksum_t',0,5,198,2,2
+	.word	12845
+	.byte	5,5,203,2,9,18,6
+	.byte	'Xcp_Debug_TransmitOkCtr',0
+	.word	283
+	.byte	2,2,35,0,6
+	.byte	'Xcp_Debug_TransmitNotOkCtr',0
+	.word	283
+	.byte	2,2,35,2,6
+	.byte	'Xcp_Debug_SendResTxConfCtr',0
+	.word	283
+	.byte	2,2,35,4,6
+	.byte	'Xcp_Debug_SendResCtr',0
+	.word	283
+	.byte	2,2,35,6,6
+	.byte	'Xcp_Debug_SendEvTxConfCtr',0
+	.word	283
+	.byte	2,2,35,8,6
+	.byte	'Xcp_Debug_SendEvCtr',0
+	.word	283
+	.byte	2,2,35,10,6
+	.byte	'Xcp_Debug_SendDaqTxConfCtr',0
+	.word	283
+	.byte	2,2,35,12,6
+	.byte	'Xcp_Debug_SendDaqCtr',0
+	.word	283
+	.byte	2,2,35,14,6
+	.byte	'Xcp_Debug_TxConfCtr',0
+	.word	283
+	.byte	2,2,35,16,0,15
+	.byte	'Xcp_Debug_t',0,5,216,2,2
+	.word	12899
+	.byte	5,5,225,2,9,8,6
+	.byte	'OdtEntryPos_u16',0
+	.word	283
+	.byte	2,2,35,0,6
+	.byte	'OdtEntryMax_u16',0
+	.word	283
+	.byte	2,2,35,2,6
+	.byte	'DaqListNum_u16',0
+	.word	283
+	.byte	2,2,35,4,6
+	.byte	'AbsOdtNum_u16',0
+	.word	283
+	.byte	2,2,35,6,0,15
+	.byte	'Xcp_SelectedOdtEntry_t',0,5,231,2,2
+	.word	13221
+	.byte	5,5,234,2,9,6,6
+	.byte	'OdtEntryFirst_u16',0
+	.word	283
+	.byte	2,2,35,0,6
+	.byte	'OdtEntryCnt_u8',0
+	.word	156
+	.byte	1,2,35,2,6
+	.byte	'CopyRoutine_u8',0
+	.word	156
+	.byte	1,2,35,3,6
+	.byte	'Length_u16',0
+	.word	283
+	.byte	2,2,35,4,0,15
+	.byte	'Xcp_Odt_t',0,5,240,2,2
+	.word	13357
+	.byte	30
+	.word	156
+	.byte	30
+	.word	156
+	.byte	5,5,254,2,9,24,6
+	.byte	'DaqListQue_p',0
+	.word	3296
+	.byte	4,2,35,0,6
+	.byte	'DaqListQuePos',0
+	.word	12216
+	.byte	8,2,35,4,6
+	.byte	'OdtFirst_u16',0
+	.word	283
+	.byte	2,2,35,12,6
+	.byte	'EventChannelNum_u16',0
+	.word	283
+	.byte	2,2,35,14,6
+	.byte	'OdtCnt_u8',0
+	.word	156
+	.byte	1,2,35,16,6
+	.byte	'XcpTxPduId',0
+	.word	156
+	.byte	1,2,35,17,6
+	.byte	'Prescaler_u8',0
+	.word	156
+	.byte	1,2,35,18,6
+	.byte	'CycleCnt_u8',0
+	.word	156
+	.byte	1,2,35,19,6
+	.byte	'Priority_u8',0
+	.word	156
+	.byte	1,2,35,20,6
+	.byte	'Flags_u8',0
+	.word	156
+	.byte	1,2,35,21,6
+	.byte	'Mode_u8',0
+	.word	13478
+	.byte	1,2,35,22,6
+	.byte	'CurrentlyRunning_b',0
+	.word	13483
+	.byte	1,2,35,23,0,15
+	.byte	'Xcp_DaqList_t',0,5,143,3,2
+	.word	13488
+	.byte	8
+	.word	13488
+	.byte	8
+	.word	13357
+	.byte	8
+	.word	739
+	.byte	8
+	.word	283
+	.byte	5,5,146,3,9,56,6
+	.byte	'DaqList_p',0
+	.word	13780
+	.byte	4,2,35,0,6
+	.byte	'Odt_p',0
+	.word	13785
+	.byte	4,2,35,4,6
+	.byte	'OdtEntryAddress_p',0
+	.word	13790
+	.byte	4,2,35,8,6
+	.byte	'OdtEntrySize_p',0
+	.word	3296
+	.byte	4,2,35,12,6
+	.byte	'PriorityList_p',0
+	.word	13795
+	.byte	4,2,35,16,6
+	.byte	'DaqQue_p',0
+	.word	3296
+	.byte	4,2,35,20,6
+	.byte	'DaqListCnt_u16',0
+	.word	283
+	.byte	2,2,35,24,6
+	.byte	'OdtCnt_u16',0
+	.word	283
+	.byte	2,2,35,26,6
+	.byte	'OdtEntryCnt_u16',0
+	.word	283
+	.byte	2,2,35,28,6
+	.byte	'SelectedOdtEntry',0
+	.word	13221
+	.byte	8,2,35,30,6
+	.byte	'DaqRamPtr_pu8',0
+	.word	3296
+	.byte	4,2,35,40,6
+	.byte	'DaqRamSize_u32',0
+	.word	739
+	.byte	4,2,35,44,6
+	.byte	'DaqListSendingCnt_u16',0
+	.word	283
+	.byte	2,2,35,48,6
+	.byte	'DaqListSending_u16',0
+	.word	283
+	.byte	2,2,35,50,6
+	.byte	'DaqState_en',0
+	.word	1982
+	.byte	4,2,35,52,0,15
+	.byte	'Xcp_DaqConfig_t',0,5,180,3,2
+	.word	13800
+	.byte	5,5,225,3,9,80,6
+	.byte	'Session',0
+	.word	12334
+	.byte	24,2,35,0,6
+	.byte	'DaqConfig',0
+	.word	13800
+	.byte	56,2,35,24,0,15
+	.byte	'Xcp_NoInit_t',0,5,234,3,2
+	.word	14181
+	.byte	18,8
+	.word	4120
+	.byte	19,0,0,18,1
+	.word	156
+	.byte	19,0,0,5,5,236,3,9,12,6
+	.byte	'DaqRamSections',0
+	.word	14246
+	.byte	8,2,35,0,6
+	.byte	'DaqTransmissionStopped_b',0
+	.word	156
+	.byte	1,2,35,8,6
+	.byte	'Tl2PlRef_au8',0
+	.word	14255
+	.byte	1,2,35,9,6
+	.byte	'EnabledResources_u8',0
+	.word	156
+	.byte	1,2,35,10,6
+	.byte	'InitStatus_u8',0
+	.word	156
+	.byte	1,2,35,11,0,15
+	.byte	'Xcp_GlobalNoInit_t',0,5,255,3,2
+	.word	14264
+	.byte	5,5,130,4,9,208,2,6
+	.byte	'Wait4TxConfCtr_u8',0
+	.word	156
+	.byte	1,2,35,0,6
+	.byte	'BgDoDisconnect_Response',0
+	.word	1418
+	.byte	4,2,35,4,6
+	.byte	'BgActivityState',0
+	.word	12024
+	.byte	4,2,35,8,6
+	.byte	'ResBuffer',0
+	.word	12521
+	.byte	12,2,35,12,6
+	.byte	'EvBuffer',0
+	.word	3229
+	.byte	12,2,35,24,6
+	.byte	'CmdBuffer',0
+	.word	3229
+	.byte	12,2,35,36,6
+	.byte	'Mem',0
+	.word	12601
+	.byte	132,2,2,35,48,6
+	.byte	'SeedAndKey',0
+	.word	12758
+	.byte	2,3,35,180,2,6
+	.byte	'Checksum',0
+	.word	12845
+	.byte	4,3,35,184,2,6
+	.byte	'Debug',0
+	.word	12899
+	.byte	18,3,35,188,2,0,15
+	.byte	'Xcp_Cleared_t',0,5,150,4,2
+	.word	14431
+	.byte	18,80
+	.word	14181
+	.byte	19,0,0,23
+	.byte	'Xcp_NoInit',0,5,158,4,29
+	.word	14673
+	.byte	1,1,23
+	.byte	'Xcp_GlobalNoInit',0,5,159,4,29
+	.word	14264
+	.byte	1,1,18,208,2
+	.word	14431
+	.byte	19,0,0,23
+	.byte	'Xcp_Cleared',0,5,165,4,29
+	.word	14732
+	.byte	1,1,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L23:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,46,1,3,8,32,13,58,15,59,15,57,15,54,15,39,12,0,0,3,11
+	.byte	0,0,0,4,36,0,3,8,11,15,62,15,0,0,5,19,1,58,15,59,15,57,15,11,15,0,0,6,13,0,3,8,73,19,11,15,56,9,0,0,7
+	.byte	38,0,73,19,0,0,8,15,0,73,19,0,0,9,46,1,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,10,5,0
+	.byte	3,8,58,15,59,15,57,15,73,19,0,0,11,46,1,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0,12,46,1,49,19
+	.byte	0,0,13,46,0,3,8,58,15,59,15,57,15,54,15,63,12,60,12,0,0,14,21,0,54,15,0,0,15,22,0,3,8,58,15,59,15,57,15
+	.byte	73,19,0,0,16,4,1,58,15,59,15,57,15,11,15,0,0,17,40,0,3,8,28,13,0,0,18,1,1,11,15,73,19,0,0,19,33,0,47,15
+	.byte	0,0,20,21,1,73,19,54,15,39,12,0,0,21,5,0,73,19,0,0,22,21,1,54,15,39,12,0,0,23,52,0,3,8,58,15,59,15,57
+	.byte	15,73,19,63,12,60,12,0,0,24,21,0,54,15,39,12,0,0,25,19,1,3,8,58,15,59,15,57,15,11,15,0,0,26,59,0,3,8,0
+	.byte	0,27,23,1,58,15,59,15,57,15,11,15,0,0,28,4,1,3,8,58,15,59,15,57,15,11,15,0,0,29,21,0,73,19,54,15,39,12
+	.byte	0,0,30,53,0,73,19,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L24:
+	.word	.L64-.L63
+.L63:
+	.half	3
+	.word	.L66-.L65
+.L65:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_Init.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Cbk.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Det\\api\\Det.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Priv.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\Xcp_Cfg.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0,0
+.L66:
+.L64:
+	.sdecl	'.debug_info',debug,cluster('Xcp_Init')
+	.sect	'.debug_info'
+.L25:
+	.word	288
+	.half	3
+	.word	.L26
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_Init.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L28,.L27
+	.byte	2
+	.word	.L21
+	.byte	3
+	.byte	'Xcp_Init',0,1,41,6,1,1,1
+	.word	.L2,.L30,.L20
+	.byte	4
+	.byte	'Xcp_ConfigPtr',0,1,41,37
+	.word	.L31,.L32
+	.byte	5
+	.word	.L2,.L30
+	.byte	6
+	.byte	'protLayerId',0,1,47,9
+	.word	.L33,.L34
+	.byte	6
+	.byte	'l_transportlayer_u8',0,1,48,9
+	.word	.L33,.L35
+	.byte	7
+	.word	.L36,.L37,.L38
+	.byte	8
+	.word	.L39,.L37,.L38
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_Init')
+	.sect	'.debug_abbrev'
+.L26:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,7,29,1,49,16,17,1,18,1,0,0,8,11,0,49,16,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Xcp_Init')
+	.sect	'.debug_line'
+.L27:
+	.word	.L68-.L67
+.L67:
+	.half	3
+	.word	.L70-.L69
+.L69:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_Init.c',0,0,0,0,0
+.L70:
+	.byte	5,3,7,0,5,2
+	.word	.L2
+	.byte	3,54,1,9
+	.half	.L5-.L2
+	.byte	3,3,1,9
+	.half	.L8-.L5
+	.byte	3,4,1,5,7,9
+	.half	.L9-.L8
+	.byte	3,8,1,5,23,9
+	.half	.L71-.L9
+	.byte	1,5,3,9
+	.half	.L72-.L71
+	.byte	1,5,86,7,9
+	.half	.L37-.L72
+	.byte	3,249,0,1,5,84,9
+	.half	.L73-.L37
+	.byte	1,5,44,9
+	.half	.L38-.L73
+	.byte	3,145,127,1,5,42,9
+	.half	.L74-.L38
+	.byte	1,5,22,9
+	.half	.L75-.L74
+	.byte	3,3,1,5,51,9
+	.half	.L43-.L75
+	.byte	1,5,7,9
+	.half	.L13-.L43
+	.byte	3,3,1,5,39,9
+	.half	.L76-.L13
+	.byte	1,5,37,9
+	.half	.L77-.L76
+	.byte	1,5,62,9
+	.half	.L78-.L77
+	.byte	3,2,1,5,60,9
+	.half	.L79-.L78
+	.byte	1,5,23,9
+	.half	.L80-.L79
+	.byte	3,3,1,5,64,9
+	.half	.L45-.L80
+	.byte	3,120,1,5,51,9
+	.half	.L12-.L45
+	.byte	1,5,30,7,9
+	.half	.L81-.L12
+	.byte	3,12,1,5,67,9
+	.half	.L46-.L81
+	.byte	1,5,23,9
+	.half	.L15-.L46
+	.byte	3,2,1,5,36,9
+	.half	.L82-.L15
+	.byte	1,5,60,9
+	.half	.L83-.L82
+	.byte	1,5,58,9
+	.half	.L84-.L83
+	.byte	1,5,88,9
+	.half	.L85-.L84
+	.byte	3,126,1,5,67,9
+	.half	.L14-.L85
+	.byte	1,5,47,7,9
+	.half	.L86-.L14
+	.byte	3,5,1,5,45,9
+	.half	.L47-.L86
+	.byte	1,5,20,9
+	.half	.L11-.L47
+	.byte	3,9,1,5,49,9
+	.half	.L48-.L11
+	.byte	1,5,21,9
+	.half	.L17-.L48
+	.byte	3,3,1,5,5,9
+	.half	.L51-.L17
+	.byte	3,2,1,5,16,9
+	.half	.L87-.L51
+	.byte	1,5,50,9
+	.half	.L88-.L87
+	.byte	1,5,48,9
+	.half	.L89-.L88
+	.byte	1,9
+	.half	.L90-.L89
+	.byte	3,2,1,5,46,9
+	.half	.L91-.L90
+	.byte	1,5,40,9
+	.half	.L92-.L91
+	.byte	3,6,1,5,56,9
+	.half	.L93-.L92
+	.byte	1,5,20,9
+	.half	.L53-.L93
+	.byte	3,2,1,5,22,9
+	.half	.L55-.L53
+	.byte	3,2,1,9
+	.half	.L57-.L55
+	.byte	3,3,1,5,62,9
+	.half	.L59-.L57
+	.byte	3,5,1,5,60,9
+	.half	.L94-.L59
+	.byte	1,5,65,9
+	.half	.L95-.L94
+	.byte	3,1,1,5,63,9
+	.half	.L96-.L95
+	.byte	1,5,65,9
+	.half	.L97-.L96
+	.byte	3,1,1,5,63,9
+	.half	.L98-.L97
+	.byte	1,5,59,9
+	.half	.L99-.L98
+	.byte	3,1,1,5,57,9
+	.half	.L100-.L99
+	.byte	1,5,64,9
+	.half	.L101-.L100
+	.byte	3,1,1,5,62,9
+	.half	.L102-.L101
+	.byte	1,5,58,9
+	.half	.L103-.L102
+	.byte	3,1,1,5,56,9
+	.half	.L104-.L103
+	.byte	1,5,58,9
+	.half	.L105-.L104
+	.byte	3,1,1,5,56,9
+	.half	.L106-.L105
+	.byte	1,5,65,9
+	.half	.L107-.L106
+	.byte	3,2,1,5,63,9
+	.half	.L108-.L107
+	.byte	1,5,59,9
+	.half	.L109-.L108
+	.byte	3,1,1,5,57,9
+	.half	.L110-.L109
+	.byte	1,5,62,9
+	.half	.L111-.L110
+	.byte	3,94,1,5,49,9
+	.half	.L16-.L111
+	.byte	1,5,28,7,9
+	.half	.L112-.L16
+	.byte	3,40,1,5,65,9
+	.half	.L49-.L112
+	.byte	1,5,5,9
+	.half	.L19-.L49
+	.byte	3,2,1,5,25,9
+	.half	.L113-.L19
+	.byte	1,5,46,9
+	.half	.L114-.L113
+	.byte	1,5,96,9
+	.half	.L115-.L114
+	.byte	1,5,86,9
+	.half	.L61-.L115
+	.byte	3,126,1,5,65,9
+	.half	.L18-.L61
+	.byte	1,5,36,7,9
+	.half	.L116-.L18
+	.byte	3,12,1,5,34,9
+	.half	.L117-.L116
+	.byte	1,5,1,9
+	.half	.L4-.L117
+	.byte	3,4,1,7,9
+	.half	.L29-.L4
+	.byte	0,1,1
+.L68:
+	.sdecl	'.debug_ranges',debug,cluster('Xcp_Init')
+	.sect	'.debug_ranges'
+.L28:
+	.word	-1,.L2,0,.L29-.L2,0,0
+	.sdecl	'.debug_loc',debug,cluster('Xcp_Init')
+	.sect	'.debug_loc'
+.L32:
+	.word	-1,.L2,0,.L40-.L2
+	.half	1
+	.byte	100
+	.word	.L5-.L2,.L41-.L2
+	.half	1
+	.byte	100
+	.word	.L8-.L2,.L42-.L2
+	.half	1
+	.byte	100
+	.word	.L9-.L2,.L13-.L2
+	.half	1
+	.byte	100
+	.word	0,0
+.L20:
+	.word	-1,.L2,0,.L30-.L2
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L35:
+	.word	-1,.L2,.L46-.L2,.L47-.L2
+	.half	1
+	.byte	95
+	.word	.L49-.L2,.L4-.L2
+	.half	1
+	.byte	88
+	.word	.L60-.L2,.L61-.L2
+	.half	1
+	.byte	84
+	.word	0,0
+.L34:
+	.word	-1,.L2,.L43-.L2,.L11-.L2
+	.half	1
+	.byte	88
+	.word	.L44-.L2,.L45-.L2
+	.half	1
+	.byte	84
+	.word	.L48-.L2,.L49-.L2
+	.half	1
+	.byte	88
+	.word	.L50-.L2,.L51-.L2
+	.half	1
+	.byte	84
+	.word	.L52-.L2,.L53-.L2
+	.half	1
+	.byte	85
+	.word	.L54-.L2,.L55-.L2
+	.half	1
+	.byte	84
+	.word	.L56-.L2,.L57-.L2
+	.half	1
+	.byte	84
+	.word	.L58-.L2,.L59-.L2
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L118:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Xcp_Init')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L118,.L2,.L30-.L2
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   192  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   193  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   194  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   195  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   196  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   197  /* End section for code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   198  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   199  #define XCP_STOP_SEC_CODE
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   200  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   201  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   202  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_Init.c	   203  
+
+	; Module end

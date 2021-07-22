@@ -1,0 +1,526 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc17852a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\Integration\\BSW\\Xcp_Timestamp.src Integration\\BSW\\Src\\Xcp_Timestamp.c"
+	.compiler_name		"ctc"
+	;source	'Integration\\BSW\\Src\\Xcp_Timestamp.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Xcp_Timestamp.XcpAppl_GetTimestamp',code,cluster('XcpAppl_GetTimestamp')
+	.sect	'.text.Xcp_Timestamp.XcpAppl_GetTimestamp'
+	.align	2
+	
+	.global	XcpAppl_GetTimestamp
+
+; Integration\BSW\Src\Xcp_Timestamp.c	     1  /*
+; Integration\BSW\Src\Xcp_Timestamp.c	     2   * This is a template file. It defines integration functions necessary to complete RTA-BSW.
+; Integration\BSW\Src\Xcp_Timestamp.c	     3   * The integrator must complete the templates before deploying software containing functions defined in this file.
+; Integration\BSW\Src\Xcp_Timestamp.c	     4   * Once templates have been completed, the integrator should delete the #error line.
+; Integration\BSW\Src\Xcp_Timestamp.c	     5   * Note: The integrator is responsible for updates made to this file.
+; Integration\BSW\Src\Xcp_Timestamp.c	     6   *
+; Integration\BSW\Src\Xcp_Timestamp.c	     7   * To remove the following error define the macro NOT_READY_FOR_TESTING_OR_DEPLOYMENT with a compiler option (e.g. -D NOT_READY_FOR_TESTING_OR_DEPLOYMENT)
+; Integration\BSW\Src\Xcp_Timestamp.c	     8   * The removal of the error only allows the user to proceed with the building phase
+; Integration\BSW\Src\Xcp_Timestamp.c	     9   */
+; Integration\BSW\Src\Xcp_Timestamp.c	    10  
+; Integration\BSW\Src\Xcp_Timestamp.c	    11  
+; Integration\BSW\Src\Xcp_Timestamp.c	    12  
+; Integration\BSW\Src\Xcp_Timestamp.c	    13  
+; Integration\BSW\Src\Xcp_Timestamp.c	    14  /***************************************************************************************************
+; Integration\BSW\Src\Xcp_Timestamp.c	    15  * Includes
+; Integration\BSW\Src\Xcp_Timestamp.c	    16  ***************************************************************************************************/
+; Integration\BSW\Src\Xcp_Timestamp.c	    17  #include "Xcp_Cbk.h"
+; Integration\BSW\Src\Xcp_Timestamp.c	    18  
+; Integration\BSW\Src\Xcp_Timestamp.c	    19  
+; Integration\BSW\Src\Xcp_Timestamp.c	    20  /***************************************************************************************************
+; Integration\BSW\Src\Xcp_Timestamp.c	    21  * Variables
+; Integration\BSW\Src\Xcp_Timestamp.c	    22  ***************************************************************************************************/
+; Integration\BSW\Src\Xcp_Timestamp.c	    23  
+; Integration\BSW\Src\Xcp_Timestamp.c	    24  
+; Integration\BSW\Src\Xcp_Timestamp.c	    25  /***************************************************************************************************
+; Integration\BSW\Src\Xcp_Timestamp.c	    26  * Functions
+; Integration\BSW\Src\Xcp_Timestamp.c	    27  ***************************************************************************************************/
+; Integration\BSW\Src\Xcp_Timestamp.c	    28  /* ------------------------------------------------------------------------ */
+; Integration\BSW\Src\Xcp_Timestamp.c	    29  /* Begin section for code */
+; Integration\BSW\Src\Xcp_Timestamp.c	    30  
+; Integration\BSW\Src\Xcp_Timestamp.c	    31  #define XCP_START_SEC_CALLOUT_CODE
+; Integration\BSW\Src\Xcp_Timestamp.c	    32  #include "Xcp_MemMap.h"
+; Integration\BSW\Src\Xcp_Timestamp.c	    33  
+; Integration\BSW\Src\Xcp_Timestamp.c	    34  #if (XCP_TIMESTAMP == STD_ON)
+; Integration\BSW\Src\Xcp_Timestamp.c	    35  /**
+; Integration\BSW\Src\Xcp_Timestamp.c	    36  ****************************************************************************************************
+; Integration\BSW\Src\Xcp_Timestamp.c	    37  Function returns the current value of the synchronous data transfer clock (timestamp). The data
+; Integration\BSW\Src\Xcp_Timestamp.c	    38  transfer clock is a free running counter, which is never reset or modified and wraps around if an
+; Integration\BSW\Src\Xcp_Timestamp.c	    39  overflow occurs. Behaviour of timestamp shall be according to configured "Timestamp Ticks" and
+; Integration\BSW\Src\Xcp_Timestamp.c	    40  "Timestamp Unit".
+; Integration\BSW\Src\Xcp_Timestamp.c	    41  \param[in]  -
+; Integration\BSW\Src\Xcp_Timestamp.c	    42  \return     Timestamp
+; Integration\BSW\Src\Xcp_Timestamp.c	    43  ***************************************************************************************************/
+; Integration\BSW\Src\Xcp_Timestamp.c	    44  extern unsigned long OS_Counter_1ms;
+; Integration\BSW\Src\Xcp_Timestamp.c	    45  uint32 XcpAppl_GetTimestamp(void)
+; Function XcpAppl_GetTimestamp
+.L4:
+XcpAppl_GetTimestamp:	.type	func
+
+; Integration\BSW\Src\Xcp_Timestamp.c	    46  {
+; Integration\BSW\Src\Xcp_Timestamp.c	    47    /*-----------------------------------------------------------------*/
+; Integration\BSW\Src\Xcp_Timestamp.c	    48    /* This function is project specific and shall be totally reworked */
+; Integration\BSW\Src\Xcp_Timestamp.c	    49    /* Example for calculating the timestamp                           */
+; Integration\BSW\Src\Xcp_Timestamp.c	    50    /*-----------------------------------------------------------------*/
+; Integration\BSW\Src\Xcp_Timestamp.c	    51  
+; Integration\BSW\Src\Xcp_Timestamp.c	    52    static uint32 XcpAppl_Timestamp_u32;
+; Integration\BSW\Src\Xcp_Timestamp.c	    53    static uint32 XcpAppl_PreviousTime_u32;
+; Integration\BSW\Src\Xcp_Timestamp.c	    54    uint32 XcpAppl_CurrentTime_u32;
+; Integration\BSW\Src\Xcp_Timestamp.c	    55  
+; Integration\BSW\Src\Xcp_Timestamp.c	    56    /* Disable interrupts */
+; Integration\BSW\Src\Xcp_Timestamp.c	    57    /* Call function here... */
+; Integration\BSW\Src\Xcp_Timestamp.c	    58  
+; Integration\BSW\Src\Xcp_Timestamp.c	    59    /* Get current timer value */
+; Integration\BSW\Src\Xcp_Timestamp.c	    60    XcpAppl_CurrentTime_u32 = OS_Counter_1ms;   /* Call function to get time */
+	movh.a	a15,#@his(OS_Counter_1ms)
+	lea	a15,[a15]@los(OS_Counter_1ms)
+	ld.w	d15,[a15]
+.L17:
+
+; Integration\BSW\Src\Xcp_Timestamp.c	    61  
+; Integration\BSW\Src\Xcp_Timestamp.c	    62    /* Calculate time elapsed since last read of timer value and add it to actual timestamp */
+; Integration\BSW\Src\Xcp_Timestamp.c	    63    XcpAppl_Timestamp_u32 += (XcpAppl_CurrentTime_u32 - XcpAppl_PreviousTime_u32);    /* Multiply or divide to fit configured "Timestamp Ticks" and "Timestamp Unit" */
+	movh.a	a15,#@his(_999002_XcpAppl_PreviousTime_u32)
+	lea	a15,[a15]@los(_999002_XcpAppl_PreviousTime_u32)
+.L26:
+	movh.a	a2,#@his(_999001_XcpAppl_Timestamp_u32)
+	lea	a2,[a2]@los(_999001_XcpAppl_Timestamp_u32)
+	ld.w	d0,[a2]
+.L27:
+	ld.w	d1,[a15]
+.L28:
+	sub	d1,d15,d1
+.L29:
+	add	d0,d1
+	st.w	[a2],d0
+.L30:
+
+; Integration\BSW\Src\Xcp_Timestamp.c	    64  
+; Integration\BSW\Src\Xcp_Timestamp.c	    65    /* Save current timer value */
+; Integration\BSW\Src\Xcp_Timestamp.c	    66    XcpAppl_PreviousTime_u32 = XcpAppl_CurrentTime_u32;
+	st.w	[a15],d15
+.L31:
+
+; Integration\BSW\Src\Xcp_Timestamp.c	    67  
+; Integration\BSW\Src\Xcp_Timestamp.c	    68    /* Enable interrupts */
+; Integration\BSW\Src\Xcp_Timestamp.c	    69    /* Call function here... */
+; Integration\BSW\Src\Xcp_Timestamp.c	    70  
+; Integration\BSW\Src\Xcp_Timestamp.c	    71    return XcpAppl_Timestamp_u32;
+	ld.w	d2,[a2]
+.L32:
+	j	.L2
+
+; Integration\BSW\Src\Xcp_Timestamp.c	    72  }
+.L2:
+	ret
+.L15:
+	
+__XcpAppl_GetTimestamp_function_end:
+	.size	XcpAppl_GetTimestamp,__XcpAppl_GetTimestamp_function_end-XcpAppl_GetTimestamp
+.L13:
+	; End of function
+	
+	.sdecl	'.bss.Xcp_Timestamp._999001_XcpAppl_Timestamp_u32',data,cluster('_999001_XcpAppl_Timestamp_u32')
+	.sect	'.bss.Xcp_Timestamp._999001_XcpAppl_Timestamp_u32'
+	.align	4
+_999001_XcpAppl_Timestamp_u32:	.type	object
+	.size	_999001_XcpAppl_Timestamp_u32,4
+	.space	4
+	.sdecl	'.bss.Xcp_Timestamp._999002_XcpAppl_PreviousTime_u32',data,cluster('_999002_XcpAppl_PreviousTime_u32')
+	.sect	'.bss.Xcp_Timestamp._999002_XcpAppl_PreviousTime_u32'
+	.align	4
+_999002_XcpAppl_PreviousTime_u32:	.type	object
+	.size	_999002_XcpAppl_PreviousTime_u32,4
+	.space	4
+	.extern	OS_Counter_1ms
+	.calls	'XcpAppl_GetTimestamp','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L6:
+	.word	2578
+	.half	3
+	.word	.L7
+	.byte	4
+.L5:
+	.byte	1
+	.byte	'Integration\\BSW\\Src\\Xcp_Timestamp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L8
+.L14:
+	.byte	2
+	.byte	'unsigned int',0,4,7,3,1,4
+	.word	151
+	.byte	5
+	.byte	'__codeptr',0,1,1,1
+	.word	153
+	.byte	2
+	.byte	'unsigned char',0,1,8,5
+	.byte	'uint8',0,2,81,25
+	.word	176
+	.byte	2
+	.byte	'unsigned short int',0,2,7,5
+	.byte	'uint16',0,2,91,25
+	.word	207
+	.byte	5
+	.byte	'uint32',0,2,106,24
+	.word	135
+	.byte	5
+	.byte	'boolean',0,2,127,25
+	.word	176
+	.byte	5
+	.byte	'Std_ReturnType',0,3,199,1,15
+	.word	176
+	.byte	5
+	.byte	'PduLengthType',0,4,26,19
+	.word	207
+	.byte	6,5,113,9,4,7
+	.byte	'TP_DATACONF',0,0,7
+	.byte	'TP_DATARETRY',0,1,7
+	.byte	'TP_CONFPENDING',0,2,0,5
+	.byte	'TpDataStateType',0,5,118,3
+	.word	321
+	.byte	6,6,225,1,9,4,7
+	.byte	'XCP_STATE_DISCONNECTED',0,0,7
+	.byte	'XCP_STATE_DISCONNECTING',0,1,7
+	.byte	'XCP_STATE_CONNECTED',0,2,7
+	.byte	'XCP_STATE_RESUME',0,3,7
+	.byte	'XCP_STATE_DISABLED',0,240,1,0,5
+	.byte	'Xcp_State_t',0,6,231,1,2
+	.word	397
+	.byte	5
+	.byte	'Xcp_AddrValue',0,6,165,3,23
+	.word	135
+	.byte	5
+	.byte	'Xcp_PduIdType',0,6,174,3,15
+	.word	176
+	.byte	6,6,223,3,9,4,7
+	.byte	'XCP_DAQ_NO_OVERLOAD_INDICATION',0,0,7
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_PID',0,1,7
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_EVENT',0,2,0,5
+	.byte	'Xcp_Overload_t',0,6,228,3,2
+	.word	585
+	.byte	6,6,233,3,9,4,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_ABSOLUTE',0,1,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_BYTE',0,2,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD',0,3,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD_ALIGNED',0,4,0,5
+	.byte	'Xcp_IdField_t',0,6,239,3,2
+	.word	719
+	.byte	6,6,242,3,9,4,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_DEFAULT',0,0,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_16',0,1,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_32',0,2,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_64',0,3,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_ALIGNMENT',0,4,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_MAX_ENTRY_SIZE',0,5,0,5
+	.byte	'Xcp_OdtOptimizationType_t',0,6,250,3,2
+	.word	936
+	.byte	6,6,253,3,9,4,7
+	.byte	'XCP_CONSISTENCY_ODT',0,0,7
+	.byte	'XCP_CONSISTENCY_DAQ',0,1,7
+	.byte	'XCP_CONSISTENCY_EVENT',0,2,7
+	.byte	'XCP_CONSISTENCY_NONE',0,3,0,5
+	.byte	'Xcp_Consistency_t',0,6,131,4,2
+	.word	1212
+	.byte	6,6,134,4,9,4,7
+	.byte	'XCP_TIMESTAMP_TYPE_NO_TIME_STAMP',0,0,7
+	.byte	'XCP_TIMESTAMP_TYPE_ONE_BYTE',0,1,7
+	.byte	'XCP_TIMESTAMP_TYPE_TWO_BYTE',0,2,7
+	.byte	'XCP_TIMESTAMP_TYPE_FOUR_BYTE',0,4,0,5
+	.byte	'Xcp_Timestamp_t',0,6,140,4,2
+	.word	1337
+	.byte	4
+	.word	176
+	.byte	8,5,71,9,8,9
+	.byte	'SduDataPtr',0
+	.word	1495
+	.byte	4,2,35,0,9
+	.byte	'SduLength',0
+	.word	207
+	.byte	2,2,35,4,0,10
+	.word	1500
+	.byte	4
+	.word	1545
+	.byte	11
+	.word	176
+	.byte	1,1,12
+	.word	1550
+	.byte	12
+	.word	176
+	.byte	12
+	.word	176
+	.byte	0,4
+	.word	1555
+	.byte	13,1,1,12
+	.word	176
+	.byte	12
+	.word	176
+	.byte	0,4
+	.word	1583
+	.byte	13,1,1,12
+	.word	176
+	.byte	0,4
+	.word	1602
+	.byte	11
+	.word	176
+	.byte	1,1,12
+	.word	176
+	.byte	0,4
+	.word	1616
+	.byte	4
+	.word	1500
+	.byte	13,1,1,12
+	.word	1550
+	.byte	12
+	.word	1634
+	.byte	12
+	.word	176
+	.byte	0,4
+	.word	1639
+	.byte	11
+	.word	176
+	.byte	1,1,12
+	.word	176
+	.byte	12
+	.word	207
+	.byte	12
+	.word	176
+	.byte	0,4
+	.word	1663
+	.byte	8,7,164,1,9,56,9
+	.byte	'TLTransmit_pfct',0
+	.word	1578
+	.byte	4,2,35,0,9
+	.byte	'TLInit_pfct',0
+	.word	1597
+	.byte	4,2,35,4,9
+	.byte	'TLConnect_pfct',0
+	.word	1611
+	.byte	4,2,35,8,9
+	.byte	'TLDisconnect_pfct',0
+	.word	1629
+	.byte	4,2,35,12,9
+	.byte	'TLTransportLayerCmd_pfct',0
+	.word	1658
+	.byte	4,2,35,16,9
+	.byte	'TLGetTxPduId_pfct',0
+	.word	1686
+	.byte	4,2,35,20,9
+	.byte	'MaxCto_u8',0
+	.word	176
+	.byte	1,2,35,24,9
+	.byte	'MaxDto_u16',0
+	.word	207
+	.byte	2,2,35,26,9
+	.byte	'TimestampType_en',0
+	.word	1337
+	.byte	4,2,35,28,9
+	.byte	'IdFieldType_en',0
+	.word	719
+	.byte	4,2,35,32,9
+	.byte	'OverloadType_en',0
+	.word	585
+	.byte	4,2,35,36,9
+	.byte	'OdtOptimizationType_en',0
+	.word	936
+	.byte	4,2,35,40,9
+	.byte	'Consistency_en',0
+	.word	1212
+	.byte	4,2,35,44,9
+	.byte	'PdRam_u32',0
+	.word	135
+	.byte	4,2,35,48,9
+	.byte	'EdRam_u32',0
+	.word	135
+	.byte	4,2,35,52,0,5
+	.byte	'Xcp_PL_TL_Cfg_t',0,7,184,1,2
+	.word	1691
+	.byte	6,7,188,1,9,4,7
+	.byte	'XCP_RAMSECTION_INVALID',0,0,7
+	.byte	'XCP_RAMSECTION_PD',0,1,7
+	.byte	'XCP_RAMSECTION_ED',0,2,0,5
+	.byte	'Xcp_RamSectionType_t',0,7,193,1,2
+	.word	2089
+	.byte	8,7,195,1,9,12,9
+	.byte	'DaqRamPtr_pu8',0
+	.word	1495
+	.byte	4,2,35,0,9
+	.byte	'DaqRamTotalSize_u32',0
+	.word	135
+	.byte	4,2,35,4,9
+	.byte	'RamSectionType_en',0
+	.word	2089
+	.byte	4,2,35,8,0,5
+	.byte	'Xcp_DaqRamSection_Cfg_t',0,7,200,1,2
+	.word	2191
+	.byte	8,7,230,1,9,4,9
+	.byte	'EventChannelDirection_u8',0
+	.word	176
+	.byte	1,2,35,0,9
+	.byte	'EventChannelTimeCycle_u8',0
+	.word	176
+	.byte	1,2,35,1,9
+	.byte	'EventChannelTimeUnit_u8',0
+	.word	176
+	.byte	1,2,35,2,9
+	.byte	'EventChannelPriority_u8',0
+	.word	176
+	.byte	1,2,35,3,0,5
+	.byte	'Xcp_EventChannel_Cfg_t',0,7,236,1,2
+	.word	2310
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,5
+	.byte	'rba_BswSrv_uint64',0,8,66,28
+	.word	2483
+	.byte	2
+	.byte	'unsigned long int',0,4,7,14
+	.byte	'OS_Counter_1ms',0,1,44,22
+	.word	2535
+	.byte	1,1,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L7:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,21,0,54,15,0,0,4,15,0,73,19
+	.byte	0,0,5,22,0,3,8,58,15,59,15,57,15,73,19,0,0,6,4,1,58,15,59,15,57,15,11,15,0,0,7,40,0,3,8,28,13,0,0,8,19
+	.byte	1,58,15,59,15,57,15,11,15,0,0,9,13,0,3,8,73,19,11,15,56,9,0,0,10,38,0,73,19,0,0,11,21,1,73,19,54,15,39
+	.byte	12,0,0,12,5,0,73,19,0,0,13,21,1,54,15,39,12,0,0,14,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L8:
+	.word	.L19-.L18
+.L18:
+	.half	3
+	.word	.L21-.L20
+.L20:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Integration\\BSW\\Src\\Xcp_Timestamp.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\Xcp_Cfg.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0,0
+.L21:
+.L19:
+	.sdecl	'.debug_info',debug,cluster('XcpAppl_GetTimestamp')
+	.sect	'.debug_info'
+.L9:
+	.word	307
+	.half	3
+	.word	.L10
+	.byte	4,1
+	.byte	'Integration\\BSW\\Src\\Xcp_Timestamp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L12,.L11
+	.byte	2
+	.word	.L5
+	.byte	3
+	.byte	'XcpAppl_GetTimestamp',0,1,45,8
+	.word	.L14
+	.byte	1,1,1
+	.word	.L4,.L15,.L3
+	.byte	4
+	.word	.L4,.L15
+	.byte	5
+	.byte	'XcpAppl_Timestamp_u32',0,1,52,17
+	.word	.L14
+	.byte	5,3
+	.word	_999001_XcpAppl_Timestamp_u32
+	.byte	5
+	.byte	'XcpAppl_PreviousTime_u32',0,1,53,17
+	.word	.L14
+	.byte	5,3
+	.word	_999002_XcpAppl_PreviousTime_u32
+	.byte	6
+	.byte	'XcpAppl_CurrentTime_u32',0,1,54,10
+	.word	.L14,.L16
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('XcpAppl_GetTimestamp')
+	.sect	'.debug_abbrev'
+.L10:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('XcpAppl_GetTimestamp')
+	.sect	'.debug_line'
+.L11:
+	.word	.L23-.L22
+.L22:
+	.half	3
+	.word	.L25-.L24
+.L24:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Integration\\BSW\\Src\\Xcp_Timestamp.c',0,0,0,0,0
+.L25:
+	.byte	5,29,7,0,5,2
+	.word	.L4
+	.byte	3,59,1,5,55,9
+	.half	.L17-.L4
+	.byte	3,3,1,5,3,9
+	.half	.L26-.L17
+	.byte	1,5,55,9
+	.half	.L27-.L26
+	.byte	1,5,53,9
+	.half	.L28-.L27
+	.byte	1,5,25,9
+	.half	.L29-.L28
+	.byte	1,5,28,9
+	.half	.L30-.L29
+	.byte	3,3,1,5,10,9
+	.half	.L31-.L30
+	.byte	3,5,1,5,3,9
+	.half	.L32-.L31
+	.byte	1,5,1,9
+	.half	.L2-.L32
+	.byte	3,1,1,7,9
+	.half	.L13-.L2
+	.byte	0,1,1
+.L23:
+	.sdecl	'.debug_ranges',debug,cluster('XcpAppl_GetTimestamp')
+	.sect	'.debug_ranges'
+.L12:
+	.word	-1,.L4,0,.L13-.L4,0,0
+	.sdecl	'.debug_loc',debug,cluster('XcpAppl_GetTimestamp')
+	.sect	'.debug_loc'
+.L16:
+	.word	-1,.L4,.L17-.L4,.L15-.L4
+	.half	1
+	.byte	95
+	.word	0,0
+.L3:
+	.word	-1,.L4,0,.L15-.L4
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L33:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('XcpAppl_GetTimestamp')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L33,.L4,.L15-.L4
+	.byte	8,19,8,20,8,21,8,22,8,23,0,0
+
+; Integration\BSW\Src\Xcp_Timestamp.c	    73  #endif /* (XCP_TIMESTAMP == STD_ON) */
+; Integration\BSW\Src\Xcp_Timestamp.c	    74  
+; Integration\BSW\Src\Xcp_Timestamp.c	    75  /* ------------------------------------------------------------------------ */
+; Integration\BSW\Src\Xcp_Timestamp.c	    76  /* End section for code */
+; Integration\BSW\Src\Xcp_Timestamp.c	    77  
+; Integration\BSW\Src\Xcp_Timestamp.c	    78  #define XCP_STOP_SEC_CALLOUT_CODE
+; Integration\BSW\Src\Xcp_Timestamp.c	    79  #include "Xcp_MemMap.h"
+; Integration\BSW\Src\Xcp_Timestamp.c	    80  
+; Integration\BSW\Src\Xcp_Timestamp.c	    81  
+
+	; Module end

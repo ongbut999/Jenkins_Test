@@ -1,0 +1,4359 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc18408a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\RTE\\Rte_Lib.src RTE\\gen\\Rte_Lib.c"
+	.compiler_name		"ctc"
+	;source	'RTE\\gen\\Rte_Lib.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Rte_Lib.Rte_ActivateRE',code,cluster('Rte_ActivateRE')
+	.sect	'.text.Rte_Lib.Rte_ActivateRE'
+	.align	2
+	
+	.global	Rte_ActivateRE
+
+; RTE\gen\Rte_Lib.c	     1  /** @file         Rte_Lib.c
+; RTE\gen\Rte_Lib.c	     2    *
+; RTE\gen\Rte_Lib.c	     3    * @brief        RTE library implementation
+; RTE\gen\Rte_Lib.c	     4    *               [$Satisfies $SRD 62321] RTE library template
+; RTE\gen\Rte_Lib.c	     5    *
+; RTE\gen\Rte_Lib.c	     6    * @copyright    Copyright 2007-2008 ETAS Engineering Tools Application and Services Ltd.
+; RTE\gen\Rte_Lib.c	     7    *               Copyright 2008-2019 ETAS GmbH.
+; RTE\gen\Rte_Lib.c	     8    *
+; RTE\gen\Rte_Lib.c	     9    * @note         PLATFORM DEPENDENT [yes/no]: no
+; RTE\gen\Rte_Lib.c	    10    *
+; RTE\gen\Rte_Lib.c	    11    * @note         TO BE CHANGED BY USER [yes/no]: no
+; RTE\gen\Rte_Lib.c	    12    *
+; RTE\gen\Rte_Lib.c	    13    * @note         RTE_WOWP_EVENTS                        = 0
+; RTE\gen\Rte_Lib.c	    14    *               RTE_NUM_ALARMS                         = 0
+; RTE\gen\Rte_Lib.c	    15    *               RTE_NUM_TASKS                          = 9
+; RTE\gen\Rte_Lib.c	    16    *               RTE_TASKS_ARRAYSIZE                    = 9
+; RTE\gen\Rte_Lib.c	    17    *               RTE_MSITABLE_SIZE                      = 0
+; RTE\gen\Rte_Lib.c	    18    *               RTE_NULL_SCHEDULE                      = 0
+; RTE\gen\Rte_Lib.c	    19    *               RTE_OS_EVENTS                          = 0
+; RTE\gen\Rte_Lib.c	    20    *               RTE_CALPRM_INITRAM                     = 0
+; RTE\gen\Rte_Lib.c	    21    *               RTE_IMODEINIT                          = 0
+; RTE\gen\Rte_Lib.c	    22    *               RTE_ONSTART                            = 0
+; RTE\gen\Rte_Lib.c	    23    *               SCHM_IMODEINIT                         = 1
+; RTE\gen\Rte_Lib.c	    24    *               RTE_INITIALIZING                       = 0
+; RTE\gen\Rte_Lib.c	    25    *               RTE_REQUIRES_IOC                       = 0
+; RTE\gen\Rte_Lib.c	    26    *               RTE_RIPS_SUPPORT                       = 0
+; RTE\gen\Rte_Lib.c	    27    *               RTE_USE_GETCURRENTTASKALARMINDEX       = 0
+; RTE\gen\Rte_Lib.c	    28    *               RTE_CALPRM_INITRAM_DEFAULTS            = 0
+; RTE\gen\Rte_Lib.c	    29    *
+; RTE\gen\Rte_Lib.c	    30    *               OPT_MEMMAP_DECLARATIONS                = 1
+; RTE\gen\Rte_Lib.c	    31    *               OPT_OS_TASK_AS_FUNCTION                = 0
+; RTE\gen\Rte_Lib.c	    32    *
+; RTE\gen\Rte_Lib.c	    33    *               RTE_VFBTRACECLIENTPREFIX               = []
+; RTE\gen\Rte_Lib.c	    34    *               RTE_ARMAJOR                            = 4
+; RTE\gen\Rte_Lib.c	    35    *               RTE_ARMINOR                            = 0
+; RTE\gen\Rte_Lib.c	    36    *               RTE_ARPATCH                            = 3
+; RTE\gen\Rte_Lib.c	    37    *
+; RTE\gen\Rte_Lib.c	    38    *
+; RTE\gen\Rte_Lib.c	    39    * Template:     Id: Rte_Lib_c.template 87318 2019-02-01 10:01:02Z DIR9YOK
+; RTE\gen\Rte_Lib.c	    40    */
+; RTE\gen\Rte_Lib.c	    41  
+; RTE\gen\Rte_Lib.c	    42  /* [$Satisfies $SWS 2734] Generated code is independent of the micro-controller
+; RTE\gen\Rte_Lib.c	    43   * Note that this requirement applies to the generated output as a whole. This
+; RTE\gen\Rte_Lib.c	    44   * is just one place where we don't use micro-controller specific code!
+; RTE\gen\Rte_Lib.c	    45   */
+; RTE\gen\Rte_Lib.c	    46  
+; RTE\gen\Rte_Lib.c	    47  /* [$Satisfies $SWS 2250] RTE limited to AUTOSAR OS and COM APIs
+; RTE\gen\Rte_Lib.c	    48   * Note that OS-vendor-specific extensions may be used but only when protected
+; RTE\gen\Rte_Lib.c	    49   * with pre-processor guards on the appropriate OSENV_<name> symbol.
+; RTE\gen\Rte_Lib.c	    50   */
+; RTE\gen\Rte_Lib.c	    51  /* [$Satisfies $SWS40 7519] SchM limited to AUTOSAR OS APIs
+; RTE\gen\Rte_Lib.c	    52   * Note that OS-vendor-specific extensions may be used but only when protected
+; RTE\gen\Rte_Lib.c	    53   * with pre-processor guards on the appropriate OSENV_<name> symbol.
+; RTE\gen\Rte_Lib.c	    54   */
+; RTE\gen\Rte_Lib.c	    55  
+; RTE\gen\Rte_Lib.c	    56  
+; RTE\gen\Rte_Lib.c	    57  #define RTE_CORE
+; RTE\gen\Rte_Lib.c	    58  
+; RTE\gen\Rte_Lib.c	    59  #include "Rte_Const.h" /* Must be included before os.h */
+; RTE\gen\Rte_Lib.c	    60  #include <Os.h>
+; RTE\gen\Rte_Lib.c	    61  
+; RTE\gen\Rte_Lib.c	    62  #include "Rte.h"
+; RTE\gen\Rte_Lib.c	    63  #include "Rte_Main.h"
+; RTE\gen\Rte_Lib.c	    64  #include "Rte_Intl.h"
+; RTE\gen\Rte_Lib.c	    65  #ifndef RTE_OMIT_HOOKS
+; RTE\gen\Rte_Lib.c	    66  #include "Rte_Hook.h"
+; RTE\gen\Rte_Lib.c	    67  #endif
+; RTE\gen\Rte_Lib.c	    68  
+; RTE\gen\Rte_Lib.c	    69  /* [$Satisfies $rte_swaddr 097] */
+; RTE\gen\Rte_Lib.c	    70  /* [$Satisfies $rte_swaddr 058] */
+; RTE\gen\Rte_Lib.c	    71  #define RTE_SYS_START_SEC_VAR_CLEARED_32
+; RTE\gen\Rte_Lib.c	    72  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	    73  VAR(Rte_ResourceCountRefType, RTE_DATA) Rte_ResourceCount[4];
+; RTE\gen\Rte_Lib.c	    74  #define RTE_SYS_STOP_SEC_VAR_CLEARED_32
+; RTE\gen\Rte_Lib.c	    75  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	    76  
+; RTE\gen\Rte_Lib.c	    77  #define RTE_OSAPPLICATION_CORE0_START_SEC_VAR_CLEARED_16
+; RTE\gen\Rte_Lib.c	    78  #include "Rte_MemMap.h"
+; RTE\gen\Rte_Lib.c	    79  VAR(uint16, RTE_DATA) Rte_ResourceCount_OsApplication_Core0 = 0;
+; RTE\gen\Rte_Lib.c	    80  #define RTE_OSAPPLICATION_CORE0_STOP_SEC_VAR_CLEARED_16
+; RTE\gen\Rte_Lib.c	    81  #include "Rte_MemMap.h"
+; RTE\gen\Rte_Lib.c	    82  
+; RTE\gen\Rte_Lib.c	    83  #define RTE_OSAPPLICATION_CORE1_START_SEC_VAR_CLEARED_16
+; RTE\gen\Rte_Lib.c	    84  #include "Rte_MemMap.h"
+; RTE\gen\Rte_Lib.c	    85  VAR(uint16, RTE_DATA) Rte_ResourceCount_OsApplication_Core1 = 0;
+; RTE\gen\Rte_Lib.c	    86  #define RTE_OSAPPLICATION_CORE1_STOP_SEC_VAR_CLEARED_16
+; RTE\gen\Rte_Lib.c	    87  #include "Rte_MemMap.h"
+; RTE\gen\Rte_Lib.c	    88  
+; RTE\gen\Rte_Lib.c	    89  #define RTE_OSAPPLICATION_CORE2_START_SEC_VAR_CLEARED_16
+; RTE\gen\Rte_Lib.c	    90  #include "Rte_MemMap.h"
+; RTE\gen\Rte_Lib.c	    91  VAR(uint16, RTE_DATA) Rte_ResourceCount_OsApplication_Core2 = 0;
+; RTE\gen\Rte_Lib.c	    92  #define RTE_OSAPPLICATION_CORE2_STOP_SEC_VAR_CLEARED_16
+; RTE\gen\Rte_Lib.c	    93  #include "Rte_MemMap.h"
+; RTE\gen\Rte_Lib.c	    94  
+; RTE\gen\Rte_Lib.c	    95  
+; RTE\gen\Rte_Lib.c	    96  
+; RTE\gen\Rte_Lib.c	    97  #define RTE_SYS_START_SEC_VAR_CLEARED_32
+; RTE\gen\Rte_Lib.c	    98  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	    99  VAR(Rte_ResourceRefType, RTE_DATA) Rte_Resources[4];
+; RTE\gen\Rte_Lib.c	   100  
+; RTE\gen\Rte_Lib.c	   101  #define RTE_SYS_STOP_SEC_VAR_CLEARED_32
+; RTE\gen\Rte_Lib.c	   102  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   103  
+; RTE\gen\Rte_Lib.c	   104  /* [$Satisfies $SWS 2535] */
+; RTE\gen\Rte_Lib.c	   105  /* [$Satisfies $SWS 2536] */
+; RTE\gen\Rte_Lib.c	   106  /* [$Satisfies $rte_swaddr 097] */
+; RTE\gen\Rte_Lib.c	   107  /* [$Satisfies $rte_swaddr 059] */
+; RTE\gen\Rte_Lib.c	   108  #define RTE_START_SEC_VAR_CLEARED_BOOLEAN
+; RTE\gen\Rte_Lib.c	   109  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   110  VAR(boolean, RTE_DATA) Rte_Initialized = FALSE;
+; RTE\gen\Rte_Lib.c	   111  VAR(boolean, RTE_DATA) SchM_Initialized = FALSE;
+; RTE\gen\Rte_Lib.c	   112  #define RTE_STOP_SEC_VAR_CLEARED_BOOLEAN
+; RTE\gen\Rte_Lib.c	   113  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   114  
+; RTE\gen\Rte_Lib.c	   115  
+; RTE\gen\Rte_Lib.c	   116  #define RTE_SYS_START_SEC_CODE
+; RTE\gen\Rte_Lib.c	   117  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   118  extern FUNC(void, RTE_CODE) SchM_IModeInit(void);
+; RTE\gen\Rte_Lib.c	   119  #define RTE_SYS_STOP_SEC_CODE
+; RTE\gen\Rte_Lib.c	   120  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   121  
+; RTE\gen\Rte_Lib.c	   122  
+; RTE\gen\Rte_Lib.c	   123  
+; RTE\gen\Rte_Lib.c	   124  
+; RTE\gen\Rte_Lib.c	   125  #define RTE_EXT_START_SEC_CODE
+; RTE\gen\Rte_Lib.c	   126  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   127  
+; RTE\gen\Rte_Lib.c	   128  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   129  /** @brief Activate single runnable
+; RTE\gen\Rte_Lib.c	   130    *
+; RTE\gen\Rte_Lib.c	   131    * @param[in] c        Pointer to Rte_REContainerType defining runnable's tasks
+; RTE\gen\Rte_Lib.c	   132    *                     and activation counter.
+; RTE\gen\Rte_Lib.c	   133    *
+; RTE\gen\Rte_Lib.c	   134    * @retval E_OK        No errror
+; RTE\gen\Rte_Lib.c	   135    * @retval E_NOT_OK    Task activation failed
+; RTE\gen\Rte_Lib.c	   136    */
+; RTE\gen\Rte_Lib.c	   137  
+; RTE\gen\Rte_Lib.c	   138  /* [$Satisfies $SWS 3600] */
+; RTE\gen\Rte_Lib.c	   139  
+; RTE\gen\Rte_Lib.c	   140  FUNC(Std_ReturnType, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   141  Rte_ActivateRE( Rte_REContainerRefType c )
+; Function Rte_ActivateRE
+.L45:
+Rte_ActivateRE:	.type	func
+
+; RTE\gen\Rte_Lib.c	   142  {
+; RTE\gen\Rte_Lib.c	   143     Std_ReturnType          status   = RTE_E_OK;
+	mov	d8,#0
+.L219:
+
+; RTE\gen\Rte_Lib.c	   144  
+; RTE\gen\Rte_Lib.c	   145     /* [$Satisfies $SWS 3520] [$Satisfies $SWS40 7526] */
+; RTE\gen\Rte_Lib.c	   146     if ( c->acnt )
+	ld.a	a15,[a4]4
+.L316:
+	jz.a	a15,.L2
+.L317:
+
+; RTE\gen\Rte_Lib.c	   147     {
+; RTE\gen\Rte_Lib.c	   148        *(c->acnt) = TRUE;
+	mov	d15,#1
+.L318:
+	st.b	[a15],d15
+.L2:
+
+; RTE\gen\Rte_Lib.c	   149     }
+; RTE\gen\Rte_Lib.c	   150  
+; RTE\gen\Rte_Lib.c	   151     if ( c->task != RTE_TASK_REF_NO_TASK )
+	ld.a	a4,[a4]
+.L218:
+	jz.a	a4,.L3
+.L176:
+
+; RTE\gen\Rte_Lib.c	   152     {
+; RTE\gen\Rte_Lib.c	   153        StatusType stat;
+; RTE\gen\Rte_Lib.c	   154  
+; RTE\gen\Rte_Lib.c	   155  #if defined(RTE_VFB_TRACE)
+; RTE\gen\Rte_Lib.c	   156  #if (RTE_VFB_TRACE != 0)
+; RTE\gen\Rte_Lib.c	   157        Rte_Task_Activate( RTE_TASK_FROM_REF( c->task ) );            /* [$Satisfies $SWS40 5091] */
+; RTE\gen\Rte_Lib.c	   158  #endif /* (RTE_VFB_TRACE != 0) */
+; RTE\gen\Rte_Lib.c	   159  #endif /* defined(RTE_VFB_TRACE)  */
+; RTE\gen\Rte_Lib.c	   160  
+; RTE\gen\Rte_Lib.c	   161        stat = ActivateTask( RTE_TASK_FROM_REF( c->task ) );
+	call	Os_ActivateTask
+.L220:
+
+; RTE\gen\Rte_Lib.c	   162        if ( ( E_OK != stat ) && ( E_OS_LIMIT != stat ) )
+	jeq	d2,#0,.L4
+.L319:
+	eq	d15,d2,#4
+.L320:
+
+; RTE\gen\Rte_Lib.c	   163        {
+; RTE\gen\Rte_Lib.c	   164           /* E_OS_LIMIT is an acceptable return code, because that
+; RTE\gen\Rte_Lib.c	   165            * means that the task is already running. */
+; RTE\gen\Rte_Lib.c	   166           status = E_NOT_OK;
+	cmovn	d8,d15,#1
+.L5:
+.L4:
+.L3:
+
+; RTE\gen\Rte_Lib.c	   167        }
+; RTE\gen\Rte_Lib.c	   168     }
+; RTE\gen\Rte_Lib.c	   169     /* rte_sws_end 3520 */
+; RTE\gen\Rte_Lib.c	   170     /* rte_sws_end 7526 */
+; RTE\gen\Rte_Lib.c	   171  
+; RTE\gen\Rte_Lib.c	   172     return status;
+	mov	d2,d8
+.L221:
+	j	.L6
+
+; RTE\gen\Rte_Lib.c	   173  }
+.L6:
+	ret
+.L172:
+	
+__Rte_ActivateRE_function_end:
+	.size	Rte_ActivateRE,__Rte_ActivateRE_function_end-Rte_ActivateRE
+.L108:
+	; End of function
+	
+	.sdecl	'.text.Rte_Lib.Rte_DecrementWaitingCount',code,cluster('Rte_DecrementWaitingCount')
+	.sect	'.text.Rte_Lib.Rte_DecrementWaitingCount'
+	.align	2
+	
+	.global	Rte_DecrementWaitingCount
+
+; RTE\gen\Rte_Lib.c	   174  /* rte_sws_end 3600 */
+; RTE\gen\Rte_Lib.c	   175  
+; RTE\gen\Rte_Lib.c	   176  #define RTE_EXT_STOP_SEC_CODE
+; RTE\gen\Rte_Lib.c	   177  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   178  
+; RTE\gen\Rte_Lib.c	   179  #define RTE_SYS_START_SEC_CODE
+; RTE\gen\Rte_Lib.c	   180  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   181  
+; RTE\gen\Rte_Lib.c	   182  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   183  /** @brief Remove task \\a idx from `waiting' for the referenced waitable datum
+; RTE\gen\Rte_Lib.c	   184    *
+; RTE\gen\Rte_Lib.c	   185    * @param[in] datum    RTE waitable datum
+; RTE\gen\Rte_Lib.c	   186    * @param[in] idx      Task index
+; RTE\gen\Rte_Lib.c	   187    * @param[in] event    RTE event
+; RTE\gen\Rte_Lib.c	   188    *
+; RTE\gen\Rte_Lib.c	   189    * @return None
+; RTE\gen\Rte_Lib.c	   190    *
+; RTE\gen\Rte_Lib.c	   191    * @note The \\a idx parameter name is chosen to avoid hiding the \\c index
+; RTE\gen\Rte_Lib.c	   192    *       non-ISO C alias of the \\c strchr function that is present in many
+; RTE\gen\Rte_Lib.c	   193    *       standard library implementations, since that can result in compiler
+; RTE\gen\Rte_Lib.c	   194    *       warnings.
+; RTE\gen\Rte_Lib.c	   195    */
+; RTE\gen\Rte_Lib.c	   196  
+; RTE\gen\Rte_Lib.c	   197  FUNC(void, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   198  Rte_DecrementWaitingCount( P2VAR(Rte_WaitableDatum, AUTOMATIC, RTE_DATA) datum,
+; Function Rte_DecrementWaitingCount
+.L47:
+Rte_DecrementWaitingCount:	.type	func
+
+; RTE\gen\Rte_Lib.c	   199                             Rte_TaskArrayIndex idx,
+; RTE\gen\Rte_Lib.c	   200                             Rte_EventType event )
+; RTE\gen\Rte_Lib.c	   201  {
+; RTE\gen\Rte_Lib.c	   202     (void)datum;
+; RTE\gen\Rte_Lib.c	   203     (void)idx;
+; RTE\gen\Rte_Lib.c	   204     (void)event;
+; RTE\gen\Rte_Lib.c	   205  }
+	ret
+.L189:
+	
+__Rte_DecrementWaitingCount_function_end:
+	.size	Rte_DecrementWaitingCount,__Rte_DecrementWaitingCount_function_end-Rte_DecrementWaitingCount
+.L123:
+	; End of function
+	
+	.sdecl	'.text.Rte_Lib.Rte_GetCurrentTaskIndex',code,cluster('Rte_GetCurrentTaskIndex')
+	.sect	'.text.Rte_Lib.Rte_GetCurrentTaskIndex'
+	.align	2
+	
+	.global	Rte_GetCurrentTaskIndex
+
+; RTE\gen\Rte_Lib.c	   206  
+; RTE\gen\Rte_Lib.c	   207  #define RTE_SYS_STOP_SEC_CODE
+; RTE\gen\Rte_Lib.c	   208  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   209  
+; RTE\gen\Rte_Lib.c	   210  #define RTE_LIB_START_SEC_CODE
+; RTE\gen\Rte_Lib.c	   211  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   212  
+; RTE\gen\Rte_Lib.c	   213  
+; RTE\gen\Rte_Lib.c	   214  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   215  /** @brief Get index of specified task
+; RTE\gen\Rte_Lib.c	   216    *
+; RTE\gen\Rte_Lib.c	   217    * @param[in] taskref  Reference to a task
+; RTE\gen\Rte_Lib.c	   218    *
+; RTE\gen\Rte_Lib.c	   219    * @return Task index
+; RTE\gen\Rte_Lib.c	   220    */
+; RTE\gen\Rte_Lib.c	   221  
+; RTE\gen\Rte_Lib.c	   222  FUNC(Rte_TaskArrayIndex, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   223  Rte_GetCurrentTaskIndex( P2VAR(TaskType, AUTOMATIC, RTE_DATA) taskRef )
+; Function Rte_GetCurrentTaskIndex
+.L49:
+Rte_GetCurrentTaskIndex:	.type	func
+
+; RTE\gen\Rte_Lib.c	   224  {
+; RTE\gen\Rte_Lib.c	   225     (void)taskRef;
+; RTE\gen\Rte_Lib.c	   226  
+; RTE\gen\Rte_Lib.c	   227     return RTE_TASKS_ARRAYSIZE;
+	mov	d2,#9
+.L338:
+	j	.L7
+
+; RTE\gen\Rte_Lib.c	   228  }
+.L7:
+	ret
+.L193:
+	
+__Rte_GetCurrentTaskIndex_function_end:
+	.size	Rte_GetCurrentTaskIndex,__Rte_GetCurrentTaskIndex_function_end-Rte_GetCurrentTaskIndex
+.L128:
+	; End of function
+	
+	.sdecl	'.text.Rte_Lib.Rte_MainFunction',code,cluster('Rte_MainFunction')
+	.sect	'.text.Rte_Lib.Rte_MainFunction'
+	.align	2
+	
+	.global	Rte_MainFunction
+
+; RTE\gen\Rte_Lib.c	   229  
+; RTE\gen\Rte_Lib.c	   230  
+; RTE\gen\Rte_Lib.c	   231  #define RTE_LIB_STOP_SEC_CODE
+; RTE\gen\Rte_Lib.c	   232  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   233  
+; RTE\gen\Rte_Lib.c	   234  #define RTE_MAIN_START_SEC_CODE
+; RTE\gen\Rte_Lib.c	   235  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   236  
+; RTE\gen\Rte_Lib.c	   237  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   238  /** @brief RTE Main function
+; RTE\gen\Rte_Lib.c	   239    *
+; RTE\gen\Rte_Lib.c	   240    * @return None
+; RTE\gen\Rte_Lib.c	   241    *
+; RTE\gen\Rte_Lib.c	   242    * @note   Required to be invoked at the specified rate (default: 10ms) when
+; RTE\gen\Rte_Lib.c	   243    *         at least one runnable has a positive minimum start interval defined.
+; RTE\gen\Rte_Lib.c	   244    *         In no runnables have a minimum start interval then the body of this
+; RTE\gen\Rte_Lib.c	   245    *         function is empty.
+; RTE\gen\Rte_Lib.c	   246    */
+; RTE\gen\Rte_Lib.c	   247  
+; RTE\gen\Rte_Lib.c	   248  FUNC(void, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   249  Rte_MainFunction(void)
+; Function Rte_MainFunction
+.L51:
+Rte_MainFunction:	.type	func
+
+; RTE\gen\Rte_Lib.c	   250  {
+; RTE\gen\Rte_Lib.c	   251     /* No MSI -- empty function */
+; RTE\gen\Rte_Lib.c	   252  }
+	ret
+.L169:
+	
+__Rte_MainFunction_function_end:
+	.size	Rte_MainFunction,__Rte_MainFunction_function_end-Rte_MainFunction
+.L93:
+	; End of function
+	
+	.sdecl	'.text.Rte_Lib.Rte_ReadQueue',code,cluster('Rte_ReadQueue')
+	.sect	'.text.Rte_Lib.Rte_ReadQueue'
+	.align	2
+	
+	.global	Rte_ReadQueue
+
+; RTE\gen\Rte_Lib.c	   253  
+; RTE\gen\Rte_Lib.c	   254  #define RTE_MAIN_STOP_SEC_CODE
+; RTE\gen\Rte_Lib.c	   255  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   256  
+; RTE\gen\Rte_Lib.c	   257  #define RTE_SYS_START_SEC_CODE
+; RTE\gen\Rte_Lib.c	   258  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   259  
+; RTE\gen\Rte_Lib.c	   260  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   261  /** @brief Read entry from RTE managed queue
+; RTE\gen\Rte_Lib.c	   262    *
+; RTE\gen\Rte_Lib.c	   263    * @param[in] q        Handle of queue common data structure
+; RTE\gen\Rte_Lib.c	   264    * @param[out] data    Pointer to output data location
+; RTE\gen\Rte_Lib.c	   265    *
+; RTE\gen\Rte_Lib.c	   266    * @retval RTE_E_NO_DATA   No data to read
+; RTE\gen\Rte_Lib.c	   267    * @retval RTE_E_TIMEOUT   Timeout expired before data available to read
+; RTE\gen\Rte_Lib.c	   268    * @retval RTE_E_LOST_DATA Data returned but (at least one) previous value lost
+; RTE\gen\Rte_Lib.c	   269    * @retval RTE_OK          No error
+; RTE\gen\Rte_Lib.c	   270    */
+; RTE\gen\Rte_Lib.c	   271  
+; RTE\gen\Rte_Lib.c	   272  /* [$Satisfies $SWS 2519] */
+; RTE\gen\Rte_Lib.c	   273  FUNC(Std_ReturnType, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   274  Rte_ReadQueue( Rte_QCmnRefType  q,
+; Function Rte_ReadQueue
+.L53:
+Rte_ReadQueue:	.type	func
+	mov.aa	a13,a4
+.L223:
+	mov.aa	a12,a5
+.L224:
+
+; RTE\gen\Rte_Lib.c	   275                 Rte_VarDataPtr   data )
+; RTE\gen\Rte_Lib.c	   276  {
+; RTE\gen\Rte_Lib.c	   277     Std_ReturnType  status   = RTE_E_OK;                         /* [$Satisfies $SWS 1093] [$Satisfies $SWS 2598] */
+	mov	d8,#0
+.L225:
+
+; RTE\gen\Rte_Lib.c	   278     P2VAR(Rte_QDynType, AUTOMATIC, RTE_DATA)   dynamic  = q->dynamic;
+	ld.a	a15,[a13]
+.L227:
+
+; RTE\gen\Rte_Lib.c	   279  
+; RTE\gen\Rte_Lib.c	   280        /* [$Satisfies $SWS40 7673] */
+; RTE\gen\Rte_Lib.c	   281  
+; RTE\gen\Rte_Lib.c	   282        /* protect queue access */
+; RTE\gen\Rte_Lib.c	   283        Rte_SuspendOSInterrupts();
+	call	Os_SuspendOSInterrupts
+.L222:
+
+; RTE\gen\Rte_Lib.c	   284  
+; RTE\gen\Rte_Lib.c	   285        if ( 0u == dynamic->used )
+	ld.hu	d15,[a15]8
+.L379:
+	jne	d15,#0,.L8
+.L380:
+
+; RTE\gen\Rte_Lib.c	   286        {
+; RTE\gen\Rte_Lib.c	   287           if ( dynamic->lost_data != RTE_E_COM_STOPPED ) /* [$Satisfies $SWS 1106] [$Satisfies $SWS 3606] */
+	ld.bu	d15,[a15]10
+.L381:
+	mov	d0,#128
+.L382:
+	eq	d15,d15,d0
+.L383:
+
+; RTE\gen\Rte_Lib.c	   288           {
+; RTE\gen\Rte_Lib.c	   289              status = RTE_E_NO_DATA;    /* [$Satisfies $SWS 1113] [$Satisfies $SWS 1084] [$Satisfies $SWS 1094] [$Satisfies $SWS 6012] [$Satisfies $SWS 2525] */
+	sel	d8,d15,d8,#131
+.L9:
+	j	.L10
+.L8:
+
+; RTE\gen\Rte_Lib.c	   290           }
+; RTE\gen\Rte_Lib.c	   291        }
+; RTE\gen\Rte_Lib.c	   292        else
+; RTE\gen\Rte_Lib.c	   293        {
+; RTE\gen\Rte_Lib.c	   294           /* [$Satisfies $SWS 2522] [$Satisfies $SWS 2527] */
+; RTE\gen\Rte_Lib.c	   295           /* copy data (be it the actual data, or a pointer) from the
+; RTE\gen\Rte_Lib.c	   296            * queue buffer to the address specified by data */
+; RTE\gen\Rte_Lib.c	   297           ( void )Rte_memcpy( data, dynamic->out, q->element_size );
+	ld.a	a5,[a15]4
+.L384:
+	ld.hu	d4,[a13]8
+	mov.aa	a4,a12
+.L228:
+	call	Rte_memcpy
+.L229:
+
+; RTE\gen\Rte_Lib.c	   298  
+; RTE\gen\Rte_Lib.c	   299           /*lint --e{960} Allow pointer arithmetic other than array indexing */
+; RTE\gen\Rte_Lib.c	   300           dynamic->out = (P2VAR(uint8, AUTOMATIC, RTE_DATA)) ( dynamic->out ) + q->element_size;
+	ld.a	a2,[a15]4
+.L385:
+	ld.hu	d15,[a13]8
+.L386:
+	addsc.a	a2,a2,d15,#0
+.L387:
+	st.a	[a15]4,a2
+.L388:
+
+; RTE\gen\Rte_Lib.c	   301  
+; RTE\gen\Rte_Lib.c	   302           /*lint --e{946} Relational operation for pointers valid */
+; RTE\gen\Rte_Lib.c	   303           if ( dynamic->out >= q->buffer_end )
+	ld.w	d15,[a15]4
+.L389:
+	ld.w	d0,[a13]16
+.L390:
+	jlt.u	d15,d0,.L11
+.L391:
+
+; RTE\gen\Rte_Lib.c	   304           {
+; RTE\gen\Rte_Lib.c	   305              /* wrap the out pointer */
+; RTE\gen\Rte_Lib.c	   306              dynamic->out = q->buffer_start;
+	ld.a	a2,[a13]12
+.L392:
+	st.a	[a15]4,a2
+.L11:
+
+; RTE\gen\Rte_Lib.c	   307           }
+; RTE\gen\Rte_Lib.c	   308           dynamic->used--;
+	ld.hu	d15,[a15]8
+.L393:
+	add	d15,#-1
+	st.h	[a15]8,d15
+.L10:
+
+; RTE\gen\Rte_Lib.c	   309        }
+; RTE\gen\Rte_Lib.c	   310  
+; RTE\gen\Rte_Lib.c	   311        Rte_ResumeOSInterrupts();
+	call	Os_ResumeOSInterrupts
+.L394:
+
+; RTE\gen\Rte_Lib.c	   312  
+; RTE\gen\Rte_Lib.c	   313     /* [$Satisfies $SWS 2524] */
+; RTE\gen\Rte_Lib.c	   314     status |= dynamic->lost_data;
+	ld.bu	d15,[a15]10
+.L395:
+	or	d2,d8,d15
+.L226:
+
+; RTE\gen\Rte_Lib.c	   315     dynamic->lost_data = 0;
+	mov	d15,#0
+.L396:
+	st.b	[a15]10,d15
+.L397:
+
+; RTE\gen\Rte_Lib.c	   316  
+; RTE\gen\Rte_Lib.c	   317     return status;
+	j	.L12
+
+; RTE\gen\Rte_Lib.c	   318  }
+.L12:
+	ret
+.L210:
+	
+__Rte_ReadQueue_function_end:
+	.size	Rte_ReadQueue,__Rte_ReadQueue_function_end-Rte_ReadQueue
+.L138:
+	; End of function
+	
+	.sdecl	'.text.Rte_Lib.Rte_SetEvent',code,cluster('Rte_SetEvent')
+	.sect	'.text.Rte_Lib.Rte_SetEvent'
+	.align	2
+	
+	.global	Rte_SetEvent
+
+; RTE\gen\Rte_Lib.c	   319  
+; RTE\gen\Rte_Lib.c	   320  #define RTE_SYS_STOP_SEC_CODE
+; RTE\gen\Rte_Lib.c	   321  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   322  
+; RTE\gen\Rte_Lib.c	   323  #define RTE_EXT_START_SEC_CODE
+; RTE\gen\Rte_Lib.c	   324  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   325  
+; RTE\gen\Rte_Lib.c	   326  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   327  /** @brief Set event for specified RTE waitable datum
+; RTE\gen\Rte_Lib.c	   328    */
+; RTE\gen\Rte_Lib.c	   329  
+; RTE\gen\Rte_Lib.c	   330  FUNC(Std_ReturnType, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   331  Rte_SetEvent( P2VAR(Rte_WaitableDatum, AUTOMATIC, RTE_DATA) datum,
+; Function Rte_SetEvent
+.L55:
+Rte_SetEvent:	.type	func
+
+; RTE\gen\Rte_Lib.c	   332                Rte_EventType event )
+; RTE\gen\Rte_Lib.c	   333  {
+; RTE\gen\Rte_Lib.c	   334     Std_ReturnType status   = RTE_E_OK;
+	mov	d2,#0
+.L230:
+
+; RTE\gen\Rte_Lib.c	   335  
+; RTE\gen\Rte_Lib.c	   336     (void)datum;
+; RTE\gen\Rte_Lib.c	   337     (void)event;
+; RTE\gen\Rte_Lib.c	   338  
+; RTE\gen\Rte_Lib.c	   339     /* No WOWP events -- empty function */
+; RTE\gen\Rte_Lib.c	   340  
+; RTE\gen\Rte_Lib.c	   341     return status;
+	j	.L13
+
+; RTE\gen\Rte_Lib.c	   342  }
+.L13:
+	ret
+.L185:
+	
+__Rte_SetEvent_function_end:
+	.size	Rte_SetEvent,__Rte_SetEvent_function_end-Rte_SetEvent
+.L118:
+	; End of function
+	
+	.sdecl	'.text.Rte_Lib.SchM_Init',code,cluster('SchM_Init')
+	.sect	'.text.Rte_Lib.SchM_Init'
+	.align	2
+	
+	.global	SchM_Init
+
+; RTE\gen\Rte_Lib.c	   343  
+; RTE\gen\Rte_Lib.c	   344  #define RTE_EXT_STOP_SEC_CODE
+; RTE\gen\Rte_Lib.c	   345  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   346  
+; RTE\gen\Rte_Lib.c	   347  /* [$Satisfies $rte_swaddr 057] */
+; RTE\gen\Rte_Lib.c	   348  #define RTE_MAIN_START_SEC_CODE
+; RTE\gen\Rte_Lib.c	   349  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   350  
+; RTE\gen\Rte_Lib.c	   351  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   352  /** @brief Initialize SchM
+; RTE\gen\Rte_Lib.c	   353    *
+; RTE\gen\Rte_Lib.c	   354    */
+; RTE\gen\Rte_Lib.c	   355  
+; RTE\gen\Rte_Lib.c	   356  /* [$Satisfies $SWS40 7271] */
+; RTE\gen\Rte_Lib.c	   357  /* [$Satisfies $SWS40 7273] */
+; RTE\gen\Rte_Lib.c	   358  FUNC(void, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   359  SchM_Init( void )     /* [$Satisfies $SWS40 7270] [$Satisfies $SWS40 6544] [$Satisfies $SWS40 6545] */
+; Function SchM_Init
+.L57:
+SchM_Init:	.type	func
+
+; RTE\gen\Rte_Lib.c	   360  {
+; RTE\gen\Rte_Lib.c	   361  #if !defined(RTE_OMIT_UNINIT_CHECK)
+; RTE\gen\Rte_Lib.c	   362     if ( SchM_Initialized ) {
+	movh.a	a15,#@his(SchM_Initialized)
+	lea	a15,[a15]@los(SchM_Initialized)
+	ld.bu	d15,[a15]
+.L301:
+	jeq	d15,#0,.L14
+.L302:
+	j	.L15
+.L14:
+
+; RTE\gen\Rte_Lib.c	   363         /* [$Satisfies $ExternalSWS40 7272] Called SchM_Init more than once */
+; RTE\gen\Rte_Lib.c	   364     }
+; RTE\gen\Rte_Lib.c	   365     else
+; RTE\gen\Rte_Lib.c	   366  #endif /* !defined(RTE_OMIT_UNINIT_CHECK) */
+; RTE\gen\Rte_Lib.c	   367     {
+; RTE\gen\Rte_Lib.c	   368        /* [$Satisfies $SWS40 7532] */
+; RTE\gen\Rte_Lib.c	   369        SchM_Initialized = TRUE;
+	mov	d15,#1
+.L303:
+	st.b	[a15],d15
+.L304:
+
+; RTE\gen\Rte_Lib.c	   370        SchM_IModeInit();
+	call	SchM_IModeInit
+.L15:
+
+; RTE\gen\Rte_Lib.c	   371     }
+; RTE\gen\Rte_Lib.c	   372  }
+	ret
+.L170:
+	
+__SchM_Init_function_end:
+	.size	SchM_Init,__SchM_Init_function_end-SchM_Init
+.L98:
+	; End of function
+	
+	.sdecl	'.text.Rte_Lib.SchM_Deinit',code,cluster('SchM_Deinit')
+	.sect	'.text.Rte_Lib.SchM_Deinit'
+	.align	2
+	
+	.global	SchM_Deinit
+
+; RTE\gen\Rte_Lib.c	   373  /* rte_sws_end 7273 */
+; RTE\gen\Rte_Lib.c	   374  /* rte_sws_end 7271 */
+; RTE\gen\Rte_Lib.c	   375  
+; RTE\gen\Rte_Lib.c	   376  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   377  /** @brief De-Initialize SchM
+; RTE\gen\Rte_Lib.c	   378    *
+; RTE\gen\Rte_Lib.c	   379    */
+; RTE\gen\Rte_Lib.c	   380  
+; RTE\gen\Rte_Lib.c	   381  /* [$Satisfies $SWS40 7275] */
+; RTE\gen\Rte_Lib.c	   382  /* [$Satisfies $SWS40 7277] */
+; RTE\gen\Rte_Lib.c	   383  FUNC(void, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   384  SchM_Deinit(void)                          /* [$Satisfies $SWS40 7274] */
+; Function SchM_Deinit
+.L59:
+SchM_Deinit:	.type	func
+
+; RTE\gen\Rte_Lib.c	   385  {
+; RTE\gen\Rte_Lib.c	   386  #if !defined(RTE_OMIT_UNINIT_CHECK)
+; RTE\gen\Rte_Lib.c	   387     if ( SchM_Initialized )
+	movh.a	a15,#@his(SchM_Initialized)
+	lea	a15,[a15]@los(SchM_Initialized)
+	ld.bu	d15,[a15]
+.L309:
+	jeq	d15,#0,.L16
+.L310:
+
+; RTE\gen\Rte_Lib.c	   388     {
+; RTE\gen\Rte_Lib.c	   389         /* Do what? [$Satisfies $ExternalSWS40 7272] */
+; RTE\gen\Rte_Lib.c	   390         SchM_Initialized = FALSE;
+	mov	d15,#0
+.L311:
+	st.b	[a15],d15
+.L16:
+
+; RTE\gen\Rte_Lib.c	   391     }
+; RTE\gen\Rte_Lib.c	   392  #endif /* !defined(RTE_OMIT_UNINIT_CHECK) */
+; RTE\gen\Rte_Lib.c	   393  }
+	ret
+.L171:
+	
+__SchM_Deinit_function_end:
+	.size	SchM_Deinit,__SchM_Deinit_function_end-SchM_Deinit
+.L103:
+	; End of function
+	
+	.sdecl	'.text.Rte_Lib.Rte_WaitWithTimeout',code,cluster('Rte_WaitWithTimeout')
+	.sect	'.text.Rte_Lib.Rte_WaitWithTimeout'
+	.align	2
+	
+	.global	Rte_WaitWithTimeout
+
+; RTE\gen\Rte_Lib.c	   394  /* rte_sws_end 7277 */
+; RTE\gen\Rte_Lib.c	   395  /* rte_sws_end 7275 */
+; RTE\gen\Rte_Lib.c	   396  
+; RTE\gen\Rte_Lib.c	   397  #define RTE_MAIN_STOP_SEC_CODE
+; RTE\gen\Rte_Lib.c	   398  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   399  
+; RTE\gen\Rte_Lib.c	   400  #define RTE_SYS_START_SEC_CODE
+; RTE\gen\Rte_Lib.c	   401  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   402  
+; RTE\gen\Rte_Lib.c	   403  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   404  /** @brief Suspend waiting on WaitableDatum with optional timeout
+; RTE\gen\Rte_Lib.c	   405    *
+; RTE\gen\Rte_Lib.c	   406    * @param[in] datum    RTE waitable datum
+; RTE\gen\Rte_Lib.c	   407    * @param[in] event    RTE event identifier.
+; RTE\gen\Rte_Lib.c	   408    * @param[in] timeout  Duration (in ticks) for timeout. If 0 no timeout applied.
+; RTE\gen\Rte_Lib.c	   409    *
+; RTE\gen\Rte_Lib.c	   410    * @return None
+; RTE\gen\Rte_Lib.c	   411    */
+; RTE\gen\Rte_Lib.c	   412  
+; RTE\gen\Rte_Lib.c	   413  FUNC(Std_ReturnType, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   414  Rte_WaitWithTimeout( P2VAR(Rte_WaitableDatum, AUTOMATIC, RTE_DATA) datum,
+; Function Rte_WaitWithTimeout
+.L61:
+Rte_WaitWithTimeout:	.type	func
+
+; RTE\gen\Rte_Lib.c	   415                       Rte_EventType event,
+; RTE\gen\Rte_Lib.c	   416                       const TickType timeout )
+; RTE\gen\Rte_Lib.c	   417  {
+; RTE\gen\Rte_Lib.c	   418     (void)datum;
+; RTE\gen\Rte_Lib.c	   419     (void)event;
+; RTE\gen\Rte_Lib.c	   420     (void)timeout;
+; RTE\gen\Rte_Lib.c	   421  
+; RTE\gen\Rte_Lib.c	   422     /* No WOWP events -- empty function */
+; RTE\gen\Rte_Lib.c	   423  
+; RTE\gen\Rte_Lib.c	   424     return RTE_E_OK;
+	mov	d2,#0
+.L325:
+	j	.L17
+
+; RTE\gen\Rte_Lib.c	   425  }
+.L17:
+	ret
+.L178:
+	
+__Rte_WaitWithTimeout_function_end:
+	.size	Rte_WaitWithTimeout,__Rte_WaitWithTimeout_function_end-Rte_WaitWithTimeout
+.L113:
+	; End of function
+	
+	.sdecl	'.text.Rte_Lib.Rte_WriteQueue',code,cluster('Rte_WriteQueue')
+	.sect	'.text.Rte_Lib.Rte_WriteQueue'
+	.align	2
+	
+	.global	Rte_WriteQueue
+
+; RTE\gen\Rte_Lib.c	   426  
+; RTE\gen\Rte_Lib.c	   427  #define RTE_SYS_STOP_SEC_CODE
+; RTE\gen\Rte_Lib.c	   428  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   429  
+; RTE\gen\Rte_Lib.c	   430  #define RTE_EXT_START_SEC_CODE
+; RTE\gen\Rte_Lib.c	   431  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   432  
+; RTE\gen\Rte_Lib.c	   433  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   434  /** @brief Write \\c data to RTE managed queue \\c q
+; RTE\gen\Rte_Lib.c	   435    *
+; RTE\gen\Rte_Lib.c	   436    * @param[in] q        Handle of queue common data structure
+; RTE\gen\Rte_Lib.c	   437    * @param[in] data     Pointer to input data
+; RTE\gen\Rte_Lib.c	   438    *
+; RTE\gen\Rte_Lib.c	   439    * @retval RTE_E_LIMIT     Queue full (data discarded)
+; RTE\gen\Rte_Lib.c	   440    * @retval RTE_E_NOT_OK    Call failed
+; RTE\gen\Rte_Lib.c	   441    * @retval RTE_E_OK        No error detected
+; RTE\gen\Rte_Lib.c	   442    */
+; RTE\gen\Rte_Lib.c	   443  
+; RTE\gen\Rte_Lib.c	   444  /* [$Satisfies $SWS 6016] */
+; RTE\gen\Rte_Lib.c	   445  FUNC(Std_ReturnType, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   446  Rte_WriteQueue( Rte_QCmnRefType    q,
+; Function Rte_WriteQueue
+.L63:
+Rte_WriteQueue:	.type	func
+	sub.a	a10,#8
+.L231:
+	mov.aa	a15,a4
+.L233:
+	mov.aa	a12,a5
+.L235:
+
+; RTE\gen\Rte_Lib.c	   447                  Rte_ConstDataPtr   data )
+; RTE\gen\Rte_Lib.c	   448  {
+; RTE\gen\Rte_Lib.c	   449     Std_ReturnType                            status   = RTE_E_OK;
+	mov	d8,#0
+.L237:
+
+; RTE\gen\Rte_Lib.c	   450     P2VAR(Rte_QDynType, AUTOMATIC, RTE_DATA)  dynamic  = q->dynamic;
+	ld.a	a13,[a15]
+.L205:
+
+; RTE\gen\Rte_Lib.c	   451     P2VAR(void, AUTOMATIC, RTE_DATA)          old_in;
+; RTE\gen\Rte_Lib.c	   452  
+; RTE\gen\Rte_Lib.c	   453     /* protect queue access */
+; RTE\gen\Rte_Lib.c	   454     Rte_GetResource();
+	call	Os_GetApplicationID
+.L232:
+	movh.a	a2,#@his(Rte_ResourceCount)
+	lea	a2,[a2]@los(Rte_ResourceCount)
+	st.a	[a10],a2
+	addsc.a	a14,a2,d2,#2
+	ld.a	a2,[a14]
+	ld.hu	d15,[a2]0
+	jne	d15,#0,.L18
+	movh.a	a2,#@his(Rte_Resources)
+	lea	a2,[a2]@los(Rte_Resources)
+	addsc.a	a2,a2,d2,#2
+	ld.a	a4,[a2]
+	call	Os_GetResource
+.L18:
+	ld.a	a2,[a14]
+	ld.hu	d0,[a2]0
+	add	d0,#1
+	st.h	[a2],d0
+.L206:
+
+; RTE\gen\Rte_Lib.c	   455  
+; RTE\gen\Rte_Lib.c	   456     if ( dynamic->used == q->queue_size )
+	ld.hu	d0,[a13]8
+.L343:
+	ld.hu	d15,[a15]6
+.L344:
+	jne	d15,d0,.L19
+.L345:
+
+; RTE\gen\Rte_Lib.c	   457     {
+; RTE\gen\Rte_Lib.c	   458        /* [$Satisfies $SWS 2523] */
+; RTE\gen\Rte_Lib.c	   459        dynamic->lost_data = RTE_E_LOST_DATA;          /* [$Satisfies $SWS 2572] */
+	mov	d15,#64
+.L346:
+	st.b	[a13]10,d15
+.L347:
+
+; RTE\gen\Rte_Lib.c	   460        status = RTE_E_LIMIT;                          /* [$Satisfies $SWS 2634] */
+	mov	d8,#130
+.L348:
+	j	.L20
+.L19:
+
+; RTE\gen\Rte_Lib.c	   461     }
+; RTE\gen\Rte_Lib.c	   462     else
+; RTE\gen\Rte_Lib.c	   463     {
+; RTE\gen\Rte_Lib.c	   464        /* [$Satisfies $SWS 2522] [$Satisfies $SWS 2527] */
+; RTE\gen\Rte_Lib.c	   465        if ( q->copy )
+; RTE\gen\Rte_Lib.c	   466        {
+; RTE\gen\Rte_Lib.c	   467           /* queue keeps a copy of the data as its source does not persist */
+; RTE\gen\Rte_Lib.c	   468           ( void )Rte_memcpy( dynamic->in, data, q->element_size );
+	ld.a	a4,[a13]
+.L349:
+	ld.bu	d15,[a15]4
+.L350:
+	jeq	d15,#0,.L21
+.L351:
+	ld.hu	d4,[a15]8
+	mov.aa	a5,a12
+.L238:
+	call	Rte_memcpy
+.L239:
+	j	.L22
+.L21:
+
+; RTE\gen\Rte_Lib.c	   469        }
+; RTE\gen\Rte_Lib.c	   470        else
+; RTE\gen\Rte_Lib.c	   471        {
+; RTE\gen\Rte_Lib.c	   472           /* queue keeps a reference to the data as its source persists
+; RTE\gen\Rte_Lib.c	   473            * long enough for the item to be consumed */
+; RTE\gen\Rte_Lib.c	   474           *( P2VAR(Rte_ConstDataPtr, AUTOMATIC, RTE_DATA) )dynamic->in = data;
+	st.a	[a4],a12
+.L22:
+
+; RTE\gen\Rte_Lib.c	   475        }
+; RTE\gen\Rte_Lib.c	   476        /* rte_sws_end 2522 rte_sws_end 2527 */
+; RTE\gen\Rte_Lib.c	   477  
+; RTE\gen\Rte_Lib.c	   478        old_in = dynamic->in;
+	ld.a	a12,[a13]
+.L236:
+
+; RTE\gen\Rte_Lib.c	   479  
+; RTE\gen\Rte_Lib.c	   480        /*lint --e{960} Allow pointer arithmetic other than array indexing */
+; RTE\gen\Rte_Lib.c	   481        dynamic->in = (P2VAR(uint8, AUTOMATIC, RTE_DATA)) ( dynamic->in ) + q->element_size;
+	ld.hu	d15,[a15]8
+.L352:
+	addsc.a	a2,a12,d15,#0
+.L353:
+	st.a	[a13],a2
+.L354:
+
+; RTE\gen\Rte_Lib.c	   482  
+; RTE\gen\Rte_Lib.c	   483        /*lint  --e{946} Relational operation for pointers valid */
+; RTE\gen\Rte_Lib.c	   484        if ( dynamic->in >= q->buffer_end )
+	ld.w	d0,[a13]
+.L355:
+	ld.w	d15,[a15]16
+.L356:
+	jlt.u	d0,d15,.L23
+.L357:
+
+; RTE\gen\Rte_Lib.c	   485        {
+; RTE\gen\Rte_Lib.c	   486           dynamic->in = q->buffer_start;
+	ld.a	a2,[a15]12
+.L358:
+	st.a	[a13],a2
+.L23:
+
+; RTE\gen\Rte_Lib.c	   487        }
+; RTE\gen\Rte_Lib.c	   488        dynamic->used++;
+	ld.hu	d15,[a13]8
+.L359:
+	add	d15,#1
+	st.h	[a13]8,d15
+.L360:
+
+; RTE\gen\Rte_Lib.c	   489  
+; RTE\gen\Rte_Lib.c	   490        switch ( q->notification_type )
+	ld.w	d15,[a15]20
+.L361:
+
+; RTE\gen\Rte_Lib.c	   491        {
+; RTE\gen\Rte_Lib.c	   492           default:
+; RTE\gen\Rte_Lib.c	   493           case RTE_DRA:
+	mov	d0,#0
+	jeq	d15,d0,.L24
+.L362:
+
+; RTE\gen\Rte_Lib.c	   494              /* No notification required */
+; RTE\gen\Rte_Lib.c	   495              break;
+; RTE\gen\Rte_Lib.c	   496  
+; RTE\gen\Rte_Lib.c	   497  
+; RTE\gen\Rte_Lib.c	   498           case RTE_TASK:
+	mov	d0,#2
+	jeq	d15,d0,.L25
+.L363:
+
+; RTE\gen\Rte_Lib.c	   499           {
+; RTE\gen\Rte_Lib.c	   500              StatusType act_stat;
+; RTE\gen\Rte_Lib.c	   501  #if defined(RTE_VFB_TRACE)
+; RTE\gen\Rte_Lib.c	   502  #if (RTE_VFB_TRACE != 0)
+; RTE\gen\Rte_Lib.c	   503              Rte_Task_Activate( RTE_TASK_FROM_REF( ((Rte_QRefTaskType)q)->task ) ); /* [$Satisfies $SWS40 5091] */
+; RTE\gen\Rte_Lib.c	   504  #endif /* (RTE_VFB_TRACE != 0) */
+; RTE\gen\Rte_Lib.c	   505  #endif /* defined(RTE_VFB_TRACE) */
+; RTE\gen\Rte_Lib.c	   506              act_stat = ActivateTask( RTE_TASK_FROM_REF( ((Rte_QRefTaskType)q)->task ) ); /* [$Satisfies $SWS 2203] */
+; RTE\gen\Rte_Lib.c	   507              if ( ( E_OK != act_stat ) && ( E_OS_LIMIT != act_stat ) )
+; RTE\gen\Rte_Lib.c	   508              {
+; RTE\gen\Rte_Lib.c	   509                 /* E_OS_LIMIT is an acceptable return code, because that means
+; RTE\gen\Rte_Lib.c	   510                  * that the task is already running and already activated (tasks
+; RTE\gen\Rte_Lib.c	   511                  * contain OperationInvokedEvents are required to have
+; RTE\gen\Rte_Lib.c	   512                  * activation limit two), so it will run again. */
+; RTE\gen\Rte_Lib.c	   513  
+; RTE\gen\Rte_Lib.c	   514                 /* restore 'in' and 'used' */
+; RTE\gen\Rte_Lib.c	   515                 dynamic->in = old_in;
+; RTE\gen\Rte_Lib.c	   516                 dynamic->used--;
+; RTE\gen\Rte_Lib.c	   517                 status = E_NOT_OK;
+; RTE\gen\Rte_Lib.c	   518              }
+; RTE\gen\Rte_Lib.c	   519              break;
+; RTE\gen\Rte_Lib.c	   520           }
+; RTE\gen\Rte_Lib.c	   521  
+; RTE\gen\Rte_Lib.c	   522           case RTE_ARE:
+	mov	d0,#3
+	jeq	d15,d0,.L26
+.L364:
+
+; RTE\gen\Rte_Lib.c	   523           {
+; RTE\gen\Rte_Lib.c	   524              /* rte_srd_req 482 begin */
+; RTE\gen\Rte_Lib.c	   525              if ( RTE_E_OK != Rte_ActivateRE( ((Rte_QRefREType)q)->re ) ) /* [$Satisfies $SWS 2203] */
+; RTE\gen\Rte_Lib.c	   526              {
+; RTE\gen\Rte_Lib.c	   527                 /* restore 'in' and 'used' */
+; RTE\gen\Rte_Lib.c	   528                 dynamic->in = old_in;
+; RTE\gen\Rte_Lib.c	   529                 dynamic->used--;
+; RTE\gen\Rte_Lib.c	   530                 status = E_NOT_OK;
+; RTE\gen\Rte_Lib.c	   531              }
+; RTE\gen\Rte_Lib.c	   532              /* rte_srd_req 482 end */
+; RTE\gen\Rte_Lib.c	   533              break;
+; RTE\gen\Rte_Lib.c	   534           }
+; RTE\gen\Rte_Lib.c	   535  
+; RTE\gen\Rte_Lib.c	   536  
+; RTE\gen\Rte_Lib.c	   537           case RTE_EV:
+	mov	d0,#4
+	jeq	d15,d0,.L27
+	j	.L28
+.L28:
+.L24:
+	j	.L29
+.L25:
+	ld.a	a4,[a15]24
+	call	Os_ActivateTask
+.L240:
+	jeq	d2,#0,.L30
+.L365:
+	jeq	d2,#4,.L31
+.L366:
+	st.a	[a13],a12
+.L367:
+	ld.hu	d15,[a13]8
+.L368:
+	add	d15,#-1
+	st.h	[a13]8,d15
+.L369:
+	mov	d8,#1
+.L31:
+.L30:
+	j	.L32
+.L26:
+	ld.a	a4,[a15]24
+	call	Rte_ActivateRE
+.L370:
+	jeq	d2,#0,.L33
+.L371:
+	st.a	[a13],a12
+.L372:
+	ld.hu	d15,[a13]8
+.L373:
+	add	d15,#-1
+	st.h	[a13]8,d15
+.L374:
+	mov	d8,#1
+.L33:
+	j	.L34
+.L27:
+
+; RTE\gen\Rte_Lib.c	   538           {
+; RTE\gen\Rte_Lib.c	   539           }
+; RTE\gen\Rte_Lib.c	   540           break;
+	j	.L35
+
+; RTE\gen\Rte_Lib.c	   541        }
+; RTE\gen\Rte_Lib.c	   542     }
+.L35:
+.L34:
+.L32:
+.L29:
+.L20:
+
+; RTE\gen\Rte_Lib.c	   543  
+; RTE\gen\Rte_Lib.c	   544     Rte_ReleaseResource();
+	call	Os_GetApplicationID
+.L241:
+	ld.a	a15,[a10]
+.L234:
+	addsc.a	a15,a15,d2,#2
+	ld.a	a15,[a15]
+	ld.hu	d15,[a15]0
+	add	d15,#-1
+	extr.u	d15,d15,#0,#16
+	st.h	[a15],d15
+	jne	d15,#0,.L36
+	movh.a	a15,#@his(Rte_Resources)
+	lea	a15,[a15]@los(Rte_Resources)
+	addsc.a	a15,a15,d2,#2
+	ld.a	a4,[a15]
+	call	Os_ReleaseResource
+.L36:
+
+; RTE\gen\Rte_Lib.c	   545  
+; RTE\gen\Rte_Lib.c	   546     return status;
+	mov	d2,d8
+.L242:
+	j	.L37
+
+; RTE\gen\Rte_Lib.c	   547  }
+.L37:
+	ret
+.L196:
+	
+__Rte_WriteQueue_function_end:
+	.size	Rte_WriteQueue,__Rte_WriteQueue_function_end-Rte_WriteQueue
+.L133:
+	; End of function
+	
+	.sdecl	'.text.Rte_Lib.Rte_memcpy',code,cluster('Rte_memcpy')
+	.sect	'.text.Rte_Lib.Rte_memcpy'
+	.align	2
+	
+	.global	Rte_memcpy
+
+; RTE\gen\Rte_Lib.c	   548  
+; RTE\gen\Rte_Lib.c	   549  #define RTE_EXT_STOP_SEC_CODE
+; RTE\gen\Rte_Lib.c	   550  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   551  
+; RTE\gen\Rte_Lib.c	   552  #define RTE_LIB_START_SEC_CODE
+; RTE\gen\Rte_Lib.c	   553  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   554  
+; RTE\gen\Rte_Lib.c	   555  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   556  /** @brief RTE memcpy replacement
+; RTE\gen\Rte_Lib.c	   557    *
+; RTE\gen\Rte_Lib.c	   558    * @param[in] dst      Destination pointer
+; RTE\gen\Rte_Lib.c	   559    * @param[in] src      Pointer to data source
+; RTE\gen\Rte_Lib.c	   560    * @param[in] length   Data length (in bytes)
+; RTE\gen\Rte_Lib.c	   561    *
+; RTE\gen\Rte_Lib.c	   562    * @return None
+; RTE\gen\Rte_Lib.c	   563    *
+; RTE\gen\Rte_Lib.c	   564    * @note Used to avoid dependency on run-time C library
+; RTE\gen\Rte_Lib.c	   565    */
+; RTE\gen\Rte_Lib.c	   566  
+; RTE\gen\Rte_Lib.c	   567  #if defined(Rte_memcpy)
+; RTE\gen\Rte_Lib.c	   568  #undef Rte_memcpy
+; RTE\gen\Rte_Lib.c	   569  #endif
+; RTE\gen\Rte_Lib.c	   570  
+; RTE\gen\Rte_Lib.c	   571  #if !defined(RTE_LIBC_MEMCPY)
+; RTE\gen\Rte_Lib.c	   572  FUNC(void, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   573  Rte_memcpy(P2VAR(void, AUTOMATIC, RTE_DATA) dst,
+; Function Rte_memcpy
+.L65:
+Rte_memcpy:	.type	func
+
+; RTE\gen\Rte_Lib.c	   574             P2CONST(void, AUTOMATIC, RTE_APPL_DATA) src,
+; RTE\gen\Rte_Lib.c	   575             uint16 length)
+; RTE\gen\Rte_Lib.c	   576  {
+; RTE\gen\Rte_Lib.c	   577     P2VAR(uint8, AUTOMATIC, RTE_DATA)           d = (P2VAR(uint8, AUTOMATIC, RTE_DATA))dst;
+; RTE\gen\Rte_Lib.c	   578     P2CONST(uint8, AUTOMATIC, RTE_APPL_DATA)    s = (P2CONST(uint8, AUTOMATIC, RTE_APPL_DATA))src;
+; RTE\gen\Rte_Lib.c	   579  
+; RTE\gen\Rte_Lib.c	   580     while(length--)
+	j	.L38
+.L39:
+
+; RTE\gen\Rte_Lib.c	   581     {
+; RTE\gen\Rte_Lib.c	   582        /*lint --e{960} Allow pointer arithmetic by increment or decrement */
+; RTE\gen\Rte_Lib.c	   583        *d++ = *s++;
+	ld.bu	d15,[a5]
+.L258:
+	st.b	[a4],d15
+.L259:
+	add.a	a5,#1
+.L260:
+	add.a	a4,#1
+.L38:
+	mov	d15,d4
+	add	d4,#-1
+.L243:
+	extr.u	d4,d4,#0,#16
+.L244:
+	jne	d15,#0,.L39
+.L261:
+
+; RTE\gen\Rte_Lib.c	   584     }
+; RTE\gen\Rte_Lib.c	   585  }
+	ret
+.L153:
+	
+__Rte_memcpy_function_end:
+	.size	Rte_memcpy,__Rte_memcpy_function_end-Rte_memcpy
+.L78:
+	; End of function
+	
+	.sdecl	'.text.Rte_Lib.Rte_Start',code,cluster('Rte_Start')
+	.sect	'.text.Rte_Lib.Rte_Start'
+	.align	2
+	
+	.global	Rte_Start
+
+; RTE\gen\Rte_Lib.c	   586  #endif /* !defined(RTE_LIBC_MEMCPY) */
+; RTE\gen\Rte_Lib.c	   587  
+; RTE\gen\Rte_Lib.c	   588  #define RTE_LIB_STOP_SEC_CODE
+; RTE\gen\Rte_Lib.c	   589  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   590  
+; RTE\gen\Rte_Lib.c	   591  #define RTE_MAIN_START_SEC_CODE
+; RTE\gen\Rte_Lib.c	   592  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+; RTE\gen\Rte_Lib.c	   593  
+; RTE\gen\Rte_Lib.c	   594  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   595  /** @brief Start RTE
+; RTE\gen\Rte_Lib.c	   596    *
+; RTE\gen\Rte_Lib.c	   597    * @retval RTE_E_LIMIT Failed to start periodic REs
+; RTE\gen\Rte_Lib.c	   598    * @retval RTE_E_OK    No error detected
+; RTE\gen\Rte_Lib.c	   599    */
+; RTE\gen\Rte_Lib.c	   600  
+; RTE\gen\Rte_Lib.c	   601  /* [$Satisfies $SWS 1197] */
+; RTE\gen\Rte_Lib.c	   602  /* [$Satisfies $SWS 1309] */
+; RTE\gen\Rte_Lib.c	   603  /* [$Satisfies $SRD 87483] Rte_Start starts RTE for entire ECU */
+; RTE\gen\Rte_Lib.c	   604  /* [$Satisfies $SRD 87726] */
+; RTE\gen\Rte_Lib.c	   605  FUNC(Std_ReturnType, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   606  Rte_Start(void)                          /* [$Satisfies $SWS 2569] */
+; Function Rte_Start
+.L67:
+Rte_Start:	.type	func
+
+; RTE\gen\Rte_Lib.c	   607  {
+; RTE\gen\Rte_Lib.c	   608     Std_ReturnType rtn = RTE_E_OK;                       /* [$Satisfies $SWS 1261] */
+	mov	d15,#0
+.L245:
+
+; RTE\gen\Rte_Lib.c	   609  
+; RTE\gen\Rte_Lib.c	   610     Rte_Resources[OsApplication_Core0] = RTE_REF_FROM_RESOURCE(RTE_RESOURCE_OS_APP_OsApplication_Core0);
+	movh.a	a2,#@his(Os_const_resources)
+	lea	a2,[a2]@los(Os_const_resources)
+.L266:
+	movh.a	a15,#@his(Rte_Resources)
+	lea	a15,[a15]@los(Rte_Resources)
+.L267:
+	lea	a4,[a2]36
+.L268:
+	st.a	[a15]4,a4
+.L269:
+
+; RTE\gen\Rte_Lib.c	   611     Rte_Resources[OsApplication_Core1] = RTE_REF_FROM_RESOURCE(RTE_RESOURCE_OS_APP_OsApplication_Core1);
+	st.a	[a15]8,a2
+.L270:
+
+; RTE\gen\Rte_Lib.c	   612     Rte_Resources[OsApplication_Core2] = RTE_REF_FROM_RESOURCE(RTE_RESOURCE_OS_APP_OsApplication_Core2);
+	lea	a2,[a2]12
+.L271:
+	st.a	[a15]12,a2
+.L272:
+
+; RTE\gen\Rte_Lib.c	   613  
+; RTE\gen\Rte_Lib.c	   614     Rte_ResourceCount[OsApplication_Core0] = &Rte_ResourceCount_OsApplication_Core0;
+	movh.a	a15,#@his(Rte_ResourceCount)
+	lea	a15,[a15]@los(Rte_ResourceCount)
+.L273:
+	movh.a	a2,#@his(Rte_ResourceCount_OsApplication_Core0)
+	lea	a2,[a2]@los(Rte_ResourceCount_OsApplication_Core0)
+.L274:
+	st.a	[a15]4,a2
+.L275:
+
+; RTE\gen\Rte_Lib.c	   615     Rte_ResourceCount[OsApplication_Core1] = &Rte_ResourceCount_OsApplication_Core1;
+	movh.a	a2,#@his(Rte_ResourceCount_OsApplication_Core1)
+	lea	a2,[a2]@los(Rte_ResourceCount_OsApplication_Core1)
+.L276:
+	st.a	[a15]8,a2
+.L277:
+
+; RTE\gen\Rte_Lib.c	   616     Rte_ResourceCount[OsApplication_Core2] = &Rte_ResourceCount_OsApplication_Core2;
+	movh.a	a2,#@his(Rte_ResourceCount_OsApplication_Core2)
+	lea	a2,[a2]@los(Rte_ResourceCount_OsApplication_Core2)
+.L278:
+	st.a	[a15]12,a2
+.L279:
+
+; RTE\gen\Rte_Lib.c	   617  
+; RTE\gen\Rte_Lib.c	   618  
+; RTE\gen\Rte_Lib.c	   619     Rte_StartHook_Start();                               /* [$Satisfies $SWS 1238] [$Satisfies $SWS 5091] */
+; RTE\gen\Rte_Lib.c	   620  
+; RTE\gen\Rte_Lib.c	   621  
+; RTE\gen\Rte_Lib.c	   622  
+; RTE\gen\Rte_Lib.c	   623  
+; RTE\gen\Rte_Lib.c	   624     Rte_Initialized = TRUE;                              /* [$Satisfies $SWS 2535] [$Satisfies $SWS 2536] */
+	movh.a	a15,#@his(Rte_Initialized)
+	lea	a15,[a15]@los(Rte_Initialized)
+.L280:
+	mov	d0,#1
+.L281:
+	st.b	[a15],d0
+.L282:
+
+; RTE\gen\Rte_Lib.c	   625  
+; RTE\gen\Rte_Lib.c	   626  
+; RTE\gen\Rte_Lib.c	   627  
+; RTE\gen\Rte_Lib.c	   628  #if defined(RTE_OSAPI_AUTOSAR_R10)
+; RTE\gen\Rte_Lib.c	   629     /* [$Satisfies $SWS40 7575] */
+; RTE\gen\Rte_Lib.c	   630     if ( E_OK != StartScheduleTable(Rte_ScheduleTable, (TickType)0u) )
+; RTE\gen\Rte_Lib.c	   631     {
+; RTE\gen\Rte_Lib.c	   632        rtn = RTE_E_LIMIT;                                /* [$Satisfies $SWS 1262] */
+; RTE\gen\Rte_Lib.c	   633     }
+; RTE\gen\Rte_Lib.c	   634  #elif defined(RTE_OSAPI_AUTOSAR_R30) || defined(RTE_OSAPI_AUTOSAR_R40)
+; RTE\gen\Rte_Lib.c	   635     /* [$Satisfies $SWS40 7575] */
+; RTE\gen\Rte_Lib.c	   636     if ( E_OK != StartScheduleTableRel( Rte_ScheduleTable, (TickType)1u ) )
+	movh.a	a4,#@his(Os_const_scheduletables)
+	lea	a4,[a4]@los(Os_const_scheduletables)
+.L283:
+	mov	d4,#1
+	call	Os_StartScheduleTableRel
+.L284:
+
+; RTE\gen\Rte_Lib.c	   637     {
+; RTE\gen\Rte_Lib.c	   638        rtn = RTE_E_LIMIT;                                /* [$Satisfies $SWS 1262] */
+	seln	d15,d2,d15,#130
+.L40:
+
+; RTE\gen\Rte_Lib.c	   639     }
+; RTE\gen\Rte_Lib.c	   640  #endif /* !defined(RTE_OSAPI_AUTOSAR_R30) */
+; RTE\gen\Rte_Lib.c	   641  
+; RTE\gen\Rte_Lib.c	   642  
+; RTE\gen\Rte_Lib.c	   643  #if defined(RTE_OSAPI_ERCOSEK)
+; RTE\gen\Rte_Lib.c	   644     /* [$Satisfies $SWS40 7575] */
+; RTE\gen\Rte_Lib.c	   645     if ( E_OK != ActivateTimeTableRel(MICROSECONDS_TO_TICKS(0)) )
+; RTE\gen\Rte_Lib.c	   646     {
+; RTE\gen\Rte_Lib.c	   647        rtn = RTE_E_LIMIT;
+; RTE\gen\Rte_Lib.c	   648     }
+; RTE\gen\Rte_Lib.c	   649  #endif /* defined(RTE_OSAPI_ERCOSEK) */
+; RTE\gen\Rte_Lib.c	   650  
+; RTE\gen\Rte_Lib.c	   651  
+; RTE\gen\Rte_Lib.c	   652     Rte_StartHook_Return();                              /* [$Satisfies $SWS 1239] [$Satisfies $SWS40 5091] */
+; RTE\gen\Rte_Lib.c	   653  
+; RTE\gen\Rte_Lib.c	   654     return rtn;                                          /* [$Satisfies $SWS 2585] */
+	mov	d2,d15
+.L246:
+	j	.L41
+
+; RTE\gen\Rte_Lib.c	   655  }
+.L41:
+	ret
+.L165:
+	
+__Rte_Start_function_end:
+	.size	Rte_Start,__Rte_Start_function_end-Rte_Start
+.L83:
+	; End of function
+	
+	.sdecl	'.text.Rte_Lib.Rte_Stop',code,cluster('Rte_Stop')
+	.sect	'.text.Rte_Lib.Rte_Stop'
+	.align	2
+	
+	.global	Rte_Stop
+
+; RTE\gen\Rte_Lib.c	   656  /* rte_sws_end 1309 */
+; RTE\gen\Rte_Lib.c	   657  /* rte_sws_end 1197 */
+; RTE\gen\Rte_Lib.c	   658  
+; RTE\gen\Rte_Lib.c	   659  /* --------------------------------------------------------------------------- */
+; RTE\gen\Rte_Lib.c	   660  /** @brief Stop RTE
+; RTE\gen\Rte_Lib.c	   661    *
+; RTE\gen\Rte_Lib.c	   662    * @retval RTE_E_LIMIT Failed to stop periodic REs
+; RTE\gen\Rte_Lib.c	   663    * @retval RTE_E_OK    No error detected
+; RTE\gen\Rte_Lib.c	   664    */
+; RTE\gen\Rte_Lib.c	   665  
+; RTE\gen\Rte_Lib.c	   666  /* [$Satisfies $SWS 1197] */
+; RTE\gen\Rte_Lib.c	   667  /* [$Satisfies $SWS 1310] */
+; RTE\gen\Rte_Lib.c	   668  FUNC(Std_ReturnType, RTE_CODE)
+; RTE\gen\Rte_Lib.c	   669  Rte_Stop(void)                           /* [$Satisfies $SWS 2570] */
+; Function Rte_Stop
+.L69:
+Rte_Stop:	.type	func
+
+; RTE\gen\Rte_Lib.c	   670  {
+; RTE\gen\Rte_Lib.c	   671     Std_ReturnType rtn = RTE_E_OK;                       /* [$Satisfies $SWS 1259] */
+	mov	d15,#0
+.L247:
+
+; RTE\gen\Rte_Lib.c	   672  
+; RTE\gen\Rte_Lib.c	   673  
+; RTE\gen\Rte_Lib.c	   674     Rte_StopHook_Start(); /* [$Satisfies $SWS 1238] [$Satisfies $SWS40 5091] */
+; RTE\gen\Rte_Lib.c	   675  
+; RTE\gen\Rte_Lib.c	   676     Rte_Initialized = FALSE;                             /* [$Satisfies $SWS 2535] [$Satisfies $SWS 2536] */
+	movh.a	a15,#@his(Rte_Initialized)
+	lea	a15,[a15]@los(Rte_Initialized)
+.L289:
+	mov	d0,#0
+.L290:
+	st.b	[a15],d0
+.L291:
+
+; RTE\gen\Rte_Lib.c	   677  
+; RTE\gen\Rte_Lib.c	   678     /*lint --e(960) Allow multiple defined(xxx) with logical operator */
+; RTE\gen\Rte_Lib.c	   679  #if defined(RTE_OSAPI_AUTOSAR_R10) || defined(RTE_OSAPI_AUTOSAR_R30) || defined(RTE_OSAPI_AUTOSAR_R40)
+; RTE\gen\Rte_Lib.c	   680     if ( E_OK != StopScheduleTable(Rte_ScheduleTable) )
+	movh.a	a4,#@his(Os_const_scheduletables)
+	lea	a4,[a4]@los(Os_const_scheduletables)
+	call	Os_StopScheduleTable
+.L292:
+
+; RTE\gen\Rte_Lib.c	   681     {
+; RTE\gen\Rte_Lib.c	   682        rtn = RTE_E_LIMIT;                                /* [$Satisfies $SWS 1260] */
+	seln	d15,d2,d15,#130
+.L42:
+
+; RTE\gen\Rte_Lib.c	   683     }
+; RTE\gen\Rte_Lib.c	   684  #endif /* defined(RTE_OSAPI_AUTOSAR_R10) */
+; RTE\gen\Rte_Lib.c	   685  
+; RTE\gen\Rte_Lib.c	   686  
+; RTE\gen\Rte_Lib.c	   687  #if defined(RTE_OSAPI_ERCOSEK)
+; RTE\gen\Rte_Lib.c	   688     if ( E_OK != CancelTimeTable() )
+; RTE\gen\Rte_Lib.c	   689     {
+; RTE\gen\Rte_Lib.c	   690        rtn = RTE_E_LIMIT;
+; RTE\gen\Rte_Lib.c	   691     }
+; RTE\gen\Rte_Lib.c	   692  #endif /* defined(RTE_OSAPI_ERCOSEK) */
+; RTE\gen\Rte_Lib.c	   693  
+; RTE\gen\Rte_Lib.c	   694     /* [$Satisfies $SWS 2538] All (periodic) REs stopped, all communication activity stopped. */
+; RTE\gen\Rte_Lib.c	   695  
+; RTE\gen\Rte_Lib.c	   696     Rte_StopHook_Return();                               /* [$Satisfies $SWS 1239] [$Satisfies $SWS40 5091] */
+; RTE\gen\Rte_Lib.c	   697  
+; RTE\gen\Rte_Lib.c	   698     return rtn;                                          /* [$Satisfies $SWS 2584] */
+	mov	d2,d15
+.L248:
+	j	.L43
+
+; RTE\gen\Rte_Lib.c	   699  }
+.L43:
+	ret
+.L167:
+	
+__Rte_Stop_function_end:
+	.size	Rte_Stop,__Rte_Stop_function_end-Rte_Stop
+.L88:
+	; End of function
+	
+	.sdecl	'.bss.Rte_Lib.Rte_ResourceCount',data,cluster('Rte_ResourceCount')
+	.sect	'.bss.Rte_Lib.Rte_ResourceCount'
+	.global	Rte_ResourceCount
+	.align	4
+Rte_ResourceCount:	.type	object
+	.size	Rte_ResourceCount,16
+	.space	16
+	.sdecl	'.data.Rte_Lib.Rte_ResourceCount_OsApplication_Core0',data,cluster('Rte_ResourceCount_OsApplication_Core0')
+	.sect	'.data.Rte_Lib.Rte_ResourceCount_OsApplication_Core0'
+	.global	Rte_ResourceCount_OsApplication_Core0
+	.align	2
+Rte_ResourceCount_OsApplication_Core0:	.type	object
+	.size	Rte_ResourceCount_OsApplication_Core0,2
+	.space	2
+	.sdecl	'.data.Rte_Lib.Rte_ResourceCount_OsApplication_Core1',data,cluster('Rte_ResourceCount_OsApplication_Core1')
+	.sect	'.data.Rte_Lib.Rte_ResourceCount_OsApplication_Core1'
+	.global	Rte_ResourceCount_OsApplication_Core1
+	.align	2
+Rte_ResourceCount_OsApplication_Core1:	.type	object
+	.size	Rte_ResourceCount_OsApplication_Core1,2
+	.space	2
+	.sdecl	'.data.Rte_Lib.Rte_ResourceCount_OsApplication_Core2',data,cluster('Rte_ResourceCount_OsApplication_Core2')
+	.sect	'.data.Rte_Lib.Rte_ResourceCount_OsApplication_Core2'
+	.global	Rte_ResourceCount_OsApplication_Core2
+	.align	2
+Rte_ResourceCount_OsApplication_Core2:	.type	object
+	.size	Rte_ResourceCount_OsApplication_Core2,2
+	.space	2
+	.sdecl	'.bss.Rte_Lib.Rte_Resources',data,cluster('Rte_Resources')
+	.sect	'.bss.Rte_Lib.Rte_Resources'
+	.global	Rte_Resources
+	.align	4
+Rte_Resources:	.type	object
+	.size	Rte_Resources,16
+	.space	16
+	.sdecl	'.data.Rte_Lib.Rte_Initialized',data,cluster('Rte_Initialized')
+	.sect	'.data.Rte_Lib.Rte_Initialized'
+	.global	Rte_Initialized
+Rte_Initialized:	.type	object
+	.size	Rte_Initialized,1
+	.space	1
+	.sdecl	'.data.Rte_Lib.SchM_Initialized',data,cluster('SchM_Initialized')
+	.sect	'.data.Rte_Lib.SchM_Initialized'
+	.global	SchM_Initialized
+SchM_Initialized:	.type	object
+	.size	SchM_Initialized,1
+	.space	1
+	.calls	'Rte_ActivateRE','Os_ActivateTask'
+	.calls	'Rte_ReadQueue','Os_SuspendOSInterrupts'
+	.calls	'Rte_ReadQueue','Rte_memcpy'
+	.calls	'Rte_ReadQueue','Os_ResumeOSInterrupts'
+	.calls	'SchM_Init','SchM_IModeInit'
+	.calls	'Rte_WriteQueue','Os_GetApplicationID'
+	.calls	'Rte_WriteQueue','Os_GetResource'
+	.calls	'Rte_WriteQueue','Rte_memcpy'
+	.calls	'Rte_WriteQueue','Os_ActivateTask'
+	.calls	'Rte_WriteQueue','Rte_ActivateRE'
+	.calls	'Rte_WriteQueue','Os_ReleaseResource'
+	.calls	'Rte_Start','Os_StartScheduleTableRel'
+	.calls	'Rte_Stop','Os_StopScheduleTable'
+	.calls	'Rte_ActivateRE','',0
+	.calls	'Rte_DecrementWaitingCount','',0
+	.calls	'Rte_GetCurrentTaskIndex','',0
+	.calls	'Rte_MainFunction','',0
+	.calls	'Rte_ReadQueue','',0
+	.calls	'Rte_SetEvent','',0
+	.calls	'SchM_Init','',0
+	.calls	'SchM_Deinit','',0
+	.calls	'Rte_WaitWithTimeout','',0
+	.calls	'Rte_WriteQueue','',8
+	.calls	'Rte_memcpy','',0
+	.calls	'Rte_Start','',0
+	.extern	Os_ActivateTask
+	.extern	Os_GetResource
+	.extern	Os_ReleaseResource
+	.extern	Os_SuspendOSInterrupts
+	.extern	Os_ResumeOSInterrupts
+	.extern	Os_GetApplicationID
+	.extern	Os_StopScheduleTable
+	.extern	Os_StartScheduleTableRel
+	.extern	Os_const_resources
+	.extern	Os_const_scheduletables
+	.extern	SchM_IModeInit
+	.calls	'Rte_Stop','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L71:
+	.word	10469
+	.half	3
+	.word	.L72
+	.byte	4
+.L70:
+	.byte	1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L73
+.L164:
+	.byte	2
+	.byte	'unsigned char',0,1,8
+.L181:
+	.byte	2
+	.byte	'unsigned int',0,4,7,3,68
+	.word	134
+	.byte	4,16,0,5,1,154,1,9,68,6
+	.byte	'store',0
+	.word	150
+	.byte	68,2,35,0,0,3,68
+	.word	159
+	.byte	4,0,0,7
+	.byte	'Os_JumpBufType',0,1,156,1,3
+	.word	181
+	.byte	5,1,175,1,9,8,6
+	.byte	'sp',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	'ctx',0
+	.word	134
+	.byte	4,2,35,4,0,8
+	.byte	'Os_MeterInfoType_s',0,1,193,2,16,48,6
+	.byte	'elapsed',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	'previous',0
+	.word	134
+	.byte	4,2,35,4,6
+	.byte	'max',0
+	.word	134
+	.byte	4,2,35,8,6
+	.byte	'cumulative',0
+	.word	134
+	.byte	4,2,35,12,6
+	.byte	'stackbase',0
+	.word	214
+	.byte	8,2,35,16,6
+	.byte	'stackusage',0
+	.word	214
+	.byte	8,2,35,24,6
+	.byte	'stackmax',0
+	.word	214
+	.byte	8,2,35,32,6
+	.byte	'stackbudget',0
+	.word	214
+	.byte	8,2,35,40,0,8
+	.byte	'Os_TaskDynType_s',0,1,128,3,16,120,6
+	.byte	'terminate_jump_buf',0
+	.word	190
+	.byte	68,2,35,0,6
+	.byte	'meter',0
+	.word	246
+	.byte	48,2,35,68,6
+	.byte	'activation_count',0
+	.word	117
+	.byte	1,2,35,116,0,9
+	.word	418
+	.byte	10
+	.word	511
+	.byte	11,1,1,9
+	.word	521
+	.byte	7
+	.byte	'Os_VoidVoidFunctionType',0,1,179,1,16
+	.word	524
+	.byte	12,1,243,2,9,4,6
+	.byte	'p0',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	'p1',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	'p2',0
+	.word	134
+	.byte	4,2,35,0,0,12,1,249,2,9,4,6
+	.byte	't0',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	't1',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	't2',0
+	.word	134
+	.byte	4,2,35,0,0
+.L158:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,8
+	.byte	'Os_TaskType_s',0,1,134,3,16,40,6
+	.byte	'dynamic',0
+	.word	516
+	.byte	4,2,35,0,6
+	.byte	'entry_function',0
+	.word	529
+	.byte	4,2,35,4,6
+	.byte	'pset',0
+	.word	562
+	.byte	4,2,35,8,6
+	.byte	'base_tpmask',0
+	.word	605
+	.byte	4,2,35,12,6
+	.byte	'tpmask',0
+	.word	605
+	.byte	4,2,35,16,6
+	.byte	'core_id',0
+	.word	648
+	.byte	2,2,35,20,6
+	.byte	'index',0
+	.word	134
+	.byte	4,2,35,24,6
+	.byte	'stackbudget',0
+	.word	214
+	.byte	8,2,35,28,6
+	.byte	'activation_count',0
+	.word	117
+	.byte	1,2,35,36,6
+	.byte	'access',0
+	.word	117
+	.byte	1,2,35,37,6
+	.byte	'application',0
+	.word	117
+	.byte	1,2,35,38,0,10
+	.word	670
+	.byte	9
+	.word	899
+	.byte	7
+	.byte	'TaskType',0,1,147,3,47
+	.word	904
+	.byte	13
+	.byte	'Os_ActivateTask',0,1,203,7,34
+	.word	117
+	.byte	1,1,1,1,14
+	.byte	'TaskID',0,1,203,7,59
+	.word	909
+	.byte	0,10
+	.word	670
+	.byte	9
+	.word	973
+	.byte	3,68
+	.word	159
+	.byte	4,0,0,9
+	.word	521
+	.byte	12,1,167,3,3,4,6
+	.byte	'tpmask',0
+	.word	605
+	.byte	4,2,35,0,0,8
+	.byte	'Os_ResourceDynType_s',0,1,166,3,16,4,6
+	.byte	'saved_priority',0
+	.word	997
+	.byte	4,2,35,0,0,9
+	.word	1020
+	.byte	10
+	.word	1072
+	.byte	8
+	.byte	'Os_ResourceType_s',0,1,171,3,16,12,6
+	.byte	'dynamic',0
+	.word	1077
+	.byte	4,2,35,0,6
+	.byte	'tpmask',0
+	.word	605
+	.byte	4,2,35,4,6
+	.byte	'access',0
+	.word	117
+	.byte	1,2,35,8,0,10
+	.word	1082
+	.byte	9
+	.word	1156
+	.byte	7
+	.byte	'ResourceType',0,1,176,3,53
+	.word	1161
+	.byte	13
+	.byte	'Os_GetResource',0,1,211,7,34
+	.word	117
+	.byte	1,1,1,1,14
+	.byte	'ResID',0,1,211,7,62
+	.word	1166
+	.byte	0,10
+	.word	1082
+	.byte	9
+	.word	1232
+	.byte	13
+	.byte	'Os_ReleaseResource',0,1,212,7,34
+	.word	117
+	.byte	1,1,1,1,14
+	.byte	'ResID',0,1,212,7,66
+	.word	1166
+	.byte	0,15
+	.byte	'Os_SuspendOSInterrupts',0,1,217,7,28,1,1,1,1,15
+	.byte	'Os_ResumeOSInterrupts',0,1,218,7,28,1,1,1,1,16
+	.byte	'Os_GetApplicationID',0,1,223,7,39
+	.word	117
+	.byte	1,1,1,1,17
+	.byte	'Os_ScheduleTableStatusType',0,1,240,3,6,4,18
+	.byte	'SCHEDULETABLE_STOPPED',0,0,18
+	.byte	'SCHEDULETABLE_NEXT',0,1,18
+	.byte	'SCHEDULETABLE_WAITING',0,2,18
+	.byte	'SCHEDULETABLE_RUNNING',0,3,18
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,8
+	.byte	'Os_ScheduleTableDynType_s',0,1,130,4,16,16,6
+	.byte	'match',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	'next',0
+	.word	.L249-.L71
+	.byte	4,2,35,4,6
+	.byte	'state',0
+	.word	1386
+	.byte	4,2,35,8,6
+	.byte	'config',0
+	.word	648
+	.byte	2,2,35,12,0,9
+	.word	1553
+	.byte	10
+	.word	1646
+	.byte	8
+	.byte	's_swd',0,1,222,3,12,4,6
+	.byte	'count',0
+	.word	134
+	.byte	4,2,35,0,0,12,1,221,3,3,4,6
+	.byte	'sw',0
+	.word	1656
+	.byte	4,2,35,0,0,8
+	.byte	'Os_CounterDynType_s',0,1,220,3,16,4,6
+	.byte	'type_dependent',0
+	.word	1684
+	.byte	4,2,35,0,0,9
+	.word	1703
+	.byte	10
+	.word	1754
+	.byte	19
+	.word	117
+	.byte	1,1,9
+	.word	1764
+	.byte	7
+	.byte	'Os_CounterIncrAdvType',0,1,217,3,22
+	.word	1771
+	.byte	5,1,181,3,9,12,6
+	.byte	'maxallowedvalue',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	'ticksperbase',0
+	.word	134
+	.byte	4,2,35,4,6
+	.byte	'mincycle',0
+	.word	134
+	.byte	4,2,35,8,0,20
+	.byte	'void',0
+.L154:
+	.byte	9
+	.word	1879
+	.byte	8
+	.byte	'Os_CounterType_s',0,1,227,3,16,28,6
+	.byte	'dynamic',0
+	.word	1759
+	.byte	4,2,35,0,6
+	.byte	'advincr',0
+	.word	1776
+	.byte	4,2,35,4,6
+	.byte	'base',0
+	.word	1807
+	.byte	12,2,35,8,6
+	.byte	'core',0
+	.word	1885
+	.byte	4,2,35,20,6
+	.byte	'access',0
+	.word	117
+	.byte	1,2,35,24,6
+	.byte	'application',0
+	.word	117
+	.byte	1,2,35,25,0,10
+	.word	1890
+	.byte	9
+	.word	2013
+	.byte	7
+	.byte	'CounterType',0,1,235,3,52
+	.word	2018
+	.byte	8
+	.byte	'Os_ScheduleTableType_s',0,1,247,3,16,16,6
+	.byte	'dynamic',0
+	.word	1651
+	.byte	4,2,35,0,6
+	.byte	'counter',0
+	.word	2023
+	.byte	4,2,35,4,6
+	.byte	'repeat',0
+	.word	117
+	.byte	1,2,35,8,6
+	.byte	'config',0
+	.word	648
+	.byte	2,2,35,10,6
+	.byte	'initial',0
+	.word	117
+	.byte	1,2,35,12,6
+	.byte	'access',0
+	.word	117
+	.byte	1,2,35,13,6
+	.byte	'application',0
+	.word	117
+	.byte	1,2,35,14,0,10
+	.word	2044
+	.byte	9
+	.word	2194
+.L249:
+	.byte	7
+	.byte	'ScheduleTableType',0,1,128,4,58
+	.word	2199
+	.byte	13
+	.byte	'Os_StopScheduleTable',0,1,237,7,34
+	.word	117
+	.byte	1,1,1,1,14
+	.byte	'ScheduleTableID',0,1,237,7,73
+	.word	2204
+	.byte	0,10
+	.word	2044
+	.byte	9
+	.word	2291
+	.byte	10
+	.word	1890
+	.byte	9
+	.word	2301
+	.byte	9
+	.word	1764
+	.byte	13
+	.byte	'Os_StartScheduleTableRel',0,1,238,7,34
+	.word	117
+	.byte	1,1,1,1,14
+	.byte	'ScheduleTableID',0,1,238,7,77
+	.word	2204
+	.byte	14
+	.byte	'Offset',0,1,238,7,103
+	.word	134
+	.byte	0,10
+	.word	1879
+.L156:
+	.byte	9
+	.word	2396
+.L160:
+	.byte	9
+	.word	117
+	.byte	10
+	.word	117
+.L162:
+	.byte	9
+	.word	2411
+	.byte	7
+	.byte	'Rte_TaskRefType',0,2,184,1,32
+	.word	909
+	.byte	9
+	.word	117
+	.byte	7
+	.byte	'Rte_REActCounterRefType',0,2,253,1,58
+	.word	2446
+	.byte	5,2,255,1,9,8,6
+	.byte	'task',0
+	.word	2421
+	.byte	4,2,35,0,6
+	.byte	'acnt',0
+	.word	2451
+	.byte	4,2,35,4,0,10
+	.word	2484
+	.byte	9
+	.word	2519
+	.byte	10
+	.word	670
+	.byte	9
+	.word	2529
+	.byte	9
+	.word	117
+	.byte	10
+	.word	2484
+	.byte	9
+	.word	2544
+.L173:
+	.byte	7
+	.byte	'Rte_REContainerRefType',0,2,132,2,60
+	.word	2549
+	.byte	5,2,182,2,9,4,6
+	.byte	'pending',0
+	.word	117
+	.byte	1,2,35,0,6
+	.byte	'count',0
+	.word	117
+	.byte	1,2,35,1,6
+	.byte	'firstWaitingTask',0
+	.word	117
+	.byte	1,2,35,2,0
+.L179:
+	.byte	9
+	.word	2586
+.L183:
+	.byte	10
+	.word	134
+.L194:
+	.byte	9
+	.word	909
+	.byte	5,3,168,1,9,12,6
+	.byte	'in',0
+	.word	1885
+	.byte	4,2,35,0,6
+	.byte	'out',0
+	.word	1885
+	.byte	4,2,35,4,6
+	.byte	'used',0
+	.word	648
+	.byte	2,2,35,8,6
+	.byte	'lost_data',0
+	.word	117
+	.byte	1,2,35,10,0
+.L202:
+	.byte	9
+	.word	2666
+	.byte	21,3,175,1,9,4,18
+	.byte	'RTE_DRA',0,0,18
+	.byte	'RTE_WOWP',0,1,18
+	.byte	'RTE_TASK',0,2,18
+	.byte	'RTE_ARE',0,3,18
+	.byte	'RTE_EV',0,4,18
+	.byte	'RTE_MSI',0,5,0,8
+	.byte	'Rte_QCmnType',0,3,184,1,16,24,6
+	.byte	'dynamic',0
+	.word	2731
+	.byte	4,2,35,0,6
+	.byte	'copy',0
+	.word	117
+	.byte	1,2,35,4,6
+	.byte	'queue_size',0
+	.word	648
+	.byte	2,2,35,6,6
+	.byte	'element_size',0
+	.word	648
+	.byte	2,2,35,8,6
+	.byte	'buffer_start',0
+	.word	1885
+	.byte	4,2,35,12,6
+	.byte	'buffer_end',0
+	.word	1885
+	.byte	4,2,35,16,6
+	.byte	'notification_type',0
+	.word	2736
+	.byte	4,2,35,20,0,10
+	.word	2804
+	.byte	9
+	.word	2966
+	.byte	10
+	.word	2804
+	.byte	9
+	.word	2976
+.L197:
+	.byte	7
+	.byte	'Rte_QCmnRefType',0,3,197,1,60
+	.word	2981
+	.byte	10
+	.word	1879
+	.byte	9
+	.word	3011
+.L199:
+	.byte	7
+	.byte	'Rte_ConstDataPtr',0,2,158,3,44
+	.word	2401
+	.byte	9
+	.word	1879
+.L212:
+	.byte	7
+	.byte	'Rte_VarDataPtr',0,2,157,3,44
+	.word	1885
+	.byte	15
+	.byte	'SchM_IModeInit',0,4,118,29,1,1,1,1,22,1,9
+	.word	3099
+	.byte	7
+	.byte	'__codeptr',0,4,1,1
+	.word	3101
+	.byte	2
+	.byte	'char',0,1,6,7
+	.byte	'sint8',0,5,76,25
+	.word	3124
+	.byte	7
+	.byte	'uint8',0,5,81,25
+	.word	117
+	.byte	7
+	.byte	'uint16',0,5,91,25
+	.word	648
+	.byte	7
+	.byte	'uint32',0,5,106,24
+	.word	134
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,7
+	.byte	'uint64',0,5,111,30
+	.word	3190
+	.byte	7
+	.byte	'boolean',0,5,127,25
+	.word	117
+	.byte	7
+	.byte	'StatusType',0,6,191,1,27
+	.word	117
+	.byte	7
+	.byte	'Std_ReturnType',0,6,199,1,15
+	.word	117
+	.byte	5,6,206,1,9,8,6
+	.byte	'vendorID',0
+	.word	648
+	.byte	2,2,35,0,6
+	.byte	'moduleID',0
+	.word	648
+	.byte	2,2,35,2,6
+	.byte	'sw_major_version',0
+	.word	117
+	.byte	1,2,35,4,6
+	.byte	'sw_minor_version',0
+	.word	117
+	.byte	1,2,35,5,6
+	.byte	'sw_patch_version',0
+	.word	117
+	.byte	1,2,35,6,0,7
+	.byte	'Std_VersionInfoType',0,6,213,1,3
+	.word	3291
+	.byte	5,1,93,9,8,6
+	.byte	'Class',0
+	.word	117
+	.byte	1,2,35,0,6
+	.byte	'TIN',0
+	.word	117
+	.byte	1,2,35,1,6
+	.byte	'ReturnAddress',0
+	.word	134
+	.byte	4,2,35,4,0,7
+	.byte	'OsTrapInfoType',0,1,97,3
+	.word	3441
+	.byte	7
+	.byte	'Os_StackTraceType',0,1,174,1,18
+	.word	134
+	.byte	7
+	.byte	'Os_StackValueType',0,1,175,1,63
+	.word	214
+	.byte	7
+	.byte	'Os_StackSizeType',0,1,176,1,27
+	.word	214
+	.byte	7
+	.byte	'ApplicationType',0,1,193,1,23
+	.word	117
+	.byte	8
+	.byte	'Os_ApplicationConfigurationType_s',0,1,198,1,16,2,6
+	.byte	'app_id',0
+	.word	117
+	.byte	1,2,35,0,6
+	.byte	'access',0
+	.word	117
+	.byte	1,2,35,1,0,7
+	.byte	'Os_ApplicationConfigurationType',0,1,201,1,3
+	.word	3626
+	.byte	7
+	.byte	'Os_CoreStateType',0,1,203,1,16
+	.word	134
+	.byte	7
+	.byte	'AreaIdType',0,1,204,1,16
+	.word	648
+	.byte	7
+	.byte	'Os_PeripheralAddressType',0,1,212,1,22
+	.word	134
+	.byte	7
+	.byte	'TickType',0,1,221,1,22
+	.word	134
+	.byte	7
+	.byte	'Os_StopwatchTickType',0,1,225,1,22
+	.word	134
+	.byte	9
+	.word	134
+	.byte	7
+	.byte	'Os_Lockable',0,1,234,1,18
+	.word	3868
+	.byte	7
+	.byte	'CoreIdType',0,1,236,1,16
+	.word	648
+	.byte	7
+	.byte	'SpinlockIdType',0,1,237,1,16
+	.word	648
+	.byte	21,1,239,1,9,4,18
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,18
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,7
+	.byte	'TryToGetSpinlockType',0,1,239,1,74
+	.word	3938
+	.byte	21,1,174,2,9,4,18
+	.byte	'APPLICATION_ACCESSIBLE',0,0,18
+	.byte	'APPLICATION_RESTARTING',0,1,18
+	.byte	'APPLICATION_TERMINATED',0,2,0,7
+	.byte	'ApplicationStateType',0,1,174,2,92
+	.word	4031
+	.byte	23,1,1,24
+	.word	117
+	.byte	24
+	.word	1885
+	.byte	0,9
+	.word	4143
+	.byte	7
+	.byte	'Os_FunctionEntryType',0,1,183,2,16
+	.word	4157
+	.byte	7
+	.byte	'Os_MeterInfoType',0,1,202,2,3
+	.word	246
+	.byte	9
+	.word	246
+	.byte	7
+	.byte	'Os_MeterInfoRefType',0,1,203,2,50
+	.word	4218
+	.byte	7
+	.byte	'EventMaskType',0,1,206,2,15
+	.word	117
+	.byte	7
+	.byte	'Os_imaskType',0,1,211,2,16
+	.word	134
+	.byte	8
+	.byte	'Os_ISRDynType_s',0,1,213,2,16,48,6
+	.byte	'meter',0
+	.word	246
+	.byte	48,2,35,0,0,7
+	.byte	'Os_ISRDynType',0,1,215,2,3
+	.word	4297
+	.byte	9
+	.word	4297
+	.byte	10
+	.word	4358
+	.byte	8
+	.byte	'Os_ISRType_s',0,1,216,2,16,24,6
+	.byte	'entry_function',0
+	.word	529
+	.byte	4,2,35,0,6
+	.byte	'dynamic',0
+	.word	4363
+	.byte	4,2,35,4,6
+	.byte	'imask',0
+	.word	134
+	.byte	4,2,35,8,6
+	.byte	'stackbudget',0
+	.word	214
+	.byte	8,2,35,12,6
+	.byte	'access',0
+	.word	117
+	.byte	1,2,35,20,6
+	.byte	'application',0
+	.word	117
+	.byte	1,2,35,21,0,7
+	.byte	'Os_ISRType',0,1,223,2,3
+	.word	4368
+	.byte	10
+	.word	4368
+	.byte	9
+	.word	4522
+	.byte	7
+	.byte	'ISRType',0,1,224,2,46
+	.word	4527
+	.byte	7
+	.byte	'Os_bitmask',0,1,239,2,22
+	.word	134
+	.byte	7
+	.byte	'Os_pset0Type',0,1,240,2,20
+	.word	134
+	.byte	7
+	.byte	'Os_pset1Type',0,1,241,2,20
+	.word	134
+	.byte	7
+	.byte	'Os_pset2Type',0,1,242,2,20
+	.word	134
+	.byte	7
+	.byte	'Os_psetType',0,1,247,2,3
+	.word	562
+	.byte	7
+	.byte	'Os_tpmaskType',0,1,253,2,3
+	.word	605
+	.byte	7
+	.byte	'Os_ActivationCountType',0,1,254,2,23
+	.word	117
+	.byte	7
+	.byte	'Os_TaskDynType',0,1,132,3,3
+	.word	418
+	.byte	7
+	.byte	'Os_TaskType',0,1,146,3,3
+	.word	670
+	.byte	17
+	.byte	'Os_TaskStateType',0,1,155,3,6,4,18
+	.byte	'SUSPENDED',0,0,18
+	.byte	'READY',0,1,18
+	.byte	'WAITING',0,2,18
+	.byte	'RUNNING',0,3,0,7
+	.byte	'TaskStateType',0,1,156,3,31
+	.word	4756
+	.byte	7
+	.byte	'Os_ResourceDynType',0,1,170,3,3
+	.word	1020
+	.byte	7
+	.byte	'Os_ResourceType',0,1,175,3,3
+	.word	1082
+	.byte	7
+	.byte	'AlarmBaseType',0,1,185,3,3
+	.word	1807
+	.byte	5,1,206,3,9,8,6
+	.byte	'Running',0
+	.word	117
+	.byte	1,2,35,0,6
+	.byte	'Pending',0
+	.word	117
+	.byte	1,2,35,1,6
+	.byte	'Delay',0
+	.word	134
+	.byte	4,2,35,4,0,7
+	.byte	'Os_CounterStatusType',0,1,210,3,3
+	.word	4919
+	.byte	7
+	.byte	'Os_CounterDynType',0,1,226,3,3
+	.word	1703
+	.byte	7
+	.byte	'Os_CounterType',0,1,234,3,3
+	.word	1890
+	.byte	7
+	.byte	'ScheduleTableStatusType',0,1,241,3,41
+	.word	1386
+	.byte	7
+	.byte	'Os_ScheduleTableType',0,1,255,3,3
+	.word	2044
+	.byte	25
+	.word	3873
+	.byte	25
+	.word	562
+	.byte	25
+	.word	4532
+	.byte	25
+	.word	909
+	.byte	25
+	.word	605
+	.byte	25
+	.word	117
+	.byte	25
+	.word	909
+	.byte	8
+	.byte	'Os_ControlledCoreType_s',0,1,251,6,16,112,6
+	.byte	'TrapInfo',0
+	.word	3441
+	.byte	8,2,35,0,6
+	.byte	'lock_taskaccess',0
+	.word	5119
+	.byte	4,2,35,8,6
+	.byte	'ReadyTasks',0
+	.word	5124
+	.byte	4,2,35,12,6
+	.byte	'RunningISR',0
+	.word	5129
+	.byte	4,2,35,16,6
+	.byte	'RunningTask',0
+	.word	5134
+	.byte	4,2,35,20,6
+	.byte	'RunningTPMask',0
+	.word	5139
+	.byte	4,2,35,24,6
+	.byte	'CurrentMeteredObject',0
+	.word	4223
+	.byte	4,2,35,28,6
+	.byte	'IdleMeter',0
+	.word	246
+	.byte	48,2,35,32,6
+	.byte	'AppAccess',0
+	.word	117
+	.byte	1,2,35,80,6
+	.byte	'AppOverride',0
+	.word	5144
+	.byte	1,2,35,81,6
+	.byte	'GetStackValueAdjust',0
+	.word	214
+	.byte	8,2,35,84,6
+	.byte	'InErrorHook',0
+	.word	117
+	.byte	1,2,35,92,6
+	.byte	'ChainTaskRef',0
+	.word	5149
+	.byte	4,2,35,96,6
+	.byte	'GetStackUsageAdjust',0
+	.word	214
+	.byte	8,2,35,100,6
+	.byte	'InProtectionHook',0
+	.word	117
+	.byte	1,2,35,108,6
+	.byte	'CoreIsActive',0
+	.word	117
+	.byte	1,2,35,109,6
+	.byte	'InShutdownHook',0
+	.word	117
+	.byte	1,2,35,110,0,7
+	.byte	'Os_ControlledCoreType',0,1,141,7,3
+	.word	5154
+	.byte	9
+	.word	134
+	.byte	10
+	.word	4368
+	.byte	9
+	.word	5610
+	.byte	9
+	.word	246
+	.byte	8
+	.byte	'Os_AnyCoreType_s',0,1,151,7,16,96,6
+	.byte	'DisableAllImask',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	'SuspendAllImask',0
+	.word	134
+	.byte	4,2,35,4,6
+	.byte	'SuspendOSImask',0
+	.word	134
+	.byte	4,2,35,8,6
+	.byte	'DisableAllCount',0
+	.word	134
+	.byte	4,2,35,12,6
+	.byte	'SuspendAllCount',0
+	.word	134
+	.byte	4,2,35,16,6
+	.byte	'SuspendOSCount',0
+	.word	134
+	.byte	4,2,35,20,6
+	.byte	'RestartJumpBuf',0
+	.word	190
+	.byte	68,2,35,24,6
+	.byte	'Restartable',0
+	.word	117
+	.byte	1,2,35,92,0,7
+	.byte	'Os_AnyCoreType',0,1,160,7,3
+	.word	5625
+	.byte	26
+	.word	1082
+	.byte	27,0,10
+	.word	5866
+	.byte	28
+	.byte	'Os_const_resources',0,1,165,8,46
+	.word	5873
+	.byte	1,1,26
+	.word	2044
+	.byte	27,0,10
+	.word	5908
+	.byte	28
+	.byte	'Os_const_scheduletables',0,1,167,8,51
+	.word	5915
+	.byte	1,1,7
+	.byte	'PduIdType',0,7,22,19
+	.word	648
+	.byte	7
+	.byte	'PduLengthType',0,7,26,19
+	.word	648
+	.byte	21,8,113,9,4,18
+	.byte	'TP_DATACONF',0,0,18
+	.byte	'TP_DATARETRY',0,1,18
+	.byte	'TP_CONFPENDING',0,2,0,7
+	.byte	'TpDataStateType',0,8,118,3
+	.word	5995
+	.byte	7
+	.byte	'Can_IdType',0,9,32,16
+	.word	134
+	.byte	7
+	.byte	'Can_HwHandleType',0,9,43,16
+	.word	648
+	.byte	7
+	.byte	'Can_TxObjPriorityClassType',0,10,219,3,16
+	.word	134
+	.byte	8
+	.byte	'Can_TxHwObjectConfigType',0,10,231,3,16,8,6
+	.byte	'MsgObjId',0
+	.word	117
+	.byte	1,2,35,0,6
+	.byte	'HwControllerId',0
+	.word	117
+	.byte	1,2,35,1,6
+	.byte	'TxObjPriorityClass',0
+	.word	134
+	.byte	4,2,35,4,0,7
+	.byte	'Can_TxHwObjectConfigType',0,10,252,3,3
+	.word	6151
+	.byte	8
+	.byte	'Can_RxHwObjectConfigType',0,10,129,4,16,12,6
+	.byte	'MaskRef',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	'MsgId',0
+	.word	134
+	.byte	4,2,35,4,6
+	.byte	'MsgObjId',0
+	.word	117
+	.byte	1,2,35,8,6
+	.byte	'HwControllerId',0
+	.word	117
+	.byte	1,2,35,9,0,7
+	.byte	'Can_RxHwObjectConfigType',0,10,147,4,3
+	.word	6287
+	.byte	3,4
+	.word	117
+	.byte	4,3,0,8
+	.byte	'Can_ControllerMOMapConfigType',0,10,181,4,16,4,6
+	.byte	'ControllerMOMap',0
+	.word	6427
+	.byte	4,2,35,0,0,7
+	.byte	'Can_ControllerMOMapConfigType',0,10,184,4,3
+	.word	6436
+	.byte	8
+	.byte	'Can_NPCRValueType',0,10,188,4,16,2,6
+	.byte	'Can_NPCRValue',0
+	.word	648
+	.byte	2,2,35,0,0,7
+	.byte	'Can_NPCRValueType',0,10,191,4,3
+	.word	6537
+	.byte	8
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,10,194,4,16,8,6
+	.byte	'CanControllerBaudrate',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	'CanControllerBaudrateCfg',0
+	.word	648
+	.byte	2,2,35,4,0,7
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,10,198,4,3
+	.word	6612
+	.byte	10
+	.word	6612
+	.byte	9
+	.word	6777
+	.byte	8
+	.byte	'Can_BaudrateConfigPtrType',0,10,201,4,16,4,6
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	6782
+	.byte	4,2,35,0,0,7
+	.byte	'Can_BaudrateConfigPtrType',0,10,204,4,3
+	.word	6787
+	.byte	8
+	.byte	'Can_EventHandlingType',0,10,226,4,16,4,6
+	.byte	'CanEventType',0
+	.word	6427
+	.byte	4,2,35,0,0,7
+	.byte	'Can_EventHandlingType',0,10,229,4,3
+	.word	6887
+	.byte	7
+	.byte	'Rte_TransformerErrorCode',0,3,130,1,15
+	.word	117
+	.byte	7
+	.byte	'Rte_TransformerClass',0,3,131,1,15
+	.word	117
+	.byte	7
+	.byte	'Rte_QDynType',0,3,173,1,3
+	.word	2666
+	.byte	7
+	.byte	'Rte_NotificationType',0,3,182,1,3
+	.word	2736
+	.byte	7
+	.byte	'Rte_QCmnType',0,3,192,1,3
+	.word	2804
+	.byte	7
+	.byte	'Rte_ResourceRefType',0,3,211,1,40
+	.word	2401
+	.byte	7
+	.byte	'Rte_AlarmRefType',0,3,224,1,32
+	.word	134
+	.byte	7
+	.byte	'Rte_AlarmIndexType',0,3,226,1,32
+	.word	648
+	.byte	9
+	.word	648
+	.byte	7
+	.byte	'Rte_ResourceCountRefType',0,2,182,1,37
+	.word	7190
+	.byte	7
+	.byte	'Rte_EventRefType',0,2,185,1,32
+	.word	117
+	.byte	7
+	.byte	'Rte_EventType',0,2,186,1,32
+	.word	134
+.L216:
+	.byte	3,16
+	.word	7107
+	.byte	4,3,0,10
+	.word	1879
+	.byte	9
+	.word	7287
+.L217:
+	.byte	3,16
+	.word	7195
+	.byte	4,3,0,9
+	.word	648
+	.byte	7
+	.byte	'Rte_REActCounterType',0,2,252,1,15
+	.word	117
+	.byte	7
+	.byte	'Rte_REContainerType',0,2,130,2,3
+	.word	2484
+	.byte	7
+	.byte	'Rte_MSICounterType',0,2,149,2,16
+	.word	648
+	.byte	9
+	.word	648
+	.byte	7
+	.byte	'Rte_MSICounterRefType',0,2,150,2,56
+	.word	7398
+	.byte	7
+	.byte	'Rte_MSIPendingFlagType',0,2,152,2,17
+	.word	117
+	.byte	9
+	.word	117
+	.byte	7
+	.byte	'Rte_MSIPendingFlagRefType',0,2,153,2,60
+	.word	7466
+	.byte	5,2,163,2,9,24,6
+	.byte	'counter',0
+	.word	7403
+	.byte	4,2,35,0,6
+	.byte	'incCounter',0
+	.word	117
+	.byte	1,2,35,4,6
+	.byte	'pending',0
+	.word	7471
+	.byte	4,2,35,8,6
+	.byte	'osTask',0
+	.word	2421
+	.byte	4,2,35,12,6
+	.byte	'acnt',0
+	.word	2451
+	.byte	4,2,35,16,6
+	.byte	'osEvent',0
+	.word	117
+	.byte	1,2,35,20,6
+	.byte	'MSIInit',0
+	.word	648
+	.byte	2,2,35,22,0,7
+	.byte	'Rte_MSITableEntry',0,2,172,2,3
+	.word	7506
+	.byte	9
+	.word	648
+	.byte	9
+	.word	117
+	.byte	7
+	.byte	'Rte_TaskArrayIndex',0,2,179,2,16
+	.word	117
+	.byte	7
+	.byte	'Rte_NrWaitingTasks',0,2,180,2,16
+	.word	117
+	.byte	7
+	.byte	'Rte_WaitableDatum',0,2,186,2,3
+	.word	2586
+	.byte	5,2,226,2,9,12,6
+	.byte	'event_id',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	'wd',0
+	.word	2651
+	.byte	4,2,35,4,6
+	.byte	'timeout',0
+	.word	134
+	.byte	4,2,35,8,0,7
+	.byte	'Rte_WOWP_NotificationType',0,2,230,2,3
+	.word	7751
+	.byte	10
+	.word	7751
+	.byte	9
+	.word	7840
+	.byte	7
+	.byte	'Rte_WOWP_NotificationRefType',0,2,232,2,66
+	.word	7845
+	.byte	7
+	.byte	'Rte_ARE_NotificationType',0,2,234,2,29
+	.word	2484
+	.byte	8
+	.byte	'Rte_QTaskType',0,2,243,2,16,28,6
+	.byte	'cmn',0
+	.word	2804
+	.byte	24,2,35,0,6
+	.byte	'task',0
+	.word	2421
+	.byte	4,2,35,24,0,7
+	.byte	'Rte_QTaskType',0,2,246,2,3
+	.word	7922
+	.byte	8
+	.byte	'Rte_QREType',0,2,250,2,16,28,6
+	.byte	'cmn',0
+	.word	2804
+	.byte	24,2,35,0,6
+	.byte	're',0
+	.word	2554
+	.byte	4,2,35,24,0,7
+	.byte	'Rte_QREType',0,2,253,2,3
+	.word	7993
+	.byte	8
+	.byte	'Rte_QWWPType',0,2,129,3,16,28,6
+	.byte	'cmn',0
+	.word	2804
+	.byte	24,2,35,0,6
+	.byte	'wwp',0
+	.word	7850
+	.byte	4,2,35,24,0,7
+	.byte	'Rte_QWWPType',0,2,132,3,3
+	.word	8058
+	.byte	10
+	.word	7751
+	.byte	9
+	.word	8126
+	.byte	8
+	.byte	'Rte_QEvType',0,2,136,3,16,36,6
+	.byte	'cmn',0
+	.word	2804
+	.byte	24,2,35,0,6
+	.byte	'task',0
+	.word	2421
+	.byte	4,2,35,24,6
+	.byte	'mask',0
+	.word	117
+	.byte	1,2,35,28,6
+	.byte	'acnt',0
+	.word	2451
+	.byte	4,2,35,32,0,7
+	.byte	'Rte_QEvType',0,2,141,3,3
+	.word	8136
+	.byte	8
+	.byte	'Rte_QMSIType',0,2,145,3,16,48,6
+	.byte	'cmn',0
+	.word	2804
+	.byte	24,2,35,0,6
+	.byte	'task',0
+	.word	2421
+	.byte	4,2,35,24,6
+	.byte	'mask',0
+	.word	117
+	.byte	1,2,35,28,6
+	.byte	'acnt',0
+	.word	2451
+	.byte	4,2,35,32,6
+	.byte	'msiCounter',0
+	.word	7403
+	.byte	4,2,35,36,6
+	.byte	'msiPending',0
+	.word	7471
+	.byte	4,2,35,40,6
+	.byte	'msiLimit',0
+	.word	648
+	.byte	2,2,35,44,0,7
+	.byte	'Rte_QMSIType',0,2,153,3,3
+	.word	8231
+	.byte	3,128,8
+	.word	117
+	.byte	4,255,7,0,7
+	.byte	'Impl_NVM_DstPtrType_1024',0,11,50,15
+	.word	8386
+	.byte	7
+	.byte	'CanIf_u32_impl',0,11,69,16
+	.word	134
+	.byte	7
+	.byte	'CanIf_u16_impl',0,11,71,16
+	.word	648
+	.byte	7
+	.byte	'CanIf_u8_impl',0,11,73,15
+	.word	117
+	.byte	7
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,11,88,15
+	.word	117
+	.byte	7
+	.byte	'CanIf_PduModeType_Enum_impl',0,11,90,15
+	.word	117
+	.byte	5,11,92,9,2,6
+	.byte	'DeviceMode',0
+	.word	117
+	.byte	1,2,35,0,6
+	.byte	'ChannelMode',0
+	.word	117
+	.byte	1,2,35,1,0,7
+	.byte	'CanIf_ControllerStateType_struct_impl',0,11,95,3
+	.word	8577
+	.byte	7
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,11,100,15
+	.word	117
+	.byte	7
+	.byte	'CanSM_boolean_Impl',0,11,120,15
+	.word	117
+	.byte	7
+	.byte	'CanSM_u8_Impl',0,11,123,15
+	.word	117
+	.byte	7
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,11,128,1,15
+	.word	117
+	.byte	7
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,11,132,1,15
+	.word	117
+	.byte	7
+	.byte	'CanSM_u16_Impl',0,11,136,1,16
+	.word	648
+	.byte	7
+	.byte	'CanSM_TimerStateType_Enum_impl',0,11,138,1,15
+	.word	117
+	.byte	5,11,140,1,9,4,6
+	.byte	'cntTick_u16',0
+	.word	648
+	.byte	2,2,35,0,6
+	.byte	'stTimer',0
+	.word	117
+	.byte	1,2,35,2,0,7
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,11,143,1,3
+	.word	8918
+	.byte	7
+	.byte	'Com_impl_u16',0,11,154,1,16
+	.word	648
+	.byte	7
+	.byte	'Com_impl_u8',0,11,157,1,15
+	.word	117
+	.byte	7
+	.byte	'ComM_uint32_Impl',0,11,173,1,16
+	.word	134
+	.byte	7
+	.byte	'ComM_uint16_Impl',0,11,175,1,16
+	.word	648
+	.byte	7
+	.byte	'ComM_uint8_Impl',0,11,177,1,15
+	.word	117
+	.byte	7
+	.byte	'ComM_bool_Impl',0,11,179,1,15
+	.word	117
+	.byte	5,11,181,1,9,24,6
+	.byte	'ChannelState_e',0
+	.word	134
+	.byte	4,2,35,0,6
+	.byte	'LightTimeoutCtr_u32',0
+	.word	134
+	.byte	4,2,35,4,6
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	648
+	.byte	2,2,35,8,6
+	.byte	'ChannelMode_u8',0
+	.word	117
+	.byte	1,2,35,10,6
+	.byte	'BusSmMode_u8',0
+	.word	117
+	.byte	1,2,35,11,6
+	.byte	'UserRequestCtr_u8',0
+	.word	117
+	.byte	1,2,35,12,6
+	.byte	'PassiveRequestState_u8',0
+	.word	117
+	.byte	1,2,35,13,6
+	.byte	'PncRequestCtr_u8',0
+	.word	117
+	.byte	1,2,35,14,6
+	.byte	'InhibitionReqStatus_u8',0
+	.word	117
+	.byte	1,2,35,15,6
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	117
+	.byte	1,2,35,16,6
+	.byte	'DiagnosticRequestState_b',0
+	.word	117
+	.byte	1,2,35,17,6
+	.byte	'CommunicationAllowed_b',0
+	.word	117
+	.byte	1,2,35,18,6
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	117
+	.byte	1,2,35,19,6
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	117
+	.byte	1,2,35,20,6
+	.byte	'NmNetworkModeStatus_b',0
+	.word	117
+	.byte	1,2,35,21,0,7
+	.byte	'ComM_ChannelStruct_Impl',0,11,197,1,3
+	.word	9150
+	.byte	5,11,206,1,9,10,6
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	648
+	.byte	2,2,35,0,6
+	.byte	'LimitToNoComCtr_u16',0
+	.word	648
+	.byte	2,2,35,2,6
+	.byte	'RequestedUserMode_t',0
+	.word	117
+	.byte	1,2,35,4,6
+	.byte	'IndicatedUserMode_t',0
+	.word	117
+	.byte	1,2,35,5,6
+	.byte	'numChannelsInFullCom_u8',0
+	.word	117
+	.byte	1,2,35,6,6
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	117
+	.byte	1,2,35,7,6
+	.byte	'numChannelsInNoCom_u8',0
+	.word	117
+	.byte	1,2,35,8,0,7
+	.byte	'ComM_UserStruct_Impl',0,11,214,1,3
+	.word	9654
+	.byte	7
+	.byte	'Dcm_IOOperationResponseType',0,11,252,1,15
+	.word	117
+	.byte	7
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	11,138,2,15
+	.word	117
+	.byte	7
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,11,146,2,15
+	.word	117
+	.byte	7
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,11,150,2,15
+	.word	117
+	.byte	7
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,11,154,2,15
+	.word	117
+	.byte	7
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,11,243,3,34
+	.word	8397
+	.byte	3,128,8
+	.word	117
+	.byte	4,255,7,0,7
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,11,246,3,34
+	.word	8397
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L72:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,1,1,11,15,73,19,0,0,4,33,0
+	.byte	47,15,0,0,5,19,1,58,15,59,15,57,15,11,15,0,0,6,13,0,3,8,73,19,11,15,56,9,0,0,7,22,0,3,8,58,15,59,15,57
+	.byte	15,73,19,0,0,8,19,1,3,8,58,15,59,15,57,15,11,15,0,0,9,15,0,73,19,0,0,10,38,0,73,19,0,0,11,21,0,54,15,39
+	.byte	12,0,0,12,23,1,58,15,59,15,57,15,11,15,0,0,13,46,1,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12
+	.byte	0,0,14,5,0,3,8,58,15,59,15,57,15,73,19,0,0,15,46,0,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0,16
+	.byte	46,0,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,17,4,1,3,8,58,15,59,15,57,15,11,15,0,0,18
+	.byte	40,0,3,8,28,13,0,0,19,21,0,73,19,54,15,39,12,0,0,20,59,0,3,8,0,0,21,4,1,58,15,59,15,57,15,11,15,0,0,22
+	.byte	21,0,54,15,0,0,23,21,1,54,15,39,12,0,0,24,5,0,73,19,0,0,25,53,0,73,19,0,0,26,1,1,73,19,0,0,27,33,0,0,0
+	.byte	28,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L73:
+	.word	.L251-.L250
+.L250:
+	.half	3
+	.word	.L253-.L252
+.L252:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'RTE\\gen\\Rte_Type.h',0,0,0,0,0
+.L253:
+.L251:
+	.sdecl	'.debug_info',debug,cluster('Rte_memcpy')
+	.sect	'.debug_info'
+.L74:
+	.word	249
+	.half	3
+	.word	.L75
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L77,.L76
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_memcpy',0,1,189,4,1,1,1,1
+	.word	.L65,.L153,.L64
+	.byte	4
+	.byte	'dst',0,1,189,4,45
+	.word	.L154,.L155
+	.byte	4
+	.byte	'src',0,1,190,4,52
+	.word	.L156,.L157
+	.byte	4
+	.byte	'length',0,1,191,4,19
+	.word	.L158,.L159
+	.byte	5
+	.word	.L65,.L153
+	.byte	6
+	.byte	'd',0,1,193,4,48
+	.word	.L160,.L161
+	.byte	6
+	.byte	's',0,1,194,4,48
+	.word	.L162,.L163
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_memcpy')
+	.sect	'.debug_abbrev'
+.L75:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Rte_memcpy')
+	.sect	'.debug_line'
+.L76:
+	.word	.L255-.L254
+.L254:
+	.half	3
+	.word	.L257-.L256
+.L256:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L257:
+	.byte	5,18,7,0,5,2
+	.word	.L65
+	.byte	3,195,4,1,5,14,9
+	.half	.L39-.L65
+	.byte	3,3,1,5,12,9
+	.half	.L258-.L39
+	.byte	1,5,16,9
+	.half	.L259-.L258
+	.byte	1,5,9,9
+	.half	.L260-.L259
+	.byte	1,5,16,9
+	.half	.L38-.L260
+	.byte	3,125,1,5,18,9
+	.half	.L244-.L38
+	.byte	1,5,1,7,9
+	.half	.L261-.L244
+	.byte	3,5,1,7,9
+	.half	.L78-.L261
+	.byte	0,1,1
+.L255:
+	.sdecl	'.debug_ranges',debug,cluster('Rte_memcpy')
+	.sect	'.debug_ranges'
+.L77:
+	.word	-1,.L65,0,.L78-.L65,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_Start')
+	.sect	'.debug_info'
+.L79:
+	.word	185
+	.half	3
+	.word	.L80
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L82,.L81
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_Start',0,1,222,4,1
+	.word	.L164
+	.byte	1,1,1
+	.word	.L67,.L165,.L66
+	.byte	4
+	.word	.L67,.L165
+	.byte	5
+	.byte	'rtn',0,1,224,4,19
+	.word	.L164,.L166
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_Start')
+	.sect	'.debug_abbrev'
+.L80:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Rte_Start')
+	.sect	'.debug_line'
+.L81:
+	.word	.L263-.L262
+.L262:
+	.half	3
+	.word	.L265-.L264
+.L264:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L265:
+	.byte	5,23,7,0,5,2
+	.word	.L67
+	.byte	3,223,4,1,5,41,9
+	.half	.L245-.L67
+	.byte	3,2,1,5,4,9
+	.half	.L266-.L245
+	.byte	1,5,41,9
+	.half	.L267-.L266
+	.byte	1,5,39,9
+	.half	.L268-.L267
+	.byte	1,9
+	.half	.L269-.L268
+	.byte	3,1,1,5,41,9
+	.half	.L270-.L269
+	.byte	3,1,1,5,39,9
+	.half	.L271-.L270
+	.byte	1,5,4,9
+	.half	.L272-.L271
+	.byte	3,2,1,5,46,9
+	.half	.L273-.L272
+	.byte	1,5,43,9
+	.half	.L274-.L273
+	.byte	1,5,46,9
+	.half	.L275-.L274
+	.byte	3,1,1,5,43,9
+	.half	.L276-.L275
+	.byte	1,5,46,9
+	.half	.L277-.L276
+	.byte	3,1,1,5,43,9
+	.half	.L278-.L277
+	.byte	1,5,4,9
+	.half	.L279-.L278
+	.byte	3,8,1,5,22,9
+	.half	.L280-.L279
+	.byte	1,5,20,9
+	.half	.L281-.L280
+	.byte	1,5,40,9
+	.half	.L282-.L281
+	.byte	3,12,1,5,69,9
+	.half	.L283-.L282
+	.byte	1,5,11,9
+	.half	.L284-.L283
+	.byte	3,2,1,5,4,9
+	.half	.L40-.L284
+	.byte	3,16,1,5,1,9
+	.half	.L41-.L40
+	.byte	3,1,1,7,9
+	.half	.L83-.L41
+	.byte	0,1,1
+.L263:
+	.sdecl	'.debug_ranges',debug,cluster('Rte_Start')
+	.sect	'.debug_ranges'
+.L82:
+	.word	-1,.L67,0,.L83-.L67,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_Stop')
+	.sect	'.debug_info'
+.L84:
+	.word	184
+	.half	3
+	.word	.L85
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L87,.L86
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_Stop',0,1,157,5,1
+	.word	.L164
+	.byte	1,1,1
+	.word	.L69,.L167,.L68
+	.byte	4
+	.word	.L69,.L167
+	.byte	5
+	.byte	'rtn',0,1,159,5,19
+	.word	.L164,.L168
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_Stop')
+	.sect	'.debug_abbrev'
+.L85:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Rte_Stop')
+	.sect	'.debug_line'
+.L86:
+	.word	.L286-.L285
+.L285:
+	.half	3
+	.word	.L288-.L287
+.L287:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L288:
+	.byte	5,23,7,0,5,2
+	.word	.L69
+	.byte	3,158,5,1,5,4,9
+	.half	.L247-.L69
+	.byte	3,5,1,5,22,9
+	.half	.L289-.L247
+	.byte	1,5,20,9
+	.half	.L290-.L289
+	.byte	1,5,35,9
+	.half	.L291-.L290
+	.byte	3,4,1,5,11,9
+	.half	.L292-.L291
+	.byte	3,2,1,5,4,9
+	.half	.L42-.L292
+	.byte	3,16,1,5,1,9
+	.half	.L43-.L42
+	.byte	3,1,1,7,9
+	.half	.L88-.L43
+	.byte	0,1,1
+.L286:
+	.sdecl	'.debug_ranges',debug,cluster('Rte_Stop')
+	.sect	'.debug_ranges'
+.L87:
+	.word	-1,.L69,0,.L88-.L69,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_MainFunction')
+	.sect	'.debug_info'
+.L89:
+	.word	170
+	.half	3
+	.word	.L90
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L92,.L91
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_MainFunction',0,1,249,1,1,1,1,1
+	.word	.L51,.L169,.L50
+	.byte	4
+	.word	.L51,.L169
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_MainFunction')
+	.sect	'.debug_abbrev'
+.L90:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Rte_MainFunction')
+	.sect	'.debug_line'
+.L91:
+	.word	.L294-.L293
+.L293:
+	.half	3
+	.word	.L296-.L295
+.L295:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L296:
+	.byte	5,1,7,0,5,2
+	.word	.L51
+	.byte	3,251,1,1,7,9
+	.half	.L93-.L51
+	.byte	0,1,1
+.L294:
+	.sdecl	'.debug_ranges',debug,cluster('Rte_MainFunction')
+	.sect	'.debug_ranges'
+.L92:
+	.word	-1,.L51,0,.L93-.L51,0,0
+	.sdecl	'.debug_info',debug,cluster('SchM_Init')
+	.sect	'.debug_info'
+.L94:
+	.word	163
+	.half	3
+	.word	.L95
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L97,.L96
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'SchM_Init',0,1,231,2,1,1,1,1
+	.word	.L57,.L170,.L56
+	.byte	4
+	.word	.L57,.L170
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('SchM_Init')
+	.sect	'.debug_abbrev'
+.L95:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('SchM_Init')
+	.sect	'.debug_line'
+.L96:
+	.word	.L298-.L297
+.L297:
+	.half	3
+	.word	.L300-.L299
+.L299:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L300:
+	.byte	5,9,7,0,5,2
+	.word	.L57
+	.byte	3,233,2,1,5,4,9
+	.half	.L301-.L57
+	.byte	1,7,9
+	.half	.L302-.L301
+	.byte	1,5,26,9
+	.half	.L14-.L302
+	.byte	3,7,1,5,24,9
+	.half	.L303-.L14
+	.byte	1,5,21,9
+	.half	.L304-.L303
+	.byte	3,1,1,5,1,9
+	.half	.L15-.L304
+	.byte	3,2,1,7,9
+	.half	.L98-.L15
+	.byte	0,1,1
+.L298:
+	.sdecl	'.debug_ranges',debug,cluster('SchM_Init')
+	.sect	'.debug_ranges'
+.L97:
+	.word	-1,.L57,0,.L98-.L57,0,0
+	.sdecl	'.debug_info',debug,cluster('SchM_Deinit')
+	.sect	'.debug_info'
+.L99:
+	.word	165
+	.half	3
+	.word	.L100
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L102,.L101
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'SchM_Deinit',0,1,128,3,1,1,1,1
+	.word	.L59,.L171,.L58
+	.byte	4
+	.word	.L59,.L171
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('SchM_Deinit')
+	.sect	'.debug_abbrev'
+.L100:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('SchM_Deinit')
+	.sect	'.debug_line'
+.L101:
+	.word	.L306-.L305
+.L305:
+	.half	3
+	.word	.L308-.L307
+.L307:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L308:
+	.byte	5,9,7,0,5,2
+	.word	.L59
+	.byte	3,130,3,1,5,4,9
+	.half	.L309-.L59
+	.byte	1,5,27,7,9
+	.half	.L310-.L309
+	.byte	3,3,1,5,25,9
+	.half	.L311-.L310
+	.byte	1,5,1,9
+	.half	.L16-.L311
+	.byte	3,3,1,7,9
+	.half	.L103-.L16
+	.byte	0,1,1
+.L306:
+	.sdecl	'.debug_ranges',debug,cluster('SchM_Deinit')
+	.sect	'.debug_ranges'
+.L102:
+	.word	-1,.L59,0,.L103-.L59,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_ActivateRE')
+	.sect	'.debug_info'
+.L104:
+	.word	236
+	.half	3
+	.word	.L105
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L107,.L106
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_ActivateRE',0,1,141,1,1
+	.word	.L164
+	.byte	1,1,1
+	.word	.L45,.L172,.L44
+	.byte	4
+	.byte	'c',0,1,141,1,40
+	.word	.L173,.L174
+	.byte	5
+	.word	.L45,.L172
+	.byte	6
+	.byte	'status',0,1,143,1,28
+	.word	.L164,.L175
+	.byte	5
+	.word	.L176,.L3
+	.byte	6
+	.byte	'stat',0,1,153,1,18
+	.word	.L164,.L177
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_ActivateRE')
+	.sect	'.debug_abbrev'
+.L105:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Rte_ActivateRE')
+	.sect	'.debug_line'
+.L106:
+	.word	.L313-.L312
+.L312:
+	.half	3
+	.word	.L315-.L314
+.L314:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L315:
+	.byte	5,37,7,0,5,2
+	.word	.L45
+	.byte	3,142,1,1,5,10,9
+	.half	.L219-.L45
+	.byte	3,3,1,5,4,9
+	.half	.L316-.L219
+	.byte	1,5,20,7,9
+	.half	.L317-.L316
+	.byte	3,2,1,5,18,9
+	.half	.L318-.L317
+	.byte	1,5,10,9
+	.half	.L2-.L318
+	.byte	3,3,1,5,4,9
+	.half	.L218-.L2
+	.byte	1,5,28,7,9
+	.half	.L176-.L218
+	.byte	3,10,1,5,12,9
+	.half	.L220-.L176
+	.byte	3,1,1,5,45,7,9
+	.half	.L319-.L220
+	.byte	1,5,17,9
+	.half	.L320-.L319
+	.byte	3,4,1,5,4,9
+	.half	.L3-.L320
+	.byte	3,6,1,5,1,9
+	.half	.L6-.L3
+	.byte	3,1,1,7,9
+	.half	.L108-.L6
+	.byte	0,1,1
+.L313:
+	.sdecl	'.debug_ranges',debug,cluster('Rte_ActivateRE')
+	.sect	'.debug_ranges'
+.L107:
+	.word	-1,.L45,0,.L108-.L45,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_WaitWithTimeout')
+	.sect	'.debug_info'
+.L109:
+	.word	236
+	.half	3
+	.word	.L110
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L112,.L111
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_WaitWithTimeout',0,1,158,3,1
+	.word	.L164
+	.byte	1,1,1
+	.word	.L61,.L178,.L60
+	.byte	4
+	.byte	'datum',0,1,158,3,68
+	.word	.L179,.L180
+	.byte	4
+	.byte	'event',0,1,159,3,36
+	.word	.L181,.L182
+	.byte	4
+	.byte	'timeout',0,1,160,3,37
+	.word	.L183,.L184
+	.byte	5
+	.word	.L61,.L178
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_WaitWithTimeout')
+	.sect	'.debug_abbrev'
+.L110:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Rte_WaitWithTimeout')
+	.sect	'.debug_line'
+.L111:
+	.word	.L322-.L321
+.L321:
+	.half	3
+	.word	.L324-.L323
+.L323:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L324:
+	.byte	5,11,7,0,5,2
+	.word	.L61
+	.byte	3,167,3,1,5,4,9
+	.half	.L325-.L61
+	.byte	1,5,1,9
+	.half	.L17-.L325
+	.byte	3,1,1,7,9
+	.half	.L113-.L17
+	.byte	0,1,1
+.L322:
+	.sdecl	'.debug_ranges',debug,cluster('Rte_WaitWithTimeout')
+	.sect	'.debug_ranges'
+.L112:
+	.word	-1,.L61,0,.L113-.L61,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_SetEvent')
+	.sect	'.debug_info'
+.L114:
+	.word	229
+	.half	3
+	.word	.L115
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L117,.L116
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_SetEvent',0,1,203,2,1
+	.word	.L164
+	.byte	1,1,1
+	.word	.L55,.L185,.L54
+	.byte	4
+	.byte	'datum',0,1,203,2,61
+	.word	.L179,.L186
+	.byte	4
+	.byte	'event',0,1,204,2,29
+	.word	.L181,.L187
+	.byte	5
+	.word	.L55,.L185
+	.byte	6
+	.byte	'status',0,1,206,2,19
+	.word	.L164,.L188
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_SetEvent')
+	.sect	'.debug_abbrev'
+.L115:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Rte_SetEvent')
+	.sect	'.debug_line'
+.L116:
+	.word	.L327-.L326
+.L326:
+	.half	3
+	.word	.L329-.L328
+.L328:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L329:
+	.byte	5,28,7,0,5,2
+	.word	.L55
+	.byte	3,205,2,1,5,4,9
+	.half	.L230-.L55
+	.byte	3,7,1,5,1,9
+	.half	.L13-.L230
+	.byte	3,1,1,7,9
+	.half	.L118-.L13
+	.byte	0,1,1
+.L327:
+	.sdecl	'.debug_ranges',debug,cluster('Rte_SetEvent')
+	.sect	'.debug_ranges'
+.L117:
+	.word	-1,.L55,0,.L118-.L55,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_DecrementWaitingCount')
+	.sect	'.debug_info'
+.L119:
+	.word	234
+	.half	3
+	.word	.L120
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L122,.L121
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_DecrementWaitingCount',0,1,198,1,1,1,1,1
+	.word	.L47,.L189,.L46
+	.byte	4
+	.byte	'datum',0,1,198,1,74
+	.word	.L179,.L190
+	.byte	4
+	.byte	'idx',0,1,199,1,47
+	.word	.L164,.L191
+	.byte	4
+	.byte	'event',0,1,200,1,42
+	.word	.L181,.L192
+	.byte	5
+	.word	.L47,.L189
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_DecrementWaitingCount')
+	.sect	'.debug_abbrev'
+.L120:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Rte_DecrementWaitingCount')
+	.sect	'.debug_line'
+.L121:
+	.word	.L331-.L330
+.L330:
+	.half	3
+	.word	.L333-.L332
+.L332:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L333:
+	.byte	5,1,7,0,5,2
+	.word	.L47
+	.byte	3,204,1,1,7,9
+	.half	.L123-.L47
+	.byte	0,1,1
+.L331:
+	.sdecl	'.debug_ranges',debug,cluster('Rte_DecrementWaitingCount')
+	.sect	'.debug_ranges'
+.L122:
+	.word	-1,.L47,0,.L123-.L47,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_GetCurrentTaskIndex')
+	.sect	'.debug_info'
+.L124:
+	.word	202
+	.half	3
+	.word	.L125
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L127,.L126
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_GetCurrentTaskIndex',0,1,223,1,1
+	.word	.L164
+	.byte	1,1,1
+	.word	.L49,.L193,.L48
+	.byte	4
+	.byte	'taskRef',0,1,223,1,63
+	.word	.L194,.L195
+	.byte	5
+	.word	.L49,.L193
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_GetCurrentTaskIndex')
+	.sect	'.debug_abbrev'
+.L125:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Rte_GetCurrentTaskIndex')
+	.sect	'.debug_line'
+.L126:
+	.word	.L335-.L334
+.L334:
+	.half	3
+	.word	.L337-.L336
+.L336:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L337:
+	.byte	5,11,7,0,5,2
+	.word	.L49
+	.byte	3,226,1,1,5,4,9
+	.half	.L338-.L49
+	.byte	1,5,1,9
+	.half	.L7-.L338
+	.byte	3,1,1,7,9
+	.half	.L128-.L7
+	.byte	0,1,1
+.L335:
+	.sdecl	'.debug_ranges',debug,cluster('Rte_GetCurrentTaskIndex')
+	.sect	'.debug_ranges'
+.L127:
+	.word	-1,.L49,0,.L128-.L49,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_WriteQueue')
+	.sect	'.debug_info'
+.L129:
+	.word	361
+	.half	3
+	.word	.L130
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L132,.L131
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_WriteQueue',0,1,190,3,1
+	.word	.L164
+	.byte	1,1,1
+	.word	.L63,.L196,.L62
+	.byte	4
+	.byte	'q',0,1,190,3,36
+	.word	.L197,.L198
+	.byte	4
+	.byte	'data',0,1,191,3,36
+	.word	.L199,.L200
+	.byte	5
+	.word	.L63,.L196
+	.byte	6
+	.byte	'status',0,1,193,3,46
+	.word	.L164,.L201
+	.byte	6
+	.byte	'dynamic',0,1,194,3,46
+	.word	.L202,.L203
+	.byte	6
+	.byte	'old_in',0,1,195,3,46
+	.word	.L154,.L204
+	.byte	5
+	.word	.L205,.L206
+	.byte	6
+	.byte	'osappID',0,1,198,3,4
+	.word	.L164,.L207
+	.byte	0,5
+	.word	.L25,.L26
+	.byte	6
+	.byte	'act_stat',0,1,244,3,24
+	.word	.L164,.L208
+	.byte	0,5
+	.word	.L20,.L36
+	.byte	6
+	.byte	'osappID',0,1,160,4,4
+	.word	.L164,.L209
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_WriteQueue')
+	.sect	'.debug_abbrev'
+.L130:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Rte_WriteQueue')
+	.sect	'.debug_line'
+.L131:
+	.word	.L340-.L339
+.L339:
+	.half	3
+	.word	.L342-.L341
+.L341:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L342:
+	.byte	5,1,7,0,5,2
+	.word	.L63
+	.byte	3,189,3,1,5,55,9
+	.half	.L235-.L63
+	.byte	3,3,1,5,58,9
+	.half	.L237-.L235
+	.byte	3,1,1,5,4,9
+	.half	.L205-.L237
+	.byte	3,4,1,5,16,9
+	.half	.L206-.L205
+	.byte	3,2,1,5,27,9
+	.half	.L343-.L206
+	.byte	1,5,4,9
+	.half	.L344-.L343
+	.byte	1,5,28,7,9
+	.half	.L345-.L344
+	.byte	3,3,1,5,26,9
+	.half	.L346-.L345
+	.byte	1,5,14,9
+	.half	.L347-.L346
+	.byte	3,1,1,5,43,9
+	.half	.L348-.L347
+	.byte	3,127,1,5,37,9
+	.half	.L19-.L348
+	.byte	3,9,1,5,13,9
+	.half	.L349-.L19
+	.byte	3,125,1,5,7,9
+	.half	.L350-.L349
+	.byte	1,5,50,7,9
+	.half	.L351-.L350
+	.byte	3,3,1,5,66,9
+	.half	.L239-.L351
+	.byte	1,5,71,9
+	.half	.L21-.L239
+	.byte	3,6,1,5,23,9
+	.half	.L22-.L21
+	.byte	3,4,1,5,76,9
+	.half	.L236-.L22
+	.byte	3,3,1,5,73,9
+	.half	.L352-.L236
+	.byte	1,5,19,9
+	.half	.L353-.L352
+	.byte	1,9
+	.half	.L354-.L353
+	.byte	3,3,1,5,28,9
+	.half	.L355-.L354
+	.byte	1,5,7,9
+	.half	.L356-.L355
+	.byte	1,5,25,7,9
+	.half	.L357-.L356
+	.byte	3,2,1,5,22,9
+	.half	.L358-.L357
+	.byte	1,5,14,9
+	.half	.L23-.L358
+	.byte	3,2,1,5,20,9
+	.half	.L359-.L23
+	.byte	1,5,17,9
+	.half	.L360-.L359
+	.byte	3,2,1,5,15,9
+	.half	.L361-.L360
+	.byte	3,3,1,9
+	.half	.L362-.L361
+	.byte	3,5,1,9
+	.half	.L363-.L362
+	.byte	3,24,1,9
+	.half	.L364-.L363
+	.byte	3,15,1,5,13,9
+	.half	.L24-.L364
+	.byte	3,86,1,5,38,9
+	.half	.L25-.L24
+	.byte	3,11,1,5,18,9
+	.half	.L240-.L25
+	.byte	3,1,1,5,55,7,9
+	.half	.L365-.L240
+	.byte	1,5,28,7,9
+	.half	.L366-.L365
+	.byte	3,8,1,5,23,9
+	.half	.L367-.L366
+	.byte	3,1,1,5,29,9
+	.half	.L368-.L367
+	.byte	1,5,23,9
+	.half	.L369-.L368
+	.byte	3,1,1,5,13,9
+	.half	.L30-.L369
+	.byte	3,2,1,5,65,9
+	.half	.L26-.L30
+	.byte	3,6,1,5,13,9
+	.half	.L370-.L26
+	.byte	1,5,28,7,9
+	.half	.L371-.L370
+	.byte	3,3,1,5,23,9
+	.half	.L372-.L371
+	.byte	3,1,1,5,29,9
+	.half	.L373-.L372
+	.byte	1,5,23,9
+	.half	.L374-.L373
+	.byte	3,1,1,5,13,9
+	.half	.L33-.L374
+	.byte	3,3,1,5,10,9
+	.half	.L27-.L33
+	.byte	3,7,1,5,4,9
+	.half	.L20-.L27
+	.byte	3,4,1,9
+	.half	.L36-.L20
+	.byte	3,2,1,5,1,9
+	.half	.L37-.L36
+	.byte	3,1,1,7,9
+	.half	.L133-.L37
+	.byte	0,1,1
+.L340:
+	.sdecl	'.debug_ranges',debug,cluster('Rte_WriteQueue')
+	.sect	'.debug_ranges'
+.L132:
+	.word	-1,.L63,0,.L133-.L63,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_ReadQueue')
+	.sect	'.debug_info'
+.L134:
+	.word	246
+	.half	3
+	.word	.L135
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L137,.L136
+	.byte	2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_ReadQueue',0,1,146,2,1
+	.word	.L164
+	.byte	1,1,1
+	.word	.L53,.L210,.L52
+	.byte	4
+	.byte	'q',0,1,146,2,33
+	.word	.L197,.L211
+	.byte	4
+	.byte	'data',0,1,147,2,33
+	.word	.L212,.L213
+	.byte	5
+	.word	.L53,.L210
+	.byte	6
+	.byte	'status',0,1,149,2,20
+	.word	.L164,.L214
+	.byte	6
+	.byte	'dynamic',0,1,150,2,47
+	.word	.L202,.L215
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_ReadQueue')
+	.sect	'.debug_abbrev'
+.L135:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Rte_ReadQueue')
+	.sect	'.debug_line'
+.L136:
+	.word	.L376-.L375
+.L375:
+	.half	3
+	.word	.L378-.L377
+.L377:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'RTE\\gen\\Rte_Lib.c',0,0,0,0,0
+.L378:
+	.byte	5,1,7,0,5,2
+	.word	.L53
+	.byte	3,145,2,1,5,29,9
+	.half	.L224-.L53
+	.byte	3,3,1,5,59,9
+	.half	.L225-.L224
+	.byte	3,1,1,5,7,9
+	.half	.L227-.L225
+	.byte	3,5,1,5,25,9
+	.half	.L222-.L227
+	.byte	3,2,1,5,7,9
+	.half	.L379-.L222
+	.byte	1,5,22,7,9
+	.half	.L380-.L379
+	.byte	3,2,1,5,37,9
+	.half	.L381-.L380
+	.byte	1,5,10,9
+	.half	.L382-.L381
+	.byte	1,5,20,9
+	.half	.L383-.L382
+	.byte	3,2,1,5,10,9
+	.half	.L9-.L383
+	.byte	3,126,1,5,43,9
+	.half	.L8-.L9
+	.byte	3,10,1,5,51,9
+	.half	.L384-.L8
+	.byte	1,5,70,9
+	.half	.L229-.L384
+	.byte	3,3,1,5,81,9
+	.half	.L385-.L229
+	.byte	1,5,78,9
+	.half	.L386-.L385
+	.byte	1,5,23,9
+	.half	.L387-.L386
+	.byte	1,5,22,9
+	.half	.L388-.L387
+	.byte	3,3,1,5,32,9
+	.half	.L389-.L388
+	.byte	1,5,10,9
+	.half	.L390-.L389
+	.byte	1,5,29,7,9
+	.half	.L391-.L390
+	.byte	3,3,1,5,26,9
+	.half	.L392-.L391
+	.byte	1,5,17,9
+	.half	.L11-.L392
+	.byte	3,2,1,5,23,9
+	.half	.L393-.L11
+	.byte	1,5,7,9
+	.half	.L10-.L393
+	.byte	3,3,1,5,21,9
+	.half	.L394-.L10
+	.byte	3,3,1,5,11,9
+	.half	.L395-.L394
+	.byte	1,5,25,9
+	.half	.L226-.L395
+	.byte	3,1,1,5,23,9
+	.half	.L396-.L226
+	.byte	1,5,4,9
+	.half	.L397-.L396
+	.byte	3,2,1,5,1,9
+	.half	.L12-.L397
+	.byte	3,1,1,7,9
+	.half	.L138-.L12
+	.byte	0,1,1
+.L376:
+	.sdecl	'.debug_ranges',debug,cluster('Rte_ReadQueue')
+	.sect	'.debug_ranges'
+.L137:
+	.word	-1,.L53,0,.L138-.L53,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_Resources')
+	.sect	'.debug_info'
+.L139:
+	.word	144
+	.half	3
+	.word	.L140
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_Resources',0,4,99,36
+	.word	.L216
+	.byte	1,5,3
+	.word	Rte_Resources
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_Resources')
+	.sect	'.debug_abbrev'
+.L140:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_ResourceCount')
+	.sect	'.debug_info'
+.L141:
+	.word	148
+	.half	3
+	.word	.L142
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_ResourceCount',0,4,73,41
+	.word	.L217
+	.byte	1,5,3
+	.word	Rte_ResourceCount
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_ResourceCount')
+	.sect	'.debug_abbrev'
+.L142:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_Initialized')
+	.sect	'.debug_info'
+.L143:
+	.word	146
+	.half	3
+	.word	.L144
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_Initialized',0,4,110,24
+	.word	.L164
+	.byte	1,5,3
+	.word	Rte_Initialized
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_Initialized')
+	.sect	'.debug_abbrev'
+.L144:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('SchM_Initialized')
+	.sect	'.debug_info'
+.L145:
+	.word	147
+	.half	3
+	.word	.L146
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L70
+	.byte	3
+	.byte	'SchM_Initialized',0,4,111,24
+	.word	.L164
+	.byte	1,5,3
+	.word	SchM_Initialized
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('SchM_Initialized')
+	.sect	'.debug_abbrev'
+.L146:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_ResourceCount_OsApplication_Core0')
+	.sect	'.debug_info'
+.L147:
+	.word	168
+	.half	3
+	.word	.L148
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_ResourceCount_OsApplication_Core0',0,4,79,23
+	.word	.L158
+	.byte	1,5,3
+	.word	Rte_ResourceCount_OsApplication_Core0
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_ResourceCount_OsApplication_Core0')
+	.sect	'.debug_abbrev'
+.L148:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_ResourceCount_OsApplication_Core1')
+	.sect	'.debug_info'
+.L149:
+	.word	168
+	.half	3
+	.word	.L150
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_ResourceCount_OsApplication_Core1',0,4,85,23
+	.word	.L158
+	.byte	1,5,3
+	.word	Rte_ResourceCount_OsApplication_Core1
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_ResourceCount_OsApplication_Core1')
+	.sect	'.debug_abbrev'
+.L150:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Rte_ResourceCount_OsApplication_Core2')
+	.sect	'.debug_info'
+.L151:
+	.word	168
+	.half	3
+	.word	.L152
+	.byte	4,1
+	.byte	'RTE\\gen\\Rte_Lib.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L70
+	.byte	3
+	.byte	'Rte_ResourceCount_OsApplication_Core2',0,4,91,23
+	.word	.L158
+	.byte	1,5,3
+	.word	Rte_ResourceCount_OsApplication_Core2
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Rte_ResourceCount_OsApplication_Core2')
+	.sect	'.debug_abbrev'
+.L152:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('Rte_ActivateRE')
+	.sect	'.debug_loc'
+.L44:
+	.word	-1,.L45,0,.L172-.L45
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L174:
+	.word	-1,.L45,0,.L218-.L45
+	.half	1
+	.byte	100
+	.word	0,0
+.L177:
+	.word	-1,.L45,.L220-.L45,.L3-.L45
+	.half	1
+	.byte	82
+	.word	0,0
+.L175:
+	.word	-1,.L45,.L219-.L45,.L172-.L45
+	.half	1
+	.byte	88
+	.word	.L221-.L45,.L172-.L45
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Rte_DecrementWaitingCount')
+	.sect	'.debug_loc'
+.L46:
+	.word	-1,.L47,0,.L189-.L47
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L190:
+	.word	-1,.L47,0,.L189-.L47
+	.half	1
+	.byte	100
+	.word	0,0
+.L192:
+	.word	-1,.L47,0,.L189-.L47
+	.half	1
+	.byte	85
+	.word	0,0
+.L191:
+	.word	-1,.L47,0,.L189-.L47
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Rte_GetCurrentTaskIndex')
+	.sect	'.debug_loc'
+.L48:
+	.word	-1,.L49,0,.L193-.L49
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L195:
+	.word	-1,.L49,0,.L193-.L49
+	.half	1
+	.byte	100
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Rte_MainFunction')
+	.sect	'.debug_loc'
+.L50:
+	.word	-1,.L51,0,.L169-.L51
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Rte_ReadQueue')
+	.sect	'.debug_loc'
+.L52:
+	.word	-1,.L53,0,.L210-.L53
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L213:
+	.word	-1,.L53,0,.L222-.L53
+	.half	1
+	.byte	101
+	.word	.L224-.L53,.L210-.L53
+	.half	1
+	.byte	108
+	.word	.L228-.L53,.L229-.L53
+	.half	1
+	.byte	100
+	.word	0,0
+.L215:
+	.word	-1,.L53,.L227-.L53,.L210-.L53
+	.half	1
+	.byte	111
+	.word	0,0
+.L211:
+	.word	-1,.L53,0,.L222-.L53
+	.half	1
+	.byte	100
+	.word	.L223-.L53,.L210-.L53
+	.half	1
+	.byte	109
+	.word	0,0
+.L214:
+	.word	-1,.L53,.L225-.L53,.L226-.L53
+	.half	1
+	.byte	88
+	.word	.L226-.L53,.L210-.L53
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Rte_SetEvent')
+	.sect	'.debug_loc'
+.L54:
+	.word	-1,.L55,0,.L185-.L55
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L186:
+	.word	-1,.L55,0,.L185-.L55
+	.half	1
+	.byte	100
+	.word	0,0
+.L187:
+	.word	-1,.L55,0,.L185-.L55
+	.half	1
+	.byte	84
+	.word	0,0
+.L188:
+	.word	-1,.L55,.L230-.L55,.L185-.L55
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Rte_Start')
+	.sect	'.debug_loc'
+.L66:
+	.word	-1,.L67,0,.L165-.L67
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L166:
+	.word	-1,.L67,.L245-.L67,.L165-.L67
+	.half	1
+	.byte	95
+	.word	.L246-.L67,.L165-.L67
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Rte_Stop')
+	.sect	'.debug_loc'
+.L68:
+	.word	-1,.L69,0,.L167-.L69
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L168:
+	.word	-1,.L69,.L247-.L69,.L167-.L69
+	.half	1
+	.byte	95
+	.word	.L248-.L69,.L167-.L69
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Rte_WaitWithTimeout')
+	.sect	'.debug_loc'
+.L60:
+	.word	-1,.L61,0,.L178-.L61
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L180:
+	.word	-1,.L61,0,.L178-.L61
+	.half	1
+	.byte	100
+	.word	0,0
+.L182:
+	.word	-1,.L61,0,.L178-.L61
+	.half	1
+	.byte	84
+	.word	0,0
+.L184:
+	.word	-1,.L61,0,.L178-.L61
+	.half	1
+	.byte	85
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Rte_WriteQueue')
+	.sect	'.debug_loc'
+.L62:
+	.word	-1,.L63,0,.L231-.L63
+	.half	2
+	.byte	138,0
+	.word	.L231-.L63,.L196-.L63
+	.half	2
+	.byte	138,8
+	.word	.L196-.L63,.L196-.L63
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L208:
+	.word	-1,.L63,.L240-.L63,.L26-.L63
+	.half	1
+	.byte	82
+	.word	0,0
+.L200:
+	.word	-1,.L63,0,.L232-.L63
+	.half	1
+	.byte	101
+	.word	.L235-.L63,.L236-.L63
+	.half	1
+	.byte	108
+	.word	.L238-.L63,.L239-.L63
+	.half	1
+	.byte	101
+	.word	0,0
+.L203:
+	.word	-1,.L63,.L205-.L63,.L196-.L63
+	.half	1
+	.byte	109
+	.word	0,0
+.L204:
+	.word	0,0
+.L207:
+	.word	-1,.L63,.L232-.L63,.L18-.L63
+	.half	1
+	.byte	82
+	.word	0,0
+.L209:
+	.word	-1,.L63,.L241-.L63,.L36-.L63
+	.half	1
+	.byte	82
+	.word	0,0
+.L198:
+	.word	-1,.L63,0,.L232-.L63
+	.half	1
+	.byte	100
+	.word	.L233-.L63,.L234-.L63
+	.half	1
+	.byte	111
+	.word	0,0
+.L201:
+	.word	-1,.L63,.L237-.L63,.L196-.L63
+	.half	1
+	.byte	88
+	.word	.L242-.L63,.L196-.L63
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Rte_memcpy')
+	.sect	'.debug_loc'
+.L64:
+	.word	-1,.L65,0,.L153-.L65
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L161:
+	.word	-1,.L65,0,.L153-.L65
+	.half	1
+	.byte	100
+	.word	0,0
+.L155:
+	.word	-1,.L65,0,.L153-.L65
+	.half	1
+	.byte	100
+	.word	0,0
+.L159:
+	.word	-1,.L65,0,.L243-.L65
+	.half	1
+	.byte	84
+	.word	.L244-.L65,.L153-.L65
+	.half	1
+	.byte	84
+	.word	0,0
+.L163:
+	.word	-1,.L65,0,.L153-.L65
+	.half	1
+	.byte	101
+	.word	0,0
+.L157:
+	.word	-1,.L65,0,.L153-.L65
+	.half	1
+	.byte	101
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('SchM_Deinit')
+	.sect	'.debug_loc'
+.L58:
+	.word	-1,.L59,0,.L171-.L59
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('SchM_Init')
+	.sect	'.debug_loc'
+.L56:
+	.word	-1,.L57,0,.L170-.L57
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L398:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Rte_ActivateRE')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L398,.L45,.L172-.L45
+	.sdecl	'.debug_frame',debug,cluster('Rte_DecrementWaitingCount')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L398,.L47,.L189-.L47
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Rte_GetCurrentTaskIndex')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L398,.L49,.L193-.L49
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Rte_MainFunction')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L398,.L51,.L169-.L51
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Rte_ReadQueue')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L398,.L53,.L210-.L53
+	.sdecl	'.debug_frame',debug,cluster('Rte_SetEvent')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L398,.L55,.L185-.L55
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('SchM_Init')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L398,.L57,.L170-.L57
+	.sdecl	'.debug_frame',debug,cluster('SchM_Deinit')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L398,.L59,.L171-.L59
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Rte_WaitWithTimeout')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L398,.L61,.L178-.L61
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Rte_WriteQueue')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L398,.L63,.L196-.L63
+	.byte	4
+	.word	(.L231-.L63)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L196-.L231)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('Rte_memcpy')
+	.sect	'.debug_frame'
+	.word	20
+	.word	.L398,.L65,.L153-.L65
+	.byte	8,18,8,19,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Rte_Start')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L398,.L67,.L165-.L67
+	.sdecl	'.debug_frame',debug,cluster('Rte_Stop')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L398,.L69,.L167-.L69
+
+; RTE\gen\Rte_Lib.c	   700  /* rte_sws_end 1310 */
+; RTE\gen\Rte_Lib.c	   701  /* rte_sws_end 1197 */
+; RTE\gen\Rte_Lib.c	   702  
+; RTE\gen\Rte_Lib.c	   703  #define RTE_MAIN_STOP_SEC_CODE
+; RTE\gen\Rte_Lib.c	   704  #include "Rte_MemMap.h" /*lint !e537 permit multiple inclusion */
+
+	; Module end

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 autosar_4-2-2.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>AUTOSAR_Dcm</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>ModeDeclarationGroups</SHORT-NAME>
+          <ELEMENTS>
+            <MODE-DECLARATION-GROUP>
+              <SHORT-NAME>DcmDiagnosticSessionControl</SHORT-NAME>
+              <CATEGORY>ALPHABETIC_ORDER</CATEGORY>
+              <INITIAL-MODE-REF DEST="MODE-DECLARATION">/AUTOSAR_Dcm/ModeDeclarationGroups/DcmDiagnosticSessionControl/DEFAULT_SESSION</INITIAL-MODE-REF>
+              <MODE-DECLARATIONS>
+               <MODE-DECLARATION>
+                  <SHORT-NAME>DEFAULT_SESSION</SHORT-NAME>
+               </MODE-DECLARATION>
+               <MODE-DECLARATION>
+                  <SHORT-NAME>PROGRAMMING_SESSION</SHORT-NAME>
+               </MODE-DECLARATION>
+               <MODE-DECLARATION>
+                  <SHORT-NAME>EXTENDED_DIAGNOSTIC_SESSION</SHORT-NAME>
+               </MODE-DECLARATION>
+              </MODE-DECLARATIONS>
+            </MODE-DECLARATION-GROUP>
+            <MODE-DECLARATION-GROUP>
+              <SHORT-NAME>DcmEcuReset</SHORT-NAME>
+              <CATEGORY>ALPHABETIC_ORDER</CATEGORY>
+              <INITIAL-MODE-REF DEST="MODE-DECLARATION">/AUTOSAR_Dcm/ModeDeclarationGroups/DcmEcuReset/NONE</INITIAL-MODE-REF>
+              <MODE-DECLARATIONS>
+                <MODE-DECLARATION>
+                 <SHORT-NAME>NONE</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                  <SHORT-NAME>HARD</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                  <SHORT-NAME>SOFT</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                  <SHORT-NAME>JUMPTOBOOTLOADER</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                  <SHORT-NAME>JUMPTOSYSSUPPLIERBOOTLOADER</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                  <SHORT-NAME>EXECUTE</SHORT-NAME>
+                </MODE-DECLARATION>
+              </MODE-DECLARATIONS>
+            </MODE-DECLARATION-GROUP>
+            <MODE-DECLARATION-GROUP>
+              <SHORT-NAME>DcmControlDTCSetting</SHORT-NAME>
+              <CATEGORY>ALPHABETIC_ORDER</CATEGORY>
+              <INITIAL-MODE-REF DEST="MODE-DECLARATION">/AUTOSAR_Dcm/ModeDeclarationGroups/DcmControlDTCSetting/ENABLEDTCSETTING</INITIAL-MODE-REF>
+              <MODE-DECLARATIONS>
+                <MODE-DECLARATION>
+                  <SHORT-NAME>ENABLEDTCSETTING</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                  <SHORT-NAME>DISABLEDTCSETTING</SHORT-NAME>
+                </MODE-DECLARATION>
+              </MODE-DECLARATIONS>
+            </MODE-DECLARATION-GROUP>
+            <MODE-DECLARATION-GROUP>
+              <SHORT-NAME>DcmCommunicationControl_ComMChannel_Can_Network_Channel</SHORT-NAME>
+              <CATEGORY>ALPHABETIC_ORDER</CATEGORY>
+              <INITIAL-MODE-REF DEST="MODE-DECLARATION">/AUTOSAR_Dcm/ModeDeclarationGroups/DcmCommunicationControl_ComMChannel_Can_Network_Channel/DCM_ENABLE_RX_TX_NORM_NM</INITIAL-MODE-REF>
+              <MODE-DECLARATIONS>
+                <MODE-DECLARATION>
+                   <SHORT-NAME>DCM_ENABLE_RX_TX_NORM</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                   <SHORT-NAME>DCM_ENABLE_RX_DISABLE_TX_NORM</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                   <SHORT-NAME>DCM_DISABLE_RX_ENABLE_TX_NORM</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                   <SHORT-NAME>DCM_DISABLE_RX_TX_NORM</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                   <SHORT-NAME>DCM_ENABLE_RX_TX_NM</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                   <SHORT-NAME>DCM_ENABLE_RX_DISABLE_TX_NM</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                   <SHORT-NAME>DCM_DISABLE_RX_ENABLE_TX_NM</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                   <SHORT-NAME>DCM_DISABLE_RX_TX_NM</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                   <SHORT-NAME>DCM_ENABLE_RX_TX_NORM_NM</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                   <SHORT-NAME>DCM_ENABLE_RX_DISABLE_TX_NORM_NM</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                   <SHORT-NAME>DCM_DISABLE_RX_ENABLE_TX_NORM_NM</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                   <SHORT-NAME>DCM_DISABLE_RX_TX_NORM_NM</SHORT-NAME>
+                </MODE-DECLARATION>
+              </MODE-DECLARATIONS>
+            </MODE-DECLARATION-GROUP>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>BswModuleEntrys</SHORT-NAME>
+          <ELEMENTS>
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>Dcm_MainFunction</SHORT-NAME>
+              <SERVICE-ID>37</SERVICE-ID>
+              <IS-REENTRANT>false</IS-REENTRANT>
+              <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+              <CALL-TYPE>SCHEDULED</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+            </BSW-MODULE-ENTRY>
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>Dcm_GetSecurityLevel</SHORT-NAME>
+              <SERVICE-ID>13</SERVICE-ID>
+              <IS-REENTRANT>true</IS-REENTRANT>
+              <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+              <CALL-TYPE>REGULAR</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+            </BSW-MODULE-ENTRY>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>BswModuleDescriptions</SHORT-NAME>
+          <ELEMENTS>
+            <BSW-MODULE-DESCRIPTION>
+              <SHORT-NAME>Dcm</SHORT-NAME>
+              <CATEGORY>BSW_MODULE</CATEGORY>
+              <MODULE-ID>53</MODULE-ID>
+              <PROVIDED-ENTRYS>
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_Dcm/BswModuleEntrys/Dcm_MainFunction</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+              </PROVIDED-ENTRYS>
+              <PROVIDED-MODE-GROUPS>
+                <MODE-DECLARATION-GROUP-PROTOTYPE>
+                  <SHORT-NAME>DcmDiagnosticSessionControl</SHORT-NAME>
+                  <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/AUTOSAR_Dcm/ModeDeclarationGroups/DcmDiagnosticSessionControl</TYPE-TREF>
+                </MODE-DECLARATION-GROUP-PROTOTYPE>
+                <MODE-DECLARATION-GROUP-PROTOTYPE>
+                  <SHORT-NAME>DcmEcuReset</SHORT-NAME>
+                  <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/AUTOSAR_Dcm/ModeDeclarationGroups/DcmEcuReset</TYPE-TREF>
+                </MODE-DECLARATION-GROUP-PROTOTYPE>
+                <MODE-DECLARATION-GROUP-PROTOTYPE>
+                  <SHORT-NAME>DcmControlDTCSetting</SHORT-NAME>
+                  <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/AUTOSAR_Dcm/ModeDeclarationGroups/DcmControlDTCSetting</TYPE-TREF>
+                </MODE-DECLARATION-GROUP-PROTOTYPE>
+                <MODE-DECLARATION-GROUP-PROTOTYPE>
+                  <SHORT-NAME>DcmCommunicationControl_ComMChannel_Can_Network_Channel</SHORT-NAME>
+                  <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/AUTOSAR_Dcm/ModeDeclarationGroups/DcmCommunicationControl_ComMChannel_Can_Network_Channel</TYPE-TREF>
+                </MODE-DECLARATION-GROUP-PROTOTYPE>
+              </PROVIDED-MODE-GROUPS>
+              <REQUIRED-MODE-GROUPS>
+                <MODE-DECLARATION-GROUP-PROTOTYPE>
+                  <SHORT-NAME>R_DcmCommunicationControl_ComMChannel_Can_Network_Channel</SHORT-NAME>
+                  <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/AUTOSAR_Dcm/ModeDeclarationGroups/DcmCommunicationControl_ComMChannel_Can_Network_Channel</TYPE-TREF>
+                </MODE-DECLARATION-GROUP-PROTOTYPE>
+              </REQUIRED-MODE-GROUPS>
+              <INTERNAL-BEHAVIORS>
+                <BSW-INTERNAL-BEHAVIOR>
+                  <SHORT-NAME>BswInternalBehavior</SHORT-NAME>
+                  <DATA-TYPE-MAPPING-REFS>
+                    <DATA-TYPE-MAPPING-REF DEST="DATA-TYPE-MAPPING-SET">/AUTOSAR_Dcm/DataTypeMappingSets/DTS_DcmDiagnosticSessionControl</DATA-TYPE-MAPPING-REF>
+                    <DATA-TYPE-MAPPING-REF DEST="DATA-TYPE-MAPPING-SET">/AUTOSAR_Dcm/DataTypeMappingSets/DTS_DcmEcuReset</DATA-TYPE-MAPPING-REF>
+                    <DATA-TYPE-MAPPING-REF DEST="DATA-TYPE-MAPPING-SET">/AUTOSAR_Dcm/DataTypeMappingSets/DTS_DcmControlDTCSetting</DATA-TYPE-MAPPING-REF>
+                    <DATA-TYPE-MAPPING-REF DEST="DATA-TYPE-MAPPING-SET">/AUTOSAR_Dcm/DataTypeMappingSets/DTS_DcmCommunicationControl_ComMChannel_Can_Network_Channel</DATA-TYPE-MAPPING-REF>
+                  </DATA-TYPE-MAPPING-REFS>
+                  <ENTITYS>
+                    <BSW-SCHEDULABLE-ENTITY>
+                      <SHORT-NAME>BSWSE_DcmMainFunction</SHORT-NAME>
+                      <ACCESSED-MODE-GROUPS>
+                        <MODE-DECLARATION-GROUP-PROTOTYPE-REF-CONDITIONAL>
+                          <MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AUTOSAR_Dcm/BswModuleDescriptions/Dcm/R_DcmCommunicationControl_ComMChannel_Can_Network_Channel</MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                        </MODE-DECLARATION-GROUP-PROTOTYPE-REF-CONDITIONAL>
+                      </ACCESSED-MODE-GROUPS>
+                                            <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_Dcm/BswModuleEntrys/Dcm_MainFunction</IMPLEMENTED-ENTRY-REF>
+                      <MANAGED-MODE-GROUPS>
+                        <MODE-DECLARATION-GROUP-PROTOTYPE-REF-CONDITIONAL>
+                          <MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AUTOSAR_Dcm/BswModuleDescriptions/Dcm/DcmDiagnosticSessionControl</MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                        </MODE-DECLARATION-GROUP-PROTOTYPE-REF-CONDITIONAL>
+                        <MODE-DECLARATION-GROUP-PROTOTYPE-REF-CONDITIONAL>
+                         <MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AUTOSAR_Dcm/BswModuleDescriptions/Dcm/DcmEcuReset</MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                        </MODE-DECLARATION-GROUP-PROTOTYPE-REF-CONDITIONAL>
+                        <MODE-DECLARATION-GROUP-PROTOTYPE-REF-CONDITIONAL>
+                         <MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AUTOSAR_Dcm/BswModuleDescriptions/Dcm/DcmControlDTCSetting</MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                        </MODE-DECLARATION-GROUP-PROTOTYPE-REF-CONDITIONAL>
+                         <MODE-DECLARATION-GROUP-PROTOTYPE-REF-CONDITIONAL>
+                         <MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AUTOSAR_Dcm/BswModuleDescriptions/Dcm/DcmCommunicationControl_ComMChannel_Can_Network_Channel</MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                        </MODE-DECLARATION-GROUP-PROTOTYPE-REF-CONDITIONAL>
+                      </MANAGED-MODE-GROUPS>
+                    </BSW-SCHEDULABLE-ENTITY>
+                  </ENTITYS>
+                  <EVENTS>
+                    <BSW-TIMING-EVENT>
+                      <SHORT-NAME>EV_Dcm_MainFunction</SHORT-NAME>
+                     <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_Dcm/BswModuleDescriptions/Dcm/BswInternalBehavior/BSWSE_DcmMainFunction</STARTS-ON-EVENT-REF>
+                      <PERIOD>0.001</PERIOD>
+                    </BSW-TIMING-EVENT>
+                  </EVENTS>
+                  <MODE-SENDER-POLICYS>
+                    <BSW-MODE-SENDER-POLICY>
+                      <PROVIDED-MODE-GROUP-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AUTOSAR_Dcm/BswModuleDescriptions/Dcm/DcmDiagnosticSessionControl</PROVIDED-MODE-GROUP-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </BSW-MODE-SENDER-POLICY>
+                    <BSW-MODE-SENDER-POLICY>
+                     <PROVIDED-MODE-GROUP-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AUTOSAR_Dcm/BswModuleDescriptions/Dcm/DcmEcuReset</PROVIDED-MODE-GROUP-REF>
+                     <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </BSW-MODE-SENDER-POLICY>
+                    <BSW-MODE-SENDER-POLICY>
+                     <PROVIDED-MODE-GROUP-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AUTOSAR_Dcm/BswModuleDescriptions/Dcm/DcmControlDTCSetting</PROVIDED-MODE-GROUP-REF>
+                     <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </BSW-MODE-SENDER-POLICY>
+                    <BSW-MODE-SENDER-POLICY>
+                     <PROVIDED-MODE-GROUP-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/AUTOSAR_Dcm/BswModuleDescriptions/Dcm/DcmCommunicationControl_ComMChannel_Can_Network_Channel</PROVIDED-MODE-GROUP-REF>
+                     <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </BSW-MODE-SENDER-POLICY>
+                  </MODE-SENDER-POLICYS>
+                </BSW-INTERNAL-BEHAVIOR>
+              </INTERNAL-BEHAVIORS>
+            </BSW-MODULE-DESCRIPTION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>BswImplementations</SHORT-NAME>
+          <ELEMENTS>
+            <BSW-IMPLEMENTATION>
+              <SHORT-NAME>Dcm</SHORT-NAME>
+              <CODE-DESCRIPTORS>
+                <CODE>
+                  <SHORT-NAME>CodeDescriptor</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>ArEngObject</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <SWC-BSW-MAPPING-REF DEST="SWC-BSW-MAPPING">/AUTOSAR_Dcm/SwcBswMappings/SwcBswMappings</SWC-BSW-MAPPING-REF>
+              <AR-RELEASE-VERSION>4.2.2</AR-RELEASE-VERSION>
+              <BEHAVIOR-REF DEST="BSW-INTERNAL-BEHAVIOR">/AUTOSAR_Dcm/BswModuleDescriptions/Dcm/BswInternalBehavior</BEHAVIOR-REF>
+            </BSW-IMPLEMENTATION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

@@ -1,0 +1,305 @@
+;
+; Sample Script for running code in the Infineon TriCore TC27xC internal FLASH.
+; [CommonCode:TriCore]
+;
+; -----------------------------------------------------------------------------
+; NOTE: Although this example file gets used as part of the RTA-OS testing, no
+; guarantees are given regarding its accuracy or completeness
+; -----------------------------------------------------------------------------
+;
+;======= Automation data ======================================================
+GLOBAL &num
+&num=0
+LOCAL &testapp
+LOCAL &logfile
+LOCAL &mode
+LOCAL &time
+LOCAL &date
+LOCAL &orti
+ENTRY &testapp &logfile &runmode
+
+&testapp="..\..\output\dbg\D_ENTRY_PLATFROM.elf"
+
+if "&(logfile)"==""
+(
+  &logfile="test.log"
+)
+if "&(runmode)"==""
+(
+  &runmode="debug"
+)
+&date=CLOCK.DATE()
+&time=CLOCK.TIME()
+;==============================================================================
+
+;==============================================================================
+; Default startup program for TRACE32
+;
+; This startup program can be modified according to your needs.
+
+; Choose hex mode for input
+radix hex
+
+; Add some extra buttons to the toolbar
+
+;menu.rp
+;(
+;  add
+;  toolbar
+;  (
+;    separator
+;    toolitem "Source/List"      ":list"     "Data.List"
+;    toolitem "Memory Dump"      ":dump"     "Data.dump"
+;    toolitem "Register"         ":reg"      "Register"
+;    separator
+;    toolitem "Watch"            ":varwatch" "Var.Watch"
+;    toolitem "Stack"            ":varframe" "Var.Frame /l /c"
+;    toolitem "Automatic Watch"  ":varref"   "Var.Ref"
+;    separator
+;    toolitem "List Breakpoints" ":break"    "Break.List"
+;    toolitem "List Symbols"     ":symbols"  "sYmbol.Browse"
+;    toolitem "System Settings"  ":config"   "SYStem"
+;    separator
+;  )
+;)
+
+if language()!=""
+(
+  local &menuname
+  &menuname="~~/t32"+language()+".men"
+  if os.file(&menuname)
+    menu.rp &menuname
+)
+
+; Recall and Define History File
+autostore , history bookmark
+
+;==============================================================================
+; Lauterbach-based config
+
+;==============================================================================
+; Initialize and start the debugger
+SYStem.Down
+SYStem.CPU TC275
+   IF (ID.CABLE()==0x0029)||(ID.CABLE()==0x4155||(ID.CABLE()==0x4150))
+  (
+  ; Bi-Directional Debug Cable detected
+  SYStem.CONFIG Interface DAP2
+  )
+else
+  (
+  ; Uni-Directional Debug Cable
+  SYStem.CONFIG Interface JTAG
+  SYStem.JtagClock 20MHz
+  )
+;============== NUS1HC - Start Debug purpose ==============
+SYStem.Option.DUALPORT ON
+SYStem.Option.ICFLUSH ON
+SYStem.Option.IMASKASM ON
+SYStem.Option.IMASKHLL ON
+SETUP.VAR.%SPOTLIGHT.ON
+;============== NUS1HC - End Debug purpose ==============
+CORE.ASSIGN 1,2,3  ; Only use 1,2,3 with Lauterbach update post 23 Jan 2012, else cores 2 and 3 get released too early.
+SYStem.Up
+CORE.SHOWACTIVE
+
+; Disable the Safety Watchdog Timer (overall system level watchdog):
+PER.Set D:0xF00360F4 %LONG 0x00000008 // SCU_WDTSCON1, Request to disable the WDT
+; Disable the CPU Watchdog Timers:
+PER.Set D:0xF0036104 %LONG 0x00000008 // SCU_WDTCPU0CON1, Request to disable the WDT
+PER.Set D:0xF0036110 %LONG 0x00000008 // SCU_WDTCPU1CON1, Request to disable the WDT
+PER.Set D:0xF003611C %LONG 0x00000008 // SCU_WDTCPU2CON1, Request to disable the WDT
+
+;==============================================================================
+; Flash Declaration
+
+FLASH.RESet
+; Program flash PF0
+FLASH.Create  1. 0xa0000000--0xa001ffff 0x04000 TARGET Long   ; PS0, S0..S7
+FLASH.Create  1. 0xa0020000--0xa005ffff 0x08000 TARGET Long   ; PS0, S8..S15
+FLASH.Create  1. 0xa0060000--0xa007ffff 0x10000 TARGET Long   ; PS0, S16..S17
+FLASH.Create  2. 0xa0080000--0xa009ffff 0x10000 TARGET Long   ; PS1, S18..S19
+FLASH.Create  2. 0xa00a0000--0xa00fffff 0x20000 TARGET Long   ; PS1, S20..S22
+FLASH.Create  3. 0xa0100000--0xa017ffff 0x40000 TARGET Long   ; PS2, S23..S24
+FLASH.Create  4. 0xa0180000--0xa01fffff 0x40000 TARGET Long   ; PS3, S25..S26
+
+; Program flash PF1
+
+FLASH.Create  5. 0xa0200000--0xa021ffff 0x04000 TARGET Long   ; PS0, S0..S7
+FLASH.Create  6. 0xa0220000--0xa025ffff 0x08000 TARGET Long   ; PS0, S8..S15
+FLASH.Create  7. 0xa0260000--0xa027ffff 0x10000 TARGET Long   ; PS0, S16..S17
+FLASH.Create  8. 0xa0280000--0xa029ffff 0x10000 TARGET Long   ; PS1, S18..S19
+FLASH.Create  9. 0xa02a0000--0xa02fffff 0x20000 TARGET Long   ; PS1, S20..S22
+FLASH.Create  10. 0xa0300000--0xa037ffff 0x40000 TARGET Long   ; PS2, S23..S24
+FLASH.Create  11. 0xa0380000--0xa03fffff 0x40000 TARGET Long   ; PS3, S25..S26
+
+; Data flash DF0
+FLASH.Create  12. 0xaf000000--0xaf05ffff 0x10000 TARGET Long   ; DF0, DF_EEPROM0..DF_EEPROM47
+; Data flash DF1
+FLASH.Create 13. 0xaf100000--0xaf103fff 0x00400 TARGET    Long   ; DF1, UCB0..UCB15
+FLASH.Create 14. 0xaf110000--0xaf11ffff 0x02000 TARGET    Long   ; DF1, HSM0..HSM7
+
+FLASH.TARGET 0xc0000000 0xd0000000 0x1000 ~~/demo/tricore/flash/long/tc2.bin
+FLASH.CreateALIAS 0x80000000--0x80ffffff 0xa0000000
+
+;==============================================================================
+; show flash declaration
+;WinPOS 0% 0%
+;FLASH.List
+
+;==============================================================================
+
+;NUS1HC Start :: erase EEPROM for testing purpose
+FLASH.Program ALL
+FLASH.Erase 0xAF000000--0xAF003FFF
+FLASH.Erase 0xAF004000--0xAF007FFF
+FLASH.Erase 0xAF008000--0xAF05FFFF
+FLASH.Program off
+;NUS1HC End :: erase EEPROM for testing purpose
+
+;==============================================================================
+PRINT "CPU initialized"
+FLASH.ReProgram ALL
+Data.Set 0xa0000000--0xa03fffff %Long 0x00000000
+Data.Load.elf &(testapp)
+FLASH.ReProgram OFF
+
+; Try to stop cycle stealing
+
+
+SYS.Option.DUALPORT on
+SYS.MemAccess CPU
+SYStem.CpuAccess ENABLE
+y.spath.srd ..\..
+ON ERROR JUMPTO errorexit  ; jump to error exit
+Break.Delete /ALL
+
+;======= Start session ========
+winclear
+winpos 0% 0% 100% 100%
+Data.List
+do win.cmm
+
+;======= CHECK MODE ========
+if "&(runmode)"=="auto"
+  JUMPTO autotest
+
+if "&(runmode)"=="autotrace"
+  JUMPTO autotrace
+
+end:
+ ;l Break.Set main
+  enddo
+
+;======= AUTO TRACE ========
+autotrace:
+  prt.FILETYPE ASCII
+  OPEN #1 "&(logfile)" /Write
+  WRITE #1 "-----------------------------------------------"
+  Break.Set test_passed /Program /cmd "JUMPTO passtest"
+  Break.Set test_failed /Program /cmd "JUMPTO failtest"
+  Break.Set Os_TraceBreakLabel /Program
+
+  ; Display the loaded app whilst running
+  PRINT "&(testapp)"
+
+loop:
+  GO
+  WAIT !run()
+  GLOBAL &debug_trace_core
+  &debug_trace_core=-1
+  core 0
+  if r(pc)==address.offset(Os_TraceBreakLabel)
+  (
+    &debug_trace_core=0
+    prt.file TraceBuffer&(num)_Core0.txt
+    wp.v.v %symbol Os_ControlledCoreInfo[0U].TraceBufferDataStart Os_ControlledCoreInfo[0U].TraceBufferWrPtr &Os_TraceDataBuffer0 %tree.open Os_TraceDataBuffer0
+    &num=&num+1
+    step
+  )
+  core 1
+  if r(pc)==address.offset(Os_TraceBreakLabel)
+  (
+    &debug_trace_core=1
+    prt.file TraceBuffer&(num)_Core1.txt
+    wp.v.v %symbol Os_ControlledCoreInfo[1U].TraceBufferDataStart Os_ControlledCoreInfo[1U].TraceBufferWrPtr &Os_TraceDataBuffer1 %tree.open Os_TraceDataBuffer1
+    &num=&num+1
+    step
+  )
+  var.if (&debug_trace_core >= 0)
+    goto loop
+  JUMPTO test_exit_reason
+
+;======= AUTO TEST ========
+autotest:
+  OPEN #1 "&(logfile)" /Write
+  WRITE #1 "-----------------------------------------------"
+  Break.Set test_passed /Program /cmd "JUMPTO passtest"
+  Break.Set test_failed /Program /cmd "JUMPTO failtest"
+
+  ; Display the loaded app whilst running
+  PRINT "&(testapp)"
+
+  GO
+  WAIT !run()
+
+  ;====== This code runs if we hit a debug op-code or when breakpoints are disabled.
+test_exit_reason:
+  var.if (test_result == 1)
+   JUMPTO passtest
+  var.if (test_result == 222)
+   JUMPTO passtest
+  var.if (test_result == 2)
+   JUMPTO failtest
+  var.if (test_result == 111)
+   JUMPTO failtest
+  WRITE #1  "Unknown exit reason"
+  JUMPTO aborted
+
+;======= abort
+aborted:
+  WRITE #1 "&(testapp) ABORTED &date &time"
+  PRINT "Aborted"
+  JUMPTO normal_exit
+
+;======= pass
+passtest:
+  WRITE #1 "&(testapp) passed &date &time"
+  WRITE #1 "Log: " data.string(log_text1) " 0x" %HEX data.long(log_value1) ", (" %DECIMAL  data.long(log_value1) ")"
+  WRITE #1 "Log: " data.string(log_text2) " 0x" %HEX data.long(log_value2) ", (" %DECIMAL  data.long(log_value2) ")"
+  PRINT "PASSED"
+  JUMPTO normal_exit
+
+;======= fail
+failtest:
+  WRITE #1 "&(testapp) FAILED &date &time"
+  WRITE #1 "Log: " data.string(log_text1) " 0x" %HEX data.long(log_value1) ", (" %DECIMAL  data.long(log_value1) ")"
+  WRITE #1 "Log: " data.string(log_text2) " 0x" %HEX data.long(log_value2) ", (" %DECIMAL  data.long(log_value2) ")"
+  WRITE #1 "Fail line = " %DECIMAL Data.long(test_failure_line) " (0x" %HEX Data.long(test_failure_line) ")"
+  WRITE #1 "Fail text = " data.string(test_failure_text)
+  WRITE #1 "Fail core = " %DECIMAL Data.long(test_failing_core)
+  PRINT "FAILED"
+  JUMPTO normal_exit
+
+;======= exit
+normal_exit:
+  WRITE #1 "-----------------------------------------------"
+  CLOSE #1
+  ;Create a file to indicate that the debugger has stopped now for runtil
+  OPEN #1 "runtil.stop" /Create
+  sys.RESETTARGET
+sys.up
+R.S PC 0xA000d820
+  WRITE #1 "Please stop now"
+  CLOSE #1
+  QUIT
+enddo
+  
+;======= internal error
+errorexit:
+  CLOSE #1
+  enddo
+
+
+
+

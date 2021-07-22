@@ -1,0 +1,4522 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc15516a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Dem\\src\\Dem_Dependencies.src BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Dem_Dependencies.Dem_GetComponentSuspicious',code,cluster('Dem_GetComponentSuspicious')
+	.sect	'.text.Dem_Dependencies.Dem_GetComponentSuspicious'
+	.align	2
+	
+	.global	Dem_GetComponentSuspicious
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	     1  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	     2  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	     3  #include "Dem.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	     4  #include "Rte_Dem.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	     5  #include "Dem_Dependencies.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	     6  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	     7  #include "Dem_Events.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	     8  #include "Dem_EventStatus.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	     9  #include "Dem_Mapping.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    10  #include "Dem_Cfg_ExtPrototypes.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    11  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    12  #include "Dem_Obd.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    13  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    14  #if (DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    15  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    16  #define DEM_START_SEC_RAM_CLEARED
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    17  #include "Dem_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    18  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    19  DEM_ARRAY_DEFINE(      Dem_NodeState, Dem_AllNodesState, DEM_NODEID_ARRAYLENGTH);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    20  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    21  #define DEM_STOP_SEC_RAM_CLEARED
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    22  #include "Dem_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    23  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    24  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    25  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    26  #define DEM_START_SEC_ROM_CONST
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    27  #include "Dem_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    28  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    29  /* MR12 RULE 1.3 VIOLATION: A function-like macro shall not be invoked without all of its arguments, hence some of the arguments are optional based on configuration */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    30  DEM_ARRAY_DEFINE_CONST(Dem_NodeParam, Dem_AllNodesParam, DEM_NODEID_ARRAYLENGTH, DEM_CFG_NODEPARAMS);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    31  #if (DEM_CFG_NODEFAILEDCALLBACK_COUNT > 0)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    32  DEM_ARRAY_DEFINE_CONST(Dem_NodeFailedCallbackType, Dem_NodeFailedCallbacks, DEM_CFG_NODEFAILEDCALLBACK_ARRAYLENGTH, DEM_CFG_NODEFAILEDCALLBACKS);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    33  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    34  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    35  #define DEM_STOP_SEC_ROM_CONST
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    36  #include "Dem_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    37  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    38  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    39  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    40  #define DEM_START_SEC_ROM_CODE
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    41  #include "Dem_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    42  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    43  void Dem_SetNodeStatus (const Dem_ComponentIdType NodeId, uint8 statusIndex)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    44  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    45      Dem_NodeIdListIterator childIt;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    46      Dem_ComponentIdType CurrentNodeId;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    47  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    48      DEM_ASSERT_ISLOCKED();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    49  	if (!Dem_NodeStatusIsSet(Dem_AllNodesState[NodeId].status[statusIndex]))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    50  	{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    51  		Dem_NodeStatusSet(&(Dem_AllNodesState[NodeId].status[statusIndex]));
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    52  #if (DEM_CFG_TRIGGERFIMREPORTS == DEM_CFG_TRIGGERFIMREPORTS_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    53          if ( Dem_Is_Fim_Initialized()
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    54                  && ((statusIndex==DEM_NODESTATUS_FAILED)&&(!Dem_NodeStatusIsAnyAncestorSet(Dem_AllNodesState[NodeId].status[statusIndex]))))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    55          {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    56              FiM_DemTriggerOnComponentStatus(NodeId, TRUE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    57          }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    58  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    59  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    60  		for (Dem_NodeIdListIteratorNewFromNodeId (&childIt, NodeId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    61  				Dem_NodeIdListIteratorIsValid (&childIt);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    62  				Dem_NodeIdListIteratorNext (&childIt))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    63  		{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    64  		    CurrentNodeId = Dem_NodeIdListIteratorCurrent(&childIt);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    65  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    66  			Dem_AllNodesState[CurrentNodeId].status[statusIndex]++;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    67  #if (DEM_CFG_TRIGGERFIMREPORTS == DEM_CFG_TRIGGERFIMREPORTS_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    68              if (  Dem_Is_Fim_Initialized() &&
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    69                      ((statusIndex==DEM_NODESTATUS_FAILED)&&(Dem_AllNodesState[CurrentNodeId].status[statusIndex] == 1)))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    70              {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    71                  FiM_DemTriggerOnComponentStatus(CurrentNodeId, TRUE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    72              }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    73  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    74  		}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    75  	}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    76  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    77  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    78  static void Dem_ResetNodeStatus (const Dem_ComponentIdType NodeId, uint8 statusIndex)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    79  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    80      Dem_NodeIdListIterator childIt;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    81      Dem_ComponentIdType CurrentNodeId;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    82  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    83      DEM_ASSERT_ISLOCKED();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    84  	if (Dem_NodeStatusIsSet(Dem_AllNodesState[NodeId].status[statusIndex]))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    85  	{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    86  		Dem_NodeStatusReset(&(Dem_AllNodesState[NodeId].status[statusIndex]));
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    87  #if (DEM_CFG_TRIGGERFIMREPORTS == DEM_CFG_TRIGGERFIMREPORTS_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    88          if (  Dem_Is_Fim_Initialized() &&
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    89                  ((statusIndex==DEM_NODESTATUS_FAILED)&&(!Dem_NodeStatusIsAnyAncestorSet(Dem_AllNodesState[NodeId].status[statusIndex]))))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    90          {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    91              FiM_DemTriggerOnComponentStatus(NodeId, FALSE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    92          }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    93  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    94  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    95  		for (Dem_NodeIdListIteratorNewFromNodeId (&childIt, NodeId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    96  				Dem_NodeIdListIteratorIsValid (&childIt);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    97  				Dem_NodeIdListIteratorNext (&childIt))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    98  		{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	    99  		    CurrentNodeId = Dem_NodeIdListIteratorCurrent(&childIt);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   100  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   101  			Dem_AllNodesState[CurrentNodeId].status[statusIndex]--;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   102  #if (DEM_CFG_TRIGGERFIMREPORTS == DEM_CFG_TRIGGERFIMREPORTS_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   103              if (  Dem_Is_Fim_Initialized() &&
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   104                      ((statusIndex==DEM_NODESTATUS_FAILED)&&(Dem_AllNodesState[CurrentNodeId].status[statusIndex] == 0)))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   105              {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   106                  FiM_DemTriggerOnComponentStatus(CurrentNodeId, FALSE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   107              }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   108  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   109  		}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   110  	}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   111  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   112  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   113  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   114  /* MR12 RULE 20.7 VIOLATION : Macro parameter FUNCTIONNAME may not be enclosed in (). */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   115  #define DEM_NODE_CHECK_EVENTS_ATTRIBUTE(EVTIT, NODEID, FUNCTIONNAME, STATEVAR)             \ 
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   116  do {                                                                        \ 
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   117  	(STATEVAR) = FALSE;                                                     \ 
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   118  	for (Dem_EventIdListIterator2NewFromNodeId(&(EVTIT), NODEID);             \ 
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   119  			Dem_EventIdListIterator2IsValid(&(EVTIT));                        \ 
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   120  			Dem_EventIdListIterator2Next(&(EVTIT)))                           \ 
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   121  	{                                                                       \ 
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   122  		(STATEVAR) = (STATEVAR) || FUNCTIONNAME(Dem_EventIdListIterator2Current(&(EVTIT)));   \ 
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   123  	}                                                                       \ 
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   124  } while (FALSE)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   125  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   126  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   127  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   128  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   129  typedef Dem_boolean_least (*DemEvtStatusFuncptr)(Dem_EventIdType EventId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   130  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   131  DEM_INLINE Dem_boolean_least Dem_Dependencies_CheckEventIsCausalGeneric(Dem_EventIdType EventId, Dem_ComponentIdType NodeId, uint8 StatusIndex, DemEvtStatusFuncptr FuncPointer)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   132  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   133      Dem_EventIdListIterator2 evtIt;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   134  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   135      DEM_ASSERT_ISLOCKED();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   136  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   137      if (!Dem_NodeIdIsValid(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   138      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   139          return TRUE;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   140      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   141  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   142      /* DSM_D_37: failure sequential, if one ancestor is invalid */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   143      if ( Dem_NodeStatusIsAnyAncestorSet(Dem_AllNodesState[NodeId].status[StatusIndex]) )
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   144      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   145          return FALSE;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   146      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   147      else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   148      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   149          if (Dem_NodeIgnorePriority(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   150          {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   151              return TRUE;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   152          }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   153          else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   154          {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   155              Dem_EventIdListIterator2NewFromNodeId (&evtIt, NodeId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   156  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   157              /* DSM_D_37: failure sequential, if monitoring with higher */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   158              /* prio at node has reported failure */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   159              while (Dem_EventIdListIterator2IsValid(&evtIt))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   160              {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   161                  /* only check events with higher prio at node; not event itself nor lower prio events, therefore cancel loop */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   162                  if (Dem_EventIdListIterator2Current(&evtIt) == EventId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   163                  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   164                      return TRUE;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   165                  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   166  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   167                  if (FuncPointer(Dem_EventIdListIterator2Current(&evtIt)))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   168                  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   169                      return FALSE;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   170                  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   171  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   172                  Dem_EventIdListIterator2Next (&evtIt);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   173              }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   174          }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   175      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   176  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   177      /* should never be reached */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   178      DEM_ASSERT(Dem_LibGetParamBool(FALSE), DEM_DET_APIID_EVENTDEPENDENCIES_ISCAUSAL, 0);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   179      return TRUE;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   180  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   181  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   182  Dem_boolean_least Dem_Dependencies_CheckEventIsCausal(Dem_EventIdType EventId, Dem_ComponentIdType NodeId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   183  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   184      return Dem_Dependencies_CheckEventIsCausalGeneric(EventId, NodeId, DEM_NODESTATUS_FAILED, &Dem_EvtSt_GetTestFailed);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   185  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   186  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   187  #if DEM_CFG_DEPENDENCY_PENDING_ON
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   188  /*To check the event is not having any stored pending OBD event(s) which is of higher prio to it in the graph .TRUE - no high prio pending OBD events*/
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   189  Dem_boolean_least Dem_Dependencies_CheckEventIsCausalPending(Dem_EventIdType EventId, Dem_ComponentIdType NodeId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   190  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   191      return Dem_Dependencies_CheckEventIsCausalGeneric(EventId, NodeId, DEM_NODESTATUS_PENDING, &Dem_EvtSt_GetPending);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   192  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   193  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   194  static void Dem_NodeSetPending(Dem_ComponentIdType NodeId, Dem_boolean_least IsPending)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   195  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   196      Dem_boolean_least anyEvtStoredPending;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   197      Dem_EventIdListIterator2 evtIt;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   198  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   199      DEM_ASSERT_ISLOCKED();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   200  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   201      if(IsPending)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   202      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   203          Dem_SetNodeStatus (NodeId, DEM_NODESTATUS_PENDING);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   204      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   205      else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   206      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   207          DEM_NODE_CHECK_EVENTS_ATTRIBUTE (evtIt, NodeId, Dem_EvtSt_GetPending, anyEvtStoredPending);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   208  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   209          if(!anyEvtStoredPending)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   210          {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   211              Dem_ResetNodeStatus(NodeId, DEM_NODESTATUS_PENDING);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   212          }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   213  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   214      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   215  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   216  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   217  void Dem_Dependencies_SetNodePending(Dem_EventIdType EventId , Dem_boolean_least setBit)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   218  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   219  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   220      Dem_ComponentIdType NodeId;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   221  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   222      NodeId = Dem_NodeIdFromEventId(EventId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   223  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   224      if (!Dem_NodeIdIsValid(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   225      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   226          return;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   227      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   228  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   229      /* to Set/reset Node Status Pending */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   230      Dem_NodeSetPending( NodeId ,setBit);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   231  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   232  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   233  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   234  void Dem_Dependencies_SetNodeFailed(Dem_ComponentIdType NodeId, boolean EventIsCausal, boolean EventStorageFiltered, boolean EventIsRecoverable)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   235  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   236      DEM_ASSERT_ISLOCKED();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   237  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   238      DEM_ASSERT(!(EventIsCausal && EventStorageFiltered), DEM_DET_APIID_EVENTDEPENDENCIES, 0);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   239  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   240      if (!Dem_NodeIdIsValid(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   241      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   242          return;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   243      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   244  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   245      /* calculate statemachine */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   246      if (Dem_NodeIsFailedItself(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   247      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   248          if (Dem_NodeIsFailedFilteredItself(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   249          {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   250              /* state FailedFiltered */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   251              if (EventIsCausal && !(EventStorageFiltered))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   252              {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   253                  Dem_ResetNodeStatus(NodeId, DEM_NODESTATUS_FAILEDFILTERED);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   254                  if (!EventIsRecoverable)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   255                  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   256                      Dem_SetNodeStatus(NodeId, DEM_NODESTATUS_FAILEDNOTRECOVERABLE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   257                  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   258              }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   259          } else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   260          {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   261              /* state Failed */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   262              if (EventIsCausal && !EventIsRecoverable)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   263              {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   264                  Dem_SetNodeStatus(NodeId, DEM_NODESTATUS_FAILEDNOTRECOVERABLE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   265              }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   266          }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   267      } else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   268      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   269          /* state Valid */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   270          Dem_SetNodeStatus(NodeId, DEM_NODESTATUS_FAILED);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   271          if (EventIsCausal && !EventIsRecoverable)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   272          {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   273              Dem_SetNodeStatus(NodeId, DEM_NODESTATUS_FAILEDNOTRECOVERABLE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   274          } else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   275          {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   276              if (EventStorageFiltered)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   277              {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   278                  Dem_SetNodeStatus(NodeId, DEM_NODESTATUS_FAILEDFILTERED);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   279              }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   280          }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   281          /* todo: add to diagram */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   282          Dem_NodeCallFailedCallback(NodeId, TRUE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   283      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   284  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   285  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   286  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   287  void Dem_Dependencies_ResetNodeFailed(Dem_ComponentIdType NodeId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   288  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   289      Dem_boolean_least anyMonFailed;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   290      Dem_EventIdListIterator2 evtIt;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   291  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   292      if (!Dem_NodeIdIsValid(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   293      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   294          return;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   295      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   296  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   297      DEM_ASSERT_ISLOCKED();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   298  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   299      DEM_NODE_CHECK_EVENTS_ATTRIBUTE (evtIt, NodeId, Dem_EvtSt_GetTestFailed, anyMonFailed);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   300  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   301      if (!anyMonFailed)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   302      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   303          Dem_ResetNodeStatus(NodeId,DEM_NODESTATUS_FAILED);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   304          Dem_ResetNodeStatus(NodeId,DEM_NODESTATUS_FAILEDFILTERED);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   305          Dem_ResetNodeStatus(NodeId,DEM_NODESTATUS_FAILEDNOTRECOVERABLE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   306          Dem_NodeCallFailedCallback(NodeId, FALSE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   307      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   308  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   309  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   310  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   311  void Dem_Dependencies_ResetNodeFailedFiltered(Dem_ComponentIdType NodeId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   312  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   313      DEM_ASSERT_ISLOCKED();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   314      Dem_ResetNodeStatus(NodeId,DEM_NODESTATUS_FAILEDFILTERED);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   315  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   316  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   317  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   318  void Dem_Dependencies_ResetNodeFailedNotRecoverable(Dem_ComponentIdType NodeId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   319  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   320      Dem_boolean_least anyMonNotRecoverable;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   321      Dem_EventIdListIterator2 evtIt;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   322  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   323      if (!Dem_NodeIdIsValid(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   324      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   325          return;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   326      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   327  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   328      DEM_ASSERT_ISLOCKED();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   329  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   330      DEM_NODE_CHECK_EVENTS_ATTRIBUTE (evtIt, NodeId, Dem_EvtIsNotRecoverableTOC, anyMonNotRecoverable);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   331  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   332      if (!anyMonNotRecoverable)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   333      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   334          Dem_ResetNodeStatus(NodeId,DEM_NODESTATUS_FAILEDNOTRECOVERABLE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   335      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   336  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   337  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   338  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   339  void Dem_NodeSetSuspicious(Dem_ComponentIdType NodeId, Dem_boolean_least suspicious)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   340  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   341  	Dem_boolean_least anyMonSuspicious;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   342  	Dem_EventIdListIterator2 evtIt;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   343  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   344  	DEM_ASSERT_ISLOCKED();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   345  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   346  	if (suspicious)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   347  	{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   348  		Dem_SetNodeStatus (NodeId, DEM_NODESTATUS_SUSPICIOUS);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   349  	}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   350  	else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   351  	{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   352  		/* check if any event is testfailed at node */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   353  		DEM_NODE_CHECK_EVENTS_ATTRIBUTE (evtIt, NodeId, Dem_EvtIsSuspicious, anyMonSuspicious);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   354  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   355  		if (!anyMonSuspicious)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   356  		{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   357  			Dem_ResetNodeStatus(NodeId,DEM_NODESTATUS_SUSPICIOUS);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   358  		}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   359  	}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   360  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   361  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   362  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   363  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   364  void Dem_NodeSetHasCausalFault (const Dem_ComponentIdType NodeId, Dem_boolean_least causalFault)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   365  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   366  	Dem_EventIdListIterator2 evtIt;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   367  	Dem_boolean_least hasCausalFault;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   368  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   369  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   370  	DEM_ASSERT_ISLOCKED();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   371  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   372  	if (causalFault)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   373  	{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   374  	    rba_DiagLib_Bit8OverwriteBit(&(Dem_AllNodesState[NodeId].stateFlags), DEM_NODE_STATEFLAG_HASCAUSALFAULT, TRUE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   375  	}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   376  	else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   377  	{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   378  		DEM_NODE_CHECK_EVENTS_ATTRIBUTE (evtIt, NodeId, Dem_EvtIsCausal, hasCausalFault);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   379  		rba_DiagLib_Bit8OverwriteBit(&(Dem_AllNodesState[NodeId].stateFlags), DEM_NODE_STATEFLAG_HASCAUSALFAULT, hasCausalFault);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   380  	}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   381  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   382  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   383  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   384  void Dem_NodeSetAvailable (Dem_ComponentIdType ComponentId, boolean AvailableStatus)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   385  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   386  	DEM_ENTERLOCK_MON();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   387  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   388  	if (!AvailableStatus)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   389  	{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   390  		Dem_SetNodeStatus (ComponentId, DEM_NODESTATUS_NOTAVAILABLE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   391  	}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   392  	else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   393  	{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   394  		Dem_ResetNodeStatus(ComponentId, DEM_NODESTATUS_NOTAVAILABLE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   395  	}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   396  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   397  	DEM_EXITLOCK_MON();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   398  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   399  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   400  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   401  void Dem_NodeRecheckOnClear (void)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   402  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   403  	Dem_NodeIdIterator nodeIt;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   404  	for (Dem_NodeIdIteratorNew(&nodeIt); Dem_NodeIdIteratorIsValid(&nodeIt); Dem_NodeIdIteratorNext(&nodeIt))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   405  	{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   406  		if (Dem_NodeIsRecheckOnClear(Dem_NodeIdIteratorCurrent(&nodeIt)))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   407  		{
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   408  		    DEM_ENTERLOCK_MON();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   409  		    Dem_NodeSetRecheckOnClear (Dem_NodeIdIteratorCurrent(&nodeIt), FALSE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   410  			Dem_Dependencies_ResetNodeFailed(Dem_NodeIdIteratorCurrent(&nodeIt));
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   411  			Dem_NodeSetHasCausalFault(Dem_NodeIdIteratorCurrent(&nodeIt), FALSE);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   412              DEM_EXITLOCK_MON();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   413  		}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   414  	}
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   415  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   416  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   417  DEM_INLINE void Dem_SetEventAvailableFromNode(Dem_ComponentIdType ComponentId, boolean AvailableStatus)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   418  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   419      Dem_NodeIdListIterator childIt;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   420      Dem_EventIdListIterator2 evtIt;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   421      Dem_EventIdType eventId;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   422  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   423      for (Dem_EventIdListIterator2NewFromNodeId(&evtIt, ComponentId); Dem_EventIdListIterator2IsValid(&evtIt);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   424              Dem_EventIdListIterator2Next(&evtIt))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   425      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   426          eventId = Dem_EventIdListIterator2Current(&evtIt);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   427          if (AvailableStatus == Dem_EvtIsSuppressed(eventId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   428          {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   429              (void)Dem_SetEventAvailable(eventId, AvailableStatus);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   430          }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   431      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   432  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   433      for (Dem_NodeIdListIteratorNewFromNodeId(&childIt, ComponentId); Dem_NodeIdListIteratorIsValid(&childIt);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   434              Dem_NodeIdListIteratorNext(&childIt))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   435      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   436          for (Dem_EventIdListIterator2NewFromNodeId(&evtIt, Dem_NodeIdListIteratorCurrent(&childIt));
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   437                  Dem_EventIdListIterator2IsValid(&evtIt);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   438                  Dem_EventIdListIterator2Next(&evtIt))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   439          {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   440              eventId = Dem_EventIdListIterator2Current(&evtIt);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   441              if (AvailableStatus == Dem_EvtIsSuppressed(eventId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   442              {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   443                  (void)Dem_SetEventAvailable(eventId, AvailableStatus);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   444              }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   445          }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   446      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   447  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   448  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   449  Std_ReturnType Dem_SetComponentAvailable(Dem_ComponentIdType ComponentId, boolean AvailableStatus)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   450  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   451      /*  Entry Condition Check */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   452      DEM_ENTRY_CONDITION_CHECK_DEM_PREINITIALIZED(DEM_DET_APIID_DEM_SETCOMPONENTAVAILABLE,E_NOT_OK);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   453      DEM_ENTRY_CONDITION_CHECK_COMPONENT_ID_VALID(ComponentId , DEM_DET_APIID_DEM_SETCOMPONENTAVAILABLE , E_NOT_OK);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   454  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   455      Dem_NodeSetAvailable(ComponentId, AvailableStatus);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   456      Dem_SetEventAvailableFromNode(ComponentId, AvailableStatus);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   457      return E_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   458  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   459  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   460  #define DEM_STOP_SEC_ROM_CODE
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   461  #include "Dem_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   462  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   463  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   464  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   465  #define DEM_START_SEC_ROM_CODE
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   466  #include "Dem_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   467  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   468  /* MR12 RULE 8.13 VIOLATION: parameter not made const, as it is depending on compiler switch setting */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   469  Std_ReturnType Dem_GetComponentSuspicious (Dem_ComponentIdType ComponentId, boolean* ComponentSuspicious)
+; Function Dem_GetComponentSuspicious
+.L13:
+Dem_GetComponentSuspicious:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   470  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   471  #if ((DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON) && (DEM_CFG_SUSPICIOUS_SUPPORT))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   472      if ((!Dem_NodeIdIsValid(ComponentId)) && (!Dem_NodeIsAvailable (ComponentId)))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   473      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   474          return E_NOT_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   475      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   476  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   477      *ComponentSuspicious = Dem_NodeIsSuspicious(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   478      return E_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   479  #else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   480      DEM_UNUSED_PARAM(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   481      DEM_UNUSED_PARAM(ComponentSuspicious);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   482      return E_NOT_OK;
+	mov	d2,#1
+.L166:
+	j	.L2
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   483  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   484  }
+.L2:
+	ret
+.L113:
+	
+__Dem_GetComponentSuspicious_function_end:
+	.size	Dem_GetComponentSuspicious,__Dem_GetComponentSuspicious_function_end-Dem_GetComponentSuspicious
+.L72:
+	; End of function
+	
+	.sdecl	'.text.Dem_Dependencies.Dem_GetComponentUsable',code,cluster('Dem_GetComponentUsable')
+	.sect	'.text.Dem_Dependencies.Dem_GetComponentUsable'
+	.align	2
+	
+	.global	Dem_GetComponentUsable
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   485  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   486  /* MR12 RULE 8.13 VIOLATION: parameter not made const, as it is depending on compiler switch setting */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   487  Std_ReturnType Dem_GetComponentUsable (Dem_ComponentIdType ComponentId, boolean* ComponentUsable)
+; Function Dem_GetComponentUsable
+.L15:
+Dem_GetComponentUsable:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   488  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   489  #if (DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   490      if(!Dem_NodeIdIsValid(ComponentId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   491      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   492          return E_NOT_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   493      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   494  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   495      *ComponentUsable = Dem_NodeIsUsable(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   496      return E_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   497  #else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   498      DEM_UNUSED_PARAM(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   499      DEM_UNUSED_PARAM(ComponentUsable);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   500      return E_NOT_OK;
+	mov	d2,#1
+.L176:
+	j	.L3
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   501  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   502  }
+.L3:
+	ret
+.L119:
+	
+__Dem_GetComponentUsable_function_end:
+	.size	Dem_GetComponentUsable,__Dem_GetComponentUsable_function_end-Dem_GetComponentUsable
+.L82:
+	; End of function
+	
+	.sdecl	'.text.Dem_Dependencies.Dem_GetComponentRestrictedUsable',code,cluster('Dem_GetComponentRestrictedUsable')
+	.sect	'.text.Dem_Dependencies.Dem_GetComponentRestrictedUsable'
+	.align	2
+	
+	.global	Dem_GetComponentRestrictedUsable
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   503  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   504  /* MR12 RULE 8.13 VIOLATION: parameter not made const, as it is depending on compiler switch setting */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   505  Std_ReturnType Dem_GetComponentRestrictedUsable (Dem_ComponentIdType ComponentId, boolean* ComponentRestrictedUsable)
+; Function Dem_GetComponentRestrictedUsable
+.L17:
+Dem_GetComponentRestrictedUsable:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   506  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   507  #if (DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   508      if(!Dem_NodeIdIsValid(ComponentId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   509      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   510          return E_NOT_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   511      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   512  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   513     *ComponentRestrictedUsable = Dem_NodeIsRestrictedUsable(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   514      return E_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   515  #else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   516      DEM_UNUSED_PARAM(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   517      DEM_UNUSED_PARAM(ComponentRestrictedUsable);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   518      return E_NOT_OK;
+	mov	d2,#1
+.L161:
+	j	.L4
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   519  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   520  }
+.L4:
+	ret
+.L110:
+	
+__Dem_GetComponentRestrictedUsable_function_end:
+	.size	Dem_GetComponentRestrictedUsable,__Dem_GetComponentRestrictedUsable_function_end-Dem_GetComponentRestrictedUsable
+.L67:
+	; End of function
+	
+	.sdecl	'.text.Dem_Dependencies.Dem_GetComponentInitialized',code,cluster('Dem_GetComponentInitialized')
+	.sect	'.text.Dem_Dependencies.Dem_GetComponentInitialized'
+	.align	2
+	
+	.global	Dem_GetComponentInitialized
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   521  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   522  /* MR12 RULE 8.13 VIOLATION: parameter not made const, as it is depending on compiler switch setting */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   523  Std_ReturnType Dem_GetComponentInitialized (Dem_ComponentIdType ComponentId, boolean* ComponentInitialized)
+; Function Dem_GetComponentInitialized
+.L19:
+Dem_GetComponentInitialized:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   524  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   525  #if (DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   526      if(!Dem_NodeIdIsValid(ComponentId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   527      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   528          return E_NOT_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   529      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   530  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   531      *ComponentInitialized = Dem_NodeIsInitialized(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   532      return E_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   533  #else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   534      DEM_UNUSED_PARAM(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   535      DEM_UNUSED_PARAM(ComponentInitialized);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   536      return E_NOT_OK;
+	mov	d2,#1
+.L156:
+	j	.L5
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   537  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   538  }
+.L5:
+	ret
+.L107:
+	
+__Dem_GetComponentInitialized_function_end:
+	.size	Dem_GetComponentInitialized,__Dem_GetComponentInitialized_function_end-Dem_GetComponentInitialized
+.L62:
+	; End of function
+	
+	.sdecl	'.text.Dem_Dependencies.Dem_GetComponentFailed',code,cluster('Dem_GetComponentFailed')
+	.sect	'.text.Dem_Dependencies.Dem_GetComponentFailed'
+	.align	2
+	
+	.global	Dem_GetComponentFailed
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   539  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   540  /* MR12 RULE 8.13 VIOLATION: parameter not made const, as it is depending on compiler switch setting */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   541  Std_ReturnType Dem_GetComponentFailed (Dem_ComponentIdType ComponentId, boolean* ComponentFailed)
+; Function Dem_GetComponentFailed
+.L21:
+Dem_GetComponentFailed:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   542  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   543  #if (DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   544  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   545      /*  Entry Condition Check    */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   546      DEM_ENTRY_CONDITION_CHECK_DEM_INITIALIZED_OR_FIM_IS_IN_INIT(DEM_DET_APIID_DEM_GETCOMPONENTFAILED, E_NOT_OK );
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   547      DEM_ENTRY_CONDITION_CHECK_NOT_NULL_PTR(ComponentFailed,DEM_DET_APIID_DEM_GETCOMPONENTFAILED,E_NOT_OK );
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   548      DEM_ENTRY_CONDITION_CHECK_COMPONENT_ID_VALID(ComponentId , DEM_DET_APIID_DEM_SETCOMPONENTAVAILABLE , E_NOT_OK);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   549  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   550      *ComponentFailed = Dem_NodeIsFailed(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   551      return E_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   552  #else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   553      DEM_UNUSED_PARAM(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   554      DEM_UNUSED_PARAM(ComponentFailed);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   555      return E_NOT_OK;
+	mov	d2,#1
+.L146:
+	j	.L6
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   556  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   557  }
+.L6:
+	ret
+.L101:
+	
+__Dem_GetComponentFailed_function_end:
+	.size	Dem_GetComponentFailed,__Dem_GetComponentFailed_function_end-Dem_GetComponentFailed
+.L52:
+	; End of function
+	
+	.sdecl	'.text.Dem_Dependencies.Dem_GetComponentFailedItself',code,cluster('Dem_GetComponentFailedItself')
+	.sect	'.text.Dem_Dependencies.Dem_GetComponentFailedItself'
+	.align	2
+	
+	.global	Dem_GetComponentFailedItself
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   558  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   559  /* MR12 RULE 8.13 VIOLATION: parameter not made const, as it is depending on compiler switch setting */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   560  Std_ReturnType Dem_GetComponentFailedItself(Dem_ComponentIdType ComponentId, boolean* ComponentFailedItself)
+; Function Dem_GetComponentFailedItself
+.L23:
+Dem_GetComponentFailedItself:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   561  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   562  #if (DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   563      if(!Dem_NodeIdIsValid(ComponentId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   564      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   565          return E_NOT_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   566      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   567  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   568     *ComponentFailedItself = Dem_NodeIsFailedItself(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   569      return E_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   570  #else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   571      DEM_UNUSED_PARAM(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   572      DEM_UNUSED_PARAM(ComponentFailedItself);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   573      return E_NOT_OK;
+	mov	d2,#1
+.L151:
+	j	.L7
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   574  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   575  }
+.L7:
+	ret
+.L104:
+	
+__Dem_GetComponentFailedItself_function_end:
+	.size	Dem_GetComponentFailedItself,__Dem_GetComponentFailedItself_function_end-Dem_GetComponentFailedItself
+.L57:
+	; End of function
+	
+	.sdecl	'.text.Dem_Dependencies.Dem_GetComponentSuspiciousItself',code,cluster('Dem_GetComponentSuspiciousItself')
+	.sect	'.text.Dem_Dependencies.Dem_GetComponentSuspiciousItself'
+	.align	2
+	
+	.global	Dem_GetComponentSuspiciousItself
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   576  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   577  /* MR12 RULE 8.13 VIOLATION: parameter not made const, as it is depending on compiler switch setting */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   578  Std_ReturnType Dem_GetComponentSuspiciousItself(Dem_ComponentIdType ComponentId, boolean* ComponentSuspiciousItself)
+; Function Dem_GetComponentSuspiciousItself
+.L25:
+Dem_GetComponentSuspiciousItself:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   579  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   580  #if (DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   581      if(!Dem_NodeIdIsValid(ComponentId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   582      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   583          return E_NOT_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   584      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   585  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   586     *ComponentSuspiciousItself = Dem_NodeIsSuspiciousItself(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   587      return E_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   588  #else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   589      DEM_UNUSED_PARAM(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   590      DEM_UNUSED_PARAM(ComponentSuspiciousItself);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   591      return E_NOT_OK;
+	mov	d2,#1
+.L171:
+	j	.L8
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   592  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   593  }
+.L8:
+	ret
+.L116:
+	
+__Dem_GetComponentSuspiciousItself_function_end:
+	.size	Dem_GetComponentSuspiciousItself,__Dem_GetComponentSuspiciousItself_function_end-Dem_GetComponentSuspiciousItself
+.L77:
+	; End of function
+	
+	.sdecl	'.text.Dem_Dependencies.Dem_GetComponentAvailable',code,cluster('Dem_GetComponentAvailable')
+	.sect	'.text.Dem_Dependencies.Dem_GetComponentAvailable'
+	.align	2
+	
+	.global	Dem_GetComponentAvailable
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   594  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   595  /* MR12 RULE 8.13 VIOLATION: parameter not made const, as it is depending on compiler switch setting */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   596  Std_ReturnType Dem_GetComponentAvailable(Dem_ComponentIdType ComponentId, boolean* ComponentAvailable)
+; Function Dem_GetComponentAvailable
+.L27:
+Dem_GetComponentAvailable:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   597  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   598  #if (DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   599      if(!Dem_NodeIdIsValid(ComponentId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   600      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   601          return E_NOT_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   602      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   603  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   604     *ComponentAvailable = Dem_NodeIsAvailable(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   605      return E_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   606  #else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   607      DEM_UNUSED_PARAM(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   608      DEM_UNUSED_PARAM(ComponentAvailable);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   609      return E_NOT_OK;
+	mov	d2,#1
+.L136:
+	j	.L9
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   610  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   611  }
+.L9:
+	ret
+.L94:
+	
+__Dem_GetComponentAvailable_function_end:
+	.size	Dem_GetComponentAvailable,__Dem_GetComponentAvailable_function_end-Dem_GetComponentAvailable
+.L42:
+	; End of function
+	
+	.sdecl	'.text.Dem_Dependencies.Dem_GetComponentAreAncestorsInitialized',code,cluster('Dem_GetComponentAreAncestorsInitialized')
+	.sect	'.text.Dem_Dependencies.Dem_GetComponentAreAncestorsInitialized'
+	.align	2
+	
+	.global	Dem_GetComponentAreAncestorsInitialized
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   612  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   613  /* MR12 RULE 8.13 VIOLATION: parameter not made const, as it is depending on compiler switch setting */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   614  Std_ReturnType Dem_GetComponentAreAncestorsInitialized(Dem_ComponentIdType ComponentId, boolean* ComponentAreAncestorsInitialized)
+; Function Dem_GetComponentAreAncestorsInitialized
+.L29:
+Dem_GetComponentAreAncestorsInitialized:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   615  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   616  #if (DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   617      if(!Dem_NodeIdIsValid(ComponentId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   618      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   619          return E_NOT_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   620      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   621     *ComponentAreAncestorsInitialized = Dem_NodeAreAncestorsInitialized(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   622      return E_OK;
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   623  #else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   624      DEM_UNUSED_PARAM(ComponentId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   625      DEM_UNUSED_PARAM(ComponentAreAncestorsInitialized);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   626      return E_NOT_OK;
+	mov	d2,#1
+.L141:
+	j	.L10
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   627  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   628  }
+.L10:
+	ret
+.L98:
+	
+__Dem_GetComponentAreAncestorsInitialized_function_end:
+	.size	Dem_GetComponentAreAncestorsInitialized,__Dem_GetComponentAreAncestorsInitialized_function_end-Dem_GetComponentAreAncestorsInitialized
+.L47:
+	; End of function
+	
+	.sdecl	'.text.Dem_Dependencies.Dem_NodeSetInitialized',code,cluster('Dem_NodeSetInitialized')
+	.sect	'.text.Dem_Dependencies.Dem_NodeSetInitialized'
+	.align	2
+	
+	.global	Dem_NodeSetInitialized
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   629  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   630  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   631  void Dem_NodeSetInitialized(Dem_ComponentIdType NodeId, boolean init)
+; Function Dem_NodeSetInitialized
+.L31:
+Dem_NodeSetInitialized:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   632  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   633  #if (DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   634      DEM_ENTERLOCK_MON();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   635  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   636      if (!init)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   637      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   638          Dem_SetNodeStatus (NodeId, DEM_NODESTATUS_NOTINIT);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   639      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   640      else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   641      {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   642          Dem_ResetNodeStatus(NodeId,DEM_NODESTATUS_NOTINIT);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   643      }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   644  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   645      DEM_EXITLOCK_MON();
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   646  #else
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   647      DEM_UNUSED_PARAM(NodeId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   648      DEM_UNUSED_PARAM(init);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   649  #endif
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   650  }
+	ret
+.L124:
+	
+__Dem_NodeSetInitialized_function_end:
+	.size	Dem_NodeSetInitialized,__Dem_NodeSetInitialized_function_end-Dem_NodeSetInitialized
+.L92:
+	; End of function
+	
+	.sdecl	'.text.Dem_Dependencies.Dem_NodeAreAllFailedFiltered',code,cluster('Dem_NodeAreAllFailedFiltered')
+	.sect	'.text.Dem_Dependencies.Dem_NodeAreAllFailedFiltered'
+	.align	2
+	
+	.global	Dem_NodeAreAllFailedFiltered
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   651  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   652  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   653  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   654  /*************************************************************************************
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   655   * simple querry functions, which are also provided publically
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   656   */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   657  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   658  #if (DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   659  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   660  boolean Dem_NodeAreAncestorsFailed(Dem_ComponentIdType NodeId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   661  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   662      return Dem_NodeStatusIsAnyAncestorSet(Dem_AllNodesState[NodeId].status[DEM_NODESTATUS_FAILED]);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   663  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   664  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   665  boolean Dem_NodeAreAncestorsSuspicious(Dem_ComponentIdType NodeId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   666  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   667      return Dem_NodeStatusIsAnyAncestorSet(Dem_AllNodesState[NodeId].status[DEM_NODESTATUS_SUSPICIOUS]);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   668  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   669  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   670  boolean Dem_NodeAreAncestorsAvailable(Dem_ComponentIdType NodeId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   671  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   672      return !Dem_NodeStatusIsAnyAncestorSet(Dem_AllNodesState[NodeId].status[DEM_NODESTATUS_NOTAVAILABLE]);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   673  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   674  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   675  boolean Dem_NodeAreAncestorsRestrictedUsable(Dem_ComponentIdType NodeId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   676  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   677      return (   (Dem_NodeAreAncestorsInitialized(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   678              && (Dem_NodeAreAncestorsAvailable(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   679              && (!Dem_NodeAreAncestorsFailed(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   680              );
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   681  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   682  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   683  boolean Dem_NodeAreAncestorsUsable(Dem_ComponentIdType NodeId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   684  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   685      return (   (Dem_NodeAreAncestorsRestrictedUsable(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   686              && (!Dem_NodeAreAncestorsSuspicious(NodeId))
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   687              );
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   688  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   689  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   690  boolean Dem_NodeHasCausalFault (Dem_ComponentIdType NodeId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   691  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   692      return rba_DiagLib_Bit8IsBitSet(Dem_AllNodesState[NodeId].stateFlags, DEM_NODE_STATEFLAG_HASCAUSALFAULT);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   693  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   694  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   695  boolean Dem_NodeAreAllFailedFiltered(Dem_ComponentIdType NodeId)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   696  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   697      return (   (Dem_AllNodesState[NodeId].status[DEM_NODESTATUS_FAILEDFILTERED] != 0)
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   698              && (   Dem_AllNodesState[NodeId].status[DEM_NODESTATUS_FAILEDFILTERED]
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   699                  == Dem_AllNodesState[NodeId].status[DEM_NODESTATUS_FAILED]
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   700                 )
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   701              );
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   702  }
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   703  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   704  #else /* DEM_CFG_DEPENDENCY */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   705  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   706  boolean Dem_NodeAreAllFailedFiltered(Dem_ComponentIdType NodeId)
+; Function Dem_NodeAreAllFailedFiltered
+.L33:
+Dem_NodeAreAllFailedFiltered:	.type	func
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   707  {
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   708      DEM_UNUSED_PARAM(NodeId);
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   709      return FALSE;
+	mov	d2,#0
+.L181:
+	j	.L11
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   710  }
+.L11:
+	ret
+.L122:
+	
+__Dem_NodeAreAllFailedFiltered_function_end:
+	.size	Dem_NodeAreAllFailedFiltered,__Dem_NodeAreAllFailedFiltered_function_end-Dem_NodeAreAllFailedFiltered
+.L87:
+	; End of function
+	
+	.calls	'Dem_GetComponentSuspicious','',0
+	.calls	'Dem_GetComponentUsable','',0
+	.calls	'Dem_GetComponentRestrictedUsable','',0
+	.calls	'Dem_GetComponentInitialized','',0
+	.calls	'Dem_GetComponentFailed','',0
+	.calls	'Dem_GetComponentFailedItself','',0
+	.calls	'Dem_GetComponentSuspiciousItself','',0
+	.calls	'Dem_GetComponentAvailable','',0
+	.calls	'Dem_GetComponentAreAncestorsInitialized','',0
+	.calls	'Dem_NodeSetInitialized','',0
+	.calls	'Dem_NodeAreAllFailedFiltered','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L35:
+	.word	18646
+	.half	3
+	.word	.L36
+	.byte	4
+.L34:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L37
+.L93:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.word	148
+	.byte	4
+	.byte	'rba_DiagLib_Bit8SetBit',0,3,1,36,19,1,1,5
+	.byte	'buffer',0,1,36,49
+	.word	165
+	.byte	5
+	.byte	'bit_position',0,1,36,63
+	.word	148
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBit',0,3,1,42,19,1,1,5
+	.byte	'buffer',0,1,42,51
+	.word	165
+	.byte	5
+	.byte	'bit_position',0,1,42,65
+	.word	148
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8OverwriteBit',0,3,1,48,19,1,1,5
+	.byte	'buffer',0,1,48,55
+	.word	165
+	.byte	5
+	.byte	'bit_position',0,1,48,69
+	.word	148
+	.byte	5
+	.byte	'will_bit_be_set',0,1,48,91
+	.word	148
+	.byte	7,6,6,0,0,8
+	.byte	'rba_DiagLib_Bit8GetSingleBit',0,3,1,60,20
+	.word	148
+	.byte	1,1,5
+	.byte	'value',0,1,60,55
+	.word	148
+	.byte	5
+	.byte	'bit_position',0,1,60,68
+	.word	148
+	.byte	6,0,8
+	.byte	'rba_DiagLib_Bit8IsBitSet',0,3,1,64,22
+	.word	148
+	.byte	1,1,5
+	.byte	'value',0,1,64,53
+	.word	148
+	.byte	5
+	.byte	'bit_position',0,1,64,66
+	.word	148
+	.byte	7,6,0,0,8
+	.byte	'rba_DiagLib_Bit8GetBits',0,3,1,69,20
+	.word	148
+	.byte	1,1,5
+	.byte	'value',0,1,69,50
+	.word	148
+	.byte	5
+	.byte	'bit_position',0,1,69,63
+	.word	148
+	.byte	5
+	.byte	'number_of_bits',0,1,69,83
+	.word	148
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBits',0,3,1,77,19,1,1,5
+	.byte	'value',0,1,77,52
+	.word	165
+	.byte	5
+	.byte	'bit_position',0,1,77,65
+	.word	148
+	.byte	5
+	.byte	'number_of_bits',0,1,77,85
+	.word	148
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8OverwriteBits',0,3,1,83,19,1,1,5
+	.byte	'value',0,1,83,56
+	.word	165
+	.byte	5
+	.byte	'bit_position',0,1,83,69
+	.word	148
+	.byte	5
+	.byte	'number_of_bits',0,1,83,89
+	.word	148
+	.byte	5
+	.byte	'newValue',0,1,83,111
+	.word	148
+	.byte	7,6,0,0,2
+	.byte	'unsigned short int',0,2,7,3
+	.word	865
+	.byte	4
+	.byte	'rba_DiagLib_Bit16SetBit',0,3,2,36,19,1,1,5
+	.byte	'buffer',0,2,36,51
+	.word	887
+	.byte	5
+	.byte	'bit_position',0,2,36,65
+	.word	148
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBit',0,3,2,42,19,1,1,5
+	.byte	'buffer',0,2,42,53
+	.word	887
+	.byte	5
+	.byte	'bit_position',0,2,42,67
+	.word	148
+	.byte	6,0,8
+	.byte	'rba_DiagLib_Bit16GetSingleBit',0,3,2,60,21
+	.word	865
+	.byte	1,1,5
+	.byte	'value',0,2,60,58
+	.word	865
+	.byte	5
+	.byte	'bit_position',0,2,60,71
+	.word	148
+	.byte	6,0,8
+	.byte	'rba_DiagLib_Bit16IsBitSet',0,3,2,65,22
+	.word	148
+	.byte	1,1,5
+	.byte	'value',0,2,65,55
+	.word	865
+	.byte	5
+	.byte	'bit_position',0,2,65,68
+	.word	148
+	.byte	7,6,0,0,8
+	.byte	'rba_DiagLib_Bit16GetBits',0,3,2,70,21
+	.word	865
+	.byte	1,1,5
+	.byte	'value',0,2,70,53
+	.word	865
+	.byte	5
+	.byte	'bit_position',0,2,70,66
+	.word	148
+	.byte	5
+	.byte	'number_of_bits',0,2,70,86
+	.word	148
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBits',0,3,2,78,19,1,1,5
+	.byte	'value',0,2,78,54
+	.word	887
+	.byte	5
+	.byte	'bit_position',0,2,78,67
+	.word	148
+	.byte	5
+	.byte	'number_of_bits',0,2,78,87
+	.word	148
+	.byte	6,0,2
+	.byte	'unsigned int',0,4,7,3
+	.word	1376
+	.byte	4
+	.byte	'rba_DiagLib_Bit32SetBit',0,3,3,36,19,1,1,5
+	.byte	'buffer',0,3,36,51
+	.word	1392
+	.byte	5
+	.byte	'bit_position',0,3,36,65
+	.word	148
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBit',0,3,3,42,19,1,1,5
+	.byte	'buffer',0,3,42,53
+	.word	1392
+	.byte	5
+	.byte	'bit_position',0,3,42,67
+	.word	148
+	.byte	6,0,8
+	.byte	'rba_DiagLib_Bit32GetSingleBit',0,3,3,60,21
+	.word	1376
+	.byte	1,1,5
+	.byte	'value',0,3,60,58
+	.word	1376
+	.byte	5
+	.byte	'bit_position',0,3,60,71
+	.word	148
+	.byte	6,0,8
+	.byte	'rba_DiagLib_Bit32IsBitSet',0,3,3,65,22
+	.word	148
+	.byte	1,1,5
+	.byte	'value',0,3,65,55
+	.word	1376
+	.byte	5
+	.byte	'bit_position',0,3,65,68
+	.word	148
+	.byte	7,6,0,0,4
+	.byte	'rba_DiagLib_Bit32ClearBits',0,3,3,78,19,1,1,5
+	.byte	'value',0,3,78,54
+	.word	1392
+	.byte	5
+	.byte	'bit_position',0,3,78,67
+	.word	148
+	.byte	5
+	.byte	'number_of_bits',0,3,78,87
+	.word	148
+	.byte	6,0,4
+	.byte	'Dem_BitArraySetBit',0,3,4,33,17,1,1,5
+	.byte	'buffer',0,4,33,36
+	.word	1392
+	.byte	5
+	.byte	'bit_position',0,4,33,75
+	.word	1376
+	.byte	6,0,4
+	.byte	'Dem_BitArrayClearBit',0,3,4,46,17,1,1,5
+	.byte	'buffer',0,4,46,38
+	.word	1392
+	.byte	5
+	.byte	'bit_position',0,4,46,77
+	.word	1376
+	.byte	6,0,4
+	.byte	'Dem_BitArrayOverwriteBit',0,3,4,61,17,1,1,5
+	.byte	'buffer',0,4,61,42
+	.word	1392
+	.byte	5
+	.byte	'bit_position',0,4,62,25
+	.word	1376
+	.byte	5
+	.byte	'will_bit_be_set',0,4,62,57
+	.word	148
+	.byte	7,6,6,0,0,9
+	.word	1376
+	.byte	3
+	.word	2012
+	.byte	8
+	.byte	'Dem_BitArrayIsBitSet',0,3,4,75,30
+	.word	148
+	.byte	1,1,5
+	.byte	'buffer',0,4,75,51
+	.word	2017
+	.byte	5
+	.byte	'bit_position',0,4,75,95
+	.word	1376
+	.byte	6,0,8
+	.byte	'Dem_ISO14229ByteIsTestFailed',0,3,5,122,30
+	.word	148
+	.byte	1,1,5
+	.byte	'self',0,5,122,66
+	.word	148
+	.byte	7,6,0,0,8
+	.byte	'Dem_ISO14229ByteIsTestFailedTOC',0,3,5,129,1,30
+	.word	148
+	.byte	1,1,5
+	.byte	'self',0,5,129,1,69
+	.word	148
+	.byte	7,6,0,0,8
+	.byte	'Dem_ISO14229ByteIsTestCompleteTOC',0,3,5,157,1,30
+	.word	148
+	.byte	1,1,5
+	.byte	'self',0,5,157,1,71
+	.word	148
+	.byte	7,6,0,0,8
+	.byte	'Dem_ISO14229ByteIsPendingDTC',0,3,5,164,1,30
+	.word	148
+	.byte	1,1,5
+	.byte	'self',0,5,164,1,66
+	.word	148
+	.byte	7,6,0,0,8
+	.byte	'Dem_ISO14229ByteIsWarningIndicatorRequested',0,3,5,177,1,30
+	.word	148
+	.byte	1,1,5
+	.byte	'self',0,5,177,1,81
+	.word	148
+	.byte	7,6,0,0,4
+	.byte	'Dem_ISO14229ByteSetTestFailed',0,3,5,186,1,17,1,1,5
+	.byte	'self',0,5,186,1,55
+	.word	165
+	.byte	5
+	.byte	'setOrReset',0,5,186,1,79
+	.word	148
+	.byte	7,6,0,0,4
+	.byte	'Dem_ISO14229ByteSetTestFailedTOC',0,3,5,193,1,17,1,1,5
+	.byte	'self',0,5,193,1,58
+	.word	165
+	.byte	5
+	.byte	'setOrReset',0,5,193,1,82
+	.word	148
+	.byte	7,6,0,0,4
+	.byte	'Dem_ISO14229ByteSetTestFailedSLC',0,3,5,200,1,17,1,1,5
+	.byte	'self',0,5,200,1,58
+	.word	165
+	.byte	5
+	.byte	'setOrReset',0,5,200,1,82
+	.word	148
+	.byte	7,6,0,0,4
+	.byte	'Dem_ISO14229ByteSetTestCompleteTOC',0,3,5,214,1,17,1,1,5
+	.byte	'self',0,5,214,1,60
+	.word	165
+	.byte	5
+	.byte	'setOrReset',0,5,214,1,84
+	.word	148
+	.byte	7,6,0,0,4
+	.byte	'Dem_ISO14229ByteSetTestCompleteSLC',0,3,5,221,1,17,1,1,5
+	.byte	'self',0,5,221,1,60
+	.word	165
+	.byte	5
+	.byte	'setOrReset',0,5,221,1,84
+	.word	148
+	.byte	7,6,0,0,4
+	.byte	'Dem_ISO14229ByteSetPendingDTC',0,3,5,228,1,17,1,1,5
+	.byte	'self',0,5,228,1,55
+	.word	165
+	.byte	5
+	.byte	'setOrReset',0,5,228,1,79
+	.word	148
+	.byte	7,6,0,0,4
+	.byte	'Dem_ISO14229ByteSetConfirmedDTC',0,3,5,235,1,17,1,1,5
+	.byte	'self',0,5,235,1,57
+	.word	165
+	.byte	5
+	.byte	'setOrReset',0,5,235,1,81
+	.word	148
+	.byte	7,6,0,0,4
+	.byte	'Dem_ISO14229ByteSetWarningIndicatorRequested',0,3,5,242,1,17,1,1,5
+	.byte	'self',0,5,242,1,70
+	.word	165
+	.byte	5
+	.byte	'setOrReset',0,5,242,1,94
+	.word	148
+	.byte	7,6,0,0,8
+	.byte	'rba_BswSrv_ByteOrderSwap32',0,3,6,125,21
+	.word	1376
+	.byte	1,1,5
+	.byte	'Input_u32',0,6,125,55
+	.word	1376
+	.byte	6,0,8
+	.byte	'rba_BswSrv_ByteOrderSwap16',0,3,6,150,1,21
+	.word	865
+	.byte	1,1,5
+	.byte	'Input_u16',0,6,150,1,55
+	.word	865
+	.byte	6,0,8
+	.byte	'Dem_LibGetParamBool',0,3,7,41,20
+	.word	148
+	.byte	1,1,5
+	.byte	'parameter',0,7,41,49
+	.word	148
+	.byte	6,0,8
+	.byte	'Dem_isDtcIdValid',0,3,8,152,1,30
+	.word	148
+	.byte	1,1,5
+	.byte	'id',0,8,152,1,62
+	.word	865
+	.byte	6,0,8
+	.byte	'Dem_DtcIdGetEventId',0,3,8,166,1,28
+	.word	865
+	.byte	1,1,5
+	.byte	'dtcid',0,8,166,1,63
+	.word	865
+	.byte	6,0,8
+	.byte	'Dem_DtcGroupIdIsValid',0,3,8,252,1,30
+	.word	148
+	.byte	1,1,5
+	.byte	'dtcGroupID',0,8,252,1,72
+	.word	148
+	.byte	6,0,8
+	.byte	'Dem_EnCoAreAllFulfilled',0,3,9,32,30
+	.word	148
+	.byte	1,1,5
+	.byte	'enableConditionList',0,9,32,68
+	.word	148
+	.byte	6,0,8
+	.byte	'Dem_NvMGetNvMBlocKId',0,3,10,49,28
+	.word	865
+	.byte	1,1,5
+	.byte	'id',0,10,49,68
+	.word	148
+	.byte	6,0,8
+	.byte	'rba_DiagLib_ByteOrderUtils_SwapByteOrderS',0,3,11,36,21
+	.word	865
+	.byte	1,1,5
+	.byte	'val',0,11,36,70
+	.word	865
+	.byte	7,6,0,0,8
+	.byte	'rba_DiagLib_ByteOrderUtils_SwapByteOrderL',0,3,11,41,21
+	.word	1376
+	.byte	1,1,5
+	.byte	'val',0,11,41,70
+	.word	1376
+	.byte	7,6,0,0,8
+	.byte	'Dem_EvtParam_GetOperationCycleID',0,3,12,122,20
+	.word	148
+	.byte	1,1,5
+	.byte	'indx',0,12,122,69
+	.word	865
+	.byte	6,0,8
+	.byte	'Dem_EvtParam_GetAgingCycleID',0,3,12,129,1,20
+	.word	148
+	.byte	1,1,5
+	.byte	'indx',0,12,129,1,65
+	.word	865
+	.byte	6,0,8
+	.byte	'Dem_EvtParam_GetFailureCycleID',0,3,12,136,1,20
+	.word	148
+	.byte	1,1,5
+	.byte	'indx',0,12,136,1,67
+	.word	865
+	.byte	6,0,8
+	.byte	'Dem_EvtParam_GetEnableConditions',0,3,12,208,1,27
+	.word	148
+	.byte	1,1,5
+	.byte	'indx',0,12,208,1,76
+	.word	865
+	.byte	6,0,4
+	.byte	'Dem_EvtIncreaseGlobalInitMonitoringCounter',0,3,13,227,3,17,1,1,6,0,4
+	.byte	'Dem_EvtSetAnyInitMonitoring',0,3,13,233,3,17,1,1,5
+	.byte	'reason',0,13,233,3,72
+	.word	148
+	.byte	7,6,0,0,8
+	.byte	'Dem_EvtIsSuppressed',0,3,13,244,4,30
+	.word	148
+	.byte	1,1,5
+	.byte	'EventId',0,13,244,4,67
+	.word	865
+	.byte	7,6,0,0,8
+	.byte	'Dem_EvtGetIsoByte',0,3,14,42,34
+	.word	148
+	.byte	1,1,5
+	.byte	'EventId',0,14,42,69
+	.word	865
+	.byte	6,0,10
+	.word	170
+	.byte	11
+	.word	200
+	.byte	11
+	.word	215
+	.byte	6,0,10
+	.word	238
+	.byte	11
+	.word	270
+	.byte	11
+	.word	285
+	.byte	6,0,10
+	.word	308
+	.byte	11
+	.word	344
+	.byte	11
+	.word	359
+	.byte	11
+	.word	380
+	.byte	7,12
+	.word	170
+	.byte	11
+	.word	200
+	.byte	11
+	.word	215
+	.byte	13
+	.word	236
+	.byte	0,6,12
+	.word	238
+	.byte	11
+	.word	270
+	.byte	11
+	.word	285
+	.byte	13
+	.word	306
+	.byte	0,6,0,0,10
+	.word	409
+	.byte	11
+	.word	449
+	.byte	11
+	.word	463
+	.byte	6,0,10
+	.word	486
+	.byte	11
+	.word	522
+	.byte	11
+	.word	536
+	.byte	7,12
+	.word	409
+	.byte	11
+	.word	449
+	.byte	11
+	.word	463
+	.byte	13
+	.word	484
+	.byte	0,6,0,0,10
+	.word	561
+	.byte	11
+	.word	596
+	.byte	11
+	.word	610
+	.byte	11
+	.word	631
+	.byte	6,0,10
+	.word	656
+	.byte	11
+	.word	689
+	.byte	11
+	.word	703
+	.byte	11
+	.word	724
+	.byte	6,0,10
+	.word	749
+	.byte	11
+	.word	786
+	.byte	11
+	.word	800
+	.byte	11
+	.word	821
+	.byte	11
+	.word	844
+	.byte	7,12
+	.word	656
+	.byte	11
+	.word	689
+	.byte	11
+	.word	703
+	.byte	11
+	.word	724
+	.byte	13
+	.word	747
+	.byte	0,6,0,0,10
+	.word	892
+	.byte	11
+	.word	923
+	.byte	11
+	.word	938
+	.byte	6,0,10
+	.word	961
+	.byte	11
+	.word	994
+	.byte	11
+	.word	1009
+	.byte	6,0,10
+	.word	1032
+	.byte	11
+	.word	1073
+	.byte	11
+	.word	1087
+	.byte	6,0,10
+	.word	1110
+	.byte	11
+	.word	1147
+	.byte	11
+	.word	1161
+	.byte	7,12
+	.word	1032
+	.byte	11
+	.word	1073
+	.byte	11
+	.word	1087
+	.byte	13
+	.word	1108
+	.byte	0,6,0,0,10
+	.word	1186
+	.byte	11
+	.word	1222
+	.byte	11
+	.word	1236
+	.byte	11
+	.word	1257
+	.byte	6,0,10
+	.word	1282
+	.byte	11
+	.word	1316
+	.byte	11
+	.word	1330
+	.byte	11
+	.word	1351
+	.byte	6,0,10
+	.word	1397
+	.byte	11
+	.word	1428
+	.byte	11
+	.word	1443
+	.byte	6,0,10
+	.word	1466
+	.byte	11
+	.word	1499
+	.byte	11
+	.word	1514
+	.byte	6,0,10
+	.word	1537
+	.byte	11
+	.word	1578
+	.byte	11
+	.word	1592
+	.byte	6,0,10
+	.word	1615
+	.byte	11
+	.word	1652
+	.byte	11
+	.word	1666
+	.byte	7,12
+	.word	1537
+	.byte	11
+	.word	1578
+	.byte	11
+	.word	1592
+	.byte	13
+	.word	1613
+	.byte	0,6,0,0,10
+	.word	1691
+	.byte	11
+	.word	1725
+	.byte	11
+	.word	1739
+	.byte	11
+	.word	1760
+	.byte	6,0
+.L96:
+	.byte	3
+	.word	148
+	.byte	10
+	.word	1785
+	.byte	11
+	.word	1811
+	.byte	11
+	.word	1826
+	.byte	6,0,10
+	.word	1849
+	.byte	11
+	.word	1877
+	.byte	11
+	.word	1892
+	.byte	6,0,10
+	.word	1915
+	.byte	11
+	.word	1947
+	.byte	11
+	.word	1962
+	.byte	11
+	.word	1983
+	.byte	7,12
+	.word	1785
+	.byte	11
+	.word	1811
+	.byte	11
+	.word	1826
+	.byte	13
+	.word	1847
+	.byte	0,6,12
+	.word	1849
+	.byte	11
+	.word	1877
+	.byte	11
+	.word	1892
+	.byte	13
+	.word	1913
+	.byte	0,6,0,0,10
+	.word	2022
+	.byte	11
+	.word	2054
+	.byte	11
+	.word	2069
+	.byte	6,0,10
+	.word	2092
+	.byte	11
+	.word	2132
+	.byte	7,12
+	.word	486
+	.byte	11
+	.word	522
+	.byte	11
+	.word	536
+	.byte	14
+	.word	557
+	.byte	12
+	.word	409
+	.byte	11
+	.word	449
+	.byte	11
+	.word	463
+	.byte	13
+	.word	484
+	.byte	0,13
+	.word	558
+	.byte	0,0,6,0,0,10
+	.word	2149
+	.byte	11
+	.word	2193
+	.byte	7,12
+	.word	486
+	.byte	11
+	.word	522
+	.byte	11
+	.word	536
+	.byte	14
+	.word	557
+	.byte	12
+	.word	409
+	.byte	11
+	.word	449
+	.byte	11
+	.word	463
+	.byte	13
+	.word	484
+	.byte	0,13
+	.word	558
+	.byte	0,0,6,0,0,10
+	.word	2211
+	.byte	11
+	.word	2257
+	.byte	7,12
+	.word	486
+	.byte	11
+	.word	522
+	.byte	11
+	.word	536
+	.byte	14
+	.word	557
+	.byte	12
+	.word	409
+	.byte	11
+	.word	449
+	.byte	11
+	.word	463
+	.byte	13
+	.word	484
+	.byte	0,13
+	.word	558
+	.byte	0,0,6,0,0,10
+	.word	2275
+	.byte	11
+	.word	2316
+	.byte	7,12
+	.word	486
+	.byte	11
+	.word	522
+	.byte	11
+	.word	536
+	.byte	14
+	.word	557
+	.byte	12
+	.word	409
+	.byte	11
+	.word	449
+	.byte	11
+	.word	463
+	.byte	13
+	.word	484
+	.byte	0,13
+	.word	558
+	.byte	0,0,6,0,0,10
+	.word	2334
+	.byte	11
+	.word	2390
+	.byte	7,12
+	.word	486
+	.byte	11
+	.word	522
+	.byte	11
+	.word	536
+	.byte	14
+	.word	557
+	.byte	12
+	.word	409
+	.byte	11
+	.word	449
+	.byte	11
+	.word	463
+	.byte	13
+	.word	484
+	.byte	0,13
+	.word	558
+	.byte	0,0,6,0,0,10
+	.word	2408
+	.byte	11
+	.word	2446
+	.byte	11
+	.word	2460
+	.byte	7,12
+	.word	308
+	.byte	11
+	.word	344
+	.byte	11
+	.word	359
+	.byte	11
+	.word	380
+	.byte	14
+	.word	404
+	.byte	12
+	.word	170
+	.byte	11
+	.word	200
+	.byte	11
+	.word	215
+	.byte	13
+	.word	236
+	.byte	0,13
+	.word	405
+	.byte	12
+	.word	238
+	.byte	11
+	.word	270
+	.byte	11
+	.word	285
+	.byte	13
+	.word	306
+	.byte	0,13
+	.word	406
+	.byte	0,0,6,0,0,10
+	.word	2484
+	.byte	11
+	.word	2525
+	.byte	11
+	.word	2539
+	.byte	7,12
+	.word	308
+	.byte	11
+	.word	344
+	.byte	11
+	.word	359
+	.byte	11
+	.word	380
+	.byte	14
+	.word	404
+	.byte	12
+	.word	170
+	.byte	11
+	.word	200
+	.byte	11
+	.word	215
+	.byte	13
+	.word	236
+	.byte	0,13
+	.word	405
+	.byte	12
+	.word	238
+	.byte	11
+	.word	270
+	.byte	11
+	.word	285
+	.byte	13
+	.word	306
+	.byte	0,13
+	.word	406
+	.byte	0,0,6,0,0,10
+	.word	2563
+	.byte	11
+	.word	2604
+	.byte	11
+	.word	2618
+	.byte	7,12
+	.word	308
+	.byte	11
+	.word	344
+	.byte	11
+	.word	359
+	.byte	11
+	.word	380
+	.byte	14
+	.word	404
+	.byte	12
+	.word	170
+	.byte	11
+	.word	200
+	.byte	11
+	.word	215
+	.byte	13
+	.word	236
+	.byte	0,13
+	.word	405
+	.byte	12
+	.word	238
+	.byte	11
+	.word	270
+	.byte	11
+	.word	285
+	.byte	13
+	.word	306
+	.byte	0,13
+	.word	406
+	.byte	0,0,6,0,0,10
+	.word	2642
+	.byte	11
+	.word	2685
+	.byte	11
+	.word	2699
+	.byte	7,12
+	.word	308
+	.byte	11
+	.word	344
+	.byte	11
+	.word	359
+	.byte	11
+	.word	380
+	.byte	14
+	.word	404
+	.byte	12
+	.word	170
+	.byte	11
+	.word	200
+	.byte	11
+	.word	215
+	.byte	13
+	.word	236
+	.byte	0,13
+	.word	405
+	.byte	12
+	.word	238
+	.byte	11
+	.word	270
+	.byte	11
+	.word	285
+	.byte	13
+	.word	306
+	.byte	0,13
+	.word	406
+	.byte	0,0,6,0,0,10
+	.word	2723
+	.byte	11
+	.word	2766
+	.byte	11
+	.word	2780
+	.byte	7,12
+	.word	308
+	.byte	11
+	.word	344
+	.byte	11
+	.word	359
+	.byte	11
+	.word	380
+	.byte	14
+	.word	404
+	.byte	12
+	.word	170
+	.byte	11
+	.word	200
+	.byte	11
+	.word	215
+	.byte	13
+	.word	236
+	.byte	0,13
+	.word	405
+	.byte	12
+	.word	238
+	.byte	11
+	.word	270
+	.byte	11
+	.word	285
+	.byte	13
+	.word	306
+	.byte	0,13
+	.word	406
+	.byte	0,0,6,0,0,10
+	.word	2804
+	.byte	11
+	.word	2842
+	.byte	11
+	.word	2856
+	.byte	7,12
+	.word	308
+	.byte	11
+	.word	344
+	.byte	11
+	.word	359
+	.byte	11
+	.word	380
+	.byte	14
+	.word	404
+	.byte	12
+	.word	170
+	.byte	11
+	.word	200
+	.byte	11
+	.word	215
+	.byte	13
+	.word	236
+	.byte	0,13
+	.word	405
+	.byte	12
+	.word	238
+	.byte	11
+	.word	270
+	.byte	11
+	.word	285
+	.byte	13
+	.word	306
+	.byte	0,13
+	.word	406
+	.byte	0,0,6,0,0,10
+	.word	2880
+	.byte	11
+	.word	2920
+	.byte	11
+	.word	2934
+	.byte	7,12
+	.word	308
+	.byte	11
+	.word	344
+	.byte	11
+	.word	359
+	.byte	11
+	.word	380
+	.byte	14
+	.word	404
+	.byte	12
+	.word	170
+	.byte	11
+	.word	200
+	.byte	11
+	.word	215
+	.byte	13
+	.word	236
+	.byte	0,13
+	.word	405
+	.byte	12
+	.word	238
+	.byte	11
+	.word	270
+	.byte	11
+	.word	285
+	.byte	13
+	.word	306
+	.byte	0,13
+	.word	406
+	.byte	0,0,6,0,0,10
+	.word	2958
+	.byte	11
+	.word	3011
+	.byte	11
+	.word	3025
+	.byte	7,12
+	.word	308
+	.byte	11
+	.word	344
+	.byte	11
+	.word	359
+	.byte	11
+	.word	380
+	.byte	14
+	.word	404
+	.byte	12
+	.word	170
+	.byte	11
+	.word	200
+	.byte	11
+	.word	215
+	.byte	13
+	.word	236
+	.byte	0,13
+	.word	405
+	.byte	12
+	.word	238
+	.byte	11
+	.word	270
+	.byte	11
+	.word	285
+	.byte	13
+	.word	306
+	.byte	0,13
+	.word	406
+	.byte	0,0,6,0,0,10
+	.word	3049
+	.byte	11
+	.word	3087
+	.byte	6,0,10
+	.word	3107
+	.byte	11
+	.word	3146
+	.byte	6,0,10
+	.word	3167
+	.byte	11
+	.word	3198
+	.byte	6,0,10
+	.word	3218
+	.byte	11
+	.word	3247
+	.byte	6,0,10
+	.word	3261
+	.byte	11
+	.word	3293
+	.byte	6,0,10
+	.word	3310
+	.byte	11
+	.word	3344
+	.byte	6,0,10
+	.word	3366
+	.byte	11
+	.word	3401
+	.byte	6,0,10
+	.word	3431
+	.byte	11
+	.word	3463
+	.byte	6,0,10
+	.word	3476
+	.byte	11
+	.word	3529
+	.byte	7,12
+	.word	3107
+	.byte	11
+	.word	3146
+	.byte	13
+	.word	3165
+	.byte	0,6,0,0,10
+	.word	3545
+	.byte	11
+	.word	3598
+	.byte	7,12
+	.word	3049
+	.byte	11
+	.word	3087
+	.byte	13
+	.word	3105
+	.byte	0,6,0,0,10
+	.word	3614
+	.byte	11
+	.word	3658
+	.byte	6,0,10
+	.word	3673
+	.byte	11
+	.word	3714
+	.byte	6,0,10
+	.word	3730
+	.byte	11
+	.word	3773
+	.byte	6,0,10
+	.word	3789
+	.byte	11
+	.word	3834
+	.byte	6,0,10
+	.word	3850
+	.byte	6,0,10
+	.word	3903
+	.byte	11
+	.word	3939
+	.byte	7,12
+	.word	1397
+	.byte	11
+	.word	1428
+	.byte	11
+	.word	1443
+	.byte	13
+	.word	1464
+	.byte	0,6,0,0,10
+	.word	3959
+	.byte	11
+	.word	3991
+	.byte	7,12
+	.word	486
+	.byte	11
+	.word	522
+	.byte	11
+	.word	536
+	.byte	14
+	.word	557
+	.byte	12
+	.word	409
+	.byte	11
+	.word	449
+	.byte	11
+	.word	463
+	.byte	13
+	.word	484
+	.byte	0,13
+	.word	558
+	.byte	0,0,6,0,0,10
+	.word	4012
+	.byte	11
+	.word	4041
+	.byte	6,0,15,1,3
+	.word	6101
+	.byte	16
+	.byte	'__codeptr',0,15,1,1
+	.word	6103
+	.byte	2
+	.byte	'char',0,1,6,16
+	.byte	'sint8',0,16,76,25
+	.word	6126
+	.byte	16
+	.byte	'uint8',0,16,81,25
+	.word	148
+	.byte	2
+	.byte	'short int',0,2,5,16
+	.byte	'sint16',0,16,86,25
+	.word	6162
+	.byte	16
+	.byte	'uint16',0,16,91,25
+	.word	865
+	.byte	2
+	.byte	'int',0,4,5,16
+	.byte	'sint32',0,16,96,24
+	.word	6205
+	.byte	16
+	.byte	'uint32',0,16,106,24
+	.word	1376
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,16
+	.byte	'uint64',0,16,111,30
+	.word	6242
+	.byte	16
+	.byte	'boolean',0,16,127,25
+	.word	148
+	.byte	2
+	.byte	'unsigned long int',0,4,7,16
+	.byte	'uint8_least',0,16,137,1,25
+	.word	6299
+	.byte	16
+	.byte	'uint16_least',0,16,147,1,25
+	.word	6299
+	.byte	16
+	.byte	'StatusType',0,17,191,1,27
+	.word	148
+	.byte	16
+	.byte	'Std_ReturnType',0,17,199,1,15
+	.word	148
+	.byte	17,17,206,1,9,8,18
+	.byte	'vendorID',0
+	.word	865
+	.byte	2,2,35,0,18
+	.byte	'moduleID',0
+	.word	865
+	.byte	2,2,35,2,18
+	.byte	'sw_major_version',0
+	.word	148
+	.byte	1,2,35,4,18
+	.byte	'sw_minor_version',0
+	.word	148
+	.byte	1,2,35,5,18
+	.byte	'sw_patch_version',0
+	.word	148
+	.byte	1,2,35,6,0,16
+	.byte	'Std_VersionInfoType',0,17,213,1,3
+	.word	6407
+	.byte	16
+	.byte	'Dem_ComponentIdType',0,18,20,15
+	.word	148
+	.byte	16
+	.byte	'PduIdType',0,19,22,19
+	.word	865
+	.byte	16
+	.byte	'PduLengthType',0,19,26,19
+	.word	865
+	.byte	19,20,113,9,4,20
+	.byte	'TP_DATACONF',0,0,20
+	.byte	'TP_DATARETRY',0,1,20
+	.byte	'TP_CONFPENDING',0,2,0,16
+	.byte	'TpDataStateType',0,20,118,3
+	.word	6625
+	.byte	16
+	.byte	'Can_IdType',0,21,32,16
+	.word	1376
+	.byte	16
+	.byte	'Can_HwHandleType',0,21,43,16
+	.word	865
+	.byte	17,22,93,9,8,18
+	.byte	'Class',0
+	.word	148
+	.byte	1,2,35,0,18
+	.byte	'TIN',0
+	.word	148
+	.byte	1,2,35,1,18
+	.byte	'ReturnAddress',0
+	.word	1376
+	.byte	4,2,35,4,0,16
+	.byte	'OsTrapInfoType',0,22,97,3
+	.word	6745
+	.byte	21,68
+	.word	1376
+	.byte	22,16,0,17,22,154,1,9,68,18
+	.byte	'store',0
+	.word	6825
+	.byte	68,2,35,0,0,21,68
+	.word	6834
+	.byte	22,0,0,16
+	.byte	'Os_JumpBufType',0,22,156,1,3
+	.word	6856
+	.byte	16
+	.byte	'Os_StackTraceType',0,22,174,1,18
+	.word	1376
+	.byte	17,22,175,1,9,8,18
+	.byte	'sp',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	'ctx',0
+	.word	1376
+	.byte	4,2,35,4,0,16
+	.byte	'Os_StackValueType',0,22,175,1,63
+	.word	6916
+	.byte	16
+	.byte	'Os_StackSizeType',0,22,176,1,27
+	.word	6916
+	.byte	23,1,1,3
+	.word	7001
+	.byte	16
+	.byte	'Os_VoidVoidFunctionType',0,22,179,1,16
+	.word	7004
+	.byte	16
+	.byte	'ApplicationType',0,22,193,1,23
+	.word	148
+	.byte	24
+	.byte	'Os_ApplicationConfigurationType_s',0,22,198,1,16,2,18
+	.byte	'app_id',0
+	.word	148
+	.byte	1,2,35,0,18
+	.byte	'access',0
+	.word	148
+	.byte	1,2,35,1,0,16
+	.byte	'Os_ApplicationConfigurationType',0,22,201,1,3
+	.word	7067
+	.byte	16
+	.byte	'Os_CoreStateType',0,22,203,1,16
+	.word	1376
+	.byte	16
+	.byte	'AreaIdType',0,22,204,1,16
+	.word	865
+	.byte	16
+	.byte	'Os_PeripheralAddressType',0,22,212,1,22
+	.word	1376
+	.byte	16
+	.byte	'TickType',0,22,221,1,22
+	.word	1376
+	.byte	16
+	.byte	'Os_StopwatchTickType',0,22,225,1,22
+	.word	1376
+	.byte	16
+	.byte	'Os_Lockable',0,22,234,1,18
+	.word	1392
+	.byte	16
+	.byte	'CoreIdType',0,22,236,1,16
+	.word	865
+	.byte	16
+	.byte	'SpinlockIdType',0,22,237,1,16
+	.word	865
+	.byte	19,22,239,1,9,4,20
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,20
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,16
+	.byte	'TryToGetSpinlockType',0,22,239,1,74
+	.word	7374
+	.byte	19,22,174,2,9,4,20
+	.byte	'APPLICATION_ACCESSIBLE',0,0,20
+	.byte	'APPLICATION_RESTARTING',0,1,20
+	.byte	'APPLICATION_TERMINATED',0,2,0,16
+	.byte	'ApplicationStateType',0,22,174,2,92
+	.word	7467
+	.byte	25
+	.byte	'void',0,3
+	.word	7579
+	.byte	26,1,1,27
+	.word	148
+	.byte	27
+	.word	7585
+	.byte	0,3
+	.word	7590
+	.byte	16
+	.byte	'Os_FunctionEntryType',0,22,183,2,16
+	.word	7604
+	.byte	24
+	.byte	'Os_MeterInfoType_s',0,22,193,2,16,48,18
+	.byte	'elapsed',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	'previous',0
+	.word	1376
+	.byte	4,2,35,4,18
+	.byte	'max',0
+	.word	1376
+	.byte	4,2,35,8,18
+	.byte	'cumulative',0
+	.word	1376
+	.byte	4,2,35,12,18
+	.byte	'stackbase',0
+	.word	6916
+	.byte	8,2,35,16,18
+	.byte	'stackusage',0
+	.word	6916
+	.byte	8,2,35,24,18
+	.byte	'stackmax',0
+	.word	6916
+	.byte	8,2,35,32,18
+	.byte	'stackbudget',0
+	.word	6916
+	.byte	8,2,35,40,0,16
+	.byte	'Os_MeterInfoType',0,22,202,2,3
+	.word	7639
+	.byte	3
+	.word	7639
+	.byte	16
+	.byte	'Os_MeterInfoRefType',0,22,203,2,50
+	.word	7837
+	.byte	16
+	.byte	'EventMaskType',0,22,206,2,15
+	.word	148
+	.byte	16
+	.byte	'Os_imaskType',0,22,211,2,16
+	.word	1376
+	.byte	24
+	.byte	'Os_ISRDynType_s',0,22,213,2,16,48,18
+	.byte	'meter',0
+	.word	7639
+	.byte	48,2,35,0,0,16
+	.byte	'Os_ISRDynType',0,22,215,2,3
+	.word	7916
+	.byte	3
+	.word	7916
+	.byte	9
+	.word	7977
+	.byte	24
+	.byte	'Os_ISRType_s',0,22,216,2,16,24,18
+	.byte	'entry_function',0
+	.word	7009
+	.byte	4,2,35,0,18
+	.byte	'dynamic',0
+	.word	7982
+	.byte	4,2,35,4,18
+	.byte	'imask',0
+	.word	1376
+	.byte	4,2,35,8,18
+	.byte	'stackbudget',0
+	.word	6916
+	.byte	8,2,35,12,18
+	.byte	'access',0
+	.word	148
+	.byte	1,2,35,20,18
+	.byte	'application',0
+	.word	148
+	.byte	1,2,35,21,0,16
+	.byte	'Os_ISRType',0,22,223,2,3
+	.word	7987
+	.byte	3
+	.word	7001
+	.byte	9
+	.word	7987
+	.byte	3
+	.word	8146
+	.byte	16
+	.byte	'ISRType',0,22,224,2,46
+	.word	8151
+	.byte	16
+	.byte	'Os_bitmask',0,22,239,2,22
+	.word	1376
+	.byte	16
+	.byte	'Os_pset0Type',0,22,240,2,20
+	.word	1376
+	.byte	16
+	.byte	'Os_pset1Type',0,22,241,2,20
+	.word	1376
+	.byte	16
+	.byte	'Os_pset2Type',0,22,242,2,20
+	.word	1376
+	.byte	28,22,243,2,9,4,18
+	.byte	'p0',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	'p1',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	'p2',0
+	.word	1376
+	.byte	4,2,35,0,0,16
+	.byte	'Os_psetType',0,22,247,2,3
+	.word	8259
+	.byte	28,22,249,2,9,4,18
+	.byte	't0',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	't1',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	't2',0
+	.word	1376
+	.byte	4,2,35,0,0,16
+	.byte	'Os_tpmaskType',0,22,253,2,3
+	.word	8323
+	.byte	16
+	.byte	'Os_ActivationCountType',0,22,254,2,23
+	.word	148
+	.byte	24
+	.byte	'Os_TaskDynType_s',0,22,128,3,16,120,18
+	.byte	'terminate_jump_buf',0
+	.word	6865
+	.byte	68,2,35,0,18
+	.byte	'meter',0
+	.word	7639
+	.byte	48,2,35,68,18
+	.byte	'activation_count',0
+	.word	148
+	.byte	1,2,35,116,0,16
+	.byte	'Os_TaskDynType',0,22,132,3,3
+	.word	8421
+	.byte	21,68
+	.word	6834
+	.byte	22,0,0,3
+	.word	8421
+	.byte	9
+	.word	8547
+	.byte	24
+	.byte	'Os_TaskType_s',0,22,134,3,16,40,18
+	.byte	'dynamic',0
+	.word	8552
+	.byte	4,2,35,0,18
+	.byte	'entry_function',0
+	.word	7009
+	.byte	4,2,35,4,18
+	.byte	'pset',0
+	.word	8259
+	.byte	4,2,35,8,18
+	.byte	'base_tpmask',0
+	.word	8323
+	.byte	4,2,35,12,18
+	.byte	'tpmask',0
+	.word	8323
+	.byte	4,2,35,16,18
+	.byte	'core_id',0
+	.word	865
+	.byte	2,2,35,20,18
+	.byte	'index',0
+	.word	1376
+	.byte	4,2,35,24,18
+	.byte	'stackbudget',0
+	.word	6916
+	.byte	8,2,35,28,18
+	.byte	'activation_count',0
+	.word	148
+	.byte	1,2,35,36,18
+	.byte	'access',0
+	.word	148
+	.byte	1,2,35,37,18
+	.byte	'application',0
+	.word	148
+	.byte	1,2,35,38,0,16
+	.byte	'Os_TaskType',0,22,146,3,3
+	.word	8557
+	.byte	9
+	.word	8557
+	.byte	3
+	.word	8807
+	.byte	16
+	.byte	'TaskType',0,22,147,3,47
+	.word	8812
+	.byte	29
+	.byte	'Os_TaskStateType',0,22,155,3,6,4,20
+	.byte	'SUSPENDED',0,0,20
+	.byte	'READY',0,1,20
+	.byte	'WAITING',0,2,20
+	.byte	'RUNNING',0,3,0,16
+	.byte	'TaskStateType',0,22,156,3,31
+	.word	8835
+	.byte	28,22,167,3,3,4,18
+	.byte	'tpmask',0
+	.word	8323
+	.byte	4,2,35,0,0,24
+	.byte	'Os_ResourceDynType_s',0,22,166,3,16,4,18
+	.byte	'saved_priority',0
+	.word	8922
+	.byte	4,2,35,0,0,16
+	.byte	'Os_ResourceDynType',0,22,170,3,3
+	.word	8945
+	.byte	3
+	.word	8945
+	.byte	9
+	.word	9025
+	.byte	24
+	.byte	'Os_ResourceType_s',0,22,171,3,16,12,18
+	.byte	'dynamic',0
+	.word	9030
+	.byte	4,2,35,0,18
+	.byte	'tpmask',0
+	.word	8323
+	.byte	4,2,35,4,18
+	.byte	'access',0
+	.word	148
+	.byte	1,2,35,8,0,16
+	.byte	'Os_ResourceType',0,22,175,3,3
+	.word	9035
+	.byte	17,22,181,3,9,12,18
+	.byte	'maxallowedvalue',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	'ticksperbase',0
+	.word	1376
+	.byte	4,2,35,4,18
+	.byte	'mincycle',0
+	.word	1376
+	.byte	4,2,35,8,0,16
+	.byte	'AlarmBaseType',0,22,185,3,3
+	.word	9134
+	.byte	17,22,206,3,9,8,18
+	.byte	'Running',0
+	.word	148
+	.byte	1,2,35,0,18
+	.byte	'Pending',0
+	.word	148
+	.byte	1,2,35,1,18
+	.byte	'Delay',0
+	.word	1376
+	.byte	4,2,35,4,0,16
+	.byte	'Os_CounterStatusType',0,22,210,3,3
+	.word	9229
+	.byte	30
+	.word	148
+	.byte	1,1,3
+	.word	9315
+	.byte	16
+	.byte	'Os_CounterIncrAdvType',0,22,217,3,22
+	.word	9322
+	.byte	24
+	.byte	's_swd',0,22,222,3,12,4,18
+	.byte	'count',0
+	.word	1376
+	.byte	4,2,35,0,0,28,22,221,3,3,4,18
+	.byte	'sw',0
+	.word	9358
+	.byte	4,2,35,0,0,24
+	.byte	'Os_CounterDynType_s',0,22,220,3,16,4,18
+	.byte	'type_dependent',0
+	.word	9386
+	.byte	4,2,35,0,0,16
+	.byte	'Os_CounterDynType',0,22,226,3,3
+	.word	9405
+	.byte	3
+	.word	9405
+	.byte	9
+	.word	9483
+	.byte	24
+	.byte	'Os_CounterType_s',0,22,227,3,16,28,18
+	.byte	'dynamic',0
+	.word	9488
+	.byte	4,2,35,0,18
+	.byte	'advincr',0
+	.word	9327
+	.byte	4,2,35,4,18
+	.byte	'base',0
+	.word	9134
+	.byte	12,2,35,8,18
+	.byte	'core',0
+	.word	7585
+	.byte	4,2,35,20,18
+	.byte	'access',0
+	.word	148
+	.byte	1,2,35,24,18
+	.byte	'application',0
+	.word	148
+	.byte	1,2,35,25,0,16
+	.byte	'Os_CounterType',0,22,234,3,3
+	.word	9493
+	.byte	3
+	.word	9315
+	.byte	9
+	.word	9493
+	.byte	3
+	.word	9645
+	.byte	16
+	.byte	'CounterType',0,22,235,3,52
+	.word	9650
+	.byte	29
+	.byte	'Os_ScheduleTableStatusType',0,22,240,3,6,4,20
+	.byte	'SCHEDULETABLE_STOPPED',0,0,20
+	.byte	'SCHEDULETABLE_NEXT',0,1,20
+	.byte	'SCHEDULETABLE_WAITING',0,2,20
+	.byte	'SCHEDULETABLE_RUNNING',0,3,20
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,16
+	.byte	'ScheduleTableStatusType',0,22,241,3,41
+	.word	9676
+	.byte	9
+	.word	.L127-.L35
+	.byte	3
+	.word	9876
+	.byte	16
+	.byte	'ScheduleTableType',0,22,128,4,58
+	.word	9881
+	.byte	24
+	.byte	'Os_ScheduleTableDynType_s',0,22,130,4,16,16,18
+	.byte	'match',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	'next',0
+	.word	9886
+	.byte	4,2,35,4,18
+	.byte	'state',0
+	.word	9676
+	.byte	4,2,35,8,18
+	.byte	'config',0
+	.word	865
+	.byte	2,2,35,12,0,3
+	.word	9913
+	.byte	9
+	.word	10006
+.L127:
+	.byte	24
+	.byte	'Os_ScheduleTableType_s',0,22,247,3,16,16,18
+	.byte	'dynamic',0
+	.word	10011
+	.byte	4,2,35,0,18
+	.byte	'counter',0
+	.word	9655
+	.byte	4,2,35,4,18
+	.byte	'repeat',0
+	.word	148
+	.byte	1,2,35,8,18
+	.byte	'config',0
+	.word	865
+	.byte	2,2,35,10,18
+	.byte	'initial',0
+	.word	148
+	.byte	1,2,35,12,18
+	.byte	'access',0
+	.word	148
+	.byte	1,2,35,13,18
+	.byte	'application',0
+	.word	148
+	.byte	1,2,35,14,0,16
+	.byte	'Os_ScheduleTableType',0,22,255,3,3
+	.word	10016
+	.byte	9
+	.word	10016
+	.byte	3
+	.word	10196
+	.byte	9
+	.word	9493
+	.byte	3
+	.word	10206
+	.byte	31
+	.word	7309
+	.byte	31
+	.word	8259
+	.byte	31
+	.word	8156
+	.byte	31
+	.word	8817
+	.byte	31
+	.word	8323
+	.byte	31
+	.word	148
+	.byte	31
+	.word	8817
+	.byte	24
+	.byte	'Os_ControlledCoreType_s',0,22,251,6,16,112,18
+	.byte	'TrapInfo',0
+	.word	6745
+	.byte	8,2,35,0,18
+	.byte	'lock_taskaccess',0
+	.word	10216
+	.byte	4,2,35,8,18
+	.byte	'ReadyTasks',0
+	.word	10221
+	.byte	4,2,35,12,18
+	.byte	'RunningISR',0
+	.word	10226
+	.byte	4,2,35,16,18
+	.byte	'RunningTask',0
+	.word	10231
+	.byte	4,2,35,20,18
+	.byte	'RunningTPMask',0
+	.word	10236
+	.byte	4,2,35,24,18
+	.byte	'CurrentMeteredObject',0
+	.word	7842
+	.byte	4,2,35,28,18
+	.byte	'IdleMeter',0
+	.word	7639
+	.byte	48,2,35,32,18
+	.byte	'AppAccess',0
+	.word	148
+	.byte	1,2,35,80,18
+	.byte	'AppOverride',0
+	.word	10241
+	.byte	1,2,35,81,18
+	.byte	'GetStackValueAdjust',0
+	.word	6916
+	.byte	8,2,35,84,18
+	.byte	'InErrorHook',0
+	.word	148
+	.byte	1,2,35,92,18
+	.byte	'ChainTaskRef',0
+	.word	10246
+	.byte	4,2,35,96,18
+	.byte	'GetStackUsageAdjust',0
+	.word	6916
+	.byte	8,2,35,100,18
+	.byte	'InProtectionHook',0
+	.word	148
+	.byte	1,2,35,108,18
+	.byte	'CoreIsActive',0
+	.word	148
+	.byte	1,2,35,109,18
+	.byte	'InShutdownHook',0
+	.word	148
+	.byte	1,2,35,110,0,16
+	.byte	'Os_ControlledCoreType',0,22,141,7,3
+	.word	10251
+	.byte	3
+	.word	1376
+	.byte	9
+	.word	7987
+	.byte	3
+	.word	10707
+	.byte	9
+	.word	8557
+	.byte	3
+	.word	10717
+	.byte	3
+	.word	7639
+	.byte	24
+	.byte	'Os_AnyCoreType_s',0,22,151,7,16,96,18
+	.byte	'DisableAllImask',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	'SuspendAllImask',0
+	.word	1376
+	.byte	4,2,35,4,18
+	.byte	'SuspendOSImask',0
+	.word	1376
+	.byte	4,2,35,8,18
+	.byte	'DisableAllCount',0
+	.word	1376
+	.byte	4,2,35,12,18
+	.byte	'SuspendAllCount',0
+	.word	1376
+	.byte	4,2,35,16,18
+	.byte	'SuspendOSCount',0
+	.word	1376
+	.byte	4,2,35,20,18
+	.byte	'RestartJumpBuf',0
+	.word	6865
+	.byte	68,2,35,24,18
+	.byte	'Restartable',0
+	.word	148
+	.byte	1,2,35,92,0,16
+	.byte	'Os_AnyCoreType',0,22,160,7,3
+	.word	10732
+	.byte	16
+	.byte	'Can_TxObjPriorityClassType',0,23,219,3,16
+	.word	1376
+	.byte	24
+	.byte	'Can_TxHwObjectConfigType',0,23,231,3,16,8,18
+	.byte	'MsgObjId',0
+	.word	148
+	.byte	1,2,35,0,18
+	.byte	'HwControllerId',0
+	.word	148
+	.byte	1,2,35,1,18
+	.byte	'TxObjPriorityClass',0
+	.word	1376
+	.byte	4,2,35,4,0,16
+	.byte	'Can_TxHwObjectConfigType',0,23,252,3,3
+	.word	11009
+	.byte	24
+	.byte	'Can_RxHwObjectConfigType',0,23,129,4,16,12,18
+	.byte	'MaskRef',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	'MsgId',0
+	.word	1376
+	.byte	4,2,35,4,18
+	.byte	'MsgObjId',0
+	.word	148
+	.byte	1,2,35,8,18
+	.byte	'HwControllerId',0
+	.word	148
+	.byte	1,2,35,9,0,16
+	.byte	'Can_RxHwObjectConfigType',0,23,147,4,3
+	.word	11145
+	.byte	21,4
+	.word	148
+	.byte	22,3,0,24
+	.byte	'Can_ControllerMOMapConfigType',0,23,181,4,16,4,18
+	.byte	'ControllerMOMap',0
+	.word	11285
+	.byte	4,2,35,0,0,16
+	.byte	'Can_ControllerMOMapConfigType',0,23,184,4,3
+	.word	11294
+	.byte	24
+	.byte	'Can_NPCRValueType',0,23,188,4,16,2,18
+	.byte	'Can_NPCRValue',0
+	.word	865
+	.byte	2,2,35,0,0,16
+	.byte	'Can_NPCRValueType',0,23,191,4,3
+	.word	11395
+	.byte	24
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,23,194,4,16,8,18
+	.byte	'CanControllerBaudrate',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	'CanControllerBaudrateCfg',0
+	.word	865
+	.byte	2,2,35,4,0,16
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,23,198,4,3
+	.word	11470
+	.byte	9
+	.word	11470
+	.byte	3
+	.word	11635
+	.byte	24
+	.byte	'Can_BaudrateConfigPtrType',0,23,201,4,16,4,18
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	11640
+	.byte	4,2,35,0,0,16
+	.byte	'Can_BaudrateConfigPtrType',0,23,204,4,3
+	.word	11645
+	.byte	24
+	.byte	'Can_EventHandlingType',0,23,226,4,16,4,18
+	.byte	'CanEventType',0
+	.word	11285
+	.byte	4,2,35,0,0,16
+	.byte	'Can_EventHandlingType',0,23,229,4,3
+	.word	11745
+	.byte	16
+	.byte	'Rte_TransformerErrorCode',0,24,130,1,15
+	.word	148
+	.byte	16
+	.byte	'Rte_TransformerClass',0,24,131,1,15
+	.word	148
+	.byte	17,24,168,1,9,12,18
+	.byte	'in',0
+	.word	7585
+	.byte	4,2,35,0,18
+	.byte	'out',0
+	.word	7585
+	.byte	4,2,35,4,18
+	.byte	'used',0
+	.word	865
+	.byte	2,2,35,8,18
+	.byte	'lost_data',0
+	.word	148
+	.byte	1,2,35,10,0,16
+	.byte	'Rte_QDynType',0,24,173,1,3
+	.word	11891
+	.byte	19,24,175,1,9,4,20
+	.byte	'RTE_DRA',0,0,20
+	.byte	'RTE_WOWP',0,1,20
+	.byte	'RTE_TASK',0,2,20
+	.byte	'RTE_ARE',0,3,20
+	.byte	'RTE_EV',0,4,20
+	.byte	'RTE_MSI',0,5,0,16
+	.byte	'Rte_NotificationType',0,24,182,1,3
+	.word	11978
+	.byte	3
+	.word	11891
+	.byte	24
+	.byte	'Rte_QCmnType',0,24,184,1,16,24,18
+	.byte	'dynamic',0
+	.word	12076
+	.byte	4,2,35,0,18
+	.byte	'copy',0
+	.word	148
+	.byte	1,2,35,4,18
+	.byte	'queue_size',0
+	.word	865
+	.byte	2,2,35,6,18
+	.byte	'element_size',0
+	.word	865
+	.byte	2,2,35,8,18
+	.byte	'buffer_start',0
+	.word	7585
+	.byte	4,2,35,12,18
+	.byte	'buffer_end',0
+	.word	7585
+	.byte	4,2,35,16,18
+	.byte	'notification_type',0
+	.word	11978
+	.byte	4,2,35,20,0,16
+	.byte	'Rte_QCmnType',0,24,192,1,3
+	.word	12081
+	.byte	16
+	.byte	'Rte_AlarmRefType',0,24,224,1,32
+	.word	1376
+	.byte	16
+	.byte	'Rte_AlarmIndexType',0,24,226,1,32
+	.word	865
+	.byte	21,128,8
+	.word	148
+	.byte	22,255,7,0,16
+	.byte	'Impl_NVM_DstPtrType_1024',0,25,50,15
+	.word	12319
+	.byte	16
+	.byte	'CanIf_u32_impl',0,25,69,16
+	.word	1376
+	.byte	16
+	.byte	'CanIf_u16_impl',0,25,71,16
+	.word	865
+	.byte	16
+	.byte	'CanIf_u8_impl',0,25,73,15
+	.word	148
+	.byte	16
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,25,88,15
+	.word	148
+	.byte	16
+	.byte	'CanIf_PduModeType_Enum_impl',0,25,90,15
+	.word	148
+	.byte	17,25,92,9,2,18
+	.byte	'DeviceMode',0
+	.word	148
+	.byte	1,2,35,0,18
+	.byte	'ChannelMode',0
+	.word	148
+	.byte	1,2,35,1,0,16
+	.byte	'CanIf_ControllerStateType_struct_impl',0,25,95,3
+	.word	12510
+	.byte	16
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,25,100,15
+	.word	148
+	.byte	16
+	.byte	'CanSM_boolean_Impl',0,25,120,15
+	.word	148
+	.byte	16
+	.byte	'CanSM_u8_Impl',0,25,123,15
+	.word	148
+	.byte	16
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,25,128,1,15
+	.word	148
+	.byte	16
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,25,132,1,15
+	.word	148
+	.byte	16
+	.byte	'CanSM_u16_Impl',0,25,136,1,16
+	.word	865
+	.byte	16
+	.byte	'CanSM_TimerStateType_Enum_impl',0,25,138,1,15
+	.word	148
+	.byte	17,25,140,1,9,4,18
+	.byte	'cntTick_u16',0
+	.word	865
+	.byte	2,2,35,0,18
+	.byte	'stTimer',0
+	.word	148
+	.byte	1,2,35,2,0,16
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,25,143,1,3
+	.word	12851
+	.byte	16
+	.byte	'Com_impl_u16',0,25,154,1,16
+	.word	865
+	.byte	16
+	.byte	'Com_impl_u8',0,25,157,1,15
+	.word	148
+	.byte	16
+	.byte	'ComM_uint32_Impl',0,25,173,1,16
+	.word	1376
+	.byte	16
+	.byte	'ComM_uint16_Impl',0,25,175,1,16
+	.word	865
+	.byte	16
+	.byte	'ComM_uint8_Impl',0,25,177,1,15
+	.word	148
+	.byte	16
+	.byte	'ComM_bool_Impl',0,25,179,1,15
+	.word	148
+	.byte	17,25,181,1,9,24,18
+	.byte	'ChannelState_e',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	'LightTimeoutCtr_u32',0
+	.word	1376
+	.byte	4,2,35,4,18
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	865
+	.byte	2,2,35,8,18
+	.byte	'ChannelMode_u8',0
+	.word	148
+	.byte	1,2,35,10,18
+	.byte	'BusSmMode_u8',0
+	.word	148
+	.byte	1,2,35,11,18
+	.byte	'UserRequestCtr_u8',0
+	.word	148
+	.byte	1,2,35,12,18
+	.byte	'PassiveRequestState_u8',0
+	.word	148
+	.byte	1,2,35,13,18
+	.byte	'PncRequestCtr_u8',0
+	.word	148
+	.byte	1,2,35,14,18
+	.byte	'InhibitionReqStatus_u8',0
+	.word	148
+	.byte	1,2,35,15,18
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	148
+	.byte	1,2,35,16,18
+	.byte	'DiagnosticRequestState_b',0
+	.word	148
+	.byte	1,2,35,17,18
+	.byte	'CommunicationAllowed_b',0
+	.word	148
+	.byte	1,2,35,18,18
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	148
+	.byte	1,2,35,19,18
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	148
+	.byte	1,2,35,20,18
+	.byte	'NmNetworkModeStatus_b',0
+	.word	148
+	.byte	1,2,35,21,0,16
+	.byte	'ComM_ChannelStruct_Impl',0,25,197,1,3
+	.word	13083
+	.byte	17,25,206,1,9,10,18
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	865
+	.byte	2,2,35,0,18
+	.byte	'LimitToNoComCtr_u16',0
+	.word	865
+	.byte	2,2,35,2,18
+	.byte	'RequestedUserMode_t',0
+	.word	148
+	.byte	1,2,35,4,18
+	.byte	'IndicatedUserMode_t',0
+	.word	148
+	.byte	1,2,35,5,18
+	.byte	'numChannelsInFullCom_u8',0
+	.word	148
+	.byte	1,2,35,6,18
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	148
+	.byte	1,2,35,7,18
+	.byte	'numChannelsInNoCom_u8',0
+	.word	148
+	.byte	1,2,35,8,0,16
+	.byte	'ComM_UserStruct_Impl',0,25,214,1,3
+	.word	13587
+	.byte	16
+	.byte	'Dcm_IOOperationResponseType',0,25,252,1,15
+	.word	148
+	.byte	16
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	25,138,2,15
+	.word	148
+	.byte	16
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,25,146,2,15
+	.word	148
+	.byte	16
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,25,150,2,15
+	.word	148
+	.byte	16
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,25,154,2,15
+	.word	148
+	.byte	16
+	.byte	'Dem_DTCFormatType',0,25,160,2,15
+	.word	148
+	.byte	16
+	.byte	'Dem_DTCOriginType',0,25,162,2,15
+	.word	148
+	.byte	16
+	.byte	'Dem_EventIdType',0,25,168,2,16
+	.word	865
+	.byte	16
+	.byte	'Dem_EventStatusType',0,25,170,2,15
+	.word	148
+	.byte	16
+	.byte	'Dem_InitMonitorReasonType',0,25,176,2,15
+	.word	148
+	.byte	16
+	.byte	'Dem_OperationCycleIdType',0,25,179,2,15
+	.word	148
+	.byte	16
+	.byte	'Dem_UdsStatusByteType',0,25,185,2,15
+	.word	148
+	.byte	16
+	.byte	'NvM_BlockIdType',0,25,215,2,16
+	.word	865
+	.byte	16
+	.byte	'NvM_RequestResultType',0,25,225,2,15
+	.word	148
+	.byte	16
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,25,243,3,34
+	.word	12330
+	.byte	21,128,8
+	.word	148
+	.byte	22,255,7,0,16
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,25,246,3,34
+	.word	12330
+	.byte	16
+	.byte	'Dem_DTCGroupIdType',0,26,49,15
+	.word	148
+	.byte	16
+	.byte	'Dem_DtcIdType',0,26,50,16
+	.word	865
+	.byte	16
+	.byte	'Dem_DtcCodeType',0,26,55,16
+	.word	1376
+	.byte	16
+	.byte	'Dem_boolean_least',0,26,60,17
+	.word	148
+	.byte	16
+	.byte	'Dem_EventCategoryType',0,26,62,15
+	.word	148
+	.byte	16
+	.byte	'Dem_DTCSeverityType',0,26,217,1,15
+	.word	148
+	.byte	16
+	.byte	'Dem_DebugDataType',0,26,131,3,16
+	.word	1376
+	.byte	16
+	.byte	'Dem_DTCKindType',0,26,145,3,16
+	.word	148
+	.byte	16
+	.byte	'Dem_TriggerType',0,26,167,3,15
+	.word	148
+	.byte	16
+	.byte	'Dem_EnCoList',0,27,31,15
+	.word	148
+	.byte	16
+	.byte	'Dem_OperationCycleList',0,28,23,15
+	.word	148
+	.byte	16
+	.byte	'Dem_StoCoList',0,29,32,15
+	.word	148
+	.byte	16
+	.byte	'Rte_TaskRefType',0,30,184,1,32
+	.word	8817
+	.byte	16
+	.byte	'Rte_EventRefType',0,30,185,1,32
+	.word	148
+	.byte	16
+	.byte	'Rte_EventType',0,30,186,1,32
+	.word	1376
+	.byte	16
+	.byte	'Rte_REActCounterType',0,30,252,1,15
+	.word	148
+	.byte	3
+	.word	148
+	.byte	16
+	.byte	'Rte_REActCounterRefType',0,30,253,1,58
+	.word	15082
+	.byte	17,30,255,1,9,8,18
+	.byte	'task',0
+	.word	14978
+	.byte	4,2,35,0,18
+	.byte	'acnt',0
+	.word	15087
+	.byte	4,2,35,4,0,16
+	.byte	'Rte_REContainerType',0,30,130,2,3
+	.word	15120
+	.byte	9
+	.word	8557
+	.byte	3
+	.word	15184
+	.byte	3
+	.word	148
+	.byte	9
+	.word	15120
+	.byte	3
+	.word	15199
+	.byte	16
+	.byte	'Rte_REContainerRefType',0,30,132,2,60
+	.word	15204
+	.byte	16
+	.byte	'Rte_MSICounterType',0,30,149,2,16
+	.word	865
+	.byte	3
+	.word	865
+	.byte	16
+	.byte	'Rte_MSICounterRefType',0,30,150,2,56
+	.word	15269
+	.byte	16
+	.byte	'Rte_MSIPendingFlagType',0,30,152,2,17
+	.word	148
+	.byte	3
+	.word	148
+	.byte	16
+	.byte	'Rte_MSIPendingFlagRefType',0,30,153,2,60
+	.word	15337
+	.byte	17,30,163,2,9,24,18
+	.byte	'counter',0
+	.word	15274
+	.byte	4,2,35,0,18
+	.byte	'incCounter',0
+	.word	148
+	.byte	1,2,35,4,18
+	.byte	'pending',0
+	.word	15342
+	.byte	4,2,35,8,18
+	.byte	'osTask',0
+	.word	14978
+	.byte	4,2,35,12,18
+	.byte	'acnt',0
+	.word	15087
+	.byte	4,2,35,16,18
+	.byte	'osEvent',0
+	.word	148
+	.byte	1,2,35,20,18
+	.byte	'MSIInit',0
+	.word	865
+	.byte	2,2,35,22,0,16
+	.byte	'Rte_MSITableEntry',0,30,172,2,3
+	.word	15377
+	.byte	3
+	.word	865
+	.byte	3
+	.word	148
+	.byte	16
+	.byte	'Rte_TaskArrayIndex',0,30,179,2,16
+	.word	148
+	.byte	16
+	.byte	'Rte_NrWaitingTasks',0,30,180,2,16
+	.word	148
+	.byte	17,30,182,2,9,4,18
+	.byte	'pending',0
+	.word	148
+	.byte	1,2,35,0,18
+	.byte	'count',0
+	.word	148
+	.byte	1,2,35,1,18
+	.byte	'firstWaitingTask',0
+	.word	148
+	.byte	1,2,35,2,0,16
+	.byte	'Rte_WaitableDatum',0,30,186,2,3
+	.word	15595
+	.byte	3
+	.word	15595
+	.byte	17,30,226,2,9,12,18
+	.byte	'event_id',0
+	.word	1376
+	.byte	4,2,35,0,18
+	.byte	'wd',0
+	.word	15687
+	.byte	4,2,35,4,18
+	.byte	'timeout',0
+	.word	1376
+	.byte	4,2,35,8,0,16
+	.byte	'Rte_WOWP_NotificationType',0,30,230,2,3
+	.word	15692
+	.byte	9
+	.word	15692
+	.byte	3
+	.word	15781
+	.byte	16
+	.byte	'Rte_WOWP_NotificationRefType',0,30,232,2,66
+	.word	15786
+	.byte	16
+	.byte	'Rte_ARE_NotificationType',0,30,234,2,29
+	.word	15120
+	.byte	24
+	.byte	'Rte_QTaskType',0,30,243,2,16,28,18
+	.byte	'cmn',0
+	.word	12081
+	.byte	24,2,35,0,18
+	.byte	'task',0
+	.word	14978
+	.byte	4,2,35,24,0,16
+	.byte	'Rte_QTaskType',0,30,246,2,3
+	.word	15863
+	.byte	24
+	.byte	'Rte_QREType',0,30,250,2,16,28,18
+	.byte	'cmn',0
+	.word	12081
+	.byte	24,2,35,0,18
+	.byte	're',0
+	.word	15209
+	.byte	4,2,35,24,0,16
+	.byte	'Rte_QREType',0,30,253,2,3
+	.word	15934
+	.byte	9
+	.word	15120
+	.byte	3
+	.word	15999
+	.byte	24
+	.byte	'Rte_QWWPType',0,30,129,3,16,28,18
+	.byte	'cmn',0
+	.word	12081
+	.byte	24,2,35,0,18
+	.byte	'wwp',0
+	.word	15791
+	.byte	4,2,35,24,0,16
+	.byte	'Rte_QWWPType',0,30,132,3,3
+	.word	16009
+	.byte	9
+	.word	15692
+	.byte	3
+	.word	16077
+	.byte	24
+	.byte	'Rte_QEvType',0,30,136,3,16,36,18
+	.byte	'cmn',0
+	.word	12081
+	.byte	24,2,35,0,18
+	.byte	'task',0
+	.word	14978
+	.byte	4,2,35,24,18
+	.byte	'mask',0
+	.word	148
+	.byte	1,2,35,28,18
+	.byte	'acnt',0
+	.word	15087
+	.byte	4,2,35,32,0,16
+	.byte	'Rte_QEvType',0,30,141,3,3
+	.word	16087
+	.byte	24
+	.byte	'Rte_QMSIType',0,30,145,3,16,48,18
+	.byte	'cmn',0
+	.word	12081
+	.byte	24,2,35,0,18
+	.byte	'task',0
+	.word	14978
+	.byte	4,2,35,24,18
+	.byte	'mask',0
+	.word	148
+	.byte	1,2,35,28,18
+	.byte	'acnt',0
+	.word	15087
+	.byte	4,2,35,32,18
+	.byte	'msiCounter',0
+	.word	15274
+	.byte	4,2,35,36,18
+	.byte	'msiPending',0
+	.word	15342
+	.byte	4,2,35,40,18
+	.byte	'msiLimit',0
+	.word	865
+	.byte	2,2,35,44,0,16
+	.byte	'Rte_QMSIType',0,30,153,3,3
+	.word	16182
+	.byte	16
+	.byte	'Dem_EvtStateType',0,31,151,1,15
+	.word	148
+	.byte	16
+	.byte	'rba_BswSrv_uint64',0,6,66,28
+	.word	6242
+	.byte	16
+	.byte	'Dem_EventIdIterator',0,8,27,22
+	.word	6299
+	.byte	16
+	.byte	'Dem_DtcIdIterator',0,8,197,1,22
+	.word	6299
+	.byte	16
+	.byte	'Dem_DtcGroupIdIterator',0,8,230,1,21
+	.word	6299
+	.byte	9
+	.word	865
+	.byte	3
+	.word	16476
+	.byte	17,8,171,2,9,8,18
+	.byte	'it',0
+	.word	16481
+	.byte	4,2,35,0,18
+	.byte	'end',0
+	.word	16481
+	.byte	4,2,35,4,0,16
+	.byte	'Dem_EventIdListIterator',0,8,174,2,3
+	.word	16486
+	.byte	17,8,213,2,9,4,18
+	.byte	'it',0
+	.word	865
+	.byte	2,2,35,0,18
+	.byte	'end',0
+	.word	865
+	.byte	2,2,35,2,0,16
+	.byte	'Dem_DtcIdListIterator',0,8,216,2,3
+	.word	16551
+	.byte	19,32,31,9,4,20
+	.byte	'MEMIF_JOB_OK',0,0,20
+	.byte	'MEMIF_JOB_FAILED',0,1,20
+	.byte	'MEMIF_JOB_PENDING',0,2,20
+	.byte	'MEMIF_JOB_CANCELED',0,3,20
+	.byte	'MEMIF_BLOCK_INCONSISTENT',0,4,20
+	.byte	'MEMIF_BLOCK_INVALID',0,5,0,16
+	.byte	'MemIf_JobResultType',0,32,39,2
+	.word	16614
+	.byte	19,33,49,9,4,20
+	.byte	'NVM_PRV_ACTIVITY_NOT_INIT',0,0,20
+	.byte	'NVM_PRV_ACTIVITY_IDLE',0,1,20
+	.byte	'NVM_PRV_ACTIVITY_ARBITRATE',0,2,20
+	.byte	'NVM_PRV_ACTIVITY_JOB_START',0,3,20
+	.byte	'NVM_PRV_ACTIVITY_POLL_RESULT',0,4,20
+	.byte	'NVM_PRV_ACTIVITY_JOB_COMPLETE',0,5,20
+	.byte	'NVM_PRV_ACTIVITY_RESULT_EVAL',0,6,0,16
+	.byte	'NvM_Prv_Activities_ten',0,33,58,3
+	.word	16772
+	.byte	19,33,104,9,4,20
+	.byte	'NvM_Prv_idJob_Idle_e',0,0,20
+	.byte	'NvM_Prv_idJob_Read_e',0,1,20
+	.byte	'NvM_Prv_idJob_Write_e',0,2,20
+	.byte	'NvM_Prv_idJob_Erase_e',0,3,20
+	.byte	'NvM_Prv_idJob_Restore_e',0,4,20
+	.byte	'NvM_Prv_idJob_Maintain_e',0,5,20
+	.byte	'NvM_Prv_idJob_Validate_e',0,6,20
+	.byte	'NvM_Prv_idJob_Invalidate_e',0,7,20
+	.byte	'NvM_Prv_idJob_ReadIdConfigForReadAll_e',0,8,20
+	.byte	'NvM_Prv_idJob_InvalidateForFirstInitAll_e',0,9,20
+	.byte	'NvM_Prv_idJob_RestoreForImplicitRecovery_e',0,10,20
+	.byte	'NvM_Prv_idJob_InvalidateForRemoveNonResistant_e',0,11,20
+	.byte	'NvM_Prv_idJob_Invalid_e',0,12,20
+	.byte	'NvM_Prv_idJob_Count_e',0,13,0,16
+	.byte	'NvM_Prv_idJob_ten',0,33,115,3
+	.word	17013
+	.byte	16
+	.byte	'NvM_Prv_ServiceBit_tuo',0,33,168,1,16
+	.word	865
+	.byte	16
+	.byte	'NvM_Prv_idService_tuo',0,33,173,1,15
+	.word	148
+	.byte	16
+	.byte	'NvM_Prv_idQueue_tuo',0,33,206,1,15
+	.word	148
+	.byte	17,33,210,1,9,12,18
+	.byte	'idService_uo',0
+	.word	148
+	.byte	1,2,35,0,18
+	.byte	'idBlock_uo',0
+	.word	865
+	.byte	2,2,35,2,18
+	.byte	'ServiceBit_uo',0
+	.word	865
+	.byte	2,2,35,4,18
+	.byte	'BlockData_pv',0
+	.word	7585
+	.byte	4,2,35,8,0,16
+	.byte	'NvM_Prv_QueueEntry_tst',0,33,225,1,3
+	.word	17570
+	.byte	17,33,227,1,9,20,18
+	.byte	'idJob_en',0
+	.word	17013
+	.byte	4,2,35,0,18
+	.byte	'idBlock_uo',0
+	.word	865
+	.byte	2,2,35,4,18
+	.byte	'RamBlock_pu8',0
+	.word	165
+	.byte	4,2,35,8,18
+	.byte	'idxDataset_u8',0
+	.word	148
+	.byte	1,2,35,12,18
+	.byte	'Result_en',0
+	.word	16614
+	.byte	4,2,35,16,0,16
+	.byte	'NvM_Prv_JobData_tst',0,33,240,1,3
+	.word	17696
+	.byte	16
+	.byte	'Dem_EvMemOccurrenceCounterType',0,34,90,21
+	.word	148
+	.byte	16
+	.byte	'Dem_EvMemAgingCounterType',0,34,99,21
+	.word	148
+	.byte	17,34,133,1,3,4,18
+	.byte	'Status',0
+	.word	865
+	.byte	2,2,35,0,18
+	.byte	'EventId',0
+	.word	865
+	.byte	2,2,35,2,0,28,34,131,1,9,4,18
+	.byte	'Data',0
+	.word	17907
+	.byte	4,2,35,0,0,16
+	.byte	'Dem_EvMemHdrType',0,34,141,1,4
+	.word	17947
+	.byte	21,7
+	.word	148
+	.byte	22,6,0,17,34,144,1,9,20,18
+	.byte	'Hdr',0
+	.word	17947
+	.byte	4,2,35,0,18
+	.byte	'Data',0
+	.word	17994
+	.byte	7,2,35,4,18
+	.byte	'FailureCounter',0
+	.word	148
+	.byte	1,2,35,11,18
+	.byte	'FreezeFrameCounter',0
+	.word	148
+	.byte	1,2,35,12,18
+	.byte	'AgingCounter',0
+	.word	148
+	.byte	1,2,35,13,18
+	.byte	'OccurrenceCounter',0
+	.word	148
+	.byte	1,2,35,14,18
+	.byte	'Trigger',0
+	.word	148
+	.byte	1,2,35,15,18
+	.byte	'TimeId',0
+	.word	1376
+	.byte	4,2,35,16,0,16
+	.byte	'Dem_EvMemEventMemoryType',0,34,213,1,4
+	.word	18003
+	.byte	21,5
+	.word	148
+	.byte	22,4,0,21,10
+	.word	865
+	.byte	22,4,0,17,35,9,9,18,18
+	.byte	'OperationCycleStates',0
+	.word	148
+	.byte	1,2,35,0,18
+	.byte	'OperationCycleQualified',0
+	.word	148
+	.byte	1,2,35,1,18
+	.byte	'Overflow',0
+	.word	18205
+	.byte	5,2,35,2,18
+	.byte	'DtcIdsByOccurrenceTime',0
+	.word	18214
+	.byte	10,2,35,8,0,16
+	.byte	'Dem_GenericNvDataType',0,35,24,4
+	.word	18223
+	.byte	16
+	.byte	'Dem_NvmBlockIdType',0,36,14,34
+	.word	148
+	.byte	28,36,16,9,20,18
+	.byte	'evMemData',0
+	.word	18003
+	.byte	20,2,35,0,18
+	.byte	'genericNvData',0
+	.word	18223
+	.byte	18,2,35,0,0,16
+	.byte	'Dem_NvMStorageBufferData',0,36,37,3
+	.word	18399
+	.byte	16
+	.byte	'Dem_NvmBlockStatusType',0,36,59,15
+	.word	148
+	.byte	16
+	.byte	'Dem_NvmResultType',0,36,78,31
+	.word	148
+	.byte	3
+	.word	148
+	.byte	32
+	.word	148
+	.byte	1,1,27
+	.word	18537
+	.byte	0,3
+	.word	18542
+	.byte	16
+	.byte	'Dem_EvtClearAllowedFncType',0,12,12,26
+	.word	18555
+	.byte	32
+	.word	148
+	.byte	1,1,27
+	.word	148
+	.byte	0,3
+	.word	18595
+	.byte	16
+	.byte	'Dem_InitMForEAllowedFncType',0,13,38,27
+	.word	18608
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L36:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32
+	.byte	13,58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,11,1,0,0,8,46
+	.byte	1,3,8,32,13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,9,38,0,73,19,0,0,10,46,1,49,19,0,0,11,5,0,49,19,0
+	.byte	0,12,29,1,49,19,0,0,13,11,0,49,19,0,0,14,11,1,49,19,0,0,15,21,0,54,15,0,0,16,22,0,3,8,58,15,59,15,57,15
+	.byte	73,19,0,0,17,19,1,58,15,59,15,57,15,11,15,0,0,18,13,0,3,8,73,19,11,15,56,9,0,0,19,4,1,58,15,59,15,57,15
+	.byte	11,15,0,0,20,40,0,3,8,28,13,0,0,21,1,1,11,15,73,19,0,0,22,33,0,47,15,0,0,23,21,0,54,15,39,12,0,0,24,19
+	.byte	1,3,8,58,15,59,15,57,15,11,15,0,0,25,59,0,3,8,0,0,26,21,1,54,15,39,12,0,0,27,5,0,73,19,0,0,28,23,1,58
+	.byte	15,59,15,57,15,11,15,0,0,29,4,1,3,8,58,15,59,15,57,15,11,15,0,0,30,21,0,73,19,54,15,39,12,0,0,31,53,0
+	.byte	73,19,0,0,32,21,1,73,19,54,15,39,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L37:
+	.word	.L129-.L128
+.L128:
+	.half	3
+	.word	.L131-.L130
+.L130:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits8.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits16.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits32.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\lib\\Dem_BitArray.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\lib\\Dem_ISO14229Byte.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\lib\\Dem_Lib.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\map\\Dem_Mapping.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\enco\\Dem_EnableCondition.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\nvm\\Dem_Nvm.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_ByteOrderUtils.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_Events_DataStructures.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\event\\Dem_Events.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\event\\Dem_EventStatus.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_NodeId.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\api\\Dem_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_EnableCondition.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_OperationCycle.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_StorageCondition.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_Events.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\MemIf\\api\\MemIf_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\NvM\\api\\NvM_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemTypes.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\main\\Dem_GenericNvData.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\nvm\\Dem_Nvm_Types.h',0,0,0,0,0
+.L131:
+.L129:
+	.sdecl	'.debug_info',debug,cluster('Dem_GetComponentAvailable')
+	.sect	'.debug_info'
+.L38:
+	.word	271
+	.half	3
+	.word	.L39
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L41,.L40
+	.byte	2
+	.word	.L34
+	.byte	3
+	.byte	'Dem_GetComponentAvailable',0,1,212,4,16
+	.word	.L93
+	.byte	1,1,1
+	.word	.L27,.L94,.L26
+	.byte	4
+	.byte	'ComponentId',0,1,212,4,62
+	.word	.L93,.L95
+	.byte	4
+	.byte	'ComponentAvailable',0,1,212,4,84
+	.word	.L96,.L97
+	.byte	5
+	.word	.L27,.L94
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_GetComponentAvailable')
+	.sect	'.debug_abbrev'
+.L39:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_GetComponentAvailable')
+	.sect	'.debug_line'
+.L40:
+	.word	.L133-.L132
+.L132:
+	.half	3
+	.word	.L135-.L134
+.L134:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0,0,0,0,0
+.L135:
+	.byte	5,12,7,0,5,2
+	.word	.L27
+	.byte	3,224,4,1,5,5,9
+	.half	.L136-.L27
+	.byte	1,5,1,9
+	.half	.L9-.L136
+	.byte	3,2,1,7,9
+	.half	.L42-.L9
+	.byte	0,1,1
+.L133:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_GetComponentAvailable')
+	.sect	'.debug_ranges'
+.L41:
+	.word	-1,.L27,0,.L42-.L27,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_GetComponentAreAncestorsInitialized')
+	.sect	'.debug_info'
+.L43:
+	.word	299
+	.half	3
+	.word	.L44
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L46,.L45
+	.byte	2
+	.word	.L34
+	.byte	3
+	.byte	'Dem_GetComponentAreAncestorsInitialized',0,1,230,4,16
+	.word	.L93
+	.byte	1,1,1
+	.word	.L29,.L98,.L28
+	.byte	4
+	.byte	'ComponentId',0,1,230,4,76
+	.word	.L93,.L99
+	.byte	4
+	.byte	'ComponentAreAncestorsInitialized',0,1,230,4,98
+	.word	.L96,.L100
+	.byte	5
+	.word	.L29,.L98
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_GetComponentAreAncestorsInitialized')
+	.sect	'.debug_abbrev'
+.L44:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_GetComponentAreAncestorsInitialized')
+	.sect	'.debug_line'
+.L45:
+	.word	.L138-.L137
+.L137:
+	.half	3
+	.word	.L140-.L139
+.L139:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0,0,0,0,0
+.L140:
+	.byte	5,12,7,0,5,2
+	.word	.L29
+	.byte	3,241,4,1,5,5,9
+	.half	.L141-.L29
+	.byte	1,5,1,9
+	.half	.L10-.L141
+	.byte	3,2,1,7,9
+	.half	.L47-.L10
+	.byte	0,1,1
+.L138:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_GetComponentAreAncestorsInitialized')
+	.sect	'.debug_ranges'
+.L46:
+	.word	-1,.L29,0,.L47-.L29,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_GetComponentFailed')
+	.sect	'.debug_info'
+.L48:
+	.word	265
+	.half	3
+	.word	.L49
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L51,.L50
+	.byte	2
+	.word	.L34
+	.byte	3
+	.byte	'Dem_GetComponentFailed',0,1,157,4,16
+	.word	.L93
+	.byte	1,1,1
+	.word	.L21,.L101,.L20
+	.byte	4
+	.byte	'ComponentId',0,1,157,4,60
+	.word	.L93,.L102
+	.byte	4
+	.byte	'ComponentFailed',0,1,157,4,82
+	.word	.L96,.L103
+	.byte	5
+	.word	.L21,.L101
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_GetComponentFailed')
+	.sect	'.debug_abbrev'
+.L49:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_GetComponentFailed')
+	.sect	'.debug_line'
+.L50:
+	.word	.L143-.L142
+.L142:
+	.half	3
+	.word	.L145-.L144
+.L144:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0,0,0,0,0
+.L145:
+	.byte	5,12,7,0,5,2
+	.word	.L21
+	.byte	3,170,4,1,5,5,9
+	.half	.L146-.L21
+	.byte	1,5,1,9
+	.half	.L6-.L146
+	.byte	3,2,1,7,9
+	.half	.L52-.L6
+	.byte	0,1,1
+.L143:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_GetComponentFailed')
+	.sect	'.debug_ranges'
+.L51:
+	.word	-1,.L21,0,.L52-.L21,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_GetComponentFailedItself')
+	.sect	'.debug_info'
+.L53:
+	.word	277
+	.half	3
+	.word	.L54
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L56,.L55
+	.byte	2
+	.word	.L34
+	.byte	3
+	.byte	'Dem_GetComponentFailedItself',0,1,176,4,16
+	.word	.L93
+	.byte	1,1,1
+	.word	.L23,.L104,.L22
+	.byte	4
+	.byte	'ComponentId',0,1,176,4,65
+	.word	.L93,.L105
+	.byte	4
+	.byte	'ComponentFailedItself',0,1,176,4,87
+	.word	.L96,.L106
+	.byte	5
+	.word	.L23,.L104
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_GetComponentFailedItself')
+	.sect	'.debug_abbrev'
+.L54:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_GetComponentFailedItself')
+	.sect	'.debug_line'
+.L55:
+	.word	.L148-.L147
+.L147:
+	.half	3
+	.word	.L150-.L149
+.L149:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0,0,0,0,0
+.L150:
+	.byte	5,12,7,0,5,2
+	.word	.L23
+	.byte	3,188,4,1,5,5,9
+	.half	.L151-.L23
+	.byte	1,5,1,9
+	.half	.L7-.L151
+	.byte	3,2,1,7,9
+	.half	.L57-.L7
+	.byte	0,1,1
+.L148:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_GetComponentFailedItself')
+	.sect	'.debug_ranges'
+.L56:
+	.word	-1,.L23,0,.L57-.L23,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_GetComponentInitialized')
+	.sect	'.debug_info'
+.L58:
+	.word	275
+	.half	3
+	.word	.L59
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L61,.L60
+	.byte	2
+	.word	.L34
+	.byte	3
+	.byte	'Dem_GetComponentInitialized',0,1,139,4,16
+	.word	.L93
+	.byte	1,1,1
+	.word	.L19,.L107,.L18
+	.byte	4
+	.byte	'ComponentId',0,1,139,4,65
+	.word	.L93,.L108
+	.byte	4
+	.byte	'ComponentInitialized',0,1,139,4,87
+	.word	.L96,.L109
+	.byte	5
+	.word	.L19,.L107
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_GetComponentInitialized')
+	.sect	'.debug_abbrev'
+.L59:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_GetComponentInitialized')
+	.sect	'.debug_line'
+.L60:
+	.word	.L153-.L152
+.L152:
+	.half	3
+	.word	.L155-.L154
+.L154:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0,0,0,0,0
+.L155:
+	.byte	5,12,7,0,5,2
+	.word	.L19
+	.byte	3,151,4,1,5,5,9
+	.half	.L156-.L19
+	.byte	1,5,1,9
+	.half	.L5-.L156
+	.byte	3,2,1,7,9
+	.half	.L62-.L5
+	.byte	0,1,1
+.L153:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_GetComponentInitialized')
+	.sect	'.debug_ranges'
+.L61:
+	.word	-1,.L19,0,.L62-.L19,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_GetComponentRestrictedUsable')
+	.sect	'.debug_info'
+.L63:
+	.word	285
+	.half	3
+	.word	.L64
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L66,.L65
+	.byte	2
+	.word	.L34
+	.byte	3
+	.byte	'Dem_GetComponentRestrictedUsable',0,1,249,3,16
+	.word	.L93
+	.byte	1,1,1
+	.word	.L17,.L110,.L16
+	.byte	4
+	.byte	'ComponentId',0,1,249,3,70
+	.word	.L93,.L111
+	.byte	4
+	.byte	'ComponentRestrictedUsable',0,1,249,3,92
+	.word	.L96,.L112
+	.byte	5
+	.word	.L17,.L110
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_GetComponentRestrictedUsable')
+	.sect	'.debug_abbrev'
+.L64:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_GetComponentRestrictedUsable')
+	.sect	'.debug_line'
+.L65:
+	.word	.L158-.L157
+.L157:
+	.half	3
+	.word	.L160-.L159
+.L159:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0,0,0,0,0
+.L160:
+	.byte	5,12,7,0,5,2
+	.word	.L17
+	.byte	3,133,4,1,5,5,9
+	.half	.L161-.L17
+	.byte	1,5,1,9
+	.half	.L4-.L161
+	.byte	3,2,1,7,9
+	.half	.L67-.L4
+	.byte	0,1,1
+.L158:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_GetComponentRestrictedUsable')
+	.sect	'.debug_ranges'
+.L66:
+	.word	-1,.L17,0,.L67-.L17,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_GetComponentSuspicious')
+	.sect	'.debug_info'
+.L68:
+	.word	273
+	.half	3
+	.word	.L69
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L71,.L70
+	.byte	2
+	.word	.L34
+	.byte	3
+	.byte	'Dem_GetComponentSuspicious',0,1,213,3,16
+	.word	.L93
+	.byte	1,1,1
+	.word	.L13,.L113,.L12
+	.byte	4
+	.byte	'ComponentId',0,1,213,3,64
+	.word	.L93,.L114
+	.byte	4
+	.byte	'ComponentSuspicious',0,1,213,3,86
+	.word	.L96,.L115
+	.byte	5
+	.word	.L13,.L113
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_GetComponentSuspicious')
+	.sect	'.debug_abbrev'
+.L69:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_GetComponentSuspicious')
+	.sect	'.debug_line'
+.L70:
+	.word	.L163-.L162
+.L162:
+	.half	3
+	.word	.L165-.L164
+.L164:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0,0,0,0,0
+.L165:
+	.byte	5,12,7,0,5,2
+	.word	.L13
+	.byte	3,225,3,1,5,5,9
+	.half	.L166-.L13
+	.byte	1,5,1,9
+	.half	.L2-.L166
+	.byte	3,2,1,7,9
+	.half	.L72-.L2
+	.byte	0,1,1
+.L163:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_GetComponentSuspicious')
+	.sect	'.debug_ranges'
+.L71:
+	.word	-1,.L13,0,.L72-.L13,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_GetComponentSuspiciousItself')
+	.sect	'.debug_info'
+.L73:
+	.word	285
+	.half	3
+	.word	.L74
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L76,.L75
+	.byte	2
+	.word	.L34
+	.byte	3
+	.byte	'Dem_GetComponentSuspiciousItself',0,1,194,4,16
+	.word	.L93
+	.byte	1,1,1
+	.word	.L25,.L116,.L24
+	.byte	4
+	.byte	'ComponentId',0,1,194,4,69
+	.word	.L93,.L117
+	.byte	4
+	.byte	'ComponentSuspiciousItself',0,1,194,4,91
+	.word	.L96,.L118
+	.byte	5
+	.word	.L25,.L116
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_GetComponentSuspiciousItself')
+	.sect	'.debug_abbrev'
+.L74:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_GetComponentSuspiciousItself')
+	.sect	'.debug_line'
+.L75:
+	.word	.L168-.L167
+.L167:
+	.half	3
+	.word	.L170-.L169
+.L169:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0,0,0,0,0
+.L170:
+	.byte	5,12,7,0,5,2
+	.word	.L25
+	.byte	3,206,4,1,5,5,9
+	.half	.L171-.L25
+	.byte	1,5,1,9
+	.half	.L8-.L171
+	.byte	3,2,1,7,9
+	.half	.L77-.L8
+	.byte	0,1,1
+.L168:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_GetComponentSuspiciousItself')
+	.sect	'.debug_ranges'
+.L76:
+	.word	-1,.L25,0,.L77-.L25,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_GetComponentUsable')
+	.sect	'.debug_info'
+.L78:
+	.word	265
+	.half	3
+	.word	.L79
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L81,.L80
+	.byte	2
+	.word	.L34
+	.byte	3
+	.byte	'Dem_GetComponentUsable',0,1,231,3,16
+	.word	.L93
+	.byte	1,1,1
+	.word	.L15,.L119,.L14
+	.byte	4
+	.byte	'ComponentId',0,1,231,3,60
+	.word	.L93,.L120
+	.byte	4
+	.byte	'ComponentUsable',0,1,231,3,82
+	.word	.L96,.L121
+	.byte	5
+	.word	.L15,.L119
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_GetComponentUsable')
+	.sect	'.debug_abbrev'
+.L79:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_GetComponentUsable')
+	.sect	'.debug_line'
+.L80:
+	.word	.L173-.L172
+.L172:
+	.half	3
+	.word	.L175-.L174
+.L174:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0,0,0,0,0
+.L175:
+	.byte	5,12,7,0,5,2
+	.word	.L15
+	.byte	3,243,3,1,5,5,9
+	.half	.L176-.L15
+	.byte	1,5,1,9
+	.half	.L3-.L176
+	.byte	3,2,1,7,9
+	.half	.L82-.L3
+	.byte	0,1,1
+.L173:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_GetComponentUsable')
+	.sect	'.debug_ranges'
+.L81:
+	.word	-1,.L15,0,.L82-.L15,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_NodeAreAllFailedFiltered')
+	.sect	'.debug_info'
+.L83:
+	.word	237
+	.half	3
+	.word	.L84
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L86,.L85
+	.byte	2
+	.word	.L34
+	.byte	3
+	.byte	'Dem_NodeAreAllFailedFiltered',0,1,194,5,9
+	.word	.L93
+	.byte	1,1,1
+	.word	.L33,.L122,.L32
+	.byte	4
+	.byte	'NodeId',0,1,194,5,58
+	.word	.L93,.L123
+	.byte	5
+	.word	.L33,.L122
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_NodeAreAllFailedFiltered')
+	.sect	'.debug_abbrev'
+.L84:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_NodeAreAllFailedFiltered')
+	.sect	'.debug_line'
+.L85:
+	.word	.L178-.L177
+.L177:
+	.half	3
+	.word	.L180-.L179
+.L179:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0,0,0,0,0
+.L180:
+	.byte	5,12,7,0,5,2
+	.word	.L33
+	.byte	3,196,5,1,5,5,9
+	.half	.L181-.L33
+	.byte	1,5,1,9
+	.half	.L11-.L181
+	.byte	3,1,1,7,9
+	.half	.L87-.L11
+	.byte	0,1,1
+.L178:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_NodeAreAllFailedFiltered')
+	.sect	'.debug_ranges'
+.L86:
+	.word	-1,.L33,0,.L87-.L33,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_NodeSetInitialized')
+	.sect	'.debug_info'
+.L88:
+	.word	245
+	.half	3
+	.word	.L89
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L91,.L90
+	.byte	2
+	.word	.L34
+	.byte	3
+	.byte	'Dem_NodeSetInitialized',0,1,247,4,6,1,1,1
+	.word	.L31,.L124,.L30
+	.byte	4
+	.byte	'NodeId',0,1,247,4,49
+	.word	.L93,.L125
+	.byte	4
+	.byte	'init',0,1,247,4,65
+	.word	.L93,.L126
+	.byte	5
+	.word	.L31,.L124
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_NodeSetInitialized')
+	.sect	'.debug_abbrev'
+.L89:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_NodeSetInitialized')
+	.sect	'.debug_line'
+.L90:
+	.word	.L183-.L182
+.L182:
+	.half	3
+	.word	.L185-.L184
+.L184:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evdep\\Dem_Dependencies.c',0,0,0,0,0
+.L185:
+	.byte	5,1,7,0,5,2
+	.word	.L31
+	.byte	3,137,5,1,7,9
+	.half	.L92-.L31
+	.byte	0,1,1
+.L183:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_NodeSetInitialized')
+	.sect	'.debug_ranges'
+.L91:
+	.word	-1,.L31,0,.L92-.L31,0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_GetComponentAreAncestorsInitialized')
+	.sect	'.debug_loc'
+.L100:
+	.word	-1,.L29,0,.L98-.L29
+	.half	1
+	.byte	100
+	.word	0,0
+.L99:
+	.word	-1,.L29,0,.L98-.L29
+	.half	1
+	.byte	84
+	.word	0,0
+.L28:
+	.word	-1,.L29,0,.L98-.L29
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_GetComponentAvailable')
+	.sect	'.debug_loc'
+.L97:
+	.word	-1,.L27,0,.L94-.L27
+	.half	1
+	.byte	100
+	.word	0,0
+.L95:
+	.word	-1,.L27,0,.L94-.L27
+	.half	1
+	.byte	84
+	.word	0,0
+.L26:
+	.word	-1,.L27,0,.L94-.L27
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_GetComponentFailed')
+	.sect	'.debug_loc'
+.L103:
+	.word	-1,.L21,0,.L101-.L21
+	.half	1
+	.byte	100
+	.word	0,0
+.L102:
+	.word	-1,.L21,0,.L101-.L21
+	.half	1
+	.byte	84
+	.word	0,0
+.L20:
+	.word	-1,.L21,0,.L101-.L21
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_GetComponentFailedItself')
+	.sect	'.debug_loc'
+.L106:
+	.word	-1,.L23,0,.L104-.L23
+	.half	1
+	.byte	100
+	.word	0,0
+.L105:
+	.word	-1,.L23,0,.L104-.L23
+	.half	1
+	.byte	84
+	.word	0,0
+.L22:
+	.word	-1,.L23,0,.L104-.L23
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_GetComponentInitialized')
+	.sect	'.debug_loc'
+.L108:
+	.word	-1,.L19,0,.L107-.L19
+	.half	1
+	.byte	84
+	.word	0,0
+.L109:
+	.word	-1,.L19,0,.L107-.L19
+	.half	1
+	.byte	100
+	.word	0,0
+.L18:
+	.word	-1,.L19,0,.L107-.L19
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_GetComponentRestrictedUsable')
+	.sect	'.debug_loc'
+.L111:
+	.word	-1,.L17,0,.L110-.L17
+	.half	1
+	.byte	84
+	.word	0,0
+.L112:
+	.word	-1,.L17,0,.L110-.L17
+	.half	1
+	.byte	100
+	.word	0,0
+.L16:
+	.word	-1,.L17,0,.L110-.L17
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_GetComponentSuspicious')
+	.sect	'.debug_loc'
+.L114:
+	.word	-1,.L13,0,.L113-.L13
+	.half	1
+	.byte	84
+	.word	0,0
+.L115:
+	.word	-1,.L13,0,.L113-.L13
+	.half	1
+	.byte	100
+	.word	0,0
+.L12:
+	.word	-1,.L13,0,.L113-.L13
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_GetComponentSuspiciousItself')
+	.sect	'.debug_loc'
+.L117:
+	.word	-1,.L25,0,.L116-.L25
+	.half	1
+	.byte	84
+	.word	0,0
+.L118:
+	.word	-1,.L25,0,.L116-.L25
+	.half	1
+	.byte	100
+	.word	0,0
+.L24:
+	.word	-1,.L25,0,.L116-.L25
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_GetComponentUsable')
+	.sect	'.debug_loc'
+.L120:
+	.word	-1,.L15,0,.L119-.L15
+	.half	1
+	.byte	84
+	.word	0,0
+.L121:
+	.word	-1,.L15,0,.L119-.L15
+	.half	1
+	.byte	100
+	.word	0,0
+.L14:
+	.word	-1,.L15,0,.L119-.L15
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_NodeAreAllFailedFiltered')
+	.sect	'.debug_loc'
+.L32:
+	.word	-1,.L33,0,.L122-.L33
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L123:
+	.word	-1,.L33,0,.L122-.L33
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_NodeSetInitialized')
+	.sect	'.debug_loc'
+.L30:
+	.word	-1,.L31,0,.L124-.L31
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L125:
+	.word	-1,.L31,0,.L124-.L31
+	.half	1
+	.byte	84
+	.word	0,0
+.L126:
+	.word	-1,.L31,0,.L124-.L31
+	.half	1
+	.byte	85
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L186:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Dem_GetComponentSuspicious')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L186,.L13,.L113-.L13
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dem_GetComponentUsable')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L186,.L15,.L119-.L15
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dem_GetComponentRestrictedUsable')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L186,.L17,.L110-.L17
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dem_GetComponentInitialized')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L186,.L19,.L107-.L19
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dem_GetComponentFailed')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L186,.L21,.L101-.L21
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dem_GetComponentFailedItself')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L186,.L23,.L104-.L23
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dem_GetComponentSuspiciousItself')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L186,.L25,.L116-.L25
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dem_GetComponentAvailable')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L186,.L27,.L94-.L27
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dem_GetComponentAreAncestorsInitialized')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L186,.L29,.L98-.L29
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dem_NodeSetInitialized')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L186,.L31,.L124-.L31
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dem_NodeAreAllFailedFiltered')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L186,.L33,.L122-.L33
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   711  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   712  #endif /* DEM_CFG_DEPENDENCY */
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   713  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   714  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   715  
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   716  #define DEM_STOP_SEC_ROM_CODE
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   717  #include "Dem_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dem\src\evdep\Dem_Dependencies.c	   718  
+
+	; Module end

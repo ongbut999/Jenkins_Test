@@ -1,0 +1,493 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc18116a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Crc_8h2f.src BSW\\src\\BSW\\Gen\\Crc\\Crc_8h2f.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Crc\\Crc_8h2f.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Crc_8h2f.Crc_CalculateCRC8H2F',code,cluster('Crc_CalculateCRC8H2F')
+	.sect	'.text.Crc_8h2f.Crc_CalculateCRC8H2F'
+	.align	2
+	
+	.global	Crc_CalculateCRC8H2F
+
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	     1  
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	     2  
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	     3  /*
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	     4   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	     5   * Includes
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	     6   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	     7   */
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	     8  #include "Crc.h"
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	     9  
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    10  /**
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    11   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    12   * Crc_calculateCRC8H2F
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    13   *
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    14   * \brief Calculates the rest of a of a polynomial division: input is divided by the CRC8H1D = SAE J 1850 polynomial
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    15   *
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    16   * Description: Calculates the crc remainder of a data stream. Crc polynomial is CRC8H2F polynomial.
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    17   * The crc calculation starts with an initial value, Crc_StartValue8.
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    18   * The data stream is transmitted via pointer *Crc_DataPtr and is of length Crc_Length.
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    19   * The crc remainder is modified by a XOR operation using the value CRC_XOR_VALUE8H2F.
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    20   *
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    21   * \param    Crc_DataPtr,      Pointer to start address of data block
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    22   * \param    Crc_Length,       Length of data block to be calculated in bytes
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    23   * \param    Crc_StartValue8   Start value when the algorithm starts
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    24   * \return                     Remainder after polynomial division *const Crc_DataPtr / CRC8H1D
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    25   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    26   */
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    27  
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    28  /*
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    29   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    30   * TABLE Version, Revision_2
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    31   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    32  */
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    33  
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    34  #define CRC_START_SEC_CONST_8
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    35  #include "Crc_MemMap.h"
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    36  const uint8  CRC_8_H2F_Tbl[((uint16)CRC_8_H2F_TABLESIZE)] =
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    37  {
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    38          /*    0: */    0x0u,     0x2fu,    0x5eu,    0x71u,    0xbcu,    0x93u,    0xe2u,    0xcdu,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    39          /*    8: */    0x57u,    0x78u,    0x9u,     0x26u,    0xebu,    0xc4u,    0xb5u,    0x9au,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    40          /*   16: */    0xaeu,    0x81u,    0xf0u,    0xdfu,    0x12u,    0x3du,    0x4cu,    0x63u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    41          /*   24: */    0xf9u,    0xd6u,    0xa7u,    0x88u,    0x45u,    0x6au,    0x1bu,    0x34u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    42          /*   32: */    0x73u,    0x5cu,    0x2du,    0x2u,     0xcfu,    0xe0u,    0x91u,    0xbeu,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    43          /*   40: */    0x24u,    0xbu,     0x7au,    0x55u,    0x98u,    0xb7u,    0xc6u,    0xe9u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    44          /*   48: */    0xddu,    0xf2u,    0x83u,    0xacu,    0x61u,    0x4eu,    0x3fu,    0x10u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    45          /*   56: */    0x8au,    0xa5u,    0xd4u,    0xfbu,    0x36u,    0x19u,    0x68u,    0x47u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    46          /*   64: */    0xe6u,    0xc9u,    0xb8u,    0x97u,    0x5au,    0x75u,    0x4u,     0x2bu,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    47          /*   72: */    0xb1u,    0x9eu,    0xefu,    0xc0u,    0xdu,     0x22u,    0x53u,    0x7cu,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    48          /*   80: */    0x48u,    0x67u,    0x16u,    0x39u,    0xf4u,    0xdbu,    0xaau,    0x85u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    49          /*   88: */    0x1fu,    0x30u,    0x41u,    0x6eu,    0xa3u,    0x8cu,    0xfdu,    0xd2u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    50          /*   96: */    0x95u,    0xbau,    0xcbu,    0xe4u,    0x29u,    0x6u,     0x77u,    0x58u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    51          /*  104: */    0xc2u,    0xedu,    0x9cu,    0xb3u,    0x7eu,    0x51u,    0x20u,    0xfu,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    52          /*  112: */    0x3bu,    0x14u,    0x65u,    0x4au,    0x87u,    0xa8u,    0xd9u,    0xf6u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    53          /*  120: */    0x6cu,    0x43u,    0x32u,    0x1du,    0xd0u,    0xffu,    0x8eu,    0xa1u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    54          /*  128: */    0xe3u,    0xccu,    0xbdu,    0x92u,    0x5fu,    0x70u,    0x1u,     0x2eu,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    55          /*  136: */    0xb4u,    0x9bu,    0xeau,    0xc5u,    0x8u,     0x27u,    0x56u,    0x79u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    56          /*  144: */    0x4du,    0x62u,    0x13u,    0x3cu,    0xf1u,    0xdeu,    0xafu,    0x80u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    57          /*  152: */    0x1au,    0x35u,    0x44u,    0x6bu,    0xa6u,    0x89u,    0xf8u,    0xd7u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    58          /*  160: */    0x90u,    0xbfu,    0xceu,    0xe1u,    0x2cu,    0x3u,     0x72u,    0x5du,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    59          /*  168: */    0xc7u,    0xe8u,    0x99u,    0xb6u,    0x7bu,    0x54u,    0x25u,    0xau,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    60          /*  176: */    0x3eu,    0x11u,    0x60u,    0x4fu,    0x82u,    0xadu,    0xdcu,    0xf3u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    61          /*  184: */    0x69u,    0x46u,    0x37u,    0x18u,    0xd5u,    0xfau,    0x8bu,    0xa4u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    62          /*  192: */    0x5u,     0x2au,    0x5bu,    0x74u,    0xb9u,    0x96u,    0xe7u,    0xc8u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    63          /*  200: */    0x52u,    0x7du,    0xcu,     0x23u,    0xeeu,    0xc1u,    0xb0u,    0x9fu,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    64          /*  208: */    0xabu,    0x84u,    0xf5u,    0xdau,    0x17u,    0x38u,    0x49u,    0x66u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    65          /*  216: */    0xfcu,    0xd3u,    0xa2u,    0x8du,    0x40u,    0x6fu,    0x1eu,    0x31u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    66          /*  224: */    0x76u,    0x59u,    0x28u,    0x7u,     0xcau,    0xe5u,    0x94u,    0xbbu,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    67          /*  232: */    0x21u,    0xeu,     0x7fu,    0x50u,    0x9du,    0xb2u,    0xc3u,    0xecu,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    68          /*  240: */    0xd8u,    0xf7u,    0x86u,    0xa9u,    0x64u,    0x4bu,    0x3au,    0x15u,
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    69          /*  248: */    0x8fu,    0xa0u,    0xd1u,    0xfeu,    0x33u,    0x1cu,    0x6du,    0x42u
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    70  };
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    71  #define CRC_STOP_SEC_CONST_8
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    72  #include "Crc_MemMap.h"
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    73  #define CRC_START_SEC_CODE
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    74  #include "Crc_MemMap.h"
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    75  
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    76  /* TRACE [SWS_Crc_00042] */                   
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    77  uint8 Crc_CalculateCRC8H2F(const uint8* Crc_DataPtr, uint32 Crc_Length, uint8 Crc_StartValue8,
+; Function Crc_CalculateCRC8H2F
+.L8:
+Crc_CalculateCRC8H2F:	.type	func
+
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    78                             boolean Crc_IsFirstCall)
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    79  {
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    80      uint32_least  index;
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    81      uint8         crcTemp;
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    82      uint8         result;
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    83  
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    84  
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    85      if (Crc_IsFirstCall != FALSE)
+	jeq	d6,#0,.L2
+.L44:
+
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    86      {
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    87          crcTemp = CRC_INITIAL_VALUE8H2F;
+	mov	d15,#255
+.L33:
+	j	.L3
+.L2:
+
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    88      }
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    89      else
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    90      {
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    91          crcTemp = Crc_StartValue8 ^ CRC_XOR_VALUE8H2F;
+	xor	d15,d5,#255
+.L3:
+
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    92      }
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    93  
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    94      for (index = 0U; index < Crc_Length; ++index)
+	mov	d0,#0
+.L34:
+	j	.L4
+.L5:
+
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    95      {
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    96          /* Impact of temporary rest on next crc rest */
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    97          crcTemp ^= Crc_DataPtr[index];
+	addsc.a	a15,a4,d0,#0
+	ld.bu	d1,[a15]
+.L45:
+	xor	d15,d1
+.L46:
+
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    98  
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	    99          /* Next temporary crc rest */
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	   100          crcTemp  = CRC_8_H2F_Tbl[crcTemp];
+	movh.a	a15,#@his(CRC_8_H2F_Tbl)
+	lea	a15,[a15]@los(CRC_8_H2F_Tbl)
+.L47:
+	addsc.a	a15,a15,d15,#0
+	ld.bu	d15,[a15]
+.L48:
+	add	d0,#1
+.L4:
+	jlt.u	d0,d4,.L5
+.L49:
+
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	   101      }
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	   102      result = crcTemp ^ CRC_XOR_VALUE8H2F;
+	xor	d2,d15,#255
+.L35:
+
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	   103  
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	   104      return (result);
+	j	.L6
+
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	   105  }
+.L6:
+	ret
+.L21:
+	
+__Crc_CalculateCRC8H2F_function_end:
+	.size	Crc_CalculateCRC8H2F,__Crc_CalculateCRC8H2F_function_end-Crc_CalculateCRC8H2F
+.L17:
+	; End of function
+	
+	.sdecl	'.rodata.Crc_8h2f.CRC_8_H2F_Tbl',data,rom,cluster('CRC_8_H2F_Tbl')
+	.sect	'.rodata.Crc_8h2f.CRC_8_H2F_Tbl'
+	.global	CRC_8_H2F_Tbl
+CRC_8_H2F_Tbl:	.type	object
+	.size	CRC_8_H2F_Tbl,256
+	.space	1
+	.byte	47,94,113,188
+	.byte	147,226,205,87
+	.byte	120,9,38,235
+	.byte	196,181,154,174
+	.byte	129,240,223,18
+	.byte	61,76,99,249
+	.byte	214,167,136,69
+	.byte	106,27,52,115
+	.byte	92,45,2,207
+	.byte	224,145,190,36
+	.byte	11,122,85,152
+	.byte	183,198,233,221
+	.byte	242,131,172,97
+	.byte	78,63,16,138
+	.byte	165,212,251,54
+	.byte	25,104,71,230
+	.byte	201,184,151,90
+	.byte	117,4,43,177
+	.byte	158,239,192,13
+	.byte	34,83,124,72
+	.byte	103,22,57,244
+	.byte	219,170,133,31
+	.byte	48,65,110,163
+	.byte	140,253,210,149
+	.byte	186,203,228,41
+	.byte	6,119,88,194
+	.byte	237,156,179,126
+	.byte	81,32,15,59
+	.byte	20,101,74,135
+	.byte	168,217,246,108
+	.byte	67,50,29,208
+	.byte	255,142,161,227
+	.byte	204,189,146,95
+	.byte	112,1,46,180
+	.byte	155,234,197,8
+	.byte	39,86,121,77
+	.byte	98,19,60,241
+	.byte	222,175,128,26
+	.byte	53,68,107,166
+	.byte	137,248,215,144
+	.byte	191,206,225,44
+	.byte	3,114,93,199
+	.byte	232,153,182,123
+	.byte	84,37,10,62
+	.byte	17,96,79,130
+	.byte	173,220,243,105
+	.byte	70,55,24,213
+	.byte	250,139,164,5
+	.byte	42,91,116,185
+	.byte	150,231,200,82
+	.byte	125,12,35,238
+	.byte	193,176,159,171
+	.byte	132,245,218,23
+	.byte	56,73,102,252
+	.byte	211,162,141,64
+	.byte	111,30,49,118
+	.byte	89,40,7,202
+	.byte	229,148,187,33
+	.byte	14,127,80,157
+	.byte	178,195,236,216
+	.byte	247,134,169,100
+	.byte	75,58,21,143
+	.byte	160,209,254,51
+	.byte	28,109,66
+	.calls	'Crc_CalculateCRC8H2F','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L10:
+	.word	314
+	.half	3
+	.word	.L11
+	.byte	4
+.L9:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Crc\\Crc_8h2f.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L12
+.L20:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.word	130
+.L22:
+	.byte	4
+	.word	147
+.L24:
+	.byte	2
+	.byte	'unsigned int',0,4,7
+.L28:
+	.byte	2
+	.byte	'unsigned long int',0,4,7,5,1,4
+	.word	194
+	.byte	6
+	.byte	'__codeptr',0,1,1,1
+	.word	196
+	.byte	6
+	.byte	'uint8',0,2,81,25
+	.word	130
+	.byte	2
+	.byte	'unsigned short int',0,2,7,6
+	.byte	'uint16',0,2,91,25
+	.word	233
+	.byte	6
+	.byte	'uint32',0,2,106,24
+	.word	157
+	.byte	6
+	.byte	'boolean',0,2,127,25
+	.word	130
+	.byte	7,128,2
+	.word	130
+	.byte	8,255,1,0
+.L32:
+	.byte	3
+	.word	301
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L11:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,38,0,73,19,0,0,4,15,0,73,19
+	.byte	0,0,5,21,0,54,15,0,0,6,22,0,3,8,58,15,59,15,57,15,73,19,0,0,7,1,1,11,15,73,19,0,0,8,33,0,47,15,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L12:
+	.word	.L37-.L36
+.L36:
+	.half	3
+	.word	.L39-.L38
+.L38:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Crc\\Crc_8h2f.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0,0
+.L39:
+.L37:
+	.sdecl	'.debug_info',debug,cluster('Crc_CalculateCRC8H2F')
+	.sect	'.debug_info'
+.L13:
+	.word	351
+	.half	3
+	.word	.L14
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Crc\\Crc_8h2f.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L16,.L15
+	.byte	2
+	.word	.L9
+	.byte	3
+	.byte	'Crc_CalculateCRC8H2F',0,1,77,7
+	.word	.L20
+	.byte	1,1,1
+	.word	.L8,.L21,.L7
+	.byte	4
+	.byte	'Crc_DataPtr',0,1,77,41
+	.word	.L22,.L23
+	.byte	4
+	.byte	'Crc_Length',0,1,77,61
+	.word	.L24,.L25
+	.byte	4
+	.byte	'Crc_StartValue8',0,1,77,79
+	.word	.L20,.L26
+	.byte	4
+	.byte	'Crc_IsFirstCall',0,1,78,36
+	.word	.L20,.L27
+	.byte	5
+	.word	.L8,.L21
+	.byte	6
+	.byte	'index',0,1,80,19
+	.word	.L28,.L29
+	.byte	6
+	.byte	'crcTemp',0,1,81,19
+	.word	.L20,.L30
+	.byte	6
+	.byte	'result',0,1,82,19
+	.word	.L20,.L31
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Crc_CalculateCRC8H2F')
+	.sect	'.debug_abbrev'
+.L14:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Crc_CalculateCRC8H2F')
+	.sect	'.debug_line'
+.L15:
+	.word	.L41-.L40
+.L40:
+	.half	3
+	.word	.L43-.L42
+.L42:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Crc\\Crc_8h2f.c',0,0,0,0,0
+.L43:
+	.byte	5,5,7,0,5,2
+	.word	.L8
+	.byte	3,212,0,1,5,17,7,9
+	.half	.L44-.L8
+	.byte	3,2,1,5,40,9
+	.half	.L33-.L44
+	.byte	1,5,35,9
+	.half	.L2-.L33
+	.byte	3,4,1,5,16,9
+	.half	.L3-.L2
+	.byte	3,3,1,5,40,9
+	.half	.L34-.L3
+	.byte	1,5,31,9
+	.half	.L5-.L34
+	.byte	3,3,1,5,17,9
+	.half	.L45-.L5
+	.byte	1,5,20,9
+	.half	.L46-.L45
+	.byte	3,3,1,5,33,9
+	.half	.L47-.L46
+	.byte	1,5,42,9
+	.half	.L48-.L47
+	.byte	3,122,1,5,40,9
+	.half	.L4-.L48
+	.byte	1,5,22,7,9
+	.half	.L49-.L4
+	.byte	3,8,1,5,5,9
+	.half	.L35-.L49
+	.byte	3,2,1,5,1,9
+	.half	.L6-.L35
+	.byte	3,1,1,7,9
+	.half	.L17-.L6
+	.byte	0,1,1
+.L41:
+	.sdecl	'.debug_ranges',debug,cluster('Crc_CalculateCRC8H2F')
+	.sect	'.debug_ranges'
+.L16:
+	.word	-1,.L8,0,.L17-.L8,0,0
+	.sdecl	'.debug_info',debug,cluster('CRC_8_H2F_Tbl')
+	.sect	'.debug_info'
+.L18:
+	.word	157
+	.half	3
+	.word	.L19
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Crc\\Crc_8h2f.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L9
+	.byte	3
+	.byte	'CRC_8_H2F_Tbl',0,1,36,14
+	.word	.L32
+	.byte	1,5,3
+	.word	CRC_8_H2F_Tbl
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('CRC_8_H2F_Tbl')
+	.sect	'.debug_abbrev'
+.L19:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('Crc_CalculateCRC8H2F')
+	.sect	'.debug_loc'
+.L7:
+	.word	-1,.L8,0,.L21-.L8
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L23:
+	.word	-1,.L8,0,.L21-.L8
+	.half	1
+	.byte	100
+	.word	0,0
+.L27:
+	.word	-1,.L8,0,.L21-.L8
+	.half	1
+	.byte	86
+	.word	0,0
+.L25:
+	.word	-1,.L8,0,.L21-.L8
+	.half	1
+	.byte	84
+	.word	0,0
+.L26:
+	.word	-1,.L8,0,.L21-.L8
+	.half	1
+	.byte	85
+	.word	0,0
+.L30:
+	.word	-1,.L8,.L33-.L8,.L2-.L8
+	.half	1
+	.byte	95
+	.word	.L3-.L8,.L21-.L8
+	.half	1
+	.byte	95
+	.word	0,0
+.L29:
+	.word	-1,.L8,.L34-.L8,.L21-.L8
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L31:
+	.word	-1,.L8,.L35-.L8,.L21-.L8
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L50:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Crc_CalculateCRC8H2F')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L50,.L8,.L21-.L8
+	.byte	8,18,8,19,8,21,8,22,8,23,0,0
+
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	   106  
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	   107  #define CRC_STOP_SEC_CODE
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	   108  #include "Crc_MemMap.h"
+; BSW\src\BSW\Gen\Crc\Crc_8h2f.c	   109  
+
+	; Module end

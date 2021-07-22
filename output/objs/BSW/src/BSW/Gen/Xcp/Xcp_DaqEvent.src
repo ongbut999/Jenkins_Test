@@ -1,0 +1,3500 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc17044a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Xcp\\Xcp_DaqEvent.src BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_DaqEvent.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_DaqEvent.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Xcp_DaqEvent.Xcp_DaqEvent',code,cluster('Xcp_DaqEvent')
+	.sect	'.text.Xcp_DaqEvent.Xcp_DaqEvent'
+	.align	2
+	
+	.global	Xcp_DaqEvent
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	     1  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	     2  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	     3  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	     4  * Includes
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	     5  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	     6  #include "Xcp.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	     7  #include "Xcp_Priv.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	     8  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	     9  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    10  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    11  * Variables
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    12  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    13  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    14  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    15  /* Begin section for code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    16  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    17  #define XCP_START_SEC_CODE_EVENTCHANNEL
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    18  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    19  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    20  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    21  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    22  * Local function declarations
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    23  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    24  LOCAL_INLINE uint8* Xcp_CopyOdt             (uint8* dest_pu8, uint16 AbsOdtNum, XCP_ADDR_TYPE* lastAddressPtr, XCP_ADDR_TYPE* lastValuePtr, uint8 protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    25  #if (XCP_DAQ_STIM_MEMORY_ACCESS_BY_APPL == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    26  LOCAL_INLINE uint8* Xcp_CopyOdtEntries_Appl (uint8* dest_pu8, uint16 AbsOdtNum, uint8 protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    27  #else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    28  LOCAL_INLINE uint8* Xcp_CopyOdtEntries_Safe (uint8* dest_pu8, uint16 AbsOdtNum, XCP_ADDR_TYPE* lastAddressPtr, XCP_ADDR_TYPE* lastValuePtr, uint8 protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    29  # if (XCP_OM_ODT_OPTIMIZATION_ENABLED == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    30  LOCAL_INLINE uint8* Xcp_CopyOdtEntries_32   (uint8* dest_pu8, uint16 AbsOdtNum, uint8 protLayerId); /* Function is generated using GEN_OPTIMIZED_COPY_FUNCTION(32) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    31  LOCAL_INLINE uint8* Xcp_CopyOdtEntries_16   (uint8* dest_pu8, uint16 AbsOdtNum, uint8 protLayerId); /* Function is generated using GEN_OPTIMIZED_COPY_FUNCTION(16) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    32  LOCAL_INLINE uint8* Xcp_CopyOdtEntries_8    (uint8* dest_pu8, uint16 AbsOdtNum, uint8 protLayerId); /* Function is generated using GEN_OPTIMIZED_COPY_FUNCTION(8) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    33  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    34  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    35  LOCAL_INLINE uint8* Xcp_PutIdField          (uint8* dest_pu8, uint16 AbsOdtNum, uint16 daqListNo, uint8 protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    36  #if (XCP_TIMESTAMP == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    37  LOCAL_INLINE uint8* Xcp_PutTimestamp        (uint8* dest_pu8, uint8 protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    38  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    39  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    40  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    41  * Functions
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    42  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    43  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    44  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    45  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    46  This function processes the DaqList (direction DAQ) by setting the queue destination,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    47  placing IdField and Timestamp and calls the subfunction Xcp_CopyOdt for each ODT.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    48  \param[in]  daqListNo_u16   daq list number to process
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    49  \param[in]  protLayerId     protocol layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    50  \return     status bits
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    51  \retval     0x01  XCP_STATUSBIT_DAQ_STARTED: always set, because DAQ is being processed
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    52  \retval     0x02  XCP_STATUSBIT_DAQ_ERR_OVERLOAD: set, when an overload occurs
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    53  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    54  uint8 Xcp_DaqEvent(uint16 daqListNo_u16, uint8 protLayerId)
+; Function Xcp_DaqEvent
+.L37:
+Xcp_DaqEvent:	.type	func
+	sub.a	a10,#24
+.L122:
+	st.w	[a10]12,d4
+.L124:
+	mov	d8,d5
+.L125:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    55  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    56    /*Start of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    57    XCP_RTM_TIMETRACK_START()
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    58  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    59    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    60    Xcp_DaqList_t* daqListPtr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    61    uint8* dest_pu8;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    62    XCP_ADDR_TYPE lastAddress;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    63    XCP_ADDR_TYPE lastValue;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    64    uint16 WritePos_u16;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    65    uint16 maxDtoAligned;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    66    uint16 AbsODTNo_u16;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    67    uint16 OdtFirst_u16;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    68    uint8  OdtCnt_u8;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    69    uint8  retval;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    70  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    71  #if (XCP_CAN_DIRECT_TRANSMIT == STD_ON && CPU_BYTE_ORDER == HIGH_BYTE_FIRST)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    72    XCP_ADDR_TYPE  tempval;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    73    XCP_ADDR_TYPE* address;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    74  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    75    /* when function is called, DAQ was already started */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    76    retval = XCP_STATUSBIT_DAQ_STARTED;
+	mov	d15,#1
+.L126:
+	st.w	[a10]8,d15
+.L128:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    77  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    78    XCP_TESTINJECTION_FUNC(XCP_TESTINJECTION_POS_DAQ_EVENTCHANNEL)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    79  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    80    /* each ODT buffer shall start at 4/8 byte aligned address */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    81    maxDtoAligned = XCP_MAXDTO_ALIGNED(protLayerId);
+	movh.a	a12,#@his(Xcp_NoInit)
+	lea	a12,[a12]@los(Xcp_NoInit)
+	mul	d15,d8,#80
+.L127:
+	addsc.a	a13,a12,d15,#0
+	ld.hu	d9,[a13]18
+.L129:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    82  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    83    daqListPtr = &(XCP_DAQ(daqListNo_u16, protLayerId));
+	ld.w	d15,[a10]12
+.L123:
+	mul	d15,d15,#24
+.L130:
+	ld.a	a2,[a13]24
+	addsc.a	a14,a2,d15,#0
+.L131:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    84    /** Start of DAQ_FACTOR_1 Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    85    XCP_RTM(0);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    86    /* Is the cycle counter equal to prescaler value */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    87    if(daqListPtr->CycleCnt_u8 == daqListPtr->Prescaler_u8 )
+	ld.bu	d15,[a14]19
+.L169:
+	ld.bu	d0,[a14]18
+.L170:
+	jne	d15,d0,.L2
+.L171:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    88    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    89      /* Reset cycle counter */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    90      daqListPtr->CycleCnt_u8 = 1;
+	mov	d15,#1
+.L172:
+	st.b	[a14]19,d15
+.L173:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    91  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    92      /* Copy the global ODT values to local variable */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    93      OdtCnt_u8 = daqListPtr->OdtCnt_u8;
+	ld.bu	d12,[a14]16
+.L132:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    94      OdtFirst_u16 = daqListPtr->OdtFirst_u16;
+	ld.hu	d13,[a14]12
+.L133:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    95  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    96      /* reset last read address/value */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    97      lastAddress = (~(XCP_ADDR_TYPE)0);
+	mov	d0,#-1
+.L174:
+	st.w	[a10],d0
+.L175:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    98      lastValue   = (~(XCP_ADDR_TYPE)0);
+	mov	d15,#-1
+.L176:
+	st.w	[a10]4,d15
+.L177:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	    99  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   100      /* fetch write and read position */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   101      WritePos_u16 = daqListPtr->DaqListQuePos.WritePos_u16;
+	ld.hu	d10,[a14]4
+.L134:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   102  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   103      /** End of DAQ_FACTOR_1 Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   104      XCP_RTM(1);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   105      /** Start of ODT_FACTOR_1 Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   106      XCP_RTM(0);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   107      /* Loop until the last ODT */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   108  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   109      /* loop all Odts, check mode for running every loop-step */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   110      for (AbsODTNo_u16 = OdtFirst_u16; (AbsODTNo_u16 < (OdtFirst_u16 + OdtCnt_u8)) && ((daqListPtr->Mode_u8 & XCP_DAQLISTMODE_RUNNING) == XCP_DAQLISTMODE_RUNNING); AbsODTNo_u16++)
+	mov	d11,d13
+.L135:
+	j	.L3
+.L4:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   111      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   112        XCP_TESTINJECTION_FUNC(XCP_TESTINJECTION_POS_ODT_EVENTCHANNEL)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   113        /* check if next item fits into queue */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   114        if (((WritePos_u16 + 1) % daqListPtr->DaqListQuePos.QueSize_u16) != daqListPtr->DaqListQuePos.ReadPos_u16)
+	add	d14,d10,#1
+.L178:
+	ld.hu	d15,[a14]10
+.L179:
+	div	e0,d14,d15
+.L180:
+	ld.hu	d15,[a14]6
+.L181:
+	jeq	d15,d1,.L5
+.L182:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   115        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   116          /* set destination pointer to 4 byte aligned queue buffer */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   117          dest_pu8 = &(daqListPtr->DaqListQue_p[WritePos_u16 * maxDtoAligned]);
+	mul	d15,d10,d9
+.L183:
+	ld.a	a2,[a14]
+.L184:
+	addsc.a	a15,a2,d15,#0
+.L66:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   118  #if (XCP_CAN_DIRECT_TRANSMIT == STD_ON && CPU_BYTE_ORDER == HIGH_BYTE_FIRST)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   119          /* MR12 RULE 11.5, 1.1 VIOLATION: The calling layers ensure correct alignment. address is then used to do an atomic access to 32/64bit (machine width)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   120                                            Casting over void* is necessary as otherwise some compilers complain */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   121          address = (XCP_ADDR_TYPE*) (void*)(dest_pu8);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   122  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   123          /* place identification field inside queue */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   124          dest_pu8 = Xcp_PutIdField(dest_pu8, AbsODTNo_u16, daqListNo_u16, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   125  #if (XCP_TIMESTAMP == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   126          /* check if timestamp needs to be written to dest_pu8 (only if Timestamp is enabled and First Odt of DAQ) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   127          if ( (AbsODTNo_u16 == OdtFirst_u16) && ((daqListPtr->Mode_u8 & XCP_DAQLISTMODE_TIMESTAMP) == XCP_DAQLISTMODE_TIMESTAMP) ) /* only on first ODT and if enabled by master*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   128          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   129            dest_pu8 = Xcp_PutTimestamp(dest_pu8, protLayerId); /* put the timestamp, store pointer to next available address */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   130          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   131  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   132          /** End of ODT_FACTOR_1 Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   133          XCP_RTM(1);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   134  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   135          /* Process one ODT: Copy the data of the OdtEntries into the internal buffer (dest_pu8) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   136          dest_pu8 = Xcp_CopyOdt(dest_pu8, AbsODTNo_u16, &lastAddress, &lastValue, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   137  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   138  #if (XCP_CAN_DIRECT_TRANSMIT == STD_ON && CPU_BYTE_ORDER == HIGH_BYTE_FIRST)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   139          /* swap endianness in CAN packets */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   140          if (daqListPtr->XcpTxPduId != XCP_PDU_ID_UNKNOWN)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   141          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   142            /* MR12 RULE 11.4 VIOLATION: Cast from pointer to XCP_ADDR_TYPE is OK as this type is able to store the address (see type definition) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   143            while ( ((XCP_ADDR_TYPE) address) < (((XCP_ADDR_TYPE) dest_pu8)))
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   144            {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   145              /* store content temporarily */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   146              tempval = *address;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   147              /* change endianness of each byte for faster transmission */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   148  #if (XCP_ADDR_LEN == 4) /* 32bit */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   149              *address = (tempval << 24u) | ((tempval & 0xFF00u) << 8u) | ((tempval >> 8u) & 0xFF00u) | (tempval >> 24u);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   150  #else /* 64bit */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   151              *address = ((tempval & (0xFFull       )) << 56u) |
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   152                         ((tempval & (0xFFull <<  8u)) << 40u) |
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   153                         ((tempval & (0xFFull << 16u)) << 24u) |
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   154                         ((tempval & (0xFFull << 24u)) <<  8u) |
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   155                         ((tempval & (0xFFull << 32u)) >>  8u) |
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   156                         ((tempval & (0xFFull << 40u)) >> 24u) |
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   157                         ((tempval & (0xFFull << 48u)) >> 40u) |
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   158                         ((tempval & (0xFFull << 56u)) >> 56u)  ;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   159  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   160              /* increase address */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   161              address++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   162            }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   163          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   164  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   165          /** Start of ODT_FACTOR_1 Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   166          XCP_RTM(1);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   167          /* Check if was the end of the queue */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   168          if (WritePos_u16 == (daqListPtr->DaqListQuePos.QueSize_u16 - 1))
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   169          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   170            /* end of the Queue is reached, wrap around */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   171            WritePos_u16 = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   172          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   173          else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   174          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   175            /* increment index to the next available buffer */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   176            WritePos_u16++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   177          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   178        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   179        else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   180        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   181          /* overload detected */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   182          /* no further processing in this event, return overload */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   183          retval = (XCP_STATUSBIT_DAQ_STARTED|XCP_STATUSBIT_DAQ_ERR_OVERLOAD);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   184          /** End of DAQ_FACTOR_1 Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   185          XCP_RTM(1);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   186          break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   187        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   188      } /* Loop until the last ODT */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   189      /** Start of DAQ_FACTOR_2 Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   190      XCP_RTM(0);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   191  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   192      /* check, whether DAQ has been stopped in meantime */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   193      if ((daqListPtr->Mode_u8 & XCP_DAQLISTMODE_RUNNING) == XCP_DAQLISTMODE_RUNNING)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   194      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   195        /* check if overload occurred */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   196        if ((retval & XCP_STATUSBIT_DAQ_ERR_OVERLOAD) == 0u)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   197        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   198          /* update the write position of the DAQ queue */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   199          daqListPtr->DaqListQuePos.WritePos_u16 = WritePos_u16;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   200          /* transmit first packet */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   201          Xcp_SendDaq(daqListNo_u16, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   202        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   203        else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   204        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   205          /* overload detected */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   206  #if (XCP_DAQ_OVERLOAD_INDICATION_PID_ENABLED == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   207          Xcp_NoInit[protLayerId].DaqConfig.OverloadOccurred_b = TRUE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   208  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   209          if (Xcp_PlCfgConst.TlCfg[XCP_ACTIVE_TL_ID(protLayerId)].OverloadType_en == XCP_DAQ_OVERLOAD_INDICATION_EVENT)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   210          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   211  #if (XCP_DAQ_OVERLOAD_DEBUG_EVENT == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   212            /* local variables only needed here */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   213            Xcp_Cto8_t XcpEvPacket;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   214            Xcp_EvDebugOverload_t* EvPtr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   215            /* initialize overload debug event packet */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   216            XcpEvPacket.Length_u32 = XCP_EV_DEBUG_OVERLOAD_LENGTH;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   217            /* MR12 RULE 11.5, 1.1 VIOLATION: The calling layers ensure correct alignment. This cast allows easier (= safer) access to the data in the buffer
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   218                                              Casting over void* is necessary as otherwise some compilers complain */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   219            EvPtr = (Xcp_EvDebugOverload_t*) (void*) XcpEvPacket.Buffer_au8;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   220            EvPtr->DaqListNum_u16 = daqListNo_u16;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   221            /* send Event if configured for this transport layer */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   222            EvPtr->PacketId_u8 = XCP_PACKET_ID_EV;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   223            EvPtr->EventCode_u8 = XCP_EV_DAQ_OVERLOAD;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   224            Xcp_SendEv(&XcpEvPacket, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   225  #else /* (XCP_DAQ_OVERLOAD_DEBUG_EVENT == STD_ON) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   226            /* send XCP_EV_DAQ_OVERLOAD event */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   227            Xcp_SendEv_Code(XCP_EV_DAQ_OVERLOAD, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   228  #endif /* (XCP_DAQ_OVERLOAD_DEBUG_EVENT == STD_ON) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   229          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   230        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   231      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   232      else /* mode XCP_DAQLISTMODE_RUNNING has been revoked */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   233      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   234        /* no action */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   235      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   236  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   237      /** End of DAQ_FACTOR_2 Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   238      XCP_RTM(1);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   239    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   240    else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   241    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   242      /* Increment cycle counter */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   243      daqListPtr->CycleCnt_u8++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   244    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   245  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   246    /*End of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   247    XCP_RTM_TIMETRACK_FINISH()
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   248    return retval;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   249  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   250  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   251  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   252  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   253  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   254  This function processes the given ODT.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   255  \param[in]  dest_pu8        pointer to destination
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   256  \param[in]  AbsOdtNum       ODT number that shall be processed
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   257  \param[in]  lastAddressPtr  pointer to last address that has been read
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   258  \param[in]  lastValuePtr    pointer to last value of that address
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   259  \param[in]  protLayerId     protocol layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   260  \return     pointer to destination after inserted data
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   261  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   262  /* MR12 RULE 8.13 VIOLATION: The pointers lastAddressPtr and lastValuePtr are changed in Xcp_CopyOdtEntries_Safe - therefore it cannot be const. */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   263  LOCAL_INLINE uint8 * Xcp_CopyOdt(uint8* dest_pu8, uint16 AbsOdtNum, XCP_ADDR_TYPE* lastAddressPtr, XCP_ADDR_TYPE* lastValuePtr, uint8 protLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   264  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   265  #if (XCP_DAQ_STIM_MEMORY_ACCESS_BY_APPL == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   266    XCP_PARAM_UNUSED(lastAddressPtr);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   267    XCP_PARAM_UNUSED(lastValuePtr);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   268  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   269    /* Call application function to copy the OdtEntries */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   270    dest_pu8 = Xcp_CopyOdtEntries_Appl(dest_pu8, AbsOdtNum, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   271  #else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   272  # if (XCP_OM_ODT_OPTIMIZATION_ENABLED == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   273    /* Determine the copy routine to be used */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   274    switch (XCP_ODT_COPYROUTINE(AbsOdtNum, protLayerId))
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   275    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   276      case XCP_ODT_COPY_32:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   277      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   278        dest_pu8 = Xcp_CopyOdtEntries_32(dest_pu8, AbsOdtNum, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   279      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   280      break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   281      case XCP_ODT_COPY_16:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   282      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   283        dest_pu8 = Xcp_CopyOdtEntries_16(dest_pu8, AbsOdtNum, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   284      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   285      break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   286      case XCP_ODT_COPY_8:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   287      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   288        dest_pu8 = Xcp_CopyOdtEntries_8(dest_pu8, AbsOdtNum, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   289      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   290      break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   291      case XCP_ODT_COPY_SAFE:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   292      default:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   293  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   294      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   295        /* Use safe copy routine */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   296        dest_pu8 = Xcp_CopyOdtEntries_Safe(dest_pu8, AbsOdtNum, lastAddressPtr, lastValuePtr, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   297      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   298  # if (XCP_OM_ODT_OPTIMIZATION_ENABLED == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   299      break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   300    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   301  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   302  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   303  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   304    return dest_pu8;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   305  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   306  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   307  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   308  #if (XCP_DAQ_STIM_MEMORY_ACCESS_BY_APPL == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   309  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   310  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   311  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   312  This function process each OdtEntry in the given ODT placing the measurement variables
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   313  into the queue using an application function to copy the values.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   314  \param[in]  dest_pu8      pointer to destination
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   315  \param[in]  AbsOdtNum     absolute ODT number
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   316  \param[in]  protLayerId   Protocol Layer ID
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   317  \return     pointer to destination after inserted data
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   318  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   319  LOCAL_INLINE uint8* Xcp_CopyOdtEntries_Appl(uint8* dest_pu8, uint16 AbsOdtNum, uint8 protLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   320  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   321    const Xcp_AddrValue*  OdtEntryAdrPtr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   322  #if (XCP_ADDRESS_EXTENSION == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   323    const uint8*          OdtEntryExtensionPtr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   324  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   325    const uint8*          OdtEntrySizePtr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   326    uint8                 OdtEntrySize;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   327    Xcp_AddrType_t        OdtEntryXcpAddr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   328    uint16_least          OdtEntry_i;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   329  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   330    /* Initialize local pointer to OdtEntryAdr and OdtEntrySize for first OdtEntry of this ODT */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   331    OdtEntryAdrPtr        = &XCP_ODTENTRY_ADDRESS(XCP_ODT_ODTENTRYFIRST(AbsOdtNum, protLayerId), protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   332    OdtEntrySizePtr       = &XCP_ODTENTRY_SIZE(XCP_ODT_ODTENTRYFIRST(AbsOdtNum, protLayerId), protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   333  #if (XCP_ADDRESS_EXTENSION == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   334    OdtEntryExtensionPtr  = &XCP_ODTENTRY_EXTENSION(XCP_ODT_ODTENTRYFIRST(AbsOdtNum, protLayerId), protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   335  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   336  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   337    /* loop through all OdtEntries for this ODT */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   338    for (OdtEntry_i = 0; OdtEntry_i < XCP_ODT_ODTENTRYCNT(AbsOdtNum, protLayerId); OdtEntry_i++)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   339    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   340      /** Start of ODT_ENTRY_FACTOR Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   341      XCP_RTM(0);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   342  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   343      OdtEntrySize = OdtEntrySizePtr[OdtEntry_i];
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   344      OdtEntryXcpAddr.AddrValue = OdtEntryAdrPtr[OdtEntry_i];
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   345  #if (XCP_ADDRESS_EXTENSION == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   346      OdtEntryXcpAddr.Extension = OdtEntryExtensionPtr[OdtEntry_i];
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   347  #else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   348      OdtEntryXcpAddr.Extension = 0u;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   349  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   350  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   351      /* Call Application function to copy the data from ecu memory to the destination buffer */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   352      XcpAppl_OdtEntryRead(dest_pu8, OdtEntryXcpAddr, OdtEntrySize);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   353  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   354      /* Move pointer of the destination buffer */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   355      dest_pu8 += OdtEntrySize;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   356  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   357      /** End of ODT_ENTRY_FACTOR Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   358      XCP_RTM(1);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   359    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   360  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   361    return dest_pu8;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   362  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   363  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   364  #else /* XCP_DAQ_STIM_MEMORY_ACCESS_BY_APPL */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   365  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   366  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   367  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   368  This function processes each OdtEntry in the given ODT placing the measurement variables into the queue.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   369  \param[in]  dest_pu8        pointer to destination
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   370  \param[in]  AbsOdtNum       absolute ODT number
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   371  \param[in]  lastAddressPtr  pointer to last address that has been read
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   372  \param[in]  lastValuePtr    pointer to last value of that address
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   373  \param[in]  protLayerId     protocol layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   374  \return     pointer to destination after inserted data
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   375  \note This function does not care for the Address-Extension,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   376        if it is enabled, it was already resolved during StaticAddressTransformation
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   377  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   378  LOCAL_INLINE uint8* Xcp_CopyOdtEntries_Safe(uint8* dest_pu8, uint16 AbsOdtNum, XCP_ADDR_TYPE* lastAddressPtr, XCP_ADDR_TYPE* lastValuePtr, uint8 protLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   379  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   380    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   381    XCP_ADDR_TYPE lastReadAddress;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   382    XCP_ADDR_TYPE lastReadValue;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   383    const Xcp_AddrValue* OdtEntryAdrPtr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   384    const uint8* OdtEntrySizePtr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   385    uint8_least  OdtEntryCnt;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   386    Xcp_AddrValue address;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   387    uint8  numBytesToReadAtAddress;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   388    sint8  index;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   389  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   390    /* Copy last read address and value to local variable for faster access */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   391    lastReadAddress = *lastAddressPtr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   392    lastReadValue   = *lastValuePtr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   393    address         = lastReadAddress;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   394  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   395    /* Initialize local pointer to OdtEntryAdr and OdtEntrySize for first OdtEntry of this ODT */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   396    OdtEntryAdrPtr  = &XCP_ODTENTRY_ADDRESS(XCP_ODT_ODTENTRYFIRST(AbsOdtNum, protLayerId), protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   397    OdtEntrySizePtr = &XCP_ODTENTRY_SIZE(XCP_ODT_ODTENTRYFIRST(AbsOdtNum, protLayerId), protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   398  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   399    /* Initialize OdtEntryCnt for first OdtEntry of this ODT */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   400    OdtEntryCnt = XCP_ODT_ODTENTRYCNT(AbsOdtNum, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   401  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   402    /* loop all OdtEntries for this ODT */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   403    while(OdtEntryCnt > 0u)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   404    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   405      XCP_TESTINJECTION_FUNC(XCP_TESTINJECTION_POS_ODTENTRY_EVENTCHANNEL)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   406      /** Start of ODT_ENTRY_FACTOR Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   407      XCP_RTM(0);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   408      /* Get OdtEntryAdr and OdtEntrySize */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   409      /* MR12 RULE 11.4 VIOLATION: Cast from pointer to XCP_ADDR_TYPE is OK as this type is able to store the address (see type definition) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   410      address = *OdtEntryAdrPtr; /* get the value (which is the address) for further operation */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   411      numBytesToReadAtAddress = *OdtEntrySizePtr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   412  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   413      if (lastReadAddress != (address & (~(XCP_ADDR_TYPE)(XCP_ADDR_LEN - 1u))))
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   414      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   415        lastReadAddress = (address & (~(XCP_ADDR_TYPE)(XCP_ADDR_LEN - 1u)));
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   416        /* MR12 RULE 11.4 VIOLATION: Cast to pointer of XCP_ADDR_TYPE is OK as alignment was set correctly one line above. */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   417        lastReadValue = *((XCP_ADDR_TYPE*) lastReadAddress);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   418      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   419  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   420      while (TRUE) /* to avoid checking for numBytesToReadAtAddress > 0 twice */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   421      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   422  #if (CPU_BYTE_ORDER == HIGH_BYTE_FIRST)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   423        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   424          /* MR12 RULE 10.8 VIOLATION: cast to signed datatype is not a problem, as only 3/2 bits are multiplied with 8 -> result < 127 */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   425          index = (sint8) (8u * ((XCP_ADDR_LEN - 1u) - (address & (XCP_ADDR_LEN - 1u))));
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   426          while ((index >= 0) && (numBytesToReadAtAddress > 0))
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   427          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   428            /** Start of SIZE_FACTOR_IFX Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   429            XCP_RTM(0);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   430  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   431            *dest_pu8 = (uint8) (lastReadValue >> (uint8) index);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   432            dest_pu8++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   433            /* decrease bytes to copy */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   434            numBytesToReadAtAddress--;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   435            /* decrease byte pointer within address */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   436            index = index - 8;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   437            /** End of SIZE_FACTOR_IFX Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   438            XCP_RTM(1);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   439          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   440        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   441  #else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   442        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   443          /* MR12 RULE 10.8 VIOLATION: cast to signed datatype is not a problem, as only 3/2 bits are multiplied with 8 -> result < 127 */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   444          index = (sint8) (8u * ((address & (XCP_ADDR_LEN - 1u))));
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   445          while ((index <= (sint8)((XCP_ADDR_LEN - 1u) * 8u)) && (numBytesToReadAtAddress > 0))
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   446          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   447            /** Start of SIZE_FACTOR_JDP Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   448            XCP_RTM(0);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   449            *dest_pu8 = (uint8) (lastReadValue >> (uint8) index);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   450            dest_pu8++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   451            /* decrease bytes to copy */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   452            numBytesToReadAtAddress--;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   453            /* increase byte pointer within address */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   454            index = index + 8;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   455            /** End of SIZE_FACTOR_JDP Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   456            XCP_RTM(1);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   457          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   458        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   459  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   460  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   461        if (numBytesToReadAtAddress == 0 ) /* check if no more bytes to read in this OdtEntry */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   462        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   463          /* Increment pointers to next OdtEntry and decrement OdtEntryCnt */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   464          OdtEntryAdrPtr++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   465          OdtEntrySizePtr++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   466          OdtEntryCnt--;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   467          break; /* exit while TRUE */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   468        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   469        else /* OdtEntry is not completed */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   470        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   471          address = (XCP_ADDR_TYPE) (address & (~(XCP_ADDR_TYPE)(XCP_ADDR_LEN - 1u))) + XCP_ADDR_LEN; /* increase address to read further bytes */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   472          /* MR12 RULE 11.4 VIOLATION: Cast to pointer of XCP_ADDR_TYPE is OK as alignment was set correctly one line above. */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   473          lastReadValue = *((XCP_ADDR_TYPE*) (address)); /* fetch the value from the new address */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   474        } /* continue */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   475      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   476  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   477      /** End of ODT_ENTRY_FACTOR Runtime measurement **/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   478      XCP_RTM(1);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   479    } /*End of while loop*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   480  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   481    /* Update last read address and value */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   482    *lastAddressPtr = (XCP_ADDR_TYPE) (address & (~(XCP_ADDR_TYPE)(XCP_ADDR_LEN - 1u)));
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   483    *lastValuePtr = lastReadValue;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   484    return dest_pu8;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   485  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   486  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   487  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   488  #if (XCP_OM_ODT_OPTIMIZATION_ENABLED == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   489  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   490  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   491  * The following macro is used to generate the optimized copy-routines.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   492  *
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   493  * These functions are generated using a macro instead of writing them directly, as lots of code is
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   494  * identical and now maintainability is better (less duplicated code vs. preprocessor-code).
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   495  *
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   496  * Also it is not possible to use function-pointers for the copy-routine itself as this would lead
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   497  * to a function-call for the copy routine (Xcp_MemCopy...) whereas now the function can be inlined.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   498  * \note This macro does not care for the Address-Extension,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   499  *       if it is enabled, it was already resolved during StaticAddressTransformation
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   500  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   501  #define GEN_OPTIMIZED_COPY_FUNCTION(size)                                                                     \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   502  LOCAL_INLINE uint8* Xcp_CopyOdtEntries_##size(uint8* dest_pu8, uint16 AbsOdtNum, uint8 protLayerId)           \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   503  {                                                                                                             \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   504    const Xcp_AddrValue* OdtEntryAdrPtr;                                                                        \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   505    const uint8*         OdtEntrySizePtr;                                                                       \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   506                                                                                                                \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   507    uint8_least OdtEntryCnt;                                                                                    \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   508                                                                                                                \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   509    /* Initialize local pointer to OdtEntryAdr and OdtEntrySize for first OdtEntry of this ODT */               \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   510    OdtEntryAdrPtr  = &XCP_ODTENTRY_ADDRESS(XCP_ODT_ODTENTRYFIRST(AbsOdtNum, protLayerId), protLayerId);        \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   511    OdtEntrySizePtr = &XCP_ODTENTRY_SIZE(XCP_ODT_ODTENTRYFIRST(AbsOdtNum, protLayerId), protLayerId);           \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   512                                                                                                                \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   513    /* loop through all OdtEntries for this ODT */                                                              \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   514    for (OdtEntryCnt = XCP_ODT_ODTENTRYCNT(AbsOdtNum, protLayerId); OdtEntryCnt > 0u; OdtEntryCnt--)            \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   515    {                                                                                                           \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   516      /** Start of ODT_ENTRY_FACTOR Runtime measurement **/                                                     \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   517      XCP_RTM(0);                                                                                               \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   518                                                                                                                \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   519      /* Copy the OdtEntry-Data into the destination buffer */                                                  \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   520      /* MR12 RULE 11.5, 1.1 VIOLATION: The calling layers ensure correct alignment; Cast to const is no problem, as the variable is only read  \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   521                                        DIR 1.1: The input parameters of rba_BswSrv_MemCopy() are declared as (void*) for generic implementation of MemCopy. */ \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   522      Xcp_MemCopy##size((uint##size *)(void *)dest_pu8, (const uint##size *)(void *)*OdtEntryAdrPtr, (uint32)*OdtEntrySizePtr);  \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   523                                                                                                                \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   524      /* Move pointer of the destination buffer */                                                              \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   525      dest_pu8 += *OdtEntrySizePtr;                                                                             \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   526                                                                                                                \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   527      /* Get next OdtEntry */                                                                                   \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   528      OdtEntryAdrPtr++;                                                                                         \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   529      OdtEntrySizePtr++;                                                                                        \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   530                                                                                                                \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   531      /** End of ODT_ENTRY_FACTOR Runtime measurement **/                                                       \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   532      XCP_RTM(1);                                                                                               \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   533    }                                                                                                           \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   534                                                                                                                \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   535    return dest_pu8;                                                                                            \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   536  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   537  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   538  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   539  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   540  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   541  This function process each OdtEntry in the given ODT placing the measurement variables
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   542  into the queue using an optimized copy routine for 32-bit values.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   543  \param[in]  dest_pu8      pointer to destination
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   544  \param[in]  AbsOdtNum     absolute ODT number
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   545  \param[in]  protLayerId   protocol layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   546  \return     pointer to destination after inserted data
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   547  \note This function does not care for the Address-Extension,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   548        if it is enabled, it was already resolved during StaticAddressTransformation
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   549  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   550  /* MR12 RULE 11.5, 11.6, 1.1 VIOLATION: Xcp_MemCopy*: The calling layers ensure correct alignment; Cast to const is no problem, as the variable is only read \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   551                                          The input parameters of rba_BswSrv_MemCopy() are declared as (void*) for generic implementation of MemCopy. */  \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   552  GEN_OPTIMIZED_COPY_FUNCTION(32)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   553  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   554  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   555  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   556  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   557  This function process each OdtEntry in the given ODT placing the measurement variables
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   558  into the queue using an optimized copy routine for 16-bit values.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   559  \param[in]  dest_pu8      pointer to destination
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   560  \param[in]  AbsOdtNum     absolute ODT number
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   561  \param[in]  protLayerId   protocol layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   562  \return     pointer to destination after inserted data
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   563  \note This function does not care for the Address-Extension,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   564        if it is enabled, it was already resolved during StaticAddressTransformation
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   565  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   566  /* MR12 RULE 11.5, 11.6, 1.1 VIOLATION: Xcp_MemCopy*: The calling layers ensure correct alignment; Cast to const is no problem, as the variable is only read \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   567                                          The input parameters of rba_BswSrv_MemCopy() are declared as (void*) for generic implementation of MemCopy. */  \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   568  GEN_OPTIMIZED_COPY_FUNCTION(16)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   569  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   570  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   571  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   572  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   573  This function process each OdtEntry in the given ODT placing the measurement variables
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   574  into the queue using an optimized copy routine for 8-bit values.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   575  \param[in]  dest_pu8      pointer to destination
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   576  \param[in]  AbsOdtNum     absolute ODT number
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   577  \param[in]  protLayerId   protocol layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   578  \return     pointer to destination after inserted data
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   579  \note This function does not care for the Address-Extension,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   580        if it is enabled, it was already resolved during StaticAddressTransformation
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   581  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   582  /* MR12 RULE 11.5, 11.6, 1.1 VIOLATION: Xcp_MemCopy*: The calling layers ensure correct alignment; Cast to const is no problem, as the variable is only read \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   583                                          The input parameters of rba_BswSrv_MemCopy() are declared as (void*) for generic implementation of MemCopy. */  \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   584  GEN_OPTIMIZED_COPY_FUNCTION(8)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   585  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   586  #endif /* XCP_OM_ODT_OPTIMIZATION_ENABLED */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   587  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   588  #endif /* XCP_DAQ_STIM_MEMORY_ACCESS_BY_APPL */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   589  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   590  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   591  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   592  This function will write the id field at the given destination. The information, how many
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   593  bytes shall be written, will be read out of the protocol layer structure.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   594  \param[in]  dest_pu8      pointer to destination
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   595  \param[in]  AbsOdtNum     absolute ODT number
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   596  \param[in]  daqListNo     DaqList
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   597  \param[in]  protLayerId   protocol layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   598  \return     pointer to destination after inserted data
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   599  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   600  LOCAL_INLINE uint8* Xcp_PutIdField(uint8* dest_pu8, uint16 AbsOdtNum, uint16 daqListNo, uint8 protLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   601  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   602  #if (XCP_IDFIELD_OTHER_THAN_ABSOLUTE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   603    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   604    Xcp_IdField_t IdFieldType_en;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   605  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   606    IdFieldType_en = Xcp_NoInit[protLayerId].Session.IdFieldType_en;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   607  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   608    if (IdFieldType_en == XCP_IDENTIFICATION_FIELD_TYPE_ABSOLUTE)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   609    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   610  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   611      /* when ID Field Type is absolute, AbsOdtNum is smaller than 256 */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   612      *dest_pu8 = (uint8) AbsOdtNum;
+	st.b	[a15],d11
+.L185:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   613      /* to point to next byte in the buffer */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   614      dest_pu8++;
+	add.a	a15,#1
+	st.a	[a10]16,a15
+.L137:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   661    return dest_pu8;      (inlined)
+	j	.L6
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   662  }      (inlined)
+.L6:
+	jne	d11,d13,.L7
+.L186:
+	ld.bu	d15,[a14]22
+.L187:
+	jz.t	d15:4,.L8
+.L77:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   615  #if (XCP_IDFIELD_OTHER_THAN_ABSOLUTE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   616    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   617    else /* not XCP_IDENTIFICATION_FIELD_TYPE_ABSOLUTE */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   618    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   619      *dest_pu8 = (uint8) Xcp_Daq_GetRelOdtNum(daqListNo, AbsOdtNum, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   620      dest_pu8++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   621  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   622      /* add fill byte only if ID Field Type is word aligned */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   623      if (IdFieldType_en == XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD_ALIGNED)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   624      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   625        *dest_pu8 = 0; /* fill byte */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   626        dest_pu8++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   627      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   628      else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   629      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   630        /* no else */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   631      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   632  # if (CPU_BYTE_ORDER == HIGH_BYTE_FIRST)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   633      /* fetch low byte of absolute DaqList number */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   634      *dest_pu8 = (uint8) (daqListNo >> 8u);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   635      dest_pu8++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   636  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   637      if (IdFieldType_en != XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_BYTE)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   638      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   639        /* fetch high byte of absolute DaqList number */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   640        *dest_pu8 = (uint8) daqListNo;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   641        dest_pu8++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   642      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   643  # else /* CPU_BYTE_ORDER != HIGH_BYTE_FIRST */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   644      /* fetch low byte of absolute DaqList number */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   645      *dest_pu8 = (uint8)daqListNo;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   646      dest_pu8++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   647  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   648      if (IdFieldType_en != XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_BYTE)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   649      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   650        /* fetch high byte of absolute DaqList number */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   651        *dest_pu8 = (uint8)(daqListNo >> 8u);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   652        dest_pu8++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   653      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   654  # endif /* CPU_BYTE_ORDER */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   655    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   656  #else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   657    XCP_PARAM_UNUSED(daqListNo);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   658    XCP_PARAM_UNUSED(protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   659  #endif /* XCP_IDFIELD_OTHER_THAN_ABSOLUTE */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   660  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   661    return dest_pu8;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   662  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   663  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   664  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   665  #if (XCP_TIMESTAMP == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   666  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   667  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   668  This function will write the actual timestamp at the given destination. The information, how many
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   669  bytes shall be written, will be read out of the protocol layer structure.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   670  \param[in]  dest_pu8      pointer to destination
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   671  \param[in]  protLayerId   protocol layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   672  \return     pointer to destination after inserted data
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   673  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   674  LOCAL_INLINE uint8* Xcp_PutTimestamp(uint8* dest_pu8, uint8 protLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   675  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   676    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   677    uint32 timestamp;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   678    sint8  i;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   679  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   680    timestamp = XcpAppl_GetTimestamp(); /* get timestamp */
+	call	XcpAppl_GetTimestamp
+.L138:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   681  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   682  # if (CPU_BYTE_ORDER == HIGH_BYTE_FIRST)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   683    /* Cast to sint8 is no problem as the enum will never have more the 127 entries */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   684    for (i = ((sint8) Xcp_PlCfgConst.TlCfg[XCP_ACTIVE_TL_ID(protLayerId)].TimestampType_en - 1); i >= 0; i--)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   685  # else /* LOW_BYTE_FIRST */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   686    for (i = 0; i < (uint8) Xcp_PlCfgConst.TlCfg[XCP_ACTIVE_TL_ID(protLayerId)].TimestampType_en; i++)
+	mov	d0,#0
+.L139:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   686    for (i = 0; i < (uint8) Xcp_PlCfgConst.TlCfg[XCP_ACTIVE_TL_ID(protLayerId)].TimestampType_en; i++)      (inlined)
+	j	.L9
+.L10:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   687  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   688    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   689      /* put single bytes from timestamp */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   690      *dest_pu8 = (uint8) (timestamp >> ((uint8)i*8));
+	extr.u	d15,d0,#0,#8
+	sha	d15,#3
+.L188:
+	rsub	d15,#0
+	sh	d15,d2,d15
+.L189:
+	ld.a	a15,[a10]16
+.L141:
+	st.b	[a15],d15
+.L190:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   691      dest_pu8++; /* increment destination pointer */
+	add.a	a15,#1
+	st.a	[a10]16,a15
+.L191:
+	add	d0,#1
+.L140:
+	extr	d0,d0,#0,#8
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   686    for (i = 0; i < (uint8) Xcp_PlCfgConst.TlCfg[XCP_ACTIVE_TL_ID(protLayerId)].TimestampType_en; i++)      (inlined)
+.L9:
+	mul	d15,d8,#80
+	addsc.a	a15,a12,d15,#0
+	ld.bu	d15,[a15]4
+.L192:
+	mul	d15,d15,#56
+.L193:
+	movh.a	a15,#@his(Xcp_PlCfgConst)
+	lea	a15,[a15]@los(Xcp_PlCfgConst)
+.L194:
+	addsc.a	a15,a15,d15,#0
+.L195:
+	ld.w	d15,[a15]28
+.L196:
+	extr.u	d15,d15,#0,#8
+.L197:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   686    for (i = 0; i < (uint8) Xcp_PlCfgConst.TlCfg[XCP_ACTIVE_TL_ID(protLayerId)].TimestampType_en; i++)      (inlined)
+	jlt	d0,d15,.L10
+.L198:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   694    return dest_pu8; /* return pointer to next available buffer */      (inlined)
+	j	.L11
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   695  }      (inlined)
+.L11:
+.L8:
+.L7:
+	lea	a4,[a10]0
+.L199:
+	lea	a5,[a10]4
+.L87:
+	ld.w	d0,[a4]
+.L142:
+	ld.w	d1,[a5]
+.L143:
+	mov	d2,d0
+.L144:
+	mul	d15,d8,#80
+	addsc.a	a15,a12,d15,#0
+	mul	d15,d11,#6
+	ld.a	a2,[a15]28
+	addsc.a	a7,a2,d15,#0
+	ld.hu	d15,[a7]0
+	ld.a	a2,[a15]32
+	addsc.a	a6,a2,d15,#2
+.L145:
+	ld.a	a2,[a15]36
+	addsc.a	a2,a2,d15,#0
+.L146:
+	ld.bu	d5,[a7]2
+.L147:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   403    while(OdtEntryCnt > 0u)      (inlined)
+	j	.L12
+.L13:
+	ld.w	d2,[a6]
+.L200:
+	ld.bu	d6,[a2]
+.L148:
+	insert	d15,d2,#0,#0,#2
+.L201:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   413      if (lastReadAddress != (address & (~(XCP_ADDR_TYPE)(XCP_ADDR_LEN - 1u))))      (inlined)
+	jeq	d15,d0,.L14
+.L202:
+	mov	d0,d15
+.L203:
+	mov.a	a15,d15
+.L204:
+	ld.w	d1,[a15]
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   413      if (lastReadAddress != (address & (~(XCP_ADDR_TYPE)(XCP_ADDR_LEN - 1u))))      (inlined)
+.L14:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   420      while (TRUE) /* to avoid checking for numBytesToReadAtAddress > 0 twice */      (inlined)
+	j	.L15
+.L16:
+	and	d15,d2,#3
+	sh	d3,d15,#3
+.L149:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   445          while ((index <= (sint8)((XCP_ADDR_LEN - 1u) * 8u)) && (numBytesToReadAtAddress > 0))      (inlined)
+	j	.L17
+.L18:
+	extr.u	d4,d3,#0,#8
+.L205:
+	rsub	d4,#0
+	sh	d15,d1,d4
+.L206:
+	ld.a	a15,[a10]16
+.L150:
+	st.b	[a15],d15
+.L207:
+	add.a	a15,#1
+	st.a	[a10]16,a15
+.L208:
+	add	d6,#-1
+.L209:
+	add	d3,d3,#8
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   445          while ((index <= (sint8)((XCP_ADDR_LEN - 1u) * 8u)) && (numBytesToReadAtAddress > 0))      (inlined)
+.L17:
+	mov	d15,#24
+.L210:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   445          while ((index <= (sint8)((XCP_ADDR_LEN - 1u) * 8u)) && (numBytesToReadAtAddress > 0))      (inlined)
+	jlt	d15,d3,.L19
+.L211:
+	jne	d6,#0,.L18
+.L19:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   461        if (numBytesToReadAtAddress == 0 ) /* check if no more bytes to read in this OdtEntry */      (inlined)
+	jne	d6,#0,.L20
+.L212:
+	add.a	a6,#4
+.L213:
+	add.a	a2,#1
+.L214:
+	add	d5,#-1
+.L215:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   467          break; /* exit while TRUE */      (inlined)
+	j	.L21
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   461        if (numBytesToReadAtAddress == 0 ) /* check if no more bytes to read in this OdtEntry */      (inlined)
+.L20:
+	insert	d2,d2,#0,#0,#2
+.L216:
+	add	d2,#4
+.L217:
+	mov.a	a15,d2
+.L151:
+	ld.w	d1,[a15]
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   420      while (TRUE) /* to avoid checking for numBytesToReadAtAddress > 0 twice */      (inlined)
+.L15:
+	j	.L16
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   478      XCP_RTM(1);      (inlined)
+.L21:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   403    while(OdtEntryCnt > 0u)      (inlined)
+.L12:
+	jne	d5,#0,.L13
+.L218:
+	insert	d15,d2,#0,#0,#2
+.L219:
+	st.w	[a4],d15
+.L220:
+	st.w	[a5],d1
+.L221:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   484    return dest_pu8;      (inlined)
+	j	.L22
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   485  }      (inlined)
+.L22:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   304    return dest_pu8;      (inlined)
+	j	.L23
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   305  }      (inlined)
+.L23:
+	ld.hu	d15,[a14]10
+.L222:
+	add	d15,#-1
+.L223:
+	jne	d15,d10,.L24
+.L224:
+	mov	d10,#0
+.L225:
+	j	.L25
+.L24:
+	extr.u	d10,d14,#0,#16
+.L25:
+	j	.L26
+.L5:
+	mov	d15,#3
+.L152:
+	st.w	[a10]8,d15
+.L226:
+	j	.L27
+.L26:
+	add	d11,#1
+.L136:
+	extr.u	d11,d11,#0,#16
+.L3:
+	add	d15,d13,d12
+.L227:
+	jge	d11,d15,.L28
+.L228:
+	ld.bu	d15,[a14]22
+.L229:
+	jnz.t	d15:6,.L4
+.L28:
+.L27:
+	ld.bu	d15,[a14]22
+.L230:
+	jz.t	d15:6,.L29
+.L231:
+	ld.w	d15,[a10]8
+.L153:
+	jnz.t	d15:1,.L30
+.L232:
+	st.h	[a14]4,d10
+.L233:
+	ld.w	d4,[a10]12
+.L155:
+	mov	d5,d8
+.L157:
+	call	Xcp_SendDaq
+.L156:
+	j	.L31
+.L30:
+	ld.bu	d15,[a13]4
+.L154:
+	mul	d15,d15,#56
+.L234:
+	movh.a	a15,#@his(Xcp_PlCfgConst)
+	lea	a15,[a15]@los(Xcp_PlCfgConst)
+.L235:
+	addsc.a	a15,a15,d15,#0
+.L236:
+	ld.w	d15,[a15]36
+.L237:
+	jne	d15,#2,.L32
+.L238:
+	mov	d4,#6
+.L239:
+	mov	d5,d8
+.L158:
+	call	Xcp_SendEv_Code
+.L32:
+.L31:
+	j	.L33
+.L29:
+.L33:
+	j	.L34
+.L2:
+	add	d15,#1
+	st.b	[a14]19,d15
+.L34:
+	ld.w	d2,[a10]8
+.L159:
+	j	.L35
+.L35:
+	ret
+.L48:
+	
+__Xcp_DaqEvent_function_end:
+	.size	Xcp_DaqEvent,__Xcp_DaqEvent_function_end-Xcp_DaqEvent
+.L46:
+	; End of function
+	
+	.calls	'Xcp_DaqEvent','XcpAppl_GetTimestamp'
+	.calls	'Xcp_DaqEvent','Xcp_SendDaq'
+	.calls	'Xcp_DaqEvent','Xcp_SendEv_Code'
+	.extern	Xcp_PlCfgConst
+	.extern	XcpAppl_GetTimestamp
+	.extern	Xcp_NoInit
+	.extern	Xcp_SendEv_Code
+	.extern	Xcp_SendDaq
+	.calls	'Xcp_DaqEvent','',24
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L39:
+	.word	14572
+	.half	3
+	.word	.L40
+	.byte	4
+.L38:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_DaqEvent.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L41
+.L47:
+	.byte	2
+	.byte	'unsigned char',0,1,8
+.L54:
+	.byte	3
+	.word	138
+.L49:
+	.byte	2
+	.byte	'unsigned short int',0,2,7
+.L56:
+	.byte	2
+	.byte	'unsigned int',0,4,7,3
+	.word	182
+.L86:
+	.byte	4
+	.byte	'Xcp_CopyOdt',0,3,1,135,2,22
+	.word	155
+	.byte	1,1
+.L88:
+	.byte	5
+	.byte	'dest_pu8',0,1,135,2,41
+	.word	155
+.L90:
+	.byte	5
+	.byte	'AbsOdtNum',0,1,135,2,58
+	.word	160
+.L92:
+	.byte	5
+	.byte	'lastAddressPtr',0,1,135,2,84
+	.word	198
+.L94:
+	.byte	5
+	.byte	'lastValuePtr',0,1,135,2,115
+	.word	198
+.L96:
+	.byte	5
+	.byte	'protLayerId',0,1,135,2,135,1
+	.word	138
+.L98:
+	.byte	6,7,0,0
+.L99:
+	.byte	4
+	.byte	'Xcp_CopyOdtEntries_Safe',0,3,1,250,2,21
+	.word	155
+	.byte	1,1
+.L100:
+	.byte	5
+	.byte	'dest_pu8',0,1,250,2,52
+	.word	155
+.L102:
+	.byte	5
+	.byte	'AbsOdtNum',0,1,250,2,69
+	.word	160
+.L104:
+	.byte	5
+	.byte	'lastAddressPtr',0,1,250,2,95
+	.word	198
+.L106:
+	.byte	5
+	.byte	'lastValuePtr',0,1,250,2,126
+	.word	198
+.L108:
+	.byte	5
+	.byte	'protLayerId',0,1,250,2,146,1
+	.word	138
+.L110:
+	.byte	7,0
+.L65:
+	.byte	4
+	.byte	'Xcp_PutIdField',0,3,1,216,4,21
+	.word	155
+	.byte	1,1
+.L67:
+	.byte	5
+	.byte	'dest_pu8',0,1,216,4,43
+	.word	155
+.L69:
+	.byte	5
+	.byte	'AbsOdtNum',0,1,216,4,60
+	.word	160
+.L71:
+	.byte	5
+	.byte	'daqListNo',0,1,216,4,78
+	.word	160
+.L73:
+	.byte	5
+	.byte	'protLayerId',0,1,216,4,95
+	.word	138
+.L75:
+	.byte	7,0
+.L76:
+	.byte	4
+	.byte	'Xcp_PutTimestamp',0,3,1,162,5,21
+	.word	155
+	.byte	1,1
+.L78:
+	.byte	5
+	.byte	'dest_pu8',0,1,162,5,45
+	.word	155
+.L80:
+	.byte	5
+	.byte	'protLayerId',0,1,162,5,61
+	.word	138
+.L82:
+	.byte	7,0,8
+	.byte	'XcpAppl_GetTimestamp',0,2,247,2,15
+	.word	182
+	.byte	1,1,1,1,9
+	.byte	'Xcp_SendEv_Code',0,3,182,4,13,1,1,1,1,5
+	.byte	'EventCode_u8',0,3,182,4,35
+	.word	138
+	.byte	5
+	.byte	'protLayerId',0,3,182,4,55
+	.word	138
+	.byte	0,9
+	.byte	'Xcp_SendDaq',0,3,168,5,14,1,1,1,1,5
+	.byte	'daqListNo_u16',0,3,168,5,33
+	.word	160
+	.byte	5
+	.byte	'protLayerId',0,3,168,5,54
+	.word	138
+	.byte	0,10,3,241,1,9,8,11
+	.byte	'WritePos_u16',0
+	.word	160
+	.byte	2,2,35,0,11
+	.byte	'ReadPos_u16',0
+	.word	160
+	.byte	2,2,35,2,11
+	.byte	'ReadPos_OdtNum_u16',0
+	.word	160
+	.byte	2,2,35,4,11
+	.byte	'QueSize_u16',0
+	.word	160
+	.byte	2,2,35,6,0,12
+	.word	138
+	.byte	12
+	.word	138
+	.byte	10,3,254,2,9,24,11
+	.byte	'DaqListQue_p',0
+	.word	155
+	.byte	4,2,35,0,11
+	.byte	'DaqListQuePos',0
+	.word	824
+	.byte	8,2,35,4,11
+	.byte	'OdtFirst_u16',0
+	.word	160
+	.byte	2,2,35,12,11
+	.byte	'EventChannelNum_u16',0
+	.word	160
+	.byte	2,2,35,14,11
+	.byte	'OdtCnt_u8',0
+	.word	138
+	.byte	1,2,35,16,11
+	.byte	'XcpTxPduId',0
+	.word	138
+	.byte	1,2,35,17,11
+	.byte	'Prescaler_u8',0
+	.word	138
+	.byte	1,2,35,18,11
+	.byte	'CycleCnt_u8',0
+	.word	138
+	.byte	1,2,35,19,11
+	.byte	'Priority_u8',0
+	.word	138
+	.byte	1,2,35,20,11
+	.byte	'Flags_u8',0
+	.word	138
+	.byte	1,2,35,21,11
+	.byte	'Mode_u8',0
+	.word	923
+	.byte	1,2,35,22,11
+	.byte	'CurrentlyRunning_b',0
+	.word	928
+	.byte	1,2,35,23,0
+.L52:
+	.byte	3
+	.word	933
+.L84:
+	.byte	2
+	.byte	'char',0,1,6,13
+	.word	182
+.L113:
+	.byte	3
+	.word	1215
+	.byte	13
+	.word	138
+.L115:
+	.byte	3
+	.word	1225
+.L117:
+	.byte	2
+	.byte	'unsigned long int',0,4,7,14
+	.word	203
+	.byte	15
+	.word	227
+	.byte	15
+	.word	245
+	.byte	15
+	.word	264
+	.byte	15
+	.word	288
+	.byte	15
+	.word	310
+	.byte	6,16
+	.word	336
+	.byte	15
+	.word	372
+	.byte	15
+	.word	390
+	.byte	15
+	.word	409
+	.byte	15
+	.word	433
+	.byte	15
+	.word	455
+	.byte	17
+	.word	477
+	.byte	0,7,0,0,14
+	.word	336
+	.byte	15
+	.word	372
+	.byte	15
+	.word	390
+	.byte	15
+	.word	409
+	.byte	15
+	.word	433
+	.byte	15
+	.word	455
+	.byte	7,0,14
+	.word	479
+	.byte	15
+	.word	506
+	.byte	15
+	.word	524
+	.byte	15
+	.word	543
+	.byte	15
+	.word	562
+	.byte	7,0,14
+	.word	585
+	.byte	15
+	.word	614
+	.byte	15
+	.word	632
+	.byte	7,0,18,1,3
+	.word	1402
+	.byte	19
+	.byte	'__codeptr',0,1,1,1
+	.word	1404
+	.byte	19
+	.byte	'sint8',0,4,76,25
+	.word	1207
+	.byte	19
+	.byte	'uint8',0,4,81,25
+	.word	138
+	.byte	19
+	.byte	'uint16',0,4,91,25
+	.word	160
+	.byte	19
+	.byte	'uint32',0,4,106,24
+	.word	182
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,19
+	.byte	'uint64',0,4,111,30
+	.word	1485
+	.byte	19
+	.byte	'boolean',0,4,127,25
+	.word	138
+	.byte	19
+	.byte	'StatusType',0,5,191,1,27
+	.word	138
+	.byte	19
+	.byte	'Std_ReturnType',0,5,199,1,15
+	.word	138
+	.byte	10,5,206,1,9,8,11
+	.byte	'vendorID',0
+	.word	160
+	.byte	2,2,35,0,11
+	.byte	'moduleID',0
+	.word	160
+	.byte	2,2,35,2,11
+	.byte	'sw_major_version',0
+	.word	138
+	.byte	1,2,35,4,11
+	.byte	'sw_minor_version',0
+	.word	138
+	.byte	1,2,35,5,11
+	.byte	'sw_patch_version',0
+	.word	138
+	.byte	1,2,35,6,0,19
+	.byte	'Std_VersionInfoType',0,5,213,1,3
+	.word	1586
+	.byte	19
+	.byte	'PduIdType',0,6,22,19
+	.word	160
+	.byte	19
+	.byte	'PduLengthType',0,6,26,19
+	.word	160
+	.byte	20,7,113,9,4,21
+	.byte	'TP_DATACONF',0,0,21
+	.byte	'TP_DATARETRY',0,1,21
+	.byte	'TP_CONFPENDING',0,2,0,19
+	.byte	'TpDataStateType',0,7,118,3
+	.word	1776
+	.byte	20,8,225,1,9,4,21
+	.byte	'XCP_STATE_DISCONNECTED',0,0,21
+	.byte	'XCP_STATE_DISCONNECTING',0,1,21
+	.byte	'XCP_STATE_CONNECTED',0,2,21
+	.byte	'XCP_STATE_RESUME',0,3,21
+	.byte	'XCP_STATE_DISABLED',0,240,1,0,19
+	.byte	'Xcp_State_t',0,8,231,1,2
+	.word	1852
+	.byte	19
+	.byte	'Xcp_AddrValue',0,8,165,3,23
+	.word	182
+	.byte	10,8,168,3,9,8,11
+	.byte	'AddrValue',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	'Extension',0
+	.word	138
+	.byte	1,2,35,4,0,19
+	.byte	'Xcp_AddrType_t',0,8,172,3,3
+	.word	2017
+	.byte	19
+	.byte	'Xcp_PduIdType',0,8,174,3,15
+	.word	138
+	.byte	20,8,177,3,9,4,21
+	.byte	'XCP_ERR_CMD_SYNCH',0,0,21
+	.byte	'XCP_ERR_CMD_BUSY',0,16,21
+	.byte	'XCP_ERR_DAQ_ACTIVE',0,17,21
+	.byte	'XCP_ERR_PGM_ACTIVE',0,18,21
+	.byte	'XCP_ERR_CMD_UNKNOWN',0,32,21
+	.byte	'XCP_ERR_CMD_SYNTAX',0,33,21
+	.byte	'XCP_ERR_OUT_OF_RANGE',0,34,21
+	.byte	'XCP_ERR_WRITE_PROTECTED',0,35,21
+	.byte	'XCP_ERR_ACCESS_DENIED',0,36,21
+	.byte	'XCP_ERR_ACCESS_LOCKED',0,37,21
+	.byte	'XCP_ERR_PAGE_NOT_VALID',0,38,21
+	.byte	'XCP_ERR_MODE_NOT_VALID',0,39,21
+	.byte	'XCP_ERR_SEGMENT_NOT_VALID',0,40,21
+	.byte	'XCP_ERR_SEQUENCE',0,41,21
+	.byte	'XCP_ERR_DAQ_CONFIG',0,42,21
+	.byte	'XCP_ERR_MEMORY_OVERFLOW',0,48,21
+	.byte	'XCP_ERR_GENERIC',0,49,21
+	.byte	'XCP_ERR_VERIFY',0,50,21
+	.byte	'XCP_ERR_RES_TEMP_NOT_ACCESS',0,51,21
+	.byte	'XCP_ERR_SUBCMD_UNKNOWN',0,52,21
+	.byte	'XCP_REPEAT_COMMAND',0,252,1,21
+	.byte	'XCP_NO_ACCESS_HIDE',0,253,1,21
+	.byte	'XCP_NO_RESPONSE',0,254,1,21
+	.byte	'XCP_NO_ERROR',0,255,1,0,19
+	.byte	'Xcp_ErrorCode',0,8,204,3,2
+	.word	2109
+	.byte	20,8,207,3,9,4,21
+	.byte	'XCP_DAQ_STATE_NO_DAQ',0,0,21
+	.byte	'XCP_DAQ_STATE_FREE_DAQ',0,1,21
+	.byte	'XCP_DAQ_STATE_ALLOC_DAQ',0,2,21
+	.byte	'XCP_DAQ_STATE_ALLOC_ODT',0,3,21
+	.byte	'XCP_DAQ_STATE_ALLOC_ODT_ENTRY',0,4,21
+	.byte	'XCP_DAQ_STATE_WRITE_DAQ',0,5,21
+	.byte	'XCP_DAQ_STATE_PREPARE_START',0,6,21
+	.byte	'XCP_DAQ_STATE_SHIFTING',0,7,21
+	.byte	'XCP_DAQ_STATE_STOP_REQUESTED',0,8,21
+	.byte	'XCP_DAQ_STATE_READY_TO_RUN',0,9,21
+	.byte	'XCP_DAQ_STATE_RUNNING',0,10,0,19
+	.byte	'Xcp_DaqState_t',0,8,220,3,2
+	.word	2673
+	.byte	20,8,223,3,9,4,21
+	.byte	'XCP_DAQ_NO_OVERLOAD_INDICATION',0,0,21
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_PID',0,1,21
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_EVENT',0,2,0,19
+	.byte	'Xcp_Overload_t',0,8,228,3,2
+	.word	3001
+	.byte	20,8,233,3,9,4,21
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_ABSOLUTE',0,1,21
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_BYTE',0,2,21
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD',0,3,21
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD_ALIGNED',0,4,0,19
+	.byte	'Xcp_IdField_t',0,8,239,3,2
+	.word	3135
+	.byte	20,8,242,3,9,4,21
+	.byte	'XCP_ODT_OPTIMIZATION_OM_DEFAULT',0,0,21
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_16',0,1,21
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_32',0,2,21
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_64',0,3,21
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_ALIGNMENT',0,4,21
+	.byte	'XCP_ODT_OPTIMIZATION_OM_MAX_ENTRY_SIZE',0,5,0,19
+	.byte	'Xcp_OdtOptimizationType_t',0,8,250,3,2
+	.word	3352
+	.byte	20,8,253,3,9,4,21
+	.byte	'XCP_CONSISTENCY_ODT',0,0,21
+	.byte	'XCP_CONSISTENCY_DAQ',0,1,21
+	.byte	'XCP_CONSISTENCY_EVENT',0,2,21
+	.byte	'XCP_CONSISTENCY_NONE',0,3,0,19
+	.byte	'Xcp_Consistency_t',0,8,131,4,2
+	.word	3628
+	.byte	20,8,134,4,9,4,21
+	.byte	'XCP_TIMESTAMP_TYPE_NO_TIME_STAMP',0,0,21
+	.byte	'XCP_TIMESTAMP_TYPE_ONE_BYTE',0,1,21
+	.byte	'XCP_TIMESTAMP_TYPE_TWO_BYTE',0,2,21
+	.byte	'XCP_TIMESTAMP_TYPE_FOUR_BYTE',0,4,0,19
+	.byte	'Xcp_Timestamp_t',0,8,140,4,2
+	.word	3753
+	.byte	22,8
+	.word	138
+	.byte	23,7,0,10,8,174,4,9,12,11
+	.byte	'Buffer_au8',0
+	.word	3911
+	.byte	8,2,35,0,11
+	.byte	'Length_u32',0
+	.word	182
+	.byte	4,2,35,8,0,19
+	.byte	'Xcp_Cto8_t',0,8,178,4,2
+	.word	3920
+	.byte	10,7,71,9,8,11
+	.byte	'SduDataPtr',0
+	.word	155
+	.byte	4,2,35,0,11
+	.byte	'SduLength',0
+	.word	160
+	.byte	2,2,35,4,0,13
+	.word	3987
+	.byte	3
+	.word	4032
+	.byte	24
+	.word	138
+	.byte	1,1,25
+	.word	4037
+	.byte	25
+	.word	138
+	.byte	25
+	.word	138
+	.byte	0,3
+	.word	4042
+	.byte	26,1,1,25
+	.word	138
+	.byte	25
+	.word	138
+	.byte	0,3
+	.word	4070
+	.byte	26,1,1,25
+	.word	138
+	.byte	0,3
+	.word	4089
+	.byte	24
+	.word	138
+	.byte	1,1,25
+	.word	138
+	.byte	0,3
+	.word	4103
+	.byte	3
+	.word	3987
+	.byte	26,1,1,25
+	.word	4037
+	.byte	25
+	.word	4121
+	.byte	25
+	.word	138
+	.byte	0,3
+	.word	4126
+	.byte	24
+	.word	138
+	.byte	1,1,25
+	.word	138
+	.byte	25
+	.word	160
+	.byte	25
+	.word	138
+	.byte	0,3
+	.word	4150
+	.byte	10,9,164,1,9,56,11
+	.byte	'TLTransmit_pfct',0
+	.word	4065
+	.byte	4,2,35,0,11
+	.byte	'TLInit_pfct',0
+	.word	4084
+	.byte	4,2,35,4,11
+	.byte	'TLConnect_pfct',0
+	.word	4098
+	.byte	4,2,35,8,11
+	.byte	'TLDisconnect_pfct',0
+	.word	4116
+	.byte	4,2,35,12,11
+	.byte	'TLTransportLayerCmd_pfct',0
+	.word	4145
+	.byte	4,2,35,16,11
+	.byte	'TLGetTxPduId_pfct',0
+	.word	4173
+	.byte	4,2,35,20,11
+	.byte	'MaxCto_u8',0
+	.word	138
+	.byte	1,2,35,24,11
+	.byte	'MaxDto_u16',0
+	.word	160
+	.byte	2,2,35,26,11
+	.byte	'TimestampType_en',0
+	.word	3753
+	.byte	4,2,35,28,11
+	.byte	'IdFieldType_en',0
+	.word	3135
+	.byte	4,2,35,32,11
+	.byte	'OverloadType_en',0
+	.word	3001
+	.byte	4,2,35,36,11
+	.byte	'OdtOptimizationType_en',0
+	.word	3352
+	.byte	4,2,35,40,11
+	.byte	'Consistency_en',0
+	.word	3628
+	.byte	4,2,35,44,11
+	.byte	'PdRam_u32',0
+	.word	182
+	.byte	4,2,35,48,11
+	.byte	'EdRam_u32',0
+	.word	182
+	.byte	4,2,35,52,0,19
+	.byte	'Xcp_PL_TL_Cfg_t',0,9,184,1,2
+	.word	4178
+	.byte	20,9,188,1,9,4,21
+	.byte	'XCP_RAMSECTION_INVALID',0,0,21
+	.byte	'XCP_RAMSECTION_PD',0,1,21
+	.byte	'XCP_RAMSECTION_ED',0,2,0,19
+	.byte	'Xcp_RamSectionType_t',0,9,193,1,2
+	.word	4576
+	.byte	10,9,195,1,9,12,11
+	.byte	'DaqRamPtr_pu8',0
+	.word	155
+	.byte	4,2,35,0,11
+	.byte	'DaqRamTotalSize_u32',0
+	.word	182
+	.byte	4,2,35,4,11
+	.byte	'RamSectionType_en',0
+	.word	4576
+	.byte	4,2,35,8,0,19
+	.byte	'Xcp_DaqRamSection_Cfg_t',0,9,200,1,2
+	.word	4678
+	.byte	22,1
+	.word	138
+	.byte	23,0,0,10,9,203,1,9,8,11
+	.byte	'DaqRamFreeSize_u32',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	'PLConnected_ab',0
+	.word	4797
+	.byte	1,2,35,4,0,19
+	.byte	'Xcp_DaqRamSections_t',0,9,207,1,2
+	.word	4806
+	.byte	10,9,230,1,9,4,11
+	.byte	'EventChannelDirection_u8',0
+	.word	138
+	.byte	1,2,35,0,11
+	.byte	'EventChannelTimeCycle_u8',0
+	.word	138
+	.byte	1,2,35,1,11
+	.byte	'EventChannelTimeUnit_u8',0
+	.word	138
+	.byte	1,2,35,2,11
+	.byte	'EventChannelPriority_u8',0
+	.word	138
+	.byte	1,2,35,3,0,19
+	.byte	'Xcp_EventChannel_Cfg_t',0,9,236,1,2
+	.word	4895
+	.byte	22,56
+	.word	4178
+	.byte	23,0,0,22,12
+	.word	4678
+	.byte	23,0,0,22,12
+	.word	4895
+	.byte	23,2,0,10,9,240,1,9,80,11
+	.byte	'TlCfg',0
+	.word	5068
+	.byte	56,2,35,0,11
+	.byte	'DaqRamCfg',0
+	.word	5077
+	.byte	12,2,35,56,11
+	.byte	'EventChannelCfg',0
+	.word	5086
+	.byte	12,2,35,68,0,19
+	.byte	'Xcp_PlCfgConst_t',0,9,131,2,2
+	.word	5095
+	.byte	13
+	.word	5095
+	.byte	27
+	.byte	'Xcp_PlCfgConst',0,9,140,2,31
+	.word	5187
+	.byte	1,1,19
+	.byte	'rba_BswSrv_uint64',0,10,66,28
+	.word	1485
+	.byte	19
+	.byte	'Can_IdType',0,11,32,16
+	.word	182
+	.byte	19
+	.byte	'Can_HwHandleType',0,11,43,16
+	.word	160
+	.byte	10,12,93,9,8,11
+	.byte	'Class',0
+	.word	138
+	.byte	1,2,35,0,11
+	.byte	'TIN',0
+	.word	138
+	.byte	1,2,35,1,11
+	.byte	'ReturnAddress',0
+	.word	182
+	.byte	4,2,35,4,0,19
+	.byte	'OsTrapInfoType',0,12,97,3
+	.word	5288
+	.byte	22,68
+	.word	182
+	.byte	23,16,0,10,12,154,1,9,68,11
+	.byte	'store',0
+	.word	5368
+	.byte	68,2,35,0,0,22,68
+	.word	5377
+	.byte	23,0,0,19
+	.byte	'Os_JumpBufType',0,12,156,1,3
+	.word	5399
+	.byte	19
+	.byte	'Os_StackTraceType',0,12,174,1,18
+	.word	182
+	.byte	10,12,175,1,9,8,11
+	.byte	'sp',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	'ctx',0
+	.word	182
+	.byte	4,2,35,4,0,19
+	.byte	'Os_StackValueType',0,12,175,1,63
+	.word	5459
+	.byte	19
+	.byte	'Os_StackSizeType',0,12,176,1,27
+	.word	5459
+	.byte	28,1,1,3
+	.word	5544
+	.byte	19
+	.byte	'Os_VoidVoidFunctionType',0,12,179,1,16
+	.word	5547
+	.byte	19
+	.byte	'ApplicationType',0,12,193,1,23
+	.word	138
+	.byte	29
+	.byte	'Os_ApplicationConfigurationType_s',0,12,198,1,16,2,11
+	.byte	'app_id',0
+	.word	138
+	.byte	1,2,35,0,11
+	.byte	'access',0
+	.word	138
+	.byte	1,2,35,1,0,19
+	.byte	'Os_ApplicationConfigurationType',0,12,201,1,3
+	.word	5610
+	.byte	19
+	.byte	'Os_CoreStateType',0,12,203,1,16
+	.word	182
+	.byte	19
+	.byte	'AreaIdType',0,12,204,1,16
+	.word	160
+	.byte	19
+	.byte	'Os_PeripheralAddressType',0,12,212,1,22
+	.word	182
+	.byte	19
+	.byte	'TickType',0,12,221,1,22
+	.word	182
+	.byte	19
+	.byte	'Os_StopwatchTickType',0,12,225,1,22
+	.word	182
+	.byte	19
+	.byte	'Os_Lockable',0,12,234,1,18
+	.word	198
+	.byte	19
+	.byte	'CoreIdType',0,12,236,1,16
+	.word	160
+	.byte	19
+	.byte	'SpinlockIdType',0,12,237,1,16
+	.word	160
+	.byte	20,12,239,1,9,4,21
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,21
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,19
+	.byte	'TryToGetSpinlockType',0,12,239,1,74
+	.word	5917
+	.byte	20,12,174,2,9,4,21
+	.byte	'APPLICATION_ACCESSIBLE',0,0,21
+	.byte	'APPLICATION_RESTARTING',0,1,21
+	.byte	'APPLICATION_TERMINATED',0,2,0,19
+	.byte	'ApplicationStateType',0,12,174,2,92
+	.word	6010
+	.byte	30
+	.byte	'void',0,3
+	.word	6122
+	.byte	26,1,1,25
+	.word	138
+	.byte	25
+	.word	6128
+	.byte	0,3
+	.word	6133
+	.byte	19
+	.byte	'Os_FunctionEntryType',0,12,183,2,16
+	.word	6147
+	.byte	29
+	.byte	'Os_MeterInfoType_s',0,12,193,2,16,48,11
+	.byte	'elapsed',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	'previous',0
+	.word	182
+	.byte	4,2,35,4,11
+	.byte	'max',0
+	.word	182
+	.byte	4,2,35,8,11
+	.byte	'cumulative',0
+	.word	182
+	.byte	4,2,35,12,11
+	.byte	'stackbase',0
+	.word	5459
+	.byte	8,2,35,16,11
+	.byte	'stackusage',0
+	.word	5459
+	.byte	8,2,35,24,11
+	.byte	'stackmax',0
+	.word	5459
+	.byte	8,2,35,32,11
+	.byte	'stackbudget',0
+	.word	5459
+	.byte	8,2,35,40,0,19
+	.byte	'Os_MeterInfoType',0,12,202,2,3
+	.word	6182
+	.byte	3
+	.word	6182
+	.byte	19
+	.byte	'Os_MeterInfoRefType',0,12,203,2,50
+	.word	6380
+	.byte	19
+	.byte	'EventMaskType',0,12,206,2,15
+	.word	138
+	.byte	19
+	.byte	'Os_imaskType',0,12,211,2,16
+	.word	182
+	.byte	29
+	.byte	'Os_ISRDynType_s',0,12,213,2,16,48,11
+	.byte	'meter',0
+	.word	6182
+	.byte	48,2,35,0,0,19
+	.byte	'Os_ISRDynType',0,12,215,2,3
+	.word	6459
+	.byte	3
+	.word	6459
+	.byte	13
+	.word	6520
+	.byte	29
+	.byte	'Os_ISRType_s',0,12,216,2,16,24,11
+	.byte	'entry_function',0
+	.word	5552
+	.byte	4,2,35,0,11
+	.byte	'dynamic',0
+	.word	6525
+	.byte	4,2,35,4,11
+	.byte	'imask',0
+	.word	182
+	.byte	4,2,35,8,11
+	.byte	'stackbudget',0
+	.word	5459
+	.byte	8,2,35,12,11
+	.byte	'access',0
+	.word	138
+	.byte	1,2,35,20,11
+	.byte	'application',0
+	.word	138
+	.byte	1,2,35,21,0,19
+	.byte	'Os_ISRType',0,12,223,2,3
+	.word	6530
+	.byte	3
+	.word	5544
+	.byte	13
+	.word	6530
+	.byte	3
+	.word	6689
+	.byte	19
+	.byte	'ISRType',0,12,224,2,46
+	.word	6694
+	.byte	19
+	.byte	'Os_bitmask',0,12,239,2,22
+	.word	182
+	.byte	19
+	.byte	'Os_pset0Type',0,12,240,2,20
+	.word	182
+	.byte	19
+	.byte	'Os_pset1Type',0,12,241,2,20
+	.word	182
+	.byte	19
+	.byte	'Os_pset2Type',0,12,242,2,20
+	.word	182
+	.byte	31,12,243,2,9,4,11
+	.byte	'p0',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	'p1',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	'p2',0
+	.word	182
+	.byte	4,2,35,0,0,19
+	.byte	'Os_psetType',0,12,247,2,3
+	.word	6802
+	.byte	31,12,249,2,9,4,11
+	.byte	't0',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	't1',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	't2',0
+	.word	182
+	.byte	4,2,35,0,0,19
+	.byte	'Os_tpmaskType',0,12,253,2,3
+	.word	6866
+	.byte	19
+	.byte	'Os_ActivationCountType',0,12,254,2,23
+	.word	138
+	.byte	29
+	.byte	'Os_TaskDynType_s',0,12,128,3,16,120,11
+	.byte	'terminate_jump_buf',0
+	.word	5408
+	.byte	68,2,35,0,11
+	.byte	'meter',0
+	.word	6182
+	.byte	48,2,35,68,11
+	.byte	'activation_count',0
+	.word	138
+	.byte	1,2,35,116,0,19
+	.byte	'Os_TaskDynType',0,12,132,3,3
+	.word	6964
+	.byte	22,68
+	.word	5377
+	.byte	23,0,0,3
+	.word	6964
+	.byte	13
+	.word	7090
+	.byte	29
+	.byte	'Os_TaskType_s',0,12,134,3,16,40,11
+	.byte	'dynamic',0
+	.word	7095
+	.byte	4,2,35,0,11
+	.byte	'entry_function',0
+	.word	5552
+	.byte	4,2,35,4,11
+	.byte	'pset',0
+	.word	6802
+	.byte	4,2,35,8,11
+	.byte	'base_tpmask',0
+	.word	6866
+	.byte	4,2,35,12,11
+	.byte	'tpmask',0
+	.word	6866
+	.byte	4,2,35,16,11
+	.byte	'core_id',0
+	.word	160
+	.byte	2,2,35,20,11
+	.byte	'index',0
+	.word	182
+	.byte	4,2,35,24,11
+	.byte	'stackbudget',0
+	.word	5459
+	.byte	8,2,35,28,11
+	.byte	'activation_count',0
+	.word	138
+	.byte	1,2,35,36,11
+	.byte	'access',0
+	.word	138
+	.byte	1,2,35,37,11
+	.byte	'application',0
+	.word	138
+	.byte	1,2,35,38,0,19
+	.byte	'Os_TaskType',0,12,146,3,3
+	.word	7100
+	.byte	13
+	.word	7100
+	.byte	3
+	.word	7350
+	.byte	19
+	.byte	'TaskType',0,12,147,3,47
+	.word	7355
+	.byte	32
+	.byte	'Os_TaskStateType',0,12,155,3,6,4,21
+	.byte	'SUSPENDED',0,0,21
+	.byte	'READY',0,1,21
+	.byte	'WAITING',0,2,21
+	.byte	'RUNNING',0,3,0,19
+	.byte	'TaskStateType',0,12,156,3,31
+	.word	7378
+	.byte	31,12,167,3,3,4,11
+	.byte	'tpmask',0
+	.word	6866
+	.byte	4,2,35,0,0,29
+	.byte	'Os_ResourceDynType_s',0,12,166,3,16,4,11
+	.byte	'saved_priority',0
+	.word	7465
+	.byte	4,2,35,0,0,19
+	.byte	'Os_ResourceDynType',0,12,170,3,3
+	.word	7488
+	.byte	3
+	.word	7488
+	.byte	13
+	.word	7568
+	.byte	29
+	.byte	'Os_ResourceType_s',0,12,171,3,16,12,11
+	.byte	'dynamic',0
+	.word	7573
+	.byte	4,2,35,0,11
+	.byte	'tpmask',0
+	.word	6866
+	.byte	4,2,35,4,11
+	.byte	'access',0
+	.word	138
+	.byte	1,2,35,8,0,19
+	.byte	'Os_ResourceType',0,12,175,3,3
+	.word	7578
+	.byte	10,12,181,3,9,12,11
+	.byte	'maxallowedvalue',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	'ticksperbase',0
+	.word	182
+	.byte	4,2,35,4,11
+	.byte	'mincycle',0
+	.word	182
+	.byte	4,2,35,8,0,19
+	.byte	'AlarmBaseType',0,12,185,3,3
+	.word	7677
+	.byte	10,12,206,3,9,8,11
+	.byte	'Running',0
+	.word	138
+	.byte	1,2,35,0,11
+	.byte	'Pending',0
+	.word	138
+	.byte	1,2,35,1,11
+	.byte	'Delay',0
+	.word	182
+	.byte	4,2,35,4,0,19
+	.byte	'Os_CounterStatusType',0,12,210,3,3
+	.word	7772
+	.byte	33
+	.word	138
+	.byte	1,1,3
+	.word	7858
+	.byte	19
+	.byte	'Os_CounterIncrAdvType',0,12,217,3,22
+	.word	7865
+	.byte	29
+	.byte	's_swd',0,12,222,3,12,4,11
+	.byte	'count',0
+	.word	182
+	.byte	4,2,35,0,0,31,12,221,3,3,4,11
+	.byte	'sw',0
+	.word	7901
+	.byte	4,2,35,0,0,29
+	.byte	'Os_CounterDynType_s',0,12,220,3,16,4,11
+	.byte	'type_dependent',0
+	.word	7929
+	.byte	4,2,35,0,0,19
+	.byte	'Os_CounterDynType',0,12,226,3,3
+	.word	7948
+	.byte	3
+	.word	7948
+	.byte	13
+	.word	8026
+	.byte	29
+	.byte	'Os_CounterType_s',0,12,227,3,16,28,11
+	.byte	'dynamic',0
+	.word	8031
+	.byte	4,2,35,0,11
+	.byte	'advincr',0
+	.word	7870
+	.byte	4,2,35,4,11
+	.byte	'base',0
+	.word	7677
+	.byte	12,2,35,8,11
+	.byte	'core',0
+	.word	6128
+	.byte	4,2,35,20,11
+	.byte	'access',0
+	.word	138
+	.byte	1,2,35,24,11
+	.byte	'application',0
+	.word	138
+	.byte	1,2,35,25,0,19
+	.byte	'Os_CounterType',0,12,234,3,3
+	.word	8036
+	.byte	3
+	.word	7858
+	.byte	13
+	.word	8036
+	.byte	3
+	.word	8188
+	.byte	19
+	.byte	'CounterType',0,12,235,3,52
+	.word	8193
+	.byte	32
+	.byte	'Os_ScheduleTableStatusType',0,12,240,3,6,4,21
+	.byte	'SCHEDULETABLE_STOPPED',0,0,21
+	.byte	'SCHEDULETABLE_NEXT',0,1,21
+	.byte	'SCHEDULETABLE_WAITING',0,2,21
+	.byte	'SCHEDULETABLE_RUNNING',0,3,21
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,19
+	.byte	'ScheduleTableStatusType',0,12,241,3,41
+	.word	8219
+	.byte	13
+	.word	.L160-.L39
+	.byte	3
+	.word	8419
+	.byte	19
+	.byte	'ScheduleTableType',0,12,128,4,58
+	.word	8424
+	.byte	29
+	.byte	'Os_ScheduleTableDynType_s',0,12,130,4,16,16,11
+	.byte	'match',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	'next',0
+	.word	8429
+	.byte	4,2,35,4,11
+	.byte	'state',0
+	.word	8219
+	.byte	4,2,35,8,11
+	.byte	'config',0
+	.word	160
+	.byte	2,2,35,12,0,3
+	.word	8456
+	.byte	13
+	.word	8549
+.L160:
+	.byte	29
+	.byte	'Os_ScheduleTableType_s',0,12,247,3,16,16,11
+	.byte	'dynamic',0
+	.word	8554
+	.byte	4,2,35,0,11
+	.byte	'counter',0
+	.word	8198
+	.byte	4,2,35,4,11
+	.byte	'repeat',0
+	.word	138
+	.byte	1,2,35,8,11
+	.byte	'config',0
+	.word	160
+	.byte	2,2,35,10,11
+	.byte	'initial',0
+	.word	138
+	.byte	1,2,35,12,11
+	.byte	'access',0
+	.word	138
+	.byte	1,2,35,13,11
+	.byte	'application',0
+	.word	138
+	.byte	1,2,35,14,0,19
+	.byte	'Os_ScheduleTableType',0,12,255,3,3
+	.word	8559
+	.byte	13
+	.word	8559
+	.byte	3
+	.word	8739
+	.byte	13
+	.word	8036
+	.byte	3
+	.word	8749
+	.byte	12
+	.word	5852
+	.byte	12
+	.word	6802
+	.byte	12
+	.word	6699
+	.byte	12
+	.word	7360
+	.byte	12
+	.word	6866
+	.byte	12
+	.word	138
+	.byte	12
+	.word	7360
+	.byte	29
+	.byte	'Os_ControlledCoreType_s',0,12,251,6,16,112,11
+	.byte	'TrapInfo',0
+	.word	5288
+	.byte	8,2,35,0,11
+	.byte	'lock_taskaccess',0
+	.word	8759
+	.byte	4,2,35,8,11
+	.byte	'ReadyTasks',0
+	.word	8764
+	.byte	4,2,35,12,11
+	.byte	'RunningISR',0
+	.word	8769
+	.byte	4,2,35,16,11
+	.byte	'RunningTask',0
+	.word	8774
+	.byte	4,2,35,20,11
+	.byte	'RunningTPMask',0
+	.word	8779
+	.byte	4,2,35,24,11
+	.byte	'CurrentMeteredObject',0
+	.word	6385
+	.byte	4,2,35,28,11
+	.byte	'IdleMeter',0
+	.word	6182
+	.byte	48,2,35,32,11
+	.byte	'AppAccess',0
+	.word	138
+	.byte	1,2,35,80,11
+	.byte	'AppOverride',0
+	.word	8784
+	.byte	1,2,35,81,11
+	.byte	'GetStackValueAdjust',0
+	.word	5459
+	.byte	8,2,35,84,11
+	.byte	'InErrorHook',0
+	.word	138
+	.byte	1,2,35,92,11
+	.byte	'ChainTaskRef',0
+	.word	8789
+	.byte	4,2,35,96,11
+	.byte	'GetStackUsageAdjust',0
+	.word	5459
+	.byte	8,2,35,100,11
+	.byte	'InProtectionHook',0
+	.word	138
+	.byte	1,2,35,108,11
+	.byte	'CoreIsActive',0
+	.word	138
+	.byte	1,2,35,109,11
+	.byte	'InShutdownHook',0
+	.word	138
+	.byte	1,2,35,110,0,19
+	.byte	'Os_ControlledCoreType',0,12,141,7,3
+	.word	8794
+	.byte	3
+	.word	182
+	.byte	13
+	.word	6530
+	.byte	3
+	.word	9250
+	.byte	13
+	.word	7100
+	.byte	3
+	.word	9260
+	.byte	3
+	.word	6182
+	.byte	29
+	.byte	'Os_AnyCoreType_s',0,12,151,7,16,96,11
+	.byte	'DisableAllImask',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	'SuspendAllImask',0
+	.word	182
+	.byte	4,2,35,4,11
+	.byte	'SuspendOSImask',0
+	.word	182
+	.byte	4,2,35,8,11
+	.byte	'DisableAllCount',0
+	.word	182
+	.byte	4,2,35,12,11
+	.byte	'SuspendAllCount',0
+	.word	182
+	.byte	4,2,35,16,11
+	.byte	'SuspendOSCount',0
+	.word	182
+	.byte	4,2,35,20,11
+	.byte	'RestartJumpBuf',0
+	.word	5408
+	.byte	68,2,35,24,11
+	.byte	'Restartable',0
+	.word	138
+	.byte	1,2,35,92,0,19
+	.byte	'Os_AnyCoreType',0,12,160,7,3
+	.word	9275
+	.byte	19
+	.byte	'Can_TxObjPriorityClassType',0,13,219,3,16
+	.word	182
+	.byte	29
+	.byte	'Can_TxHwObjectConfigType',0,13,231,3,16,8,11
+	.byte	'MsgObjId',0
+	.word	138
+	.byte	1,2,35,0,11
+	.byte	'HwControllerId',0
+	.word	138
+	.byte	1,2,35,1,11
+	.byte	'TxObjPriorityClass',0
+	.word	182
+	.byte	4,2,35,4,0,19
+	.byte	'Can_TxHwObjectConfigType',0,13,252,3,3
+	.word	9552
+	.byte	29
+	.byte	'Can_RxHwObjectConfigType',0,13,129,4,16,12,11
+	.byte	'MaskRef',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	'MsgId',0
+	.word	182
+	.byte	4,2,35,4,11
+	.byte	'MsgObjId',0
+	.word	138
+	.byte	1,2,35,8,11
+	.byte	'HwControllerId',0
+	.word	138
+	.byte	1,2,35,9,0,19
+	.byte	'Can_RxHwObjectConfigType',0,13,147,4,3
+	.word	9688
+	.byte	22,4
+	.word	138
+	.byte	23,3,0,29
+	.byte	'Can_ControllerMOMapConfigType',0,13,181,4,16,4,11
+	.byte	'ControllerMOMap',0
+	.word	9828
+	.byte	4,2,35,0,0,19
+	.byte	'Can_ControllerMOMapConfigType',0,13,184,4,3
+	.word	9837
+	.byte	29
+	.byte	'Can_NPCRValueType',0,13,188,4,16,2,11
+	.byte	'Can_NPCRValue',0
+	.word	160
+	.byte	2,2,35,0,0,19
+	.byte	'Can_NPCRValueType',0,13,191,4,3
+	.word	9938
+	.byte	29
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,194,4,16,8,11
+	.byte	'CanControllerBaudrate',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	'CanControllerBaudrateCfg',0
+	.word	160
+	.byte	2,2,35,4,0,19
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,198,4,3
+	.word	10013
+	.byte	13
+	.word	10013
+	.byte	3
+	.word	10178
+	.byte	29
+	.byte	'Can_BaudrateConfigPtrType',0,13,201,4,16,4,11
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	10183
+	.byte	4,2,35,0,0,19
+	.byte	'Can_BaudrateConfigPtrType',0,13,204,4,3
+	.word	10188
+	.byte	29
+	.byte	'Can_EventHandlingType',0,13,226,4,16,4,11
+	.byte	'CanEventType',0
+	.word	9828
+	.byte	4,2,35,0,0,19
+	.byte	'Can_EventHandlingType',0,13,229,4,3
+	.word	10288
+	.byte	19
+	.byte	'Rte_TransformerErrorCode',0,14,130,1,15
+	.word	138
+	.byte	19
+	.byte	'Rte_TransformerClass',0,14,131,1,15
+	.word	138
+	.byte	10,14,168,1,9,12,11
+	.byte	'in',0
+	.word	6128
+	.byte	4,2,35,0,11
+	.byte	'out',0
+	.word	6128
+	.byte	4,2,35,4,11
+	.byte	'used',0
+	.word	160
+	.byte	2,2,35,8,11
+	.byte	'lost_data',0
+	.word	138
+	.byte	1,2,35,10,0,19
+	.byte	'Rte_QDynType',0,14,173,1,3
+	.word	10434
+	.byte	20,14,175,1,9,4,21
+	.byte	'RTE_DRA',0,0,21
+	.byte	'RTE_WOWP',0,1,21
+	.byte	'RTE_TASK',0,2,21
+	.byte	'RTE_ARE',0,3,21
+	.byte	'RTE_EV',0,4,21
+	.byte	'RTE_MSI',0,5,0,19
+	.byte	'Rte_NotificationType',0,14,182,1,3
+	.word	10521
+	.byte	22,128,8
+	.word	138
+	.byte	23,255,7,0,19
+	.byte	'Impl_NVM_DstPtrType_1024',0,15,50,15
+	.word	10619
+	.byte	19
+	.byte	'CanIf_u32_impl',0,15,69,16
+	.word	182
+	.byte	19
+	.byte	'CanIf_u16_impl',0,15,71,16
+	.word	160
+	.byte	19
+	.byte	'CanIf_u8_impl',0,15,73,15
+	.word	138
+	.byte	19
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,15,88,15
+	.word	138
+	.byte	19
+	.byte	'CanIf_PduModeType_Enum_impl',0,15,90,15
+	.word	138
+	.byte	10,15,92,9,2,11
+	.byte	'DeviceMode',0
+	.word	138
+	.byte	1,2,35,0,11
+	.byte	'ChannelMode',0
+	.word	138
+	.byte	1,2,35,1,0,19
+	.byte	'CanIf_ControllerStateType_struct_impl',0,15,95,3
+	.word	10810
+	.byte	19
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,15,100,15
+	.word	138
+	.byte	19
+	.byte	'CanSM_boolean_Impl',0,15,120,15
+	.word	138
+	.byte	19
+	.byte	'CanSM_u8_Impl',0,15,123,15
+	.word	138
+	.byte	19
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,15,128,1,15
+	.word	138
+	.byte	19
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,15,132,1,15
+	.word	138
+	.byte	19
+	.byte	'CanSM_u16_Impl',0,15,136,1,16
+	.word	160
+	.byte	19
+	.byte	'CanSM_TimerStateType_Enum_impl',0,15,138,1,15
+	.word	138
+	.byte	10,15,140,1,9,4,11
+	.byte	'cntTick_u16',0
+	.word	160
+	.byte	2,2,35,0,11
+	.byte	'stTimer',0
+	.word	138
+	.byte	1,2,35,2,0,19
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,15,143,1,3
+	.word	11151
+	.byte	19
+	.byte	'Com_impl_u16',0,15,154,1,16
+	.word	160
+	.byte	19
+	.byte	'Com_impl_u8',0,15,157,1,15
+	.word	138
+	.byte	19
+	.byte	'ComM_uint32_Impl',0,15,173,1,16
+	.word	182
+	.byte	19
+	.byte	'ComM_uint16_Impl',0,15,175,1,16
+	.word	160
+	.byte	19
+	.byte	'ComM_uint8_Impl',0,15,177,1,15
+	.word	138
+	.byte	19
+	.byte	'ComM_bool_Impl',0,15,179,1,15
+	.word	138
+	.byte	10,15,181,1,9,24,11
+	.byte	'ChannelState_e',0
+	.word	182
+	.byte	4,2,35,0,11
+	.byte	'LightTimeoutCtr_u32',0
+	.word	182
+	.byte	4,2,35,4,11
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	160
+	.byte	2,2,35,8,11
+	.byte	'ChannelMode_u8',0
+	.word	138
+	.byte	1,2,35,10,11
+	.byte	'BusSmMode_u8',0
+	.word	138
+	.byte	1,2,35,11,11
+	.byte	'UserRequestCtr_u8',0
+	.word	138
+	.byte	1,2,35,12,11
+	.byte	'PassiveRequestState_u8',0
+	.word	138
+	.byte	1,2,35,13,11
+	.byte	'PncRequestCtr_u8',0
+	.word	138
+	.byte	1,2,35,14,11
+	.byte	'InhibitionReqStatus_u8',0
+	.word	138
+	.byte	1,2,35,15,11
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	138
+	.byte	1,2,35,16,11
+	.byte	'DiagnosticRequestState_b',0
+	.word	138
+	.byte	1,2,35,17,11
+	.byte	'CommunicationAllowed_b',0
+	.word	138
+	.byte	1,2,35,18,11
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	138
+	.byte	1,2,35,19,11
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	138
+	.byte	1,2,35,20,11
+	.byte	'NmNetworkModeStatus_b',0
+	.word	138
+	.byte	1,2,35,21,0,19
+	.byte	'ComM_ChannelStruct_Impl',0,15,197,1,3
+	.word	11383
+	.byte	10,15,206,1,9,10,11
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	160
+	.byte	2,2,35,0,11
+	.byte	'LimitToNoComCtr_u16',0
+	.word	160
+	.byte	2,2,35,2,11
+	.byte	'RequestedUserMode_t',0
+	.word	138
+	.byte	1,2,35,4,11
+	.byte	'IndicatedUserMode_t',0
+	.word	138
+	.byte	1,2,35,5,11
+	.byte	'numChannelsInFullCom_u8',0
+	.word	138
+	.byte	1,2,35,6,11
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	138
+	.byte	1,2,35,7,11
+	.byte	'numChannelsInNoCom_u8',0
+	.word	138
+	.byte	1,2,35,8,0,19
+	.byte	'ComM_UserStruct_Impl',0,15,214,1,3
+	.word	11887
+	.byte	19
+	.byte	'Dcm_IOOperationResponseType',0,15,252,1,15
+	.word	138
+	.byte	19
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	15,138,2,15
+	.word	138
+	.byte	19
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,15,146,2,15
+	.word	138
+	.byte	19
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,15,150,2,15
+	.word	138
+	.byte	19
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,15,154,2,15
+	.word	138
+	.byte	19
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,15,243,3,34
+	.word	10630
+	.byte	22,128,8
+	.word	138
+	.byte	23,255,7,0,19
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,15,246,3,34
+	.word	10630
+	.byte	20,3,216,1,9,4,21
+	.byte	'XCP_BG_IDLE',0,0,21
+	.byte	'XCP_BG_CHKSUM',0,1,21
+	.byte	'XCP_BG_MEM_WRITE',0,2,21
+	.byte	'XCP_BG_REPEAT_CMD',0,3,21
+	.byte	'XCP_BG_DO_DISCONNECT',0,4,21
+	.byte	'XCP_BG_CANCEL_REQ',0,5,0,19
+	.byte	'Xcp_BgActivity_t',0,3,224,1,3
+	.word	12705
+	.byte	26,1,1,25
+	.word	4037
+	.byte	25
+	.word	138
+	.byte	0,3
+	.word	12850
+	.byte	19
+	.byte	'Xcp_CmdFunctionPtr',0,3,230,1,16
+	.word	12864
+	.byte	19
+	.byte	'Xcp_Que_t',0,3,247,1,3
+	.word	824
+	.byte	10,3,250,1,9,24,11
+	.byte	'XcpState_en',0
+	.word	1852
+	.byte	4,2,35,0,11
+	.byte	'ConnectedTlId_u8',0
+	.word	138
+	.byte	1,2,35,4,11
+	.byte	'ResourceProtStatus_u8',0
+	.word	138
+	.byte	1,2,35,5,11
+	.byte	'Mta',0
+	.word	2017
+	.byte	8,2,35,8,11
+	.byte	'MaxDto_u16',0
+	.word	160
+	.byte	2,2,35,16,11
+	.byte	'MaxDtoAligned_u16',0
+	.word	160
+	.byte	2,2,35,18,11
+	.byte	'MaxCto_u8',0
+	.word	138
+	.byte	1,2,35,20,0,19
+	.byte	'Xcp_Session_t',0,3,138,2,2
+	.word	12916
+	.byte	10,3,149,2,9,12,11
+	.byte	'Buffer_au8',0
+	.word	3911
+	.byte	8,2,35,0,11
+	.byte	'Length_u32',0
+	.word	182
+	.byte	4,2,35,8,0,19
+	.byte	'Xcp_CtoMax_t',0,3,153,2,2
+	.word	13103
+	.byte	22,255,1
+	.word	138
+	.byte	23,254,1,0,10,3,157,2,9,132,2,11
+	.byte	'UploadRunning_b',0
+	.word	138
+	.byte	1,2,35,0,11
+	.byte	'RemainingSize_u8',0
+	.word	138
+	.byte	1,2,35,1,11
+	.byte	'DownloadSize_u8',0
+	.word	138
+	.byte	1,2,35,2,11
+	.byte	'ReceivedSize_u8',0
+	.word	138
+	.byte	1,2,35,3,11
+	.byte	'DownloadBuffer_au8',0
+	.word	13172
+	.byte	255,1,2,35,4,0,19
+	.byte	'Xcp_Mem_t',0,3,178,2,2
+	.word	13183
+	.byte	10,3,183,2,9,2,11
+	.byte	'SeedWaitingKey_b',0
+	.word	138
+	.byte	1,2,35,0,11
+	.byte	'SeedRemaingSize_u8',0
+	.word	138
+	.byte	1,2,35,1,0,19
+	.byte	'Xcp_SeedAndKey_t',0,3,187,2,2
+	.word	13340
+	.byte	10,3,192,2,9,4,11
+	.byte	'BlockSize_u32',0
+	.word	182
+	.byte	4,2,35,0,0,19
+	.byte	'Xcp_Checksum_t',0,3,198,2,2
+	.word	13427
+	.byte	10,3,203,2,9,18,11
+	.byte	'Xcp_Debug_TransmitOkCtr',0
+	.word	160
+	.byte	2,2,35,0,11
+	.byte	'Xcp_Debug_TransmitNotOkCtr',0
+	.word	160
+	.byte	2,2,35,2,11
+	.byte	'Xcp_Debug_SendResTxConfCtr',0
+	.word	160
+	.byte	2,2,35,4,11
+	.byte	'Xcp_Debug_SendResCtr',0
+	.word	160
+	.byte	2,2,35,6,11
+	.byte	'Xcp_Debug_SendEvTxConfCtr',0
+	.word	160
+	.byte	2,2,35,8,11
+	.byte	'Xcp_Debug_SendEvCtr',0
+	.word	160
+	.byte	2,2,35,10,11
+	.byte	'Xcp_Debug_SendDaqTxConfCtr',0
+	.word	160
+	.byte	2,2,35,12,11
+	.byte	'Xcp_Debug_SendDaqCtr',0
+	.word	160
+	.byte	2,2,35,14,11
+	.byte	'Xcp_Debug_TxConfCtr',0
+	.word	160
+	.byte	2,2,35,16,0,19
+	.byte	'Xcp_Debug_t',0,3,216,2,2
+	.word	13481
+	.byte	10,3,225,2,9,8,11
+	.byte	'OdtEntryPos_u16',0
+	.word	160
+	.byte	2,2,35,0,11
+	.byte	'OdtEntryMax_u16',0
+	.word	160
+	.byte	2,2,35,2,11
+	.byte	'DaqListNum_u16',0
+	.word	160
+	.byte	2,2,35,4,11
+	.byte	'AbsOdtNum_u16',0
+	.word	160
+	.byte	2,2,35,6,0,19
+	.byte	'Xcp_SelectedOdtEntry_t',0,3,231,2,2
+	.word	13803
+	.byte	10,3,234,2,9,6,11
+	.byte	'OdtEntryFirst_u16',0
+	.word	160
+	.byte	2,2,35,0,11
+	.byte	'OdtEntryCnt_u8',0
+	.word	138
+	.byte	1,2,35,2,11
+	.byte	'CopyRoutine_u8',0
+	.word	138
+	.byte	1,2,35,3,11
+	.byte	'Length_u16',0
+	.word	160
+	.byte	2,2,35,4,0,19
+	.byte	'Xcp_Odt_t',0,3,240,2,2
+	.word	13939
+	.byte	19
+	.byte	'Xcp_DaqList_t',0,3,143,3,2
+	.word	933
+	.byte	3
+	.word	13939
+	.byte	3
+	.word	182
+	.byte	3
+	.word	160
+	.byte	10,3,146,3,9,56,11
+	.byte	'DaqList_p',0
+	.word	1202
+	.byte	4,2,35,0,11
+	.byte	'Odt_p',0
+	.word	14083
+	.byte	4,2,35,4,11
+	.byte	'OdtEntryAddress_p',0
+	.word	14088
+	.byte	4,2,35,8,11
+	.byte	'OdtEntrySize_p',0
+	.word	155
+	.byte	4,2,35,12,11
+	.byte	'PriorityList_p',0
+	.word	14093
+	.byte	4,2,35,16,11
+	.byte	'DaqQue_p',0
+	.word	155
+	.byte	4,2,35,20,11
+	.byte	'DaqListCnt_u16',0
+	.word	160
+	.byte	2,2,35,24,11
+	.byte	'OdtCnt_u16',0
+	.word	160
+	.byte	2,2,35,26,11
+	.byte	'OdtEntryCnt_u16',0
+	.word	160
+	.byte	2,2,35,28,11
+	.byte	'SelectedOdtEntry',0
+	.word	13803
+	.byte	8,2,35,30,11
+	.byte	'DaqRamPtr_pu8',0
+	.word	155
+	.byte	4,2,35,40,11
+	.byte	'DaqRamSize_u32',0
+	.word	182
+	.byte	4,2,35,44,11
+	.byte	'DaqListSendingCnt_u16',0
+	.word	160
+	.byte	2,2,35,48,11
+	.byte	'DaqListSending_u16',0
+	.word	160
+	.byte	2,2,35,50,11
+	.byte	'DaqState_en',0
+	.word	2673
+	.byte	4,2,35,52,0,19
+	.byte	'Xcp_DaqConfig_t',0,3,180,3,2
+	.word	14098
+	.byte	10,3,225,3,9,80,11
+	.byte	'Session',0
+	.word	12916
+	.byte	24,2,35,0,11
+	.byte	'DaqConfig',0
+	.word	14098
+	.byte	56,2,35,24,0,19
+	.byte	'Xcp_NoInit_t',0,3,234,3,2
+	.word	14479
+	.byte	22,80
+	.word	14479
+	.byte	23,0,0,27
+	.byte	'Xcp_NoInit',0,3,158,4,29
+	.word	14544
+	.byte	1,1,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L40:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32
+	.byte	13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,1,0,0,7,11,0,0,0
+	.byte	8,46,0,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,9,46,1,3,8,58,15,59,15,57,15,54,15,39,12
+	.byte	63,12,60,12,0,0,10,19,1,58,15,59,15,57,15,11,15,0,0,11,13,0,3,8,73,19,11,15,56,9,0,0,12,53,0,73,19,0,0
+	.byte	13,38,0,73,19,0,0,14,46,1,49,19,0,0,15,5,0,49,19,0,0,16,29,1,49,19,0,0,17,11,0,49,19,0,0,18,21,0,54,15
+	.byte	0,0,19,22,0,3,8,58,15,59,15,57,15,73,19,0,0,20,4,1,58,15,59,15,57,15,11,15,0,0,21,40,0,3,8,28,13,0,0,22
+	.byte	1,1,11,15,73,19,0,0,23,33,0,47,15,0,0,24,21,1,73,19,54,15,39,12,0,0,25,5,0,73,19,0,0,26,21,1,54,15,39
+	.byte	12,0,0,27,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,28,21,0,54,15,39,12,0,0,29,19,1,3,8,58,15,59
+	.byte	15,57,15,11,15,0,0,30,59,0,3,8,0,0,31,23,1,58,15,59,15,57,15,11,15,0,0,32,4,1,3,8,58,15,59,15,57,15,11
+	.byte	15,0,0,33,21,0,73,19,54,15,39,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L41:
+	.word	.L162-.L161
+.L161:
+	.half	3
+	.word	.L164-.L163
+.L163:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_DaqEvent.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Cbk.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Priv.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\Xcp_Cfg.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0,0
+.L164:
+.L162:
+	.sdecl	'.debug_info',debug,cluster('Xcp_DaqEvent')
+	.sect	'.debug_info'
+.L42:
+	.word	981
+	.half	3
+	.word	.L43
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_DaqEvent.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L45,.L44
+	.byte	2
+	.word	.L38
+	.byte	3
+	.byte	'Xcp_DaqEvent',0,1,54,7
+	.word	.L47
+	.byte	1,1,1
+	.word	.L37,.L48,.L36
+	.byte	4
+	.byte	'daqListNo_u16',0,1,54,27
+	.word	.L49,.L50
+	.byte	4
+	.byte	'protLayerId',0,1,54,48
+	.word	.L47,.L51
+	.byte	5
+	.word	.L37,.L48
+	.byte	6
+	.byte	'daqListPtr',0,1,60,18
+	.word	.L52,.L53
+	.byte	6
+	.byte	'dest_pu8',0,1,61,10
+	.word	.L54,.L55
+	.byte	6
+	.byte	'lastAddress',0,1,62,17
+	.word	.L56,.L57
+	.byte	6
+	.byte	'lastValue',0,1,63,17
+	.word	.L56,.L58
+	.byte	6
+	.byte	'WritePos_u16',0,1,64,10
+	.word	.L49,.L59
+	.byte	6
+	.byte	'maxDtoAligned',0,1,65,10
+	.word	.L49,.L60
+	.byte	6
+	.byte	'AbsODTNo_u16',0,1,66,10
+	.word	.L49,.L61
+	.byte	6
+	.byte	'OdtFirst_u16',0,1,67,10
+	.word	.L49,.L62
+	.byte	6
+	.byte	'OdtCnt_u8',0,1,68,10
+	.word	.L47,.L63
+	.byte	6
+	.byte	'retval',0,1,69,10
+	.word	.L47,.L64
+	.byte	7
+	.word	.L65,.L66,.L6
+	.byte	8
+	.word	.L67,.L68
+	.byte	8
+	.word	.L69,.L70
+	.byte	8
+	.word	.L71,.L72
+	.byte	8
+	.word	.L73,.L74
+	.byte	9
+	.word	.L75,.L66,.L6
+	.byte	0,7
+	.word	.L76,.L77,.L7
+	.byte	8
+	.word	.L78,.L79
+	.byte	8
+	.word	.L80,.L81
+	.byte	10
+	.word	.L82,.L77,.L7
+	.byte	6
+	.byte	'timestamp',0,1,165,5,10
+	.word	.L56,.L83
+	.byte	6
+	.byte	'i',0,1,166,5,10
+	.word	.L84,.L85
+	.byte	0,0,7
+	.word	.L86,.L87,.L23
+	.byte	8
+	.word	.L88,.L89
+	.byte	8
+	.word	.L90,.L91
+	.byte	8
+	.word	.L92,.L93
+	.byte	8
+	.word	.L94,.L95
+	.byte	8
+	.word	.L96,.L97
+	.byte	10
+	.word	.L98,.L87,.L23
+	.byte	7
+	.word	.L99,.L87,.L22
+	.byte	8
+	.word	.L100,.L101
+	.byte	8
+	.word	.L102,.L103
+	.byte	8
+	.word	.L104,.L105
+	.byte	8
+	.word	.L106,.L107
+	.byte	8
+	.word	.L108,.L109
+	.byte	10
+	.word	.L110,.L87,.L22
+	.byte	6
+	.byte	'lastReadAddress',0,1,253,2,17
+	.word	.L56,.L111
+	.byte	6
+	.byte	'lastReadValue',0,1,254,2,17
+	.word	.L56,.L112
+	.byte	6
+	.byte	'OdtEntryAdrPtr',0,1,255,2,24
+	.word	.L113,.L114
+	.byte	6
+	.byte	'OdtEntrySizePtr',0,1,128,3,16
+	.word	.L115,.L116
+	.byte	6
+	.byte	'OdtEntryCnt',0,1,129,3,16
+	.word	.L117,.L118
+	.byte	6
+	.byte	'address',0,1,130,3,17
+	.word	.L56,.L119
+	.byte	6
+	.byte	'numBytesToReadAtAddress',0,1,131,3,10
+	.word	.L47,.L120
+	.byte	6
+	.byte	'index',0,1,132,3,10
+	.word	.L84,.L121
+	.byte	0,0,0,0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_DaqEvent')
+	.sect	'.debug_abbrev'
+.L43:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,7,29,1,49,16,17,1,18,1,0,0,8,5,0,49,16,2,6,0,0,9,11,0,49,16,17
+	.byte	1,18,1,0,0,10,11,1,49,16,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Xcp_DaqEvent')
+	.sect	'.debug_line'
+.L44:
+	.word	.L166-.L165
+.L165:
+	.half	3
+	.word	.L168-.L167
+.L167:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_DaqEvent.c',0,0,0,0,0
+.L168:
+	.byte	5,7,7,0,5,2
+	.word	.L37
+	.byte	3,53,1,5,10,9
+	.half	.L125-.L37
+	.byte	3,22,1,5,19,9
+	.half	.L128-.L125
+	.byte	3,5,1,5,18,9
+	.half	.L129-.L128
+	.byte	3,2,1,5,16,9
+	.half	.L131-.L129
+	.byte	3,4,1,5,43,9
+	.half	.L169-.L131
+	.byte	1,5,3,9
+	.half	.L170-.L169
+	.byte	1,5,31,7,9
+	.half	.L171-.L170
+	.byte	3,3,1,5,29,9
+	.half	.L172-.L171
+	.byte	1,5,27,9
+	.half	.L173-.L172
+	.byte	3,3,1,5,30,9
+	.half	.L132-.L173
+	.byte	3,1,1,5,20,9
+	.half	.L133-.L132
+	.byte	3,3,1,5,17,9
+	.half	.L174-.L133
+	.byte	1,5,20,9
+	.half	.L175-.L174
+	.byte	3,1,1,5,17,9
+	.half	.L176-.L175
+	.byte	1,5,45,9
+	.half	.L177-.L176
+	.byte	3,3,1,5,23,9
+	.half	.L134-.L177
+	.byte	3,9,1,5,162,1,9
+	.half	.L135-.L134
+	.byte	1,5,26,9
+	.half	.L4-.L135
+	.byte	3,4,1,5,58,9
+	.half	.L178-.L4
+	.byte	1,5,31,9
+	.half	.L179-.L178
+	.byte	1,5,100,9
+	.half	.L180-.L179
+	.byte	1,5,7,9
+	.half	.L181-.L180
+	.byte	1,5,60,7,9
+	.half	.L182-.L181
+	.byte	3,3,1,5,32,9
+	.half	.L183-.L182
+	.byte	1,5,46,9
+	.half	.L184-.L183
+	.byte	1,5,15,9
+	.half	.L66-.L184
+	.byte	3,239,3,1,5,13,9
+	.half	.L185-.L66
+	.byte	3,2,1,5,3,9
+	.half	.L137-.L185
+	.byte	3,47,1,5,14,9
+	.half	.L6-.L137
+	.byte	3,234,123,1,5,60,7,9
+	.half	.L186-.L6
+	.byte	1,5,99,9
+	.half	.L187-.L186
+	.byte	1,5,35,7,9
+	.half	.L77-.L187
+	.byte	3,169,4,1,5,10,9
+	.half	.L138-.L77
+	.byte	3,6,1,5,95,9
+	.half	.L139-.L138
+	.byte	1,5,40,9
+	.half	.L10-.L139
+	.byte	3,4,1,5,36,9
+	.half	.L188-.L10
+	.byte	1,5,15,9
+	.half	.L189-.L188
+	.byte	1,5,13,9
+	.half	.L190-.L189
+	.byte	3,1,1,5,98,9
+	.half	.L191-.L190
+	.byte	3,123,1,5,48,9
+	.half	.L9-.L191
+	.byte	1,5,47,9
+	.half	.L192-.L9
+	.byte	1,5,27,9
+	.half	.L193-.L192
+	.byte	1,5,47,9
+	.half	.L194-.L193
+	.byte	1,5,78,9
+	.half	.L195-.L194
+	.byte	1,5,19,9
+	.half	.L196-.L195
+	.byte	1,5,95,9
+	.half	.L197-.L196
+	.byte	1,5,3,7,9
+	.half	.L198-.L197
+	.byte	3,8,1,5,57,9
+	.half	.L7-.L198
+	.byte	3,210,123,1,5,71,9
+	.half	.L199-.L7
+	.byte	1,5,21,9
+	.half	.L87-.L199
+	.byte	3,255,1,1,9
+	.half	.L142-.L87
+	.byte	3,1,1,5,19,9
+	.half	.L143-.L142
+	.byte	3,1,1,5,22,9
+	.half	.L144-.L143
+	.byte	3,3,1,9
+	.half	.L145-.L144
+	.byte	3,1,1,5,17,9
+	.half	.L146-.L145
+	.byte	3,3,1,5,25,9
+	.half	.L147-.L146
+	.byte	3,3,1,5,15,9
+	.half	.L13-.L147
+	.byte	3,7,1,5,31,9
+	.half	.L200-.L13
+	.byte	3,1,1,5,37,9
+	.half	.L148-.L200
+	.byte	3,2,1,5,5,9
+	.half	.L201-.L148
+	.byte	1,5,23,7,9
+	.half	.L202-.L201
+	.byte	3,2,1,5,25,9
+	.half	.L203-.L202
+	.byte	3,2,1,5,23,9
+	.half	.L204-.L203
+	.byte	1,5,16,9
+	.half	.L14-.L204
+	.byte	3,3,1,5,41,9
+	.half	.L16-.L14
+	.byte	3,24,1,5,93,9
+	.half	.L149-.L16
+	.byte	3,1,1,5,49,9
+	.half	.L18-.L149
+	.byte	3,4,1,5,46,9
+	.half	.L205-.L18
+	.byte	1,5,21,9
+	.half	.L206-.L205
+	.byte	1,5,19,9
+	.half	.L207-.L206
+	.byte	3,1,1,5,34,9
+	.half	.L208-.L207
+	.byte	3,2,1,5,25,9
+	.half	.L209-.L208
+	.byte	3,2,1,5,26,9
+	.half	.L17-.L209
+	.byte	3,119,1,5,16,9
+	.half	.L210-.L17
+	.byte	1,5,89,7,9
+	.half	.L211-.L210
+	.byte	1,5,7,7,9
+	.half	.L19-.L211
+	.byte	3,16,1,5,23,7,9
+	.half	.L212-.L19
+	.byte	3,3,1,5,24,9
+	.half	.L213-.L212
+	.byte	3,1,1,5,20,9
+	.half	.L214-.L213
+	.byte	3,1,1,5,9,9
+	.half	.L215-.L214
+	.byte	3,1,1,5,44,9
+	.half	.L20-.L215
+	.byte	3,4,1,5,85,9
+	.half	.L216-.L20
+	.byte	1,5,27,9
+	.half	.L217-.L216
+	.byte	3,2,1,5,25,9
+	.half	.L151-.L217
+	.byte	1,5,16,9
+	.half	.L15-.L151
+	.byte	3,75,1,5,25,9
+	.half	.L12-.L15
+	.byte	3,111,1,5,46,7,9
+	.half	.L218-.L12
+	.byte	3,207,0,1,5,19,9
+	.half	.L219-.L218
+	.byte	1,5,17,9
+	.half	.L220-.L219
+	.byte	3,1,1,5,3,9
+	.half	.L221-.L220
+	.byte	3,1,1,9
+	.half	.L22-.L221
+	.byte	3,204,126,1,5,55,9
+	.half	.L23-.L22
+	.byte	3,248,126,1,5,68,9
+	.half	.L222-.L23
+	.byte	1,5,9,9
+	.half	.L223-.L222
+	.byte	1,5,24,7,9
+	.half	.L224-.L223
+	.byte	3,3,1,5,27,9
+	.half	.L225-.L224
+	.byte	1,5,23,9
+	.half	.L24-.L225
+	.byte	3,5,1,5,9,9
+	.half	.L25-.L24
+	.byte	3,125,1,5,16,9
+	.half	.L5-.L25
+	.byte	3,10,1,5,9,9
+	.half	.L226-.L5
+	.byte	3,3,1,5,176,1,9
+	.half	.L26-.L226
+	.byte	3,180,127,1,5,69,9
+	.half	.L3-.L26
+	.byte	1,5,39,9
+	.half	.L227-.L3
+	.byte	1,5,98,7,9
+	.half	.L228-.L227
+	.byte	1,5,135,1,9
+	.half	.L229-.L228
+	.byte	1,5,20,7,9
+	.half	.L27-.L229
+	.byte	3,211,0,1,5,5,9
+	.half	.L230-.L27
+	.byte	1,5,7,7,9
+	.half	.L231-.L230
+	.byte	3,3,1,5,48,9
+	.half	.L232-.L231
+	.byte	3,3,1,5,36,9
+	.half	.L233-.L232
+	.byte	3,2,1,5,62,9
+	.half	.L156-.L233
+	.byte	3,126,1,5,34,9
+	.half	.L30-.L156
+	.byte	3,10,1,5,33,9
+	.half	.L154-.L30
+	.byte	1,5,13,9
+	.half	.L234-.L154
+	.byte	1,5,33,9
+	.half	.L235-.L234
+	.byte	1,5,64,9
+	.half	.L236-.L235
+	.byte	1,5,9,9
+	.half	.L237-.L236
+	.byte	1,5,27,7,9
+	.half	.L238-.L237
+	.byte	3,18,1,5,48,9
+	.half	.L239-.L238
+	.byte	1,5,7,9
+	.half	.L31-.L239
+	.byte	3,104,1,5,5,9
+	.half	.L33-.L31
+	.byte	3,29,1,5,28,9
+	.half	.L2-.L33
+	.byte	3,11,1,5,3,9
+	.half	.L34-.L2
+	.byte	3,5,1,5,1,9
+	.half	.L35-.L34
+	.byte	3,1,1,7,9
+	.half	.L46-.L35
+	.byte	0,1,1
+.L166:
+	.sdecl	'.debug_ranges',debug,cluster('Xcp_DaqEvent')
+	.sect	'.debug_ranges'
+.L45:
+	.word	-1,.L37,0,.L46-.L37,0,0
+	.sdecl	'.debug_loc',debug,cluster('Xcp_DaqEvent')
+	.sect	'.debug_loc'
+.L61:
+	.word	-1,.L37,.L135-.L37,.L136-.L37
+	.half	1
+	.byte	91
+	.word	.L3-.L37,.L2-.L37
+	.half	1
+	.byte	91
+	.word	0,0
+.L91:
+	.word	0,0
+.L103:
+	.word	0,0
+.L70:
+	.word	0,0
+.L63:
+	.word	-1,.L37,.L132-.L37,.L2-.L37
+	.half	1
+	.byte	92
+	.word	0,0
+.L114:
+	.word	-1,.L37,.L145-.L37,.L5-.L37
+	.half	1
+	.byte	102
+	.word	.L26-.L37,.L3-.L37
+	.half	1
+	.byte	102
+	.word	0,0
+.L118:
+	.word	-1,.L37,.L147-.L37,.L5-.L37
+	.half	1
+	.byte	85
+	.word	.L26-.L37,.L3-.L37
+	.half	1
+	.byte	85
+	.word	0,0
+.L116:
+	.word	-1,.L37,.L146-.L37,.L5-.L37
+	.half	1
+	.byte	98
+	.word	.L26-.L37,.L3-.L37
+	.half	1
+	.byte	98
+	.word	0,0
+.L62:
+	.word	-1,.L37,.L133-.L37,.L2-.L37
+	.half	1
+	.byte	93
+	.word	0,0
+.L59:
+	.word	-1,.L37,.L134-.L37,.L2-.L37
+	.half	1
+	.byte	90
+	.word	0,0
+.L36:
+	.word	-1,.L37,0,.L122-.L37
+	.half	2
+	.byte	138,0
+	.word	.L122-.L37,.L48-.L37
+	.half	2
+	.byte	138,24
+	.word	.L48-.L37,.L48-.L37
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L119:
+	.word	-1,.L37,.L144-.L37,.L5-.L37
+	.half	1
+	.byte	82
+	.word	.L151-.L37,.L15-.L37
+	.half	1
+	.byte	111
+	.word	.L26-.L37,.L3-.L37
+	.half	1
+	.byte	82
+	.word	0,0
+.L72:
+	.word	0,0
+.L50:
+	.word	-1,.L37,0,.L123-.L37
+	.half	1
+	.byte	84
+	.word	.L124-.L37,.L48-.L37
+	.half	2
+	.byte	145,116
+	.word	.L123-.L37,.L130-.L37
+	.half	1
+	.byte	95
+	.word	.L155-.L37,.L156-.L37
+	.half	1
+	.byte	84
+	.word	0,0
+.L53:
+	.word	-1,.L37,.L131-.L37,.L48-.L37
+	.half	1
+	.byte	110
+	.word	0,0
+.L55:
+	.word	-1,.L37,.L66-.L37,.L10-.L37
+	.half	1
+	.byte	111
+	.word	.L137-.L37,.L5-.L37
+	.half	2
+	.byte	145,120
+	.word	.L141-.L37,.L9-.L37
+	.half	1
+	.byte	111
+	.word	.L150-.L37,.L17-.L37
+	.half	1
+	.byte	111
+	.word	.L26-.L37,.L3-.L37
+	.half	2
+	.byte	145,120
+	.word	0,0
+.L89:
+	.word	0,0
+.L101:
+	.word	0,0
+.L68:
+	.word	0,0
+.L79:
+	.word	0,0
+.L85:
+	.word	-1,.L37,.L139-.L37,.L140-.L37
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L9-.L37,.L7-.L37
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L121:
+	.word	-1,.L37,.L149-.L37,.L15-.L37
+	.half	1
+	.byte	83
+	.word	0,0
+.L57:
+	.word	-1,.L37,0,.L48-.L37
+	.half	2
+	.byte	145,104
+	.word	0,0
+.L93:
+	.word	0,0
+.L105:
+	.word	0,0
+.L111:
+	.word	-1,.L37,.L142-.L37,.L5-.L37
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L26-.L37,.L3-.L37
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L112:
+	.word	-1,.L37,.L143-.L37,.L5-.L37
+	.half	1
+	.byte	81
+	.word	.L26-.L37,.L3-.L37
+	.half	1
+	.byte	81
+	.word	0,0
+.L58:
+	.word	-1,.L37,0,.L48-.L37
+	.half	2
+	.byte	145,108
+	.word	0,0
+.L95:
+	.word	0,0
+.L107:
+	.word	0,0
+.L60:
+	.word	-1,.L37,.L129-.L37,.L48-.L37
+	.half	1
+	.byte	89
+	.word	0,0
+.L120:
+	.word	-1,.L37,.L148-.L37,.L12-.L37
+	.half	1
+	.byte	86
+	.word	0,0
+.L51:
+	.word	-1,.L37,0,.L4-.L37
+	.half	1
+	.byte	85
+	.word	.L125-.L37,.L48-.L37
+	.half	1
+	.byte	88
+	.word	.L157-.L37,.L156-.L37
+	.half	1
+	.byte	85
+	.word	.L158-.L37,.L31-.L37
+	.half	1
+	.byte	85
+	.word	.L2-.L37,.L34-.L37
+	.half	1
+	.byte	85
+	.word	0,0
+.L97:
+	.word	0,0
+.L109:
+	.word	0,0
+.L74:
+	.word	0,0
+.L81:
+	.word	0,0
+.L64:
+	.word	-1,.L37,.L126-.L37,.L127-.L37
+	.half	1
+	.byte	95
+	.word	.L128-.L37,.L48-.L37
+	.half	2
+	.byte	145,112
+	.word	.L152-.L37,.L26-.L37
+	.half	1
+	.byte	95
+	.word	.L153-.L37,.L154-.L37
+	.half	1
+	.byte	95
+	.word	.L159-.L37,.L48-.L37
+	.half	1
+	.byte	82
+	.word	0,0
+.L83:
+	.word	-1,.L37,.L138-.L37,.L7-.L37
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L240:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Xcp_DaqEvent')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L240,.L37,.L48-.L37
+	.byte	4
+	.word	(.L122-.L37)/2
+	.byte	19,24,22,26,3,19,138,24,4
+	.word	(.L48-.L122)/2
+	.byte	19,0,8,26,0,0
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   692    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   693  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   694    return dest_pu8; /* return pointer to next available buffer */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   695  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   696  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   697  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   698  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   699  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   700  /* End section for code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   701  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   702  #define XCP_STOP_SEC_CODE_EVENTCHANNEL
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   703  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   704  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   705  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   706  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_DaqEvent.c	   707  
+
+	; Module end

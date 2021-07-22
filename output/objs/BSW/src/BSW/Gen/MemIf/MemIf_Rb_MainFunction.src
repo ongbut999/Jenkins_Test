@@ -1,0 +1,1468 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc14204a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\MemIf\\MemIf_Rb_MainFunction.src BSW\\src\\BSW\\Gen\\MemIf\\src\\MemIf_Rb_MainFunction.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\MemIf\\src\\MemIf_Rb_MainFunction.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.MemIf_Rb_MainFunction.MemIf_Rb_MainFunction',code,cluster('MemIf_Rb_MainFunction')
+	.sect	'.text.MemIf_Rb_MainFunction.MemIf_Rb_MainFunction'
+	.align	2
+	
+	.global	MemIf_Rb_MainFunction
+
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	     1  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	     2  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	     3  #include "MemIf.h"
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	     4  #include "MemIf_Cfg_SchM.h"
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	     5  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	     6  #if (MEMIF_DEV_ERROR_DETECT == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	     7  #include "Det.h"
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	     8  #if (!defined(DET_AR_RELEASE_MAJOR_VERSION) || (DET_AR_RELEASE_MAJOR_VERSION != MEMIF_AR_RELEASE_MAJOR_VERSION))
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	     9  #error "AUTOSAR major version undefined or mismatched"
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    10  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    11  #if (!defined(DET_AR_RELEASE_MINOR_VERSION) || ((DET_AR_RELEASE_MINOR_VERSION != 0) && (DET_AR_RELEASE_MINOR_VERSION != 2)))
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    12  #error "AUTOSAR minor version undefined or mismatched"
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    13  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    14  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    15  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    16  #define MEMIF_START_SEC_CODE
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    17  #include "MemIf_MemMap.h"
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    18  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    19  /**
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    20   *********************************************************************
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    21   * MemIf_Rb_MainFunction(): Calls requiered underlaying
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    22   *                          Mainfunctions.
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    23   *
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    24   * The function calls the required underlaying main functions,
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    25   * depending on which modules are configured.
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    26   *
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    27   * \param    none
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    28   * \retval   none
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    29   * \seealso
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    30   * \usedresources
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    31   *********************************************************************
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    32   */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    33  FUNC(void, MEMIF_CODE) MemIf_Rb_MainFunction(void)
+; Function MemIf_Rb_MainFunction
+.L3:
+MemIf_Rb_MainFunction:	.type	func
+
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    34  {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    35      #if (MEMIF_FEE_USED == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    36      Fee_MainFunction();
+	call	Fee_MainFunction
+.L23:
+
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    37      Fls_MainFunction();
+	call	Fls_17_Pmu_MainFunction
+.L24:
+
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    38      #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    39      #if (MEMIF_NUM_OF_EA_DEVICES > 0)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    40      Ea_MainFunction();
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    41      Eep_MainFunction();
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    42      Spi_MainFunction_Handling();
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    43      #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    44  }
+	ret
+.L13:
+	
+__MemIf_Rb_MainFunction_function_end:
+	.size	MemIf_Rb_MainFunction,__MemIf_Rb_MainFunction_function_end-MemIf_Rb_MainFunction
+.L12:
+	; End of function
+	
+	.calls	'MemIf_Rb_MainFunction','Fee_MainFunction'
+	.calls	'MemIf_Rb_MainFunction','Fls_17_Pmu_MainFunction'
+	.extern	Fls_17_Pmu_MainFunction
+	.extern	Fee_MainFunction
+	.calls	'MemIf_Rb_MainFunction','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L5:
+	.word	9281
+	.half	3
+	.word	.L6
+	.byte	4
+.L4:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\MemIf\\src\\MemIf_Rb_MainFunction.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L7
+	.byte	2
+	.byte	'Fls_17_Pmu_MainFunction',0,1,134,8,13,1,1,1,1,2
+	.byte	'Fee_MainFunction',0,2,235,1,29,1,1,1,1,3,1,4
+	.word	208
+	.byte	5
+	.byte	'__codeptr',0,3,1,1
+	.word	210
+	.byte	6
+	.byte	'char',0,1,6,5
+	.byte	'sint8',0,4,76,25
+	.word	233
+	.byte	6
+	.byte	'unsigned char',0,1,8,5
+	.byte	'uint8',0,4,81,25
+	.word	255
+	.byte	6
+	.byte	'unsigned short int',0,2,7,5
+	.byte	'uint16',0,4,91,25
+	.word	286
+	.byte	6
+	.byte	'unsigned int',0,4,7,5
+	.byte	'uint32',0,4,106,24
+	.word	323
+	.byte	6
+	.byte	'unsigned long long int',0,8,7,5
+	.byte	'uint64',0,4,111,30
+	.word	354
+	.byte	5
+	.byte	'boolean',0,4,127,25
+	.word	255
+	.byte	5
+	.byte	'StatusType',0,5,191,1,27
+	.word	255
+	.byte	5
+	.byte	'Std_ReturnType',0,5,199,1,15
+	.word	255
+	.byte	7,5,206,1,9,8,8
+	.byte	'vendorID',0
+	.word	286
+	.byte	2,2,35,0,8
+	.byte	'moduleID',0
+	.word	286
+	.byte	2,2,35,2,8
+	.byte	'sw_major_version',0
+	.word	255
+	.byte	1,2,35,4,8
+	.byte	'sw_minor_version',0
+	.word	255
+	.byte	1,2,35,5,8
+	.byte	'sw_patch_version',0
+	.word	255
+	.byte	1,2,35,6,0,5
+	.byte	'Std_VersionInfoType',0,5,213,1,3
+	.word	455
+	.byte	9,6,31,9,4,10
+	.byte	'MEMIF_JOB_OK',0,0,10
+	.byte	'MEMIF_JOB_FAILED',0,1,10
+	.byte	'MEMIF_JOB_PENDING',0,2,10
+	.byte	'MEMIF_JOB_CANCELED',0,3,10
+	.byte	'MEMIF_BLOCK_INCONSISTENT',0,4,10
+	.byte	'MEMIF_BLOCK_INVALID',0,5,0,5
+	.byte	'MemIf_JobResultType',0,6,39,2
+	.word	605
+	.byte	9,6,41,9,4,10
+	.byte	'MEMIF_MODE_SLOW',0,0,10
+	.byte	'MEMIF_MODE_FAST',0,1,0,5
+	.byte	'MemIf_ModeType',0,6,45,2
+	.word	763
+	.byte	7,7,93,9,8,8
+	.byte	'Class',0
+	.word	255
+	.byte	1,2,35,0,8
+	.byte	'TIN',0
+	.word	255
+	.byte	1,2,35,1,8
+	.byte	'ReturnAddress',0
+	.word	323
+	.byte	4,2,35,4,0,5
+	.byte	'OsTrapInfoType',0,7,97,3
+	.word	828
+	.byte	11,68
+	.word	323
+	.byte	12,16,0,7,7,154,1,9,68,8
+	.byte	'store',0
+	.word	908
+	.byte	68,2,35,0,0,11,68
+	.word	917
+	.byte	12,0,0,5
+	.byte	'Os_JumpBufType',0,7,156,1,3
+	.word	939
+	.byte	5
+	.byte	'Os_StackTraceType',0,7,174,1,18
+	.word	323
+	.byte	7,7,175,1,9,8,8
+	.byte	'sp',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	'ctx',0
+	.word	323
+	.byte	4,2,35,4,0,5
+	.byte	'Os_StackValueType',0,7,175,1,63
+	.word	999
+	.byte	5
+	.byte	'Os_StackSizeType',0,7,176,1,27
+	.word	999
+	.byte	13,1,1,4
+	.word	1084
+	.byte	5
+	.byte	'Os_VoidVoidFunctionType',0,7,179,1,16
+	.word	1087
+	.byte	5
+	.byte	'ApplicationType',0,7,193,1,23
+	.word	255
+	.byte	14
+	.byte	'Os_ApplicationConfigurationType_s',0,7,198,1,16,2,8
+	.byte	'app_id',0
+	.word	255
+	.byte	1,2,35,0,8
+	.byte	'access',0
+	.word	255
+	.byte	1,2,35,1,0,5
+	.byte	'Os_ApplicationConfigurationType',0,7,201,1,3
+	.word	1150
+	.byte	5
+	.byte	'Os_CoreStateType',0,7,203,1,16
+	.word	323
+	.byte	5
+	.byte	'AreaIdType',0,7,204,1,16
+	.word	286
+	.byte	5
+	.byte	'Os_PeripheralAddressType',0,7,212,1,22
+	.word	323
+	.byte	5
+	.byte	'TickType',0,7,221,1,22
+	.word	323
+	.byte	5
+	.byte	'Os_StopwatchTickType',0,7,225,1,22
+	.word	323
+	.byte	4
+	.word	323
+	.byte	5
+	.byte	'Os_Lockable',0,7,234,1,18
+	.word	1392
+	.byte	5
+	.byte	'CoreIdType',0,7,236,1,16
+	.word	286
+	.byte	5
+	.byte	'SpinlockIdType',0,7,237,1,16
+	.word	286
+	.byte	9,7,239,1,9,4,10
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,10
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,5
+	.byte	'TryToGetSpinlockType',0,7,239,1,74
+	.word	1462
+	.byte	9,7,174,2,9,4,10
+	.byte	'APPLICATION_ACCESSIBLE',0,0,10
+	.byte	'APPLICATION_RESTARTING',0,1,10
+	.byte	'APPLICATION_TERMINATED',0,2,0,5
+	.byte	'ApplicationStateType',0,7,174,2,92
+	.word	1555
+	.byte	15
+	.byte	'void',0,4
+	.word	1667
+	.byte	16,1,1,17
+	.word	255
+	.byte	17
+	.word	1673
+	.byte	0,4
+	.word	1678
+	.byte	5
+	.byte	'Os_FunctionEntryType',0,7,183,2,16
+	.word	1692
+	.byte	14
+	.byte	'Os_MeterInfoType_s',0,7,193,2,16,48,8
+	.byte	'elapsed',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	'previous',0
+	.word	323
+	.byte	4,2,35,4,8
+	.byte	'max',0
+	.word	323
+	.byte	4,2,35,8,8
+	.byte	'cumulative',0
+	.word	323
+	.byte	4,2,35,12,8
+	.byte	'stackbase',0
+	.word	999
+	.byte	8,2,35,16,8
+	.byte	'stackusage',0
+	.word	999
+	.byte	8,2,35,24,8
+	.byte	'stackmax',0
+	.word	999
+	.byte	8,2,35,32,8
+	.byte	'stackbudget',0
+	.word	999
+	.byte	8,2,35,40,0,5
+	.byte	'Os_MeterInfoType',0,7,202,2,3
+	.word	1727
+	.byte	4
+	.word	1727
+	.byte	5
+	.byte	'Os_MeterInfoRefType',0,7,203,2,50
+	.word	1925
+	.byte	5
+	.byte	'EventMaskType',0,7,206,2,15
+	.word	255
+	.byte	5
+	.byte	'Os_imaskType',0,7,211,2,16
+	.word	323
+	.byte	14
+	.byte	'Os_ISRDynType_s',0,7,213,2,16,48,8
+	.byte	'meter',0
+	.word	1727
+	.byte	48,2,35,0,0,5
+	.byte	'Os_ISRDynType',0,7,215,2,3
+	.word	2004
+	.byte	4
+	.word	2004
+	.byte	18
+	.word	2065
+	.byte	14
+	.byte	'Os_ISRType_s',0,7,216,2,16,24,8
+	.byte	'entry_function',0
+	.word	1092
+	.byte	4,2,35,0,8
+	.byte	'dynamic',0
+	.word	2070
+	.byte	4,2,35,4,8
+	.byte	'imask',0
+	.word	323
+	.byte	4,2,35,8,8
+	.byte	'stackbudget',0
+	.word	999
+	.byte	8,2,35,12,8
+	.byte	'access',0
+	.word	255
+	.byte	1,2,35,20,8
+	.byte	'application',0
+	.word	255
+	.byte	1,2,35,21,0,5
+	.byte	'Os_ISRType',0,7,223,2,3
+	.word	2075
+	.byte	4
+	.word	1084
+	.byte	18
+	.word	2075
+	.byte	4
+	.word	2234
+	.byte	5
+	.byte	'ISRType',0,7,224,2,46
+	.word	2239
+	.byte	5
+	.byte	'Os_bitmask',0,7,239,2,22
+	.word	323
+	.byte	5
+	.byte	'Os_pset0Type',0,7,240,2,20
+	.word	323
+	.byte	5
+	.byte	'Os_pset1Type',0,7,241,2,20
+	.word	323
+	.byte	5
+	.byte	'Os_pset2Type',0,7,242,2,20
+	.word	323
+	.byte	19,7,243,2,9,4,8
+	.byte	'p0',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	'p1',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	'p2',0
+	.word	323
+	.byte	4,2,35,0,0,5
+	.byte	'Os_psetType',0,7,247,2,3
+	.word	2347
+	.byte	19,7,249,2,9,4,8
+	.byte	't0',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	't1',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	't2',0
+	.word	323
+	.byte	4,2,35,0,0,5
+	.byte	'Os_tpmaskType',0,7,253,2,3
+	.word	2411
+	.byte	5
+	.byte	'Os_ActivationCountType',0,7,254,2,23
+	.word	255
+	.byte	14
+	.byte	'Os_TaskDynType_s',0,7,128,3,16,120,8
+	.byte	'terminate_jump_buf',0
+	.word	948
+	.byte	68,2,35,0,8
+	.byte	'meter',0
+	.word	1727
+	.byte	48,2,35,68,8
+	.byte	'activation_count',0
+	.word	255
+	.byte	1,2,35,116,0,5
+	.byte	'Os_TaskDynType',0,7,132,3,3
+	.word	2509
+	.byte	11,68
+	.word	917
+	.byte	12,0,0,4
+	.word	2509
+	.byte	18
+	.word	2635
+	.byte	14
+	.byte	'Os_TaskType_s',0,7,134,3,16,40,8
+	.byte	'dynamic',0
+	.word	2640
+	.byte	4,2,35,0,8
+	.byte	'entry_function',0
+	.word	1092
+	.byte	4,2,35,4,8
+	.byte	'pset',0
+	.word	2347
+	.byte	4,2,35,8,8
+	.byte	'base_tpmask',0
+	.word	2411
+	.byte	4,2,35,12,8
+	.byte	'tpmask',0
+	.word	2411
+	.byte	4,2,35,16,8
+	.byte	'core_id',0
+	.word	286
+	.byte	2,2,35,20,8
+	.byte	'index',0
+	.word	323
+	.byte	4,2,35,24,8
+	.byte	'stackbudget',0
+	.word	999
+	.byte	8,2,35,28,8
+	.byte	'activation_count',0
+	.word	255
+	.byte	1,2,35,36,8
+	.byte	'access',0
+	.word	255
+	.byte	1,2,35,37,8
+	.byte	'application',0
+	.word	255
+	.byte	1,2,35,38,0,5
+	.byte	'Os_TaskType',0,7,146,3,3
+	.word	2645
+	.byte	18
+	.word	2645
+	.byte	4
+	.word	2895
+	.byte	5
+	.byte	'TaskType',0,7,147,3,47
+	.word	2900
+	.byte	20
+	.byte	'Os_TaskStateType',0,7,155,3,6,4,10
+	.byte	'SUSPENDED',0,0,10
+	.byte	'READY',0,1,10
+	.byte	'WAITING',0,2,10
+	.byte	'RUNNING',0,3,0,5
+	.byte	'TaskStateType',0,7,156,3,31
+	.word	2923
+	.byte	19,7,167,3,3,4,8
+	.byte	'tpmask',0
+	.word	2411
+	.byte	4,2,35,0,0,14
+	.byte	'Os_ResourceDynType_s',0,7,166,3,16,4,8
+	.byte	'saved_priority',0
+	.word	3010
+	.byte	4,2,35,0,0,5
+	.byte	'Os_ResourceDynType',0,7,170,3,3
+	.word	3033
+	.byte	4
+	.word	3033
+	.byte	18
+	.word	3113
+	.byte	14
+	.byte	'Os_ResourceType_s',0,7,171,3,16,12,8
+	.byte	'dynamic',0
+	.word	3118
+	.byte	4,2,35,0,8
+	.byte	'tpmask',0
+	.word	2411
+	.byte	4,2,35,4,8
+	.byte	'access',0
+	.word	255
+	.byte	1,2,35,8,0,5
+	.byte	'Os_ResourceType',0,7,175,3,3
+	.word	3123
+	.byte	7,7,181,3,9,12,8
+	.byte	'maxallowedvalue',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	'ticksperbase',0
+	.word	323
+	.byte	4,2,35,4,8
+	.byte	'mincycle',0
+	.word	323
+	.byte	4,2,35,8,0,5
+	.byte	'AlarmBaseType',0,7,185,3,3
+	.word	3222
+	.byte	7,7,206,3,9,8,8
+	.byte	'Running',0
+	.word	255
+	.byte	1,2,35,0,8
+	.byte	'Pending',0
+	.word	255
+	.byte	1,2,35,1,8
+	.byte	'Delay',0
+	.word	323
+	.byte	4,2,35,4,0,5
+	.byte	'Os_CounterStatusType',0,7,210,3,3
+	.word	3317
+	.byte	21
+	.word	255
+	.byte	1,1,4
+	.word	3403
+	.byte	5
+	.byte	'Os_CounterIncrAdvType',0,7,217,3,22
+	.word	3410
+	.byte	14
+	.byte	's_swd',0,7,222,3,12,4,8
+	.byte	'count',0
+	.word	323
+	.byte	4,2,35,0,0,19,7,221,3,3,4,8
+	.byte	'sw',0
+	.word	3446
+	.byte	4,2,35,0,0,14
+	.byte	'Os_CounterDynType_s',0,7,220,3,16,4,8
+	.byte	'type_dependent',0
+	.word	3474
+	.byte	4,2,35,0,0,5
+	.byte	'Os_CounterDynType',0,7,226,3,3
+	.word	3493
+	.byte	4
+	.word	3493
+	.byte	18
+	.word	3571
+	.byte	14
+	.byte	'Os_CounterType_s',0,7,227,3,16,28,8
+	.byte	'dynamic',0
+	.word	3576
+	.byte	4,2,35,0,8
+	.byte	'advincr',0
+	.word	3415
+	.byte	4,2,35,4,8
+	.byte	'base',0
+	.word	3222
+	.byte	12,2,35,8,8
+	.byte	'core',0
+	.word	1673
+	.byte	4,2,35,20,8
+	.byte	'access',0
+	.word	255
+	.byte	1,2,35,24,8
+	.byte	'application',0
+	.word	255
+	.byte	1,2,35,25,0,5
+	.byte	'Os_CounterType',0,7,234,3,3
+	.word	3581
+	.byte	4
+	.word	3403
+	.byte	18
+	.word	3581
+	.byte	4
+	.word	3733
+	.byte	5
+	.byte	'CounterType',0,7,235,3,52
+	.word	3738
+	.byte	20
+	.byte	'Os_ScheduleTableStatusType',0,7,240,3,6,4,10
+	.byte	'SCHEDULETABLE_STOPPED',0,0,10
+	.byte	'SCHEDULETABLE_NEXT',0,1,10
+	.byte	'SCHEDULETABLE_WAITING',0,2,10
+	.byte	'SCHEDULETABLE_RUNNING',0,3,10
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,5
+	.byte	'ScheduleTableStatusType',0,7,241,3,41
+	.word	3764
+	.byte	18
+	.word	.L14-.L5
+	.byte	4
+	.word	3964
+	.byte	5
+	.byte	'ScheduleTableType',0,7,128,4,58
+	.word	3969
+	.byte	14
+	.byte	'Os_ScheduleTableDynType_s',0,7,130,4,16,16,8
+	.byte	'match',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	'next',0
+	.word	3974
+	.byte	4,2,35,4,8
+	.byte	'state',0
+	.word	3764
+	.byte	4,2,35,8,8
+	.byte	'config',0
+	.word	286
+	.byte	2,2,35,12,0,4
+	.word	4001
+	.byte	18
+	.word	4094
+.L14:
+	.byte	14
+	.byte	'Os_ScheduleTableType_s',0,7,247,3,16,16,8
+	.byte	'dynamic',0
+	.word	4099
+	.byte	4,2,35,0,8
+	.byte	'counter',0
+	.word	3743
+	.byte	4,2,35,4,8
+	.byte	'repeat',0
+	.word	255
+	.byte	1,2,35,8,8
+	.byte	'config',0
+	.word	286
+	.byte	2,2,35,10,8
+	.byte	'initial',0
+	.word	255
+	.byte	1,2,35,12,8
+	.byte	'access',0
+	.word	255
+	.byte	1,2,35,13,8
+	.byte	'application',0
+	.word	255
+	.byte	1,2,35,14,0,5
+	.byte	'Os_ScheduleTableType',0,7,255,3,3
+	.word	4104
+	.byte	18
+	.word	4104
+	.byte	4
+	.word	4284
+	.byte	18
+	.word	3581
+	.byte	4
+	.word	4294
+	.byte	22
+	.word	1397
+	.byte	22
+	.word	2347
+	.byte	22
+	.word	2244
+	.byte	22
+	.word	2905
+	.byte	22
+	.word	2411
+	.byte	22
+	.word	255
+	.byte	22
+	.word	2905
+	.byte	14
+	.byte	'Os_ControlledCoreType_s',0,7,251,6,16,112,8
+	.byte	'TrapInfo',0
+	.word	828
+	.byte	8,2,35,0,8
+	.byte	'lock_taskaccess',0
+	.word	4304
+	.byte	4,2,35,8,8
+	.byte	'ReadyTasks',0
+	.word	4309
+	.byte	4,2,35,12,8
+	.byte	'RunningISR',0
+	.word	4314
+	.byte	4,2,35,16,8
+	.byte	'RunningTask',0
+	.word	4319
+	.byte	4,2,35,20,8
+	.byte	'RunningTPMask',0
+	.word	4324
+	.byte	4,2,35,24,8
+	.byte	'CurrentMeteredObject',0
+	.word	1930
+	.byte	4,2,35,28,8
+	.byte	'IdleMeter',0
+	.word	1727
+	.byte	48,2,35,32,8
+	.byte	'AppAccess',0
+	.word	255
+	.byte	1,2,35,80,8
+	.byte	'AppOverride',0
+	.word	4329
+	.byte	1,2,35,81,8
+	.byte	'GetStackValueAdjust',0
+	.word	999
+	.byte	8,2,35,84,8
+	.byte	'InErrorHook',0
+	.word	255
+	.byte	1,2,35,92,8
+	.byte	'ChainTaskRef',0
+	.word	4334
+	.byte	4,2,35,96,8
+	.byte	'GetStackUsageAdjust',0
+	.word	999
+	.byte	8,2,35,100,8
+	.byte	'InProtectionHook',0
+	.word	255
+	.byte	1,2,35,108,8
+	.byte	'CoreIsActive',0
+	.word	255
+	.byte	1,2,35,109,8
+	.byte	'InShutdownHook',0
+	.word	255
+	.byte	1,2,35,110,0,5
+	.byte	'Os_ControlledCoreType',0,7,141,7,3
+	.word	4339
+	.byte	4
+	.word	323
+	.byte	18
+	.word	2075
+	.byte	4
+	.word	4795
+	.byte	18
+	.word	2645
+	.byte	4
+	.word	4805
+	.byte	4
+	.word	1727
+	.byte	14
+	.byte	'Os_AnyCoreType_s',0,7,151,7,16,96,8
+	.byte	'DisableAllImask',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	'SuspendAllImask',0
+	.word	323
+	.byte	4,2,35,4,8
+	.byte	'SuspendOSImask',0
+	.word	323
+	.byte	4,2,35,8,8
+	.byte	'DisableAllCount',0
+	.word	323
+	.byte	4,2,35,12,8
+	.byte	'SuspendAllCount',0
+	.word	323
+	.byte	4,2,35,16,8
+	.byte	'SuspendOSCount',0
+	.word	323
+	.byte	4,2,35,20,8
+	.byte	'RestartJumpBuf',0
+	.word	948
+	.byte	68,2,35,24,8
+	.byte	'Restartable',0
+	.word	255
+	.byte	1,2,35,92,0,5
+	.byte	'Os_AnyCoreType',0,7,160,7,3
+	.word	4820
+	.byte	5
+	.byte	'unsigned_int',0,8,116,22
+	.word	323
+	.byte	5
+	.byte	'PduIdType',0,9,22,19
+	.word	286
+	.byte	5
+	.byte	'PduLengthType',0,9,26,19
+	.word	286
+	.byte	9,10,113,9,4,10
+	.byte	'TP_DATACONF',0,0,10
+	.byte	'TP_DATARETRY',0,1,10
+	.byte	'TP_CONFPENDING',0,2,0,5
+	.byte	'TpDataStateType',0,10,118,3
+	.word	5122
+	.byte	5
+	.byte	'Can_IdType',0,11,32,16
+	.word	323
+	.byte	5
+	.byte	'Can_HwHandleType',0,11,43,16
+	.word	286
+	.byte	5
+	.byte	'Can_TxObjPriorityClassType',0,12,219,3,16
+	.word	323
+	.byte	14
+	.byte	'Can_TxHwObjectConfigType',0,12,231,3,16,8,8
+	.byte	'MsgObjId',0
+	.word	255
+	.byte	1,2,35,0,8
+	.byte	'HwControllerId',0
+	.word	255
+	.byte	1,2,35,1,8
+	.byte	'TxObjPriorityClass',0
+	.word	323
+	.byte	4,2,35,4,0,5
+	.byte	'Can_TxHwObjectConfigType',0,12,252,3,3
+	.word	5278
+	.byte	14
+	.byte	'Can_RxHwObjectConfigType',0,12,129,4,16,12,8
+	.byte	'MaskRef',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	'MsgId',0
+	.word	323
+	.byte	4,2,35,4,8
+	.byte	'MsgObjId',0
+	.word	255
+	.byte	1,2,35,8,8
+	.byte	'HwControllerId',0
+	.word	255
+	.byte	1,2,35,9,0,5
+	.byte	'Can_RxHwObjectConfigType',0,12,147,4,3
+	.word	5414
+	.byte	11,4
+	.word	255
+	.byte	12,3,0,14
+	.byte	'Can_ControllerMOMapConfigType',0,12,181,4,16,4,8
+	.byte	'ControllerMOMap',0
+	.word	5554
+	.byte	4,2,35,0,0,5
+	.byte	'Can_ControllerMOMapConfigType',0,12,184,4,3
+	.word	5563
+	.byte	14
+	.byte	'Can_NPCRValueType',0,12,188,4,16,2,8
+	.byte	'Can_NPCRValue',0
+	.word	286
+	.byte	2,2,35,0,0,5
+	.byte	'Can_NPCRValueType',0,12,191,4,3
+	.word	5664
+	.byte	14
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,12,194,4,16,8,8
+	.byte	'CanControllerBaudrate',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	'CanControllerBaudrateCfg',0
+	.word	286
+	.byte	2,2,35,4,0,5
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,12,198,4,3
+	.word	5739
+	.byte	18
+	.word	5739
+	.byte	4
+	.word	5904
+	.byte	14
+	.byte	'Can_BaudrateConfigPtrType',0,12,201,4,16,4,8
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	5909
+	.byte	4,2,35,0,0,5
+	.byte	'Can_BaudrateConfigPtrType',0,12,204,4,3
+	.word	5914
+	.byte	14
+	.byte	'Can_EventHandlingType',0,12,226,4,16,4,8
+	.byte	'CanEventType',0
+	.word	5554
+	.byte	4,2,35,0,0,5
+	.byte	'Can_EventHandlingType',0,12,229,4,3
+	.word	6014
+	.byte	5
+	.byte	'Rte_TransformerErrorCode',0,13,130,1,15
+	.word	255
+	.byte	5
+	.byte	'Rte_TransformerClass',0,13,131,1,15
+	.word	255
+	.byte	7,13,168,1,9,12,8
+	.byte	'in',0
+	.word	1673
+	.byte	4,2,35,0,8
+	.byte	'out',0
+	.word	1673
+	.byte	4,2,35,4,8
+	.byte	'used',0
+	.word	286
+	.byte	2,2,35,8,8
+	.byte	'lost_data',0
+	.word	255
+	.byte	1,2,35,10,0,5
+	.byte	'Rte_QDynType',0,13,173,1,3
+	.word	6160
+	.byte	9,13,175,1,9,4,10
+	.byte	'RTE_DRA',0,0,10
+	.byte	'RTE_WOWP',0,1,10
+	.byte	'RTE_TASK',0,2,10
+	.byte	'RTE_ARE',0,3,10
+	.byte	'RTE_EV',0,4,10
+	.byte	'RTE_MSI',0,5,0,5
+	.byte	'Rte_NotificationType',0,13,182,1,3
+	.word	6247
+	.byte	11,128,8
+	.word	255
+	.byte	12,255,7,0,5
+	.byte	'Impl_NVM_DstPtrType_1024',0,14,50,15
+	.word	6345
+	.byte	5
+	.byte	'CanIf_u32_impl',0,14,69,16
+	.word	323
+	.byte	5
+	.byte	'CanIf_u16_impl',0,14,71,16
+	.word	286
+	.byte	5
+	.byte	'CanIf_u8_impl',0,14,73,15
+	.word	255
+	.byte	5
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,14,88,15
+	.word	255
+	.byte	5
+	.byte	'CanIf_PduModeType_Enum_impl',0,14,90,15
+	.word	255
+	.byte	7,14,92,9,2,8
+	.byte	'DeviceMode',0
+	.word	255
+	.byte	1,2,35,0,8
+	.byte	'ChannelMode',0
+	.word	255
+	.byte	1,2,35,1,0,5
+	.byte	'CanIf_ControllerStateType_struct_impl',0,14,95,3
+	.word	6536
+	.byte	5
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,14,100,15
+	.word	255
+	.byte	5
+	.byte	'CanSM_boolean_Impl',0,14,120,15
+	.word	255
+	.byte	5
+	.byte	'CanSM_u8_Impl',0,14,123,15
+	.word	255
+	.byte	5
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,14,128,1,15
+	.word	255
+	.byte	5
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,14,132,1,15
+	.word	255
+	.byte	5
+	.byte	'CanSM_u16_Impl',0,14,136,1,16
+	.word	286
+	.byte	5
+	.byte	'CanSM_TimerStateType_Enum_impl',0,14,138,1,15
+	.word	255
+	.byte	7,14,140,1,9,4,8
+	.byte	'cntTick_u16',0
+	.word	286
+	.byte	2,2,35,0,8
+	.byte	'stTimer',0
+	.word	255
+	.byte	1,2,35,2,0,5
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,14,143,1,3
+	.word	6877
+	.byte	5
+	.byte	'Com_impl_u16',0,14,154,1,16
+	.word	286
+	.byte	5
+	.byte	'Com_impl_u8',0,14,157,1,15
+	.word	255
+	.byte	5
+	.byte	'ComM_uint32_Impl',0,14,173,1,16
+	.word	323
+	.byte	5
+	.byte	'ComM_uint16_Impl',0,14,175,1,16
+	.word	286
+	.byte	5
+	.byte	'ComM_uint8_Impl',0,14,177,1,15
+	.word	255
+	.byte	5
+	.byte	'ComM_bool_Impl',0,14,179,1,15
+	.word	255
+	.byte	7,14,181,1,9,24,8
+	.byte	'ChannelState_e',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	'LightTimeoutCtr_u32',0
+	.word	323
+	.byte	4,2,35,4,8
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	286
+	.byte	2,2,35,8,8
+	.byte	'ChannelMode_u8',0
+	.word	255
+	.byte	1,2,35,10,8
+	.byte	'BusSmMode_u8',0
+	.word	255
+	.byte	1,2,35,11,8
+	.byte	'UserRequestCtr_u8',0
+	.word	255
+	.byte	1,2,35,12,8
+	.byte	'PassiveRequestState_u8',0
+	.word	255
+	.byte	1,2,35,13,8
+	.byte	'PncRequestCtr_u8',0
+	.word	255
+	.byte	1,2,35,14,8
+	.byte	'InhibitionReqStatus_u8',0
+	.word	255
+	.byte	1,2,35,15,8
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	255
+	.byte	1,2,35,16,8
+	.byte	'DiagnosticRequestState_b',0
+	.word	255
+	.byte	1,2,35,17,8
+	.byte	'CommunicationAllowed_b',0
+	.word	255
+	.byte	1,2,35,18,8
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	255
+	.byte	1,2,35,19,8
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	255
+	.byte	1,2,35,20,8
+	.byte	'NmNetworkModeStatus_b',0
+	.word	255
+	.byte	1,2,35,21,0,5
+	.byte	'ComM_ChannelStruct_Impl',0,14,197,1,3
+	.word	7109
+	.byte	7,14,206,1,9,10,8
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	286
+	.byte	2,2,35,0,8
+	.byte	'LimitToNoComCtr_u16',0
+	.word	286
+	.byte	2,2,35,2,8
+	.byte	'RequestedUserMode_t',0
+	.word	255
+	.byte	1,2,35,4,8
+	.byte	'IndicatedUserMode_t',0
+	.word	255
+	.byte	1,2,35,5,8
+	.byte	'numChannelsInFullCom_u8',0
+	.word	255
+	.byte	1,2,35,6,8
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	255
+	.byte	1,2,35,7,8
+	.byte	'numChannelsInNoCom_u8',0
+	.word	255
+	.byte	1,2,35,8,0,5
+	.byte	'ComM_UserStruct_Impl',0,14,214,1,3
+	.word	7613
+	.byte	5
+	.byte	'Dcm_IOOperationResponseType',0,14,252,1,15
+	.word	255
+	.byte	5
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	14,138,2,15
+	.word	255
+	.byte	5
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,14,146,2,15
+	.word	255
+	.byte	5
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,14,150,2,15
+	.word	255
+	.byte	5
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,14,154,2,15
+	.word	255
+	.byte	5
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,14,243,3,34
+	.word	6356
+	.byte	11,128,8
+	.word	255
+	.byte	12,255,7,0,5
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,14,246,3,34
+	.word	6356
+	.byte	5
+	.byte	'Fls_LengthType',0,1,173,3,16
+	.word	323
+	.byte	14
+	.byte	'Fls_JobStartType',0,1,175,3,16,1,23
+	.byte	'Reserved1',0,1
+	.word	255
+	.byte	1,7,2,35,0,23
+	.byte	'Write',0,1
+	.word	255
+	.byte	1,6,2,35,0,23
+	.byte	'Erase',0,1
+	.word	255
+	.byte	1,5,2,35,0,23
+	.byte	'Read',0,1
+	.word	255
+	.byte	1,4,2,35,0,23
+	.byte	'Compare',0,1
+	.word	255
+	.byte	1,3,2,35,0,23
+	.byte	'Reserved2',0,1
+	.word	255
+	.byte	3,0,2,35,0,0,5
+	.byte	'Fls_JobStartType',0,1,183,3,3
+	.word	8455
+	.byte	5
+	.byte	'Fls_17_Pmu_Job_Type',0,1,187,3,15
+	.word	255
+	.byte	4
+	.word	255
+	.byte	18
+	.word	255
+	.byte	4
+	.word	8650
+	.byte	11,2
+	.word	255
+	.byte	12,1,0,14
+	.byte	'Fls_17_Pmu_StateType',0,1,198,3,16,48,8
+	.byte	'FlsReadAddress',0
+	.word	323
+	.byte	4,2,35,0,8
+	.byte	'FlsWriteAddress',0
+	.word	323
+	.byte	4,2,35,4,8
+	.byte	'FlsEraseTimeoutCycleCount',0
+	.word	323
+	.byte	4,2,35,8,8
+	.byte	'FlsWriteTimeoutCycleCount',0
+	.word	323
+	.byte	4,2,35,12,8
+	.byte	'FlsReadLength',0
+	.word	323
+	.byte	4,2,35,16,8
+	.byte	'FlsWriteLength',0
+	.word	323
+	.byte	4,2,35,20,8
+	.byte	'FlsReadBufferPtr',0
+	.word	8645
+	.byte	4,2,35,24,8
+	.byte	'FlsWriteBufferPtr',0
+	.word	8655
+	.byte	4,2,35,28,8
+	.byte	'FlsJobResult',0
+	.word	605
+	.byte	4,2,35,32,8
+	.byte	'FlsMode',0
+	.word	763
+	.byte	4,2,35,36,8
+	.byte	'NotifCaller',0
+	.word	255
+	.byte	1,2,35,40,8
+	.byte	'JobStarted',0
+	.word	8455
+	.byte	1,2,35,41,8
+	.byte	'FlsJobType',0
+	.word	8660
+	.byte	2,2,35,42,8
+	.byte	'FlsOper',0
+	.word	255
+	.byte	1,2,35,44,8
+	.byte	'FlsTimeoutErr',0
+	.word	255
+	.byte	1,2,35,45,8
+	.byte	'FlsTimeoutControl',0
+	.word	255
+	.byte	1,2,35,46,0,5
+	.byte	'Fls_17_Pmu_StateType',0,1,130,4,3
+	.word	8669
+	.byte	5
+	.byte	'Fls_NotifFunctionPtrType',0,1,137,4,16
+	.word	1087
+	.byte	18
+	.word	323
+	.byte	4
+	.word	9147
+	.byte	16,1,1,17
+	.word	323
+	.byte	17
+	.word	323
+	.byte	17
+	.word	9152
+	.byte	17
+	.word	255
+	.byte	0,4
+	.word	9157
+	.byte	5
+	.byte	'Fls_WriteCmdPtrType',0,1,139,4,16
+	.word	9181
+	.byte	16,1,1,17
+	.word	323
+	.byte	0,4
+	.word	9215
+	.byte	5
+	.byte	'Fls_EraseCmdPtrType',0,1,144,4,16
+	.word	9224
+	.byte	5
+	.byte	'rba_BswSrv_uint64',0,15,66,28
+	.word	354
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L6:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,46,0,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0
+	.byte	3,21,0,54,15,0,0,4,15,0,73,19,0,0,5,22,0,3,8,58,15,59,15,57,15,73,19,0,0,6,36,0,3,8,11,15,62,15,0,0,7
+	.byte	19,1,58,15,59,15,57,15,11,15,0,0,8,13,0,3,8,73,19,11,15,56,9,0,0,9,4,1,58,15,59,15,57,15,11,15,0,0,10
+	.byte	40,0,3,8,28,13,0,0,11,1,1,11,15,73,19,0,0,12,33,0,47,15,0,0,13,21,0,54,15,39,12,0,0,14,19,1,3,8,58,15
+	.byte	59,15,57,15,11,15,0,0,15,59,0,3,8,0,0,16,21,1,54,15,39,12,0,0,17,5,0,73,19,0,0,18,38,0,73,19,0,0,19,23
+	.byte	1,58,15,59,15,57,15,11,15,0,0,20,4,1,3,8,58,15,59,15,57,15,11,15,0,0,21,21,0,73,19,54,15,39,12,0,0,22
+	.byte	53,0,73,19,0,0,23,13,0,3,8,11,15,73,19,13,15,12,15,56,9,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L7:
+	.word	.L16-.L15
+.L15:
+	.half	3
+	.word	.L18-.L17
+.L17:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Fls\\inc\\Fls_17_Pmu.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Fee\\api\\Fee.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\MemIf\\src\\MemIf_Rb_MainFunction.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\MemIf\\api\\MemIf_Types.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Integration\\TargetIntegration\\TC275\\Include\\Mcal_TcLib.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0,0
+.L18:
+.L16:
+	.sdecl	'.debug_info',debug,cluster('MemIf_Rb_MainFunction')
+	.sect	'.debug_info'
+.L8:
+	.word	206
+	.half	3
+	.word	.L9
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\MemIf\\src\\MemIf_Rb_MainFunction.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L11,.L10
+	.byte	2
+	.word	.L4
+	.byte	3
+	.byte	'MemIf_Rb_MainFunction',0,1,33,24,1,1,1
+	.word	.L3,.L13,.L2
+	.byte	4
+	.word	.L3,.L13
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('MemIf_Rb_MainFunction')
+	.sect	'.debug_abbrev'
+.L9:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('MemIf_Rb_MainFunction')
+	.sect	'.debug_line'
+.L10:
+	.word	.L20-.L19
+.L19:
+	.half	3
+	.word	.L22-.L21
+.L21:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\MemIf\\src\\MemIf_Rb_MainFunction.c',0,0,0,0,0
+.L22:
+	.byte	5,21,7,0,5,2
+	.word	.L3
+	.byte	3,35,1,5,5,9
+	.half	.L23-.L3
+	.byte	3,1,1,5,1,9
+	.half	.L24-.L23
+	.byte	3,7,1,7,9
+	.half	.L12-.L24
+	.byte	0,1,1
+.L20:
+	.sdecl	'.debug_ranges',debug,cluster('MemIf_Rb_MainFunction')
+	.sect	'.debug_ranges'
+.L11:
+	.word	-1,.L3,0,.L12-.L3,0,0
+	.sdecl	'.debug_loc',debug,cluster('MemIf_Rb_MainFunction')
+	.sect	'.debug_loc'
+.L2:
+	.word	-1,.L3,0,.L13-.L3
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L25:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('MemIf_Rb_MainFunction')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L25,.L3,.L13-.L3
+
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    45  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    46  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    47  #if (MEMIF_FEE_AND_EA_USED == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    48  /**
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    49   *********************************************************************
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    50   * MemIf_Rb_BlockMaintenance(): Calls corresponding block maintenance functions.
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    51   *
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    52   * The function calls the required underlying block maintenance functions,
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    53   * depending on which modules are configured.
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    54   *
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    55   * \param    Block number
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    56   * \retval   E_OK:      Order was accepted
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    57   * \retval   E_NOT_OK:  Order was not accepted.
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    58   * \seealso
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    59   * \usedresources
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    60   *********************************************************************
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    61   */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    62  FUNC(Std_ReturnType, MEMIF_CODE) MemIf_Rb_BlockMaintenance(VAR(uint8, AUTOMATIC) DeviceIndex, VAR(uint16, AUTOMATIC) BlockNumber)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    63  {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    64      VAR(Std_ReturnType,AUTOMATIC) xRetVal = E_NOT_OK;       /* Default return value */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    65  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    66      #if (MEMIF_DEV_ERROR_DETECT == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    67      MemIf_CheckDeviceIndex(DeviceIndex);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    68      #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    69  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    70      if (DeviceIndex == 0)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    71      {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    72          #if( (!(defined(FEE_RB_MAINTAIN))) || (defined(FEE_RB_MAINTAIN) && (FEE_RB_MAINTAIN != FALSE)) )
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    73          xRetVal = Fee_Rb_BlockMaintenance(BlockNumber);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    74          #else
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    75          /* Intentionally empty - will return E_NOT_OK */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    76          #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    77      }
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    78      else
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    79      {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    80          xRetVal = Ea_Rb_BlockMaintenance(BlockNumber);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    81      }
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    82      return(xRetVal);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    83  }
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    84  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    85  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    86  #if (MEMIF_FEE_AND_EA_USED == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    87  /**
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    88   *********************************************************************
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    89   * MemIf_VarLenRead(): MemIf_VarLenRead interface
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    90   *
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    91   * This function places a read job to the FEE when runtime RAM block
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    92   * configuration feature is enabled and the block length is variable.
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    93   *
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    94   * \param    DeviceIndex:   Index of requeste device
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    95   * \param    Blocknumber:   Nvm index (based on this index the
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    96   *                          corresponding Fee index will be searched
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    97   *                          and placed into the order queue)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    98   * \param    BlockOffset:   Offset of block
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	    99   * \param    DataBufferPtr: Pointer to data buffer
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   100   * \param    Length:        Length of block
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   101   * \return   Function success
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   102   * \retval   E_OK:              Order was successfully placed
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   103   * \retval   E_NOT_OK:          Order was not placed because the
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   104   *                              respective order queue entry is
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   105   *                              not empty or the module has not been
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   106   *                              initialized yet
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   107   * \seealso
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   108   * \usedresources
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   109   *********************************************************************
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   110   */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   111  FUNC(Std_ReturnType, MEMIF_CODE) MemIf_Rb_VarLenRead(VAR(uint8, AUTOMATIC) DeviceIndex, VAR(uint16, AUTOMATIC) BlockNumber, VAR(uint16, AUTOMATIC) BlockOffset, P2VAR(uint8, AUTOMATIC, MEMIF_DATA) DataBufferPtr, VAR(uint16, AUTOMATIC) Length)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   112  {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   113      VAR(Std_ReturnType,AUTOMATIC) xRetVal = E_NOT_OK;       /* Default return value */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   114  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   115  #if (MEMIF_DEV_ERROR_DETECT == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   116      MemIf_CheckDeviceIndex(DeviceIndex);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   117  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   118  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   119  #if (MEMIF_FEE_USED == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   120      if (DeviceIndex == 0)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   121      {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   122          /* Block is configured for Fee (Flash) */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   123          xRetVal = Fee_Rb_VarLenRead(BlockNumber,BlockOffset,DataBufferPtr,Length);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   124      }
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   125  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   126  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   127  #if (MEMIF_NUM_OF_EA_DEVICES > 0)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   128      if (DeviceIndex > 0)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   129      {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   130          /* Block is configured for Ea (EEPROM) */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   131          /* Feature not yet available */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   132      }
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   133  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   134  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   135      return(xRetVal);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   136  }
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   137  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   138  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   139  #if (MEMIF_FEE_AND_EA_USED == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   140  /**
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   141   *********************************************************************
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   142   * MemIf_Rb_VarLenWrite(): MemIf_Rb_VarLenWrite interface
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   143   *
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   144   * This function places a write job to the FEE when runtime RAM block
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   145   * configuration feature is enabled and the block length is variable.
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   146   *
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   147   * \param    DeviceIndex:   Index of requested device
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   148   * \param    Blocknumber:   Nvm index (based on this index the
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   149   *                          corresponding Fee index will be searched
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   150   *                          and placed into the order queue)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   151   * \param    DataBufferPtr: Pointer Pointer to data buffer
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   152   * \param    Length:        NV block length
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   153   * \return   Function success
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   154   * \retval   E_OK:              Order was successfully placed
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   155   * \retval   E_NOT_OK:          Order was not placed because the
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   156   *                              respective order queue entry is
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   157   *                              not empty or the module has not been
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   158   *                              initialized yet
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   159   * \seealso
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   160   * \usedresources
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   161   *********************************************************************
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   162   */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   163  FUNC(Std_ReturnType, MEMIF_CODE) MemIf_Rb_VarLenWrite(VAR(uint8, AUTOMATIC) DeviceIndex, VAR(uint16, AUTOMATIC) BlockNumber, P2VAR(uint8, AUTOMATIC, MEMIF_DATA) DataBufferPtr, VAR(uint16, AUTOMATIC) Length)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   164  {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   165      VAR(Std_ReturnType,AUTOMATIC) xRetVal = E_NOT_OK;   /* Default return value */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   166  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   167  #if (MEMIF_DEV_ERROR_DETECT == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   168      MemIf_CheckDeviceIndex(DeviceIndex);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   169  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   170  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   171  #if (MEMIF_FEE_USED == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   172      if (DeviceIndex == 0)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   173      {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   174          /* Block is configured for Fee (Flash) */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   175          xRetVal = Fee_Rb_VarLenWrite(BlockNumber,DataBufferPtr,Length);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   176      }
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   177  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   178  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   179  #if (MEMIF_NUM_OF_EA_DEVICES > 0)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   180      if (DeviceIndex > 0)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   181      {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   182          /* Block is configured for Ea (EEPROM) */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   183          /* Feature not yet available */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   184      }
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   185  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   186  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   187      return(xRetVal);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   188  }
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   189  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   190  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   191  #if (MEMIF_FEE_AND_EA_USED == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   192  /**
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   193   *********************************************************************
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   194   * MemIf_Rb_GetMigrationResult(): MemIf_Rb_GetMigrationResult interface
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   195   *
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   196   * Service returns the migration result of the last data reading
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   197   * during initialisation (calling the API after subsequent read jobs
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   198   * in the same driving cycle does not change the initially returned
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   199   * value anymore).
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   200   *
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   201   * \param    DeviceIndex:   Index of requested device
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   202   * \param    BlockNumber:   Corresponding Fee or Ea block number
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   203   *
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   204   * \retval   MEMIF_RB_MIGRATION_RESULT_INIT_E
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   205   * \retval   MEMIF_RB_MIGRATION_RESULT_NOT_NECESSARY_E
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   206   * \retval   MEMIF_RB_MIGRATION_RESULT_TO_SMALLER_SIZE_E
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   207   * \retval   MEMIF_RB_MIGRATION_RESULT_TO_BIGGER_SIZE_E
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   208   * \retval   MEMIF_RB_MIGRATION_RESULT_NOT_DONE_E
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   209   * \retval   MEMIF_RB_MIGRATION_RESULT_DEACTIVATED_E
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   210   *
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   211   * \seealso
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   212   * \usedresources
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   213   *********************************************************************
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   214   */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   215  FUNC(MemIf_Rb_MigrationResult_ten, MEMIF_CODE) MemIf_Rb_GetMigrationResult(VAR(uint8, AUTOMATIC) DeviceIndex,
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   216                                                                             VAR(uint16, AUTOMATIC) BlockNumber)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   217  {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   218      VAR(MemIf_Rb_MigrationResult_ten, AUTOMATIC) xRetVal = MEMIF_RB_MIGRATION_RESULT_INIT_E;  /* Default return value */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   219  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   220  #if (MEMIF_DEV_ERROR_DETECT == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   221      MemIf_CheckDeviceIndex(DeviceIndex);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   222  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   223  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   224  #if (MEMIF_FEE_USED == STD_ON)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   225      if (DeviceIndex == 0)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   226      {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   227          /* Block is configured for Fee (Flash) */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   228          xRetVal = Fee_Rb_GetMigrationResult(BlockNumber);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   229      }
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   230  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   231  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   232  #if (MEMIF_NUM_OF_EA_DEVICES > 0)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   233      if (DeviceIndex > 0)
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   234      {
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   235          /* Block is configured for Ea (EEPROM) */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   236          /* Feature not yet available */
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   237      }
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   238  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   239  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   240      return(xRetVal);
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   241  }
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   242  #endif
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   243  
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   244  #define MEMIF_STOP_SEC_CODE
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   245  #include "MemIf_MemMap.h"
+; BSW\src\BSW\Gen\MemIf\src\MemIf_Rb_MainFunction.c	   246  
+
+	; Module end

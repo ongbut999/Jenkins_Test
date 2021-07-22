@@ -1,0 +1,3553 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc10352a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds_Cdtcs.src BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.DcmDspUds_Cdtcs.Dcm_Dsp_CDTCSIni',code,cluster('Dcm_Dsp_CDTCSIni')
+	.sect	'.text.DcmDspUds_Cdtcs.Dcm_Dsp_CDTCSIni'
+	.align	2
+	
+	.global	Dcm_Dsp_CDTCSIni
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	     1  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	     2  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	     3  #include "DcmDspUds_Cdtcs_Inf.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	     4  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	     5  #if ( (DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF) && (DCM_CFG_DSP_CONTROLDTCSETTING_ENABLED != DCM_CFG_OFF) )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	     6  #define DCM_START_SEC_VAR_CLEARED_BOOLEAN /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	     7  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	     8  VAR( boolean, DCM_VAR )  Dcm_DspCDTCStatus_b;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	     9  #define DCM_STOP_SEC_VAR_CLEARED_BOOLEAN /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    10  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    11  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    12  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    13  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    14  #define DCM_START_SEC_CODE /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    15  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    16  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    17   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    18   * Dcm_Dsp_CDTCSIni : Initialisation function for Control Diagnostic Trouble Code Setting Service
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    19   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    20   * \param           None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    21   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    22   * \retval          None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    23   * \seealso
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    24   * \usedresources
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    25   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    26   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    27  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    28  FUNC(void,DCM_CODE) Dcm_Dsp_CDTCSIni(void)
+; Function Dcm_Dsp_CDTCSIni
+.L38:
+Dcm_Dsp_CDTCSIni:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    29  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    30      /* Set CDTC state to TRUE */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    31  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    32      Dcm_DspCDTCStatus_b = TRUE;
+	movh.a	a15,#@his(Dcm_DspCDTCStatus_b)
+	lea	a15,[a15]@los(Dcm_DspCDTCStatus_b)
+.L187:
+	mov	d15,#1
+.L188:
+	st.b	[a15],d15
+.L189:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    33  }
+	ret
+.L86:
+	
+__Dcm_Dsp_CDTCSIni_function_end:
+	.size	Dcm_Dsp_CDTCSIni,__Dcm_Dsp_CDTCSIni_function_end-Dcm_Dsp_CDTCSIni
+.L58:
+	; End of function
+	
+	.sdecl	'.text.DcmDspUds_Cdtcs.Dcm_DcmControlDTCSetting',code,cluster('Dcm_DcmControlDTCSetting')
+	.sect	'.text.DcmDspUds_Cdtcs.Dcm_DcmControlDTCSetting'
+	.align	2
+	
+	.global	Dcm_DcmControlDTCSetting
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    34  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    35  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    36   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    37   * Dcm_DcmControlDTCSetting :
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    38   * This service is used to enable or disable the setting of DTCs
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    39   * This function is called by DSD, when SID is 0x85,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    40   * this service is provided in DSP module and configured in DCM identifier table.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    41   * When the DSP receives such a request it executes DEM function Dem_DisableDTCSetting/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    42   * Dem_EnableDTCSetting to disable/enable the setting of DTCs
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    43   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    44   * \param           pMsgContext    Pointer to message structure
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    45   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    46   * \retval          None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    47   * \seealso
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    48   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    49   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    50   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    51  FUNC(Std_ReturnType,DCM_CODE) Dcm_DcmControlDTCSetting (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+; Function Dcm_DcmControlDTCSetting
+.L40:
+Dcm_DcmControlDTCSetting:	.type	func
+	mov.aa	a15,a4
+.L98:
+	mov.aa	a12,a5
+.L100:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    52  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    53      VAR(uint32,                         AUTOMATIC) dataDTC_u32;            /* Variable to store DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    54      VAR(uint16,                         AUTOMATIC) nrReqLen_u16;           /* Variable to store request length         */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    55      VAR(uint8,                          AUTOMATIC) dataDtcSettingType_u8;    /* DTC Setting type                         */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    56      VAR(Dem_ReturnControlDTCSettingType,AUTOMATIC) dataDemRetVal_u8;             /* DEM return value                         */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    57      VAR(Std_ReturnType,              AUTOMATIC) dataRetSetCtrlOpRectype_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    58      VAR(Std_ReturnType,                   AUTOMATIC)  dataServRetval_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    59  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    60      /* initialise local variables */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    61      *dataNegRespCode_u8 = 0;
+	mov	d15,#0
+.L144:
+	st.b	[a12],d15
+.L145:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    62      dataDemRetVal_u8 = DEM_CONTROL_DTC_SETTING_N_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    63      dataDtcSettingType_u8 = 0x0;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    64      dataRetSetCtrlOpRectype_u8 = E_OK;
+	mov	d2,#0
+.L101:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    65      nrReqLen_u16 = DCM_PRV_CDTC_REQUEST_LENGTH;
+	mov	d0,#1
+.L102:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    66      dataDTC_u32  = DEM_DTC_GROUP_ALL_DTCS;
+	mov.u	d8,#65535
+.L103:
+	addih	d8,d8,#255
+.L146:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    67      /* Get the sub-function from the request */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    68      dataDtcSettingType_u8 = pMsgContext->reqData[DCM_PRV_CDTC_POSITION_SUBFUNC];
+	ld.a	a4,[a15]4
+.L97:
+	ld.bu	d9,[a4]
+.L104:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    69      dataServRetval_u8=E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    70      /*Opstatus possed by the central statemachine is unused currently, opstatus variables related to service needs to be
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    71       * removed and the one passed by the central statemachine needs to be used, this would be taken care with task XXXXX*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    72  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    73      /* If OpStatus is set to DCM_CANCEL then call the Ini function for Re-Setting */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    74      if (OpStatus == DCM_CANCEL)
+	jne	d4,#2,.L2
+.L147:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    75      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    76          /* Call the Ini Function */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    77          Dcm_Dsp_CDTCSIni();
+	call	Dcm_Dsp_CDTCSIni
+.L96:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    78          /* Return E_OK as Ini function is always serviced */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    79          dataServRetval_u8 = E_OK;
+	mov	d2,#0
+.L105:
+	j	.L3
+.L2:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    80      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    81      else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    82      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    83          /* Check if subfunction configured is 0x01 or 0x02 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    84          if((dataDtcSettingType_u8 == DCM_PRV_CDTC_OFF) || (dataDtcSettingType_u8 == DCM_PRV_CDTC_ON))
+	jeq	d9,#2,.L4
+.L148:
+	jne	d9,#1,.L5
+.L4:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    85          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    86              /* Check if DTCSettingCtrlOpRecLen is configured greater than 0 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    87  #if(DCM_CFG_DSP_SUPPORTCDTCRECORD != FALSE)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    88              /* Set request length to length of DTCSetCtrlOpRec and subfunction */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    89              nrReqLen_u16 = DCM_PRV_CDTC_RECORD_LENGTH  + DCM_PRV_CDTC_REQUEST_LENGTH ;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    90              dataDTC_u32 =((((uint32) pMsgContext->reqData[DCM_PRV_CDTC_POSITION_SUBFUNC+1u]) << 16u) |
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    91                                       (((uint32) pMsgContext->reqData[DCM_PRV_CDTC_POSITION_SUBFUNC+2u]) << 8u) |
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    92                                        ((uint32) pMsgContext->reqData[DCM_PRV_CDTC_POSITION_SUBFUNC+3u]));
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    93  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    94              /* Check the length of the request message */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    95              if(pMsgContext->reqDataLen == nrReqLen_u16)
+	ld.w	d15,[a15]16
+.L149:
+	jne	d15,#1,.L6
+.L150:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    96              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    97                  /* Call the application function if DTCSettingControlOptionRecord is present in request */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    98                  if(nrReqLen_u16 > DCM_PRV_CDTC_REQUEST_LENGTH)
+	jlt.u	d0,#2,.L7
+.L151:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	    99                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   100                      dataRetSetCtrlOpRectype_u8 = DcmAppl_DcmCheckCDTCRecord(&pMsgContext->reqData[1], DCM_PRV_CDTC_RECORD_LENGTH, dataNegRespCode_u8);
+	add.a	a4,#1
+.L152:
+	mov	d4,#3
+.L106:
+	mov.aa	a5,a12
+	call	DcmAppl_DcmCheckCDTCRecord
+.L7:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   101                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   102                  if(dataRetSetCtrlOpRectype_u8 == E_OK)
+	jne	d2,#0,.L8
+.L153:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   103                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   104                      *dataNegRespCode_u8 = 0x00;
+	mov	d0,#0
+.L154:
+	st.b	[a12],d0
+.L155:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   105                      /* Sub-function parameter indicates server to stop the setting of DTCs */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   106                      if(dataDtcSettingType_u8 == DCM_PRV_CDTC_OFF)
+	jne	d9,#2,.L9
+.L156:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   107                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   108                          /*Call Application function to get permission to disable DTC Storage*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   109                          DcmAppl_DisableDTCSetting(dataNegRespCode_u8);
+	mov.aa	a4,a12
+.L108:
+	call	DcmAppl_DisableDTCSetting
+.L107:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   110  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   111                          /* No error is reported from application */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   112                          if (*dataNegRespCode_u8 == 0x00)
+	ld.bu	d15,[a12]
+.L157:
+	jne	d15,#0,.L10
+.L158:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   113                          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   114                              /* Request DEM to disable the DTC settings */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   115                              dataDemRetVal_u8 = Dem_DisableDTCSetting(dataDTC_u32, DEM_DTC_KIND_ALL_DTCS);
+	mov	d5,#1
+	mov	d4,d8
+.L109:
+	call	Dem_DisableDTCSetting
+.L110:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   116                              if(dataDemRetVal_u8 == DEM_CONTROL_DTC_SETTING_OK)
+	jne	d2,#0,.L11
+.L159:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   117                              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   118                                  /*Set CDTC state to FALSE*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   119                                  Dcm_DspCDTCStatus_b = FALSE;
+	movh.a	a2,#@his(Dcm_DspCDTCStatus_b)
+	lea	a2,[a2]@los(Dcm_DspCDTCStatus_b)
+.L160:
+	mov	d0,#0
+.L161:
+	st.b	[a2],d0
+.L162:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   120  #if (DCM_CFG_RTESUPPORT_ENABLED!=DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   121                                  (void)SchM_Switch_Dcm_DcmControlDTCSetting(RTE_MODE_DcmControlDTCSetting_DISABLEDTCSETTING);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   122  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   123                                  DcmAppl_DcmControlDtcSettingEnableStatus(Dcm_DspCDTCStatus_b);
+	mov	d4,#0
+	call	DcmAppl_DcmControlDtcSettingEnableStatus
+.L111:
+	j	.L12
+.L11:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   124                              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   125                              /* If the DTC group is invalid */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   126                              else if(dataDemRetVal_u8 == DEM_CONTROL_DTC_WRONG_DTCGROUP)
+	jne	d2,#2,.L13
+.L163:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   127                              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   128                                  /* Send negative response code: Request Out Of Range */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   129                                  *dataNegRespCode_u8  = DCM_E_REQUESTOUTOFRANGE;
+	mov	d15,#49
+.L164:
+	st.b	[a12],d15
+.L165:
+	j	.L14
+.L13:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   130                                  dataServRetval_u8=E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   131                              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   132                              /* If request is rejected by the DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   133                              else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   134                              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   135                                  /* Send negative response code: Condition Not Correct */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   136                                  *dataNegRespCode_u8  = DCM_E_CONDITIONSNOTCORRECT;
+	mov	d15,#34
+.L166:
+	st.b	[a12],d15
+.L14:
+.L12:
+.L10:
+	j	.L15
+.L9:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   137                                  dataServRetval_u8=E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   138                              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   139                          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   140                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   141                      /* Sub-function parameter indicates server to resume the setting of DTCs */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   142                      else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   143                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   144                          /* request the DEM to enable the DTC settings */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   145                          dataDemRetVal_u8 = Dem_EnableDTCSetting (dataDTC_u32, DEM_DTC_KIND_ALL_DTCS);
+	mov	d5,#1
+	mov	d4,d8
+.L113:
+	call	Dem_EnableDTCSetting
+.L112:
+	mov	d15,d2
+.L115:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   146                          /*Call application function to pass the status of DTC enabling*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   147                          DcmAppl_EnableDTCSetting(dataDemRetVal_u8);
+	mov	d4,d15
+.L114:
+	call	DcmAppl_EnableDTCSetting
+.L117:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   148  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   149                          if(dataDemRetVal_u8 == DEM_CONTROL_DTC_SETTING_OK)
+	jne	d15,#0,.L16
+.L167:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   150                          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   151                              /*Set CDTC state to TRUE*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   152                              Dcm_DspCDTCStatus_b = TRUE;
+	movh.a	a2,#@his(Dcm_DspCDTCStatus_b)
+	lea	a2,[a2]@los(Dcm_DspCDTCStatus_b)
+.L168:
+	mov	d15,#1
+.L116:
+	st.b	[a2],d15
+.L169:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   153  #if (DCM_CFG_RTESUPPORT_ENABLED!=DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   154                              (void)SchM_Switch_Dcm_DcmControlDTCSetting(RTE_MODE_DcmControlDTCSetting_ENABLEDTCSETTING);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   155  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   156                              DcmAppl_DcmControlDtcSettingEnableStatus(Dcm_DspCDTCStatus_b);
+	mov	d4,#1
+	call	DcmAppl_DcmControlDtcSettingEnableStatus
+.L170:
+	j	.L17
+.L16:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   157                          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   158                          /* If the DTC group is invalid */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   159                          else if(dataDemRetVal_u8 == DEM_CONTROL_DTC_WRONG_DTCGROUP)
+	jne	d15,#2,.L18
+.L171:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   160                          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   161                              /* Send negative response code: Request Out Of Range */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   162                              *dataNegRespCode_u8  = DCM_E_REQUESTOUTOFRANGE;
+	mov	d15,#49
+.L118:
+	st.b	[a12],d15
+.L172:
+	j	.L19
+.L18:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   163                              dataServRetval_u8=E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   164                          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   165                          /* If request is rejected by the DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   166                          else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   167                          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   168                              /* Send negative response code: Condition Not Correct */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   169                              *dataNegRespCode_u8  = DCM_E_CONDITIONSNOTCORRECT;
+	mov	d15,#34
+.L119:
+	st.b	[a12],d15
+.L19:
+.L17:
+.L15:
+	j	.L20
+.L8:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   170                              dataServRetval_u8=E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   171                          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   172                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   173                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   174                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   175                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   176                      if(*dataNegRespCode_u8 == 0x00)
+	ld.bu	d15,[a12]
+.L173:
+	jne	d15,#0,.L21
+.L174:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   177                     {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   178                        *dataNegRespCode_u8  = DCM_E_REQUESTOUTOFRANGE;
+	mov	d15,#49
+.L175:
+	st.b	[a12],d15
+.L21:
+.L20:
+	j	.L22
+.L6:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   179                        dataServRetval_u8=E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   180                     }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   181                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   182              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   183              /* Sub-function not supported */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   184              else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   185              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   186                  /* Send negative response code: Invalid message length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   187                  *dataNegRespCode_u8  = DCM_E_INCORRECTMESSAGELENGTHORINVALIDFORMAT;
+	mov	d15,#19
+.L176:
+	st.b	[a12],d15
+.L22:
+	j	.L23
+.L5:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   188                  dataServRetval_u8=E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   189              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   190          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   191          /* Sub-function not supported */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   192          else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   193          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   194              /* Send negative response code: Sub function not supported */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   195              *dataNegRespCode_u8  = DCM_E_SUBFUNCTIONNOTSUPPORTED;
+	mov	d15,#18
+.L177:
+	st.b	[a12],d15
+.L23:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   196              dataServRetval_u8=E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   197          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   198  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   199          /* Is Negative response code found? */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   200          if(*dataNegRespCode_u8 == 0)
+	ld.bu	d15,[a12]
+.L178:
+	jne	d15,#0,.L24
+.L179:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   201          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   202              /* Set the positive response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   203              pMsgContext->resDataLen = 0x01;
+	mov	d15,#1
+.L180:
+	st.w	[a15]12,d15
+.L181:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   204              /* Fill the sub function in response buffer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   205              pMsgContext->resData[DCM_PRV_CDTC_POSITION_SUBFUNC] = dataDtcSettingType_u8;
+	ld.a	a15,[a15]
+.L99:
+	st.b	[a15],d9
+.L182:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   206              dataServRetval_u8=E_OK;
+	mov	d2,#0
+.L120:
+	j	.L25
+.L24:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   207          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   208          else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   209          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   210              dataServRetval_u8=E_NOT_OK;
+	mov	d2,#1
+.L25:
+.L3:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   211          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   212      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   213      return dataServRetval_u8;
+	j	.L26
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   214  }
+.L26:
+	ret
+.L72:
+	
+__Dcm_DcmControlDTCSetting_function_end:
+	.size	Dcm_DcmControlDTCSetting,__Dcm_DcmControlDTCSetting_function_end-Dcm_DcmControlDTCSetting
+.L53:
+	; End of function
+	
+	.sdecl	'.text.DcmDspUds_Cdtcs.Dcm_ControlDtcSettingExit',code,cluster('Dcm_ControlDtcSettingExit')
+	.sect	'.text.DcmDspUds_Cdtcs.Dcm_ControlDtcSettingExit'
+	.align	2
+	
+	.global	Dcm_ControlDtcSettingExit
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   215  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   216  #if ( DCM_CFG_RTESUPPORT_ENABLED == DCM_CFG_OFF )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   217  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   218  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   219   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   220   * Dcm_GetControlDTCSetting_EnableStatus : Function to get the status of control Dtc setting
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   221   * Returns true, if Dtc setting is enabled and returns false if Dtc setting is disabled
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   222   * Can be used by other SWCs and BSW modules in case RTE is not supported.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   223   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   224   * \param           None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   225   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   226   * \retval          None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   227   * \seealso
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   228   * \usedresources
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   229   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   230   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   231  FUNC(boolean,DCM_CODE) Dcm_GetControlDTCSetting_EnableStatus(void)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   232  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   233      return (Dcm_DspCDTCStatus_b);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   234  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   235  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   236  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   237  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   238  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   239   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   240   * Dcm_ControlDtcSettingExit : The function has to be called when there is a session change.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   241   * If the control Dtc setting is disabled, the function will re-enable the same, if there
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   242   * is a session change to DEFAULT session or to a session in which the Dtc setting is not supported
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   243   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   244   * \param           None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   245   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   246   * \retval          None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   247   * \seealso
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   248   * \usedresources
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   249   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   250   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   251  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   252  FUNC(void,DCM_CODE) Dcm_ControlDtcSettingExit(void)
+; Function Dcm_ControlDtcSettingExit
+.L42:
+Dcm_ControlDtcSettingExit:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   253  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   254      VAR(uint8,AUTOMATIC) idxCdtc_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   255      VAR(Dem_ReturnControlDTCSettingType,AUTOMATIC) dataDemRetVal_u8;    /* DEM return value  */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   256      VAR(uint32,AUTOMATIC) session_active_u32;  /* Variable to store the requested session */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   257      VAR(uint32,AUTOMATIC) allowed_session_u32; /* Variable to hold the current active session*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   258      /* Get the index of the control Dtc setting service index from the service table*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   259      idxCdtc_u8 = Dcm_Dsld_Conf_cs.sid_table_pcs[Dcm_DsldGlobal_st.datActiveSrvtable_u8].cdtc_index_u8;
+	movh.a	a15,#@his(Dcm_DsldGlobal_st)
+	lea	a15,[a15]@los(Dcm_DsldGlobal_st)
+.L194:
+	movh.a	a2,#@his(Dcm_Dsld_Conf_cs)
+	lea	a2,[a2]@los(Dcm_Dsld_Conf_cs)
+.L195:
+	ld.a	a2,[a2]16
+.L196:
+	ld.bu	d15,[a15]8
+.L197:
+	addsc.a	a2,a2,d15,#3
+.L198:
+	ld.bu	d15,[a2]6
+.L121:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   260      /* Get the allowed sessions for the control Dtc setting*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   261      if(idxCdtc_u8 != 0xFFu)
+	mov	d0,#255
+.L199:
+	jeq	d15,d0,.L27
+.L200:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   262      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   263          allowed_session_u32=Dcm_Dsld_Conf_cs.sid_table_pcs[Dcm_DsldGlobal_st.datActiveSrvtable_u8].ptr_service_table_pcs[idxCdtc_u8].allowed_session_b32;
+	mul	d15,d15,#36
+.L122:
+	ld.a	a2,[a2]
+.L201:
+	addsc.a	a2,a2,d15,#0
+.L202:
+	ld.w	d0,[a2]
+.L123:
+	j	.L28
+.L27:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   264      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   265      else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   266      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   267          allowed_session_u32=0xffffffffu;
+	mov	d0,#-1
+.L28:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   268      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   269      /* Get the current active session*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   270      session_active_u32 = (uint32)(0x00000001uL << Dcm_DsldGlobal_st.idxActiveSession_u8);
+	mov	d1,#1
+.L203:
+	ld.bu	d15,[a15]3
+.L204:
+	sh	d15,d1,d15
+.L125:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   271      /* check whether the session is default, or the new session is allowed for control Dtc setting*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   272      if((session_active_u32 == ((uint32)DCM_DEFAULT_SESSION))||((allowed_session_u32 & session_active_u32) != session_active_u32))
+	jeq	d15,#1,.L29
+.L205:
+	and	d0,d15
+.L124:
+	jeq	d15,d0,.L30
+.L29:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   273      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   274          /*If CDTC state is set to FALSE*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   275          if(Dcm_DspCDTCStatus_b == FALSE)
+	movh.a	a15,#@his(Dcm_DspCDTCStatus_b)
+	lea	a15,[a15]@los(Dcm_DspCDTCStatus_b)
+	ld.bu	d15,[a15]
+.L126:
+	jne	d15,#0,.L31
+.L206:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   276          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   277              /* Call the Dem function to enable the Dtc setting*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   278              dataDemRetVal_u8 =Dem_EnableDTCSetting(DEM_DTC_GROUP_ALL_DTCS, DEM_DTC_KIND_ALL_DTCS);
+	mov.u	d4,#65535
+	addih	d4,d4,#255
+.L207:
+	mov	d5,#1
+	call	Dem_EnableDTCSetting
+.L127:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   279              if(dataDemRetVal_u8 == DEM_CONTROL_DTC_SETTING_OK)
+	jne	d2,#0,.L32
+.L208:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   280              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   281                  /*Set CDTC state to TRUE*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   282                  Dcm_DspCDTCStatus_b = TRUE;
+	mov	d15,#1
+.L209:
+	st.b	[a15],d15
+.L210:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   283                  /* Inform schm or application about the session change*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   284  #if (DCM_CFG_RTESUPPORT_ENABLED!=DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   285                  (void)SchM_Switch_Dcm_DcmControlDTCSetting(RTE_MODE_DcmControlDTCSetting_ENABLEDTCSETTING);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   286  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   287                  DcmAppl_DcmControlDtcSettingEnableStatus(Dcm_DspCDTCStatus_b);
+	mov	d4,#1
+	call	DcmAppl_DcmControlDtcSettingEnableStatus
+.L32:
+.L31:
+.L30:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   288              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   289          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   290      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   291  }
+	ret
+.L87:
+	
+__Dcm_ControlDtcSettingExit_function_end:
+	.size	Dcm_ControlDtcSettingExit,__Dcm_ControlDtcSettingExit_function_end-Dcm_ControlDtcSettingExit
+.L63:
+	; End of function
+	
+	.sdecl	'.text.DcmDspUds_Cdtcs.Dcm_CDTCModeStatusCheck',code,cluster('Dcm_CDTCModeStatusCheck')
+	.sect	'.text.DcmDspUds_Cdtcs.Dcm_CDTCModeStatusCheck'
+	.align	2
+	
+	.global	Dcm_CDTCModeStatusCheck
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   292  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   293  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   294  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   295   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   296   * Dcm_CDTCModeStatusCheck : The function will check whether the check in configured mode rule/DcmAppl API
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   297   * passes if the control Dtc setting is disabled.If the mode rule fails, it will re-enable the Dtc setting.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   298   * The function has to be cyclically called from the main function.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   299   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   300   * \param           None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   301   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   302   * \retval          None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   303   * \seealso
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   304   * \usedresources
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   305   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   306   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   307  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   308  FUNC(void,DCM_CODE) Dcm_CDTCModeStatusCheck(void)
+; Function Dcm_CDTCModeStatusCheck
+.L44:
+Dcm_CDTCModeStatusCheck:	.type	func
+	sub.a	a10,#8
+.L128:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   309  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   310      VAR( boolean, DCM_VAR ) flgModeRetval_b;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   311      VAR(uint8,AUTOMATIC) dataNegRespCode_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   312      VAR(Dem_ReturnControlDTCSettingType,AUTOMATIC) dataDemRetVal_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   313      dataNegRespCode_u8 =0x00;
+	mov	d15,#0
+.L215:
+	st.b	[a10],d15
+.L216:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   314  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   315      /* Control Dtc setting disabled?*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   316      /*IfCDTC state is set to FALSE*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   317      if(Dcm_DspCDTCStatus_b == FALSE)
+	movh.a	a15,#@his(Dcm_DspCDTCStatus_b)
+	lea	a15,[a15]@los(Dcm_DspCDTCStatus_b)
+	ld.bu	d15,[a15]
+.L217:
+	jne	d15,#0,.L33
+.L218:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   318      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   319          /* Call the mode function to check the mode rule status*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   320          flgModeRetval_b=Dcm_ControlDtcSettingModecheck_b(&dataNegRespCode_u8);
+	lea	a4,[a10]0
+	call	Dcm_ControlDtcSettingModecheck_b
+.L129:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   321          /* If the mode rule returns false, enable the Dtc setting*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   322  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   323          if((flgModeRetval_b == FALSE) || (dataNegRespCode_u8 != 0u))
+	jeq	d2,#0,.L34
+.L219:
+	ld.bu	d15,[a10]
+.L220:
+	jeq	d15,#0,.L35
+.L34:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   324          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   325              /* Call the Dem function to enable Dtc setting*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   326              dataDemRetVal_u8 = Dem_EnableDTCSetting(DEM_DTC_GROUP_ALL_DTCS, DEM_DTC_KIND_ALL_DTCS);
+	mov.u	d4,#65535
+	addih	d4,d4,#255
+.L221:
+	mov	d5,#1
+	call	Dem_EnableDTCSetting
+.L130:
+	mov	d15,d2
+.L132:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   327              DcmAppl_EnableDTCSetting(dataDemRetVal_u8);
+	mov	d4,d15
+.L131:
+	call	DcmAppl_EnableDTCSetting
+.L134:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   328              if(dataDemRetVal_u8 == DEM_CONTROL_DTC_SETTING_OK)
+	jne	d15,#0,.L36
+.L222:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   329              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   330                  /*Set CDTC state to TRUE*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   331                  Dcm_DspCDTCStatus_b = TRUE;
+	mov	d15,#1
+.L133:
+	st.b	[a15],d15
+.L223:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   332                  /* Inform schm or application about the enabling of Dtc setting*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   333  #if (DCM_CFG_RTESUPPORT_ENABLED!=DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   334                  (void)SchM_Switch_Dcm_DcmControlDTCSetting(RTE_MODE_DcmControlDTCSetting_ENABLEDTCSETTING);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   335  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   336                  DcmAppl_DcmControlDtcSettingEnableStatus(Dcm_DspCDTCStatus_b);
+	mov	d4,#1
+	call	DcmAppl_DcmControlDtcSettingEnableStatus
+.L36:
+.L35:
+.L33:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   337              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   338          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   339      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   340  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   341  }
+	ret
+.L92:
+	
+__Dcm_CDTCModeStatusCheck_function_end:
+	.size	Dcm_CDTCModeStatusCheck,__Dcm_CDTCModeStatusCheck_function_end-Dcm_CDTCModeStatusCheck
+.L68:
+	; End of function
+	
+	.sdecl	'.bss.DcmDspUds_Cdtcs.Dcm_DspCDTCStatus_b',data,cluster('Dcm_DspCDTCStatus_b')
+	.sect	'.bss.DcmDspUds_Cdtcs.Dcm_DspCDTCStatus_b'
+	.global	Dcm_DspCDTCStatus_b
+Dcm_DspCDTCStatus_b:	.type	object
+	.size	Dcm_DspCDTCStatus_b,1
+	.space	1
+	.calls	'Dcm_DcmControlDTCSetting','Dcm_Dsp_CDTCSIni'
+	.calls	'Dcm_DcmControlDTCSetting','DcmAppl_DcmCheckCDTCRecord'
+	.calls	'Dcm_DcmControlDTCSetting','DcmAppl_DisableDTCSetting'
+	.calls	'Dcm_DcmControlDTCSetting','Dem_DisableDTCSetting'
+	.calls	'Dcm_DcmControlDTCSetting','DcmAppl_DcmControlDtcSettingEnableStatus'
+	.calls	'Dcm_DcmControlDTCSetting','Dem_EnableDTCSetting'
+	.calls	'Dcm_DcmControlDTCSetting','DcmAppl_EnableDTCSetting'
+	.calls	'Dcm_ControlDtcSettingExit','Dem_EnableDTCSetting'
+	.calls	'Dcm_ControlDtcSettingExit','DcmAppl_DcmControlDtcSettingEnableStatus'
+	.calls	'Dcm_CDTCModeStatusCheck','Dcm_ControlDtcSettingModecheck_b'
+	.calls	'Dcm_CDTCModeStatusCheck','Dem_EnableDTCSetting'
+	.calls	'Dcm_CDTCModeStatusCheck','DcmAppl_EnableDTCSetting'
+	.calls	'Dcm_CDTCModeStatusCheck','DcmAppl_DcmControlDtcSettingEnableStatus'
+	.calls	'Dcm_Dsp_CDTCSIni','',0
+	.calls	'Dcm_DcmControlDTCSetting','',0
+	.calls	'Dcm_ControlDtcSettingExit','',0
+	.extern	Dcm_Dsld_Conf_cs
+	.extern	Dcm_DsldGlobal_st
+	.extern	Dem_DisableDTCSetting
+	.extern	Dem_EnableDTCSetting
+	.extern	Dcm_ControlDtcSettingModecheck_b
+	.extern	DcmAppl_DisableDTCSetting
+	.extern	DcmAppl_EnableDTCSetting
+	.extern	DcmAppl_DcmControlDtcSettingEnableStatus
+	.extern	DcmAppl_DcmCheckCDTCRecord
+	.calls	'Dcm_CDTCModeStatusCheck','',8
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L46:
+	.word	16207
+	.half	3
+	.word	.L47
+	.byte	4
+.L45:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L48
+.L71:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.word	158
+	.byte	4
+	.byte	'rba_DiagLib_Bit8SetBit',0,3,1,36,19,1,1,5
+	.byte	'buffer',0,1,36,49
+	.word	175
+	.byte	5
+	.byte	'bit_position',0,1,36,63
+	.word	158
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBit',0,3,1,42,19,1,1,5
+	.byte	'buffer',0,1,42,51
+	.word	175
+	.byte	5
+	.byte	'bit_position',0,1,42,65
+	.word	158
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit8GetSingleBit',0,3,1,60,20
+	.word	158
+	.byte	1,1,5
+	.byte	'value',0,1,60,55
+	.word	158
+	.byte	5
+	.byte	'bit_position',0,1,60,68
+	.word	158
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBits',0,3,1,77,19,1,1,5
+	.byte	'value',0,1,77,52
+	.word	175
+	.byte	5
+	.byte	'bit_position',0,1,77,65
+	.word	158
+	.byte	5
+	.byte	'number_of_bits',0,1,77,85
+	.word	158
+	.byte	6,0
+.L80:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,3
+	.word	488
+	.byte	4
+	.byte	'rba_DiagLib_Bit16SetBit',0,3,2,36,19,1,1,5
+	.byte	'buffer',0,2,36,51
+	.word	510
+	.byte	5
+	.byte	'bit_position',0,2,36,65
+	.word	158
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBit',0,3,2,42,19,1,1,5
+	.byte	'buffer',0,2,42,53
+	.word	510
+	.byte	5
+	.byte	'bit_position',0,2,42,67
+	.word	158
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit16GetSingleBit',0,3,2,60,21
+	.word	488
+	.byte	1,1,5
+	.byte	'value',0,2,60,58
+	.word	488
+	.byte	5
+	.byte	'bit_position',0,2,60,71
+	.word	158
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBits',0,3,2,78,19,1,1,5
+	.byte	'value',0,2,78,54
+	.word	510
+	.byte	5
+	.byte	'bit_position',0,2,78,67
+	.word	158
+	.byte	5
+	.byte	'number_of_bits',0,2,78,87
+	.word	158
+	.byte	6,0
+.L78:
+	.byte	2
+	.byte	'unsigned int',0,4,7,3
+	.word	827
+	.byte	4
+	.byte	'rba_DiagLib_Bit32SetBit',0,3,3,36,19,1,1,5
+	.byte	'buffer',0,3,36,51
+	.word	843
+	.byte	5
+	.byte	'bit_position',0,3,36,65
+	.word	158
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBit',0,3,3,42,19,1,1,5
+	.byte	'buffer',0,3,42,53
+	.word	843
+	.byte	5
+	.byte	'bit_position',0,3,42,67
+	.word	158
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit32GetSingleBit',0,3,3,60,21
+	.word	827
+	.byte	1,1,5
+	.byte	'value',0,3,60,58
+	.word	827
+	.byte	5
+	.byte	'bit_position',0,3,60,71
+	.word	158
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBits',0,3,3,78,19,1,1,5
+	.byte	'value',0,3,78,54
+	.word	843
+	.byte	5
+	.byte	'bit_position',0,3,78,67
+	.word	158
+	.byte	5
+	.byte	'number_of_bits',0,3,78,87
+	.word	158
+	.byte	6,0,3
+	.word	158
+	.byte	8
+	.byte	'Dcm_MsgType',0,4,188,2,57
+	.word	1160
+	.byte	9,4,206,2,9,4,10
+	.byte	'reqType',0
+	.word	158
+	.byte	1,2,35,0,10
+	.byte	'suppressPosResponse',0
+	.word	158
+	.byte	1,2,35,1,10
+	.byte	'sourceofRequest',0
+	.word	158
+	.byte	1,2,35,2,0,9,4,240,2,9,28,10
+	.byte	'resData',0
+	.word	1165
+	.byte	4,2,35,0,10
+	.byte	'reqData',0
+	.word	1165
+	.byte	4,2,35,4,10
+	.byte	'msgAddInfo',0
+	.word	1186
+	.byte	4,2,35,8,10
+	.byte	'resDataLen',0
+	.word	827
+	.byte	4,2,35,12,10
+	.byte	'reqDataLen',0
+	.word	827
+	.byte	4,2,35,16,10
+	.byte	'resMaxDataLen',0
+	.word	827
+	.byte	4,2,35,20,10
+	.byte	'idContext',0
+	.word	158
+	.byte	1,2,35,24,10
+	.byte	'dcmRxPduId',0
+	.word	488
+	.byte	2,2,35,26,0
+.L74:
+	.byte	3
+	.word	1264
+	.byte	3
+	.word	158
+.L76:
+	.byte	3
+	.word	158
+	.byte	11
+	.word	180
+	.byte	12
+	.word	210
+	.byte	12
+	.word	225
+	.byte	6,0,11
+	.word	248
+	.byte	12
+	.word	280
+	.byte	12
+	.word	295
+	.byte	6,0,11
+	.word	318
+	.byte	12
+	.word	358
+	.byte	12
+	.word	372
+	.byte	6,0,11
+	.word	395
+	.byte	12
+	.word	428
+	.byte	12
+	.word	442
+	.byte	12
+	.word	463
+	.byte	6,0,11
+	.word	515
+	.byte	12
+	.word	546
+	.byte	12
+	.word	561
+	.byte	6,0,11
+	.word	584
+	.byte	12
+	.word	617
+	.byte	12
+	.word	632
+	.byte	6,0,11
+	.word	655
+	.byte	12
+	.word	696
+	.byte	12
+	.word	710
+	.byte	6,0,11
+	.word	733
+	.byte	12
+	.word	767
+	.byte	12
+	.word	781
+	.byte	12
+	.word	802
+	.byte	6,0,11
+	.word	848
+	.byte	12
+	.word	879
+	.byte	12
+	.word	894
+	.byte	6,0,11
+	.word	917
+	.byte	12
+	.word	950
+	.byte	12
+	.word	965
+	.byte	6,0,11
+	.word	988
+	.byte	12
+	.word	1029
+	.byte	12
+	.word	1043
+	.byte	6,0,11
+	.word	1066
+	.byte	12
+	.word	1100
+	.byte	12
+	.word	1114
+	.byte	12
+	.word	1135
+	.byte	6,0,13
+	.byte	'Dem_DisableDTCSetting',0,5,203,3,33
+	.word	158
+	.byte	1,1,1,1,5
+	.byte	'DTCGroup',0,5,203,3,72
+	.word	827
+	.byte	5
+	.byte	'DTCKind',0,5,203,3,98
+	.word	158
+	.byte	0,13
+	.byte	'Dem_EnableDTCSetting',0,5,216,3,33
+	.word	158
+	.byte	1,1,1,1,5
+	.byte	'DTCGroup',0,5,216,3,71
+	.word	827
+	.byte	5
+	.byte	'DTCKind',0,5,216,3,97
+	.word	158
+	.byte	0,13
+	.byte	'Dcm_ControlDtcSettingModecheck_b',0,6,16,31
+	.word	158
+	.byte	1,1,1,1,5
+	.byte	'NegRespCode_u8',0,6,16,127
+	.word	1437
+	.byte	0,14
+	.byte	'DcmAppl_DisableDTCSetting',0,7,233,1,35,1,1,1,1,5
+	.byte	'ErrorCode',0,7,234,1,115
+	.word	1437
+	.byte	0,14
+	.byte	'DcmAppl_EnableDTCSetting',0,7,236,1,35,1,1,1,1,5
+	.byte	'DtcEnableStatus',0,7,237,1,61
+	.word	158
+	.byte	0,14
+	.byte	'DcmAppl_DcmControlDtcSettingEnableStatus',0,7,239,1,35,1,1,1,1,5
+	.byte	'ControlDtcSettingEnableStatus',0,7,240,1,26
+	.word	158
+	.byte	0,15
+	.word	158
+	.byte	3
+	.word	2076
+	.byte	13
+	.byte	'DcmAppl_DcmCheckCDTCRecord',0,7,243,1,45
+	.word	158
+	.byte	1,1,1,1,5
+	.byte	'ControlOptionRecord',0,7,244,1,78
+	.word	2081
+	.byte	5
+	.byte	'Length',0,7,245,1,58
+	.word	158
+	.byte	5
+	.byte	'ErrorCode',0,7,246,1,99
+	.word	1437
+	.byte	0,16,1,3
+	.word	2191
+	.byte	8
+	.byte	'__codeptr',0,8,1,1
+	.word	2193
+	.byte	2
+	.byte	'char',0,1,6,8
+	.byte	'sint8',0,9,76,25
+	.word	2216
+	.byte	8
+	.byte	'uint8',0,9,81,25
+	.word	158
+	.byte	8
+	.byte	'uint16',0,9,91,25
+	.word	488
+	.byte	8
+	.byte	'uint32',0,9,106,24
+	.word	827
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,8
+	.byte	'uint64',0,9,111,30
+	.word	2282
+	.byte	8
+	.byte	'boolean',0,9,127,25
+	.word	158
+	.byte	2
+	.byte	'unsigned long int',0,4,7,8
+	.byte	'uint16_least',0,9,147,1,25
+	.word	2339
+	.byte	8
+	.byte	'StatusType',0,10,191,1,27
+	.word	158
+	.byte	8
+	.byte	'Std_ReturnType',0,10,199,1,15
+	.word	158
+	.byte	9,10,206,1,9,8,10
+	.byte	'vendorID',0
+	.word	488
+	.byte	2,2,35,0,10
+	.byte	'moduleID',0
+	.word	488
+	.byte	2,2,35,2,10
+	.byte	'sw_major_version',0
+	.word	158
+	.byte	1,2,35,4,10
+	.byte	'sw_minor_version',0
+	.word	158
+	.byte	1,2,35,5,10
+	.byte	'sw_patch_version',0
+	.word	158
+	.byte	1,2,35,6,0,8
+	.byte	'Std_VersionInfoType',0,10,213,1,3
+	.word	2426
+	.byte	8
+	.byte	'PduIdType',0,11,22,19
+	.word	488
+	.byte	8
+	.byte	'PduLengthType',0,11,26,19
+	.word	488
+	.byte	9,12,71,9,8,10
+	.byte	'SduDataPtr',0
+	.word	175
+	.byte	4,2,35,0,10
+	.byte	'SduLength',0
+	.word	488
+	.byte	2,2,35,4,0,8
+	.byte	'PduInfoType',0,12,75,3
+	.word	2616
+	.byte	17,12,113,9,4,18
+	.byte	'TP_DATACONF',0,0,18
+	.byte	'TP_DATARETRY',0,1,18
+	.byte	'TP_CONFPENDING',0,2,0,8
+	.byte	'TpDataStateType',0,12,118,3
+	.word	2681
+	.byte	8
+	.byte	'NetworkHandleType',0,12,128,1,17
+	.word	158
+	.byte	8
+	.byte	'Can_IdType',0,13,32,16
+	.word	827
+	.byte	8
+	.byte	'Can_HwHandleType',0,13,43,16
+	.word	488
+	.byte	9,14,93,9,8,10
+	.byte	'Class',0
+	.word	158
+	.byte	1,2,35,0,10
+	.byte	'TIN',0
+	.word	158
+	.byte	1,2,35,1,10
+	.byte	'ReturnAddress',0
+	.word	827
+	.byte	4,2,35,4,0,8
+	.byte	'OsTrapInfoType',0,14,97,3
+	.word	2828
+	.byte	19,68
+	.word	827
+	.byte	20,16,0,9,14,154,1,9,68,10
+	.byte	'store',0
+	.word	2908
+	.byte	68,2,35,0,0,19,68
+	.word	2917
+	.byte	20,0,0,8
+	.byte	'Os_JumpBufType',0,14,156,1,3
+	.word	2939
+	.byte	8
+	.byte	'Os_StackTraceType',0,14,174,1,18
+	.word	827
+	.byte	9,14,175,1,9,8,10
+	.byte	'sp',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'ctx',0
+	.word	827
+	.byte	4,2,35,4,0,8
+	.byte	'Os_StackValueType',0,14,175,1,63
+	.word	2999
+	.byte	8
+	.byte	'Os_StackSizeType',0,14,176,1,27
+	.word	2999
+	.byte	21,1,1,3
+	.word	3084
+	.byte	8
+	.byte	'Os_VoidVoidFunctionType',0,14,179,1,16
+	.word	3087
+	.byte	8
+	.byte	'ApplicationType',0,14,193,1,23
+	.word	158
+	.byte	22
+	.byte	'Os_ApplicationConfigurationType_s',0,14,198,1,16,2,10
+	.byte	'app_id',0
+	.word	158
+	.byte	1,2,35,0,10
+	.byte	'access',0
+	.word	158
+	.byte	1,2,35,1,0,8
+	.byte	'Os_ApplicationConfigurationType',0,14,201,1,3
+	.word	3150
+	.byte	8
+	.byte	'Os_CoreStateType',0,14,203,1,16
+	.word	827
+	.byte	8
+	.byte	'AreaIdType',0,14,204,1,16
+	.word	488
+	.byte	8
+	.byte	'Os_PeripheralAddressType',0,14,212,1,22
+	.word	827
+	.byte	8
+	.byte	'TickType',0,14,221,1,22
+	.word	827
+	.byte	8
+	.byte	'Os_StopwatchTickType',0,14,225,1,22
+	.word	827
+	.byte	8
+	.byte	'Os_Lockable',0,14,234,1,18
+	.word	843
+	.byte	8
+	.byte	'CoreIdType',0,14,236,1,16
+	.word	488
+	.byte	8
+	.byte	'SpinlockIdType',0,14,237,1,16
+	.word	488
+	.byte	17,14,239,1,9,4,18
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,18
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,8
+	.byte	'TryToGetSpinlockType',0,14,239,1,74
+	.word	3457
+	.byte	17,14,174,2,9,4,18
+	.byte	'APPLICATION_ACCESSIBLE',0,0,18
+	.byte	'APPLICATION_RESTARTING',0,1,18
+	.byte	'APPLICATION_TERMINATED',0,2,0,8
+	.byte	'ApplicationStateType',0,14,174,2,92
+	.word	3550
+	.byte	23
+	.byte	'void',0,3
+	.word	3662
+	.byte	24,1,1,25
+	.word	158
+	.byte	25
+	.word	3668
+	.byte	0,3
+	.word	3673
+	.byte	8
+	.byte	'Os_FunctionEntryType',0,14,183,2,16
+	.word	3687
+	.byte	22
+	.byte	'Os_MeterInfoType_s',0,14,193,2,16,48,10
+	.byte	'elapsed',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'previous',0
+	.word	827
+	.byte	4,2,35,4,10
+	.byte	'max',0
+	.word	827
+	.byte	4,2,35,8,10
+	.byte	'cumulative',0
+	.word	827
+	.byte	4,2,35,12,10
+	.byte	'stackbase',0
+	.word	2999
+	.byte	8,2,35,16,10
+	.byte	'stackusage',0
+	.word	2999
+	.byte	8,2,35,24,10
+	.byte	'stackmax',0
+	.word	2999
+	.byte	8,2,35,32,10
+	.byte	'stackbudget',0
+	.word	2999
+	.byte	8,2,35,40,0,8
+	.byte	'Os_MeterInfoType',0,14,202,2,3
+	.word	3722
+	.byte	3
+	.word	3722
+	.byte	8
+	.byte	'Os_MeterInfoRefType',0,14,203,2,50
+	.word	3920
+	.byte	8
+	.byte	'EventMaskType',0,14,206,2,15
+	.word	158
+	.byte	8
+	.byte	'Os_imaskType',0,14,211,2,16
+	.word	827
+	.byte	22
+	.byte	'Os_ISRDynType_s',0,14,213,2,16,48,10
+	.byte	'meter',0
+	.word	3722
+	.byte	48,2,35,0,0,8
+	.byte	'Os_ISRDynType',0,14,215,2,3
+	.word	3999
+	.byte	3
+	.word	3999
+	.byte	15
+	.word	4060
+	.byte	22
+	.byte	'Os_ISRType_s',0,14,216,2,16,24,10
+	.byte	'entry_function',0
+	.word	3092
+	.byte	4,2,35,0,10
+	.byte	'dynamic',0
+	.word	4065
+	.byte	4,2,35,4,10
+	.byte	'imask',0
+	.word	827
+	.byte	4,2,35,8,10
+	.byte	'stackbudget',0
+	.word	2999
+	.byte	8,2,35,12,10
+	.byte	'access',0
+	.word	158
+	.byte	1,2,35,20,10
+	.byte	'application',0
+	.word	158
+	.byte	1,2,35,21,0,8
+	.byte	'Os_ISRType',0,14,223,2,3
+	.word	4070
+	.byte	3
+	.word	3084
+	.byte	15
+	.word	4070
+	.byte	3
+	.word	4229
+	.byte	8
+	.byte	'ISRType',0,14,224,2,46
+	.word	4234
+	.byte	8
+	.byte	'Os_bitmask',0,14,239,2,22
+	.word	827
+	.byte	8
+	.byte	'Os_pset0Type',0,14,240,2,20
+	.word	827
+	.byte	8
+	.byte	'Os_pset1Type',0,14,241,2,20
+	.word	827
+	.byte	8
+	.byte	'Os_pset2Type',0,14,242,2,20
+	.word	827
+	.byte	26,14,243,2,9,4,10
+	.byte	'p0',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'p1',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'p2',0
+	.word	827
+	.byte	4,2,35,0,0,8
+	.byte	'Os_psetType',0,14,247,2,3
+	.word	4342
+	.byte	26,14,249,2,9,4,10
+	.byte	't0',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	't1',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	't2',0
+	.word	827
+	.byte	4,2,35,0,0,8
+	.byte	'Os_tpmaskType',0,14,253,2,3
+	.word	4406
+	.byte	8
+	.byte	'Os_ActivationCountType',0,14,254,2,23
+	.word	158
+	.byte	22
+	.byte	'Os_TaskDynType_s',0,14,128,3,16,120,10
+	.byte	'terminate_jump_buf',0
+	.word	2948
+	.byte	68,2,35,0,10
+	.byte	'meter',0
+	.word	3722
+	.byte	48,2,35,68,10
+	.byte	'activation_count',0
+	.word	158
+	.byte	1,2,35,116,0,8
+	.byte	'Os_TaskDynType',0,14,132,3,3
+	.word	4504
+	.byte	19,68
+	.word	2917
+	.byte	20,0,0,3
+	.word	4504
+	.byte	15
+	.word	4630
+	.byte	22
+	.byte	'Os_TaskType_s',0,14,134,3,16,40,10
+	.byte	'dynamic',0
+	.word	4635
+	.byte	4,2,35,0,10
+	.byte	'entry_function',0
+	.word	3092
+	.byte	4,2,35,4,10
+	.byte	'pset',0
+	.word	4342
+	.byte	4,2,35,8,10
+	.byte	'base_tpmask',0
+	.word	4406
+	.byte	4,2,35,12,10
+	.byte	'tpmask',0
+	.word	4406
+	.byte	4,2,35,16,10
+	.byte	'core_id',0
+	.word	488
+	.byte	2,2,35,20,10
+	.byte	'index',0
+	.word	827
+	.byte	4,2,35,24,10
+	.byte	'stackbudget',0
+	.word	2999
+	.byte	8,2,35,28,10
+	.byte	'activation_count',0
+	.word	158
+	.byte	1,2,35,36,10
+	.byte	'access',0
+	.word	158
+	.byte	1,2,35,37,10
+	.byte	'application',0
+	.word	158
+	.byte	1,2,35,38,0,8
+	.byte	'Os_TaskType',0,14,146,3,3
+	.word	4640
+	.byte	15
+	.word	4640
+	.byte	3
+	.word	4890
+	.byte	8
+	.byte	'TaskType',0,14,147,3,47
+	.word	4895
+	.byte	27
+	.byte	'Os_TaskStateType',0,14,155,3,6,4,18
+	.byte	'SUSPENDED',0,0,18
+	.byte	'READY',0,1,18
+	.byte	'WAITING',0,2,18
+	.byte	'RUNNING',0,3,0,8
+	.byte	'TaskStateType',0,14,156,3,31
+	.word	4918
+	.byte	26,14,167,3,3,4,10
+	.byte	'tpmask',0
+	.word	4406
+	.byte	4,2,35,0,0,22
+	.byte	'Os_ResourceDynType_s',0,14,166,3,16,4,10
+	.byte	'saved_priority',0
+	.word	5005
+	.byte	4,2,35,0,0,8
+	.byte	'Os_ResourceDynType',0,14,170,3,3
+	.word	5028
+	.byte	3
+	.word	5028
+	.byte	15
+	.word	5108
+	.byte	22
+	.byte	'Os_ResourceType_s',0,14,171,3,16,12,10
+	.byte	'dynamic',0
+	.word	5113
+	.byte	4,2,35,0,10
+	.byte	'tpmask',0
+	.word	4406
+	.byte	4,2,35,4,10
+	.byte	'access',0
+	.word	158
+	.byte	1,2,35,8,0,8
+	.byte	'Os_ResourceType',0,14,175,3,3
+	.word	5118
+	.byte	9,14,181,3,9,12,10
+	.byte	'maxallowedvalue',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'ticksperbase',0
+	.word	827
+	.byte	4,2,35,4,10
+	.byte	'mincycle',0
+	.word	827
+	.byte	4,2,35,8,0,8
+	.byte	'AlarmBaseType',0,14,185,3,3
+	.word	5217
+	.byte	9,14,206,3,9,8,10
+	.byte	'Running',0
+	.word	158
+	.byte	1,2,35,0,10
+	.byte	'Pending',0
+	.word	158
+	.byte	1,2,35,1,10
+	.byte	'Delay',0
+	.word	827
+	.byte	4,2,35,4,0,8
+	.byte	'Os_CounterStatusType',0,14,210,3,3
+	.word	5312
+	.byte	28
+	.word	158
+	.byte	1,1,3
+	.word	5398
+	.byte	8
+	.byte	'Os_CounterIncrAdvType',0,14,217,3,22
+	.word	5405
+	.byte	22
+	.byte	's_swd',0,14,222,3,12,4,10
+	.byte	'count',0
+	.word	827
+	.byte	4,2,35,0,0,26,14,221,3,3,4,10
+	.byte	'sw',0
+	.word	5441
+	.byte	4,2,35,0,0,22
+	.byte	'Os_CounterDynType_s',0,14,220,3,16,4,10
+	.byte	'type_dependent',0
+	.word	5469
+	.byte	4,2,35,0,0,8
+	.byte	'Os_CounterDynType',0,14,226,3,3
+	.word	5488
+	.byte	3
+	.word	5488
+	.byte	15
+	.word	5566
+	.byte	22
+	.byte	'Os_CounterType_s',0,14,227,3,16,28,10
+	.byte	'dynamic',0
+	.word	5571
+	.byte	4,2,35,0,10
+	.byte	'advincr',0
+	.word	5410
+	.byte	4,2,35,4,10
+	.byte	'base',0
+	.word	5217
+	.byte	12,2,35,8,10
+	.byte	'core',0
+	.word	3668
+	.byte	4,2,35,20,10
+	.byte	'access',0
+	.word	158
+	.byte	1,2,35,24,10
+	.byte	'application',0
+	.word	158
+	.byte	1,2,35,25,0,8
+	.byte	'Os_CounterType',0,14,234,3,3
+	.word	5576
+	.byte	3
+	.word	5398
+	.byte	15
+	.word	5576
+	.byte	3
+	.word	5728
+	.byte	8
+	.byte	'CounterType',0,14,235,3,52
+	.word	5733
+	.byte	27
+	.byte	'Os_ScheduleTableStatusType',0,14,240,3,6,4,18
+	.byte	'SCHEDULETABLE_STOPPED',0,0,18
+	.byte	'SCHEDULETABLE_NEXT',0,1,18
+	.byte	'SCHEDULETABLE_WAITING',0,2,18
+	.byte	'SCHEDULETABLE_RUNNING',0,3,18
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,8
+	.byte	'ScheduleTableStatusType',0,14,241,3,41
+	.word	5759
+	.byte	15
+	.word	.L135-.L46
+	.byte	3
+	.word	5959
+	.byte	8
+	.byte	'ScheduleTableType',0,14,128,4,58
+	.word	5964
+	.byte	22
+	.byte	'Os_ScheduleTableDynType_s',0,14,130,4,16,16,10
+	.byte	'match',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'next',0
+	.word	5969
+	.byte	4,2,35,4,10
+	.byte	'state',0
+	.word	5759
+	.byte	4,2,35,8,10
+	.byte	'config',0
+	.word	488
+	.byte	2,2,35,12,0,3
+	.word	5996
+	.byte	15
+	.word	6089
+.L135:
+	.byte	22
+	.byte	'Os_ScheduleTableType_s',0,14,247,3,16,16,10
+	.byte	'dynamic',0
+	.word	6094
+	.byte	4,2,35,0,10
+	.byte	'counter',0
+	.word	5738
+	.byte	4,2,35,4,10
+	.byte	'repeat',0
+	.word	158
+	.byte	1,2,35,8,10
+	.byte	'config',0
+	.word	488
+	.byte	2,2,35,10,10
+	.byte	'initial',0
+	.word	158
+	.byte	1,2,35,12,10
+	.byte	'access',0
+	.word	158
+	.byte	1,2,35,13,10
+	.byte	'application',0
+	.word	158
+	.byte	1,2,35,14,0,8
+	.byte	'Os_ScheduleTableType',0,14,255,3,3
+	.word	6099
+	.byte	15
+	.word	6099
+	.byte	3
+	.word	6279
+	.byte	15
+	.word	5576
+	.byte	3
+	.word	6289
+	.byte	29
+	.word	3392
+	.byte	29
+	.word	4342
+	.byte	29
+	.word	4239
+	.byte	29
+	.word	4900
+	.byte	29
+	.word	4406
+	.byte	29
+	.word	158
+	.byte	29
+	.word	4900
+	.byte	22
+	.byte	'Os_ControlledCoreType_s',0,14,251,6,16,112,10
+	.byte	'TrapInfo',0
+	.word	2828
+	.byte	8,2,35,0,10
+	.byte	'lock_taskaccess',0
+	.word	6299
+	.byte	4,2,35,8,10
+	.byte	'ReadyTasks',0
+	.word	6304
+	.byte	4,2,35,12,10
+	.byte	'RunningISR',0
+	.word	6309
+	.byte	4,2,35,16,10
+	.byte	'RunningTask',0
+	.word	6314
+	.byte	4,2,35,20,10
+	.byte	'RunningTPMask',0
+	.word	6319
+	.byte	4,2,35,24,10
+	.byte	'CurrentMeteredObject',0
+	.word	3925
+	.byte	4,2,35,28,10
+	.byte	'IdleMeter',0
+	.word	3722
+	.byte	48,2,35,32,10
+	.byte	'AppAccess',0
+	.word	158
+	.byte	1,2,35,80,10
+	.byte	'AppOverride',0
+	.word	6324
+	.byte	1,2,35,81,10
+	.byte	'GetStackValueAdjust',0
+	.word	2999
+	.byte	8,2,35,84,10
+	.byte	'InErrorHook',0
+	.word	158
+	.byte	1,2,35,92,10
+	.byte	'ChainTaskRef',0
+	.word	6329
+	.byte	4,2,35,96,10
+	.byte	'GetStackUsageAdjust',0
+	.word	2999
+	.byte	8,2,35,100,10
+	.byte	'InProtectionHook',0
+	.word	158
+	.byte	1,2,35,108,10
+	.byte	'CoreIsActive',0
+	.word	158
+	.byte	1,2,35,109,10
+	.byte	'InShutdownHook',0
+	.word	158
+	.byte	1,2,35,110,0,8
+	.byte	'Os_ControlledCoreType',0,14,141,7,3
+	.word	6334
+	.byte	3
+	.word	827
+	.byte	15
+	.word	4070
+	.byte	3
+	.word	6790
+	.byte	15
+	.word	4640
+	.byte	3
+	.word	6800
+	.byte	3
+	.word	3722
+	.byte	22
+	.byte	'Os_AnyCoreType_s',0,14,151,7,16,96,10
+	.byte	'DisableAllImask',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'SuspendAllImask',0
+	.word	827
+	.byte	4,2,35,4,10
+	.byte	'SuspendOSImask',0
+	.word	827
+	.byte	4,2,35,8,10
+	.byte	'DisableAllCount',0
+	.word	827
+	.byte	4,2,35,12,10
+	.byte	'SuspendAllCount',0
+	.word	827
+	.byte	4,2,35,16,10
+	.byte	'SuspendOSCount',0
+	.word	827
+	.byte	4,2,35,20,10
+	.byte	'RestartJumpBuf',0
+	.word	2948
+	.byte	68,2,35,24,10
+	.byte	'Restartable',0
+	.word	158
+	.byte	1,2,35,92,0,8
+	.byte	'Os_AnyCoreType',0,14,160,7,3
+	.word	6815
+	.byte	8
+	.byte	'Can_TxObjPriorityClassType',0,15,219,3,16
+	.word	827
+	.byte	22
+	.byte	'Can_TxHwObjectConfigType',0,15,231,3,16,8,10
+	.byte	'MsgObjId',0
+	.word	158
+	.byte	1,2,35,0,10
+	.byte	'HwControllerId',0
+	.word	158
+	.byte	1,2,35,1,10
+	.byte	'TxObjPriorityClass',0
+	.word	827
+	.byte	4,2,35,4,0,8
+	.byte	'Can_TxHwObjectConfigType',0,15,252,3,3
+	.word	7092
+	.byte	22
+	.byte	'Can_RxHwObjectConfigType',0,15,129,4,16,12,10
+	.byte	'MaskRef',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'MsgId',0
+	.word	827
+	.byte	4,2,35,4,10
+	.byte	'MsgObjId',0
+	.word	158
+	.byte	1,2,35,8,10
+	.byte	'HwControllerId',0
+	.word	158
+	.byte	1,2,35,9,0,8
+	.byte	'Can_RxHwObjectConfigType',0,15,147,4,3
+	.word	7228
+	.byte	19,4
+	.word	158
+	.byte	20,3,0,22
+	.byte	'Can_ControllerMOMapConfigType',0,15,181,4,16,4,10
+	.byte	'ControllerMOMap',0
+	.word	7368
+	.byte	4,2,35,0,0,8
+	.byte	'Can_ControllerMOMapConfigType',0,15,184,4,3
+	.word	7377
+	.byte	22
+	.byte	'Can_NPCRValueType',0,15,188,4,16,2,10
+	.byte	'Can_NPCRValue',0
+	.word	488
+	.byte	2,2,35,0,0,8
+	.byte	'Can_NPCRValueType',0,15,191,4,3
+	.word	7478
+	.byte	22
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,15,194,4,16,8,10
+	.byte	'CanControllerBaudrate',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'CanControllerBaudrateCfg',0
+	.word	488
+	.byte	2,2,35,4,0,8
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,15,198,4,3
+	.word	7553
+	.byte	15
+	.word	7553
+	.byte	3
+	.word	7718
+	.byte	22
+	.byte	'Can_BaudrateConfigPtrType',0,15,201,4,16,4,10
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	7723
+	.byte	4,2,35,0,0,8
+	.byte	'Can_BaudrateConfigPtrType',0,15,204,4,3
+	.word	7728
+	.byte	22
+	.byte	'Can_EventHandlingType',0,15,226,4,16,4,10
+	.byte	'CanEventType',0
+	.word	7368
+	.byte	4,2,35,0,0,8
+	.byte	'Can_EventHandlingType',0,15,229,4,3
+	.word	7828
+	.byte	8
+	.byte	'Rte_TransformerErrorCode',0,16,130,1,15
+	.word	158
+	.byte	8
+	.byte	'Rte_TransformerClass',0,16,131,1,15
+	.word	158
+	.byte	9,16,168,1,9,12,10
+	.byte	'in',0
+	.word	3668
+	.byte	4,2,35,0,10
+	.byte	'out',0
+	.word	3668
+	.byte	4,2,35,4,10
+	.byte	'used',0
+	.word	488
+	.byte	2,2,35,8,10
+	.byte	'lost_data',0
+	.word	158
+	.byte	1,2,35,10,0,8
+	.byte	'Rte_QDynType',0,16,173,1,3
+	.word	7974
+	.byte	17,16,175,1,9,4,18
+	.byte	'RTE_DRA',0,0,18
+	.byte	'RTE_WOWP',0,1,18
+	.byte	'RTE_TASK',0,2,18
+	.byte	'RTE_ARE',0,3,18
+	.byte	'RTE_EV',0,4,18
+	.byte	'RTE_MSI',0,5,0,8
+	.byte	'Rte_NotificationType',0,16,182,1,3
+	.word	8061
+	.byte	3
+	.word	7974
+	.byte	22
+	.byte	'Rte_QCmnType',0,16,184,1,16,24,10
+	.byte	'dynamic',0
+	.word	8159
+	.byte	4,2,35,0,10
+	.byte	'copy',0
+	.word	158
+	.byte	1,2,35,4,10
+	.byte	'queue_size',0
+	.word	488
+	.byte	2,2,35,6,10
+	.byte	'element_size',0
+	.word	488
+	.byte	2,2,35,8,10
+	.byte	'buffer_start',0
+	.word	3668
+	.byte	4,2,35,12,10
+	.byte	'buffer_end',0
+	.word	3668
+	.byte	4,2,35,16,10
+	.byte	'notification_type',0
+	.word	8061
+	.byte	4,2,35,20,0,8
+	.byte	'Rte_QCmnType',0,16,192,1,3
+	.word	8164
+	.byte	8
+	.byte	'Rte_AlarmRefType',0,16,224,1,32
+	.word	827
+	.byte	8
+	.byte	'Rte_AlarmIndexType',0,16,226,1,32
+	.word	488
+	.byte	19,128,8
+	.word	158
+	.byte	20,255,7,0,8
+	.byte	'Impl_NVM_DstPtrType_1024',0,17,50,15
+	.word	8402
+	.byte	8
+	.byte	'CanIf_u32_impl',0,17,69,16
+	.word	827
+	.byte	8
+	.byte	'CanIf_u16_impl',0,17,71,16
+	.word	488
+	.byte	8
+	.byte	'CanIf_u8_impl',0,17,73,15
+	.word	158
+	.byte	8
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,17,88,15
+	.word	158
+	.byte	8
+	.byte	'CanIf_PduModeType_Enum_impl',0,17,90,15
+	.word	158
+	.byte	9,17,92,9,2,10
+	.byte	'DeviceMode',0
+	.word	158
+	.byte	1,2,35,0,10
+	.byte	'ChannelMode',0
+	.word	158
+	.byte	1,2,35,1,0,8
+	.byte	'CanIf_ControllerStateType_struct_impl',0,17,95,3
+	.word	8593
+	.byte	8
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,17,100,15
+	.word	158
+	.byte	8
+	.byte	'CanSM_boolean_Impl',0,17,120,15
+	.word	158
+	.byte	8
+	.byte	'CanSM_u8_Impl',0,17,123,15
+	.word	158
+	.byte	8
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,17,128,1,15
+	.word	158
+	.byte	8
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,17,132,1,15
+	.word	158
+	.byte	8
+	.byte	'CanSM_u16_Impl',0,17,136,1,16
+	.word	488
+	.byte	8
+	.byte	'CanSM_TimerStateType_Enum_impl',0,17,138,1,15
+	.word	158
+	.byte	9,17,140,1,9,4,10
+	.byte	'cntTick_u16',0
+	.word	488
+	.byte	2,2,35,0,10
+	.byte	'stTimer',0
+	.word	158
+	.byte	1,2,35,2,0,8
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,17,143,1,3
+	.word	8934
+	.byte	8
+	.byte	'Com_impl_u16',0,17,154,1,16
+	.word	488
+	.byte	8
+	.byte	'Com_impl_u8',0,17,157,1,15
+	.word	158
+	.byte	8
+	.byte	'ComM_uint32_Impl',0,17,173,1,16
+	.word	827
+	.byte	8
+	.byte	'ComM_uint16_Impl',0,17,175,1,16
+	.word	488
+	.byte	8
+	.byte	'ComM_uint8_Impl',0,17,177,1,15
+	.word	158
+	.byte	8
+	.byte	'ComM_bool_Impl',0,17,179,1,15
+	.word	158
+	.byte	9,17,181,1,9,24,10
+	.byte	'ChannelState_e',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'LightTimeoutCtr_u32',0
+	.word	827
+	.byte	4,2,35,4,10
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	488
+	.byte	2,2,35,8,10
+	.byte	'ChannelMode_u8',0
+	.word	158
+	.byte	1,2,35,10,10
+	.byte	'BusSmMode_u8',0
+	.word	158
+	.byte	1,2,35,11,10
+	.byte	'UserRequestCtr_u8',0
+	.word	158
+	.byte	1,2,35,12,10
+	.byte	'PassiveRequestState_u8',0
+	.word	158
+	.byte	1,2,35,13,10
+	.byte	'PncRequestCtr_u8',0
+	.word	158
+	.byte	1,2,35,14,10
+	.byte	'InhibitionReqStatus_u8',0
+	.word	158
+	.byte	1,2,35,15,10
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	158
+	.byte	1,2,35,16,10
+	.byte	'DiagnosticRequestState_b',0
+	.word	158
+	.byte	1,2,35,17,10
+	.byte	'CommunicationAllowed_b',0
+	.word	158
+	.byte	1,2,35,18,10
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	158
+	.byte	1,2,35,19,10
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	158
+	.byte	1,2,35,20,10
+	.byte	'NmNetworkModeStatus_b',0
+	.word	158
+	.byte	1,2,35,21,0,8
+	.byte	'ComM_ChannelStruct_Impl',0,17,197,1,3
+	.word	9166
+	.byte	9,17,206,1,9,10,10
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	488
+	.byte	2,2,35,0,10
+	.byte	'LimitToNoComCtr_u16',0
+	.word	488
+	.byte	2,2,35,2,10
+	.byte	'RequestedUserMode_t',0
+	.word	158
+	.byte	1,2,35,4,10
+	.byte	'IndicatedUserMode_t',0
+	.word	158
+	.byte	1,2,35,5,10
+	.byte	'numChannelsInFullCom_u8',0
+	.word	158
+	.byte	1,2,35,6,10
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	158
+	.byte	1,2,35,7,10
+	.byte	'numChannelsInNoCom_u8',0
+	.word	158
+	.byte	1,2,35,8,0,8
+	.byte	'ComM_UserStruct_Impl',0,17,214,1,3
+	.word	9670
+	.byte	8
+	.byte	'Dcm_ConfirmationStatusType',0,17,243,1,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_IOOperationResponseType',0,17,252,1,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_NegativeResponseCodeType',0,17,132,2,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_OpStatusType',0,17,134,2,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	17,138,2,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_SecLevelType',0,17,142,2,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_SesCtrlType',0,17,144,2,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,17,146,2,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,17,150,2,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,17,154,2,15
+	.word	158
+	.byte	8
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,17,243,3,34
+	.word	8413
+	.byte	19,128,8
+	.word	158
+	.byte	20,255,7,0,8
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,17,246,3,34
+	.word	8413
+	.byte	8
+	.byte	'Rte_ModeType_DcmDiagnosticSessionControl',0,18,37,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_SrvOpStatusType',0,4,62,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_MsgItemType',0,4,182,2,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_MsgLenType',0,4,197,2,16
+	.word	827
+	.byte	8
+	.byte	'Dcm_MsgAddInfoType',0,4,219,2,2
+	.word	1186
+	.byte	8
+	.byte	'Dcm_IdContextType',0,4,225,2,15
+	.word	158
+	.byte	8
+	.byte	'Dcm_MsgContextType',0,4,188,3,2
+	.word	1264
+	.byte	9,4,238,5,9,32,10
+	.byte	'tx_buffer_pa',0
+	.word	1165
+	.byte	4,2,35,0,10
+	.byte	'rx_mainBuffer_pa',0
+	.word	1165
+	.byte	4,2,35,4,10
+	.byte	'tx_buffer_size_u32',0
+	.word	827
+	.byte	4,2,35,8,10
+	.byte	'rx_buffer_size_u32',0
+	.word	827
+	.byte	4,2,35,12,10
+	.byte	'dataP2TmrAdjust',0
+	.word	827
+	.byte	4,2,35,16,10
+	.byte	'dataP2StarTmrAdjust',0
+	.word	827
+	.byte	4,2,35,20,10
+	.byte	'protocolid_u8',0
+	.word	158
+	.byte	1,2,35,24,10
+	.byte	'sid_tableid_u8',0
+	.word	158
+	.byte	1,2,35,25,10
+	.byte	'premption_level_u8',0
+	.word	158
+	.byte	1,2,35,26,10
+	.byte	'pduinfo_idx_u8',0
+	.word	158
+	.byte	1,2,35,27,10
+	.byte	'nrc21_b',0
+	.word	158
+	.byte	1,2,35,28,10
+	.byte	'sendRespPendTransToBoot',0
+	.word	158
+	.byte	1,2,35,29,0,8
+	.byte	'Dcm_Dsld_protocol_tableType',0,4,143,6,2
+	.word	10848
+	.byte	24,1,1,25
+	.word	158
+	.byte	25
+	.word	488
+	.byte	25
+	.word	488
+	.byte	25
+	.word	158
+	.byte	0,3
+	.word	11199
+	.byte	8
+	.byte	'Dcm_ConfirmationApiType',0,4,145,6,16
+	.word	11223
+	.byte	3
+	.word	158
+	.byte	30
+	.word	158
+	.byte	1,1,25
+	.word	11261
+	.byte	25
+	.word	158
+	.byte	25
+	.word	158
+	.byte	0,3
+	.word	11266
+	.byte	3
+	.word	1264
+	.byte	30
+	.word	158
+	.byte	1,1,25
+	.word	158
+	.byte	25
+	.word	11294
+	.byte	25
+	.word	11261
+	.byte	0,3
+	.word	11299
+	.byte	9,4,158,6,9,20,10
+	.byte	'allowed_session_b32',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'allowed_security_b32',0
+	.word	827
+	.byte	4,2,35,4,10
+	.byte	'adrUserSubServiceModeRule_pfct',0
+	.word	11289
+	.byte	4,2,35,8,10
+	.byte	'SubFunc_fp',0
+	.word	11322
+	.byte	4,2,35,12,10
+	.byte	'subservice_id_u8',0
+	.word	158
+	.byte	1,2,35,16,10
+	.byte	'isDspRDTCSubFnc_b',0
+	.word	158
+	.byte	1,2,35,17,0,8
+	.byte	'Dcm_Dsld_SubServiceType',0,4,169,6,2
+	.word	11327
+	.byte	15
+	.word	11327
+	.byte	3
+	.word	11539
+	.byte	30
+	.word	158
+	.byte	1,1,25
+	.word	11261
+	.byte	25
+	.word	158
+	.byte	0,3
+	.word	11549
+	.byte	9,4,186,6,9,36,10
+	.byte	'allowed_session_b32',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'allowed_security_b32',0
+	.word	827
+	.byte	4,2,35,4,10
+	.byte	'service_handler_fp',0
+	.word	11322
+	.byte	4,2,35,8,10
+	.byte	'Service_init_fp',0
+	.word	3087
+	.byte	4,2,35,12,10
+	.byte	'sid_u8',0
+	.word	158
+	.byte	1,2,35,16,10
+	.byte	'subfunction_exist_b',0
+	.word	158
+	.byte	1,2,35,17,10
+	.byte	'servicelocator_b',0
+	.word	158
+	.byte	1,2,35,18,10
+	.byte	'ptr_subservice_table_pcs',0
+	.word	11544
+	.byte	4,2,35,20,10
+	.byte	'num_sf_u8',0
+	.word	158
+	.byte	1,2,35,24,10
+	.byte	'adrUserServiceModeRule_pfct',0
+	.word	11567
+	.byte	4,2,35,28,10
+	.byte	'Dcm_ConfirmationService',0
+	.word	11228
+	.byte	4,2,35,32,0,8
+	.byte	'Dcm_Dsld_ServiceType',0,4,204,6,3
+	.word	11572
+	.byte	3
+	.word	11199
+	.byte	15
+	.word	11572
+	.byte	3
+	.word	11920
+	.byte	9,4,218,6,9,8,10
+	.byte	'ptr_service_table_pcs',0
+	.word	11925
+	.byte	4,2,35,0,10
+	.byte	'num_services_u8',0
+	.word	158
+	.byte	1,2,35,4,10
+	.byte	'nrc_sessnot_supported_u8',0
+	.word	158
+	.byte	1,2,35,5,10
+	.byte	'cdtc_index_u8',0
+	.word	158
+	.byte	1,2,35,6,0,8
+	.byte	'Dcm_Dsld_sid_tableType',0,4,224,6,3
+	.word	11930
+	.byte	9,4,238,6,9,14,10
+	.byte	'protocol_num_u8',0
+	.word	158
+	.byte	1,2,35,0,10
+	.byte	'txpduid_num_u8',0
+	.word	488
+	.byte	2,2,35,2,10
+	.byte	'roetype2_txpdu_u8',0
+	.word	488
+	.byte	2,2,35,4,10
+	.byte	'rdpitype2_txpdu_u8',0
+	.word	488
+	.byte	2,2,35,6,10
+	.byte	'testaddr_u16',0
+	.word	488
+	.byte	2,2,35,8,10
+	.byte	'channel_idx_u8',0
+	.word	158
+	.byte	1,2,35,10,10
+	.byte	'ConnectionIndex_u8',0
+	.word	158
+	.byte	1,2,35,11,10
+	.byte	'NumberOfTxpdu_u8',0
+	.word	158
+	.byte	1,2,35,12,0,8
+	.byte	'Dcm_Dsld_connType',0,4,248,6,3
+	.word	12082
+	.byte	17,4,146,7,9,4,18
+	.byte	'DCM_DSLD_NO_COM_MODE',0,0,18
+	.byte	'DCM_DSLD_SILENT_COM_MODE',0,1,18
+	.byte	'DCM_DSLD_FULL_COM_MODE',0,2,0,8
+	.byte	'Dcm_Dsld_commodeType',0,4,151,7,2
+	.word	12320
+	.byte	15
+	.word	488
+	.byte	3
+	.word	12432
+	.byte	15
+	.word	12082
+	.byte	3
+	.word	12442
+	.byte	15
+	.word	10848
+	.byte	3
+	.word	12452
+	.byte	15
+	.word	11930
+	.byte	3
+	.word	12462
+	.byte	9,4,236,7,9,28,10
+	.byte	'ptr_rxtable_pca',0
+	.word	2081
+	.byte	4,2,35,0,10
+	.byte	'ptr_txtable_pca',0
+	.word	12437
+	.byte	4,2,35,4,10
+	.byte	'ptr_conntable_pcs',0
+	.word	12447
+	.byte	4,2,35,8,10
+	.byte	'protocol_table_pcs',0
+	.word	12457
+	.byte	4,2,35,12,10
+	.byte	'sid_table_pcs',0
+	.word	12467
+	.byte	4,2,35,16,10
+	.byte	'session_lookup_table_pcau8',0
+	.word	2081
+	.byte	4,2,35,20,10
+	.byte	'security_lookup_table_pcau8',0
+	.word	2081
+	.byte	4,2,35,24,0,8
+	.byte	'Dcm_Dsld_confType',0,4,252,7,3
+	.word	12472
+	.byte	15
+	.word	12472
+	.byte	31
+	.byte	'Dcm_Dsld_Conf_cs',0,4,189,8,44
+	.word	12707
+	.byte	1,1,17,19,200,1,9,4,18
+	.byte	'USE_ASYNCH_CLIENT_SERVER',0,0,18
+	.byte	'USE_ASYNCH_FNC',0,1,0,8
+	.byte	'DcmDspSecurityUsePort',0,19,204,1,2
+	.word	12740
+	.byte	17,20,22,9,4,18
+	.byte	'DCM_NO_BOOT',0,0,18
+	.byte	'DCM_OEM_BOOT',0,1,18
+	.byte	'DCM_SYS_BOOT',0,2,0,8
+	.byte	'Dcm_SessionForBootType',0,20,27,2
+	.word	12822
+	.byte	17,21,192,3,9,4,18
+	.byte	'DCM_READ_OK',0,0,18
+	.byte	'DCM_READ_FAILED',0,1,18
+	.byte	'DCM_READ_PENDING',0,2,18
+	.byte	'DCM_READ_FORCE_RCRRP',0,3,18
+	.byte	'DCM_READ_NOT_AVAILABLE',0,4,0,8
+	.byte	'Dcm_ReadMemoryRet_t',0,21,199,3,3
+	.word	12903
+	.byte	8
+	.byte	'Rte_TaskRefType',0,22,184,1,32
+	.word	4900
+	.byte	8
+	.byte	'Rte_EventRefType',0,22,185,1,32
+	.word	158
+	.byte	8
+	.byte	'Rte_EventType',0,22,186,1,32
+	.word	827
+	.byte	8
+	.byte	'Rte_REActCounterType',0,22,252,1,15
+	.word	158
+	.byte	3
+	.word	158
+	.byte	8
+	.byte	'Rte_REActCounterRefType',0,22,253,1,58
+	.word	13142
+	.byte	9,22,255,1,9,8,10
+	.byte	'task',0
+	.word	13038
+	.byte	4,2,35,0,10
+	.byte	'acnt',0
+	.word	13147
+	.byte	4,2,35,4,0,8
+	.byte	'Rte_REContainerType',0,22,130,2,3
+	.word	13180
+	.byte	15
+	.word	4640
+	.byte	3
+	.word	13244
+	.byte	3
+	.word	158
+	.byte	15
+	.word	13180
+	.byte	3
+	.word	13259
+	.byte	8
+	.byte	'Rte_REContainerRefType',0,22,132,2,60
+	.word	13264
+	.byte	8
+	.byte	'Rte_MSICounterType',0,22,149,2,16
+	.word	488
+	.byte	3
+	.word	488
+	.byte	8
+	.byte	'Rte_MSICounterRefType',0,22,150,2,56
+	.word	13329
+	.byte	8
+	.byte	'Rte_MSIPendingFlagType',0,22,152,2,17
+	.word	158
+	.byte	3
+	.word	158
+	.byte	8
+	.byte	'Rte_MSIPendingFlagRefType',0,22,153,2,60
+	.word	13397
+	.byte	9,22,163,2,9,24,10
+	.byte	'counter',0
+	.word	13334
+	.byte	4,2,35,0,10
+	.byte	'incCounter',0
+	.word	158
+	.byte	1,2,35,4,10
+	.byte	'pending',0
+	.word	13402
+	.byte	4,2,35,8,10
+	.byte	'osTask',0
+	.word	13038
+	.byte	4,2,35,12,10
+	.byte	'acnt',0
+	.word	13147
+	.byte	4,2,35,16,10
+	.byte	'osEvent',0
+	.word	158
+	.byte	1,2,35,20,10
+	.byte	'MSIInit',0
+	.word	488
+	.byte	2,2,35,22,0,8
+	.byte	'Rte_MSITableEntry',0,22,172,2,3
+	.word	13437
+	.byte	3
+	.word	488
+	.byte	3
+	.word	158
+	.byte	8
+	.byte	'Rte_TaskArrayIndex',0,22,179,2,16
+	.word	158
+	.byte	8
+	.byte	'Rte_NrWaitingTasks',0,22,180,2,16
+	.word	158
+	.byte	9,22,182,2,9,4,10
+	.byte	'pending',0
+	.word	158
+	.byte	1,2,35,0,10
+	.byte	'count',0
+	.word	158
+	.byte	1,2,35,1,10
+	.byte	'firstWaitingTask',0
+	.word	158
+	.byte	1,2,35,2,0,8
+	.byte	'Rte_WaitableDatum',0,22,186,2,3
+	.word	13655
+	.byte	3
+	.word	13655
+	.byte	9,22,226,2,9,12,10
+	.byte	'event_id',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'wd',0
+	.word	13747
+	.byte	4,2,35,4,10
+	.byte	'timeout',0
+	.word	827
+	.byte	4,2,35,8,0,8
+	.byte	'Rte_WOWP_NotificationType',0,22,230,2,3
+	.word	13752
+	.byte	15
+	.word	13752
+	.byte	3
+	.word	13841
+	.byte	8
+	.byte	'Rte_WOWP_NotificationRefType',0,22,232,2,66
+	.word	13846
+	.byte	8
+	.byte	'Rte_ARE_NotificationType',0,22,234,2,29
+	.word	13180
+	.byte	22
+	.byte	'Rte_QTaskType',0,22,243,2,16,28,10
+	.byte	'cmn',0
+	.word	8164
+	.byte	24,2,35,0,10
+	.byte	'task',0
+	.word	13038
+	.byte	4,2,35,24,0,8
+	.byte	'Rte_QTaskType',0,22,246,2,3
+	.word	13923
+	.byte	22
+	.byte	'Rte_QREType',0,22,250,2,16,28,10
+	.byte	'cmn',0
+	.word	8164
+	.byte	24,2,35,0,10
+	.byte	're',0
+	.word	13269
+	.byte	4,2,35,24,0,8
+	.byte	'Rte_QREType',0,22,253,2,3
+	.word	13994
+	.byte	15
+	.word	13180
+	.byte	3
+	.word	14059
+	.byte	22
+	.byte	'Rte_QWWPType',0,22,129,3,16,28,10
+	.byte	'cmn',0
+	.word	8164
+	.byte	24,2,35,0,10
+	.byte	'wwp',0
+	.word	13851
+	.byte	4,2,35,24,0,8
+	.byte	'Rte_QWWPType',0,22,132,3,3
+	.word	14069
+	.byte	15
+	.word	13752
+	.byte	3
+	.word	14137
+	.byte	22
+	.byte	'Rte_QEvType',0,22,136,3,16,36,10
+	.byte	'cmn',0
+	.word	8164
+	.byte	24,2,35,0,10
+	.byte	'task',0
+	.word	13038
+	.byte	4,2,35,24,10
+	.byte	'mask',0
+	.word	158
+	.byte	1,2,35,28,10
+	.byte	'acnt',0
+	.word	13147
+	.byte	4,2,35,32,0,8
+	.byte	'Rte_QEvType',0,22,141,3,3
+	.word	14147
+	.byte	22
+	.byte	'Rte_QMSIType',0,22,145,3,16,48,10
+	.byte	'cmn',0
+	.word	8164
+	.byte	24,2,35,0,10
+	.byte	'task',0
+	.word	13038
+	.byte	4,2,35,24,10
+	.byte	'mask',0
+	.word	158
+	.byte	1,2,35,28,10
+	.byte	'acnt',0
+	.word	13147
+	.byte	4,2,35,32,10
+	.byte	'msiCounter',0
+	.word	13334
+	.byte	4,2,35,36,10
+	.byte	'msiPending',0
+	.word	13402
+	.byte	4,2,35,40,10
+	.byte	'msiLimit',0
+	.word	488
+	.byte	2,2,35,44,0,8
+	.byte	'Rte_QMSIType',0,22,153,3,3
+	.word	14242
+	.byte	17,23,21,9,4,18
+	.byte	'DSD_IDLE',0,0,18
+	.byte	'DSD_VERIFY_DIAGNOSTIC_DATA',0,1,18
+	.byte	'DSD_CALL_SERVICE',0,2,18
+	.byte	'DSD_WAITFORTXCONF',0,3,18
+	.byte	'DSD_SENDTXCONF_APPL',0,4,0,8
+	.byte	'Dcm_DsdStatesType_ten',0,23,28,2
+	.word	14397
+	.byte	17,24,215,2,9,4,18
+	.byte	'DCM_DSLD_POS_RESPONSE',0,0,18
+	.byte	'DCM_DSLD_NEG_RESPONSE',0,1,0,8
+	.byte	'Dcm_DsldResponseType_ten',0,24,219,2,2
+	.word	14534
+	.byte	9,24,229,2,9,40,10
+	.byte	'dataActiveRxPduId_u8',0
+	.word	488
+	.byte	2,2,35,0,10
+	.byte	'nrActiveConn_u8',0
+	.word	158
+	.byte	1,2,35,2,10
+	.byte	'idxActiveSession_u8',0
+	.word	158
+	.byte	1,2,35,3,10
+	.byte	'flgMonitorP3timer_b',0
+	.word	158
+	.byte	1,2,35,4,10
+	.byte	'idxCurrentProtocol_u8',0
+	.word	158
+	.byte	1,2,35,5,10
+	.byte	'dataActiveTxPduId_u8',0
+	.word	488
+	.byte	2,2,35,6,10
+	.byte	'datActiveSrvtable_u8',0
+	.word	158
+	.byte	1,2,35,8,10
+	.byte	'flgCommActive_b',0
+	.word	158
+	.byte	1,2,35,9,10
+	.byte	'cntrWaitpendCounter_u8',0
+	.word	158
+	.byte	1,2,35,10,10
+	.byte	'stResponseType_en',0
+	.word	14534
+	.byte	4,2,35,12,10
+	.byte	'idxActiveSecurity_u8',0
+	.word	158
+	.byte	1,2,35,16,10
+	.byte	'dataResult_u8',0
+	.word	158
+	.byte	1,2,35,17,10
+	.byte	'idxService_u8',0
+	.word	158
+	.byte	1,2,35,18,10
+	.byte	'dataResponseByDsd_b',0
+	.word	158
+	.byte	1,2,35,19,10
+	.byte	'dataSid_u8',0
+	.word	158
+	.byte	1,2,35,20,10
+	.byte	'dataRequestLength_u16',0
+	.word	488
+	.byte	2,2,35,22,10
+	.byte	'dataOldtxPduId_u8',0
+	.word	488
+	.byte	2,2,35,24,10
+	.byte	'adrActiveTxBuffer_tpu8',0
+	.word	1165
+	.byte	4,2,35,28,10
+	.byte	'dataTimeoutMonitor_u32',0
+	.word	827
+	.byte	4,2,35,32,10
+	.byte	'PreviousSessionIndex',0
+	.word	158
+	.byte	1,2,35,36,0,8
+	.byte	'Dcm_DsldInternalStructureType_tst',0,24,157,3,2
+	.word	14623
+	.byte	31
+	.byte	'Dcm_DsldGlobal_st',0,24,159,4,55
+	.word	14623
+	.byte	1,1,17,25,148,1,9,4,18
+	.byte	'DCM_ROE_CLEARED',0,0,18
+	.byte	'DCM_ROE_STOPPED',0,1,18
+	.byte	'DCM_ROE_STARTED',0,2,0,8
+	.byte	'Dcm_DspRoeEventState_ten',0,25,153,1,2
+	.word	15267
+	.byte	17,25,231,1,9,4,18
+	.byte	'DCM_CONTROLMASK_NO',0,0,18
+	.byte	'DCM_CONTROLMASK_INTERNAL',0,1,18
+	.byte	'DCM_CONTROLMASK_EXTERNAL',0,2,0,8
+	.byte	'Dcm_Dsp_IocbiCtrlMask_ten',0,25,236,1,2
+	.word	15362
+	.byte	17,21,203,1,9,4,18
+	.byte	'DCM_SUPPORT_READ',0,0,18
+	.byte	'DCM_SUPPORT_WRITE',0,1,18
+	.byte	'DCM_SUPPORT_IOCONTROL',0,2,0,30
+	.word	158
+	.byte	1,1,25
+	.word	11261
+	.byte	25
+	.word	488
+	.byte	25
+	.word	15479
+	.byte	0,3
+	.word	15549
+	.byte	9,25,239,1,9,44,10
+	.byte	'dataAllowedSessRead_u32',0
+	.word	827
+	.byte	4,2,35,0,10
+	.byte	'dataAllowedSecRead_u32',0
+	.word	827
+	.byte	4,2,35,4,10
+	.byte	'adrUserReadModeRule_pfct',0
+	.word	15572
+	.byte	4,2,35,8,10
+	.byte	'dataAllowedSessWrite_u32',0
+	.word	827
+	.byte	4,2,35,12,10
+	.byte	'dataAllowedSecWrite_u32',0
+	.word	827
+	.byte	4,2,35,16,10
+	.byte	'adrUserWriteModeRule_pfct',0
+	.word	15572
+	.byte	4,2,35,20,10
+	.byte	'dataSessBitMask_u32',0
+	.word	827
+	.byte	4,2,35,24,10
+	.byte	'dataSecBitMask_u32',0
+	.word	827
+	.byte	4,2,35,28,10
+	.byte	'adrUserControlModeRule_pfct',0
+	.word	15572
+	.byte	4,2,35,32,10
+	.byte	'dataCtrlMask_en',0
+	.word	15362
+	.byte	4,2,35,36,10
+	.byte	'dataCtrlMaskSize_u8',0
+	.word	158
+	.byte	1,2,35,40,10
+	.byte	'dataIocbirst_b',0
+	.word	158
+	.byte	1,2,35,41,10
+	.byte	'statusmaskIOControl_u8',0
+	.word	158
+	.byte	1,2,35,42,0,8
+	.byte	'Dcm_ExtendedDIDConfig_tst',0,25,141,2,3
+	.word	15577
+	.byte	9,25,200,2,9,4,10
+	.byte	'posnSigBit_u16',0
+	.word	488
+	.byte	2,2,35,0,10
+	.byte	'idxDcmDspDatainfo_u16',0
+	.word	488
+	.byte	2,2,35,2,0,8
+	.byte	'Dcm_SignalDIDConfig_tst',0,25,204,2,3
+	.word	16024
+	.byte	8
+	.byte	'Dem_ReturnControlDTCSettingType',0,26,84,15
+	.word	158
+	.byte	8
+	.byte	'Dem_DTCGroupType',0,26,133,2,16
+	.word	827
+	.byte	8
+	.byte	'Dem_DTCKindType',0,26,145,3,16
+	.word	158
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L47:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32
+	.byte	13,58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,46,1,3,8,32,13
+	.byte	58,15,59,15,57,15,73,19,54,15,39,12,0,0,8,22,0,3,8,58,15,59,15,57,15,73,19,0,0,9,19,1,58,15,59,15,57,15
+	.byte	11,15,0,0,10,13,0,3,8,73,19,11,15,56,9,0,0,11,46,1,49,19,0,0,12,5,0,49,19,0,0,13,46,1,3,8,58,15,59,15
+	.byte	57,15,73,19,54,15,39,12,63,12,60,12,0,0,14,46,1,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0,15,38
+	.byte	0,73,19,0,0,16,21,0,54,15,0,0,17,4,1,58,15,59,15,57,15,11,15,0,0,18,40,0,3,8,28,13,0,0,19,1,1,11,15,73
+	.byte	19,0,0,20,33,0,47,15,0,0,21,21,0,54,15,39,12,0,0,22,19,1,3,8,58,15,59,15,57,15,11,15,0,0,23,59,0,3,8,0
+	.byte	0,24,21,1,54,15,39,12,0,0,25,5,0,73,19,0,0,26,23,1,58,15,59,15,57,15,11,15,0,0,27,4,1,3,8,58,15,59,15
+	.byte	57,15,11,15,0,0,28,21,0,73,19,54,15,39,12,0,0,29,53,0,73,19,0,0,30,21,1,73,19,54,15,39,12,0,0,31,52,0
+	.byte	3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L48:
+	.word	.L137-.L136
+.L136:
+	.half	3
+	.word	.L139-.L138
+.L138:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits8.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits16.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits32.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmCore_DslDsd_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\api\\Dem_Dcm.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs_Prot.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\DcmAppl.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Dcm_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Seca_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Dsc_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Uds_Pub.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\Dsd\\Dcm_Dsd.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_Prot.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Uds_Prot.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\api\\Dem_Types.h',0,0,0,0,0
+.L139:
+.L137:
+	.sdecl	'.debug_info',debug,cluster('Dcm_DcmControlDTCSetting')
+	.sect	'.debug_info'
+.L49:
+	.word	482
+	.half	3
+	.word	.L50
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L52,.L51
+	.byte	2
+	.word	.L45
+	.byte	3
+	.byte	'Dcm_DcmControlDTCSetting',0,1,51,31
+	.word	.L71
+	.byte	1,1,1
+	.word	.L40,.L72,.L39
+	.byte	4
+	.byte	'OpStatus',0,1,51,92
+	.word	.L71,.L73
+	.byte	4
+	.byte	'pMsgContext',0,1,51,153,1
+	.word	.L74,.L75
+	.byte	4
+	.byte	'dataNegRespCode_u8',0,1,51,227,1
+	.word	.L76,.L77
+	.byte	5
+	.word	.L40,.L72
+	.byte	6
+	.byte	'dataDTC_u32',0,1,53,52
+	.word	.L78,.L79
+	.byte	6
+	.byte	'nrReqLen_u16',0,1,54,52
+	.word	.L80,.L81
+	.byte	6
+	.byte	'dataDtcSettingType_u8',0,1,55,52
+	.word	.L71,.L82
+	.byte	6
+	.byte	'dataDemRetVal_u8',0,1,56,52
+	.word	.L71,.L83
+	.byte	6
+	.byte	'dataRetSetCtrlOpRectype_u8',0,1,57,49
+	.word	.L71,.L84
+	.byte	6
+	.byte	'dataServRetval_u8',0,1,58,55
+	.word	.L71,.L85
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_DcmControlDTCSetting')
+	.sect	'.debug_abbrev'
+.L50:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_DcmControlDTCSetting')
+	.sect	'.debug_line'
+.L51:
+	.word	.L141-.L140
+.L140:
+	.half	3
+	.word	.L143-.L142
+.L142:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c',0,0,0,0,0
+.L143:
+	.byte	5,31,7,0,5,2
+	.word	.L40
+	.byte	3,50,1,5,27,9
+	.half	.L100-.L40
+	.byte	3,10,1,5,25,9
+	.half	.L144-.L100
+	.byte	1,5,32,9
+	.half	.L145-.L144
+	.byte	3,3,1,5,18,9
+	.half	.L101-.L145
+	.byte	3,1,1,5,20,9
+	.half	.L102-.L101
+	.byte	3,1,1,5,40,9
+	.half	.L146-.L102
+	.byte	3,2,1,5,49,9
+	.half	.L97-.L146
+	.byte	1,5,5,9
+	.half	.L104-.L97
+	.byte	3,6,1,5,25,7,9
+	.half	.L147-.L104
+	.byte	3,3,1,5,27,9
+	.half	.L96-.L147
+	.byte	3,2,1,9
+	.half	.L105-.L96
+	.byte	3,126,1,5,12,9
+	.half	.L2-.L105
+	.byte	3,7,1,5,82,7,9
+	.half	.L148-.L2
+	.byte	1,5,27,7,9
+	.half	.L4-.L148
+	.byte	3,11,1,5,13,9
+	.half	.L149-.L4
+	.byte	1,5,17,7,9
+	.half	.L150-.L149
+	.byte	3,3,1,5,98,7,9
+	.half	.L151-.L150
+	.byte	3,2,1,5,103,9
+	.half	.L152-.L151
+	.byte	1,5,131,1,9
+	.half	.L106-.L152
+	.byte	1,5,17,9
+	.half	.L7-.L106
+	.byte	3,2,1,5,43,7,9
+	.half	.L153-.L7
+	.byte	3,2,1,5,41,9
+	.half	.L154-.L153
+	.byte	1,5,21,9
+	.half	.L155-.L154
+	.byte	3,2,1,5,51,7,9
+	.half	.L156-.L155
+	.byte	3,3,1,5,29,9
+	.half	.L107-.L156
+	.byte	3,3,1,5,25,9
+	.half	.L157-.L107
+	.byte	1,5,83,7,9
+	.half	.L158-.L157
+	.byte	3,3,1,5,29,9
+	.half	.L110-.L158
+	.byte	3,1,1,5,33,7,9
+	.half	.L159-.L110
+	.byte	3,3,1,5,55,9
+	.half	.L160-.L159
+	.byte	1,5,53,9
+	.half	.L161-.L160
+	.byte	1,5,74,9
+	.half	.L162-.L161
+	.byte	3,4,1,5,60,9
+	.half	.L111-.L162
+	.byte	3,124,1,5,34,9
+	.half	.L11-.L111
+	.byte	3,7,1,5,56,7,9
+	.half	.L163-.L11
+	.byte	3,3,1,5,54,9
+	.half	.L164-.L163
+	.byte	1,5,79,9
+	.half	.L165-.L164
+	.byte	1,5,56,9
+	.half	.L13-.L165
+	.byte	3,7,1,5,54,9
+	.half	.L166-.L13
+	.byte	1,5,25,9
+	.half	.L10-.L166
+	.byte	3,104,1,5,79,9
+	.half	.L9-.L10
+	.byte	3,33,1,5,42,9
+	.half	.L112-.L9
+	.byte	1,5,50,9
+	.half	.L115-.L112
+	.byte	3,2,1,5,25,9
+	.half	.L117-.L115
+	.byte	3,2,1,5,29,7,9
+	.half	.L167-.L117
+	.byte	3,3,1,5,51,9
+	.half	.L168-.L167
+	.byte	1,5,49,9
+	.half	.L116-.L168
+	.byte	1,5,70,9
+	.half	.L169-.L116
+	.byte	3,4,1,5,55,9
+	.half	.L170-.L169
+	.byte	3,124,1,5,30,9
+	.half	.L16-.L170
+	.byte	3,7,1,5,52,7,9
+	.half	.L171-.L16
+	.byte	3,3,1,5,50,9
+	.half	.L118-.L171
+	.byte	1,5,75,9
+	.half	.L172-.L118
+	.byte	1,5,52,9
+	.half	.L18-.L172
+	.byte	3,7,1,5,50,9
+	.half	.L119-.L18
+	.byte	1,5,21,9
+	.half	.L15-.L119
+	.byte	3,101,1,5,24,9
+	.half	.L8-.L15
+	.byte	3,34,1,5,21,9
+	.half	.L173-.L8
+	.byte	1,5,46,7,9
+	.half	.L174-.L173
+	.byte	3,2,1,5,44,9
+	.half	.L175-.L174
+	.byte	1,5,17,9
+	.half	.L20-.L175
+	.byte	3,124,1,5,40,9
+	.half	.L6-.L20
+	.byte	3,13,1,5,38,9
+	.half	.L176-.L6
+	.byte	1,5,13,9
+	.half	.L22-.L176
+	.byte	3,125,1,5,36,9
+	.half	.L5-.L22
+	.byte	3,11,1,5,34,9
+	.half	.L177-.L5
+	.byte	1,5,12,9
+	.half	.L23-.L177
+	.byte	3,5,1,5,9,9
+	.half	.L178-.L23
+	.byte	1,5,39,7,9
+	.half	.L179-.L178
+	.byte	3,3,1,5,37,9
+	.half	.L180-.L179
+	.byte	1,5,24,9
+	.half	.L181-.L180
+	.byte	3,2,1,5,65,9
+	.half	.L99-.L181
+	.byte	1,5,30,9
+	.half	.L182-.L99
+	.byte	3,1,1,5,43,9
+	.half	.L120-.L182
+	.byte	3,125,1,5,30,9
+	.half	.L24-.L120
+	.byte	3,7,1,5,5,9
+	.half	.L3-.L24
+	.byte	3,3,1,5,1,9
+	.half	.L26-.L3
+	.byte	3,1,1,7,9
+	.half	.L53-.L26
+	.byte	0,1,1
+.L141:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_DcmControlDTCSetting')
+	.sect	'.debug_ranges'
+.L52:
+	.word	-1,.L40,0,.L53-.L40,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_CDTCSIni')
+	.sect	'.debug_info'
+.L54:
+	.word	210
+	.half	3
+	.word	.L55
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L57,.L56
+	.byte	2
+	.word	.L45
+	.byte	3
+	.byte	'Dcm_Dsp_CDTCSIni',0,1,28,21,1,1,1
+	.word	.L38,.L86,.L37
+	.byte	4
+	.word	.L38,.L86
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_CDTCSIni')
+	.sect	'.debug_abbrev'
+.L55:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Dsp_CDTCSIni')
+	.sect	'.debug_line'
+.L56:
+	.word	.L184-.L183
+.L183:
+	.half	3
+	.word	.L186-.L185
+.L185:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c',0,0,0,0,0
+.L186:
+	.byte	5,5,7,0,5,2
+	.word	.L38
+	.byte	3,31,1,5,27,9
+	.half	.L187-.L38
+	.byte	1,5,25,9
+	.half	.L188-.L187
+	.byte	1,5,1,9
+	.half	.L189-.L188
+	.byte	3,1,1,7,9
+	.half	.L58-.L189
+	.byte	0,1,1
+.L184:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Dsp_CDTCSIni')
+	.sect	'.debug_ranges'
+.L57:
+	.word	-1,.L38,0,.L58-.L38,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_ControlDtcSettingExit')
+	.sect	'.debug_info'
+.L59:
+	.word	340
+	.half	3
+	.word	.L60
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L62,.L61
+	.byte	2
+	.word	.L45
+	.byte	3
+	.byte	'Dcm_ControlDtcSettingExit',0,1,252,1,21,1,1,1
+	.word	.L42,.L87,.L41
+	.byte	4
+	.word	.L42,.L87
+	.byte	5
+	.byte	'idxCdtc_u8',0,1,254,1,26
+	.word	.L71,.L88
+	.byte	5
+	.byte	'dataDemRetVal_u8',0,1,255,1,52
+	.word	.L71,.L89
+	.byte	5
+	.byte	'session_active_u32',0,1,128,2,27
+	.word	.L78,.L90
+	.byte	5
+	.byte	'allowed_session_u32',0,1,129,2,27
+	.word	.L78,.L91
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_ControlDtcSettingExit')
+	.sect	'.debug_abbrev'
+.L60:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_ControlDtcSettingExit')
+	.sect	'.debug_line'
+.L61:
+	.word	.L191-.L190
+.L190:
+	.half	3
+	.word	.L193-.L192
+.L192:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c',0,0,0,0,0
+.L193:
+	.byte	5,49,7,0,5,2
+	.word	.L42
+	.byte	3,130,2,1,5,18,9
+	.half	.L194-.L42
+	.byte	1,5,34,9
+	.half	.L195-.L194
+	.byte	1,5,66,9
+	.half	.L196-.L195
+	.byte	1,5,48,9
+	.half	.L197-.L196
+	.byte	1,5,88,9
+	.half	.L198-.L197
+	.byte	1,5,22,9
+	.half	.L121-.L198
+	.byte	3,2,1,5,5,9
+	.half	.L199-.L121
+	.byte	1,5,121,7,9
+	.half	.L200-.L199
+	.byte	3,2,1,5,99,9
+	.half	.L122-.L200
+	.byte	1,5,121,9
+	.half	.L201-.L122
+	.byte	1,5,133,1,9
+	.half	.L202-.L201
+	.byte	1,5,153,1,9
+	.half	.L123-.L202
+	.byte	1,5,28,9
+	.half	.L27-.L123
+	.byte	3,4,1,5,35,9
+	.half	.L28-.L27
+	.byte	3,3,1,5,68,9
+	.half	.L203-.L28
+	.byte	1,5,48,9
+	.half	.L204-.L203
+	.byte	1,5,8,9
+	.half	.L125-.L204
+	.byte	3,2,1,5,85,7,9
+	.half	.L205-.L125
+	.byte	1,5,107,9
+	.half	.L124-.L205
+	.byte	1,5,12,7,9
+	.half	.L29-.L124
+	.byte	3,3,1,5,9,9
+	.half	.L126-.L29
+	.byte	1,5,52,7,9
+	.half	.L206-.L126
+	.byte	3,3,1,5,76,9
+	.half	.L207-.L206
+	.byte	1,5,13,9
+	.half	.L127-.L207
+	.byte	3,1,1,5,39,7,9
+	.half	.L208-.L127
+	.byte	3,3,1,5,37,9
+	.half	.L209-.L208
+	.byte	1,5,58,9
+	.half	.L210-.L209
+	.byte	3,5,1,5,1,9
+	.half	.L30-.L210
+	.byte	3,4,1,7,9
+	.half	.L63-.L30
+	.byte	0,1,1
+.L191:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_ControlDtcSettingExit')
+	.sect	'.debug_ranges'
+.L62:
+	.word	-1,.L42,0,.L63-.L42,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_CDTCModeStatusCheck')
+	.sect	'.debug_info'
+.L64:
+	.word	310
+	.half	3
+	.word	.L65
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L67,.L66
+	.byte	2
+	.word	.L45
+	.byte	3
+	.byte	'Dcm_CDTCModeStatusCheck',0,1,180,2,21,1,1,1
+	.word	.L44,.L92,.L43
+	.byte	4
+	.word	.L44,.L92
+	.byte	5
+	.byte	'flgModeRetval_b',0,1,182,2,29
+	.word	.L71,.L93
+	.byte	5
+	.byte	'dataNegRespCode_u8',0,1,183,2,26
+	.word	.L71,.L94
+	.byte	5
+	.byte	'dataDemRetVal_u8',0,1,184,2,52
+	.word	.L71,.L95
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_CDTCModeStatusCheck')
+	.sect	'.debug_abbrev'
+.L65:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_CDTCModeStatusCheck')
+	.sect	'.debug_line'
+.L66:
+	.word	.L212-.L211
+.L211:
+	.half	3
+	.word	.L214-.L213
+.L213:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c',0,0,0,0,0
+.L214:
+	.byte	5,21,7,0,5,2
+	.word	.L44
+	.byte	3,179,2,1,5,25,9
+	.half	.L128-.L44
+	.byte	3,5,1,5,24,9
+	.half	.L215-.L128
+	.byte	1,5,8,9
+	.half	.L216-.L215
+	.byte	3,4,1,5,5,9
+	.half	.L217-.L216
+	.byte	1,5,59,7,9
+	.half	.L218-.L217
+	.byte	3,3,1,5,12,9
+	.half	.L129-.L218
+	.byte	3,3,1,5,43,7,9
+	.half	.L219-.L129
+	.byte	1,5,62,9
+	.half	.L220-.L219
+	.byte	1,5,53,7,9
+	.half	.L34-.L220
+	.byte	3,3,1,5,77,9
+	.half	.L221-.L34
+	.byte	1,5,30,9
+	.half	.L130-.L221
+	.byte	1,5,38,9
+	.half	.L132-.L130
+	.byte	3,1,1,5,13,9
+	.half	.L134-.L132
+	.byte	3,1,1,5,39,7,9
+	.half	.L222-.L134
+	.byte	3,3,1,5,37,9
+	.half	.L133-.L222
+	.byte	1,5,58,9
+	.half	.L223-.L133
+	.byte	3,5,1,5,1,9
+	.half	.L33-.L223
+	.byte	3,5,1,7,9
+	.half	.L68-.L33
+	.byte	0,1,1
+.L212:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_CDTCModeStatusCheck')
+	.sect	'.debug_ranges'
+.L67:
+	.word	-1,.L44,0,.L68-.L44,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_DspCDTCStatus_b')
+	.sect	'.debug_info'
+.L69:
+	.word	191
+	.half	3
+	.word	.L70
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Cdtcs.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L45
+	.byte	3
+	.byte	'Dcm_DspCDTCStatus_b',0,8,8,26
+	.word	.L71
+	.byte	1,5,3
+	.word	Dcm_DspCDTCStatus_b
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_DspCDTCStatus_b')
+	.sect	'.debug_abbrev'
+.L70:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_CDTCModeStatusCheck')
+	.sect	'.debug_loc'
+.L43:
+	.word	-1,.L44,0,.L128-.L44
+	.half	2
+	.byte	138,0
+	.word	.L128-.L44,.L92-.L44
+	.half	2
+	.byte	138,8
+	.word	.L92-.L44,.L92-.L44
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L95:
+	.word	-1,.L44,.L130-.L44,.L131-.L44
+	.half	1
+	.byte	82
+	.word	.L132-.L44,.L133-.L44
+	.half	1
+	.byte	95
+	.word	.L131-.L44,.L134-.L44
+	.half	1
+	.byte	84
+	.word	0,0
+.L94:
+	.word	-1,.L44,0,.L92-.L44
+	.half	2
+	.byte	145,120
+	.word	0,0
+.L93:
+	.word	-1,.L44,.L129-.L44,.L130-.L44
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_ControlDtcSettingExit')
+	.sect	'.debug_loc'
+.L41:
+	.word	-1,.L42,0,.L87-.L42
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L91:
+	.word	-1,.L42,.L123-.L42,.L27-.L42
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L28-.L42,.L124-.L42
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L89:
+	.word	-1,.L42,.L127-.L42,.L30-.L42
+	.half	1
+	.byte	82
+	.word	0,0
+.L88:
+	.word	-1,.L42,.L121-.L42,.L122-.L42
+	.half	1
+	.byte	95
+	.word	.L27-.L42,.L28-.L42
+	.half	1
+	.byte	95
+	.word	0,0
+.L90:
+	.word	-1,.L42,.L125-.L42,.L126-.L42
+	.half	1
+	.byte	95
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_DcmControlDTCSetting')
+	.sect	'.debug_loc'
+.L39:
+	.word	-1,.L40,0,.L72-.L40
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L73:
+	.word	-1,.L40,0,.L96-.L40
+	.half	1
+	.byte	84
+	.word	.L2-.L40,.L106-.L40
+	.half	1
+	.byte	84
+	.word	.L6-.L40,.L22-.L40
+	.half	1
+	.byte	84
+	.word	.L5-.L40,.L23-.L40
+	.half	1
+	.byte	84
+	.word	0,0
+.L79:
+	.word	-1,.L40,.L103-.L40,.L72-.L40
+	.half	1
+	.byte	88
+	.word	.L109-.L40,.L110-.L40
+	.half	1
+	.byte	84
+	.word	.L113-.L40,.L112-.L40
+	.half	1
+	.byte	84
+	.word	0,0
+.L83:
+	.word	-1,.L40,.L110-.L40,.L111-.L40
+	.half	1
+	.byte	82
+	.word	.L11-.L40,.L10-.L40
+	.half	1
+	.byte	82
+	.word	.L112-.L40,.L114-.L40
+	.half	1
+	.byte	82
+	.word	.L115-.L40,.L116-.L40
+	.half	1
+	.byte	95
+	.word	.L114-.L40,.L117-.L40
+	.half	1
+	.byte	84
+	.word	.L16-.L40,.L118-.L40
+	.half	1
+	.byte	95
+	.word	.L18-.L40,.L119-.L40
+	.half	1
+	.byte	95
+	.word	0,0
+.L82:
+	.word	-1,.L40,.L104-.L40,.L72-.L40
+	.half	1
+	.byte	89
+	.word	0,0
+.L77:
+	.word	-1,.L40,0,.L96-.L40
+	.half	1
+	.byte	101
+	.word	.L100-.L40,.L72-.L40
+	.half	1
+	.byte	108
+	.word	.L2-.L40,.L7-.L40
+	.half	1
+	.byte	101
+	.word	.L108-.L40,.L107-.L40
+	.half	1
+	.byte	100
+	.word	.L6-.L40,.L22-.L40
+	.half	1
+	.byte	101
+	.word	.L5-.L40,.L23-.L40
+	.half	1
+	.byte	101
+	.word	0,0
+.L84:
+	.word	-1,.L40,.L101-.L40,.L96-.L40
+	.half	1
+	.byte	82
+	.word	.L2-.L40,.L107-.L40
+	.half	1
+	.byte	82
+	.word	.L9-.L40,.L112-.L40
+	.half	1
+	.byte	82
+	.word	.L8-.L40,.L20-.L40
+	.half	1
+	.byte	82
+	.word	.L6-.L40,.L22-.L40
+	.half	1
+	.byte	82
+	.word	.L5-.L40,.L23-.L40
+	.half	1
+	.byte	82
+	.word	0,0
+.L85:
+	.word	-1,.L40,.L105-.L40,.L2-.L40
+	.half	1
+	.byte	82
+	.word	.L120-.L40,.L24-.L40
+	.half	1
+	.byte	82
+	.word	.L3-.L40,.L72-.L40
+	.half	1
+	.byte	82
+	.word	0,0
+.L81:
+	.word	-1,.L40,.L102-.L40,.L96-.L40
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L2-.L40,.L7-.L40
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L6-.L40,.L22-.L40
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L5-.L40,.L23-.L40
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L75:
+	.word	-1,.L40,0,.L97-.L40
+	.half	1
+	.byte	100
+	.word	.L98-.L40,.L99-.L40
+	.half	1
+	.byte	111
+	.word	.L24-.L40,.L3-.L40
+	.half	1
+	.byte	111
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Dsp_CDTCSIni')
+	.sect	'.debug_loc'
+.L37:
+	.word	-1,.L38,0,.L86-.L38
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L224:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Dsp_CDTCSIni')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L224,.L38,.L86-.L38
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dcm_DcmControlDTCSetting')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L224,.L40,.L72-.L40
+	.sdecl	'.debug_frame',debug,cluster('Dcm_ControlDtcSettingExit')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L224,.L42,.L87-.L42
+	.sdecl	'.debug_frame',debug,cluster('Dcm_CDTCModeStatusCheck')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L224,.L44,.L92-.L44
+	.byte	4
+	.word	(.L128-.L44)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L92-.L128)/2
+	.byte	19,0,8,26,0,0
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   342  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   343  #define DCM_STOP_SEC_CODE /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   344  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Cdtcs.c	   345  #endif /* (DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF) && (DCM_CFG_DSP_CONTROLDTCSETTING_ENABLED != DCM_CFG_OFF) */
+
+	; Module end

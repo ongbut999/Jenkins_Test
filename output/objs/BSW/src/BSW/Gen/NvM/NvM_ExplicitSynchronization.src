@@ -1,0 +1,2936 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc15696a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\NvM\\NvM_ExplicitSynchronization.src BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.NvM_ExplicitSynchronization.NvM_Prv_ExplicitSync_Initialize',code,cluster('NvM_Prv_ExplicitSync_Initialize')
+	.sect	'.text.NvM_ExplicitSynchronization.NvM_Prv_ExplicitSync_Initialize'
+	.align	2
+	
+	.global	NvM_Prv_ExplicitSync_Initialize
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	     1  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	     2  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	     3   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	     4   * Includes
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	     5   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	     6  */
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	     7  #include "NvM.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	     8  #include "Rte_NvM.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	     9  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    10  #include "NvM_Prv.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    11  #include "NvM_Prv_BlockData.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    12  #include "NvM_Prv_ErrorDetection.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    13  #include "NvM_Prv_ExplicitSynchronization.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    14  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    15  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    16   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    17   * Variables
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    18   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    19   */
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    20  #define NVM_START_SEC_VAR_CLEARED_8
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    21  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    22  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    23  // counter for explicit sync operations
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    24  uint8 NvM_Prv_cntrMirrorOperations_u8;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    25  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    26  #define NVM_STOP_SEC_VAR_CLEARED_8
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    27  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    28  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    29  // RAM mirror definition used in explicit synchronization
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    30  // TRACE[NVM512] No NvM mirror is allocated if no block uses explicit synchronization
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    31  // TRACE[NVM513] Only one mirror is allocated
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    32  #if ((NVM_PRV_HAS_RAM_MIRROR == STD_ON) && (NVM_PRV_RUNTIME_RAM_BLOCK_CONFIG == STD_OFF))
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    33  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    34  # define NVM_START_SEC_VAR_CLEARED_8
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    35  # include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    36  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    37  uint8 NvM_Prv_RamMirror_au8[NVM_PRV_SIZE_RAM_MIRROR];
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    38  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    39  # define NVM_STOP_SEC_VAR_CLEARED_8
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    40  # include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    41  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    42  #elif ((NVM_PRV_HAS_RAM_MIRROR == STD_ON) && (NVM_PRV_RUNTIME_RAM_BLOCK_CONFIG == STD_ON))
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    43  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    44  #define BSW_START_SEC_VAR_CLEARED_32
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    45  #include "Bsw_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    46  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    47  // Runtime RAM Block Configuration feature in combination with explicit synchronization needs definition of
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    48  // NvM mirror at runtime
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    49  // TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3028]
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    50  // TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3029]
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    51  // TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3030]
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    52  uint8 *NvM_Prv_RamMirror_au8;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    53  uint32 NvM_Prv_RntRamMirrorSize_u32;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    54  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    55  #define BSW_STOP_SEC_VAR_CLEARED_32
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    56  #include "Bsw_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    57  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    58  #endif
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    59  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    60  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    61   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    62   * Inline declarations
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    63   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    64   */
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    65  LOCAL_INLINE boolean NvM_Prv_ExplicitSync_IsBlockSizeValid(NvM_BlockIdType idBlock_uo);
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    66  LOCAL_INLINE MemIf_JobResultType NvM_Prv_ExplicitSync_CallCopyFct(NvM_Prv_ExplicitSync_Copy_tpfct CopyFunction_pfct,
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    67                                                                    void* RamBlock_pv);
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    68  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    69  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    70   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    71   * Code
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    72   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    73  */
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    74  #define NVM_START_SEC_CODE
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    75  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    76  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    77  void NvM_Prv_ExplicitSync_Initialize(void)
+; Function NvM_Prv_ExplicitSync_Initialize
+.L21:
+NvM_Prv_ExplicitSync_Initialize:	.type	func
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    78  {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    79      NvM_Prv_cntrMirrorOperations_u8 = 0;
+	movh.a	a15,#@his(NvM_Prv_cntrMirrorOperations_u8)
+	lea	a15,[a15]@los(NvM_Prv_cntrMirrorOperations_u8)
+.L111:
+	mov	d15,#0
+.L112:
+	st.b	[a15],d15
+.L113:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    80  }
+	ret
+.L56:
+	
+__NvM_Prv_ExplicitSync_Initialize_function_end:
+	.size	NvM_Prv_ExplicitSync_Initialize,__NvM_Prv_ExplicitSync_Initialize_function_end-NvM_Prv_ExplicitSync_Initialize
+.L36:
+	; End of function
+	
+	.sdecl	'.text.NvM_ExplicitSynchronization.NvM_Prv_ExplicitSync_CheckBlockSizes',code,cluster('NvM_Prv_ExplicitSync_CheckBlockSizes')
+	.sect	'.text.NvM_ExplicitSynchronization.NvM_Prv_ExplicitSync_CheckBlockSizes'
+	.align	2
+	
+	.global	NvM_Prv_ExplicitSync_CheckBlockSizes
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    81  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    82  boolean NvM_Prv_ExplicitSync_CheckBlockSizes(void)
+; Function NvM_Prv_ExplicitSync_CheckBlockSizes
+.L23:
+NvM_Prv_ExplicitSync_CheckBlockSizes:	.type	func
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    83  {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    84      boolean areBlockSizesValid_b = TRUE;
+	mov	d2,#1
+.L97:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    85  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    86  #if ((NVM_PRV_RUNTIME_RAM_BLOCK_CONFIG == STD_ON) && (NVM_PRV_HAS_RAM_MIRROR == STD_ON))
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    87      NvM_BlockIdType idBlock_uo;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    88  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    89      for (idBlock_uo = NVM_CFG_FIRST_USED_BLOCK; idBlock_uo < NVM_CFG_NR_BLOCKS; ++idBlock_uo)
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    90      {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    91          if (NvM_Prv_IsBlockSelected(idBlock_uo, NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM))
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    92          {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    93              if (NvM_Prv_GetBlockSize(idBlock_uo) > NvM_Prv_RntRamMirrorSize_u32)
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    94              {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    95                  // BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3100 Indicate bad initialization
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    96                  areBlockSizesValid_b = FALSE;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    97              }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    98          }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	    99      }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   100  #endif
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   101  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   102      return areBlockSizesValid_b;
+	j	.L2
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   103  }
+.L2:
+	ret
+.L58:
+	
+__NvM_Prv_ExplicitSync_CheckBlockSizes_function_end:
+	.size	NvM_Prv_ExplicitSync_CheckBlockSizes,__NvM_Prv_ExplicitSync_CheckBlockSizes_function_end-NvM_Prv_ExplicitSync_CheckBlockSizes
+.L41:
+	; End of function
+	
+	.sdecl	'.text.NvM_ExplicitSynchronization.NvM_Prv_ExplicitSync_IsOngoing',code,cluster('NvM_Prv_ExplicitSync_IsOngoing')
+	.sect	'.text.NvM_ExplicitSynchronization.NvM_Prv_ExplicitSync_IsOngoing'
+	.align	2
+	
+	.global	NvM_Prv_ExplicitSync_IsOngoing
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   104  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   105  boolean NvM_Prv_ExplicitSync_IsOngoing(void)
+; Function NvM_Prv_ExplicitSync_IsOngoing
+.L25:
+NvM_Prv_ExplicitSync_IsOngoing:	.type	func
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   106  {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   107      return (NvM_Prv_cntrMirrorOperations_u8 > 0u);
+	movh.a	a15,#@his(NvM_Prv_cntrMirrorOperations_u8)
+	lea	a15,[a15]@los(NvM_Prv_cntrMirrorOperations_u8)
+	ld.bu	d15,[a15]
+.L122:
+	ne	d2,d15,#0
+.L123:
+	j	.L3
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   108  }
+.L3:
+	ret
+.L60:
+	
+__NvM_Prv_ExplicitSync_IsOngoing_function_end:
+	.size	NvM_Prv_ExplicitSync_IsOngoing,__NvM_Prv_ExplicitSync_IsOngoing_function_end-NvM_Prv_ExplicitSync_IsOngoing
+.L46:
+	; End of function
+	
+	.sdecl	'.text.NvM_ExplicitSynchronization.NvM_Prv_ExplicitSync_CopyData',code,cluster('NvM_Prv_ExplicitSync_CopyData')
+	.sect	'.text.NvM_ExplicitSynchronization.NvM_Prv_ExplicitSync_CopyData'
+	.align	2
+	
+	.global	NvM_Prv_ExplicitSync_CopyData
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   109  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   110  MemIf_JobResultType NvM_Prv_ExplicitSync_CopyData(NvM_Prv_ExplicitSync_Copy_tpfct CopyFunction_pfct,
+; Function NvM_Prv_ExplicitSync_CopyData
+.L27:
+NvM_Prv_ExplicitSync_CopyData:	.type	func
+	mov.aa	a12,a4
+.L99:
+	mov	d8,d4
+.L71:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   111                                                    NvM_BlockIdType idBlock_uo)
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   112  {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   113      MemIf_JobResultType stExplicitSync_en = MEMIF_JOB_OK;
+	mov	d9,#0
+.L72:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   114  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   115  #if (NVM_PRV_HAS_RAM_MIRROR == STD_ON)
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   116      void* RamBlock_pv = NvM_Prv_GetActiveRamBlock();
+	call	NvM_Prv_GetActiveRamBlock
+.L98:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   117  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   118      // Check whether block size is valid and explicit synchronization is enabled and
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   119      if (NvM_Prv_IsBlockSelected(idBlock_uo, NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM) &&
+	mov	d15,#128
+.L83:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	     1  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	     2  #ifndef NVM_PRV_BLOCKDESCRIPTOR_H
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	     3  #define NVM_PRV_BLOCKDESCRIPTOR_H
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	     4  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	     5  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	     6   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	     7   * Includes
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	     8   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	     9   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    10  #include "Rte_NvM_Type.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    11  #include "NvM_Types.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    12  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    13  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    14   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    15   * Defines/Macros
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    16   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    17   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    18  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    19   * Definition of the immediate job priority for a NVRAM block.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    20   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    21  // TRACE[ECUC_NvM_00477]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    22  #define NVM_PRV_JOB_PRIORITY_IMMEDIATE      (0u)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    23  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    24  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    25   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    26   * Type definitions
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    27   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    28   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    29  typedef Std_ReturnType (*NvM_Prv_ExplicitSync_Copy_tpfct)(void* NvMBuffer_pv);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    30  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    31  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    32   * Definition of different bit masks to access different configuration flags withis block descriptors
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    33   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    34  typedef enum
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    35  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    36      /// Bit mask definition to get information whether a block shall be processed during NvM_ReadAll.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    37      /// This information is stored in the NVRAM block descriptor, see NvM_Prv_BlockDescriptor_tst.stFlags_u16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    38      /// TRACE[NVM117_Conf] Parameter NvMBlockDescriptor:NvMSelectBlockForReadAll
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    39      NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL              = 0x0001,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    40      /// Bit mask definition to get information whether the block shall be processed during NvM_WriteAll.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    41      /// This information is stored in the NVRAM block descriptor, see NvM_Prv_BlockDescriptor_tst.stFlags_u16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    42      /// TRACE[NVM549_Conf] Parameter NvMBlockDescriptor:NvMSelectBlockForWriteAll
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    43      NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL             = 0x0002,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    44      /// Bit mask definition to get information whether the block shall be processed during NvM_Rb_FirstInitAll.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    45      /// This information is stored in the NVRAM block descriptor, see NvM_Prv_BlockDescriptor_tst.stFlags_u16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    46      /// TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-2828] Parameter NvMBlockDescriptor:NvMRbSelectBlockForFirstInitAll
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    47      NVM_PRV_BLOCK_FLAG_SELECT_FOR_FIRST_INIT_ALL        = 0x0004,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    48      /// Bit mask definition to get information whether the block shall be initialized when a layout change is detected.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    49      /// This information is stored in the NVRAM block descriptor, see NvM_Prv_BlockDescriptor_tst.stFlags_u16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    50      /// TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-2881] Parameter NvMBlockDescriptor:NvMRbInitBlockAtLayoutChange
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    51      NVM_PRV_BLOCK_FLAG_SELECT_FOR_INIT_AT_LAYOUT_CHANGE = 0x0008,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    52      /// Bit mask definition to get information whether the block is initially write protected.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    53      /// This information is stored in the NVRAM block descriptor, see NvM_Prv_BlockDescriptor_tst.stFlags_u16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    54      /// TRACE[NVM033_Conf] Parameter NvMBlockDescriptor:NvMBlockWriteProt
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    55      NVM_PRV_BLOCK_FLAG_WRITE_PROTECTED                  = 0x0010,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    56      /// Bit mask definition to get information whether the block shall be written only once.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    57      /// This information is stored in the NVRAM block descriptor, see NvM_Prv_BlockDescriptor_tst.stFlags_u16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    58      /// TRACE[NVM072_Conf] Parameter NvMBlockDescriptor:NvMWriteBlockOnce
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    59      NVM_PRV_BLOCK_FLAG_WRITE_ONCE                       = 0x0020,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    60      /// Bit mask definition to get information whether the block shall be resistant to block layout changes.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    61      /// This information is stored in the NVRAM block descriptor, see NvM_Prv_BlockDescriptor_tst.stFlags_u16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    62      /// TRACE[NVM483_Conf] ParameterNvMBlockDescriptor:NvMResistantToChangedSw
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    63      NVM_PRV_BLOCK_FLAG_RESISTANT_TO_CHANGED_SW          = 0x0040,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    64      /// Bit mask definition to get information whether the block shall use explicit synchronization mechanism.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    65      /// This information is stored in the NVRAM block descriptor, see NvM_Prv_BlockDescriptor_tst.stFlags_u16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    66      /// TRACE[NVM519_Conf] Parameter NvMBlockDescriptor:NvMBlockUseSyncMechanism
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    67      NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM               = 0x0080,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    68      /// Bit mask definition to get information whether the block shall be processed during NvM_ValidateAll.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    69      /// This information is stored in the NVRAM block descriptor, see NvM_Prv_BlockDescriptor_tst.stFlags_u16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    70      /// TRACE[NVM557_Conf] Parameter NvMBlockDescriptor:NvMBlockUseAutoValidation
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    71      NVM_PRV_BLOCK_FLAG_USE_AUTO_VALIDATION              = 0x0100,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    72      /// Bit mask definition to get information whether the block is using a variable block length.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    73      /// This information is stored in the NVRAM block descriptor, see NvM_Prv_BlockDescriptor_tst.stFlags_u16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    74      /// TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-2996] Parameter NvMBlockDescriptor:NvMRbNvBlockLengthString
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    75      NVM_PRV_BLOCK_FLAG_USE_VARIABLE_BLOCK_LENGTH        = 0x0200,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    76      /// Bit mask definition to get information whether the block is configured for migration.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    77      /// This information is stored in the NVRAM block descriptor, see NvM_Prv_BlockDescriptor_tst.stFlags_u16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    78      /// TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3027] Parameter NvMBlockDescriptor:NvMRbFirstReadDataMigration
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    79      NVM_PRV_BLOCK_FLAG_SELECT_FOR_MIGRATION             = 0x0400,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    80      /// Bit mask definition to get information whether the block shall be initialized unconditionally
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    81      /// This information is stored in the NVRAM block descriptor, see NvM_Prv_BlockDescriptor_tst.stFlags_u16
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    82      /// TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3175] Parameter NvMBlockDescriptor:NvMRbRamInitUnconditional
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    83      NVM_PRV_BLOCK_FLAG_RAM_INIT_UNCONDITIONAL           = 0x0800
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    84  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    85  } NvM_Prv_BlockConfiguration_ten;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    86  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    87  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    88   * Definition of the structure for common configuration options of the NvM used during the runtime.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    89   * TRACE[NVM028_Conf]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    90   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    91  typedef struct
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    92  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    93      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    94       * Pointer to a callback function which shall be invoked on termination of each asynchronous multi-block request.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    95       * TRACE[NVM468]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    96       * TRACE[NVM331]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    97       * TRACE[NVM500_Conf] Parameter NvMCommon:NvMMultiBlockCallback
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    98       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	    99      void (*MultiBlockCallback_pfct)(uint8 ServiceId, NvM_RequestResultType JobResult);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   100      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   101       * Pointer to a callback function which shall be invoked on start of each asynchronous multi-block request.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   102       * TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-2762] Parameter NvMCommon:NvMRbMultiBlockStartCallback
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   103       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   104      void (*RbMultiBlockStartCallback_pfct)(uint8 ServiceId);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   105      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   106       * Pointer to a callback function which shall be invoked on termination of each asynchronous single-block request.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   107       * TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-2842]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   108       * TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-2843] Parameter NvMCommon:NvMRbObserverCallback
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   109       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   110      Std_ReturnType (*ObserverCallback_pfct)(NvM_BlockIdType BlockId,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   111                                              uint8 ServiceId,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   112                                              NvM_RequestResultType JobResult);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   113  } NvM_Prv_Common_tst;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   114  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   115  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   116   * Definition of the structure for a NVRAM block descriptor.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   117   * A NVRAM block descriptor contains all information about a single NVRAM block needed during the runtime.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   118   * The NVRAM block descriptors are condensed in the NVRAM block descriptor table.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   119   * TRACE[NVM061_Conf]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   120   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   121  typedef struct
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   122  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   123      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   124       * Block ID to be passed to the MemIf.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   125       * Do not confuse this ID with NVRAM block ID used within NvM.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   126       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   127      uint16 idBlockMemIf_u16;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   128      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   129       * Pointer to the block legth in bytes.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   130       * If runtime calculation of block lengths is enabled by the NvM configuration then block lengths will be located
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   131       * in RAM so pointer points to a variable with block length calculated during runtime.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   132       * Otherwise if runtime calculation is disabled by the NvM configuration then block legths will be located
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   133       * in ROM so pointer points to a constant with block length configured during compile time.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   134       * TRACE[NVM479_Conf] Parameter NvMBlockDescriptor:NvMNvBlockLength
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   135       * TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3028] Parameter NvMCommon:NvMRbRuntimeRamBlockConfiguration
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   136       * TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-2996] Parameter NvMBlockDescriptor:NvMRbNvBlockLengthString
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   137       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   138  #if (NVM_PRV_RUNTIME_RAM_BLOCK_CONFIG == STD_ON)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   139      uint16* nrBlockBytes_pu16;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   140  #else
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   141      uint16 const* nrBlockBytes_pu16;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   142  #endif
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   143      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   144       * Device index where the block is located (Fee / Ea).
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   145       * TRACE[NVM035_Conf] Parameter NvMBlockDescriptor:NvMNvramDeviceId
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   146       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   147      uint8 idxDevice_u8;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   148      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   149       * Number of non-volatile blocks in a contiguous area according to the given block management type.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   150       * TRACE[NVM480_Conf] Parameter NvMBlockDescriptor:NvMNvBlockNum
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   151       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   152      uint8 nrNvBlocks_u8;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   153      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   154       * Number of multiple ROM blocks in a contiguous area according to the given block management type.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   155       * TRACE[NVM485_Conf] Parameter NvMBlockDescriptor:NvMRomBlockNum
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   156       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   157      uint8 nrRomBlocks_u8;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   158      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   159       * Pointer to the permanent RAM block data.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   160       * If this pointer is NULL_PTR then no permanent RAM block data has been configured by the user.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   161       * If runtime calculation of RAM block data addresses is enabled by the NvM configuration
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   162       * then RAM block data addresses will be located in RAM and pointer points to a void pointer
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   163       * calculated during runtime.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   164       * Otherwise if runtime calculation is disabled by the NvM configuration then RAM block data addresses
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   165       * will be located in ROM and pointer points to a constant void pointer configured during compile time.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   166       * TRACE[NVM126]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   167       * TRACE[NVM482_Conf] Parameter NvMBlockDescriptor:NvMRamBlockDataAddress
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   168       * TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3028] Parameter NvMCommon:NvMRbRuntimeRamBlockConfiguration
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   169       * TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3086] Parameter NvMBlockDescriptor:NvMRbRamBlockDataAddressString
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   170       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   171  #if (NVM_PRV_RUNTIME_RAM_BLOCK_CONFIG == STD_ON)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   172      void** adrRamBlock_ppv;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   173  #else
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   174      void* const* adrRamBlock_ppv;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   175  #endif
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   176      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   177       * Pointer to the ROM block data.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   178       * If this pointer is NULL_PTR then no ROM block data has been configured by the user.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   179       * TRACE[NVM020]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   180       * TRACE[NVM484_Conf] Parameter NvMBlockDescriptor:NvMRomBlockDataAddress
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   181       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   182      void const* adrRomBlock_pcv;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   183      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   184       * Pointer to the block specific callback function which shall be invoked on termination
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   185       * of each asynchronous single-block request.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   186       * If this pointer is NULL_PTR then no callback has been configured by the user.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   187       * TRACE[NVM113]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   188       * TRACE[NVM467]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   189       * TRACE[NVM330]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   190       * TRACE[NVM506_Conf] Parameter NvMBlockDescriptor:NvMSingleBlockCallback
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   191       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   192      Std_ReturnType (*SingleBlockCallback_pfct)(uint8 ServiceId, NvM_RequestResultType JobResult);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   193      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   194       * Pointer to the block specific callback function which shall be invoked on start
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   195       * of each asynchronous single-block request.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   196       * If this pointer is NULL_PTR then no callback has been configured by the user.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   197       * TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3056]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   198       * TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3062] Parameter NvMBlockDescriptor:NvMRbSingleBlockStartCallback
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   199       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   200      Std_ReturnType (*SingleBlockStartCallback_pfct)(uint8 ServiceId);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   201      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   202       * Pointer to the block specific callback function which shall be invoked if no ROM block data is available
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   203       * for initialization of the block.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   204       * If this pointer is NULL_PTR then no callback has been configured by the user.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   205       * TRACE[NVM469]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   206       * TRACE[NVM352]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   207       * TRACE[NVM116_Conf] Parameter NvMBlockDescriptor:NvMInitBlockCallback
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   208       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   209      Std_ReturnType (*InitBlockCallback_pfct)(void);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   210      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   211       * Pointer to the block specific callback function to let the application copy data from the NvM mirror
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   212       * to application's RAM block.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   213       * If this pointer is NULL_PTR then no callback has been configured by the user.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   214       * TRACE[NVM540]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   215       * TRACE[NVM542]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   216       * TRACE[NVM521_Conf] Parameter NvMBlockDescriptor:NvMReadRamBlockFromNvCallback
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   217       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   218      Std_ReturnType (*ReadRamBlockFromNvm_pfct)(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   219      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   220       * Pointer the block specific callback function to let the application copy data from the application's RAM block
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   221       * to the NvM mirror.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   222       * If this pointer is NULL_PTR then no callback has been configured by the user.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   223       * TRACE[NVM539]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   224       * TRACE[NVM541]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   225       * TRACE[NVM520_Conf] Parameter NvMBlockDescriptor:NvMWriteRamBlockToNvCallback
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   226       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   227      Std_ReturnType (*WriteRamBlockToNvm_pfct)(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   228      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   229       * Block management type.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   230       * TRACE[NVM062_Conf] Parameter NvMBlockDescriptor:NvMBlockManagementType
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   231       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   232      NvM_BlockManagementType BlockManagementType_en;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   233      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   234       * Block job priority.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   235       * TRACE[NVM477_Conf] Parameter NvMBlockDescriptor:NvMBlockJobPriority
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   236       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   237      uint8 JobPriority_u8;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   238      /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   239       * Bit-field containing several configuration parameter which can be represented by a bit.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   240       * NvM provides special bit mask to access individual bits from this bit-field:
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   241       * - NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   242       *   TRACE[NVM117_Conf] Parameter NvMBlockDescriptor:NvMSelectBlockForReadAll
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   243       * - NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   244       *   TRACE[NVM549_Conf] Parameter NvMBlockDescriptor:NvMSelectBlockForWriteAll
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   245       * - NVM_PRV_BLOCK_FLAG_SELECT_FOR_FIRST_INIT_ALL
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   246       *   TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-2828] Parameter NvMBlockDescriptor:NvMRbSelectBlockForFirstInitAll
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   247       * - NVM_PRV_BLOCK_FLAG_SELECT_FOR_INIT_AT_LAYOUT_CHANGE
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   248       *   TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-2881] Parameter NvMBlockDescriptor:NvMRbInitBlockAtLayoutChange
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   249       * - NVM_PRV_BLOCK_FLAG_WRITE_PROTECTED
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   250       *   TRACE[NVM033_Conf] Parameter NvMBlockDescriptor:NvMBlockWriteProt
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   251       * - NVM_PRV_BLOCK_FLAG_WRITE_ONCE
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   252       *   TRACE[NVM072_Conf] Parameter NvMBlockDescriptor:NvMWriteBlockOnce
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   253       * - NVM_PRV_BLOCK_FLAG_RESISTANT_TO_CHANGED_SW
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   254       *   TRACE[NVM483_Conf] Parameter NvMBlockDescriptor:NvMResistantToChangedSw
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   255       * - NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   256       *   TRACE[NVM519_Conf] Parameter NvMBlockDescriptor:NvMBlockUseSyncMechanism
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   257       * - NVM_PRV_BLOCK_FLAG_USE_AUTO_VALIDATION
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   258       *   TRACE[NVM557_Conf] Parameter NvMBlockDescriptor:NvMBlockUseAutoValidation
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   259       * - NVM_PRV_BLOCK_FLAG_USE_VARIABLE_BLOCK_LENGTH
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   260       *   TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-2996] Parameter NvMBlockDescriptor:NvMRbNvBlockLengthString
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   261       * - NVM_PRV_BLOCK_FLAG_SELECT_FOR_MIGRATION
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   262       *   TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3027] Parameter NvMBlockDescriptor:NvMRbFirstReadDataMigration
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   263       */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   264      uint16 stFlags_u16;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   265  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   266  } NvM_Prv_BlockDescriptor_tst;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   267  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   268  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   269   * Definition of the structure to assign the persistent ID to the block ID for a NVRAM block.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   270   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   271  typedef struct
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   272  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   273      uint16          PersistentId_u16;   // Persistent Id
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   274      NvM_BlockIdType BlockId_u16;        // Block Id
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   275  } NvM_Prv_PersId_BlockId_tst;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   276  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   277  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   278   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   279   * Constants
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   280   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   281   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   282  // Declaration of different configuration-dependent data.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   283  // Definition of all this data is done in NvM_Cfg.c.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   284  // ------------------------------------------------------------------------------------------------
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   285  #define NVM_START_SEC_CONST_UNSPECIFIED
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   286  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   287  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   288  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   289   * Declaration of the container with all common configuration data.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   290   * TRACE[NVM028_Conf]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   291   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   292  extern const NvM_Prv_Common_tst             NvM_Prv_Common_cst;
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   293  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   294   * Declaration of the NVRAM block descriptor table.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   295   * TRACE[NVM061_Conf]
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   296   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   297  extern const NvM_Prv_BlockDescriptor_tst    NvM_Prv_BlockDescriptors_acst[NVM_CFG_NR_BLOCKS];
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   298  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   299   * Declaratiion of the table to get the NvM block ID using the persistent ID.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   300   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   301  extern const NvM_Prv_PersId_BlockId_tst     NvM_Prv_PersId_BlockId_acst[NVM_PRV_NR_PERSISTENT_IDS];
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   302  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   303   * Declaration of the table with all persistant IDs.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   304   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   305  extern const uint16                         NvM_Prv_PersIds_acu16[NVM_CFG_NR_BLOCKS];
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   306  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   307  #define NVM_STOP_SEC_CONST_UNSPECIFIED
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   308  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   309  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   310  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   311   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   312   * Variables
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   313   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   314   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   315  #if (NVM_PRV_RUNTIME_RAM_BLOCK_CONFIG == STD_ON)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   316  # define NVM_START_SEC_VAR_CLEARED_UNSPECIFIED
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   317  # include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   318  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   319  extern uint16 NvM_Prv_BlockLengths_au16[NVM_CFG_NR_BLOCKS];
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   320  extern void *NvM_Prv_RamBlockAdr_apv[NVM_CFG_NR_BLOCKS];
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   321  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   322  # define NVM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   323  # include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   324  #else
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   325  # define NVM_START_SEC_CONST_UNSPECIFIED
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   326  # include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   327  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   328  extern uint16 const NvM_Prv_BlockLengths_acu16[NVM_CFG_NR_BLOCKS];
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   329  extern void * const NvM_Prv_RamBlockAdr_acpv[NVM_CFG_NR_BLOCKS];
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   330  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   331  # define NVM_STOP_SEC_CONST_UNSPECIFIED
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   332  # include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   333  #endif
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   334  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   335  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   336   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   337   * Extern declarations
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   338   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   339   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   340  #define NVM_START_SEC_CODE
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   341  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   342  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   343  // Init-related functions (defined in NvM_Cfg.c)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   344  extern void NvM_Prv_InitRamBlockProperties(void);
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   345  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   346  #define NVM_STOP_SEC_CODE
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   347  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   348  
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   349  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   350  **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   351  * Inline functions
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   352  **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   353  */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   354  /**
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   355   * \brief
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   356   * This NvM private function provides information whether a block is configured for the given feature.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   357   *
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   358   * \param idBlock_uo
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   359   * ID of the block for which the configuration information will be provided.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   360   * \param SelectionMask_en
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   361   * Bit mask for the configuration information to be provide.
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   362   *
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   363   * \return
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   364   * - TRUE = block is configured for the given feature
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   365   * - FALSE = block is not configured for the given feature
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   366   */
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   367  LOCAL_INLINE boolean NvM_Prv_IsBlockSelected(NvM_BlockIdType idBlock_uo,
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   368                                               NvM_Prv_BlockConfiguration_ten SelectionMask_en)
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   369  {
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   370      return ((idBlock_uo < NVM_CFG_NR_BLOCKS) &&
+	mov	d0,#0
+.L128:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   370      return ((idBlock_uo < NVM_CFG_NR_BLOCKS) &&      (inlined)
+	jge.u	d8,#14,.L4
+.L129:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   371              ((NvM_Prv_BlockDescriptors_acst[idBlock_uo].stFlags_u16 & ((uint16)SelectionMask_en)) != 0u));
+	mul	d1,d8,#48
+.L130:
+	movh.a	a15,#@his(NvM_Prv_BlockDescriptors_acst)
+	lea	a15,[a15]@los(NvM_Prv_BlockDescriptors_acst)
+.L131:
+	addsc.a	a15,a15,d1,#0
+.L132:
+	ld.hu	d1,[a15]46
+.L133:
+	and	d1,d15
+.L134:
+	seln	d0,d1,d0,#1
+
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   370      return ((idBlock_uo < NVM_CFG_NR_BLOCKS) &&      (inlined)
+.L5:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   371              ((NvM_Prv_BlockDescriptors_acst[idBlock_uo].stFlags_u16 & ((uint16)SelectionMask_en)) != 0u));      (inlined)
+.L4:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   370      return ((idBlock_uo < NVM_CFG_NR_BLOCKS) &&      (inlined)
+	j	.L6
+
+; BSW\src\BSW\Gen\NvM\src\NvM_Prv_BlockDescriptor.h	   372  }      (inlined)
+.L6:
+	jeq	d0,#0,.L7
+.L84:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   120          (RamBlock_pv == NvM_Prv_RamMirror_au8))
+	movh.a	a15,#@his(NvM_Prv_RamMirror_au8)
+	lea	a15,[a15]@los(NvM_Prv_RamMirror_au8)
+.L135:
+	jne.a	a2,a15,.L8
+.L91:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   121      {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   122          // Check whether block size is valid
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   123          if (NvM_Prv_ExplicitSync_IsBlockSizeValid(idBlock_uo))
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   124          {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   125              stExplicitSync_en = NvM_Prv_ExplicitSync_CallCopyFct(CopyFunction_pfct, RamBlock_pv);
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   126          }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   127          else
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   128          {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   129              // Explicit synchronization failed
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   130              stExplicitSync_en = MEMIF_JOB_FAILED;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   131          }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   132      }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   133  #endif
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   134      return stExplicitSync_en;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   135  }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   136  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   137  #if ((NVM_PRV_HAS_RAM_MIRROR == STD_ON) && (NVM_PRV_RUNTIME_RAM_BLOCK_CONFIG == STD_ON))
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   138  void NvM_Prv_InitRuntimeRamMirror(uint8* RamMirror_pu8, uint32 RuntimeRamMirrorSize_u32)
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   139  {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   140      // Set explicit synchronization RAM buffer start address and its size
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   141      NvM_Prv_RamMirror_au8 = RamMirror_pu8;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   142      NvM_Prv_RntRamMirrorSize_u32 = RuntimeRamMirrorSize_u32;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   143  }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   144  #endif
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   145  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   146  #define NVM_STOP_SEC_CODE
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   147  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   148  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   149  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   150   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   151   * Inline code
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   152   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   153   */
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   154  LOCAL_INLINE boolean NvM_Prv_ExplicitSync_IsBlockSizeValid(NvM_BlockIdType idBlock_uo)
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   155  {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   156      boolean isBlockSizeValid_b = TRUE;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   157  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   158  #if ((NVM_PRV_HAS_RAM_MIRROR == STD_ON) && (NVM_PRV_RUNTIME_RAM_BLOCK_CONFIG == STD_ON))
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   159      // TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3049]
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   160      // Only needed if Runtime Block Configuration feature is active
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   161      // In this case RAM mirror length is configured by user and not automatically by BCT
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   162      // => a length missmatch could occurs
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   163      // Check whether the currently NV block length does not exceeds the RAM mirror length
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   164      // TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3049] block size greater than size of the RAM mirror
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   165      //                                               used for explicit synchronization
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   166      isBlockSizeValid_b = NvM_Prv_ErrorDetection_IsBlockSizeValidForExplicitSync(NvM_Prv_GetActiveService(),
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   167                                                                                  idBlock_uo,
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   168                                                                                  NvM_Prv_RntRamMirrorSize_u32);
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   169  #else
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   170      (void)idBlock_uo;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   171  #endif
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   172      return isBlockSizeValid_b;
+	mov	d15,#1
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   172      return isBlockSizeValid_b;      (inlined)
+	j	.L9
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   173  }      (inlined)
+.L9:
+	jeq	d15,#0,.L10
+.L79:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   173  }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   174  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   175  LOCAL_INLINE MemIf_JobResultType NvM_Prv_ExplicitSync_CallCopyFct(NvM_Prv_ExplicitSync_Copy_tpfct CopyFunction_pfct,
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   176                                                                    void* RamBlock_pv)
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   177  {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   178      MemIf_JobResultType stCopyFct_en;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   179  
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   180      // Check whether valid copy function is available
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   181      if ((NULL_PTR != CopyFunction_pfct))
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   182      {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   183          if (E_OK == CopyFunction_pfct(RamBlock_pv))
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   184          {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   185              // Copy function for explicit synchronization succeeded
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   186              stCopyFct_en = MEMIF_JOB_OK;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   187              // Reset counter for the next explicit sync operation
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   188              NvM_Prv_cntrMirrorOperations_u8 = 0;
+	movh.a	a15,#@his(NvM_Prv_cntrMirrorOperations_u8)
+	lea	a15,[a15]@los(NvM_Prv_cntrMirrorOperations_u8)
+.L136:
+	mov.a	a4,#0
+.L137:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   181      if ((NULL_PTR != CopyFunction_pfct))      (inlined)
+	jeq.a	a4,a12,.L11
+.L138:
+	mov.aa	a4,a2
+.L101:
+	calli	a12
+.L100:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   183          if (E_OK == CopyFunction_pfct(RamBlock_pv))      (inlined)
+	jne	d2,#0,.L12
+.L139:
+	mov	d9,#0
+.L140:
+	mov	d15,#0
+.L141:
+	st.b	[a15],d15
+.L142:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   186              stCopyFct_en = MEMIF_JOB_OK;      (inlined)
+	j	.L13
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   183          if (E_OK == CopyFunction_pfct(RamBlock_pv))      (inlined)
+.L12:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   189          }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   190          else
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   191          {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   192              // Copy function for explicit synchronization failed
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   193              ++NvM_Prv_cntrMirrorOperations_u8;
+	ld.bu	d15,[a15]
+.L143:
+	add	d15,#1
+	st.b	[a15],d15
+.L144:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   194              // TRACE[NVM579] The maximal number of mirror operation retries is NVM_REPEAT_MIRROR_OPERATIONS
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   195              if (NvM_Prv_cntrMirrorOperations_u8 > NVM_REPEAT_MIRROR_OPERATIONS)
+	ld.bu	d15,[a15]
+.L145:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   195              if (NvM_Prv_cntrMirrorOperations_u8 > NVM_REPEAT_MIRROR_OPERATIONS)      (inlined)
+	jeq	d15,#0,.L14
+.L146:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   196              {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   197                  // Explicit synchronization failed finally
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   198                  stCopyFct_en = MEMIF_JOB_FAILED;
+	mov	d9,#1
+.L147:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   199                  // Reset counter for the next explicit sync operation
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   200                  NvM_Prv_cntrMirrorOperations_u8 = 0;
+	mov	d15,#0
+.L148:
+	st.b	[a15],d15
+.L149:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   198                  stCopyFct_en = MEMIF_JOB_FAILED;      (inlined)
+	j	.L15
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   195              if (NvM_Prv_cntrMirrorOperations_u8 > NVM_REPEAT_MIRROR_OPERATIONS)      (inlined)
+.L14:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   201              }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   202              else
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   203              {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   204                  // -> Retry mirror operation in next cycle
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   205                  stCopyFct_en = MEMIF_JOB_PENDING;
+	mov	d9,#2
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   202              else      (inlined)
+.L15:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   190          else      (inlined)
+.L13:
+	j	.L16
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   181      if ((NULL_PTR != CopyFunction_pfct))      (inlined)
+.L11:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   206              }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   207          }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   208      }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   209      else
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   210      {
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   211          // Explicit synchronization failed
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   212          stCopyFct_en = MEMIF_JOB_FAILED;
+	mov	d9,#1
+.L150:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   213          // Reset counter for the next explicit sync operation
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   214          NvM_Prv_cntrMirrorOperations_u8 = 0;
+	mov	d15,#0
+.L151:
+	st.b	[a15],d15
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   209      else      (inlined)
+.L16:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   216      return stCopyFct_en;      (inlined)
+	j	.L17
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   217  }      (inlined)
+.L17:
+	j	.L18
+.L10:
+	mov	d9,#1
+.L18:
+.L8:
+.L7:
+	mov	d2,d9
+.L80:
+	j	.L19
+.L19:
+	ret
+.L62:
+	
+__NvM_Prv_ExplicitSync_CopyData_function_end:
+	.size	NvM_Prv_ExplicitSync_CopyData,__NvM_Prv_ExplicitSync_CopyData_function_end-NvM_Prv_ExplicitSync_CopyData
+.L51:
+	; End of function
+	
+	.sdecl	'.bss.NvM_ExplicitSynchronization.NvM_Prv_cntrMirrorOperations_u8',data,cluster('NvM_Prv_cntrMirrorOperations_u8')
+	.sect	'.bss.NvM_ExplicitSynchronization.NvM_Prv_cntrMirrorOperations_u8'
+	.global	NvM_Prv_cntrMirrorOperations_u8
+NvM_Prv_cntrMirrorOperations_u8:	.type	object
+	.size	NvM_Prv_cntrMirrorOperations_u8,1
+	.space	1
+	.sdecl	'.bss.NvM_ExplicitSynchronization.NvM_Prv_RamMirror_au8',data,cluster('NvM_Prv_RamMirror_au8')
+	.sect	'.bss.NvM_ExplicitSynchronization.NvM_Prv_RamMirror_au8'
+	.global	NvM_Prv_RamMirror_au8
+NvM_Prv_RamMirror_au8:	.type	object
+	.size	NvM_Prv_RamMirror_au8,20
+	.space	20
+	.calls	'NvM_Prv_ExplicitSync_CopyData','NvM_Prv_GetActiveRamBlock'
+	.calls	'NvM_Prv_ExplicitSync_CopyData','__INDIRECT__'
+	.calls	'NvM_Prv_ExplicitSync_Initialize','',0
+	.calls	'NvM_Prv_ExplicitSync_CheckBlockSizes','',0
+	.calls	'NvM_Prv_ExplicitSync_IsOngoing','',0
+	.extern	NvM_Prv_GetActiveRamBlock
+	.extern	NvM_Prv_BlockDescriptors_acst
+	.extern	__INDIRECT__
+	.calls	'NvM_Prv_ExplicitSync_CopyData','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L29:
+	.word	13125
+	.half	3
+	.word	.L30
+	.byte	4
+.L28:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L31
+.L57:
+	.byte	2
+	.byte	'unsigned char',0,1,8
+.L65:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,3,1,34,9,4,4
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL',0,1,4
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL',0,2,4
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_FIRST_INIT_ALL',0,4,4
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_INIT_AT_LAYOUT_CHANGE',0,8,4
+	.byte	'NVM_PRV_BLOCK_FLAG_WRITE_PROTECTED',0,16,4
+	.byte	'NVM_PRV_BLOCK_FLAG_WRITE_ONCE',0,32,4
+	.byte	'NVM_PRV_BLOCK_FLAG_RESISTANT_TO_CHANGED_SW',0,192,0,4
+	.byte	'NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM',0,128,1,4
+	.byte	'NVM_PRV_BLOCK_FLAG_USE_AUTO_VALIDATION',0,128,2,4
+	.byte	'NVM_PRV_BLOCK_FLAG_USE_VARIABLE_BLOCK_LENGTH',0,128,4,4
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_MIGRATION',0,128,8,4
+	.byte	'NVM_PRV_BLOCK_FLAG_RAM_INIT_UNCONDITIONAL',0,128,16,0
+.L82:
+	.byte	5
+	.byte	'NvM_Prv_IsBlockSelected',0,3,1,239,2,22
+	.word	153
+	.byte	1,1
+.L85:
+	.byte	6
+	.byte	'idBlock_uo',0,1,239,2,62
+	.word	170
+.L87:
+	.byte	6
+	.byte	'SelectionMask_en',0,1,240,2,77
+	.word	192
+.L89:
+	.byte	7,0,3,2,40,9,4,4
+	.byte	'NVM_BLOCK_NATIVE',0,0,4
+	.byte	'NVM_BLOCK_REDUNDANT',0,1,4
+	.byte	'NVM_BLOCK_DATASET',0,2,0,5
+	.byte	'NvM_Prv_GetBlockType',0,3,1,212,3,38
+	.word	800
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,1,212,3,75
+	.word	170
+	.byte	7,0,5
+	.byte	'NvM_Prv_GetNrNonVolatileBlocks',0,3,1,232,3,20
+	.word	153
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,1,232,3,67
+	.word	170
+	.byte	7,0,8
+	.byte	'void',0,9
+	.word	987
+	.byte	10
+	.word	993
+	.byte	5
+	.byte	'NvM_Prv_GetRomBlockAddress',0,3,1,173,4,26
+	.word	998
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,1,173,4,69
+	.word	170
+	.byte	7,0,5
+	.byte	'NvM_Prv_Block_IsInRom',0,3,3,142,1,22
+	.word	153
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,3,142,1,60
+	.word	170
+	.byte	6
+	.byte	'idxDataset_u8',0,3,142,1,78
+	.word	153
+	.byte	11,7,7,0,0,5
+	.byte	'NvM_Prv_Block_IsWriteProtected',0,3,3,148,1,22
+	.word	153
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,3,148,1,69
+	.word	170
+	.byte	7,0
+.L90:
+	.byte	5
+	.byte	'NvM_Prv_ExplicitSync_IsBlockSizeValid',0,3,4,154,1,22
+	.word	153
+	.byte	1,1
+.L92:
+	.byte	6
+	.byte	'idBlock_uo',0,4,154,1,76
+	.word	170
+.L94:
+	.byte	7,0
+.L61:
+	.byte	3,5,31,9,4,4
+	.byte	'MEMIF_JOB_OK',0,0,4
+	.byte	'MEMIF_JOB_FAILED',0,1,4
+	.byte	'MEMIF_JOB_PENDING',0,2,4
+	.byte	'MEMIF_JOB_CANCELED',0,3,4
+	.byte	'MEMIF_BLOCK_INCONSISTENT',0,4,4
+	.byte	'MEMIF_BLOCK_INVALID',0,5,0
+.L68:
+	.byte	10
+	.word	987
+	.byte	12
+	.word	153
+	.byte	1,1,13
+	.word	1413
+	.byte	0,10
+	.word	1418
+.L63:
+	.byte	14
+	.byte	'NvM_Prv_ExplicitSync_Copy_tpfct',0,1,29,26
+	.word	1431
+.L70:
+	.byte	5
+	.byte	'NvM_Prv_ExplicitSync_CallCopyFct',0,3,4,175,1,34
+	.word	1283
+	.byte	1,1
+.L73:
+	.byte	6
+	.byte	'CopyFunction_pfct',0,4,175,1,99
+	.word	1436
+.L75:
+	.byte	6
+	.byte	'RamBlock_pv',0,4,176,1,73
+	.word	1413
+.L77:
+	.byte	7,0,10
+	.word	1418
+	.byte	15
+	.byte	'NvM_Prv_GetActiveRamBlock',0,6,102,14
+	.word	1413
+	.byte	1,1,1,1,16
+	.word	716
+	.byte	17
+	.word	752
+	.byte	17
+	.word	772
+	.byte	7,0,16
+	.word	867
+	.byte	17
+	.word	900
+	.byte	7,0,16
+	.word	922
+	.byte	17
+	.word	965
+	.byte	7,0,16
+	.word	1003
+	.byte	17
+	.word	1042
+	.byte	7,0,16
+	.word	1064
+	.byte	17
+	.word	1098
+	.byte	17
+	.word	1118
+	.byte	11,18
+	.word	867
+	.byte	17
+	.word	900
+	.byte	19
+	.word	920
+	.byte	0,7,18
+	.word	922
+	.byte	17
+	.word	965
+	.byte	19
+	.word	985
+	.byte	0,7,0,0,16
+	.word	1146
+	.byte	17
+	.word	1189
+	.byte	7,0,16
+	.word	1211
+	.byte	17
+	.word	1261
+	.byte	7,0,16
+	.word	1476
+	.byte	17
+	.word	1521
+	.byte	17
+	.word	1548
+	.byte	7,0,20
+	.byte	'__INDIRECT__',0,4,1,1,1,1,1,21,1,10
+	.word	1780
+	.byte	14
+	.byte	'__codeptr',0,4,1,1
+	.word	1782
+	.byte	2
+	.byte	'char',0,1,6,14
+	.byte	'sint8',0,7,76,25
+	.word	1805
+	.byte	14
+	.byte	'uint8',0,7,81,25
+	.word	153
+	.byte	14
+	.byte	'uint16',0,7,91,25
+	.word	170
+	.byte	2
+	.byte	'unsigned int',0,4,7,14
+	.byte	'uint32',0,7,106,24
+	.word	1856
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,14
+	.byte	'uint64',0,7,111,30
+	.word	1887
+	.byte	14
+	.byte	'boolean',0,7,127,25
+	.word	153
+	.byte	14
+	.byte	'StatusType',0,8,191,1,27
+	.word	153
+	.byte	14
+	.byte	'Std_ReturnType',0,8,199,1,15
+	.word	153
+	.byte	22,8,206,1,9,8,23
+	.byte	'vendorID',0
+	.word	170
+	.byte	2,2,35,0,23
+	.byte	'moduleID',0
+	.word	170
+	.byte	2,2,35,2,23
+	.byte	'sw_major_version',0
+	.word	153
+	.byte	1,2,35,4,23
+	.byte	'sw_minor_version',0
+	.word	153
+	.byte	1,2,35,5,23
+	.byte	'sw_patch_version',0
+	.word	153
+	.byte	1,2,35,6,0,14
+	.byte	'Std_VersionInfoType',0,8,213,1,3
+	.word	1988
+	.byte	14
+	.byte	'PduIdType',0,9,22,19
+	.word	170
+	.byte	14
+	.byte	'PduLengthType',0,9,26,19
+	.word	170
+	.byte	3,10,113,9,4,4
+	.byte	'TP_DATACONF',0,0,4
+	.byte	'TP_DATARETRY',0,1,4
+	.byte	'TP_CONFPENDING',0,2,0,14
+	.byte	'TpDataStateType',0,10,118,3
+	.word	2178
+	.byte	14
+	.byte	'Can_IdType',0,11,32,16
+	.word	1856
+	.byte	14
+	.byte	'Can_HwHandleType',0,11,43,16
+	.word	170
+	.byte	22,12,93,9,8,23
+	.byte	'Class',0
+	.word	153
+	.byte	1,2,35,0,23
+	.byte	'TIN',0
+	.word	153
+	.byte	1,2,35,1,23
+	.byte	'ReturnAddress',0
+	.word	1856
+	.byte	4,2,35,4,0,14
+	.byte	'OsTrapInfoType',0,12,97,3
+	.word	2298
+	.byte	24,68
+	.word	1856
+	.byte	25,16,0,22,12,154,1,9,68,23
+	.byte	'store',0
+	.word	2378
+	.byte	68,2,35,0,0,24,68
+	.word	2387
+	.byte	25,0,0,14
+	.byte	'Os_JumpBufType',0,12,156,1,3
+	.word	2409
+	.byte	14
+	.byte	'Os_StackTraceType',0,12,174,1,18
+	.word	1856
+	.byte	22,12,175,1,9,8,23
+	.byte	'sp',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	'ctx',0
+	.word	1856
+	.byte	4,2,35,4,0,14
+	.byte	'Os_StackValueType',0,12,175,1,63
+	.word	2469
+	.byte	14
+	.byte	'Os_StackSizeType',0,12,176,1,27
+	.word	2469
+	.byte	26,1,1,10
+	.word	2554
+	.byte	14
+	.byte	'Os_VoidVoidFunctionType',0,12,179,1,16
+	.word	2557
+	.byte	14
+	.byte	'ApplicationType',0,12,193,1,23
+	.word	153
+	.byte	27
+	.byte	'Os_ApplicationConfigurationType_s',0,12,198,1,16,2,23
+	.byte	'app_id',0
+	.word	153
+	.byte	1,2,35,0,23
+	.byte	'access',0
+	.word	153
+	.byte	1,2,35,1,0,14
+	.byte	'Os_ApplicationConfigurationType',0,12,201,1,3
+	.word	2620
+	.byte	14
+	.byte	'Os_CoreStateType',0,12,203,1,16
+	.word	1856
+	.byte	14
+	.byte	'AreaIdType',0,12,204,1,16
+	.word	170
+	.byte	14
+	.byte	'Os_PeripheralAddressType',0,12,212,1,22
+	.word	1856
+	.byte	14
+	.byte	'TickType',0,12,221,1,22
+	.word	1856
+	.byte	14
+	.byte	'Os_StopwatchTickType',0,12,225,1,22
+	.word	1856
+	.byte	10
+	.word	1856
+	.byte	14
+	.byte	'Os_Lockable',0,12,234,1,18
+	.word	2862
+	.byte	14
+	.byte	'CoreIdType',0,12,236,1,16
+	.word	170
+	.byte	14
+	.byte	'SpinlockIdType',0,12,237,1,16
+	.word	170
+	.byte	3,12,239,1,9,4,4
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,4
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,14
+	.byte	'TryToGetSpinlockType',0,12,239,1,74
+	.word	2932
+	.byte	3,12,174,2,9,4,4
+	.byte	'APPLICATION_ACCESSIBLE',0,0,4
+	.byte	'APPLICATION_RESTARTING',0,1,4
+	.byte	'APPLICATION_TERMINATED',0,2,0,14
+	.byte	'ApplicationStateType',0,12,174,2,92
+	.word	3025
+	.byte	28,1,1,13
+	.word	153
+	.byte	13
+	.word	1413
+	.byte	0,10
+	.word	3137
+	.byte	14
+	.byte	'Os_FunctionEntryType',0,12,183,2,16
+	.word	3151
+	.byte	27
+	.byte	'Os_MeterInfoType_s',0,12,193,2,16,48,23
+	.byte	'elapsed',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	'previous',0
+	.word	1856
+	.byte	4,2,35,4,23
+	.byte	'max',0
+	.word	1856
+	.byte	4,2,35,8,23
+	.byte	'cumulative',0
+	.word	1856
+	.byte	4,2,35,12,23
+	.byte	'stackbase',0
+	.word	2469
+	.byte	8,2,35,16,23
+	.byte	'stackusage',0
+	.word	2469
+	.byte	8,2,35,24,23
+	.byte	'stackmax',0
+	.word	2469
+	.byte	8,2,35,32,23
+	.byte	'stackbudget',0
+	.word	2469
+	.byte	8,2,35,40,0,14
+	.byte	'Os_MeterInfoType',0,12,202,2,3
+	.word	3186
+	.byte	10
+	.word	3186
+	.byte	14
+	.byte	'Os_MeterInfoRefType',0,12,203,2,50
+	.word	3384
+	.byte	14
+	.byte	'EventMaskType',0,12,206,2,15
+	.word	153
+	.byte	14
+	.byte	'Os_imaskType',0,12,211,2,16
+	.word	1856
+	.byte	27
+	.byte	'Os_ISRDynType_s',0,12,213,2,16,48,23
+	.byte	'meter',0
+	.word	3186
+	.byte	48,2,35,0,0,14
+	.byte	'Os_ISRDynType',0,12,215,2,3
+	.word	3463
+	.byte	10
+	.word	3463
+	.byte	9
+	.word	3524
+	.byte	27
+	.byte	'Os_ISRType_s',0,12,216,2,16,24,23
+	.byte	'entry_function',0
+	.word	2562
+	.byte	4,2,35,0,23
+	.byte	'dynamic',0
+	.word	3529
+	.byte	4,2,35,4,23
+	.byte	'imask',0
+	.word	1856
+	.byte	4,2,35,8,23
+	.byte	'stackbudget',0
+	.word	2469
+	.byte	8,2,35,12,23
+	.byte	'access',0
+	.word	153
+	.byte	1,2,35,20,23
+	.byte	'application',0
+	.word	153
+	.byte	1,2,35,21,0,14
+	.byte	'Os_ISRType',0,12,223,2,3
+	.word	3534
+	.byte	10
+	.word	2554
+	.byte	9
+	.word	3534
+	.byte	10
+	.word	3693
+	.byte	14
+	.byte	'ISRType',0,12,224,2,46
+	.word	3698
+	.byte	14
+	.byte	'Os_bitmask',0,12,239,2,22
+	.word	1856
+	.byte	14
+	.byte	'Os_pset0Type',0,12,240,2,20
+	.word	1856
+	.byte	14
+	.byte	'Os_pset1Type',0,12,241,2,20
+	.word	1856
+	.byte	14
+	.byte	'Os_pset2Type',0,12,242,2,20
+	.word	1856
+	.byte	29,12,243,2,9,4,23
+	.byte	'p0',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	'p1',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	'p2',0
+	.word	1856
+	.byte	4,2,35,0,0,14
+	.byte	'Os_psetType',0,12,247,2,3
+	.word	3806
+	.byte	29,12,249,2,9,4,23
+	.byte	't0',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	't1',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	't2',0
+	.word	1856
+	.byte	4,2,35,0,0,14
+	.byte	'Os_tpmaskType',0,12,253,2,3
+	.word	3870
+	.byte	14
+	.byte	'Os_ActivationCountType',0,12,254,2,23
+	.word	153
+	.byte	27
+	.byte	'Os_TaskDynType_s',0,12,128,3,16,120,23
+	.byte	'terminate_jump_buf',0
+	.word	2418
+	.byte	68,2,35,0,23
+	.byte	'meter',0
+	.word	3186
+	.byte	48,2,35,68,23
+	.byte	'activation_count',0
+	.word	153
+	.byte	1,2,35,116,0,14
+	.byte	'Os_TaskDynType',0,12,132,3,3
+	.word	3968
+	.byte	24,68
+	.word	2387
+	.byte	25,0,0,10
+	.word	3968
+	.byte	9
+	.word	4094
+	.byte	27
+	.byte	'Os_TaskType_s',0,12,134,3,16,40,23
+	.byte	'dynamic',0
+	.word	4099
+	.byte	4,2,35,0,23
+	.byte	'entry_function',0
+	.word	2562
+	.byte	4,2,35,4,23
+	.byte	'pset',0
+	.word	3806
+	.byte	4,2,35,8,23
+	.byte	'base_tpmask',0
+	.word	3870
+	.byte	4,2,35,12,23
+	.byte	'tpmask',0
+	.word	3870
+	.byte	4,2,35,16,23
+	.byte	'core_id',0
+	.word	170
+	.byte	2,2,35,20,23
+	.byte	'index',0
+	.word	1856
+	.byte	4,2,35,24,23
+	.byte	'stackbudget',0
+	.word	2469
+	.byte	8,2,35,28,23
+	.byte	'activation_count',0
+	.word	153
+	.byte	1,2,35,36,23
+	.byte	'access',0
+	.word	153
+	.byte	1,2,35,37,23
+	.byte	'application',0
+	.word	153
+	.byte	1,2,35,38,0,14
+	.byte	'Os_TaskType',0,12,146,3,3
+	.word	4104
+	.byte	9
+	.word	4104
+	.byte	10
+	.word	4354
+	.byte	14
+	.byte	'TaskType',0,12,147,3,47
+	.word	4359
+	.byte	30
+	.byte	'Os_TaskStateType',0,12,155,3,6,4,4
+	.byte	'SUSPENDED',0,0,4
+	.byte	'READY',0,1,4
+	.byte	'WAITING',0,2,4
+	.byte	'RUNNING',0,3,0,14
+	.byte	'TaskStateType',0,12,156,3,31
+	.word	4382
+	.byte	29,12,167,3,3,4,23
+	.byte	'tpmask',0
+	.word	3870
+	.byte	4,2,35,0,0,27
+	.byte	'Os_ResourceDynType_s',0,12,166,3,16,4,23
+	.byte	'saved_priority',0
+	.word	4469
+	.byte	4,2,35,0,0,14
+	.byte	'Os_ResourceDynType',0,12,170,3,3
+	.word	4492
+	.byte	10
+	.word	4492
+	.byte	9
+	.word	4572
+	.byte	27
+	.byte	'Os_ResourceType_s',0,12,171,3,16,12,23
+	.byte	'dynamic',0
+	.word	4577
+	.byte	4,2,35,0,23
+	.byte	'tpmask',0
+	.word	3870
+	.byte	4,2,35,4,23
+	.byte	'access',0
+	.word	153
+	.byte	1,2,35,8,0,14
+	.byte	'Os_ResourceType',0,12,175,3,3
+	.word	4582
+	.byte	22,12,181,3,9,12,23
+	.byte	'maxallowedvalue',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	'ticksperbase',0
+	.word	1856
+	.byte	4,2,35,4,23
+	.byte	'mincycle',0
+	.word	1856
+	.byte	4,2,35,8,0,14
+	.byte	'AlarmBaseType',0,12,185,3,3
+	.word	4681
+	.byte	22,12,206,3,9,8,23
+	.byte	'Running',0
+	.word	153
+	.byte	1,2,35,0,23
+	.byte	'Pending',0
+	.word	153
+	.byte	1,2,35,1,23
+	.byte	'Delay',0
+	.word	1856
+	.byte	4,2,35,4,0,14
+	.byte	'Os_CounterStatusType',0,12,210,3,3
+	.word	4776
+	.byte	31
+	.word	153
+	.byte	1,1,10
+	.word	4862
+	.byte	14
+	.byte	'Os_CounterIncrAdvType',0,12,217,3,22
+	.word	4869
+	.byte	27
+	.byte	's_swd',0,12,222,3,12,4,23
+	.byte	'count',0
+	.word	1856
+	.byte	4,2,35,0,0,29,12,221,3,3,4,23
+	.byte	'sw',0
+	.word	4905
+	.byte	4,2,35,0,0,27
+	.byte	'Os_CounterDynType_s',0,12,220,3,16,4,23
+	.byte	'type_dependent',0
+	.word	4933
+	.byte	4,2,35,0,0,14
+	.byte	'Os_CounterDynType',0,12,226,3,3
+	.word	4952
+	.byte	10
+	.word	4952
+	.byte	9
+	.word	5030
+	.byte	27
+	.byte	'Os_CounterType_s',0,12,227,3,16,28,23
+	.byte	'dynamic',0
+	.word	5035
+	.byte	4,2,35,0,23
+	.byte	'advincr',0
+	.word	4874
+	.byte	4,2,35,4,23
+	.byte	'base',0
+	.word	4681
+	.byte	12,2,35,8,23
+	.byte	'core',0
+	.word	1413
+	.byte	4,2,35,20,23
+	.byte	'access',0
+	.word	153
+	.byte	1,2,35,24,23
+	.byte	'application',0
+	.word	153
+	.byte	1,2,35,25,0,14
+	.byte	'Os_CounterType',0,12,234,3,3
+	.word	5040
+	.byte	10
+	.word	4862
+	.byte	9
+	.word	5040
+	.byte	10
+	.word	5192
+	.byte	14
+	.byte	'CounterType',0,12,235,3,52
+	.word	5197
+	.byte	30
+	.byte	'Os_ScheduleTableStatusType',0,12,240,3,6,4,4
+	.byte	'SCHEDULETABLE_STOPPED',0,0,4
+	.byte	'SCHEDULETABLE_NEXT',0,1,4
+	.byte	'SCHEDULETABLE_WAITING',0,2,4
+	.byte	'SCHEDULETABLE_RUNNING',0,3,4
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,14
+	.byte	'ScheduleTableStatusType',0,12,241,3,41
+	.word	5223
+	.byte	9
+	.word	.L102-.L29
+	.byte	10
+	.word	5423
+	.byte	14
+	.byte	'ScheduleTableType',0,12,128,4,58
+	.word	5428
+	.byte	27
+	.byte	'Os_ScheduleTableDynType_s',0,12,130,4,16,16,23
+	.byte	'match',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	'next',0
+	.word	5433
+	.byte	4,2,35,4,23
+	.byte	'state',0
+	.word	5223
+	.byte	4,2,35,8,23
+	.byte	'config',0
+	.word	170
+	.byte	2,2,35,12,0,10
+	.word	5460
+	.byte	9
+	.word	5553
+.L102:
+	.byte	27
+	.byte	'Os_ScheduleTableType_s',0,12,247,3,16,16,23
+	.byte	'dynamic',0
+	.word	5558
+	.byte	4,2,35,0,23
+	.byte	'counter',0
+	.word	5202
+	.byte	4,2,35,4,23
+	.byte	'repeat',0
+	.word	153
+	.byte	1,2,35,8,23
+	.byte	'config',0
+	.word	170
+	.byte	2,2,35,10,23
+	.byte	'initial',0
+	.word	153
+	.byte	1,2,35,12,23
+	.byte	'access',0
+	.word	153
+	.byte	1,2,35,13,23
+	.byte	'application',0
+	.word	153
+	.byte	1,2,35,14,0,14
+	.byte	'Os_ScheduleTableType',0,12,255,3,3
+	.word	5563
+	.byte	9
+	.word	5563
+	.byte	10
+	.word	5743
+	.byte	9
+	.word	5040
+	.byte	10
+	.word	5753
+	.byte	32
+	.word	2867
+	.byte	32
+	.word	3806
+	.byte	32
+	.word	3703
+	.byte	32
+	.word	4364
+	.byte	32
+	.word	3870
+	.byte	32
+	.word	153
+	.byte	32
+	.word	4364
+	.byte	27
+	.byte	'Os_ControlledCoreType_s',0,12,251,6,16,112,23
+	.byte	'TrapInfo',0
+	.word	2298
+	.byte	8,2,35,0,23
+	.byte	'lock_taskaccess',0
+	.word	5763
+	.byte	4,2,35,8,23
+	.byte	'ReadyTasks',0
+	.word	5768
+	.byte	4,2,35,12,23
+	.byte	'RunningISR',0
+	.word	5773
+	.byte	4,2,35,16,23
+	.byte	'RunningTask',0
+	.word	5778
+	.byte	4,2,35,20,23
+	.byte	'RunningTPMask',0
+	.word	5783
+	.byte	4,2,35,24,23
+	.byte	'CurrentMeteredObject',0
+	.word	3389
+	.byte	4,2,35,28,23
+	.byte	'IdleMeter',0
+	.word	3186
+	.byte	48,2,35,32,23
+	.byte	'AppAccess',0
+	.word	153
+	.byte	1,2,35,80,23
+	.byte	'AppOverride',0
+	.word	5788
+	.byte	1,2,35,81,23
+	.byte	'GetStackValueAdjust',0
+	.word	2469
+	.byte	8,2,35,84,23
+	.byte	'InErrorHook',0
+	.word	153
+	.byte	1,2,35,92,23
+	.byte	'ChainTaskRef',0
+	.word	5793
+	.byte	4,2,35,96,23
+	.byte	'GetStackUsageAdjust',0
+	.word	2469
+	.byte	8,2,35,100,23
+	.byte	'InProtectionHook',0
+	.word	153
+	.byte	1,2,35,108,23
+	.byte	'CoreIsActive',0
+	.word	153
+	.byte	1,2,35,109,23
+	.byte	'InShutdownHook',0
+	.word	153
+	.byte	1,2,35,110,0,14
+	.byte	'Os_ControlledCoreType',0,12,141,7,3
+	.word	5798
+	.byte	10
+	.word	1856
+	.byte	9
+	.word	3534
+	.byte	10
+	.word	6254
+	.byte	9
+	.word	4104
+	.byte	10
+	.word	6264
+	.byte	10
+	.word	3186
+	.byte	27
+	.byte	'Os_AnyCoreType_s',0,12,151,7,16,96,23
+	.byte	'DisableAllImask',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	'SuspendAllImask',0
+	.word	1856
+	.byte	4,2,35,4,23
+	.byte	'SuspendOSImask',0
+	.word	1856
+	.byte	4,2,35,8,23
+	.byte	'DisableAllCount',0
+	.word	1856
+	.byte	4,2,35,12,23
+	.byte	'SuspendAllCount',0
+	.word	1856
+	.byte	4,2,35,16,23
+	.byte	'SuspendOSCount',0
+	.word	1856
+	.byte	4,2,35,20,23
+	.byte	'RestartJumpBuf',0
+	.word	2418
+	.byte	68,2,35,24,23
+	.byte	'Restartable',0
+	.word	153
+	.byte	1,2,35,92,0,14
+	.byte	'Os_AnyCoreType',0,12,160,7,3
+	.word	6279
+	.byte	14
+	.byte	'Can_TxObjPriorityClassType',0,13,219,3,16
+	.word	1856
+	.byte	27
+	.byte	'Can_TxHwObjectConfigType',0,13,231,3,16,8,23
+	.byte	'MsgObjId',0
+	.word	153
+	.byte	1,2,35,0,23
+	.byte	'HwControllerId',0
+	.word	153
+	.byte	1,2,35,1,23
+	.byte	'TxObjPriorityClass',0
+	.word	1856
+	.byte	4,2,35,4,0,14
+	.byte	'Can_TxHwObjectConfigType',0,13,252,3,3
+	.word	6556
+	.byte	27
+	.byte	'Can_RxHwObjectConfigType',0,13,129,4,16,12,23
+	.byte	'MaskRef',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	'MsgId',0
+	.word	1856
+	.byte	4,2,35,4,23
+	.byte	'MsgObjId',0
+	.word	153
+	.byte	1,2,35,8,23
+	.byte	'HwControllerId',0
+	.word	153
+	.byte	1,2,35,9,0,14
+	.byte	'Can_RxHwObjectConfigType',0,13,147,4,3
+	.word	6692
+	.byte	24,4
+	.word	153
+	.byte	25,3,0,27
+	.byte	'Can_ControllerMOMapConfigType',0,13,181,4,16,4,23
+	.byte	'ControllerMOMap',0
+	.word	6832
+	.byte	4,2,35,0,0,14
+	.byte	'Can_ControllerMOMapConfigType',0,13,184,4,3
+	.word	6841
+	.byte	27
+	.byte	'Can_NPCRValueType',0,13,188,4,16,2,23
+	.byte	'Can_NPCRValue',0
+	.word	170
+	.byte	2,2,35,0,0,14
+	.byte	'Can_NPCRValueType',0,13,191,4,3
+	.word	6942
+	.byte	27
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,194,4,16,8,23
+	.byte	'CanControllerBaudrate',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	'CanControllerBaudrateCfg',0
+	.word	170
+	.byte	2,2,35,4,0,14
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,198,4,3
+	.word	7017
+	.byte	9
+	.word	7017
+	.byte	10
+	.word	7182
+	.byte	27
+	.byte	'Can_BaudrateConfigPtrType',0,13,201,4,16,4,23
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	7187
+	.byte	4,2,35,0,0,14
+	.byte	'Can_BaudrateConfigPtrType',0,13,204,4,3
+	.word	7192
+	.byte	27
+	.byte	'Can_EventHandlingType',0,13,226,4,16,4,23
+	.byte	'CanEventType',0
+	.word	6832
+	.byte	4,2,35,0,0,14
+	.byte	'Can_EventHandlingType',0,13,229,4,3
+	.word	7292
+	.byte	14
+	.byte	'Rte_TransformerErrorCode',0,14,130,1,15
+	.word	153
+	.byte	14
+	.byte	'Rte_TransformerClass',0,14,131,1,15
+	.word	153
+	.byte	22,14,168,1,9,12,23
+	.byte	'in',0
+	.word	1413
+	.byte	4,2,35,0,23
+	.byte	'out',0
+	.word	1413
+	.byte	4,2,35,4,23
+	.byte	'used',0
+	.word	170
+	.byte	2,2,35,8,23
+	.byte	'lost_data',0
+	.word	153
+	.byte	1,2,35,10,0,14
+	.byte	'Rte_QDynType',0,14,173,1,3
+	.word	7438
+	.byte	3,14,175,1,9,4,4
+	.byte	'RTE_DRA',0,0,4
+	.byte	'RTE_WOWP',0,1,4
+	.byte	'RTE_TASK',0,2,4
+	.byte	'RTE_ARE',0,3,4
+	.byte	'RTE_EV',0,4,4
+	.byte	'RTE_MSI',0,5,0,14
+	.byte	'Rte_NotificationType',0,14,182,1,3
+	.word	7525
+	.byte	10
+	.word	7438
+	.byte	27
+	.byte	'Rte_QCmnType',0,14,184,1,16,24,23
+	.byte	'dynamic',0
+	.word	7623
+	.byte	4,2,35,0,23
+	.byte	'copy',0
+	.word	153
+	.byte	1,2,35,4,23
+	.byte	'queue_size',0
+	.word	170
+	.byte	2,2,35,6,23
+	.byte	'element_size',0
+	.word	170
+	.byte	2,2,35,8,23
+	.byte	'buffer_start',0
+	.word	1413
+	.byte	4,2,35,12,23
+	.byte	'buffer_end',0
+	.word	1413
+	.byte	4,2,35,16,23
+	.byte	'notification_type',0
+	.word	7525
+	.byte	4,2,35,20,0,14
+	.byte	'Rte_QCmnType',0,14,192,1,3
+	.word	7628
+	.byte	14
+	.byte	'Rte_AlarmRefType',0,14,224,1,32
+	.word	1856
+	.byte	14
+	.byte	'Rte_AlarmIndexType',0,14,226,1,32
+	.word	170
+	.byte	24,128,8
+	.word	153
+	.byte	25,255,7,0,14
+	.byte	'Impl_NVM_DstPtrType_1024',0,15,50,15
+	.word	7866
+	.byte	14
+	.byte	'CanIf_u32_impl',0,15,69,16
+	.word	1856
+	.byte	14
+	.byte	'CanIf_u16_impl',0,15,71,16
+	.word	170
+	.byte	14
+	.byte	'CanIf_u8_impl',0,15,73,15
+	.word	153
+	.byte	14
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,15,88,15
+	.word	153
+	.byte	14
+	.byte	'CanIf_PduModeType_Enum_impl',0,15,90,15
+	.word	153
+	.byte	22,15,92,9,2,23
+	.byte	'DeviceMode',0
+	.word	153
+	.byte	1,2,35,0,23
+	.byte	'ChannelMode',0
+	.word	153
+	.byte	1,2,35,1,0,14
+	.byte	'CanIf_ControllerStateType_struct_impl',0,15,95,3
+	.word	8057
+	.byte	14
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,15,100,15
+	.word	153
+	.byte	14
+	.byte	'CanSM_boolean_Impl',0,15,120,15
+	.word	153
+	.byte	14
+	.byte	'CanSM_u8_Impl',0,15,123,15
+	.word	153
+	.byte	14
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,15,128,1,15
+	.word	153
+	.byte	14
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,15,132,1,15
+	.word	153
+	.byte	14
+	.byte	'CanSM_u16_Impl',0,15,136,1,16
+	.word	170
+	.byte	14
+	.byte	'CanSM_TimerStateType_Enum_impl',0,15,138,1,15
+	.word	153
+	.byte	22,15,140,1,9,4,23
+	.byte	'cntTick_u16',0
+	.word	170
+	.byte	2,2,35,0,23
+	.byte	'stTimer',0
+	.word	153
+	.byte	1,2,35,2,0,14
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,15,143,1,3
+	.word	8398
+	.byte	14
+	.byte	'Com_impl_u16',0,15,154,1,16
+	.word	170
+	.byte	14
+	.byte	'Com_impl_u8',0,15,157,1,15
+	.word	153
+	.byte	14
+	.byte	'ComM_uint32_Impl',0,15,173,1,16
+	.word	1856
+	.byte	14
+	.byte	'ComM_uint16_Impl',0,15,175,1,16
+	.word	170
+	.byte	14
+	.byte	'ComM_uint8_Impl',0,15,177,1,15
+	.word	153
+	.byte	14
+	.byte	'ComM_bool_Impl',0,15,179,1,15
+	.word	153
+	.byte	22,15,181,1,9,24,23
+	.byte	'ChannelState_e',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	'LightTimeoutCtr_u32',0
+	.word	1856
+	.byte	4,2,35,4,23
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	170
+	.byte	2,2,35,8,23
+	.byte	'ChannelMode_u8',0
+	.word	153
+	.byte	1,2,35,10,23
+	.byte	'BusSmMode_u8',0
+	.word	153
+	.byte	1,2,35,11,23
+	.byte	'UserRequestCtr_u8',0
+	.word	153
+	.byte	1,2,35,12,23
+	.byte	'PassiveRequestState_u8',0
+	.word	153
+	.byte	1,2,35,13,23
+	.byte	'PncRequestCtr_u8',0
+	.word	153
+	.byte	1,2,35,14,23
+	.byte	'InhibitionReqStatus_u8',0
+	.word	153
+	.byte	1,2,35,15,23
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	153
+	.byte	1,2,35,16,23
+	.byte	'DiagnosticRequestState_b',0
+	.word	153
+	.byte	1,2,35,17,23
+	.byte	'CommunicationAllowed_b',0
+	.word	153
+	.byte	1,2,35,18,23
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	153
+	.byte	1,2,35,19,23
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	153
+	.byte	1,2,35,20,23
+	.byte	'NmNetworkModeStatus_b',0
+	.word	153
+	.byte	1,2,35,21,0,14
+	.byte	'ComM_ChannelStruct_Impl',0,15,197,1,3
+	.word	8630
+	.byte	22,15,206,1,9,10,23
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	170
+	.byte	2,2,35,0,23
+	.byte	'LimitToNoComCtr_u16',0
+	.word	170
+	.byte	2,2,35,2,23
+	.byte	'RequestedUserMode_t',0
+	.word	153
+	.byte	1,2,35,4,23
+	.byte	'IndicatedUserMode_t',0
+	.word	153
+	.byte	1,2,35,5,23
+	.byte	'numChannelsInFullCom_u8',0
+	.word	153
+	.byte	1,2,35,6,23
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	153
+	.byte	1,2,35,7,23
+	.byte	'numChannelsInNoCom_u8',0
+	.word	153
+	.byte	1,2,35,8,0,14
+	.byte	'ComM_UserStruct_Impl',0,15,214,1,3
+	.word	9134
+	.byte	14
+	.byte	'Dcm_IOOperationResponseType',0,15,252,1,15
+	.word	153
+	.byte	14
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	15,138,2,15
+	.word	153
+	.byte	14
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,15,146,2,15
+	.word	153
+	.byte	14
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,15,150,2,15
+	.word	153
+	.byte	14
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,15,154,2,15
+	.word	153
+	.byte	14
+	.byte	'NvM_BlockIdType',0,15,215,2,16
+	.word	170
+	.byte	14
+	.byte	'NvM_RequestResultType',0,15,225,2,15
+	.word	153
+	.byte	14
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,15,243,3,34
+	.word	7877
+	.byte	24,128,8
+	.word	153
+	.byte	25,255,7,0,14
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,15,246,3,34
+	.word	7877
+	.byte	14
+	.byte	'MemIf_JobResultType',0,5,39,2
+	.word	1283
+	.byte	14
+	.byte	'NvM_BlockManagementType',0,2,45,3
+	.word	800
+	.byte	3,2,49,9,4,4
+	.byte	'NVM_PRV_ACTIVITY_NOT_INIT',0,0,4
+	.byte	'NVM_PRV_ACTIVITY_IDLE',0,1,4
+	.byte	'NVM_PRV_ACTIVITY_ARBITRATE',0,2,4
+	.byte	'NVM_PRV_ACTIVITY_JOB_START',0,3,4
+	.byte	'NVM_PRV_ACTIVITY_POLL_RESULT',0,4,4
+	.byte	'NVM_PRV_ACTIVITY_JOB_COMPLETE',0,5,4
+	.byte	'NVM_PRV_ACTIVITY_RESULT_EVAL',0,6,0,14
+	.byte	'NvM_Prv_Activities_ten',0,2,58,3
+	.word	10068
+	.byte	3,2,104,9,4,4
+	.byte	'NvM_Prv_idJob_Idle_e',0,0,4
+	.byte	'NvM_Prv_idJob_Read_e',0,1,4
+	.byte	'NvM_Prv_idJob_Write_e',0,2,4
+	.byte	'NvM_Prv_idJob_Erase_e',0,3,4
+	.byte	'NvM_Prv_idJob_Restore_e',0,4,4
+	.byte	'NvM_Prv_idJob_Maintain_e',0,5,4
+	.byte	'NvM_Prv_idJob_Validate_e',0,6,4
+	.byte	'NvM_Prv_idJob_Invalidate_e',0,7,4
+	.byte	'NvM_Prv_idJob_ReadIdConfigForReadAll_e',0,8,4
+	.byte	'NvM_Prv_idJob_InvalidateForFirstInitAll_e',0,9,4
+	.byte	'NvM_Prv_idJob_RestoreForImplicitRecovery_e',0,10,4
+	.byte	'NvM_Prv_idJob_InvalidateForRemoveNonResistant_e',0,11,4
+	.byte	'NvM_Prv_idJob_Invalid_e',0,12,4
+	.byte	'NvM_Prv_idJob_Count_e',0,13,0,14
+	.byte	'NvM_Prv_idJob_ten',0,2,115,3
+	.word	10309
+	.byte	14
+	.byte	'NvM_Prv_ServiceBit_tuo',0,2,168,1,16
+	.word	170
+	.byte	14
+	.byte	'NvM_Prv_idService_tuo',0,2,173,1,15
+	.word	153
+	.byte	14
+	.byte	'NvM_Prv_idQueue_tuo',0,2,206,1,15
+	.word	153
+	.byte	22,2,210,1,9,12,23
+	.byte	'idService_uo',0
+	.word	153
+	.byte	1,2,35,0,23
+	.byte	'idBlock_uo',0
+	.word	170
+	.byte	2,2,35,2,23
+	.byte	'ServiceBit_uo',0
+	.word	170
+	.byte	2,2,35,4,23
+	.byte	'BlockData_pv',0
+	.word	1413
+	.byte	4,2,35,8,0,14
+	.byte	'NvM_Prv_QueueEntry_tst',0,2,225,1,3
+	.word	10866
+	.byte	10
+	.word	153
+	.byte	22,2,227,1,9,20,23
+	.byte	'idJob_en',0
+	.word	10309
+	.byte	4,2,35,0,23
+	.byte	'idBlock_uo',0
+	.word	170
+	.byte	2,2,35,4,23
+	.byte	'RamBlock_pu8',0
+	.word	10992
+	.byte	4,2,35,8,23
+	.byte	'idxDataset_u8',0
+	.word	153
+	.byte	1,2,35,12,23
+	.byte	'Result_en',0
+	.word	1283
+	.byte	4,2,35,16,0,14
+	.byte	'NvM_Prv_JobData_tst',0,2,240,1,3
+	.word	10997
+	.byte	14
+	.byte	'Rte_TaskRefType',0,16,184,1,32
+	.word	4364
+	.byte	14
+	.byte	'Rte_EventRefType',0,16,185,1,32
+	.word	153
+	.byte	14
+	.byte	'Rte_EventType',0,16,186,1,32
+	.word	1856
+	.byte	14
+	.byte	'Rte_REActCounterType',0,16,252,1,15
+	.word	153
+	.byte	10
+	.word	153
+	.byte	14
+	.byte	'Rte_REActCounterRefType',0,16,253,1,58
+	.word	11239
+	.byte	22,16,255,1,9,8,23
+	.byte	'task',0
+	.word	11135
+	.byte	4,2,35,0,23
+	.byte	'acnt',0
+	.word	11244
+	.byte	4,2,35,4,0,14
+	.byte	'Rte_REContainerType',0,16,130,2,3
+	.word	11277
+	.byte	9
+	.word	4104
+	.byte	10
+	.word	11341
+	.byte	10
+	.word	153
+	.byte	9
+	.word	11277
+	.byte	10
+	.word	11356
+	.byte	14
+	.byte	'Rte_REContainerRefType',0,16,132,2,60
+	.word	11361
+	.byte	14
+	.byte	'Rte_MSICounterType',0,16,149,2,16
+	.word	170
+	.byte	10
+	.word	170
+	.byte	14
+	.byte	'Rte_MSICounterRefType',0,16,150,2,56
+	.word	11426
+	.byte	14
+	.byte	'Rte_MSIPendingFlagType',0,16,152,2,17
+	.word	153
+	.byte	10
+	.word	153
+	.byte	14
+	.byte	'Rte_MSIPendingFlagRefType',0,16,153,2,60
+	.word	11494
+	.byte	22,16,163,2,9,24,23
+	.byte	'counter',0
+	.word	11431
+	.byte	4,2,35,0,23
+	.byte	'incCounter',0
+	.word	153
+	.byte	1,2,35,4,23
+	.byte	'pending',0
+	.word	11499
+	.byte	4,2,35,8,23
+	.byte	'osTask',0
+	.word	11135
+	.byte	4,2,35,12,23
+	.byte	'acnt',0
+	.word	11244
+	.byte	4,2,35,16,23
+	.byte	'osEvent',0
+	.word	153
+	.byte	1,2,35,20,23
+	.byte	'MSIInit',0
+	.word	170
+	.byte	2,2,35,22,0,14
+	.byte	'Rte_MSITableEntry',0,16,172,2,3
+	.word	11534
+	.byte	10
+	.word	170
+	.byte	10
+	.word	153
+	.byte	14
+	.byte	'Rte_TaskArrayIndex',0,16,179,2,16
+	.word	153
+	.byte	14
+	.byte	'Rte_NrWaitingTasks',0,16,180,2,16
+	.word	153
+	.byte	22,16,182,2,9,4,23
+	.byte	'pending',0
+	.word	153
+	.byte	1,2,35,0,23
+	.byte	'count',0
+	.word	153
+	.byte	1,2,35,1,23
+	.byte	'firstWaitingTask',0
+	.word	153
+	.byte	1,2,35,2,0,14
+	.byte	'Rte_WaitableDatum',0,16,186,2,3
+	.word	11752
+	.byte	10
+	.word	11752
+	.byte	22,16,226,2,9,12,23
+	.byte	'event_id',0
+	.word	1856
+	.byte	4,2,35,0,23
+	.byte	'wd',0
+	.word	11844
+	.byte	4,2,35,4,23
+	.byte	'timeout',0
+	.word	1856
+	.byte	4,2,35,8,0,14
+	.byte	'Rte_WOWP_NotificationType',0,16,230,2,3
+	.word	11849
+	.byte	9
+	.word	11849
+	.byte	10
+	.word	11938
+	.byte	14
+	.byte	'Rte_WOWP_NotificationRefType',0,16,232,2,66
+	.word	11943
+	.byte	14
+	.byte	'Rte_ARE_NotificationType',0,16,234,2,29
+	.word	11277
+	.byte	27
+	.byte	'Rte_QTaskType',0,16,243,2,16,28,23
+	.byte	'cmn',0
+	.word	7628
+	.byte	24,2,35,0,23
+	.byte	'task',0
+	.word	11135
+	.byte	4,2,35,24,0,14
+	.byte	'Rte_QTaskType',0,16,246,2,3
+	.word	12020
+	.byte	27
+	.byte	'Rte_QREType',0,16,250,2,16,28,23
+	.byte	'cmn',0
+	.word	7628
+	.byte	24,2,35,0,23
+	.byte	're',0
+	.word	11366
+	.byte	4,2,35,24,0,14
+	.byte	'Rte_QREType',0,16,253,2,3
+	.word	12091
+	.byte	9
+	.word	11277
+	.byte	10
+	.word	12156
+	.byte	27
+	.byte	'Rte_QWWPType',0,16,129,3,16,28,23
+	.byte	'cmn',0
+	.word	7628
+	.byte	24,2,35,0,23
+	.byte	'wwp',0
+	.word	11948
+	.byte	4,2,35,24,0,14
+	.byte	'Rte_QWWPType',0,16,132,3,3
+	.word	12166
+	.byte	9
+	.word	11849
+	.byte	10
+	.word	12234
+	.byte	27
+	.byte	'Rte_QEvType',0,16,136,3,16,36,23
+	.byte	'cmn',0
+	.word	7628
+	.byte	24,2,35,0,23
+	.byte	'task',0
+	.word	11135
+	.byte	4,2,35,24,23
+	.byte	'mask',0
+	.word	153
+	.byte	1,2,35,28,23
+	.byte	'acnt',0
+	.word	11244
+	.byte	4,2,35,32,0,14
+	.byte	'Rte_QEvType',0,16,141,3,3
+	.word	12244
+	.byte	27
+	.byte	'Rte_QMSIType',0,16,145,3,16,48,23
+	.byte	'cmn',0
+	.word	7628
+	.byte	24,2,35,0,23
+	.byte	'task',0
+	.word	11135
+	.byte	4,2,35,24,23
+	.byte	'mask',0
+	.word	153
+	.byte	1,2,35,28,23
+	.byte	'acnt',0
+	.word	11244
+	.byte	4,2,35,32,23
+	.byte	'msiCounter',0
+	.word	11431
+	.byte	4,2,35,36,23
+	.byte	'msiPending',0
+	.word	11499
+	.byte	4,2,35,40,23
+	.byte	'msiLimit',0
+	.word	170
+	.byte	2,2,35,44,0,14
+	.byte	'Rte_QMSIType',0,16,153,3,3
+	.word	12339
+	.byte	14
+	.byte	'NvM_Prv_BlockConfiguration_ten',0,1,85,3
+	.word	192
+	.byte	9
+	.word	170
+	.byte	10
+	.word	12533
+	.byte	9
+	.word	1413
+	.byte	10
+	.word	12543
+	.byte	12
+	.word	153
+	.byte	1,1,13
+	.word	153
+	.byte	13
+	.word	153
+	.byte	0,10
+	.word	12553
+	.byte	12
+	.word	153
+	.byte	1,1,13
+	.word	153
+	.byte	0,10
+	.word	12576
+	.byte	10
+	.word	4862
+	.byte	22,1,121,9,48,23
+	.byte	'idBlockMemIf_u16',0
+	.word	170
+	.byte	2,2,35,0,23
+	.byte	'nrBlockBytes_pu16',0
+	.word	12538
+	.byte	4,2,35,4,23
+	.byte	'idxDevice_u8',0
+	.word	153
+	.byte	1,2,35,8,23
+	.byte	'nrNvBlocks_u8',0
+	.word	153
+	.byte	1,2,35,9,23
+	.byte	'nrRomBlocks_u8',0
+	.word	153
+	.byte	1,2,35,10,23
+	.byte	'adrRamBlock_ppv',0
+	.word	12548
+	.byte	4,2,35,12,23
+	.byte	'adrRomBlock_pcv',0
+	.word	998
+	.byte	4,2,35,16,23
+	.byte	'SingleBlockCallback_pfct',0
+	.word	12571
+	.byte	4,2,35,20,23
+	.byte	'SingleBlockStartCallback_pfct',0
+	.word	12589
+	.byte	4,2,35,24,23
+	.byte	'InitBlockCallback_pfct',0
+	.word	12594
+	.byte	4,2,35,28,23
+	.byte	'ReadRamBlockFromNvm_pfct',0
+	.word	1431
+	.byte	4,2,35,32,23
+	.byte	'WriteRamBlockToNvm_pfct',0
+	.word	1431
+	.byte	4,2,35,36,23
+	.byte	'BlockManagementType_en',0
+	.word	800
+	.byte	4,2,35,40,23
+	.byte	'JobPriority_u8',0
+	.word	153
+	.byte	1,2,35,44,23
+	.byte	'stFlags_u16',0
+	.word	170
+	.byte	2,2,35,46,0,14
+	.byte	'NvM_Prv_BlockDescriptor_tst',0,1,138,2,3
+	.word	12599
+	.byte	24,160,5
+	.word	12599
+	.byte	25,13,0,9
+	.word	13063
+	.byte	33
+	.byte	'NvM_Prv_BlockDescriptors_acst',0,1,169,2,45
+	.word	13073
+	.byte	1,1
+.L96:
+	.byte	24,20
+	.word	153
+	.byte	25,19,0,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L30:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,4,1,58,15,59,15,57,15,11,15
+	.byte	0,0,4,40,0,3,8,28,13,0,0,5,46,1,3,8,32,13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,6,5,0,3,8,58,15,59,15
+	.byte	57,15,73,19,0,0,7,11,0,0,0,8,59,0,3,8,0,0,9,38,0,73,19,0,0,10,15,0,73,19,0,0,11,11,1,0,0,12,21,1,73,19
+	.byte	54,15,39,12,0,0,13,5,0,73,19,0,0,14,22,0,3,8,58,15,59,15,57,15,73,19,0,0,15,46,0,3,8,58,15,59,15,57,15
+	.byte	73,19,54,15,39,12,63,12,60,12,0,0,16,46,1,49,19,0,0,17,5,0,49,19,0,0,18,29,1,49,19,0,0,19,11,0,49,19,0
+	.byte	0,20,46,0,3,8,58,15,59,15,57,15,54,15,63,12,60,12,0,0,21,21,0,54,15,0,0,22,19,1,58,15,59,15,57,15,11,15
+	.byte	0,0,23,13,0,3,8,73,19,11,15,56,9,0,0,24,1,1,11,15,73,19,0,0,25,33,0,47,15,0,0,26,21,0,54,15,39,12,0,0
+	.byte	27,19,1,3,8,58,15,59,15,57,15,11,15,0,0,28,21,1,54,15,39,12,0,0,29,23,1,58,15,59,15,57,15,11,15,0,0,30
+	.byte	4,1,3,8,58,15,59,15,57,15,11,15,0,0,31,21,0,73,19,54,15,39,12,0,0,32,53,0,73,19,0,0,33,52,0,3,8,58,15
+	.byte	59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L31:
+	.word	.L104-.L103
+.L103:
+	.half	3
+	.word	.L106-.L105
+.L105:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv_BlockDescriptor.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\NvM\\api\\NvM_Types.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv_BlockData.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\MemIf\\api\\MemIf_Types.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0,0
+.L106:
+.L104:
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_ExplicitSync_Initialize')
+	.sect	'.debug_info'
+.L32:
+	.word	220
+	.half	3
+	.word	.L33
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L35,.L34
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'NvM_Prv_ExplicitSync_Initialize',0,1,77,6,1,1,1
+	.word	.L21,.L56,.L20
+	.byte	4
+	.word	.L21,.L56
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_ExplicitSync_Initialize')
+	.sect	'.debug_abbrev'
+.L33:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('NvM_Prv_ExplicitSync_Initialize')
+	.sect	'.debug_line'
+.L34:
+	.word	.L108-.L107
+.L107:
+	.half	3
+	.word	.L110-.L109
+.L109:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c',0,0,0,0,0
+.L110:
+	.byte	5,5,7,0,5,2
+	.word	.L21
+	.byte	3,206,0,1,5,39,9
+	.half	.L111-.L21
+	.byte	1,5,37,9
+	.half	.L112-.L111
+	.byte	1,5,1,9
+	.half	.L113-.L112
+	.byte	3,1,1,7,9
+	.half	.L36-.L113
+	.byte	0,1,1
+.L108:
+	.sdecl	'.debug_ranges',debug,cluster('NvM_Prv_ExplicitSync_Initialize')
+	.sect	'.debug_ranges'
+.L35:
+	.word	-1,.L21,0,.L36-.L21,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_ExplicitSync_CheckBlockSizes')
+	.sect	'.debug_info'
+.L37:
+	.word	263
+	.half	3
+	.word	.L38
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L40,.L39
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'NvM_Prv_ExplicitSync_CheckBlockSizes',0,1,82,9
+	.word	.L57
+	.byte	1,1,1
+	.word	.L23,.L58,.L22
+	.byte	4
+	.word	.L23,.L58
+	.byte	5
+	.byte	'areBlockSizesValid_b',0,1,84,13
+	.word	.L57,.L59
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_ExplicitSync_CheckBlockSizes')
+	.sect	'.debug_abbrev'
+.L38:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('NvM_Prv_ExplicitSync_CheckBlockSizes')
+	.sect	'.debug_line'
+.L39:
+	.word	.L115-.L114
+.L114:
+	.half	3
+	.word	.L117-.L116
+.L116:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c',0,0,0,0,0
+.L117:
+	.byte	5,34,7,0,5,2
+	.word	.L23
+	.byte	3,211,0,1,5,5,9
+	.half	.L97-.L23
+	.byte	3,18,1,5,1,9
+	.half	.L2-.L97
+	.byte	3,1,1,7,9
+	.half	.L41-.L2
+	.byte	0,1,1
+.L115:
+	.sdecl	'.debug_ranges',debug,cluster('NvM_Prv_ExplicitSync_CheckBlockSizes')
+	.sect	'.debug_ranges'
+.L40:
+	.word	-1,.L23,0,.L41-.L23,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_ExplicitSync_IsOngoing')
+	.sect	'.debug_info'
+.L42:
+	.word	223
+	.half	3
+	.word	.L43
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L45,.L44
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'NvM_Prv_ExplicitSync_IsOngoing',0,1,105,9
+	.word	.L57
+	.byte	1,1,1
+	.word	.L25,.L60,.L24
+	.byte	4
+	.word	.L25,.L60
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_ExplicitSync_IsOngoing')
+	.sect	'.debug_abbrev'
+.L43:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('NvM_Prv_ExplicitSync_IsOngoing')
+	.sect	'.debug_line'
+.L44:
+	.word	.L119-.L118
+.L118:
+	.half	3
+	.word	.L121-.L120
+.L120:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c',0,0,0,0,0
+.L121:
+	.byte	5,13,7,0,5,2
+	.word	.L25
+	.byte	3,234,0,1,5,45,9
+	.half	.L122-.L25
+	.byte	1,5,5,9
+	.half	.L123-.L122
+	.byte	1,5,1,9
+	.half	.L3-.L123
+	.byte	3,1,1,7,9
+	.half	.L46-.L3
+	.byte	0,1,1
+.L119:
+	.sdecl	'.debug_ranges',debug,cluster('NvM_Prv_ExplicitSync_IsOngoing')
+	.sect	'.debug_ranges'
+.L45:
+	.word	-1,.L25,0,.L46-.L25,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_ExplicitSync_CopyData')
+	.sect	'.debug_info'
+.L47:
+	.word	576
+	.half	3
+	.word	.L48
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L50,.L49
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'NvM_Prv_ExplicitSync_CopyData',0,1,110,21
+	.word	.L61
+	.byte	1,1,1
+	.word	.L27,.L62,.L26
+	.byte	4
+	.byte	'CopyFunction_pfct',0,1,110,83
+	.word	.L63,.L64
+	.byte	4
+	.byte	'idBlock_uo',0,1,111,67
+	.word	.L65,.L66
+	.byte	5
+	.word	.L27,.L62
+	.byte	6
+	.byte	'stExplicitSync_en',0,1,113,25
+	.word	.L61,.L67
+	.byte	6
+	.byte	'RamBlock_pv',0,1,116,11
+	.word	.L68,.L69
+	.byte	7
+	.word	.L70,.L71,.L72
+	.byte	8
+	.word	.L73,.L74
+	.byte	8
+	.word	.L75,.L76
+	.byte	9
+	.word	.L77,.L78
+	.byte	6
+	.byte	'stCopyFct_en',0,1,178,1,25
+	.word	.L61,.L81
+	.byte	0,0,7
+	.word	.L82,.L83,.L84
+	.byte	8
+	.word	.L85,.L86
+	.byte	8
+	.word	.L87,.L88
+	.byte	10
+	.word	.L89,.L83,.L84
+	.byte	0,7
+	.word	.L90,.L91,.L9
+	.byte	8
+	.word	.L92,.L93
+	.byte	11
+	.word	.L94,.L91,.L9
+	.byte	6
+	.byte	'isBlockSizeValid_b',0,1,156,1,13
+	.word	.L57,.L95
+	.byte	0,0,7
+	.word	.L70,.L79,.L17
+	.byte	8
+	.word	.L73,.L74
+	.byte	8
+	.word	.L75,.L76
+	.byte	0,7
+	.word	.L70,.L10,.L80
+	.byte	8
+	.word	.L73,.L74
+	.byte	8
+	.word	.L75,.L76
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_ExplicitSync_CopyData')
+	.sect	'.debug_abbrev'
+.L48:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,7,29,1,49,16,17,1,18,1,0,0,8,5,0,49,16,2,6,0,0,9,11,1,49,16,85
+	.byte	6,0,0,10,11,0,49,16,17,1,18,1,0,0,11,11,1,49,16,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('NvM_Prv_ExplicitSync_CopyData')
+	.sect	'.debug_line'
+.L49:
+	.word	.L125-.L124
+.L124:
+	.half	3
+	.word	.L127-.L126
+.L126:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv_BlockDescriptor.h',0,0,0,0,0
+.L127:
+	.byte	5,21,7,0,5,2
+	.word	.L27
+	.byte	3,237,0,1,5,43,9
+	.half	.L71-.L27
+	.byte	3,3,1,5,50,9
+	.half	.L72-.L71
+	.byte	3,3,1,5,45,9
+	.half	.L98-.L72
+	.byte	3,3,1,4,2,5,46,9
+	.half	.L83-.L98
+	.byte	3,251,1,1,5,13,9
+	.half	.L128-.L83
+	.byte	1,5,44,7,9
+	.half	.L129-.L128
+	.byte	3,1,1,5,15,9
+	.half	.L130-.L129
+	.byte	1,5,44,9
+	.half	.L131-.L130
+	.byte	1,5,56,9
+	.half	.L132-.L131
+	.byte	1,5,69,9
+	.half	.L133-.L132
+	.byte	1,5,46,9
+	.half	.L134-.L133
+	.byte	3,127,1,5,5,9
+	.half	.L4-.L134
+	.byte	1,4,1,5,9,9
+	.half	.L6-.L4
+	.byte	3,133,126,1,5,25,7,9
+	.half	.L84-.L6
+	.byte	3,1,1,5,22,9
+	.half	.L135-.L84
+	.byte	1,5,5,7,9
+	.half	.L91-.L135
+	.byte	3,52,1,5,9,9
+	.half	.L9-.L91
+	.byte	3,79,1,5,13,7,9
+	.half	.L79-.L9
+	.byte	3,193,0,1,5,10,9
+	.half	.L136-.L79
+	.byte	3,121,1,5,5,9
+	.half	.L137-.L136
+	.byte	1,5,39,7,9
+	.half	.L138-.L137
+	.byte	3,2,1,5,9,9
+	.half	.L100-.L138
+	.byte	1,5,26,7,9
+	.half	.L139-.L100
+	.byte	3,3,1,5,47,9
+	.half	.L140-.L139
+	.byte	3,2,1,5,45,9
+	.half	.L141-.L140
+	.byte	1,5,40,9
+	.half	.L142-.L141
+	.byte	3,126,1,5,15,9
+	.half	.L12-.L142
+	.byte	3,7,1,5,13,9
+	.half	.L143-.L12
+	.byte	1,5,17,9
+	.half	.L144-.L143
+	.byte	3,2,1,5,13,9
+	.half	.L145-.L144
+	.byte	1,5,30,7,9
+	.half	.L146-.L145
+	.byte	3,3,1,5,51,9
+	.half	.L147-.L146
+	.byte	3,2,1,5,49,9
+	.half	.L148-.L147
+	.byte	1,5,48,9
+	.half	.L149-.L148
+	.byte	3,126,1,5,30,9
+	.half	.L14-.L149
+	.byte	3,7,1,5,9,9
+	.half	.L13-.L14
+	.byte	3,113,1,5,22,9
+	.half	.L11-.L13
+	.byte	3,22,1,5,43,9
+	.half	.L150-.L11
+	.byte	3,2,1,5,41,9
+	.half	.L151-.L150
+	.byte	1,5,5,9
+	.half	.L16-.L151
+	.byte	3,2,1,5,97,9
+	.half	.L17-.L16
+	.byte	3,165,127,1,5,31,9
+	.half	.L10-.L17
+	.byte	3,5,1,5,5,9
+	.half	.L7-.L10
+	.byte	3,4,1,5,1,9
+	.half	.L19-.L7
+	.byte	3,1,1,7,9
+	.half	.L51-.L19
+	.byte	0,1,1
+.L125:
+	.sdecl	'.debug_ranges',debug,cluster('NvM_Prv_ExplicitSync_CopyData')
+	.sect	'.debug_ranges'
+.L50:
+	.word	-1,.L27,0,.L51-.L27,0,0
+.L78:
+	.word	-1,.L27,.L71-.L27,.L72-.L27,.L79-.L27,.L17-.L27,.L10-.L27,.L80-.L27,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_cntrMirrorOperations_u8')
+	.sect	'.debug_info'
+.L52:
+	.word	198
+	.half	3
+	.word	.L53
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L28
+	.byte	3
+	.byte	'NvM_Prv_cntrMirrorOperations_u8',0,4,24,7
+	.word	.L57
+	.byte	1,5,3
+	.word	NvM_Prv_cntrMirrorOperations_u8
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_cntrMirrorOperations_u8')
+	.sect	'.debug_abbrev'
+.L53:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_RamMirror_au8')
+	.sect	'.debug_info'
+.L54:
+	.word	188
+	.half	3
+	.word	.L55
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_ExplicitSynchronization.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L28
+	.byte	3
+	.byte	'NvM_Prv_RamMirror_au8',0,4,37,7
+	.word	.L96
+	.byte	1,5,3
+	.word	NvM_Prv_RamMirror_au8
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_RamMirror_au8')
+	.sect	'.debug_abbrev'
+.L55:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('NvM_Prv_ExplicitSync_CheckBlockSizes')
+	.sect	'.debug_loc'
+.L22:
+	.word	-1,.L23,0,.L58-.L23
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L59:
+	.word	-1,.L23,.L97-.L23,.L58-.L23
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('NvM_Prv_ExplicitSync_CopyData')
+	.sect	'.debug_loc'
+.L64:
+	.word	-1,.L27,0,.L98-.L27
+	.half	1
+	.byte	100
+	.word	.L99-.L27,.L62-.L27
+	.half	1
+	.byte	108
+	.word	0,0
+.L74:
+	.word	0,0
+.L26:
+	.word	-1,.L27,0,.L62-.L27
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L69:
+	.word	-1,.L27,.L98-.L27,.L100-.L27
+	.half	1
+	.byte	98
+	.word	.L101-.L27,.L100-.L27
+	.half	1
+	.byte	100
+	.word	.L11-.L27,.L16-.L27
+	.half	1
+	.byte	98
+	.word	.L10-.L27,.L7-.L27
+	.half	1
+	.byte	98
+	.word	0,0
+.L76:
+	.word	0,0
+.L88:
+	.word	0,0
+.L66:
+	.word	-1,.L27,0,.L98-.L27
+	.half	1
+	.byte	84
+	.word	.L71-.L27,.L62-.L27
+	.half	1
+	.byte	88
+	.word	0,0
+.L93:
+	.word	0,0
+.L86:
+	.word	0,0
+.L95:
+	.word	0,0
+.L81:
+	.word	-1,.L27,.L72-.L27,.L62-.L27
+	.half	1
+	.byte	89
+	.word	.L80-.L27,.L62-.L27
+	.half	1
+	.byte	82
+	.word	0,0
+.L67:
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('NvM_Prv_ExplicitSync_Initialize')
+	.sect	'.debug_loc'
+.L20:
+	.word	-1,.L21,0,.L56-.L21
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('NvM_Prv_ExplicitSync_IsOngoing')
+	.sect	'.debug_loc'
+.L24:
+	.word	-1,.L25,0,.L60-.L25
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L152:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('NvM_Prv_ExplicitSync_Initialize')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L152,.L21,.L56-.L21
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('NvM_Prv_ExplicitSync_CheckBlockSizes')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L152,.L23,.L58-.L23
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('NvM_Prv_ExplicitSync_IsOngoing')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L152,.L25,.L60-.L25
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('NvM_Prv_ExplicitSync_CopyData')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L152,.L27,.L62-.L27
+
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   215      }
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   216      return stCopyFct_en;
+; BSW\src\BSW\Gen\NvM\src\NvM_ExplicitSynchronization.c	   217  }
+
+	; Module end

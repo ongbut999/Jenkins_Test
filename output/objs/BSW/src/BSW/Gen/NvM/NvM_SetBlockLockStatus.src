@@ -1,0 +1,1844 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc16996a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\NvM\\NvM_SetBlockLockStatus.src BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_SetBlockLockStatus.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_SetBlockLockStatus.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.NvM_SetBlockLockStatus.NvM_SetBlockLockStatus',code,cluster('NvM_SetBlockLockStatus')
+	.sect	'.text.NvM_SetBlockLockStatus.NvM_SetBlockLockStatus'
+	.align	2
+	
+	.global	NvM_SetBlockLockStatus
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	     1  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	     2  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	     3   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	     4   * Includes
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	     5   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	     6  */
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	     7  #include "NvM.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	     8  #include "Rte_NvM.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	     9  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    10  #include "NvM_Prv_Service.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    11  #include "NvM_Prv_ErrorDetection.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    12  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    13  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    14   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    15   * Declarations
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    16   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    17   */
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    18  #define NVM_START_SEC_CODE
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    19  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    20  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    21  static boolean NvM_Prv_SetBlockLockStatus_CheckParameter(NvM_Prv_BlockData_tst const* BlockData_pcst);
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    22  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    23  #define NVM_STOP_SEC_CODE
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    24  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    25  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    26  /*
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    27   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    28   * Code
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    29   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    30  */
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    31  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    32  #define NVM_START_SEC_CODE
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    33  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    34  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    35  void NvM_SetBlockLockStatus(NvM_BlockIdType BlockId, boolean BlockLocked)
+; Function NvM_SetBlockLockStatus
+.L4:
+NvM_SetBlockLockStatus:	.type	func
+	sub.a	a10,#32
+.L33:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    36  {
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    37      // TRACE[NVM548] Service for setting the lock status of a permanent RAM block of an NVRAM block
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    38  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    39      NvM_Prv_Service_Configuration_tst ServiceConfiguration_st;
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    40      NvM_Prv_BlockData_tst BlockData_st;
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    41  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    42      // put all service parameters in a structure for a queue entry
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    43      BlockData_st.QueueEntry_st.idBlock_uo = BlockId;
+	st.h	[a10]18,d4
+.L46:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    44      BlockData_st.QueueEntry_st.BlockData_pv = NULL_PTR;
+	mov.a	a15,#0
+.L47:
+	st.a	[a10]24,a15
+.L48:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    45      BlockData_st.QueueEntry_st.idService_uo = NVM_SERVICE_ID_SET_BLOCK_LOCK_STATUS;
+	mov	d15,#19
+.L49:
+	st.b	[a10]16,d15
+.L50:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    46      BlockData_st.QueueEntry_st.ServiceBit_uo = NvM_Prv_ServiceBit_Unspecified_e;
+	mov	d15,#16
+.L51:
+	st.h	[a10]20,d15
+.L52:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    47      BlockData_st.Result_uo = NVM_REQ_OK;
+	mov	d15,#0
+.L53:
+	st.b	[a10]28,d15
+.L54:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    48      BlockData_st.idxDataset_u8 = 0u;
+	mov	d15,#0
+.L55:
+	st.b	[a10]29,d15
+.L56:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    49      BlockData_st.maskBitsToChange_u8 = 0u;
+	mov	d15,#0
+.L57:
+	st.b	[a10]30,d15
+.L58:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    50      BlockData_st.maskBitsNewValue_u8 = 0u;
+	mov	d15,#0
+.L59:
+	st.b	[a10]31,d15
+.L60:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    51  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    52      // Avoid "unused parameter" warning
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    53      (void)BlockLocked;
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    54  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    55      ServiceConfiguration_st.CheckPendingBlock_b = TRUE;
+	mov	d15,#1
+.L61:
+	st.b	[a10],d15
+.L62:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    56      ServiceConfiguration_st.CheckParameter_pfct = NvM_Prv_SetBlockLockStatus_CheckParameter;
+	movh.a	a15,#@his(NvM_Prv_SetBlockLockStatus_CheckParameter)
+	lea	a15,[a15]@los(NvM_Prv_SetBlockLockStatus_CheckParameter)
+.L63:
+	st.a	[a10]4,a15
+.L64:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    57      // No check for block data required for set block lock status request
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    58      ServiceConfiguration_st.CheckBlockData_pfct = NULL_PTR;
+	mov.a	a15,#0
+.L65:
+	st.a	[a10]8,a15
+.L66:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    59      // no block data shall be set
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    60      ServiceConfiguration_st.SetBlockData_pfct = NULL_PTR;
+	mov.a	a15,#0
+.L67:
+	st.a	[a10]12,a15
+.L68:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    61  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    62      (void)NvM_Prv_Service_Initiate(NvM_Prv_idQueue_nrQueues_e,
+	mov	d4,#2
+.L34:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    63                                     &BlockData_st,
+	lea	a4,[a10]16
+.L69:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    64                                     &ServiceConfiguration_st);
+	lea	a5,[a10]0
+	call	NvM_Prv_Service_Initiate
+.L35:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    65  }
+	ret
+.L21:
+	
+__NvM_SetBlockLockStatus_function_end:
+	.size	NvM_SetBlockLockStatus,__NvM_SetBlockLockStatus_function_end-NvM_SetBlockLockStatus
+.L15:
+	; End of function
+	
+	.sdecl	'.text.NvM_SetBlockLockStatus.NvM_Prv_SetBlockLockStatus_CheckParameter',code,cluster('NvM_Prv_SetBlockLockStatus_CheckParameter')
+	.sect	'.text.NvM_SetBlockLockStatus.NvM_Prv_SetBlockLockStatus_CheckParameter'
+	.align	2
+	
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    66  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    67  static boolean NvM_Prv_SetBlockLockStatus_CheckParameter(NvM_Prv_BlockData_tst const* BlockData_pcst)
+; Function NvM_Prv_SetBlockLockStatus_CheckParameter
+.L6:
+NvM_Prv_SetBlockLockStatus_CheckParameter:	.type	func
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    68  {
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    69      // TRACE[NVM730] Report the DET error NVM_E_BLOCK_CONFIG when the NVRAM block is configured
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    70      //               with NvMWriteBlockOnce = TRUE
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    71      return NvM_Prv_ErrorDetection_IsBlockWriteProtectionChangeable(BlockData_pcst->QueueEntry_st.idService_uo,
+	ld.bu	d4,[a4]
+.L74:
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    72                                                                     BlockData_pcst->QueueEntry_st.idBlock_uo);
+	ld.hu	d5,[a4]2
+	call	NvM_Prv_ErrorDetection_IsBlockWriteProtectionChangeable
+.L36:
+	j	.L2
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    73  }
+.L2:
+	ret
+.L30:
+	
+__NvM_Prv_SetBlockLockStatus_CheckParameter_function_end:
+	.size	NvM_Prv_SetBlockLockStatus_CheckParameter,__NvM_Prv_SetBlockLockStatus_CheckParameter_function_end-NvM_Prv_SetBlockLockStatus_CheckParameter
+.L20:
+	; End of function
+	
+	.calls	'__INDIRECT__','NvM_Prv_SetBlockLockStatus_CheckParameter'
+	.calls	'NvM_SetBlockLockStatus','NvM_Prv_Service_Initiate'
+	.calls	'NvM_Prv_SetBlockLockStatus_CheckParameter','NvM_Prv_ErrorDetection_IsBlockWriteProtectionChangeable'
+	.calls	'NvM_SetBlockLockStatus','',32
+	.extern	NvM_Prv_Service_Initiate
+	.extern	NvM_Prv_ErrorDetection_IsBlockWriteProtectionChangeable
+	.extern	__INDIRECT__
+	.calls	'NvM_Prv_SetBlockLockStatus_CheckParameter','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L8:
+	.word	11781
+	.half	3
+	.word	.L9
+	.byte	4
+.L7:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_SetBlockLockStatus.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L10
+.L22:
+	.byte	2
+	.byte	'unsigned short int',0,2,7
+.L24:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.byte	'void',0,4
+	.word	187
+	.byte	5,2,210,1,9,12,6
+	.byte	'idService_uo',0
+	.word	170
+	.byte	1,2,35,0,6
+	.byte	'idBlock_uo',0
+	.word	148
+	.byte	2,2,35,2,6
+	.byte	'ServiceBit_uo',0
+	.word	148
+	.byte	2,2,35,4,6
+	.byte	'BlockData_pv',0
+	.word	193
+	.byte	4,2,35,8,0
+.L28:
+	.byte	5,1,23,9,16,6
+	.byte	'QueueEntry_st',0
+	.word	198
+	.byte	12,2,35,0,6
+	.byte	'Result_uo',0
+	.word	170
+	.byte	1,2,35,12,6
+	.byte	'idxDataset_u8',0
+	.word	170
+	.byte	1,2,35,13,6
+	.byte	'maskBitsToChange_u8',0
+	.word	170
+	.byte	1,2,35,14,6
+	.byte	'maskBitsNewValue_u8',0
+	.word	170
+	.byte	1,2,35,15,0,7
+	.word	292
+	.byte	4
+	.word	421
+	.byte	8
+	.word	170
+	.byte	1,1,9
+	.word	426
+	.byte	0,4
+	.word	431
+	.byte	10
+	.byte	'NvM_Prv_Service_CheckParameter_tpfct',0,1,38,19
+	.word	444
+	.byte	10
+	.byte	'NvM_Prv_Service_CheckBlockData_tpfct',0,1,39,19
+	.word	444
+	.byte	11,1,1,9
+	.word	426
+	.byte	0,4
+	.word	539
+	.byte	10
+	.byte	'NvM_Prv_Service_SetBlockData_tpfct',0,1,40,16
+	.word	548
+.L26:
+	.byte	5,1,42,9,16,6
+	.byte	'CheckPendingBlock_b',0
+	.word	170
+	.byte	1,2,35,0,6
+	.byte	'CheckParameter_pfct',0
+	.word	449
+	.byte	4,2,35,4,6
+	.byte	'CheckBlockData_pfct',0
+	.word	494
+	.byte	4,2,35,8,6
+	.byte	'SetBlockData_pfct',0
+	.word	553
+	.byte	4,2,35,12,0,4
+	.word	431
+	.byte	4
+	.word	431
+	.byte	4
+	.word	539
+	.byte	7
+	.word	292
+.L31:
+	.byte	4
+	.word	731
+	.byte	7
+	.word	596
+	.byte	4
+	.word	741
+	.byte	12
+	.byte	'NvM_Prv_Service_Initiate',0,1,71,23
+	.word	170
+	.byte	1,1,1,1,13
+	.byte	'idQueue_uo',0,1,71,68
+	.word	170
+	.byte	13
+	.byte	'BlockData_pcst',0,1,72,77
+	.word	736
+	.byte	13
+	.byte	'ServiceConfiguration_pcst',0,1,73,89
+	.word	746
+	.byte	0,12
+	.byte	'NvM_Prv_ErrorDetection_IsBlockWriteProtectionChangeable',0,3,106,16
+	.word	170
+	.byte	1,1,1,1,13
+	.byte	'idService_uo',0,3,106,94
+	.word	170
+	.byte	13
+	.byte	'idBlock_uo',0,3,107,88
+	.word	148
+	.byte	0,14
+	.byte	'__INDIRECT__',0,4,1,1,1,1,1,15,1,4
+	.word	994
+	.byte	10
+	.byte	'__codeptr',0,4,1,1
+	.word	996
+	.byte	2
+	.byte	'char',0,1,6,10
+	.byte	'sint8',0,5,76,25
+	.word	1019
+	.byte	10
+	.byte	'uint8',0,5,81,25
+	.word	170
+	.byte	10
+	.byte	'uint16',0,5,91,25
+	.word	148
+	.byte	2
+	.byte	'unsigned int',0,4,7,10
+	.byte	'uint32',0,5,106,24
+	.word	1070
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,10
+	.byte	'uint64',0,5,111,30
+	.word	1101
+	.byte	10
+	.byte	'boolean',0,5,127,25
+	.word	170
+	.byte	10
+	.byte	'StatusType',0,6,191,1,27
+	.word	170
+	.byte	10
+	.byte	'Std_ReturnType',0,6,199,1,15
+	.word	170
+	.byte	5,6,206,1,9,8,6
+	.byte	'vendorID',0
+	.word	148
+	.byte	2,2,35,0,6
+	.byte	'moduleID',0
+	.word	148
+	.byte	2,2,35,2,6
+	.byte	'sw_major_version',0
+	.word	170
+	.byte	1,2,35,4,6
+	.byte	'sw_minor_version',0
+	.word	170
+	.byte	1,2,35,5,6
+	.byte	'sw_patch_version',0
+	.word	170
+	.byte	1,2,35,6,0,10
+	.byte	'Std_VersionInfoType',0,6,213,1,3
+	.word	1202
+	.byte	10
+	.byte	'PduIdType',0,7,22,19
+	.word	148
+	.byte	10
+	.byte	'PduLengthType',0,7,26,19
+	.word	148
+	.byte	16,8,113,9,4,17
+	.byte	'TP_DATACONF',0,0,17
+	.byte	'TP_DATARETRY',0,1,17
+	.byte	'TP_CONFPENDING',0,2,0,10
+	.byte	'TpDataStateType',0,8,118,3
+	.word	1392
+	.byte	10
+	.byte	'Can_IdType',0,9,32,16
+	.word	1070
+	.byte	10
+	.byte	'Can_HwHandleType',0,9,43,16
+	.word	148
+	.byte	5,10,93,9,8,6
+	.byte	'Class',0
+	.word	170
+	.byte	1,2,35,0,6
+	.byte	'TIN',0
+	.word	170
+	.byte	1,2,35,1,6
+	.byte	'ReturnAddress',0
+	.word	1070
+	.byte	4,2,35,4,0,10
+	.byte	'OsTrapInfoType',0,10,97,3
+	.word	1512
+	.byte	18,68
+	.word	1070
+	.byte	19,16,0,5,10,154,1,9,68,6
+	.byte	'store',0
+	.word	1592
+	.byte	68,2,35,0,0,18,68
+	.word	1601
+	.byte	19,0,0,10
+	.byte	'Os_JumpBufType',0,10,156,1,3
+	.word	1623
+	.byte	10
+	.byte	'Os_StackTraceType',0,10,174,1,18
+	.word	1070
+	.byte	5,10,175,1,9,8,6
+	.byte	'sp',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	'ctx',0
+	.word	1070
+	.byte	4,2,35,4,0,10
+	.byte	'Os_StackValueType',0,10,175,1,63
+	.word	1683
+	.byte	10
+	.byte	'Os_StackSizeType',0,10,176,1,27
+	.word	1683
+	.byte	20,1,1,4
+	.word	1768
+	.byte	10
+	.byte	'Os_VoidVoidFunctionType',0,10,179,1,16
+	.word	1771
+	.byte	10
+	.byte	'ApplicationType',0,10,193,1,23
+	.word	170
+	.byte	21
+	.byte	'Os_ApplicationConfigurationType_s',0,10,198,1,16,2,6
+	.byte	'app_id',0
+	.word	170
+	.byte	1,2,35,0,6
+	.byte	'access',0
+	.word	170
+	.byte	1,2,35,1,0,10
+	.byte	'Os_ApplicationConfigurationType',0,10,201,1,3
+	.word	1834
+	.byte	10
+	.byte	'Os_CoreStateType',0,10,203,1,16
+	.word	1070
+	.byte	10
+	.byte	'AreaIdType',0,10,204,1,16
+	.word	148
+	.byte	10
+	.byte	'Os_PeripheralAddressType',0,10,212,1,22
+	.word	1070
+	.byte	10
+	.byte	'TickType',0,10,221,1,22
+	.word	1070
+	.byte	10
+	.byte	'Os_StopwatchTickType',0,10,225,1,22
+	.word	1070
+	.byte	4
+	.word	1070
+	.byte	10
+	.byte	'Os_Lockable',0,10,234,1,18
+	.word	2076
+	.byte	10
+	.byte	'CoreIdType',0,10,236,1,16
+	.word	148
+	.byte	10
+	.byte	'SpinlockIdType',0,10,237,1,16
+	.word	148
+	.byte	16,10,239,1,9,4,17
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,17
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,10
+	.byte	'TryToGetSpinlockType',0,10,239,1,74
+	.word	2146
+	.byte	16,10,174,2,9,4,17
+	.byte	'APPLICATION_ACCESSIBLE',0,0,17
+	.byte	'APPLICATION_RESTARTING',0,1,17
+	.byte	'APPLICATION_TERMINATED',0,2,0,10
+	.byte	'ApplicationStateType',0,10,174,2,92
+	.word	2239
+	.byte	11,1,1,9
+	.word	170
+	.byte	9
+	.word	193
+	.byte	0,4
+	.word	2351
+	.byte	10
+	.byte	'Os_FunctionEntryType',0,10,183,2,16
+	.word	2365
+	.byte	21
+	.byte	'Os_MeterInfoType_s',0,10,193,2,16,48,6
+	.byte	'elapsed',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	'previous',0
+	.word	1070
+	.byte	4,2,35,4,6
+	.byte	'max',0
+	.word	1070
+	.byte	4,2,35,8,6
+	.byte	'cumulative',0
+	.word	1070
+	.byte	4,2,35,12,6
+	.byte	'stackbase',0
+	.word	1683
+	.byte	8,2,35,16,6
+	.byte	'stackusage',0
+	.word	1683
+	.byte	8,2,35,24,6
+	.byte	'stackmax',0
+	.word	1683
+	.byte	8,2,35,32,6
+	.byte	'stackbudget',0
+	.word	1683
+	.byte	8,2,35,40,0,10
+	.byte	'Os_MeterInfoType',0,10,202,2,3
+	.word	2400
+	.byte	4
+	.word	2400
+	.byte	10
+	.byte	'Os_MeterInfoRefType',0,10,203,2,50
+	.word	2598
+	.byte	10
+	.byte	'EventMaskType',0,10,206,2,15
+	.word	170
+	.byte	10
+	.byte	'Os_imaskType',0,10,211,2,16
+	.word	1070
+	.byte	21
+	.byte	'Os_ISRDynType_s',0,10,213,2,16,48,6
+	.byte	'meter',0
+	.word	2400
+	.byte	48,2,35,0,0,10
+	.byte	'Os_ISRDynType',0,10,215,2,3
+	.word	2677
+	.byte	4
+	.word	2677
+	.byte	7
+	.word	2738
+	.byte	21
+	.byte	'Os_ISRType_s',0,10,216,2,16,24,6
+	.byte	'entry_function',0
+	.word	1776
+	.byte	4,2,35,0,6
+	.byte	'dynamic',0
+	.word	2743
+	.byte	4,2,35,4,6
+	.byte	'imask',0
+	.word	1070
+	.byte	4,2,35,8,6
+	.byte	'stackbudget',0
+	.word	1683
+	.byte	8,2,35,12,6
+	.byte	'access',0
+	.word	170
+	.byte	1,2,35,20,6
+	.byte	'application',0
+	.word	170
+	.byte	1,2,35,21,0,10
+	.byte	'Os_ISRType',0,10,223,2,3
+	.word	2748
+	.byte	4
+	.word	1768
+	.byte	7
+	.word	2748
+	.byte	4
+	.word	2907
+	.byte	10
+	.byte	'ISRType',0,10,224,2,46
+	.word	2912
+	.byte	10
+	.byte	'Os_bitmask',0,10,239,2,22
+	.word	1070
+	.byte	10
+	.byte	'Os_pset0Type',0,10,240,2,20
+	.word	1070
+	.byte	10
+	.byte	'Os_pset1Type',0,10,241,2,20
+	.word	1070
+	.byte	10
+	.byte	'Os_pset2Type',0,10,242,2,20
+	.word	1070
+	.byte	22,10,243,2,9,4,6
+	.byte	'p0',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	'p1',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	'p2',0
+	.word	1070
+	.byte	4,2,35,0,0,10
+	.byte	'Os_psetType',0,10,247,2,3
+	.word	3020
+	.byte	22,10,249,2,9,4,6
+	.byte	't0',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	't1',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	't2',0
+	.word	1070
+	.byte	4,2,35,0,0,10
+	.byte	'Os_tpmaskType',0,10,253,2,3
+	.word	3084
+	.byte	10
+	.byte	'Os_ActivationCountType',0,10,254,2,23
+	.word	170
+	.byte	21
+	.byte	'Os_TaskDynType_s',0,10,128,3,16,120,6
+	.byte	'terminate_jump_buf',0
+	.word	1632
+	.byte	68,2,35,0,6
+	.byte	'meter',0
+	.word	2400
+	.byte	48,2,35,68,6
+	.byte	'activation_count',0
+	.word	170
+	.byte	1,2,35,116,0,10
+	.byte	'Os_TaskDynType',0,10,132,3,3
+	.word	3182
+	.byte	18,68
+	.word	1601
+	.byte	19,0,0,4
+	.word	3182
+	.byte	7
+	.word	3308
+	.byte	21
+	.byte	'Os_TaskType_s',0,10,134,3,16,40,6
+	.byte	'dynamic',0
+	.word	3313
+	.byte	4,2,35,0,6
+	.byte	'entry_function',0
+	.word	1776
+	.byte	4,2,35,4,6
+	.byte	'pset',0
+	.word	3020
+	.byte	4,2,35,8,6
+	.byte	'base_tpmask',0
+	.word	3084
+	.byte	4,2,35,12,6
+	.byte	'tpmask',0
+	.word	3084
+	.byte	4,2,35,16,6
+	.byte	'core_id',0
+	.word	148
+	.byte	2,2,35,20,6
+	.byte	'index',0
+	.word	1070
+	.byte	4,2,35,24,6
+	.byte	'stackbudget',0
+	.word	1683
+	.byte	8,2,35,28,6
+	.byte	'activation_count',0
+	.word	170
+	.byte	1,2,35,36,6
+	.byte	'access',0
+	.word	170
+	.byte	1,2,35,37,6
+	.byte	'application',0
+	.word	170
+	.byte	1,2,35,38,0,10
+	.byte	'Os_TaskType',0,10,146,3,3
+	.word	3318
+	.byte	7
+	.word	3318
+	.byte	4
+	.word	3568
+	.byte	10
+	.byte	'TaskType',0,10,147,3,47
+	.word	3573
+	.byte	23
+	.byte	'Os_TaskStateType',0,10,155,3,6,4,17
+	.byte	'SUSPENDED',0,0,17
+	.byte	'READY',0,1,17
+	.byte	'WAITING',0,2,17
+	.byte	'RUNNING',0,3,0,10
+	.byte	'TaskStateType',0,10,156,3,31
+	.word	3596
+	.byte	22,10,167,3,3,4,6
+	.byte	'tpmask',0
+	.word	3084
+	.byte	4,2,35,0,0,21
+	.byte	'Os_ResourceDynType_s',0,10,166,3,16,4,6
+	.byte	'saved_priority',0
+	.word	3683
+	.byte	4,2,35,0,0,10
+	.byte	'Os_ResourceDynType',0,10,170,3,3
+	.word	3706
+	.byte	4
+	.word	3706
+	.byte	7
+	.word	3786
+	.byte	21
+	.byte	'Os_ResourceType_s',0,10,171,3,16,12,6
+	.byte	'dynamic',0
+	.word	3791
+	.byte	4,2,35,0,6
+	.byte	'tpmask',0
+	.word	3084
+	.byte	4,2,35,4,6
+	.byte	'access',0
+	.word	170
+	.byte	1,2,35,8,0,10
+	.byte	'Os_ResourceType',0,10,175,3,3
+	.word	3796
+	.byte	5,10,181,3,9,12,6
+	.byte	'maxallowedvalue',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	'ticksperbase',0
+	.word	1070
+	.byte	4,2,35,4,6
+	.byte	'mincycle',0
+	.word	1070
+	.byte	4,2,35,8,0,10
+	.byte	'AlarmBaseType',0,10,185,3,3
+	.word	3895
+	.byte	5,10,206,3,9,8,6
+	.byte	'Running',0
+	.word	170
+	.byte	1,2,35,0,6
+	.byte	'Pending',0
+	.word	170
+	.byte	1,2,35,1,6
+	.byte	'Delay',0
+	.word	1070
+	.byte	4,2,35,4,0,10
+	.byte	'Os_CounterStatusType',0,10,210,3,3
+	.word	3990
+	.byte	24
+	.word	170
+	.byte	1,1,4
+	.word	4076
+	.byte	10
+	.byte	'Os_CounterIncrAdvType',0,10,217,3,22
+	.word	4083
+	.byte	21
+	.byte	's_swd',0,10,222,3,12,4,6
+	.byte	'count',0
+	.word	1070
+	.byte	4,2,35,0,0,22,10,221,3,3,4,6
+	.byte	'sw',0
+	.word	4119
+	.byte	4,2,35,0,0,21
+	.byte	'Os_CounterDynType_s',0,10,220,3,16,4,6
+	.byte	'type_dependent',0
+	.word	4147
+	.byte	4,2,35,0,0,10
+	.byte	'Os_CounterDynType',0,10,226,3,3
+	.word	4166
+	.byte	4
+	.word	4166
+	.byte	7
+	.word	4244
+	.byte	21
+	.byte	'Os_CounterType_s',0,10,227,3,16,28,6
+	.byte	'dynamic',0
+	.word	4249
+	.byte	4,2,35,0,6
+	.byte	'advincr',0
+	.word	4088
+	.byte	4,2,35,4,6
+	.byte	'base',0
+	.word	3895
+	.byte	12,2,35,8,6
+	.byte	'core',0
+	.word	193
+	.byte	4,2,35,20,6
+	.byte	'access',0
+	.word	170
+	.byte	1,2,35,24,6
+	.byte	'application',0
+	.word	170
+	.byte	1,2,35,25,0,10
+	.byte	'Os_CounterType',0,10,234,3,3
+	.word	4254
+	.byte	4
+	.word	4076
+	.byte	7
+	.word	4254
+	.byte	4
+	.word	4406
+	.byte	10
+	.byte	'CounterType',0,10,235,3,52
+	.word	4411
+	.byte	23
+	.byte	'Os_ScheduleTableStatusType',0,10,240,3,6,4,17
+	.byte	'SCHEDULETABLE_STOPPED',0,0,17
+	.byte	'SCHEDULETABLE_NEXT',0,1,17
+	.byte	'SCHEDULETABLE_WAITING',0,2,17
+	.byte	'SCHEDULETABLE_RUNNING',0,3,17
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,10
+	.byte	'ScheduleTableStatusType',0,10,241,3,41
+	.word	4437
+	.byte	7
+	.word	.L37-.L8
+	.byte	4
+	.word	4637
+	.byte	10
+	.byte	'ScheduleTableType',0,10,128,4,58
+	.word	4642
+	.byte	21
+	.byte	'Os_ScheduleTableDynType_s',0,10,130,4,16,16,6
+	.byte	'match',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	'next',0
+	.word	4647
+	.byte	4,2,35,4,6
+	.byte	'state',0
+	.word	4437
+	.byte	4,2,35,8,6
+	.byte	'config',0
+	.word	148
+	.byte	2,2,35,12,0,4
+	.word	4674
+	.byte	7
+	.word	4767
+.L37:
+	.byte	21
+	.byte	'Os_ScheduleTableType_s',0,10,247,3,16,16,6
+	.byte	'dynamic',0
+	.word	4772
+	.byte	4,2,35,0,6
+	.byte	'counter',0
+	.word	4416
+	.byte	4,2,35,4,6
+	.byte	'repeat',0
+	.word	170
+	.byte	1,2,35,8,6
+	.byte	'config',0
+	.word	148
+	.byte	2,2,35,10,6
+	.byte	'initial',0
+	.word	170
+	.byte	1,2,35,12,6
+	.byte	'access',0
+	.word	170
+	.byte	1,2,35,13,6
+	.byte	'application',0
+	.word	170
+	.byte	1,2,35,14,0,10
+	.byte	'Os_ScheduleTableType',0,10,255,3,3
+	.word	4777
+	.byte	7
+	.word	4777
+	.byte	4
+	.word	4957
+	.byte	7
+	.word	4254
+	.byte	4
+	.word	4967
+	.byte	25
+	.word	2081
+	.byte	25
+	.word	3020
+	.byte	25
+	.word	2917
+	.byte	25
+	.word	3578
+	.byte	25
+	.word	3084
+	.byte	25
+	.word	170
+	.byte	25
+	.word	3578
+	.byte	21
+	.byte	'Os_ControlledCoreType_s',0,10,251,6,16,112,6
+	.byte	'TrapInfo',0
+	.word	1512
+	.byte	8,2,35,0,6
+	.byte	'lock_taskaccess',0
+	.word	4977
+	.byte	4,2,35,8,6
+	.byte	'ReadyTasks',0
+	.word	4982
+	.byte	4,2,35,12,6
+	.byte	'RunningISR',0
+	.word	4987
+	.byte	4,2,35,16,6
+	.byte	'RunningTask',0
+	.word	4992
+	.byte	4,2,35,20,6
+	.byte	'RunningTPMask',0
+	.word	4997
+	.byte	4,2,35,24,6
+	.byte	'CurrentMeteredObject',0
+	.word	2603
+	.byte	4,2,35,28,6
+	.byte	'IdleMeter',0
+	.word	2400
+	.byte	48,2,35,32,6
+	.byte	'AppAccess',0
+	.word	170
+	.byte	1,2,35,80,6
+	.byte	'AppOverride',0
+	.word	5002
+	.byte	1,2,35,81,6
+	.byte	'GetStackValueAdjust',0
+	.word	1683
+	.byte	8,2,35,84,6
+	.byte	'InErrorHook',0
+	.word	170
+	.byte	1,2,35,92,6
+	.byte	'ChainTaskRef',0
+	.word	5007
+	.byte	4,2,35,96,6
+	.byte	'GetStackUsageAdjust',0
+	.word	1683
+	.byte	8,2,35,100,6
+	.byte	'InProtectionHook',0
+	.word	170
+	.byte	1,2,35,108,6
+	.byte	'CoreIsActive',0
+	.word	170
+	.byte	1,2,35,109,6
+	.byte	'InShutdownHook',0
+	.word	170
+	.byte	1,2,35,110,0,10
+	.byte	'Os_ControlledCoreType',0,10,141,7,3
+	.word	5012
+	.byte	4
+	.word	1070
+	.byte	7
+	.word	2748
+	.byte	4
+	.word	5468
+	.byte	7
+	.word	3318
+	.byte	4
+	.word	5478
+	.byte	4
+	.word	2400
+	.byte	21
+	.byte	'Os_AnyCoreType_s',0,10,151,7,16,96,6
+	.byte	'DisableAllImask',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	'SuspendAllImask',0
+	.word	1070
+	.byte	4,2,35,4,6
+	.byte	'SuspendOSImask',0
+	.word	1070
+	.byte	4,2,35,8,6
+	.byte	'DisableAllCount',0
+	.word	1070
+	.byte	4,2,35,12,6
+	.byte	'SuspendAllCount',0
+	.word	1070
+	.byte	4,2,35,16,6
+	.byte	'SuspendOSCount',0
+	.word	1070
+	.byte	4,2,35,20,6
+	.byte	'RestartJumpBuf',0
+	.word	1632
+	.byte	68,2,35,24,6
+	.byte	'Restartable',0
+	.word	170
+	.byte	1,2,35,92,0,10
+	.byte	'Os_AnyCoreType',0,10,160,7,3
+	.word	5493
+	.byte	10
+	.byte	'Can_TxObjPriorityClassType',0,11,219,3,16
+	.word	1070
+	.byte	21
+	.byte	'Can_TxHwObjectConfigType',0,11,231,3,16,8,6
+	.byte	'MsgObjId',0
+	.word	170
+	.byte	1,2,35,0,6
+	.byte	'HwControllerId',0
+	.word	170
+	.byte	1,2,35,1,6
+	.byte	'TxObjPriorityClass',0
+	.word	1070
+	.byte	4,2,35,4,0,10
+	.byte	'Can_TxHwObjectConfigType',0,11,252,3,3
+	.word	5770
+	.byte	21
+	.byte	'Can_RxHwObjectConfigType',0,11,129,4,16,12,6
+	.byte	'MaskRef',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	'MsgId',0
+	.word	1070
+	.byte	4,2,35,4,6
+	.byte	'MsgObjId',0
+	.word	170
+	.byte	1,2,35,8,6
+	.byte	'HwControllerId',0
+	.word	170
+	.byte	1,2,35,9,0,10
+	.byte	'Can_RxHwObjectConfigType',0,11,147,4,3
+	.word	5906
+	.byte	18,4
+	.word	170
+	.byte	19,3,0,21
+	.byte	'Can_ControllerMOMapConfigType',0,11,181,4,16,4,6
+	.byte	'ControllerMOMap',0
+	.word	6046
+	.byte	4,2,35,0,0,10
+	.byte	'Can_ControllerMOMapConfigType',0,11,184,4,3
+	.word	6055
+	.byte	21
+	.byte	'Can_NPCRValueType',0,11,188,4,16,2,6
+	.byte	'Can_NPCRValue',0
+	.word	148
+	.byte	2,2,35,0,0,10
+	.byte	'Can_NPCRValueType',0,11,191,4,3
+	.word	6156
+	.byte	21
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,11,194,4,16,8,6
+	.byte	'CanControllerBaudrate',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	'CanControllerBaudrateCfg',0
+	.word	148
+	.byte	2,2,35,4,0,10
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,11,198,4,3
+	.word	6231
+	.byte	7
+	.word	6231
+	.byte	4
+	.word	6396
+	.byte	21
+	.byte	'Can_BaudrateConfigPtrType',0,11,201,4,16,4,6
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	6401
+	.byte	4,2,35,0,0,10
+	.byte	'Can_BaudrateConfigPtrType',0,11,204,4,3
+	.word	6406
+	.byte	21
+	.byte	'Can_EventHandlingType',0,11,226,4,16,4,6
+	.byte	'CanEventType',0
+	.word	6046
+	.byte	4,2,35,0,0,10
+	.byte	'Can_EventHandlingType',0,11,229,4,3
+	.word	6506
+	.byte	10
+	.byte	'Rte_TransformerErrorCode',0,12,130,1,15
+	.word	170
+	.byte	10
+	.byte	'Rte_TransformerClass',0,12,131,1,15
+	.word	170
+	.byte	5,12,168,1,9,12,6
+	.byte	'in',0
+	.word	193
+	.byte	4,2,35,0,6
+	.byte	'out',0
+	.word	193
+	.byte	4,2,35,4,6
+	.byte	'used',0
+	.word	148
+	.byte	2,2,35,8,6
+	.byte	'lost_data',0
+	.word	170
+	.byte	1,2,35,10,0,10
+	.byte	'Rte_QDynType',0,12,173,1,3
+	.word	6652
+	.byte	16,12,175,1,9,4,17
+	.byte	'RTE_DRA',0,0,17
+	.byte	'RTE_WOWP',0,1,17
+	.byte	'RTE_TASK',0,2,17
+	.byte	'RTE_ARE',0,3,17
+	.byte	'RTE_EV',0,4,17
+	.byte	'RTE_MSI',0,5,0,10
+	.byte	'Rte_NotificationType',0,12,182,1,3
+	.word	6739
+	.byte	4
+	.word	6652
+	.byte	21
+	.byte	'Rte_QCmnType',0,12,184,1,16,24,6
+	.byte	'dynamic',0
+	.word	6837
+	.byte	4,2,35,0,6
+	.byte	'copy',0
+	.word	170
+	.byte	1,2,35,4,6
+	.byte	'queue_size',0
+	.word	148
+	.byte	2,2,35,6,6
+	.byte	'element_size',0
+	.word	148
+	.byte	2,2,35,8,6
+	.byte	'buffer_start',0
+	.word	193
+	.byte	4,2,35,12,6
+	.byte	'buffer_end',0
+	.word	193
+	.byte	4,2,35,16,6
+	.byte	'notification_type',0
+	.word	6739
+	.byte	4,2,35,20,0,10
+	.byte	'Rte_QCmnType',0,12,192,1,3
+	.word	6842
+	.byte	10
+	.byte	'Rte_AlarmRefType',0,12,224,1,32
+	.word	1070
+	.byte	10
+	.byte	'Rte_AlarmIndexType',0,12,226,1,32
+	.word	148
+	.byte	18,128,8
+	.word	170
+	.byte	19,255,7,0,10
+	.byte	'Impl_NVM_DstPtrType_1024',0,13,50,15
+	.word	7080
+	.byte	10
+	.byte	'CanIf_u32_impl',0,13,69,16
+	.word	1070
+	.byte	10
+	.byte	'CanIf_u16_impl',0,13,71,16
+	.word	148
+	.byte	10
+	.byte	'CanIf_u8_impl',0,13,73,15
+	.word	170
+	.byte	10
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,13,88,15
+	.word	170
+	.byte	10
+	.byte	'CanIf_PduModeType_Enum_impl',0,13,90,15
+	.word	170
+	.byte	5,13,92,9,2,6
+	.byte	'DeviceMode',0
+	.word	170
+	.byte	1,2,35,0,6
+	.byte	'ChannelMode',0
+	.word	170
+	.byte	1,2,35,1,0,10
+	.byte	'CanIf_ControllerStateType_struct_impl',0,13,95,3
+	.word	7271
+	.byte	10
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,13,100,15
+	.word	170
+	.byte	10
+	.byte	'CanSM_boolean_Impl',0,13,120,15
+	.word	170
+	.byte	10
+	.byte	'CanSM_u8_Impl',0,13,123,15
+	.word	170
+	.byte	10
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,13,128,1,15
+	.word	170
+	.byte	10
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,13,132,1,15
+	.word	170
+	.byte	10
+	.byte	'CanSM_u16_Impl',0,13,136,1,16
+	.word	148
+	.byte	10
+	.byte	'CanSM_TimerStateType_Enum_impl',0,13,138,1,15
+	.word	170
+	.byte	5,13,140,1,9,4,6
+	.byte	'cntTick_u16',0
+	.word	148
+	.byte	2,2,35,0,6
+	.byte	'stTimer',0
+	.word	170
+	.byte	1,2,35,2,0,10
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,13,143,1,3
+	.word	7612
+	.byte	10
+	.byte	'Com_impl_u16',0,13,154,1,16
+	.word	148
+	.byte	10
+	.byte	'Com_impl_u8',0,13,157,1,15
+	.word	170
+	.byte	10
+	.byte	'ComM_uint32_Impl',0,13,173,1,16
+	.word	1070
+	.byte	10
+	.byte	'ComM_uint16_Impl',0,13,175,1,16
+	.word	148
+	.byte	10
+	.byte	'ComM_uint8_Impl',0,13,177,1,15
+	.word	170
+	.byte	10
+	.byte	'ComM_bool_Impl',0,13,179,1,15
+	.word	170
+	.byte	5,13,181,1,9,24,6
+	.byte	'ChannelState_e',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	'LightTimeoutCtr_u32',0
+	.word	1070
+	.byte	4,2,35,4,6
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	148
+	.byte	2,2,35,8,6
+	.byte	'ChannelMode_u8',0
+	.word	170
+	.byte	1,2,35,10,6
+	.byte	'BusSmMode_u8',0
+	.word	170
+	.byte	1,2,35,11,6
+	.byte	'UserRequestCtr_u8',0
+	.word	170
+	.byte	1,2,35,12,6
+	.byte	'PassiveRequestState_u8',0
+	.word	170
+	.byte	1,2,35,13,6
+	.byte	'PncRequestCtr_u8',0
+	.word	170
+	.byte	1,2,35,14,6
+	.byte	'InhibitionReqStatus_u8',0
+	.word	170
+	.byte	1,2,35,15,6
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	170
+	.byte	1,2,35,16,6
+	.byte	'DiagnosticRequestState_b',0
+	.word	170
+	.byte	1,2,35,17,6
+	.byte	'CommunicationAllowed_b',0
+	.word	170
+	.byte	1,2,35,18,6
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	170
+	.byte	1,2,35,19,6
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	170
+	.byte	1,2,35,20,6
+	.byte	'NmNetworkModeStatus_b',0
+	.word	170
+	.byte	1,2,35,21,0,10
+	.byte	'ComM_ChannelStruct_Impl',0,13,197,1,3
+	.word	7844
+	.byte	5,13,206,1,9,10,6
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	148
+	.byte	2,2,35,0,6
+	.byte	'LimitToNoComCtr_u16',0
+	.word	148
+	.byte	2,2,35,2,6
+	.byte	'RequestedUserMode_t',0
+	.word	170
+	.byte	1,2,35,4,6
+	.byte	'IndicatedUserMode_t',0
+	.word	170
+	.byte	1,2,35,5,6
+	.byte	'numChannelsInFullCom_u8',0
+	.word	170
+	.byte	1,2,35,6,6
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	170
+	.byte	1,2,35,7,6
+	.byte	'numChannelsInNoCom_u8',0
+	.word	170
+	.byte	1,2,35,8,0,10
+	.byte	'ComM_UserStruct_Impl',0,13,214,1,3
+	.word	8348
+	.byte	10
+	.byte	'Dcm_IOOperationResponseType',0,13,252,1,15
+	.word	170
+	.byte	10
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	13,138,2,15
+	.word	170
+	.byte	10
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,13,146,2,15
+	.word	170
+	.byte	10
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,13,150,2,15
+	.word	170
+	.byte	10
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,13,154,2,15
+	.word	170
+	.byte	10
+	.byte	'NvM_BlockIdType',0,13,215,2,16
+	.word	148
+	.byte	10
+	.byte	'NvM_RequestResultType',0,13,225,2,15
+	.word	170
+	.byte	10
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,13,243,3,34
+	.word	7091
+	.byte	18,128,8
+	.word	170
+	.byte	19,255,7,0,10
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,13,246,3,34
+	.word	7091
+	.byte	16,14,31,9,4,17
+	.byte	'MEMIF_JOB_OK',0,0,17
+	.byte	'MEMIF_JOB_FAILED',0,1,17
+	.byte	'MEMIF_JOB_PENDING',0,2,17
+	.byte	'MEMIF_JOB_CANCELED',0,3,17
+	.byte	'MEMIF_BLOCK_INCONSISTENT',0,4,17
+	.byte	'MEMIF_BLOCK_INVALID',0,5,0,10
+	.byte	'MemIf_JobResultType',0,14,39,2
+	.word	9222
+	.byte	16,2,49,9,4,17
+	.byte	'NVM_PRV_ACTIVITY_NOT_INIT',0,0,17
+	.byte	'NVM_PRV_ACTIVITY_IDLE',0,1,17
+	.byte	'NVM_PRV_ACTIVITY_ARBITRATE',0,2,17
+	.byte	'NVM_PRV_ACTIVITY_JOB_START',0,3,17
+	.byte	'NVM_PRV_ACTIVITY_POLL_RESULT',0,4,17
+	.byte	'NVM_PRV_ACTIVITY_JOB_COMPLETE',0,5,17
+	.byte	'NVM_PRV_ACTIVITY_RESULT_EVAL',0,6,0,10
+	.byte	'NvM_Prv_Activities_ten',0,2,58,3
+	.word	9380
+	.byte	16,2,104,9,4,17
+	.byte	'NvM_Prv_idJob_Idle_e',0,0,17
+	.byte	'NvM_Prv_idJob_Read_e',0,1,17
+	.byte	'NvM_Prv_idJob_Write_e',0,2,17
+	.byte	'NvM_Prv_idJob_Erase_e',0,3,17
+	.byte	'NvM_Prv_idJob_Restore_e',0,4,17
+	.byte	'NvM_Prv_idJob_Maintain_e',0,5,17
+	.byte	'NvM_Prv_idJob_Validate_e',0,6,17
+	.byte	'NvM_Prv_idJob_Invalidate_e',0,7,17
+	.byte	'NvM_Prv_idJob_ReadIdConfigForReadAll_e',0,8,17
+	.byte	'NvM_Prv_idJob_InvalidateForFirstInitAll_e',0,9,17
+	.byte	'NvM_Prv_idJob_RestoreForImplicitRecovery_e',0,10,17
+	.byte	'NvM_Prv_idJob_InvalidateForRemoveNonResistant_e',0,11,17
+	.byte	'NvM_Prv_idJob_Invalid_e',0,12,17
+	.byte	'NvM_Prv_idJob_Count_e',0,13,0,10
+	.byte	'NvM_Prv_idJob_ten',0,2,115,3
+	.word	9621
+	.byte	10
+	.byte	'NvM_Prv_ServiceBit_tuo',0,2,168,1,16
+	.word	148
+	.byte	10
+	.byte	'NvM_Prv_idService_tuo',0,2,173,1,15
+	.word	170
+	.byte	10
+	.byte	'NvM_Prv_idQueue_tuo',0,2,206,1,15
+	.word	170
+	.byte	10
+	.byte	'NvM_Prv_QueueEntry_tst',0,2,225,1,3
+	.word	198
+	.byte	4
+	.word	170
+	.byte	5,2,227,1,9,20,6
+	.byte	'idJob_en',0
+	.word	9621
+	.byte	4,2,35,0,6
+	.byte	'idBlock_uo',0
+	.word	148
+	.byte	2,2,35,4,6
+	.byte	'RamBlock_pu8',0
+	.word	10210
+	.byte	4,2,35,8,6
+	.byte	'idxDataset_u8',0
+	.word	170
+	.byte	1,2,35,12,6
+	.byte	'Result_en',0
+	.word	9222
+	.byte	4,2,35,16,0,10
+	.byte	'NvM_Prv_JobData_tst',0,2,240,1,3
+	.word	10215
+	.byte	10
+	.byte	'Rte_TaskRefType',0,15,184,1,32
+	.word	3578
+	.byte	10
+	.byte	'Rte_EventRefType',0,15,185,1,32
+	.word	170
+	.byte	10
+	.byte	'Rte_EventType',0,15,186,1,32
+	.word	1070
+	.byte	10
+	.byte	'Rte_REActCounterType',0,15,252,1,15
+	.word	170
+	.byte	4
+	.word	170
+	.byte	10
+	.byte	'Rte_REActCounterRefType',0,15,253,1,58
+	.word	10457
+	.byte	5,15,255,1,9,8,6
+	.byte	'task',0
+	.word	10353
+	.byte	4,2,35,0,6
+	.byte	'acnt',0
+	.word	10462
+	.byte	4,2,35,4,0,10
+	.byte	'Rte_REContainerType',0,15,130,2,3
+	.word	10495
+	.byte	7
+	.word	3318
+	.byte	4
+	.word	10559
+	.byte	4
+	.word	170
+	.byte	7
+	.word	10495
+	.byte	4
+	.word	10574
+	.byte	10
+	.byte	'Rte_REContainerRefType',0,15,132,2,60
+	.word	10579
+	.byte	10
+	.byte	'Rte_MSICounterType',0,15,149,2,16
+	.word	148
+	.byte	4
+	.word	148
+	.byte	10
+	.byte	'Rte_MSICounterRefType',0,15,150,2,56
+	.word	10644
+	.byte	10
+	.byte	'Rte_MSIPendingFlagType',0,15,152,2,17
+	.word	170
+	.byte	4
+	.word	170
+	.byte	10
+	.byte	'Rte_MSIPendingFlagRefType',0,15,153,2,60
+	.word	10712
+	.byte	5,15,163,2,9,24,6
+	.byte	'counter',0
+	.word	10649
+	.byte	4,2,35,0,6
+	.byte	'incCounter',0
+	.word	170
+	.byte	1,2,35,4,6
+	.byte	'pending',0
+	.word	10717
+	.byte	4,2,35,8,6
+	.byte	'osTask',0
+	.word	10353
+	.byte	4,2,35,12,6
+	.byte	'acnt',0
+	.word	10462
+	.byte	4,2,35,16,6
+	.byte	'osEvent',0
+	.word	170
+	.byte	1,2,35,20,6
+	.byte	'MSIInit',0
+	.word	148
+	.byte	2,2,35,22,0,10
+	.byte	'Rte_MSITableEntry',0,15,172,2,3
+	.word	10752
+	.byte	4
+	.word	148
+	.byte	4
+	.word	170
+	.byte	10
+	.byte	'Rte_TaskArrayIndex',0,15,179,2,16
+	.word	170
+	.byte	10
+	.byte	'Rte_NrWaitingTasks',0,15,180,2,16
+	.word	170
+	.byte	5,15,182,2,9,4,6
+	.byte	'pending',0
+	.word	170
+	.byte	1,2,35,0,6
+	.byte	'count',0
+	.word	170
+	.byte	1,2,35,1,6
+	.byte	'firstWaitingTask',0
+	.word	170
+	.byte	1,2,35,2,0,10
+	.byte	'Rte_WaitableDatum',0,15,186,2,3
+	.word	10970
+	.byte	4
+	.word	10970
+	.byte	5,15,226,2,9,12,6
+	.byte	'event_id',0
+	.word	1070
+	.byte	4,2,35,0,6
+	.byte	'wd',0
+	.word	11062
+	.byte	4,2,35,4,6
+	.byte	'timeout',0
+	.word	1070
+	.byte	4,2,35,8,0,10
+	.byte	'Rte_WOWP_NotificationType',0,15,230,2,3
+	.word	11067
+	.byte	7
+	.word	11067
+	.byte	4
+	.word	11156
+	.byte	10
+	.byte	'Rte_WOWP_NotificationRefType',0,15,232,2,66
+	.word	11161
+	.byte	10
+	.byte	'Rte_ARE_NotificationType',0,15,234,2,29
+	.word	10495
+	.byte	21
+	.byte	'Rte_QTaskType',0,15,243,2,16,28,6
+	.byte	'cmn',0
+	.word	6842
+	.byte	24,2,35,0,6
+	.byte	'task',0
+	.word	10353
+	.byte	4,2,35,24,0,10
+	.byte	'Rte_QTaskType',0,15,246,2,3
+	.word	11238
+	.byte	21
+	.byte	'Rte_QREType',0,15,250,2,16,28,6
+	.byte	'cmn',0
+	.word	6842
+	.byte	24,2,35,0,6
+	.byte	're',0
+	.word	10584
+	.byte	4,2,35,24,0,10
+	.byte	'Rte_QREType',0,15,253,2,3
+	.word	11309
+	.byte	7
+	.word	10495
+	.byte	4
+	.word	11374
+	.byte	21
+	.byte	'Rte_QWWPType',0,15,129,3,16,28,6
+	.byte	'cmn',0
+	.word	6842
+	.byte	24,2,35,0,6
+	.byte	'wwp',0
+	.word	11166
+	.byte	4,2,35,24,0,10
+	.byte	'Rte_QWWPType',0,15,132,3,3
+	.word	11384
+	.byte	7
+	.word	11067
+	.byte	4
+	.word	11452
+	.byte	21
+	.byte	'Rte_QEvType',0,15,136,3,16,36,6
+	.byte	'cmn',0
+	.word	6842
+	.byte	24,2,35,0,6
+	.byte	'task',0
+	.word	10353
+	.byte	4,2,35,24,6
+	.byte	'mask',0
+	.word	170
+	.byte	1,2,35,28,6
+	.byte	'acnt',0
+	.word	10462
+	.byte	4,2,35,32,0,10
+	.byte	'Rte_QEvType',0,15,141,3,3
+	.word	11462
+	.byte	21
+	.byte	'Rte_QMSIType',0,15,145,3,16,48,6
+	.byte	'cmn',0
+	.word	6842
+	.byte	24,2,35,0,6
+	.byte	'task',0
+	.word	10353
+	.byte	4,2,35,24,6
+	.byte	'mask',0
+	.word	170
+	.byte	1,2,35,28,6
+	.byte	'acnt',0
+	.word	10462
+	.byte	4,2,35,32,6
+	.byte	'msiCounter',0
+	.word	10649
+	.byte	4,2,35,36,6
+	.byte	'msiPending',0
+	.word	10717
+	.byte	4,2,35,40,6
+	.byte	'msiLimit',0
+	.word	148
+	.byte	2,2,35,44,0,10
+	.byte	'Rte_QMSIType',0,15,153,3,3
+	.word	11557
+	.byte	10
+	.byte	'NvM_Prv_BlockData_tst',0,1,36,3
+	.word	292
+	.byte	10
+	.byte	'NvM_Prv_Service_Configuration_tst',0,1,49,3
+	.word	596
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L9:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,59,0,3,8,0,0,4,15,0,73,19,0
+	.byte	0,5,19,1,58,15,59,15,57,15,11,15,0,0,6,13,0,3,8,73,19,11,15,56,9,0,0,7,38,0,73,19,0,0,8,21,1,73,19,54
+	.byte	15,39,12,0,0,9,5,0,73,19,0,0,10,22,0,3,8,58,15,59,15,57,15,73,19,0,0,11,21,1,54,15,39,12,0,0,12,46,1,3
+	.byte	8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,13,5,0,3,8,58,15,59,15,57,15,73,19,0,0,14,46,0,3
+	.byte	8,58,15,59,15,57,15,54,15,63,12,60,12,0,0,15,21,0,54,15,0,0,16,4,1,58,15,59,15,57,15,11,15,0,0,17,40,0
+	.byte	3,8,28,13,0,0,18,1,1,11,15,73,19,0,0,19,33,0,47,15,0,0,20,21,0,54,15,39,12,0,0,21,19,1,3,8,58,15,59,15
+	.byte	57,15,11,15,0,0,22,23,1,58,15,59,15,57,15,11,15,0,0,23,4,1,3,8,58,15,59,15,57,15,11,15,0,0,24,21,0,73
+	.byte	19,54,15,39,12,0,0,25,53,0,73,19,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L10:
+	.word	.L39-.L38
+.L38:
+	.half	3
+	.word	.L41-.L40
+.L40:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv_Service.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\NvM\\api\\NvM_Types.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv_ErrorDetection.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_SetBlockLockStatus.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\MemIf\\api\\MemIf_Types.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0,0
+.L41:
+.L39:
+	.sdecl	'.debug_info',debug,cluster('NvM_SetBlockLockStatus')
+	.sect	'.debug_info'
+.L11:
+	.word	312
+	.half	3
+	.word	.L12
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_SetBlockLockStatus.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L14,.L13
+	.byte	2
+	.word	.L7
+	.byte	3
+	.byte	'NvM_SetBlockLockStatus',0,1,35,6,1,1,1
+	.word	.L4,.L21,.L3
+	.byte	4
+	.byte	'BlockId',0,1,35,45
+	.word	.L22,.L23
+	.byte	4
+	.byte	'BlockLocked',0,1,35,62
+	.word	.L24,.L25
+	.byte	5
+	.word	.L4,.L21
+	.byte	6
+	.byte	'ServiceConfiguration_st',0,1,39,39
+	.word	.L26,.L27
+	.byte	6
+	.byte	'BlockData_st',0,1,40,27
+	.word	.L28,.L29
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_SetBlockLockStatus')
+	.sect	'.debug_abbrev'
+.L12:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('NvM_SetBlockLockStatus')
+	.sect	'.debug_line'
+.L13:
+	.word	.L43-.L42
+.L42:
+	.half	3
+	.word	.L45-.L44
+.L44:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_SetBlockLockStatus.c',0,0,0,0,0
+.L45:
+	.byte	5,6,7,0,5,2
+	.word	.L4
+	.byte	3,34,1,5,43,9
+	.half	.L33-.L4
+	.byte	3,8,1,5,47,9
+	.half	.L46-.L33
+	.byte	3,1,1,5,45,9
+	.half	.L47-.L46
+	.byte	1,5,47,9
+	.half	.L48-.L47
+	.byte	3,1,1,5,45,9
+	.half	.L49-.L48
+	.byte	1,5,48,9
+	.half	.L50-.L49
+	.byte	3,1,1,5,46,9
+	.half	.L51-.L50
+	.byte	1,5,30,9
+	.half	.L52-.L51
+	.byte	3,1,1,5,28,9
+	.half	.L53-.L52
+	.byte	1,5,34,9
+	.half	.L54-.L53
+	.byte	3,1,1,5,32,9
+	.half	.L55-.L54
+	.byte	1,5,40,9
+	.half	.L56-.L55
+	.byte	3,1,1,5,38,9
+	.half	.L57-.L56
+	.byte	1,5,40,9
+	.half	.L58-.L57
+	.byte	3,1,1,5,38,9
+	.half	.L59-.L58
+	.byte	1,5,51,9
+	.half	.L60-.L59
+	.byte	3,5,1,5,49,9
+	.half	.L61-.L60
+	.byte	1,5,51,9
+	.half	.L62-.L61
+	.byte	3,1,1,5,49,9
+	.half	.L63-.L62
+	.byte	1,5,51,9
+	.half	.L64-.L63
+	.byte	3,2,1,5,49,9
+	.half	.L65-.L64
+	.byte	1,9
+	.half	.L66-.L65
+	.byte	3,2,1,5,47,9
+	.half	.L67-.L66
+	.byte	1,5,36,9
+	.half	.L68-.L67
+	.byte	3,2,1,5,37,9
+	.half	.L34-.L68
+	.byte	3,1,1,9
+	.half	.L69-.L34
+	.byte	3,1,1,5,1,9
+	.half	.L35-.L69
+	.byte	3,1,1,7,9
+	.half	.L15-.L35
+	.byte	0,1,1
+.L43:
+	.sdecl	'.debug_ranges',debug,cluster('NvM_SetBlockLockStatus')
+	.sect	'.debug_ranges'
+.L14:
+	.word	-1,.L4,0,.L15-.L4,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_SetBlockLockStatus_CheckParameter')
+	.sect	'.debug_info'
+.L16:
+	.word	255
+	.half	3
+	.word	.L17
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_SetBlockLockStatus.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L19,.L18
+	.byte	2
+	.word	.L7
+	.byte	3
+	.byte	'NvM_Prv_SetBlockLockStatus_CheckParameter',0,1,67,16
+	.word	.L24
+	.byte	1,1
+	.word	.L6,.L30,.L5
+	.byte	4
+	.byte	'BlockData_pcst',0,1,67,87
+	.word	.L31,.L32
+	.byte	5
+	.word	.L6,.L30
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_SetBlockLockStatus_CheckParameter')
+	.sect	'.debug_abbrev'
+.L17:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('NvM_Prv_SetBlockLockStatus_CheckParameter')
+	.sect	'.debug_line'
+.L18:
+	.word	.L71-.L70
+.L70:
+	.half	3
+	.word	.L73-.L72
+.L72:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_SetBlockLockStatus.c',0,0,0,0,0
+.L73:
+	.byte	5,97,7,0,5,2
+	.word	.L6
+	.byte	3,198,0,1,9
+	.half	.L74-.L6
+	.byte	3,1,1,5,5,9
+	.half	.L36-.L74
+	.byte	3,127,1,5,1,9
+	.half	.L2-.L36
+	.byte	3,2,1,7,9
+	.half	.L20-.L2
+	.byte	0,1,1
+.L71:
+	.sdecl	'.debug_ranges',debug,cluster('NvM_Prv_SetBlockLockStatus_CheckParameter')
+	.sect	'.debug_ranges'
+.L19:
+	.word	-1,.L6,0,.L20-.L6,0,0
+	.sdecl	'.debug_loc',debug,cluster('NvM_Prv_SetBlockLockStatus_CheckParameter')
+	.sect	'.debug_loc'
+.L32:
+	.word	-1,.L6,0,.L36-.L6
+	.half	1
+	.byte	100
+	.word	0,0
+.L5:
+	.word	-1,.L6,0,.L30-.L6
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('NvM_SetBlockLockStatus')
+	.sect	'.debug_loc'
+.L29:
+	.word	-1,.L4,0,.L21-.L4
+	.half	2
+	.byte	145,112
+	.word	0,0
+.L23:
+	.word	-1,.L4,0,.L34-.L4
+	.half	1
+	.byte	84
+	.word	0,0
+.L25:
+	.word	-1,.L4,0,.L35-.L4
+	.half	1
+	.byte	85
+	.word	0,0
+.L3:
+	.word	-1,.L4,0,.L33-.L4
+	.half	2
+	.byte	138,0
+	.word	.L33-.L4,.L21-.L4
+	.half	2
+	.byte	138,32
+	.word	.L21-.L4,.L21-.L4
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L27:
+	.word	-1,.L4,0,.L21-.L4
+	.half	2
+	.byte	145,96
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L75:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('NvM_SetBlockLockStatus')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L75,.L4,.L21-.L4
+	.byte	4
+	.word	(.L33-.L4)/2
+	.byte	19,32,22,26,3,19,138,32,4
+	.word	(.L21-.L33)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('NvM_Prv_SetBlockLockStatus_CheckParameter')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L75,.L6,.L30-.L6
+
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    74  
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    75  #define NVM_STOP_SEC_CODE
+; BSW\src\BSW\Gen\NvM\src\NvM_SetBlockLockStatus.c	    76  #include "NvM_MemMap.h"
+
+	; Module end

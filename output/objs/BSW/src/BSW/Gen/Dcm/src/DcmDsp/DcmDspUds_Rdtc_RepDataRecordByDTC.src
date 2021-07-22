@@ -1,0 +1,4837 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc14640a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds_Rdtc_RepDataRecordByDTC.src BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepDataRecordByDTC.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepDataRecordByDTC.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.DcmDspUds_Rdtc_RepDataRecordByDTC.Dcm_Dsp_ReportDataRecordByDTCNumber',code,cluster('Dcm_Dsp_ReportDataRecordByDTCNumber')
+	.sect	'.text.DcmDspUds_Rdtc_RepDataRecordByDTC.Dcm_Dsp_ReportDataRecordByDTCNumber'
+	.align	2
+	
+	.global	Dcm_Dsp_ReportDataRecordByDTCNumber
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	     1  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	     2  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	     3  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	     4  #include "DcmDspUds_Rdtc_Inf.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	     5  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	     6  #if(DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	     7  #include "DcmDspUds_Rdtc_Priv.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	     8  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	     9  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x04_ENABLED != DCM_CFG_OFF) || (DCM_CFG_DSP_RDTCSUBFUNC_0x06_ENABLED != DCM_CFG_OFF) || \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    10          (DCM_CFG_DSP_RDTCSUBFUNC_0x10_ENABLED != DCM_CFG_OFF) ||(DCM_CFG_DSP_RDTCSUBFUNC_0x18_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x19_ENABLED!=DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    11  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    12  #define DCM_START_SEC_VAR_CLEARED_8 /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    13  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    14  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    15  static VAR(uint8,                   DCM_VAR) s_nrRDTCLoopEnd_u8; /* End value of loop*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    16  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    17  static VAR (uint8,                  DCM_VAR) s_dataRDTCSubFunc_u8;     /* local variable to store sub function*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    18  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    19  static VAR(Dem_DTCOriginType,       DCM_VAR) s_dataDemDTCOrigin_u8;        /* Variable to store DTC origin */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    20  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    21  static VAR(boolean,                 DCM_VAR) s_IsRecordSupported;   /* Flag to indicate that atleast one record is supported */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    22  #define DCM_STOP_SEC_VAR_CLEARED_8 /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    23  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    24  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    25  #define DCM_START_SEC_CODE /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    26  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    27  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    28   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    29   * Dcm_Dsp_ReportDataRecordByDTCNumber :
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    30   * The following are done by this function
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    31   *      Report one or all Snapshot Data Records for a particular DTC.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    32   *      If the tester sends a valid Record Number (0x00 to 0xFE) only that Record will be read
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    33   *      If the tester sends a Record Number=0xff, all the Records for the DTC will be read.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    34   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    35   *      Report one or all Extended Data Record for a particular DTC.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    36   *      If the tester sends a valid Record Number (0x01 to 0xEF) only that Record will be read
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    37   *      If the tester sends a Record Number=0xFF all the Records for the DTC from 0x01 to 0xEF will be read
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    38   *      If the tester sends a Record Number=0xFE all the Records for the DTC from 0x90 to 0xEF will be read
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    39   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    40   *      Report one or all user defined Memory Snapshot Record by DTC number for a particular DTC  .
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    41   *      If the tester sends a valid Record Number (0x00 to 0xFE) only that Record will be read
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    42   *      If the tester sends a Record Number=0xff, all the Records for the DTC will be read.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    43   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    44   *      Report one or all user defined Memory Extended Data Record by DTC number for a particular DTC.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    45   *      If the tester sends a valid Record Number (0x01 to 0xEF) along with Memory selection then only that Record will be read
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    46   *      If the tester sends a Record Number=0xFF along with Memory selection all the Records for the DTC from 0x01 to 0xEF will be read
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    47   *      If the tester sends a Record Number=0xFE along with Memory selection all the Records for the DTC from 0x90 to 0xEF will be read
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    48   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    49   * \param           pMsgContext    Pointer to message structure
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    50   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    51   * \retval          None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    52   * \seealso
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    53   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    54   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    55   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    56  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    57  FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportDataRecordByDTCNumber (VAR(Dcm_SrvOpStatusType,AUTOMATIC) Opstatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+; Function Dcm_Dsp_ReportDataRecordByDTCNumber
+.L121:
+Dcm_Dsp_ReportDataRecordByDTCNumber:	.type	func
+	sub.a	a10,#24
+.L163:
+	mov.aa	a12,a4
+.L167:
+	st.a	[a10]4,a5
+.L168:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    58  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    59  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    60      VAR(Dcm_MsgLenType,AUTOMATIC) dataRemainBuffer_u32;    /* Local variable for maximum response buffer available*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    61      VAR(Dcm_MsgLenType,AUTOMATIC) dataFillRespLen_u32;     /* Local variable to store the response length filled*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    62      VAR(uint8_least,AUTOMATIC) idxLoop_qu8;            /* Loop counter index for record numbers*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    63      VAR(uint8,AUTOMATIC) nrReqLength_u8 = 0x00u;  /*Variable to store request length */
+	mov	d0,#0
+.L169:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    64  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x04_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x18_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    65      VAR (uint16,                         AUTOMATIC) nrSizeOfFreezeFrame_u16;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    66      VAR(Dem_ReturnGetFreezeFrameDataByDTCType,   AUTOMATIC) dataRetGetFFDataRecByDTC_u8;  /* Return type of
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    67                                                                                     Dem_GetFreezeFrameDataByDTC*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    68      VAR(Dem_ReturnGetSizeOfFreezeFrameByDTCType,   AUTOMATIC) dataRetGetFFDataRecSizeByDTC_u8;  /* Return type of
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    69                                                                                      Dem_GetSizeOfFreezeFrameByDTC*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    70  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    71      VAR(Dem_ReturnGetStatusOfDTCType,            AUTOMATIC) stRetGetStatusOfDTC_u8;    /* Return type of Dem_GetStatusOfDTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    72      VAR(  Dem_ReturnDisableDTCRecordUpdateType   ,     AUTOMATIC) stRetDisableDTCRecUpdate_u8; /*Return type from Dem_DisableDTCRecordUpdate*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    73      VAR( uint8,                         AUTOMATIC) stDTCStatus_u8;        /* Variable to store the DTC status */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    74      VAR(Std_ReturnType,                          AUTOMATIC) dataRetEnableDTCRecUpdate_u8;/*Return Value of
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    75                                                                                        Dem_EnableDTCRecordUpdate*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    76  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x06_ENABLED != DCM_CFG_OFF) || (DCM_CFG_DSP_RDTCSUBFUNC_0x10_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x19_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    77      VAR(Dem_ReturnGetExtendedDataRecordByDTCType,AUTOMATIC) dataRetGetExtDataRecByDTC_u8; /* Return type of
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    78                                                                                     Dem_GetExtendedDataRecordByDTC*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    79  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    80      /* Variable to indicate if API Dem_GetExtendedDataRecordByDTC or Dem_GetFreezeFrameDataByDTC  returns Pending*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    81      VAR(boolean,                        AUTOMATIC) isPendingReturned_b;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    82     VAR(Std_ReturnType,                             AUTOMATIC)  dataretVal_u8;              /* Variable to store the service return value */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    83      /* Initialization of variables */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    84      *dataNegRespCode_u8 = 0x00;
+	mov	d15,#0
+.L214:
+	st.b	[a5],d15
+.L215:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    85      /*Initialize the variable isPendingReturned_b to FALSE*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    86      isPendingReturned_b = FALSE;
+	mov	d8,#0
+.L171:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    87      dataFillRespLen_u32 = 0;
+	mov	d9,#0
+.L172:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    88      dataretVal_u8 = DCM_E_PENDING;
+	mov	d10,#10
+.L173:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    89      /*Opstatus possed by the central statemachine is unused currently, opstatus variables related to service needs to be
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    90       * removed and the one passed by the central statemachine needs to be used, this would be taken care with task XXXXX*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    91      DCM_UNUSED_PARAM(Opstatus);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    92      /* State machine */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    93      /* Initialization state */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    94      if ( Dcm_DspRDTCSubFunc_en == DSP_RDTC_SFINIT)
+	movh.a	a15,#@his(Dcm_DspRDTCSubFunc_en)
+	lea	a15,[a15]@los(Dcm_DspRDTCSubFunc_en)
+	st.a	[a10]12,a15
+	ld.w	d1,[a15]
+.L216:
+	jne	d1,#1,.L2
+.L217:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    95      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    96          s_dataRDTCSubFunc_u8 = pMsgContext->reqData[DSP_RDTC_POSSUBFUNC];
+	ld.a	a15,[a12]4
+.L218:
+	movh.a	a13,#@his(s_dataRDTCSubFunc_u8)
+	lea	a13,[a13]@los(s_dataRDTCSubFunc_u8)
+.L219:
+	ld.bu	d1,[a15]
+.L220:
+	st.b	[a13],d1
+.L221:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    97  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x04_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x06_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x10_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    98          /* Check if the subfunction is 0x04,0x06,0x10*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	    99          if((s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_DATA_RECORD)||(s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_REC_MIRROR_MEM)||(s_dataRDTCSubFunc_u8 == DSP_REPORT_SNAPSHOT_RECORD_BY_DTC))
+	ld.bu	d15,[a13]
+.L222:
+	jeq	d15,#6,.L3
+.L223:
+	mov	d1,#16
+.L224:
+	jeq	d15,d1,.L4
+.L225:
+	jne	d15,#4,.L5
+.L4:
+.L3:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   100          {   /* Update the request length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   101              nrReqLength_u8 = DSP_RDTC_04_06_10_REQUEST_LENGTH;
+	mov	d0,#5
+.L5:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   102          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   103  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   104  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x18_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x19_ENABLED!=DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   105          if((s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_SNAPSHOT_RECORD_BY_DTC_NUMBER)||(s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_EXTDATA_RECORD_BY_DTC_NUMBER))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   106          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   107  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   108              /* Update the request length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   109              nrReqLength_u8 = DSP_RDTC_18_19_REQUEST_LENGTH;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   110          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   111  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   112  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   113          /* Check if request length is correct */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   114          if(nrReqLength_u8 == pMsgContext->reqDataLen)
+	ld.w	d15,[a12]16
+.L226:
+	jne	d15,d0,.L6
+.L227:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   115          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   116              /* copy the 3 byte DTC into Dsp_RdtcDTC_u32 from request*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   117              Dsp_RdtcDTC_u32 =  ((((uint32) pMsgContext->reqData[0x01]) << DSP_RDTC_LSH_16BITS) |
+	movh.a	a2,#@his(Dsp_RdtcDTC_u32)
+	lea	a2,[a2]@los(Dsp_RdtcDTC_u32)
+.L228:
+	ld.bu	d15,[a15]1
+.L229:
+	sh	d0,d15,#16
+.L170:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   118                      (((uint32) pMsgContext->reqData[0x02]) << DSP_RDTC_LSH_08BITS) |
+	ld.bu	d15,[a15]2
+.L230:
+	sh	d15,d15,#8
+.L231:
+	or	d0,d15
+.L232:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   119                      ((uint32) pMsgContext->reqData[0x03]));
+	ld.bu	d15,[a15]3
+.L233:
+	or	d0,d15
+.L234:
+	st.w	[a2],d0
+.L235:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   120              s_dataDemDTCOrigin_u8 = DEM_DTC_ORIGIN_PRIMARY_MEMORY;
+	movh.a	a15,#@his(s_dataDemDTCOrigin_u8)
+	lea	a15,[a15]@los(s_dataDemDTCOrigin_u8)
+.L236:
+	mov	d15,#1
+.L237:
+	st.b	[a15],d15
+.L238:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   121  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   122  #if ((DCM_CFG_DSP_RDTCSUBFUNC_0x18_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x19_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   123              if((s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_SNAPSHOT_RECORD_BY_DTC_NUMBER)|| \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   124                      (s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_EXTDATA_RECORD_BY_DTC_NUMBER))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   125              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   126                  /* Set DTC origin as Memory selection from the request */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   127                  s_dataDemDTCOrigin_u8 = pMsgContext->reqData[0x05];
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   128  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   129              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   130  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   131  #if (DCM_CFG_DSP_RDTCSUBFUNC_0x10_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   132              if(s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_REC_MIRROR_MEM)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   133              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   134                  /* Set DTC origin to mirror memory if subfunction is 0x10 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   135                  s_dataDemDTCOrigin_u8 = DEM_DTC_ORIGIN_MIRROR_MEMORY;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   136  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   137              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   138  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   139              /* Call DEM API to get the status of DTC sent from tester */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   140              stRetGetStatusOfDTC_u8 = Dem_GetStatusOfDTC(Dsp_RdtcDTC_u32,
+	ld.w	d4,[a2]
+.L164:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   141                      DEM_DTC_KIND_ALL_DTCS,
+	mov	d5,#1
+.L239:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   142                      s_dataDemDTCOrigin_u8,
+	mov	d6,#1
+.L240:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   143                      &stDTCStatus_u8);
+	lea	a4,[a10]2
+.L166:
+	call	Dem_GetStatusOfDTC
+.L165:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   144  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   145  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   146  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   147              /* If the DTC is correct and valid status is available */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   148              if(DEM_STATUS_OK == stRetGetStatusOfDTC_u8)
+	jne	d2,#0,.L7
+.L241:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   149              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   150                  /* Copy the record number from the request */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   151                  Dcm_DspRDTCRecordNum_u8 = pMsgContext->reqData[0x04];
+	ld.a	a2,[a12]4
+.L242:
+	movh.a	a15,#@his(Dcm_DspRDTCRecordNum_u8)
+	lea	a15,[a15]@los(Dcm_DspRDTCRecordNum_u8)
+.L243:
+	ld.bu	d15,[a2]4
+.L244:
+	st.b	[a15],d15
+.L245:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   152  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   153  #if ((DCM_CFG_DSP_RDTCSUBFUNC_0x18_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x19_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   154                  if((s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_SNAPSHOT_RECORD_BY_DTC_NUMBER)|| \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   155                          (s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_EXTDATA_RECORD_BY_DTC_NUMBER))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   156                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   157                      /* Fill the response buffer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   158                      pMsgContext->resData[0x04] = pMsgContext->reqData[0x03];
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   159                      pMsgContext->resData[0x03] = pMsgContext->reqData[0x02];
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   160                      pMsgContext->resData[0x02] = pMsgContext->reqData[0x01];
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   161                      pMsgContext->resData[0x00] = pMsgContext->reqData[0x00];
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   162                      pMsgContext->resData[0x01] = s_dataDemDTCOrigin_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   163                      pMsgContext->resData[0x05] = stDTCStatus_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   164                      /* Update the Response data length information */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   165                      pMsgContext->resDataLen = 0x06;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   166  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   167                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   168  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   169  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x04_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x06_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x10_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   170  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   171                  if((s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_DATA_RECORD) || (s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_REC_MIRROR_MEM)|| (s_dataRDTCSubFunc_u8 == DSP_REPORT_SNAPSHOT_RECORD_BY_DTC))
+	ld.bu	d15,[a13]
+.L246:
+	jeq	d15,#6,.L8
+.L247:
+	mov	d0,#16
+.L248:
+	jeq	d15,d0,.L9
+.L249:
+	jne	d15,#4,.L10
+.L9:
+.L8:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   172                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   173  				    /* Fill the response buffer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   174                      pMsgContext->resData[0x03] = pMsgContext->reqData[0x03];
+	ld.a	a15,[a12]
+.L250:
+	ld.bu	d0,[a2]3
+.L251:
+	st.b	[a15]3,d0
+.L252:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   175                      pMsgContext->resData[0x02] = pMsgContext->reqData[0x02];
+	ld.a	a2,[a12]
+.L253:
+	ld.a	a15,[a12]4
+.L254:
+	ld.bu	d0,[a15]2
+.L255:
+	st.b	[a2]2,d0
+.L256:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   176                      pMsgContext->resData[0x01] = pMsgContext->reqData[0x01];
+	ld.a	a2,[a12]
+.L257:
+	ld.a	a15,[a12]4
+.L258:
+	ld.bu	d0,[a15]1
+.L259:
+	st.b	[a2]1,d0
+.L260:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   177                      pMsgContext->resData[0x00] = pMsgContext->reqData[0x00];
+	ld.a	a15,[a12]
+.L261:
+	ld.a	a2,[a12]4
+.L262:
+	ld.bu	d0,[a2]
+.L263:
+	st.b	[a15],d0
+.L264:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   178                      pMsgContext->resData[0x04] = stDTCStatus_u8;
+	ld.a	a15,[a12]
+.L265:
+	ld.bu	d0,[a10]2
+.L266:
+	st.b	[a15]4,d0
+.L267:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   179                      /* Update the Response data length information */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   180                      pMsgContext->resDataLen = 0x05;
+	mov	d0,#5
+.L268:
+	st.w	[a12]12,d0
+.L10:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   181                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   182  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   183                  if((s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_DATA_RECORD) || (s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_REC_MIRROR_MEM)|| (s_dataRDTCSubFunc_u8 == DSP_REPORT_SNAPSHOT_RECORD_BY_DTC)||\ 
+	jeq	d15,#6,.L11
+.L269:
+	mov	d0,#16
+.L270:
+	jeq	d15,d0,.L12
+.L271:
+	jeq	d15,#4,.L13
+.L272:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   184                          (s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_SNAPSHOT_RECORD_BY_DTC_NUMBER)||(s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_EXTDATA_RECORD_BY_DTC_NUMBER))
+	mov	d0,#24
+.L273:
+	jeq	d15,d0,.L14
+.L274:
+	mov	d0,#25
+.L275:
+	jne	d15,d0,.L15
+.L14:
+.L13:
+.L12:
+.L11:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   185                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   186                  	Dcm_DspRDTCSubFunc_en = DSP_RDTC_UPDATEDISABLED;
+	mov	d15,#4
+.L276:
+	ld.a	a15,[a10]12
+	st.w	[a15],d15
+.L15:
+	j	.L16
+.L7:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   187                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   188  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   189              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   190              /* If the DTC sent by the tester is not correct */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   191              else if(DEM_STATUS_FAILED==stRetGetStatusOfDTC_u8)
+	jne	d2,#4,.L17
+.L277:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   192              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   193                  /*When DEM_STATUS_FAILED Dcm should send an positive response with SID and subfunction alone*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   194                  pMsgContext->resData[0x00] = pMsgContext->reqData[0x00];
+	ld.a	a15,[a12]4
+.L278:
+	ld.a	a2,[a12]
+.L279:
+	ld.bu	d15,[a15]
+.L280:
+	st.b	[a2],d15
+.L281:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   195                  /* Update the Response data length information */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   196                  pMsgContext->resDataLen = 0x01;
+	mov	d15,#1
+.L282:
+	st.w	[a12]12,d15
+.L283:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   197                  dataretVal_u8 = E_OK;
+	mov	d10,#0
+.L284:
+	j	.L18
+.L17:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   198              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   199              /* If the DTC sent by the tester is not correct */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   200              else if((DEM_STATUS_WRONG_DTC == stRetGetStatusOfDTC_u8)||(DEM_STATUS_WRONG_DTCORIGIN== stRetGetStatusOfDTC_u8)||       \ 
+	jeq	d2,#1,.L19
+.L285:
+	jeq	d2,#2,.L20
+.L286:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   201                      (DEM_STATUS_WRONG_DTCKIND== stRetGetStatusOfDTC_u8))
+	jne	d2,#3,.L21
+.L20:
+.L19:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   202              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   203                  *dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+	mov	d15,#49
+.L287:
+	ld.a	a15,[a10]4
+.L174:
+	st.b	[a15],d15
+.L288:
+	j	.L22
+.L21:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   204              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   205              /*If DEM returns any invalid value */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   206              else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   207              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   208                  *dataNegRespCode_u8 = DCM_E_GENERALREJECT;
+	mov	d15,#16
+.L289:
+	ld.a	a15,[a10]4
+.L175:
+	st.b	[a15],d15
+.L22:
+.L18:
+.L16:
+	j	.L23
+.L6:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   209              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   210          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   211          /* Request Length not correct */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   212          else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   213          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   214              *dataNegRespCode_u8 = DCM_E_INCORRECTMESSAGELENGTHORINVALIDFORMAT;
+	mov	d15,#19
+.L290:
+	ld.a	a15,[a10]4
+.L176:
+	st.b	[a15],d15
+.L23:
+.L2:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   215          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   216      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   217      if(DSP_RDTC_UPDATEDISABLED==Dcm_DspRDTCSubFunc_en)
+	ld.a	a15,[a10]12
+	ld.w	d15,[a15]
+.L291:
+	jne	d15,#4,.L24
+.L292:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   218      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   219          stRetDisableDTCRecUpdate_u8 = Dem_DisableDTCRecordUpdate(Dsp_RdtcDTC_u32,s_dataDemDTCOrigin_u8);
+	movh.a	a15,#@his(s_dataDemDTCOrigin_u8)
+	lea	a15,[a15]@los(s_dataDemDTCOrigin_u8)
+.L293:
+	movh.a	a2,#@his(Dsp_RdtcDTC_u32)
+	lea	a2,[a2]@los(Dsp_RdtcDTC_u32)
+	ld.w	d4,[a2]
+.L294:
+	ld.bu	d5,[a15]
+	call	Dem_DisableDTCRecordUpdate
+.L177:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   220          /* Disable the Record Update */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   221          if ( DEM_DISABLE_DTCRECUP_OK == stRetDisableDTCRecUpdate_u8)
+	jne	d2,#0,.L25
+.L295:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   222          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   223  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x04_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x18_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   224              if((s_dataRDTCSubFunc_u8 == DSP_REPORT_SNAPSHOT_RECORD_BY_DTC)||(s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_SNAPSHOT_RECORD_BY_DTC_NUMBER))
+	movh.a	a15,#@his(s_dataRDTCSubFunc_u8)
+	lea	a15,[a15]@los(s_dataRDTCSubFunc_u8)
+	ld.bu	d0,[a15]
+.L296:
+	jeq	d0,#4,.L26
+.L297:
+	mov	d15,#24
+.L298:
+	jne	d15,d0,.L27
+.L26:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   225              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   226                  if(Dcm_DspRDTCRecordNum_u8 == 0xFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   227                  {   /*Change End value of loop to 0xFF */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   228                      s_nrRDTCLoopEnd_u8   = 0xFF;
+	movh.a	a15,#@his(s_nrRDTCLoopEnd_u8)
+	lea	a15,[a15]@los(s_nrRDTCLoopEnd_u8)
+.L299:
+	movh.a	a2,#@his(Dcm_DspRDTCRecordNum_u8)
+	lea	a2,[a2]@los(Dcm_DspRDTCRecordNum_u8)
+	ld.bu	d15,[a2]
+.L300:
+	mov	d1,#255
+.L301:
+	jne	d15,d1,.L28
+.L302:
+	mov	d15,#255
+.L303:
+	st.b	[a15],d15
+.L304:
+	j	.L29
+.L28:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   229                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   230                  else if(Dcm_DspRDTCRecordNum_u8 == 0xFE)
+	mov	d1,#254
+.L305:
+	jne	d15,d1,.L30
+.L306:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   231                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   232                      s_nrRDTCLoopEnd_u8 = Dcm_DspRDTCRecordNum_u8;
+	st.b	[a15],d15
+.L307:
+	j	.L31
+.L30:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   233                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   234                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   235                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   236                      /*Loop end is pre-incremented so that the do-While loop end condition is correctly
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   237                              implemented, when DEM API returns Pending*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   238                      s_nrRDTCLoopEnd_u8 = Dcm_DspRDTCRecordNum_u8 + 0x01;
+	add	d15,#1
+.L308:
+	st.b	[a15],d15
+.L31:
+.L29:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   239                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   240                  Dcm_DspRDTCSubFunc_en = DSP_RDTC_GETFFSIZE;
+	mov	d15,#3
+.L309:
+	ld.a	a15,[a10]12
+	st.w	[a15],d15
+.L27:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   241              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   242  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   243  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x06_ENABLED != DCM_CFG_OFF) || (DCM_CFG_DSP_RDTCSUBFUNC_0x10_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x19_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   244              if ((s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_DATA_RECORD) || (s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_REC_MIRROR_MEM) \ 
+	jeq	d0,#6,.L32
+.L310:
+	mov	d15,#16
+.L311:
+	jeq	d15,d0,.L33
+.L312:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   245                      ||(s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_EXTDATA_RECORD_BY_DTC_NUMBER))
+	mov	d15,#25
+.L313:
+	jne	d15,d0,.L34
+.L33:
+.L32:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   246              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   247                  if (Dcm_DspRDTCRecordNum_u8 == 0x00)
+	movh.a	a2,#@his(Dcm_DspRDTCRecordNum_u8)
+	lea	a2,[a2]@los(Dcm_DspRDTCRecordNum_u8)
+	ld.bu	d15,[a2]
+.L314:
+	jne	d15,#0,.L35
+.L315:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   248                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   249                      /* FC_VariationPoint_START */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   250                      /*  0x00 is reserved for future OBD use */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   251                      /* FC_VariationPoint_END */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   252                      *dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+	mov	d15,#49
+.L316:
+	ld.a	a15,[a10]4
+.L178:
+	st.b	[a15],d15
+.L317:
+	j	.L36
+.L35:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   253                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   254                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   255                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   256                      Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFFILLRESP;
+	mov	d0,#5
+.L318:
+	ld.a	a15,[a10]12
+	st.w	[a15],d0
+.L319:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   257                      s_IsRecordSupported = FALSE;
+	movh.a	a15,#@his(s_IsRecordSupported)
+	lea	a15,[a15]@los(s_IsRecordSupported)
+.L320:
+	mov	d0,#0
+.L321:
+	st.b	[a15],d0
+.L322:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   258                      /* If the tester wants to read only one record of the DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   259                      if(Dcm_DspRDTCRecordNum_u8 == 0xEF)
+	mov	d0,#239
+.L323:
+	jne	d15,d0,.L37
+.L324:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   260                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   261                          s_nrRDTCLoopEnd_u8 = Dcm_DspRDTCRecordNum_u8;
+	movh.a	a15,#@his(s_nrRDTCLoopEnd_u8)
+	lea	a15,[a15]@los(s_nrRDTCLoopEnd_u8)
+.L325:
+	st.b	[a15],d15
+.L326:
+	j	.L38
+.L37:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   262                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   263                      else if(Dcm_DspRDTCRecordNum_u8 < 0xF0)
+	mov	d0,#240
+.L327:
+	jge.u	d15,d0,.L39
+.L328:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   264                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   265                          /*Loop end is pre-incremented so that the do-While loop end condition is correctly
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   266                                  implemented, when DEM API returns Pending*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   267  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   268                          s_nrRDTCLoopEnd_u8 = Dcm_DspRDTCRecordNum_u8 + 0x01;
+	movh.a	a15,#@his(s_nrRDTCLoopEnd_u8)
+	lea	a15,[a15]@los(s_nrRDTCLoopEnd_u8)
+.L329:
+	add	d15,#1
+.L330:
+	st.b	[a15],d15
+.L331:
+	j	.L40
+.L39:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   269                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   270                      else if (Dcm_DspRDTCRecordNum_u8 == 0xFE)
+	mov	d0,#254
+.L332:
+	jne	d15,d0,.L41
+.L333:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   271                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   272                          /* FC_VariationPoint_START */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   273                          /*Request is for the server to report legislated OBD DTC Extended Data records.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   274                                  This is stored in Record Numbers 0x90 to 0xEF */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   275                          /* FC_VariationPoint_END */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   276                          /* Set the Record number to 0x90*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   277                          Dcm_DspRDTCRecordNum_u8 = 0x90;
+	mov	d15,#144
+.L334:
+	st.b	[a2],d15
+.L335:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   278                          s_nrRDTCLoopEnd_u8   = 0xF0;
+	movh.a	a15,#@his(s_nrRDTCLoopEnd_u8)
+	lea	a15,[a15]@los(s_nrRDTCLoopEnd_u8)
+.L336:
+	mov	d15,#240
+.L337:
+	st.b	[a15],d15
+.L338:
+	j	.L42
+.L41:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   279                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   280                      else if (Dcm_DspRDTCRecordNum_u8 == 0xFF)
+	mov	d0,#255
+.L339:
+	jne	d15,d0,.L43
+.L340:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   281                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   282                          /*Request is for the server to report all Extended Data records.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   283                                  This is stored in Record Numbers 0x01 to 0xEF */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   284                          /* Set the Record number to 0x01 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   285                          Dcm_DspRDTCRecordNum_u8 = 0x01;
+	mov	d15,#1
+.L341:
+	st.b	[a2],d15
+.L342:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   286                          s_nrRDTCLoopEnd_u8   = 0xF0;
+	movh.a	a15,#@his(s_nrRDTCLoopEnd_u8)
+	lea	a15,[a15]@los(s_nrRDTCLoopEnd_u8)
+.L343:
+	mov	d15,#240
+.L344:
+	st.b	[a15],d15
+.L345:
+	j	.L44
+.L43:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   287                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   288                      else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   289                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   290                          *dataNegRespCode_u8   = DCM_E_REQUESTOUTOFRANGE;
+	mov	d15,#49
+.L346:
+	ld.a	a15,[a10]4
+.L179:
+	st.b	[a15],d15
+.L44:
+.L42:
+.L40:
+.L38:
+.L36:
+.L34:
+	j	.L45
+.L25:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   291                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   292                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   293              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   294  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   295          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   296          else if (DEM_DISABLE_DTCRECUP_WRONG_DTC==stRetDisableDTCRecUpdate_u8)
+	jne	d2,#1,.L46
+.L347:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   297          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   298              /* Set Negative Response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   299              *dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+	mov	d15,#49
+.L348:
+	ld.a	a15,[a10]4
+.L180:
+	st.b	[a15],d15
+.L349:
+	j	.L47
+.L46:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   300          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   301          else if (DEM_DISABLE_DTCRECUP_PENDING == stRetDisableDTCRecUpdate_u8 )
+	jne	d2,#3,.L48
+.L350:
+	j	.L49
+.L48:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   302          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   303  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   304              /*remain in the same state*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   305          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   306          else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   307          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   308              /* Set Negative Response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   309              *dataNegRespCode_u8 = DCM_E_GENERALREJECT;
+	mov	d15,#16
+.L351:
+	ld.a	a15,[a10]4
+.L181:
+	st.b	[a15],d15
+.L49:
+.L47:
+.L45:
+	j	.L50
+.L24:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   310  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   311          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   312  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   313      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   314  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   315      /* State to read multiple records */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   316      else if (Dcm_DspRDTCSubFunc_en == DSP_RDTC_SFFILLRESP)
+	ld.w	d15,[a15]
+.L352:
+	jne	d15,#5,.L51
+.L353:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   317      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   318          idxLoop_qu8 = 0;
+	mov	d11,#0
+.L182:
+	movh.a	a13,#@his(s_nrRDTCLoopEnd_u8)
+	lea	a13,[a13]@los(s_nrRDTCLoopEnd_u8)
+.L354:
+	movh.a	a15,#@his(s_dataRDTCSubFunc_u8)
+	lea	a15,[a15]@los(s_dataRDTCSubFunc_u8)
+	st.a	[a10]8,a15
+.L355:
+	movh.a	a14,#@his(Dcm_DspRDTCRecordNum_u8)
+	lea	a14,[a14]@los(Dcm_DspRDTCRecordNum_u8)
+.L356:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   319          /* Loop through the maximum number of records that can be read at a time */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   320          do
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   321          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   322              idxLoop_qu8++;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   323              /* Update the response length to local variable */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   324  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x04_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x18_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   325              if((s_dataRDTCSubFunc_u8 == DSP_REPORT_SNAPSHOT_RECORD_BY_DTC)||(s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_SNAPSHOT_RECORD_BY_DTC_NUMBER))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   326              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   327                  dataFillRespLen_u32 = (pMsgContext->resDataLen);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   328              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   329  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   330  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x06_ENABLED != DCM_CFG_OFF) || (DCM_CFG_DSP_RDTCSUBFUNC_0x10_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x19_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   331              if ((s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_DATA_RECORD) ||(s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_REC_MIRROR_MEM)\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   332                      ||(s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_EXTDATA_RECORD_BY_DTC_NUMBER))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   333              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   334                  /* To consider Record number */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   335                  dataFillRespLen_u32 = (pMsgContext->resDataLen + 1u);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   336              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   337  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   338              /* Calculate the remaining buffer length available */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   339              if (pMsgContext->resMaxDataLen > dataFillRespLen_u32)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   340              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   341                  dataRemainBuffer_u32 = (pMsgContext->resMaxDataLen - dataFillRespLen_u32);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   342              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   343              else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   344              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   345                  dataRemainBuffer_u32 = 0x00;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   346              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   347              /* Copy the existing buffer size */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   348              Dcm_DspMaxResDataLen_u16 = (uint16)dataRemainBuffer_u32;
+	movh.a	a15,#@his(Dcm_DspMaxResDataLen_u16)
+	lea	a15,[a15]@los(Dcm_DspMaxResDataLen_u16)
+	st.a	[a10]16,a15
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   349  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   350  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x04_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x18_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   351              if((s_dataRDTCSubFunc_u8 == DSP_REPORT_SNAPSHOT_RECORD_BY_DTC)||(s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_SNAPSHOT_RECORD_BY_DTC_NUMBER))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   352              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   353                  /* Call the DEM API to get the Freeze frame for the record number */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   354                  dataRetGetFFDataRecByDTC_u8 = Dem_GetFreezeFrameDataByDTC ( Dsp_RdtcDTC_u32,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   355                          DEM_DTC_KIND_ALL_DTCS,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   356                          s_dataDemDTCOrigin_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   357                          Dcm_DspRDTCRecordNum_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   358                          &pMsgContext->resData[dataFillRespLen_u32],
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   359                          &Dcm_DspMaxResDataLen_u16
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   360                  );
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   361                  /* If the Freeze frame is read without any error */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   362                  if(DEM_GET_FFDATABYDTC_OK == dataRetGetFFDataRecByDTC_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   363                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   364                      /* If at least one byte of data is returned from DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   365                      if(Dcm_DspMaxResDataLen_u16 > 0x00)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   366                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   367                          /* Calculate the total response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   368                          pMsgContext->resDataLen = (Dcm_DspMaxResDataLen_u16 + dataFillRespLen_u32);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   369                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   370                      Dcm_DspRDTCRecordNum_u8++;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   371                      s_IsRecordSupported = TRUE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   372  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   373                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   374                  /*If DEM requires more time to process the request*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   375                  else if (DEM_GET_FFDATABYDTC_PENDING == dataRetGetFFDataRecByDTC_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   376                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   377                      /*Change idxLoop_qu8 value to break out of the loop. DEM API has to be called in next raster*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   378                      idxLoop_qu8 = DCM_CFG_RDTC_MAXNUMRECREAD;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   379                      /* Set the variable to TRUE */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   380  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   381                      isPendingReturned_b = TRUE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   382                      dataretVal_u8 = DCM_E_PENDING;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   383                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   384                  /* If the record number is wrong */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   385                  else if (DEM_GET_FFDATABYDTC_WRONG_RECORDNUMBER == dataRetGetFFDataRecByDTC_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   386                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   387                      if (s_nrRDTCLoopEnd_u8 != 0xFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   388                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   389                          /* If request is for a single Record, set Negative Response*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   390                          *dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   391                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   392                      else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   393                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   394                          /* Increment and continue with the next record number */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   395                          Dcm_DspRDTCRecordNum_u8++;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   396                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   397                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   398                  /* If the DTC number is wrong */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   399                  else if(DEM_GET_FFDATABYDTC_WRONG_DTC == dataRetGetFFDataRecByDTC_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   400                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   401                      /* Set negative response code */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   402                      *dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   403                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   404                  /* If there was no free space in buffer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   405                  else if(DEM_GET_FFDATABYDTC_WRONG_BUFFERSIZE == dataRetGetFFDataRecByDTC_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   406                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   407                      /* Response length is too long */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   408                      *dataNegRespCode_u8 = DCM_E_RESPONSETOOLONG;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   409                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   410                  /* If the DTC Origin or the DTC Kind is not correct or DEM returns any
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   411                  other return value */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   412                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   413                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   414                      /* Set Negative Response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   415                      *dataNegRespCode_u8 = DCM_E_GENERALREJECT ;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   416                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   417              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   418  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   419  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x06_ENABLED != DCM_CFG_OFF) || (DCM_CFG_DSP_RDTCSUBFUNC_0x10_ENABLED != DCM_CFG_OFF) ||(DCM_CFG_DSP_RDTCSUBFUNC_0x19_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   420              if ((s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_DATA_RECORD) ||(s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_REC_MIRROR_MEM)|| \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   421                      (s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_EXTDATA_RECORD_BY_DTC_NUMBER))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   422              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   423                  /* Call the DEM API to get the extended data for the record number */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   424                  dataRetGetExtDataRecByDTC_u8 = Dem_GetExtendedDataRecordByDTC( Dsp_RdtcDTC_u32,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   425                          DEM_DTC_KIND_ALL_DTCS,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   426                          s_dataDemDTCOrigin_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   427                          Dcm_DspRDTCRecordNum_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   428                          &pMsgContext->resData[dataFillRespLen_u32],
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   429                          &Dcm_DspMaxResDataLen_u16
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   430                  );
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   431                  /* If the extended data record is read without any error */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   432                  if(DEM_RECORD_OK == dataRetGetExtDataRecByDTC_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   433                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   434                      /* If at least one byte of data is returned from DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   435                      if(Dcm_DspMaxResDataLen_u16 > 0x00)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   436                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   437                          /* Copy the response buffer with Record number */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   438                          pMsgContext->resData[pMsgContext->resDataLen] = Dcm_DspRDTCRecordNum_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   439  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   440                          /* Calculate the total response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   441                          pMsgContext->resDataLen = (Dcm_DspMaxResDataLen_u16 + dataFillRespLen_u32);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   442                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   443  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   444                      s_IsRecordSupported = TRUE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   445                      Dcm_DspRDTCRecordNum_u8++;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   446  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   447  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   448                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   449                  /*If DEM requires more time to process the request*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   450                  else if (DEM_RECORD_PENDING == dataRetGetExtDataRecByDTC_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   451                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   452                      /*Change idxLoop_qu8 value to break out of the loop. DEM API has to be called in next raster*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   453                      idxLoop_qu8 = DCM_CFG_RDTC_MAXNUMRECREAD;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   454                      /* Set the variable to TRUE */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   455  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   456                      isPendingReturned_b = TRUE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   457                      dataretVal_u8 = DCM_E_PENDING;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   458                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   459                  /* If the record number is wrong */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   460                  else if(DEM_RECORD_WRONG_NUMBER == dataRetGetExtDataRecByDTC_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   461                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   462                      if (s_nrRDTCLoopEnd_u8 != 0xF0)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   463                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   464                          /*If request is for a single Record, set Negative Response*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   465                          *dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   466                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   467                      else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   468                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   469                          /* Increment and continue with the next record number */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   470                          Dcm_DspRDTCRecordNum_u8++;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   471                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   472                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   473                  /* If the DTC number is wrong */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   474                  else if(DEM_RECORD_WRONG_DTC == dataRetGetExtDataRecByDTC_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   475                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   476                      /* Set negative response code */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   477                      *dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   478                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   479                  /* If there was no free space in buffer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   480                  else if(DEM_RECORD_WRONG_BUFFERSIZE == dataRetGetExtDataRecByDTC_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   481                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   482                      /* Response length is too long */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   483                      *dataNegRespCode_u8 = DCM_E_RESPONSETOOLONG;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   484                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   485                  /* If the DTC Origin or the DTC Kind is not correct or DEM returns any
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   486                  other return value */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   487                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   488                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   489                      /* Set Negative Response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   490                      *dataNegRespCode_u8 = DCM_E_GENERALREJECT;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   491  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   492                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   493              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   494  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   495          }while ((idxLoop_qu8 < DCM_CFG_RDTC_MAXNUMRECREAD)             &&
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   496                  (0x00 == *dataNegRespCode_u8)                         &&
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   497                  (Dcm_DspRDTCRecordNum_u8 < s_nrRDTCLoopEnd_u8));
+.L52:
+	add	d11,#1
+.L357:
+	ld.a	a15,[a10]8
+	ld.bu	d15,[a15]
+.L358:
+	jeq	d15,#4,.L53
+.L359:
+	mov	d0,#24
+.L360:
+	jne	d15,d0,.L54
+.L53:
+	ld.w	d9,[a12]12
+.L54:
+	jeq	d15,#6,.L55
+.L361:
+	mov	d0,#16
+.L362:
+	jeq	d15,d0,.L56
+.L363:
+	mov	d0,#25
+.L364:
+	jne	d15,d0,.L57
+.L56:
+.L55:
+	ld.w	d9,[a12]12
+.L365:
+	add	d9,#1
+.L57:
+	ld.w	d0,[a12]20
+.L366:
+	jge.u	d9,d0,.L58
+.L183:
+	sub	d0,d9
+.L367:
+	j	.L59
+.L58:
+	mov	d0,#0
+.L59:
+	ld.a	a15,[a10]16
+	st.h	[a15],d0
+.L368:
+	jeq	d15,#4,.L60
+.L369:
+	mov	d0,#24
+.L184:
+	jne	d15,d0,.L61
+.L60:
+	movh.a	a15,#@his(s_dataDemDTCOrigin_u8)
+	lea	a15,[a15]@los(s_dataDemDTCOrigin_u8)
+.L370:
+	movh.a	a2,#@his(Dsp_RdtcDTC_u32)
+	lea	a2,[a2]@los(Dsp_RdtcDTC_u32)
+	ld.w	d4,[a2]
+.L371:
+	mov	d5,#1
+.L372:
+	ld.bu	d6,[a15]
+.L373:
+	ld.bu	d7,[a14]
+.L374:
+	ld.a	a15,[a12]
+.L375:
+	addsc.a	a4,a15,d9,#0
+.L376:
+	ld.a	a5,[a10]16
+	call	Dem_GetFreezeFrameDataByDTC
+.L185:
+	jne	d2,#0,.L62
+.L377:
+	ld.a	a15,[a10]16
+	ld.hu	d15,[a15]0
+.L378:
+	jeq	d15,#0,.L63
+.L379:
+	add	d15,d9
+.L380:
+	st.w	[a12]12,d15
+.L63:
+	ld.bu	d15,[a14]
+.L381:
+	add	d15,#1
+	st.b	[a14],d15
+.L382:
+	movh.a	a15,#@his(s_IsRecordSupported)
+	lea	a15,[a15]@los(s_IsRecordSupported)
+.L383:
+	mov	d15,#1
+.L384:
+	st.b	[a15],d15
+.L385:
+	j	.L64
+.L62:
+	jne	d2,#6,.L65
+.L386:
+	mov	d11,#5
+.L387:
+	mov	d8,#1
+.L388:
+	mov	d10,#10
+.L389:
+	j	.L66
+.L65:
+	jne	d2,#4,.L67
+.L390:
+	ld.bu	d0,[a13]
+.L391:
+	mov	d15,#255
+.L392:
+	jeq	d15,d0,.L68
+.L393:
+	mov	d15,#49
+.L394:
+	ld.a	a15,[a10]4
+.L186:
+	st.b	[a15],d15
+.L395:
+	j	.L69
+.L68:
+	ld.bu	d15,[a14]
+.L396:
+	add	d15,#1
+	st.b	[a14],d15
+.L69:
+	j	.L70
+.L67:
+	jne	d2,#1,.L71
+.L397:
+	mov	d15,#49
+.L398:
+	ld.a	a15,[a10]4
+.L187:
+	st.b	[a15],d15
+.L399:
+	j	.L72
+.L71:
+	jne	d2,#5,.L73
+.L400:
+	mov	d15,#20
+.L401:
+	ld.a	a15,[a10]4
+.L188:
+	st.b	[a15],d15
+.L402:
+	j	.L74
+.L73:
+	mov	d15,#16
+.L403:
+	ld.a	a15,[a10]4
+.L189:
+	st.b	[a15],d15
+.L74:
+.L72:
+.L70:
+.L66:
+.L64:
+.L61:
+	ld.a	a15,[a10]8
+	ld.bu	d0,[a15]
+.L404:
+	jeq	d0,#6,.L75
+.L405:
+	mov	d15,#16
+.L406:
+	jeq	d15,d0,.L76
+.L407:
+	mov	d15,#25
+.L408:
+	jne	d15,d0,.L77
+.L76:
+.L75:
+	movh.a	a15,#@his(s_dataDemDTCOrigin_u8)
+	lea	a15,[a15]@los(s_dataDemDTCOrigin_u8)
+.L409:
+	movh.a	a2,#@his(Dsp_RdtcDTC_u32)
+	lea	a2,[a2]@los(Dsp_RdtcDTC_u32)
+	ld.w	d4,[a2]
+.L410:
+	mov	d5,#1
+.L411:
+	ld.bu	d6,[a15]
+.L412:
+	ld.bu	d7,[a14]
+.L413:
+	ld.a	a15,[a12]
+.L414:
+	addsc.a	a4,a15,d9,#0
+.L415:
+	ld.a	a5,[a10]16
+	call	Dem_GetExtendedDataRecordByDTC
+.L190:
+	jne	d2,#0,.L78
+.L416:
+	ld.a	a15,[a10]16
+	ld.hu	d15,[a15]0
+.L417:
+	jeq	d15,#0,.L79
+.L418:
+	ld.a	a15,[a12]
+.L419:
+	ld.w	d15,[a12]12
+.L420:
+	addsc.a	a15,a15,d15,#0
+.L421:
+	ld.bu	d15,[a14]
+.L422:
+	st.b	[a15],d15
+.L423:
+	ld.a	a15,[a10]16
+	ld.hu	d15,[a15]0
+.L424:
+	add	d15,d9
+.L425:
+	st.w	[a12]12,d15
+.L79:
+	movh.a	a15,#@his(s_IsRecordSupported)
+	lea	a15,[a15]@los(s_IsRecordSupported)
+.L426:
+	mov	d15,#1
+.L427:
+	st.b	[a15],d15
+.L428:
+	ld.bu	d15,[a14]
+.L429:
+	add	d15,#1
+	st.b	[a14],d15
+.L430:
+	j	.L80
+.L78:
+	jne	d2,#6,.L81
+.L431:
+	mov	d11,#5
+.L432:
+	mov	d8,#1
+.L433:
+	mov	d10,#10
+.L434:
+	j	.L82
+.L81:
+	jne	d2,#4,.L83
+.L435:
+	ld.bu	d0,[a13]
+.L436:
+	mov	d15,#240
+.L437:
+	jeq	d15,d0,.L84
+.L438:
+	mov	d15,#49
+.L439:
+	ld.a	a15,[a10]4
+.L191:
+	st.b	[a15],d15
+.L440:
+	j	.L85
+.L84:
+	ld.bu	d15,[a14]
+.L441:
+	add	d15,#1
+	st.b	[a14],d15
+.L85:
+	j	.L86
+.L83:
+	jne	d2,#1,.L87
+.L442:
+	mov	d15,#49
+.L443:
+	ld.a	a15,[a10]4
+.L192:
+	st.b	[a15],d15
+.L444:
+	j	.L88
+.L87:
+	jne	d2,#5,.L89
+.L445:
+	mov	d15,#20
+.L446:
+	ld.a	a15,[a10]4
+.L193:
+	st.b	[a15],d15
+.L447:
+	j	.L90
+.L89:
+	mov	d15,#16
+.L448:
+	ld.a	a15,[a10]4
+.L194:
+	st.b	[a15],d15
+.L90:
+.L88:
+.L86:
+.L82:
+.L80:
+.L77:
+	jge.u	d11,#5,.L91
+.L449:
+	ld.a	a15,[a10]4
+.L195:
+	ld.bu	d15,[a15]
+.L450:
+	jne	d15,#0,.L92
+.L451:
+	ld.bu	d15,[a14]
+.L452:
+	ld.bu	d0,[a13]
+.L453:
+	jlt.u	d15,d0,.L52
+.L92:
+.L91:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   498          if((Dcm_DspRDTCRecordNum_u8 >= s_nrRDTCLoopEnd_u8) && (0x00 == *dataNegRespCode_u8))
+	ld.bu	d15,[a14]
+.L454:
+	ld.bu	d0,[a13]
+.L455:
+	jlt.u	d15,d0,.L93
+.L456:
+	ld.a	a15,[a10]4
+.L196:
+	ld.bu	d15,[a15]
+.L457:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   499          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   500              dataretVal_u8 = E_OK;
+	cmovn	d10,d15,#0
+.L94:
+.L93:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   501          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   502          /*Check if the record number is greater than or equal to the End value of the loop and  isPendingReturned_b status is set to FALSE*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   503          if ((Dcm_DspRDTCRecordNum_u8 >= s_nrRDTCLoopEnd_u8) && (isPendingReturned_b == FALSE))
+	ld.bu	d15,[a14]
+.L458:
+	ld.bu	d0,[a13]
+.L459:
+	jlt.u	d15,d0,.L95
+.L460:
+	jne	d8,#0,.L96
+.L461:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   504          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   505  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x04_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x06_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x10_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   506  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   507              if((s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_DATA_RECORD) || (s_dataRDTCSubFunc_u8 == DSP_REPORT_EXTENDED_REC_MIRROR_MEM)|| (s_dataRDTCSubFunc_u8 == DSP_REPORT_SNAPSHOT_RECORD_BY_DTC))
+	ld.a	a15,[a10]8
+	ld.bu	d15,[a15]
+.L462:
+	jeq	d15,#6,.L97
+.L463:
+	mov	d0,#16
+.L464:
+	jeq	d15,d0,.L98
+.L465:
+	jne	d15,#4,.L99
+.L98:
+.L97:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   508              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   509                  if((s_IsRecordSupported==FALSE)&&(*dataNegRespCode_u8==0x00u)&&(pMsgContext->resDataLen==0x05u))
+	movh.a	a15,#@his(s_IsRecordSupported)
+	lea	a15,[a15]@los(s_IsRecordSupported)
+	ld.bu	d15,[a15]
+.L466:
+	jne	d15,#0,.L100
+.L467:
+	ld.a	a15,[a10]4
+.L197:
+	ld.bu	d15,[a15]
+.L468:
+	jne	d15,#0,.L101
+.L469:
+	ld.w	d15,[a12]12
+.L470:
+	jne	d15,#5,.L102
+.L471:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   510                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   511                      /* Set negative response code */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   512                      *dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+	mov	d15,#49
+.L472:
+	st.b	[a15],d15
+.L473:
+	j	.L103
+.L102:
+.L101:
+.L100:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   513                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   514                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   515                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   516                      /* If all the requested record numbers are read, move the state machine to
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   517                     DSP_RDTC_SFINIT State */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   518                      Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFINIT;
+	mov	d15,#1
+.L474:
+	ld.a	a15,[a10]12
+	st.w	[a15],d15
+.L103:
+.L99:
+	j	.L104
+.L96:
+.L95:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   519                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   520              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   521  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   522  #if ((DCM_CFG_DSP_RDTCSUBFUNC_0x18_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x19_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   523                  if((s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_SNAPSHOT_RECORD_BY_DTC_NUMBER)|| \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   524                          (s_dataRDTCSubFunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_EXTDATA_RECORD_BY_DTC_NUMBER))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   525                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   526                      if((s_IsRecordSupported==FALSE)&&(*dataNegRespCode_u8==0x00u)&&(pMsgContext->resDataLen==0x06u))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   527                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   528                          /* Set negative response code */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   529                          *dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   530                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   531                      else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   532                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   533                          /* If all the requested record numbers are read, move the state machine to
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   534                         DSP_RDTC_SFINIT State */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   535                          Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFINIT;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   536                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   537  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   538                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   539  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   540          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   541          else
+.L104:
+	j	.L105
+.L51:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   542          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   543              /*Max Number of records for a service call are read, or DEM_GET_FFDATABYDTC_PENDING is returned
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   544                by DEM. Therefore, remain in the state DSP_RDTC_SFFILLRESP */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   545          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   546      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   547      else
+.L105:
+.L50:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   548      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   549          /* Do nothing */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   550      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   551  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   552  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x04_ENABLED != DCM_CFG_OFF)||(DCM_CFG_DSP_RDTCSUBFUNC_0x18_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   553      if (Dcm_DspRDTCSubFunc_en == DSP_RDTC_GETFFSIZE)
+	ld.a	a15,[a10]12
+	ld.w	d15,[a15]
+.L475:
+	jne	d15,#3,.L106
+.L476:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   554      {   /* Call the DEM API to get the size of the Freeze frame for the record number */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   555          dataRetGetFFDataRecSizeByDTC_u8=Dem_GetSizeOfFreezeFrameByDTC(Dsp_RdtcDTC_u32,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   556                  DEM_DTC_KIND_ALL_DTCS,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   557                  s_dataDemDTCOrigin_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   558                  Dcm_DspRDTCRecordNum_u8,
+	movh.a	a15,#@his(Dcm_DspRDTCRecordNum_u8)
+	lea	a15,[a15]@los(Dcm_DspRDTCRecordNum_u8)
+	ld.bu	d7,[a15]
+.L477:
+	movh.a	a2,#@his(s_dataDemDTCOrigin_u8)
+	lea	a2,[a2]@los(s_dataDemDTCOrigin_u8)
+.L478:
+	movh.a	a4,#@his(Dsp_RdtcDTC_u32)
+	lea	a4,[a4]@los(Dsp_RdtcDTC_u32)
+	ld.w	d4,[a4]
+.L479:
+	mov	d5,#1
+.L480:
+	ld.bu	d6,[a2]
+.L481:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   559                  &nrSizeOfFreezeFrame_u16);
+	lea	a4,[a10]0
+	call	Dem_GetSizeOfFreezeFrameByDTC
+.L198:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   560          if(DEM_GET_SIZEOFFF_OK == dataRetGetFFDataRecSizeByDTC_u8)
+	jne	d2,#0,.L107
+.L482:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   561          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   562              if(pMsgContext->resMaxDataLen >= (uint32)(nrSizeOfFreezeFrame_u16+0x5))
+	ld.w	d15,[a12]20
+.L483:
+	ld.hu	d0,[a10]0
+.L484:
+	add	d0,#5
+.L485:
+	jlt.u	d15,d0,.L108
+.L486:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   563              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   564                  if(Dcm_DspRDTCRecordNum_u8 == 0xFF)
+	ld.bu	d0,[a15]
+.L487:
+	mov	d15,#255
+.L488:
+	jne	d15,d0,.L109
+.L489:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   565                  {   /* Set the Record number to 0x00 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   566                      Dcm_DspRDTCRecordNum_u8 = 0x00;
+	mov	d15,#0
+.L490:
+	st.b	[a15],d15
+.L109:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   567                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   568                  /*If sufficient buffer size is available, go to next stage */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   569                  Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFFILLRESP;
+	mov	d15,#5
+.L491:
+	ld.a	a15,[a10]12
+	st.w	[a15],d15
+.L492:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   570                  s_IsRecordSupported = FALSE;
+	movh.a	a15,#@his(s_IsRecordSupported)
+	lea	a15,[a15]@los(s_IsRecordSupported)
+.L493:
+	mov	d15,#0
+.L494:
+	st.b	[a15],d15
+.L495:
+	j	.L110
+.L108:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   571              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   572              else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   573              {   /* Response length is too long */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   574                  *dataNegRespCode_u8 = DCM_E_RESPONSETOOLONG;
+	mov	d15,#20
+.L496:
+	ld.a	a15,[a10]4
+.L199:
+	st.b	[a15],d15
+.L110:
+	j	.L111
+.L107:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   575              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   576          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   577          /*If DEM requires more time to process the request*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   578          else if(DEM_GET_SIZEOFFF_PENDING == dataRetGetFFDataRecSizeByDTC_u8)
+	jne	d2,#5,.L112
+.L497:
+	j	.L113
+.L112:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   579          {   /* Do nothing, wait for next call */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   580          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   581          /*If the record number or DTC is wrong*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   582          else if((DEM_GET_SIZEOFFF_WRONG_RNUM == dataRetGetFFDataRecSizeByDTC_u8)||
+	jeq	d2,#4,.L114
+.L498:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   583                  (DEM_GET_SIZEOFFF_WRONG_DTC  == dataRetGetFFDataRecSizeByDTC_u8))
+	jne	d2,#1,.L115
+.L114:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   584          {   /* set Negative Response*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   585              *dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+	mov	d15,#49
+.L499:
+	ld.a	a15,[a10]4
+.L200:
+	st.b	[a15],d15
+.L500:
+	j	.L116
+.L115:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   586          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   587          /* If DTC Origin or Kind is incorrect or any other return value */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   588          else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   589          {   /* Set Negative Response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   590              *dataNegRespCode_u8 = DCM_E_GENERALREJECT ;
+	mov	d15,#16
+.L501:
+	ld.a	a15,[a10]4
+.L201:
+	st.b	[a15],d15
+.L116:
+.L113:
+.L111:
+.L106:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   591          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   592      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   593  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   594  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   595  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   596      if(*dataNegRespCode_u8 != 0)
+	ld.a	a15,[a10]4
+.L202:
+	ld.bu	d15,[a15]
+.L502:
+	jeq	d15,#0,.L117
+.L503:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   597      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   598          Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFINIT;
+	mov	d15,#1
+.L504:
+	ld.a	a15,[a10]12
+.L203:
+	st.w	[a15],d15
+.L505:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   599          dataretVal_u8 = E_NOT_OK;
+	mov	d10,#1
+.L117:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   600      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   601  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   602      /* If the state machine is in default state */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   603      if(DSP_RDTC_SFINIT == Dcm_DspRDTCSubFunc_en)
+	ld.a	a15,[a10]12
+	ld.w	d15,[a15]
+.L506:
+	jne	d15,#1,.L118
+.L507:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   604      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   605          /* Call the API to Enable Record update */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   606          dataRetEnableDTCRecUpdate_u8 = Dem_EnableDTCRecordUpdate();
+	call	Dem_EnableDTCRecordUpdate
+.L508:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   607          (void)dataRetEnableDTCRecUpdate_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   608          s_IsRecordSupported = FALSE;
+	movh.a	a15,#@his(s_IsRecordSupported)
+	lea	a15,[a15]@los(s_IsRecordSupported)
+.L509:
+	mov	d15,#0
+.L510:
+	st.b	[a15],d15
+.L118:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   609          /*Response Data Length is updated while Filling the Response.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   610          Hence, it need not be updated here*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   611      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   612  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   613      return dataretVal_u8;
+	mov	d2,d10
+.L204:
+	j	.L119
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   614  }
+.L119:
+	ret
+.L140:
+	
+__Dcm_Dsp_ReportDataRecordByDTCNumber_function_end:
+	.size	Dcm_Dsp_ReportDataRecordByDTCNumber,__Dcm_Dsp_ReportDataRecordByDTCNumber_function_end-Dcm_Dsp_ReportDataRecordByDTCNumber
+.L130:
+	; End of function
+	
+	.sdecl	'.bss.DcmDspUds_Rdtc_RepDataRecordByDTC.s_nrRDTCLoopEnd_u8',data,cluster('s_nrRDTCLoopEnd_u8')
+	.sect	'.bss.DcmDspUds_Rdtc_RepDataRecordByDTC.s_nrRDTCLoopEnd_u8'
+s_nrRDTCLoopEnd_u8:	.type	object
+	.size	s_nrRDTCLoopEnd_u8,1
+	.space	1
+	.sdecl	'.bss.DcmDspUds_Rdtc_RepDataRecordByDTC.s_dataRDTCSubFunc_u8',data,cluster('s_dataRDTCSubFunc_u8')
+	.sect	'.bss.DcmDspUds_Rdtc_RepDataRecordByDTC.s_dataRDTCSubFunc_u8'
+s_dataRDTCSubFunc_u8:	.type	object
+	.size	s_dataRDTCSubFunc_u8,1
+	.space	1
+	.sdecl	'.bss.DcmDspUds_Rdtc_RepDataRecordByDTC.s_dataDemDTCOrigin_u8',data,cluster('s_dataDemDTCOrigin_u8')
+	.sect	'.bss.DcmDspUds_Rdtc_RepDataRecordByDTC.s_dataDemDTCOrigin_u8'
+s_dataDemDTCOrigin_u8:	.type	object
+	.size	s_dataDemDTCOrigin_u8,1
+	.space	1
+	.sdecl	'.bss.DcmDspUds_Rdtc_RepDataRecordByDTC.s_IsRecordSupported',data,cluster('s_IsRecordSupported')
+	.sect	'.bss.DcmDspUds_Rdtc_RepDataRecordByDTC.s_IsRecordSupported'
+s_IsRecordSupported:	.type	object
+	.size	s_IsRecordSupported,1
+	.space	1
+	.calls	'Dcm_Dsp_ReportDataRecordByDTCNumber','Dem_GetStatusOfDTC'
+	.calls	'Dcm_Dsp_ReportDataRecordByDTCNumber','Dem_DisableDTCRecordUpdate'
+	.calls	'Dcm_Dsp_ReportDataRecordByDTCNumber','Dem_GetFreezeFrameDataByDTC'
+	.calls	'Dcm_Dsp_ReportDataRecordByDTCNumber','Dem_GetExtendedDataRecordByDTC'
+	.calls	'Dcm_Dsp_ReportDataRecordByDTCNumber','Dem_GetSizeOfFreezeFrameByDTC'
+	.calls	'Dcm_Dsp_ReportDataRecordByDTCNumber','Dem_EnableDTCRecordUpdate'
+	.extern	Dem_GetStatusOfDTC
+	.extern	Dem_DisableDTCRecordUpdate
+	.extern	Dem_EnableDTCRecordUpdate
+	.extern	Dem_GetFreezeFrameDataByDTC
+	.extern	Dem_GetSizeOfFreezeFrameByDTC
+	.extern	Dem_GetExtendedDataRecordByDTC
+	.extern	Dsp_RdtcDTC_u32
+	.extern	Dcm_DspRDTCSubFunc_en
+	.extern	Dcm_DspMaxResDataLen_u16
+	.extern	Dcm_DspRDTCRecordNum_u8
+	.calls	'Dcm_Dsp_ReportDataRecordByDTCNumber','',24
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L123:
+	.word	15896
+	.half	3
+	.word	.L124
+	.byte	4
+.L122:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepDataRecordByDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L125
+.L139:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.word	176
+	.byte	4
+	.byte	'rba_DiagLib_Bit8SetBit',0,3,1,36,19,1,1,5
+	.byte	'buffer',0,1,36,49
+	.word	193
+	.byte	5
+	.byte	'bit_position',0,1,36,63
+	.word	176
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBit',0,3,1,42,19,1,1,5
+	.byte	'buffer',0,1,42,51
+	.word	193
+	.byte	5
+	.byte	'bit_position',0,1,42,65
+	.word	176
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit8GetSingleBit',0,3,1,60,20
+	.word	176
+	.byte	1,1,5
+	.byte	'value',0,1,60,55
+	.word	176
+	.byte	5
+	.byte	'bit_position',0,1,60,68
+	.word	176
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBits',0,3,1,77,19,1,1,5
+	.byte	'value',0,1,77,52
+	.word	193
+	.byte	5
+	.byte	'bit_position',0,1,77,65
+	.word	176
+	.byte	5
+	.byte	'number_of_bits',0,1,77,85
+	.word	176
+	.byte	6,0
+.L152:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,3
+	.word	506
+	.byte	4
+	.byte	'rba_DiagLib_Bit16SetBit',0,3,2,36,19,1,1,5
+	.byte	'buffer',0,2,36,51
+	.word	528
+	.byte	5
+	.byte	'bit_position',0,2,36,65
+	.word	176
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBit',0,3,2,42,19,1,1,5
+	.byte	'buffer',0,2,42,53
+	.word	528
+	.byte	5
+	.byte	'bit_position',0,2,42,67
+	.word	176
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit16GetSingleBit',0,3,2,60,21
+	.word	506
+	.byte	1,1,5
+	.byte	'value',0,2,60,58
+	.word	506
+	.byte	5
+	.byte	'bit_position',0,2,60,71
+	.word	176
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBits',0,3,2,78,19,1,1,5
+	.byte	'value',0,2,78,54
+	.word	528
+	.byte	5
+	.byte	'bit_position',0,2,78,67
+	.word	176
+	.byte	5
+	.byte	'number_of_bits',0,2,78,87
+	.word	176
+	.byte	6,0
+.L146:
+	.byte	2
+	.byte	'unsigned int',0,4,7,3
+	.word	845
+	.byte	4
+	.byte	'rba_DiagLib_Bit32SetBit',0,3,3,36,19,1,1,5
+	.byte	'buffer',0,3,36,51
+	.word	861
+	.byte	5
+	.byte	'bit_position',0,3,36,65
+	.word	176
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBit',0,3,3,42,19,1,1,5
+	.byte	'buffer',0,3,42,53
+	.word	861
+	.byte	5
+	.byte	'bit_position',0,3,42,67
+	.word	176
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit32GetSingleBit',0,3,3,60,21
+	.word	845
+	.byte	1,1,5
+	.byte	'value',0,3,60,58
+	.word	845
+	.byte	5
+	.byte	'bit_position',0,3,60,71
+	.word	176
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBits',0,3,3,78,19,1,1,5
+	.byte	'value',0,3,78,54
+	.word	861
+	.byte	5
+	.byte	'bit_position',0,3,78,67
+	.word	176
+	.byte	5
+	.byte	'number_of_bits',0,3,78,87
+	.word	176
+	.byte	6,0,8
+	.word	198
+	.byte	9
+	.word	228
+	.byte	9
+	.word	243
+	.byte	6,0,8
+	.word	266
+	.byte	9
+	.word	298
+	.byte	9
+	.word	313
+	.byte	6,0,8
+	.word	336
+	.byte	9
+	.word	376
+	.byte	9
+	.word	390
+	.byte	6,0,8
+	.word	413
+	.byte	9
+	.word	446
+	.byte	9
+	.word	460
+	.byte	9
+	.word	481
+	.byte	6,0,8
+	.word	533
+	.byte	9
+	.word	564
+	.byte	9
+	.word	579
+	.byte	6,0,8
+	.word	602
+	.byte	9
+	.word	635
+	.byte	9
+	.word	650
+	.byte	6,0,8
+	.word	673
+	.byte	9
+	.word	714
+	.byte	9
+	.word	728
+	.byte	6,0,8
+	.word	751
+	.byte	9
+	.word	785
+	.byte	9
+	.word	799
+	.byte	9
+	.word	820
+	.byte	6,0,8
+	.word	866
+	.byte	9
+	.word	897
+	.byte	9
+	.word	912
+	.byte	6,0,8
+	.word	935
+	.byte	9
+	.word	968
+	.byte	9
+	.word	983
+	.byte	6,0,8
+	.word	1006
+	.byte	9
+	.word	1047
+	.byte	9
+	.word	1061
+	.byte	6,0,8
+	.word	1084
+	.byte	9
+	.word	1118
+	.byte	9
+	.word	1132
+	.byte	9
+	.word	1153
+	.byte	6,0,10
+	.byte	'Dem_GetStatusOfDTC',0,4,72,30
+	.word	176
+	.byte	1,1,1,1,5
+	.byte	'DTC',0,4,72,56
+	.word	845
+	.byte	5
+	.byte	'DTCKind',0,4,72,77
+	.word	176
+	.byte	5
+	.byte	'DTCOrigin',0,4,72,104
+	.word	176
+	.byte	5
+	.byte	'DTCStatus',0,4,72,122
+	.word	193
+	.byte	0,10
+	.byte	'Dem_DisableDTCRecordUpdate',0,4,145,2,38
+	.word	176
+	.byte	1,1,1,1,5
+	.byte	'DTC',0,4,145,2,72
+	.word	845
+	.byte	5
+	.byte	'DTCOrigin',0,4,145,2,95
+	.word	176
+	.byte	0,11
+	.byte	'Dem_EnableDTCRecordUpdate',0,4,155,2,16
+	.word	176
+	.byte	1,1,1,1,10
+	.byte	'Dem_GetFreezeFrameDataByDTC',0,4,184,2,39
+	.word	176
+	.byte	1,1,1,1,5
+	.byte	'DTC',0,4,184,2,85
+	.word	845
+	.byte	5
+	.byte	'DTCKind',0,4,185,2,85
+	.word	176
+	.byte	5
+	.byte	'DTCOrigin',0,4,186,2,85
+	.word	176
+	.byte	5
+	.byte	'RecordNumber',0,4,187,2,85
+	.word	176
+	.byte	5
+	.byte	'DestBuffer',0,4,188,2,85
+	.word	193
+	.byte	5
+	.byte	'BufSize',0,4,189,2,85
+	.word	528
+	.byte	0,10
+	.byte	'Dem_GetSizeOfFreezeFrameByDTC',0,4,211,2,41
+	.word	176
+	.byte	1,1,1,1,5
+	.byte	'DTC',0,4,211,2,91
+	.word	845
+	.byte	5
+	.byte	'DTCKind',0,4,212,2,91
+	.word	176
+	.byte	5
+	.byte	'DTCOrigin',0,4,213,2,91
+	.word	176
+	.byte	5
+	.byte	'RecordNumber',0,4,214,2,91
+	.word	176
+	.byte	5
+	.byte	'SizeOfFreezeFrame',0,4,215,2,91
+	.word	528
+	.byte	0,10
+	.byte	'Dem_GetExtendedDataRecordByDTC',0,4,243,2,42
+	.word	176
+	.byte	1,1,1,1,5
+	.byte	'DTC',0,4,243,2,93
+	.word	845
+	.byte	5
+	.byte	'DTCKind',0,4,244,2,93
+	.word	176
+	.byte	5
+	.byte	'DTCOrigin',0,4,245,2,93
+	.word	176
+	.byte	5
+	.byte	'ExtendedDataNumber',0,4,246,2,93
+	.word	176
+	.byte	5
+	.byte	'DestBuffer',0,4,247,2,93
+	.word	193
+	.byte	5
+	.byte	'BufSize',0,4,248,2,93
+	.word	528
+	.byte	0,3
+	.word	176
+	.byte	12
+	.byte	'Dcm_MsgType',0,5,188,2,57
+	.word	2056
+	.byte	13,5,206,2,9,4,14
+	.byte	'reqType',0
+	.word	176
+	.byte	1,2,35,0,14
+	.byte	'suppressPosResponse',0
+	.word	176
+	.byte	1,2,35,1,14
+	.byte	'sourceofRequest',0
+	.word	176
+	.byte	1,2,35,2,0,13,5,240,2,9,28,14
+	.byte	'resData',0
+	.word	2061
+	.byte	4,2,35,0,14
+	.byte	'reqData',0
+	.word	2061
+	.byte	4,2,35,4,14
+	.byte	'msgAddInfo',0
+	.word	2082
+	.byte	4,2,35,8,14
+	.byte	'resDataLen',0
+	.word	845
+	.byte	4,2,35,12,14
+	.byte	'reqDataLen',0
+	.word	845
+	.byte	4,2,35,16,14
+	.byte	'resMaxDataLen',0
+	.word	845
+	.byte	4,2,35,20,14
+	.byte	'idContext',0
+	.word	176
+	.byte	1,2,35,24,14
+	.byte	'dcmRxPduId',0
+	.word	506
+	.byte	2,2,35,26,0
+.L142:
+	.byte	3
+	.word	2160
+	.byte	3
+	.word	176
+.L144:
+	.byte	3
+	.word	176
+.L149:
+	.byte	2
+	.byte	'unsigned long int',0,4,7,15,1,3
+	.word	2359
+	.byte	12
+	.byte	'__codeptr',0,6,1,1
+	.word	2361
+	.byte	2
+	.byte	'char',0,1,6,12
+	.byte	'sint8',0,7,76,25
+	.word	2384
+	.byte	12
+	.byte	'uint8',0,7,81,25
+	.word	176
+	.byte	12
+	.byte	'uint16',0,7,91,25
+	.word	506
+	.byte	12
+	.byte	'uint32',0,7,106,24
+	.word	845
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,12
+	.byte	'uint64',0,7,111,30
+	.word	2450
+	.byte	12
+	.byte	'boolean',0,7,127,25
+	.word	176
+	.byte	12
+	.byte	'uint16_least',0,7,147,1,25
+	.word	2338
+	.byte	12
+	.byte	'StatusType',0,8,191,1,27
+	.word	176
+	.byte	12
+	.byte	'Std_ReturnType',0,8,199,1,15
+	.word	176
+	.byte	13,8,206,1,9,8,14
+	.byte	'vendorID',0
+	.word	506
+	.byte	2,2,35,0,14
+	.byte	'moduleID',0
+	.word	506
+	.byte	2,2,35,2,14
+	.byte	'sw_major_version',0
+	.word	176
+	.byte	1,2,35,4,14
+	.byte	'sw_minor_version',0
+	.word	176
+	.byte	1,2,35,5,14
+	.byte	'sw_patch_version',0
+	.word	176
+	.byte	1,2,35,6,0,12
+	.byte	'Std_VersionInfoType',0,8,213,1,3
+	.word	2573
+	.byte	12
+	.byte	'PduIdType',0,9,22,19
+	.word	506
+	.byte	12
+	.byte	'PduLengthType',0,9,26,19
+	.word	506
+	.byte	13,10,71,9,8,14
+	.byte	'SduDataPtr',0
+	.word	193
+	.byte	4,2,35,0,14
+	.byte	'SduLength',0
+	.word	506
+	.byte	2,2,35,4,0,12
+	.byte	'PduInfoType',0,10,75,3
+	.word	2763
+	.byte	16,10,113,9,4,17
+	.byte	'TP_DATACONF',0,0,17
+	.byte	'TP_DATARETRY',0,1,17
+	.byte	'TP_CONFPENDING',0,2,0,12
+	.byte	'TpDataStateType',0,10,118,3
+	.word	2828
+	.byte	12
+	.byte	'NetworkHandleType',0,10,128,1,17
+	.word	176
+	.byte	12
+	.byte	'Can_IdType',0,11,32,16
+	.word	845
+	.byte	12
+	.byte	'Can_HwHandleType',0,11,43,16
+	.word	506
+	.byte	13,12,93,9,8,14
+	.byte	'Class',0
+	.word	176
+	.byte	1,2,35,0,14
+	.byte	'TIN',0
+	.word	176
+	.byte	1,2,35,1,14
+	.byte	'ReturnAddress',0
+	.word	845
+	.byte	4,2,35,4,0,12
+	.byte	'OsTrapInfoType',0,12,97,3
+	.word	2975
+	.byte	18,68
+	.word	845
+	.byte	19,16,0,13,12,154,1,9,68,14
+	.byte	'store',0
+	.word	3055
+	.byte	68,2,35,0,0,18,68
+	.word	3064
+	.byte	19,0,0,12
+	.byte	'Os_JumpBufType',0,12,156,1,3
+	.word	3086
+	.byte	12
+	.byte	'Os_StackTraceType',0,12,174,1,18
+	.word	845
+	.byte	13,12,175,1,9,8,14
+	.byte	'sp',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'ctx',0
+	.word	845
+	.byte	4,2,35,4,0,12
+	.byte	'Os_StackValueType',0,12,175,1,63
+	.word	3146
+	.byte	12
+	.byte	'Os_StackSizeType',0,12,176,1,27
+	.word	3146
+	.byte	20,1,1,3
+	.word	3231
+	.byte	12
+	.byte	'Os_VoidVoidFunctionType',0,12,179,1,16
+	.word	3234
+	.byte	12
+	.byte	'ApplicationType',0,12,193,1,23
+	.word	176
+	.byte	21
+	.byte	'Os_ApplicationConfigurationType_s',0,12,198,1,16,2,14
+	.byte	'app_id',0
+	.word	176
+	.byte	1,2,35,0,14
+	.byte	'access',0
+	.word	176
+	.byte	1,2,35,1,0,12
+	.byte	'Os_ApplicationConfigurationType',0,12,201,1,3
+	.word	3297
+	.byte	12
+	.byte	'Os_CoreStateType',0,12,203,1,16
+	.word	845
+	.byte	12
+	.byte	'AreaIdType',0,12,204,1,16
+	.word	506
+	.byte	12
+	.byte	'Os_PeripheralAddressType',0,12,212,1,22
+	.word	845
+	.byte	12
+	.byte	'TickType',0,12,221,1,22
+	.word	845
+	.byte	12
+	.byte	'Os_StopwatchTickType',0,12,225,1,22
+	.word	845
+	.byte	12
+	.byte	'Os_Lockable',0,12,234,1,18
+	.word	861
+	.byte	12
+	.byte	'CoreIdType',0,12,236,1,16
+	.word	506
+	.byte	12
+	.byte	'SpinlockIdType',0,12,237,1,16
+	.word	506
+	.byte	16,12,239,1,9,4,17
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,17
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,12
+	.byte	'TryToGetSpinlockType',0,12,239,1,74
+	.word	3604
+	.byte	16,12,174,2,9,4,17
+	.byte	'APPLICATION_ACCESSIBLE',0,0,17
+	.byte	'APPLICATION_RESTARTING',0,1,17
+	.byte	'APPLICATION_TERMINATED',0,2,0,12
+	.byte	'ApplicationStateType',0,12,174,2,92
+	.word	3697
+	.byte	22
+	.byte	'void',0,3
+	.word	3809
+	.byte	23,1,1,24
+	.word	176
+	.byte	24
+	.word	3815
+	.byte	0,3
+	.word	3820
+	.byte	12
+	.byte	'Os_FunctionEntryType',0,12,183,2,16
+	.word	3834
+	.byte	21
+	.byte	'Os_MeterInfoType_s',0,12,193,2,16,48,14
+	.byte	'elapsed',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'previous',0
+	.word	845
+	.byte	4,2,35,4,14
+	.byte	'max',0
+	.word	845
+	.byte	4,2,35,8,14
+	.byte	'cumulative',0
+	.word	845
+	.byte	4,2,35,12,14
+	.byte	'stackbase',0
+	.word	3146
+	.byte	8,2,35,16,14
+	.byte	'stackusage',0
+	.word	3146
+	.byte	8,2,35,24,14
+	.byte	'stackmax',0
+	.word	3146
+	.byte	8,2,35,32,14
+	.byte	'stackbudget',0
+	.word	3146
+	.byte	8,2,35,40,0,12
+	.byte	'Os_MeterInfoType',0,12,202,2,3
+	.word	3869
+	.byte	3
+	.word	3869
+	.byte	12
+	.byte	'Os_MeterInfoRefType',0,12,203,2,50
+	.word	4067
+	.byte	12
+	.byte	'EventMaskType',0,12,206,2,15
+	.word	176
+	.byte	12
+	.byte	'Os_imaskType',0,12,211,2,16
+	.word	845
+	.byte	21
+	.byte	'Os_ISRDynType_s',0,12,213,2,16,48,14
+	.byte	'meter',0
+	.word	3869
+	.byte	48,2,35,0,0,12
+	.byte	'Os_ISRDynType',0,12,215,2,3
+	.word	4146
+	.byte	3
+	.word	4146
+	.byte	25
+	.word	4207
+	.byte	21
+	.byte	'Os_ISRType_s',0,12,216,2,16,24,14
+	.byte	'entry_function',0
+	.word	3239
+	.byte	4,2,35,0,14
+	.byte	'dynamic',0
+	.word	4212
+	.byte	4,2,35,4,14
+	.byte	'imask',0
+	.word	845
+	.byte	4,2,35,8,14
+	.byte	'stackbudget',0
+	.word	3146
+	.byte	8,2,35,12,14
+	.byte	'access',0
+	.word	176
+	.byte	1,2,35,20,14
+	.byte	'application',0
+	.word	176
+	.byte	1,2,35,21,0,12
+	.byte	'Os_ISRType',0,12,223,2,3
+	.word	4217
+	.byte	3
+	.word	3231
+	.byte	25
+	.word	4217
+	.byte	3
+	.word	4376
+	.byte	12
+	.byte	'ISRType',0,12,224,2,46
+	.word	4381
+	.byte	12
+	.byte	'Os_bitmask',0,12,239,2,22
+	.word	845
+	.byte	12
+	.byte	'Os_pset0Type',0,12,240,2,20
+	.word	845
+	.byte	12
+	.byte	'Os_pset1Type',0,12,241,2,20
+	.word	845
+	.byte	12
+	.byte	'Os_pset2Type',0,12,242,2,20
+	.word	845
+	.byte	26,12,243,2,9,4,14
+	.byte	'p0',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'p1',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'p2',0
+	.word	845
+	.byte	4,2,35,0,0,12
+	.byte	'Os_psetType',0,12,247,2,3
+	.word	4489
+	.byte	26,12,249,2,9,4,14
+	.byte	't0',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	't1',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	't2',0
+	.word	845
+	.byte	4,2,35,0,0,12
+	.byte	'Os_tpmaskType',0,12,253,2,3
+	.word	4553
+	.byte	12
+	.byte	'Os_ActivationCountType',0,12,254,2,23
+	.word	176
+	.byte	21
+	.byte	'Os_TaskDynType_s',0,12,128,3,16,120,14
+	.byte	'terminate_jump_buf',0
+	.word	3095
+	.byte	68,2,35,0,14
+	.byte	'meter',0
+	.word	3869
+	.byte	48,2,35,68,14
+	.byte	'activation_count',0
+	.word	176
+	.byte	1,2,35,116,0,12
+	.byte	'Os_TaskDynType',0,12,132,3,3
+	.word	4651
+	.byte	18,68
+	.word	3064
+	.byte	19,0,0,3
+	.word	4651
+	.byte	25
+	.word	4777
+	.byte	21
+	.byte	'Os_TaskType_s',0,12,134,3,16,40,14
+	.byte	'dynamic',0
+	.word	4782
+	.byte	4,2,35,0,14
+	.byte	'entry_function',0
+	.word	3239
+	.byte	4,2,35,4,14
+	.byte	'pset',0
+	.word	4489
+	.byte	4,2,35,8,14
+	.byte	'base_tpmask',0
+	.word	4553
+	.byte	4,2,35,12,14
+	.byte	'tpmask',0
+	.word	4553
+	.byte	4,2,35,16,14
+	.byte	'core_id',0
+	.word	506
+	.byte	2,2,35,20,14
+	.byte	'index',0
+	.word	845
+	.byte	4,2,35,24,14
+	.byte	'stackbudget',0
+	.word	3146
+	.byte	8,2,35,28,14
+	.byte	'activation_count',0
+	.word	176
+	.byte	1,2,35,36,14
+	.byte	'access',0
+	.word	176
+	.byte	1,2,35,37,14
+	.byte	'application',0
+	.word	176
+	.byte	1,2,35,38,0,12
+	.byte	'Os_TaskType',0,12,146,3,3
+	.word	4787
+	.byte	25
+	.word	4787
+	.byte	3
+	.word	5037
+	.byte	12
+	.byte	'TaskType',0,12,147,3,47
+	.word	5042
+	.byte	27
+	.byte	'Os_TaskStateType',0,12,155,3,6,4,17
+	.byte	'SUSPENDED',0,0,17
+	.byte	'READY',0,1,17
+	.byte	'WAITING',0,2,17
+	.byte	'RUNNING',0,3,0,12
+	.byte	'TaskStateType',0,12,156,3,31
+	.word	5065
+	.byte	26,12,167,3,3,4,14
+	.byte	'tpmask',0
+	.word	4553
+	.byte	4,2,35,0,0,21
+	.byte	'Os_ResourceDynType_s',0,12,166,3,16,4,14
+	.byte	'saved_priority',0
+	.word	5152
+	.byte	4,2,35,0,0,12
+	.byte	'Os_ResourceDynType',0,12,170,3,3
+	.word	5175
+	.byte	3
+	.word	5175
+	.byte	25
+	.word	5255
+	.byte	21
+	.byte	'Os_ResourceType_s',0,12,171,3,16,12,14
+	.byte	'dynamic',0
+	.word	5260
+	.byte	4,2,35,0,14
+	.byte	'tpmask',0
+	.word	4553
+	.byte	4,2,35,4,14
+	.byte	'access',0
+	.word	176
+	.byte	1,2,35,8,0,12
+	.byte	'Os_ResourceType',0,12,175,3,3
+	.word	5265
+	.byte	13,12,181,3,9,12,14
+	.byte	'maxallowedvalue',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'ticksperbase',0
+	.word	845
+	.byte	4,2,35,4,14
+	.byte	'mincycle',0
+	.word	845
+	.byte	4,2,35,8,0,12
+	.byte	'AlarmBaseType',0,12,185,3,3
+	.word	5364
+	.byte	13,12,206,3,9,8,14
+	.byte	'Running',0
+	.word	176
+	.byte	1,2,35,0,14
+	.byte	'Pending',0
+	.word	176
+	.byte	1,2,35,1,14
+	.byte	'Delay',0
+	.word	845
+	.byte	4,2,35,4,0,12
+	.byte	'Os_CounterStatusType',0,12,210,3,3
+	.word	5459
+	.byte	28
+	.word	176
+	.byte	1,1,3
+	.word	5545
+	.byte	12
+	.byte	'Os_CounterIncrAdvType',0,12,217,3,22
+	.word	5552
+	.byte	21
+	.byte	's_swd',0,12,222,3,12,4,14
+	.byte	'count',0
+	.word	845
+	.byte	4,2,35,0,0,26,12,221,3,3,4,14
+	.byte	'sw',0
+	.word	5588
+	.byte	4,2,35,0,0,21
+	.byte	'Os_CounterDynType_s',0,12,220,3,16,4,14
+	.byte	'type_dependent',0
+	.word	5616
+	.byte	4,2,35,0,0,12
+	.byte	'Os_CounterDynType',0,12,226,3,3
+	.word	5635
+	.byte	3
+	.word	5635
+	.byte	25
+	.word	5713
+	.byte	21
+	.byte	'Os_CounterType_s',0,12,227,3,16,28,14
+	.byte	'dynamic',0
+	.word	5718
+	.byte	4,2,35,0,14
+	.byte	'advincr',0
+	.word	5557
+	.byte	4,2,35,4,14
+	.byte	'base',0
+	.word	5364
+	.byte	12,2,35,8,14
+	.byte	'core',0
+	.word	3815
+	.byte	4,2,35,20,14
+	.byte	'access',0
+	.word	176
+	.byte	1,2,35,24,14
+	.byte	'application',0
+	.word	176
+	.byte	1,2,35,25,0,12
+	.byte	'Os_CounterType',0,12,234,3,3
+	.word	5723
+	.byte	3
+	.word	5545
+	.byte	25
+	.word	5723
+	.byte	3
+	.word	5875
+	.byte	12
+	.byte	'CounterType',0,12,235,3,52
+	.word	5880
+	.byte	27
+	.byte	'Os_ScheduleTableStatusType',0,12,240,3,6,4,17
+	.byte	'SCHEDULETABLE_STOPPED',0,0,17
+	.byte	'SCHEDULETABLE_NEXT',0,1,17
+	.byte	'SCHEDULETABLE_WAITING',0,2,17
+	.byte	'SCHEDULETABLE_RUNNING',0,3,17
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,12
+	.byte	'ScheduleTableStatusType',0,12,241,3,41
+	.word	5906
+	.byte	25
+	.word	.L205-.L123
+	.byte	3
+	.word	6106
+	.byte	12
+	.byte	'ScheduleTableType',0,12,128,4,58
+	.word	6111
+	.byte	21
+	.byte	'Os_ScheduleTableDynType_s',0,12,130,4,16,16,14
+	.byte	'match',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'next',0
+	.word	6116
+	.byte	4,2,35,4,14
+	.byte	'state',0
+	.word	5906
+	.byte	4,2,35,8,14
+	.byte	'config',0
+	.word	506
+	.byte	2,2,35,12,0,3
+	.word	6143
+	.byte	25
+	.word	6236
+.L205:
+	.byte	21
+	.byte	'Os_ScheduleTableType_s',0,12,247,3,16,16,14
+	.byte	'dynamic',0
+	.word	6241
+	.byte	4,2,35,0,14
+	.byte	'counter',0
+	.word	5885
+	.byte	4,2,35,4,14
+	.byte	'repeat',0
+	.word	176
+	.byte	1,2,35,8,14
+	.byte	'config',0
+	.word	506
+	.byte	2,2,35,10,14
+	.byte	'initial',0
+	.word	176
+	.byte	1,2,35,12,14
+	.byte	'access',0
+	.word	176
+	.byte	1,2,35,13,14
+	.byte	'application',0
+	.word	176
+	.byte	1,2,35,14,0,12
+	.byte	'Os_ScheduleTableType',0,12,255,3,3
+	.word	6246
+	.byte	25
+	.word	6246
+	.byte	3
+	.word	6426
+	.byte	25
+	.word	5723
+	.byte	3
+	.word	6436
+	.byte	29
+	.word	3539
+	.byte	29
+	.word	4489
+	.byte	29
+	.word	4386
+	.byte	29
+	.word	5047
+	.byte	29
+	.word	4553
+	.byte	29
+	.word	176
+	.byte	29
+	.word	5047
+	.byte	21
+	.byte	'Os_ControlledCoreType_s',0,12,251,6,16,112,14
+	.byte	'TrapInfo',0
+	.word	2975
+	.byte	8,2,35,0,14
+	.byte	'lock_taskaccess',0
+	.word	6446
+	.byte	4,2,35,8,14
+	.byte	'ReadyTasks',0
+	.word	6451
+	.byte	4,2,35,12,14
+	.byte	'RunningISR',0
+	.word	6456
+	.byte	4,2,35,16,14
+	.byte	'RunningTask',0
+	.word	6461
+	.byte	4,2,35,20,14
+	.byte	'RunningTPMask',0
+	.word	6466
+	.byte	4,2,35,24,14
+	.byte	'CurrentMeteredObject',0
+	.word	4072
+	.byte	4,2,35,28,14
+	.byte	'IdleMeter',0
+	.word	3869
+	.byte	48,2,35,32,14
+	.byte	'AppAccess',0
+	.word	176
+	.byte	1,2,35,80,14
+	.byte	'AppOverride',0
+	.word	6471
+	.byte	1,2,35,81,14
+	.byte	'GetStackValueAdjust',0
+	.word	3146
+	.byte	8,2,35,84,14
+	.byte	'InErrorHook',0
+	.word	176
+	.byte	1,2,35,92,14
+	.byte	'ChainTaskRef',0
+	.word	6476
+	.byte	4,2,35,96,14
+	.byte	'GetStackUsageAdjust',0
+	.word	3146
+	.byte	8,2,35,100,14
+	.byte	'InProtectionHook',0
+	.word	176
+	.byte	1,2,35,108,14
+	.byte	'CoreIsActive',0
+	.word	176
+	.byte	1,2,35,109,14
+	.byte	'InShutdownHook',0
+	.word	176
+	.byte	1,2,35,110,0,12
+	.byte	'Os_ControlledCoreType',0,12,141,7,3
+	.word	6481
+	.byte	3
+	.word	845
+	.byte	25
+	.word	4217
+	.byte	3
+	.word	6937
+	.byte	25
+	.word	4787
+	.byte	3
+	.word	6947
+	.byte	3
+	.word	3869
+	.byte	21
+	.byte	'Os_AnyCoreType_s',0,12,151,7,16,96,14
+	.byte	'DisableAllImask',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'SuspendAllImask',0
+	.word	845
+	.byte	4,2,35,4,14
+	.byte	'SuspendOSImask',0
+	.word	845
+	.byte	4,2,35,8,14
+	.byte	'DisableAllCount',0
+	.word	845
+	.byte	4,2,35,12,14
+	.byte	'SuspendAllCount',0
+	.word	845
+	.byte	4,2,35,16,14
+	.byte	'SuspendOSCount',0
+	.word	845
+	.byte	4,2,35,20,14
+	.byte	'RestartJumpBuf',0
+	.word	3095
+	.byte	68,2,35,24,14
+	.byte	'Restartable',0
+	.word	176
+	.byte	1,2,35,92,0,12
+	.byte	'Os_AnyCoreType',0,12,160,7,3
+	.word	6962
+	.byte	12
+	.byte	'Can_TxObjPriorityClassType',0,13,219,3,16
+	.word	845
+	.byte	21
+	.byte	'Can_TxHwObjectConfigType',0,13,231,3,16,8,14
+	.byte	'MsgObjId',0
+	.word	176
+	.byte	1,2,35,0,14
+	.byte	'HwControllerId',0
+	.word	176
+	.byte	1,2,35,1,14
+	.byte	'TxObjPriorityClass',0
+	.word	845
+	.byte	4,2,35,4,0,12
+	.byte	'Can_TxHwObjectConfigType',0,13,252,3,3
+	.word	7239
+	.byte	21
+	.byte	'Can_RxHwObjectConfigType',0,13,129,4,16,12,14
+	.byte	'MaskRef',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'MsgId',0
+	.word	845
+	.byte	4,2,35,4,14
+	.byte	'MsgObjId',0
+	.word	176
+	.byte	1,2,35,8,14
+	.byte	'HwControllerId',0
+	.word	176
+	.byte	1,2,35,9,0,12
+	.byte	'Can_RxHwObjectConfigType',0,13,147,4,3
+	.word	7375
+	.byte	18,4
+	.word	176
+	.byte	19,3,0,21
+	.byte	'Can_ControllerMOMapConfigType',0,13,181,4,16,4,14
+	.byte	'ControllerMOMap',0
+	.word	7515
+	.byte	4,2,35,0,0,12
+	.byte	'Can_ControllerMOMapConfigType',0,13,184,4,3
+	.word	7524
+	.byte	21
+	.byte	'Can_NPCRValueType',0,13,188,4,16,2,14
+	.byte	'Can_NPCRValue',0
+	.word	506
+	.byte	2,2,35,0,0,12
+	.byte	'Can_NPCRValueType',0,13,191,4,3
+	.word	7625
+	.byte	21
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,194,4,16,8,14
+	.byte	'CanControllerBaudrate',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'CanControllerBaudrateCfg',0
+	.word	506
+	.byte	2,2,35,4,0,12
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,198,4,3
+	.word	7700
+	.byte	25
+	.word	7700
+	.byte	3
+	.word	7865
+	.byte	21
+	.byte	'Can_BaudrateConfigPtrType',0,13,201,4,16,4,14
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	7870
+	.byte	4,2,35,0,0,12
+	.byte	'Can_BaudrateConfigPtrType',0,13,204,4,3
+	.word	7875
+	.byte	21
+	.byte	'Can_EventHandlingType',0,13,226,4,16,4,14
+	.byte	'CanEventType',0
+	.word	7515
+	.byte	4,2,35,0,0,12
+	.byte	'Can_EventHandlingType',0,13,229,4,3
+	.word	7975
+	.byte	12
+	.byte	'Rte_TransformerErrorCode',0,14,130,1,15
+	.word	176
+	.byte	12
+	.byte	'Rte_TransformerClass',0,14,131,1,15
+	.word	176
+	.byte	13,14,168,1,9,12,14
+	.byte	'in',0
+	.word	3815
+	.byte	4,2,35,0,14
+	.byte	'out',0
+	.word	3815
+	.byte	4,2,35,4,14
+	.byte	'used',0
+	.word	506
+	.byte	2,2,35,8,14
+	.byte	'lost_data',0
+	.word	176
+	.byte	1,2,35,10,0,12
+	.byte	'Rte_QDynType',0,14,173,1,3
+	.word	8121
+	.byte	16,14,175,1,9,4,17
+	.byte	'RTE_DRA',0,0,17
+	.byte	'RTE_WOWP',0,1,17
+	.byte	'RTE_TASK',0,2,17
+	.byte	'RTE_ARE',0,3,17
+	.byte	'RTE_EV',0,4,17
+	.byte	'RTE_MSI',0,5,0,12
+	.byte	'Rte_NotificationType',0,14,182,1,3
+	.word	8208
+	.byte	3
+	.word	8121
+	.byte	21
+	.byte	'Rte_QCmnType',0,14,184,1,16,24,14
+	.byte	'dynamic',0
+	.word	8306
+	.byte	4,2,35,0,14
+	.byte	'copy',0
+	.word	176
+	.byte	1,2,35,4,14
+	.byte	'queue_size',0
+	.word	506
+	.byte	2,2,35,6,14
+	.byte	'element_size',0
+	.word	506
+	.byte	2,2,35,8,14
+	.byte	'buffer_start',0
+	.word	3815
+	.byte	4,2,35,12,14
+	.byte	'buffer_end',0
+	.word	3815
+	.byte	4,2,35,16,14
+	.byte	'notification_type',0
+	.word	8208
+	.byte	4,2,35,20,0,12
+	.byte	'Rte_QCmnType',0,14,192,1,3
+	.word	8311
+	.byte	12
+	.byte	'Rte_AlarmRefType',0,14,224,1,32
+	.word	845
+	.byte	12
+	.byte	'Rte_AlarmIndexType',0,14,226,1,32
+	.word	506
+	.byte	18,128,8
+	.word	176
+	.byte	19,255,7,0,12
+	.byte	'Impl_NVM_DstPtrType_1024',0,15,50,15
+	.word	8549
+	.byte	12
+	.byte	'CanIf_u32_impl',0,15,69,16
+	.word	845
+	.byte	12
+	.byte	'CanIf_u16_impl',0,15,71,16
+	.word	506
+	.byte	12
+	.byte	'CanIf_u8_impl',0,15,73,15
+	.word	176
+	.byte	12
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,15,88,15
+	.word	176
+	.byte	12
+	.byte	'CanIf_PduModeType_Enum_impl',0,15,90,15
+	.word	176
+	.byte	13,15,92,9,2,14
+	.byte	'DeviceMode',0
+	.word	176
+	.byte	1,2,35,0,14
+	.byte	'ChannelMode',0
+	.word	176
+	.byte	1,2,35,1,0,12
+	.byte	'CanIf_ControllerStateType_struct_impl',0,15,95,3
+	.word	8740
+	.byte	12
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,15,100,15
+	.word	176
+	.byte	12
+	.byte	'CanSM_boolean_Impl',0,15,120,15
+	.word	176
+	.byte	12
+	.byte	'CanSM_u8_Impl',0,15,123,15
+	.word	176
+	.byte	12
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,15,128,1,15
+	.word	176
+	.byte	12
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,15,132,1,15
+	.word	176
+	.byte	12
+	.byte	'CanSM_u16_Impl',0,15,136,1,16
+	.word	506
+	.byte	12
+	.byte	'CanSM_TimerStateType_Enum_impl',0,15,138,1,15
+	.word	176
+	.byte	13,15,140,1,9,4,14
+	.byte	'cntTick_u16',0
+	.word	506
+	.byte	2,2,35,0,14
+	.byte	'stTimer',0
+	.word	176
+	.byte	1,2,35,2,0,12
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,15,143,1,3
+	.word	9081
+	.byte	12
+	.byte	'Com_impl_u16',0,15,154,1,16
+	.word	506
+	.byte	12
+	.byte	'Com_impl_u8',0,15,157,1,15
+	.word	176
+	.byte	12
+	.byte	'ComM_uint32_Impl',0,15,173,1,16
+	.word	845
+	.byte	12
+	.byte	'ComM_uint16_Impl',0,15,175,1,16
+	.word	506
+	.byte	12
+	.byte	'ComM_uint8_Impl',0,15,177,1,15
+	.word	176
+	.byte	12
+	.byte	'ComM_bool_Impl',0,15,179,1,15
+	.word	176
+	.byte	13,15,181,1,9,24,14
+	.byte	'ChannelState_e',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'LightTimeoutCtr_u32',0
+	.word	845
+	.byte	4,2,35,4,14
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	506
+	.byte	2,2,35,8,14
+	.byte	'ChannelMode_u8',0
+	.word	176
+	.byte	1,2,35,10,14
+	.byte	'BusSmMode_u8',0
+	.word	176
+	.byte	1,2,35,11,14
+	.byte	'UserRequestCtr_u8',0
+	.word	176
+	.byte	1,2,35,12,14
+	.byte	'PassiveRequestState_u8',0
+	.word	176
+	.byte	1,2,35,13,14
+	.byte	'PncRequestCtr_u8',0
+	.word	176
+	.byte	1,2,35,14,14
+	.byte	'InhibitionReqStatus_u8',0
+	.word	176
+	.byte	1,2,35,15,14
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	176
+	.byte	1,2,35,16,14
+	.byte	'DiagnosticRequestState_b',0
+	.word	176
+	.byte	1,2,35,17,14
+	.byte	'CommunicationAllowed_b',0
+	.word	176
+	.byte	1,2,35,18,14
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	176
+	.byte	1,2,35,19,14
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	176
+	.byte	1,2,35,20,14
+	.byte	'NmNetworkModeStatus_b',0
+	.word	176
+	.byte	1,2,35,21,0,12
+	.byte	'ComM_ChannelStruct_Impl',0,15,197,1,3
+	.word	9313
+	.byte	13,15,206,1,9,10,14
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	506
+	.byte	2,2,35,0,14
+	.byte	'LimitToNoComCtr_u16',0
+	.word	506
+	.byte	2,2,35,2,14
+	.byte	'RequestedUserMode_t',0
+	.word	176
+	.byte	1,2,35,4,14
+	.byte	'IndicatedUserMode_t',0
+	.word	176
+	.byte	1,2,35,5,14
+	.byte	'numChannelsInFullCom_u8',0
+	.word	176
+	.byte	1,2,35,6,14
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	176
+	.byte	1,2,35,7,14
+	.byte	'numChannelsInNoCom_u8',0
+	.word	176
+	.byte	1,2,35,8,0,12
+	.byte	'ComM_UserStruct_Impl',0,15,214,1,3
+	.word	9817
+	.byte	12
+	.byte	'Dcm_ConfirmationStatusType',0,15,243,1,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_IOOperationResponseType',0,15,252,1,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_NegativeResponseCodeType',0,15,132,2,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_OpStatusType',0,15,134,2,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	15,138,2,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_SecLevelType',0,15,142,2,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_SesCtrlType',0,15,144,2,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,15,146,2,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,15,150,2,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,15,154,2,15
+	.word	176
+	.byte	12
+	.byte	'Dem_DTCOriginType',0,15,162,2,15
+	.word	176
+	.byte	12
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,15,243,3,34
+	.word	8560
+	.byte	18,128,8
+	.word	176
+	.byte	19,255,7,0,12
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,15,246,3,34
+	.word	8560
+	.byte	12
+	.byte	'Rte_ModeType_DcmDiagnosticSessionControl',0,16,37,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_SrvOpStatusType',0,5,62,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_MsgItemType',0,5,182,2,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_MsgLenType',0,5,197,2,16
+	.word	845
+	.byte	12
+	.byte	'Dcm_MsgAddInfoType',0,5,219,2,2
+	.word	2082
+	.byte	12
+	.byte	'Dcm_IdContextType',0,5,225,2,15
+	.word	176
+	.byte	12
+	.byte	'Dcm_MsgContextType',0,5,188,3,2
+	.word	2160
+	.byte	13,5,238,5,9,32,14
+	.byte	'tx_buffer_pa',0
+	.word	2061
+	.byte	4,2,35,0,14
+	.byte	'rx_mainBuffer_pa',0
+	.word	2061
+	.byte	4,2,35,4,14
+	.byte	'tx_buffer_size_u32',0
+	.word	845
+	.byte	4,2,35,8,14
+	.byte	'rx_buffer_size_u32',0
+	.word	845
+	.byte	4,2,35,12,14
+	.byte	'dataP2TmrAdjust',0
+	.word	845
+	.byte	4,2,35,16,14
+	.byte	'dataP2StarTmrAdjust',0
+	.word	845
+	.byte	4,2,35,20,14
+	.byte	'protocolid_u8',0
+	.word	176
+	.byte	1,2,35,24,14
+	.byte	'sid_tableid_u8',0
+	.word	176
+	.byte	1,2,35,25,14
+	.byte	'premption_level_u8',0
+	.word	176
+	.byte	1,2,35,26,14
+	.byte	'pduinfo_idx_u8',0
+	.word	176
+	.byte	1,2,35,27,14
+	.byte	'nrc21_b',0
+	.word	176
+	.byte	1,2,35,28,14
+	.byte	'sendRespPendTransToBoot',0
+	.word	176
+	.byte	1,2,35,29,0,12
+	.byte	'Dcm_Dsld_protocol_tableType',0,5,143,6,2
+	.word	11022
+	.byte	23,1,1,24
+	.word	176
+	.byte	24
+	.word	506
+	.byte	24
+	.word	506
+	.byte	24
+	.word	176
+	.byte	0,3
+	.word	11373
+	.byte	12
+	.byte	'Dcm_ConfirmationApiType',0,5,145,6,16
+	.word	11397
+	.byte	3
+	.word	176
+	.byte	30
+	.word	176
+	.byte	1,1,24
+	.word	11435
+	.byte	24
+	.word	176
+	.byte	24
+	.word	176
+	.byte	0,3
+	.word	11440
+	.byte	3
+	.word	2160
+	.byte	30
+	.word	176
+	.byte	1,1,24
+	.word	176
+	.byte	24
+	.word	11468
+	.byte	24
+	.word	11435
+	.byte	0,3
+	.word	11473
+	.byte	13,5,158,6,9,20,14
+	.byte	'allowed_session_b32',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'allowed_security_b32',0
+	.word	845
+	.byte	4,2,35,4,14
+	.byte	'adrUserSubServiceModeRule_pfct',0
+	.word	11463
+	.byte	4,2,35,8,14
+	.byte	'SubFunc_fp',0
+	.word	11496
+	.byte	4,2,35,12,14
+	.byte	'subservice_id_u8',0
+	.word	176
+	.byte	1,2,35,16,14
+	.byte	'isDspRDTCSubFnc_b',0
+	.word	176
+	.byte	1,2,35,17,0,12
+	.byte	'Dcm_Dsld_SubServiceType',0,5,169,6,2
+	.word	11501
+	.byte	25
+	.word	11501
+	.byte	3
+	.word	11713
+	.byte	30
+	.word	176
+	.byte	1,1,24
+	.word	11435
+	.byte	24
+	.word	176
+	.byte	0,3
+	.word	11723
+	.byte	13,5,186,6,9,36,14
+	.byte	'allowed_session_b32',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'allowed_security_b32',0
+	.word	845
+	.byte	4,2,35,4,14
+	.byte	'service_handler_fp',0
+	.word	11496
+	.byte	4,2,35,8,14
+	.byte	'Service_init_fp',0
+	.word	3234
+	.byte	4,2,35,12,14
+	.byte	'sid_u8',0
+	.word	176
+	.byte	1,2,35,16,14
+	.byte	'subfunction_exist_b',0
+	.word	176
+	.byte	1,2,35,17,14
+	.byte	'servicelocator_b',0
+	.word	176
+	.byte	1,2,35,18,14
+	.byte	'ptr_subservice_table_pcs',0
+	.word	11718
+	.byte	4,2,35,20,14
+	.byte	'num_sf_u8',0
+	.word	176
+	.byte	1,2,35,24,14
+	.byte	'adrUserServiceModeRule_pfct',0
+	.word	11741
+	.byte	4,2,35,28,14
+	.byte	'Dcm_ConfirmationService',0
+	.word	11402
+	.byte	4,2,35,32,0,12
+	.byte	'Dcm_Dsld_ServiceType',0,5,204,6,3
+	.word	11746
+	.byte	3
+	.word	11373
+	.byte	25
+	.word	11746
+	.byte	3
+	.word	12094
+	.byte	13,5,218,6,9,8,14
+	.byte	'ptr_service_table_pcs',0
+	.word	12099
+	.byte	4,2,35,0,14
+	.byte	'num_services_u8',0
+	.word	176
+	.byte	1,2,35,4,14
+	.byte	'nrc_sessnot_supported_u8',0
+	.word	176
+	.byte	1,2,35,5,14
+	.byte	'cdtc_index_u8',0
+	.word	176
+	.byte	1,2,35,6,0,12
+	.byte	'Dcm_Dsld_sid_tableType',0,5,224,6,3
+	.word	12104
+	.byte	13,5,238,6,9,14,14
+	.byte	'protocol_num_u8',0
+	.word	176
+	.byte	1,2,35,0,14
+	.byte	'txpduid_num_u8',0
+	.word	506
+	.byte	2,2,35,2,14
+	.byte	'roetype2_txpdu_u8',0
+	.word	506
+	.byte	2,2,35,4,14
+	.byte	'rdpitype2_txpdu_u8',0
+	.word	506
+	.byte	2,2,35,6,14
+	.byte	'testaddr_u16',0
+	.word	506
+	.byte	2,2,35,8,14
+	.byte	'channel_idx_u8',0
+	.word	176
+	.byte	1,2,35,10,14
+	.byte	'ConnectionIndex_u8',0
+	.word	176
+	.byte	1,2,35,11,14
+	.byte	'NumberOfTxpdu_u8',0
+	.word	176
+	.byte	1,2,35,12,0,12
+	.byte	'Dcm_Dsld_connType',0,5,248,6,3
+	.word	12256
+	.byte	16,5,146,7,9,4,17
+	.byte	'DCM_DSLD_NO_COM_MODE',0,0,17
+	.byte	'DCM_DSLD_SILENT_COM_MODE',0,1,17
+	.byte	'DCM_DSLD_FULL_COM_MODE',0,2,0,12
+	.byte	'Dcm_Dsld_commodeType',0,5,151,7,2
+	.word	12494
+	.byte	16,17,200,1,9,4,17
+	.byte	'USE_ASYNCH_CLIENT_SERVER',0,0,17
+	.byte	'USE_ASYNCH_FNC',0,1,0,12
+	.byte	'DcmDspSecurityUsePort',0,17,204,1,2
+	.word	12606
+	.byte	16,18,22,9,4,17
+	.byte	'DCM_NO_BOOT',0,0,17
+	.byte	'DCM_OEM_BOOT',0,1,17
+	.byte	'DCM_SYS_BOOT',0,2,0,12
+	.byte	'Dcm_SessionForBootType',0,18,27,2
+	.word	12688
+	.byte	16,19,192,3,9,4,17
+	.byte	'DCM_READ_OK',0,0,17
+	.byte	'DCM_READ_FAILED',0,1,17
+	.byte	'DCM_READ_PENDING',0,2,17
+	.byte	'DCM_READ_FORCE_RCRRP',0,3,17
+	.byte	'DCM_READ_NOT_AVAILABLE',0,4,0,12
+	.byte	'Dcm_ReadMemoryRet_t',0,19,199,3,3
+	.word	12769
+	.byte	12
+	.byte	'Dem_ReturnGetExtendedDataRecordByDTCType',0,20,110,15
+	.word	176
+	.byte	12
+	.byte	'Dem_ReturnGetFreezeFrameDataByDTCType',0,20,154,1,15
+	.word	176
+	.byte	12
+	.byte	'Dem_ReturnGetSizeOfFreezeFrameByDTCType',0,20,176,1,15
+	.word	176
+	.byte	12
+	.byte	'Dem_ReturnGetStatusOfDTCType',0,20,246,1,15
+	.word	176
+	.byte	12
+	.byte	'Dem_DTCKindType',0,20,145,3,16
+	.word	176
+	.byte	12
+	.byte	'Dem_ReturnDisableDTCRecordUpdateType',0,20,160,3,15
+	.word	176
+	.byte	12
+	.byte	'Rte_TaskRefType',0,21,184,1,32
+	.word	5047
+	.byte	12
+	.byte	'Rte_EventRefType',0,21,185,1,32
+	.word	176
+	.byte	12
+	.byte	'Rte_EventType',0,21,186,1,32
+	.word	845
+	.byte	12
+	.byte	'Rte_REActCounterType',0,21,252,1,15
+	.word	176
+	.byte	3
+	.word	176
+	.byte	12
+	.byte	'Rte_REActCounterRefType',0,21,253,1,58
+	.word	13262
+	.byte	13,21,255,1,9,8,14
+	.byte	'task',0
+	.word	13158
+	.byte	4,2,35,0,14
+	.byte	'acnt',0
+	.word	13267
+	.byte	4,2,35,4,0,12
+	.byte	'Rte_REContainerType',0,21,130,2,3
+	.word	13300
+	.byte	25
+	.word	4787
+	.byte	3
+	.word	13364
+	.byte	3
+	.word	176
+	.byte	25
+	.word	13300
+	.byte	3
+	.word	13379
+	.byte	12
+	.byte	'Rte_REContainerRefType',0,21,132,2,60
+	.word	13384
+	.byte	12
+	.byte	'Rte_MSICounterType',0,21,149,2,16
+	.word	506
+	.byte	3
+	.word	506
+	.byte	12
+	.byte	'Rte_MSICounterRefType',0,21,150,2,56
+	.word	13449
+	.byte	12
+	.byte	'Rte_MSIPendingFlagType',0,21,152,2,17
+	.word	176
+	.byte	3
+	.word	176
+	.byte	12
+	.byte	'Rte_MSIPendingFlagRefType',0,21,153,2,60
+	.word	13517
+	.byte	13,21,163,2,9,24,14
+	.byte	'counter',0
+	.word	13454
+	.byte	4,2,35,0,14
+	.byte	'incCounter',0
+	.word	176
+	.byte	1,2,35,4,14
+	.byte	'pending',0
+	.word	13522
+	.byte	4,2,35,8,14
+	.byte	'osTask',0
+	.word	13158
+	.byte	4,2,35,12,14
+	.byte	'acnt',0
+	.word	13267
+	.byte	4,2,35,16,14
+	.byte	'osEvent',0
+	.word	176
+	.byte	1,2,35,20,14
+	.byte	'MSIInit',0
+	.word	506
+	.byte	2,2,35,22,0,12
+	.byte	'Rte_MSITableEntry',0,21,172,2,3
+	.word	13557
+	.byte	3
+	.word	506
+	.byte	3
+	.word	176
+	.byte	12
+	.byte	'Rte_TaskArrayIndex',0,21,179,2,16
+	.word	176
+	.byte	12
+	.byte	'Rte_NrWaitingTasks',0,21,180,2,16
+	.word	176
+	.byte	13,21,182,2,9,4,14
+	.byte	'pending',0
+	.word	176
+	.byte	1,2,35,0,14
+	.byte	'count',0
+	.word	176
+	.byte	1,2,35,1,14
+	.byte	'firstWaitingTask',0
+	.word	176
+	.byte	1,2,35,2,0,12
+	.byte	'Rte_WaitableDatum',0,21,186,2,3
+	.word	13775
+	.byte	3
+	.word	13775
+	.byte	13,21,226,2,9,12,14
+	.byte	'event_id',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'wd',0
+	.word	13867
+	.byte	4,2,35,4,14
+	.byte	'timeout',0
+	.word	845
+	.byte	4,2,35,8,0,12
+	.byte	'Rte_WOWP_NotificationType',0,21,230,2,3
+	.word	13872
+	.byte	25
+	.word	13872
+	.byte	3
+	.word	13961
+	.byte	12
+	.byte	'Rte_WOWP_NotificationRefType',0,21,232,2,66
+	.word	13966
+	.byte	12
+	.byte	'Rte_ARE_NotificationType',0,21,234,2,29
+	.word	13300
+	.byte	21
+	.byte	'Rte_QTaskType',0,21,243,2,16,28,14
+	.byte	'cmn',0
+	.word	8311
+	.byte	24,2,35,0,14
+	.byte	'task',0
+	.word	13158
+	.byte	4,2,35,24,0,12
+	.byte	'Rte_QTaskType',0,21,246,2,3
+	.word	14043
+	.byte	21
+	.byte	'Rte_QREType',0,21,250,2,16,28,14
+	.byte	'cmn',0
+	.word	8311
+	.byte	24,2,35,0,14
+	.byte	're',0
+	.word	13389
+	.byte	4,2,35,24,0,12
+	.byte	'Rte_QREType',0,21,253,2,3
+	.word	14114
+	.byte	25
+	.word	13300
+	.byte	3
+	.word	14179
+	.byte	21
+	.byte	'Rte_QWWPType',0,21,129,3,16,28,14
+	.byte	'cmn',0
+	.word	8311
+	.byte	24,2,35,0,14
+	.byte	'wwp',0
+	.word	13971
+	.byte	4,2,35,24,0,12
+	.byte	'Rte_QWWPType',0,21,132,3,3
+	.word	14189
+	.byte	25
+	.word	13872
+	.byte	3
+	.word	14257
+	.byte	21
+	.byte	'Rte_QEvType',0,21,136,3,16,36,14
+	.byte	'cmn',0
+	.word	8311
+	.byte	24,2,35,0,14
+	.byte	'task',0
+	.word	13158
+	.byte	4,2,35,24,14
+	.byte	'mask',0
+	.word	176
+	.byte	1,2,35,28,14
+	.byte	'acnt',0
+	.word	13267
+	.byte	4,2,35,32,0,12
+	.byte	'Rte_QEvType',0,21,141,3,3
+	.word	14267
+	.byte	21
+	.byte	'Rte_QMSIType',0,21,145,3,16,48,14
+	.byte	'cmn',0
+	.word	8311
+	.byte	24,2,35,0,14
+	.byte	'task',0
+	.word	13158
+	.byte	4,2,35,24,14
+	.byte	'mask',0
+	.word	176
+	.byte	1,2,35,28,14
+	.byte	'acnt',0
+	.word	13267
+	.byte	4,2,35,32,14
+	.byte	'msiCounter',0
+	.word	13454
+	.byte	4,2,35,36,14
+	.byte	'msiPending',0
+	.word	13522
+	.byte	4,2,35,40,14
+	.byte	'msiLimit',0
+	.word	506
+	.byte	2,2,35,44,0,12
+	.byte	'Rte_QMSIType',0,21,153,3,3
+	.word	14362
+	.byte	16,22,21,9,4,17
+	.byte	'DSD_IDLE',0,0,17
+	.byte	'DSD_VERIFY_DIAGNOSTIC_DATA',0,1,17
+	.byte	'DSD_CALL_SERVICE',0,2,17
+	.byte	'DSD_WAITFORTXCONF',0,3,17
+	.byte	'DSD_SENDTXCONF_APPL',0,4,0,12
+	.byte	'Dcm_DsdStatesType_ten',0,22,28,2
+	.word	14517
+	.byte	16,23,215,2,9,4,17
+	.byte	'DCM_DSLD_POS_RESPONSE',0,0,17
+	.byte	'DCM_DSLD_NEG_RESPONSE',0,1,0,12
+	.byte	'Dcm_DsldResponseType_ten',0,23,219,2,2
+	.word	14654
+	.byte	16,24,148,1,9,4,17
+	.byte	'DCM_ROE_CLEARED',0,0,17
+	.byte	'DCM_ROE_STOPPED',0,1,17
+	.byte	'DCM_ROE_STARTED',0,2,0,12
+	.byte	'Dcm_DspRoeEventState_ten',0,24,153,1,2
+	.word	14743
+	.byte	16,24,231,1,9,4,17
+	.byte	'DCM_CONTROLMASK_NO',0,0,17
+	.byte	'DCM_CONTROLMASK_INTERNAL',0,1,17
+	.byte	'DCM_CONTROLMASK_EXTERNAL',0,2,0,12
+	.byte	'Dcm_Dsp_IocbiCtrlMask_ten',0,24,236,1,2
+	.word	14838
+	.byte	16,19,203,1,9,4,17
+	.byte	'DCM_SUPPORT_READ',0,0,17
+	.byte	'DCM_SUPPORT_WRITE',0,1,17
+	.byte	'DCM_SUPPORT_IOCONTROL',0,2,0,30
+	.word	176
+	.byte	1,1,24
+	.word	11435
+	.byte	24
+	.word	506
+	.byte	24
+	.word	14955
+	.byte	0,3
+	.word	15025
+	.byte	13,24,239,1,9,44,14
+	.byte	'dataAllowedSessRead_u32',0
+	.word	845
+	.byte	4,2,35,0,14
+	.byte	'dataAllowedSecRead_u32',0
+	.word	845
+	.byte	4,2,35,4,14
+	.byte	'adrUserReadModeRule_pfct',0
+	.word	15048
+	.byte	4,2,35,8,14
+	.byte	'dataAllowedSessWrite_u32',0
+	.word	845
+	.byte	4,2,35,12,14
+	.byte	'dataAllowedSecWrite_u32',0
+	.word	845
+	.byte	4,2,35,16,14
+	.byte	'adrUserWriteModeRule_pfct',0
+	.word	15048
+	.byte	4,2,35,20,14
+	.byte	'dataSessBitMask_u32',0
+	.word	845
+	.byte	4,2,35,24,14
+	.byte	'dataSecBitMask_u32',0
+	.word	845
+	.byte	4,2,35,28,14
+	.byte	'adrUserControlModeRule_pfct',0
+	.word	15048
+	.byte	4,2,35,32,14
+	.byte	'dataCtrlMask_en',0
+	.word	14838
+	.byte	4,2,35,36,14
+	.byte	'dataCtrlMaskSize_u8',0
+	.word	176
+	.byte	1,2,35,40,14
+	.byte	'dataIocbirst_b',0
+	.word	176
+	.byte	1,2,35,41,14
+	.byte	'statusmaskIOControl_u8',0
+	.word	176
+	.byte	1,2,35,42,0,12
+	.byte	'Dcm_ExtendedDIDConfig_tst',0,24,141,2,3
+	.word	15053
+	.byte	13,24,200,2,9,4,14
+	.byte	'posnSigBit_u16',0
+	.word	506
+	.byte	2,2,35,0,14
+	.byte	'idxDcmDspDatainfo_u16',0
+	.word	506
+	.byte	2,2,35,2,0,12
+	.byte	'Dcm_SignalDIDConfig_tst',0,24,204,2,3
+	.word	15500
+	.byte	16,25,106,9,4,17
+	.byte	'DSP_RDTC_SFUNINIT',0,0,17
+	.byte	'DSP_RDTC_SFINIT',0,1,17
+	.byte	'DSP_RDTC_SFCALCNUMDTC',0,2,17
+	.byte	'DSP_RDTC_GETFFSIZE',0,3,17
+	.byte	'DSP_RDTC_UPDATEDISABLED',0,4,17
+	.byte	'DSP_RDTC_SFFILLRESP',0,5,0,12
+	.byte	'Dcm_DspRDTCSubFuncStates_ten',0,25,123,2
+	.word	15595
+	.byte	31
+	.byte	'Dsp_RdtcDTC_u32',0,25,126,52
+	.word	845
+	.byte	1,1,31
+	.byte	'Dcm_DspRDTCSubFunc_en',0,25,136,1,54
+	.word	15595
+	.byte	1,1,31
+	.byte	'Dcm_DspMaxResDataLen_u16',0,25,144,1,39
+	.word	506
+	.byte	1,1,31
+	.byte	'Dcm_DspRDTCRecordNum_u8',0,25,149,1,37
+	.word	176
+	.byte	1,1,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L124:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32
+	.byte	13,58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,46,1,3,8,32,13
+	.byte	58,15,59,15,57,15,73,19,54,15,39,12,0,0,8,46,1,49,19,0,0,9,5,0,49,19,0,0,10,46,1,3,8,58,15,59,15,57,15
+	.byte	73,19,54,15,39,12,63,12,60,12,0,0,11,46,0,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,12,22
+	.byte	0,3,8,58,15,59,15,57,15,73,19,0,0,13,19,1,58,15,59,15,57,15,11,15,0,0,14,13,0,3,8,73,19,11,15,56,9,0,0
+	.byte	15,21,0,54,15,0,0,16,4,1,58,15,59,15,57,15,11,15,0,0,17,40,0,3,8,28,13,0,0,18,1,1,11,15,73,19,0,0,19,33
+	.byte	0,47,15,0,0,20,21,0,54,15,39,12,0,0,21,19,1,3,8,58,15,59,15,57,15,11,15,0,0,22,59,0,3,8,0,0,23,21,1,54
+	.byte	15,39,12,0,0,24,5,0,73,19,0,0,25,38,0,73,19,0,0,26,23,1,58,15,59,15,57,15,11,15,0,0,27,4,1,3,8,58,15,59
+	.byte	15,57,15,11,15,0,0,28,21,0,73,19,54,15,39,12,0,0,29,53,0,73,19,0,0,30,21,1,73,19,54,15,39,12,0,0,31,52
+	.byte	0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L125:
+	.word	.L207-.L206
+.L206:
+	.half	3
+	.word	.L209-.L208
+.L208:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits8.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits16.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits32.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\api\\Dem_Dcm.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmCore_DslDsd_Pub.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepDataRecordByDTC.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Dcm_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Seca_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Dsc_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Uds_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\api\\Dem_Types.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\Dsd\\Dcm_Dsd.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_Prot.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Uds_Prot.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_Priv.h',0,0,0,0,0
+.L209:
+.L207:
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_ReportDataRecordByDTCNumber')
+	.sect	'.debug_info'
+.L126:
+	.word	808
+	.half	3
+	.word	.L127
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepDataRecordByDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L129,.L128
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dcm_Dsp_ReportDataRecordByDTCNumber',0,1,57,31
+	.word	.L139
+	.byte	1,1,1
+	.word	.L121,.L140,.L120
+	.byte	4
+	.byte	'Opstatus',0,1,57,103
+	.word	.L139,.L141
+	.byte	4
+	.byte	'pMsgContext',0,1,57,164,1
+	.word	.L142,.L143
+	.byte	4
+	.byte	'dataNegRespCode_u8',0,1,57,238,1
+	.word	.L144,.L145
+	.byte	5
+	.word	.L121,.L140
+	.byte	6
+	.byte	'dataRemainBuffer_u32',0,1,60,35
+	.word	.L146,.L147
+	.byte	6
+	.byte	'dataFillRespLen_u32',0,1,61,35
+	.word	.L146,.L148
+	.byte	6
+	.byte	'idxLoop_qu8',0,1,62,32
+	.word	.L149,.L150
+	.byte	6
+	.byte	'nrReqLength_u8',0,1,63,26
+	.word	.L139,.L151
+	.byte	6
+	.byte	'nrSizeOfFreezeFrame_u16',0,1,65,53
+	.word	.L152,.L153
+	.byte	6
+	.byte	'dataRetGetFFDataRecByDTC_u8',0,1,66,61
+	.word	.L139,.L154
+	.byte	6
+	.byte	'dataRetGetFFDataRecSizeByDTC_u8',0,1,68,63
+	.word	.L139,.L155
+	.byte	6
+	.byte	'stRetGetStatusOfDTC_u8',0,1,71,61
+	.word	.L139,.L156
+	.byte	6
+	.byte	'stRetDisableDTCRecUpdate_u8',0,1,72,67
+	.word	.L139,.L157
+	.byte	6
+	.byte	'stDTCStatus_u8',0,1,73,52
+	.word	.L139,.L158
+	.byte	6
+	.byte	'dataRetEnableDTCRecUpdate_u8',0,1,74,61
+	.word	.L139,.L159
+	.byte	6
+	.byte	'dataRetGetExtDataRecByDTC_u8',0,1,77,61
+	.word	.L139,.L160
+	.byte	6
+	.byte	'isPendingReturned_b',0,1,81,52
+	.word	.L139,.L161
+	.byte	6
+	.byte	'dataretVal_u8',0,1,82,64
+	.word	.L139,.L162
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_ReportDataRecordByDTCNumber')
+	.sect	'.debug_abbrev'
+.L127:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Dsp_ReportDataRecordByDTCNumber')
+	.sect	'.debug_line'
+.L128:
+	.word	.L211-.L210
+.L210:
+	.half	3
+	.word	.L213-.L212
+.L212:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepDataRecordByDTC.c',0,0,0,0,0
+.L213:
+	.byte	5,31,7,0,5,2
+	.word	.L121
+	.byte	3,56,1,5,41,9
+	.half	.L168-.L121
+	.byte	3,6,1,5,27,9
+	.half	.L169-.L168
+	.byte	3,21,1,5,25,9
+	.half	.L214-.L169
+	.byte	1,9
+	.half	.L215-.L214
+	.byte	3,2,1,9
+	.half	.L171-.L215
+	.byte	3,1,1,5,19,9
+	.half	.L172-.L171
+	.byte	3,1,1,5,10,9
+	.half	.L173-.L172
+	.byte	3,6,1,5,5,9
+	.half	.L216-.L173
+	.byte	1,5,43,7,9
+	.half	.L217-.L216
+	.byte	3,2,1,5,9,9
+	.half	.L218-.L217
+	.byte	1,5,52,9
+	.half	.L219-.L218
+	.byte	1,5,30,9
+	.half	.L220-.L219
+	.byte	1,5,13,9
+	.half	.L221-.L220
+	.byte	3,3,1,5,12,9
+	.half	.L222-.L221
+	.byte	1,5,96,7,9
+	.half	.L223-.L222
+	.byte	1,5,93,9
+	.half	.L224-.L223
+	.byte	1,5,155,1,7,9
+	.half	.L225-.L224
+	.byte	1,5,28,7,9
+	.half	.L3-.L225
+	.byte	3,2,1,5,41,9
+	.half	.L5-.L3
+	.byte	3,13,1,5,9,9
+	.half	.L226-.L5
+	.byte	1,5,13,7,9
+	.half	.L227-.L226
+	.byte	3,3,1,5,64,9
+	.half	.L228-.L227
+	.byte	1,5,72,9
+	.half	.L229-.L228
+	.byte	1,5,52,9
+	.half	.L170-.L229
+	.byte	3,1,1,5,60,9
+	.half	.L230-.L170
+	.byte	1,5,96,9
+	.half	.L231-.L230
+	.byte	3,127,1,5,51,9
+	.half	.L232-.L231
+	.byte	3,2,1,5,84,9
+	.half	.L233-.L232
+	.byte	3,127,1,5,29,9
+	.half	.L234-.L233
+	.byte	3,127,1,5,13,9
+	.half	.L235-.L234
+	.byte	3,3,1,5,37,9
+	.half	.L236-.L235
+	.byte	1,5,35,9
+	.half	.L237-.L236
+	.byte	1,5,57,9
+	.half	.L238-.L237
+	.byte	3,20,1,5,21,9
+	.half	.L164-.L238
+	.byte	3,1,1,9
+	.half	.L239-.L164
+	.byte	3,1,1,5,22,9
+	.half	.L240-.L239
+	.byte	3,1,1,5,13,9
+	.half	.L165-.L240
+	.byte	3,5,1,5,54,7,9
+	.half	.L241-.L165
+	.byte	3,3,1,5,17,9
+	.half	.L242-.L241
+	.byte	1,5,63,9
+	.half	.L243-.L242
+	.byte	1,5,41,9
+	.half	.L244-.L243
+	.byte	1,5,21,9
+	.half	.L245-.L244
+	.byte	3,20,1,5,20,9
+	.half	.L246-.L245
+	.byte	1,5,106,7,9
+	.half	.L247-.L246
+	.byte	1,5,103,9
+	.half	.L248-.L247
+	.byte	1,5,166,1,7,9
+	.half	.L249-.L248
+	.byte	1,5,32,7,9
+	.half	.L8-.L249
+	.byte	3,3,1,5,70,9
+	.half	.L250-.L8
+	.byte	1,5,48,9
+	.half	.L251-.L250
+	.byte	1,5,32,9
+	.half	.L252-.L251
+	.byte	3,1,1,5,61,9
+	.half	.L253-.L252
+	.byte	1,5,70,9
+	.half	.L254-.L253
+	.byte	1,5,48,9
+	.half	.L255-.L254
+	.byte	1,5,32,9
+	.half	.L256-.L255
+	.byte	3,1,1,5,61,9
+	.half	.L257-.L256
+	.byte	1,5,70,9
+	.half	.L258-.L257
+	.byte	1,5,48,9
+	.half	.L259-.L258
+	.byte	1,5,32,9
+	.half	.L260-.L259
+	.byte	3,1,1,5,61,9
+	.half	.L261-.L260
+	.byte	1,5,70,9
+	.half	.L262-.L261
+	.byte	1,5,48,9
+	.half	.L263-.L262
+	.byte	1,5,32,9
+	.half	.L264-.L263
+	.byte	3,1,1,5,50,9
+	.half	.L265-.L264
+	.byte	1,5,48,9
+	.half	.L266-.L265
+	.byte	1,5,47,9
+	.half	.L267-.L266
+	.byte	3,2,1,5,45,9
+	.half	.L268-.L267
+	.byte	1,5,20,9
+	.half	.L10-.L268
+	.byte	3,3,1,5,106,7,9
+	.half	.L269-.L10
+	.byte	1,5,103,9
+	.half	.L270-.L269
+	.byte	1,5,166,1,7,9
+	.half	.L271-.L270
+	.byte	1,5,50,7,9
+	.half	.L272-.L271
+	.byte	3,1,1,5,47,9
+	.half	.L273-.L272
+	.byte	1,5,137,1,7,9
+	.half	.L274-.L273
+	.byte	1,5,134,1,9
+	.half	.L275-.L274
+	.byte	1,5,42,7,9
+	.half	.L11-.L275
+	.byte	3,2,1,5,40,9
+	.half	.L276-.L11
+	.byte	1,5,17,9
+	.half	.L15-.L276
+	.byte	3,125,1,5,18,9
+	.half	.L7-.L15
+	.byte	3,8,1,5,57,7,9
+	.half	.L277-.L7
+	.byte	3,3,1,5,28,9
+	.half	.L278-.L277
+	.byte	1,5,66,9
+	.half	.L279-.L278
+	.byte	1,5,44,9
+	.half	.L280-.L279
+	.byte	1,5,43,9
+	.half	.L281-.L280
+	.byte	3,2,1,5,41,9
+	.half	.L282-.L281
+	.byte	1,5,31,9
+	.half	.L283-.L282
+	.byte	3,1,1,5,72,9
+	.half	.L284-.L283
+	.byte	3,125,1,5,21,9
+	.half	.L17-.L284
+	.byte	3,6,1,5,98,7,9
+	.half	.L285-.L17
+	.byte	1,5,46,7,9
+	.half	.L286-.L285
+	.byte	3,1,1,5,39,7,9
+	.half	.L19-.L286
+	.byte	3,2,1,5,37,9
+	.half	.L287-.L19
+	.byte	1,5,62,9
+	.half	.L288-.L287
+	.byte	1,5,39,9
+	.half	.L21-.L288
+	.byte	3,5,1,5,37,9
+	.half	.L289-.L21
+	.byte	1,5,13,9
+	.half	.L16-.L289
+	.byte	3,111,1,5,35,9
+	.half	.L6-.L16
+	.byte	3,23,1,5,33,9
+	.half	.L290-.L6
+	.byte	1,9
+	.half	.L2-.L290
+	.byte	3,3,1,5,5,9
+	.half	.L291-.L2
+	.byte	1,5,82,7,9
+	.half	.L292-.L291
+	.byte	3,2,1,5,66,9
+	.half	.L293-.L292
+	.byte	1,5,82,9
+	.half	.L294-.L293
+	.byte	1,5,9,9
+	.half	.L177-.L294
+	.byte	3,2,1,5,17,7,9
+	.half	.L295-.L177
+	.byte	3,3,1,5,16,9
+	.half	.L296-.L295
+	.byte	1,5,102,7,9
+	.half	.L297-.L296
+	.byte	1,5,99,9
+	.half	.L298-.L297
+	.byte	1,5,21,7,9
+	.half	.L26-.L298
+	.byte	3,4,1,5,20,9
+	.half	.L299-.L26
+	.byte	3,126,1,5,47,9
+	.half	.L300-.L299
+	.byte	1,5,17,9
+	.half	.L301-.L300
+	.byte	1,5,44,7,9
+	.half	.L302-.L301
+	.byte	3,2,1,5,42,9
+	.half	.L303-.L302
+	.byte	1,5,48,9
+	.half	.L304-.L303
+	.byte	1,5,52,9
+	.half	.L28-.L304
+	.byte	3,2,1,5,22,9
+	.half	.L305-.L28
+	.byte	1,5,40,7,9
+	.half	.L306-.L305
+	.byte	3,2,1,5,65,9
+	.half	.L307-.L306
+	.byte	1,5,66,9
+	.half	.L30-.L307
+	.byte	3,6,1,5,40,9
+	.half	.L308-.L30
+	.byte	1,5,41,9
+	.half	.L29-.L308
+	.byte	3,2,1,5,39,9
+	.half	.L309-.L29
+	.byte	1,5,17,9
+	.half	.L27-.L309
+	.byte	3,4,1,5,103,7,9
+	.half	.L310-.L27
+	.byte	1,5,100,9
+	.half	.L311-.L310
+	.byte	1,5,48,7,9
+	.half	.L312-.L311
+	.byte	3,1,1,5,45,9
+	.half	.L313-.L312
+	.byte	1,5,21,7,9
+	.half	.L32-.L313
+	.byte	3,2,1,5,17,9
+	.half	.L314-.L32
+	.byte	1,5,43,7,9
+	.half	.L315-.L314
+	.byte	3,5,1,5,41,9
+	.half	.L316-.L315
+	.byte	1,5,66,9
+	.half	.L317-.L316
+	.byte	1,5,45,9
+	.half	.L35-.L317
+	.byte	3,4,1,5,43,9
+	.half	.L318-.L35
+	.byte	1,5,21,9
+	.half	.L319-.L318
+	.byte	3,1,1,5,43,9
+	.half	.L320-.L319
+	.byte	1,5,41,9
+	.half	.L321-.L320
+	.byte	1,5,51,9
+	.half	.L322-.L321
+	.byte	3,2,1,5,21,9
+	.half	.L323-.L322
+	.byte	1,5,25,7,9
+	.half	.L324-.L323
+	.byte	3,2,1,5,44,9
+	.half	.L325-.L324
+	.byte	1,5,69,9
+	.half	.L326-.L325
+	.byte	1,5,55,9
+	.half	.L37-.L326
+	.byte	3,2,1,5,26,9
+	.half	.L327-.L37
+	.byte	1,5,25,7,9
+	.half	.L328-.L327
+	.byte	3,5,1,5,70,9
+	.half	.L329-.L328
+	.byte	1,5,44,9
+	.half	.L330-.L329
+	.byte	1,5,76,9
+	.half	.L331-.L330
+	.byte	1,5,57,9
+	.half	.L39-.L331
+	.byte	3,2,1,5,26,9
+	.half	.L332-.L39
+	.byte	1,5,51,7,9
+	.half	.L333-.L332
+	.byte	3,7,1,5,49,9
+	.half	.L334-.L333
+	.byte	1,5,25,9
+	.half	.L335-.L334
+	.byte	3,1,1,5,48,9
+	.half	.L336-.L335
+	.byte	1,5,46,9
+	.half	.L337-.L336
+	.byte	1,5,55,9
+	.half	.L338-.L337
+	.byte	3,127,1,5,57,9
+	.half	.L41-.L338
+	.byte	3,3,1,5,26,9
+	.half	.L339-.L41
+	.byte	1,5,51,7,9
+	.half	.L340-.L339
+	.byte	3,5,1,5,49,9
+	.half	.L341-.L340
+	.byte	1,5,25,9
+	.half	.L342-.L341
+	.byte	3,1,1,5,48,9
+	.half	.L343-.L342
+	.byte	1,5,46,9
+	.half	.L344-.L343
+	.byte	1,5,55,9
+	.half	.L345-.L344
+	.byte	3,127,1,5,49,9
+	.half	.L43-.L345
+	.byte	3,5,1,5,47,9
+	.half	.L346-.L43
+	.byte	1,5,13,9
+	.half	.L34-.L346
+	.byte	3,82,1,5,14,9
+	.half	.L25-.L34
+	.byte	3,52,1,5,35,7,9
+	.half	.L347-.L25
+	.byte	3,3,1,5,33,9
+	.half	.L348-.L347
+	.byte	1,5,58,9
+	.half	.L349-.L348
+	.byte	1,5,14,9
+	.half	.L46-.L349
+	.byte	3,2,1,7,9
+	.half	.L350-.L46
+	.byte	1,5,35,9
+	.half	.L48-.L350
+	.byte	3,8,1,5,33,9
+	.half	.L351-.L48
+	.byte	1,5,9,9
+	.half	.L45-.L351
+	.byte	3,115,1,5,14,9
+	.half	.L24-.L45
+	.byte	3,20,1,5,10,9
+	.half	.L352-.L24
+	.byte	1,5,21,7,9
+	.half	.L353-.L352
+	.byte	3,2,1,9
+	.half	.L182-.L353
+	.byte	3,166,127,1,5,9,9
+	.half	.L354-.L182
+	.byte	3,252,126,1,5,17,9
+	.half	.L355-.L354
+	.byte	3,55,1,5,13,9
+	.half	.L356-.L355
+	.byte	3,197,1,1,5,24,9
+	.half	.L52-.L356
+	.byte	3,102,1,5,17,9
+	.half	.L357-.L52
+	.byte	3,3,1,5,16,9
+	.half	.L358-.L357
+	.byte	1,5,102,7,9
+	.half	.L359-.L358
+	.byte	1,5,99,9
+	.half	.L360-.L359
+	.byte	1,5,51,7,9
+	.half	.L53-.L360
+	.byte	3,2,1,5,17,9
+	.half	.L54-.L53
+	.byte	3,4,1,5,102,7,9
+	.half	.L361-.L54
+	.byte	1,5,99,9
+	.half	.L362-.L361
+	.byte	1,5,48,7,9
+	.half	.L363-.L362
+	.byte	3,1,1,5,45,9
+	.half	.L364-.L363
+	.byte	1,5,51,7,9
+	.half	.L55-.L364
+	.byte	3,3,1,5,64,9
+	.half	.L365-.L55
+	.byte	1,5,28,9
+	.half	.L57-.L365
+	.byte	3,4,1,5,13,9
+	.half	.L366-.L57
+	.byte	1,5,68,7,9
+	.half	.L183-.L366
+	.byte	3,2,1,5,90,9
+	.half	.L367-.L183
+	.byte	1,5,38,9
+	.half	.L58-.L367
+	.byte	3,4,1,9
+	.half	.L59-.L58
+	.byte	3,3,1,5,16,9
+	.half	.L368-.L59
+	.byte	3,3,1,5,102,7,9
+	.half	.L369-.L368
+	.byte	1,5,99,9
+	.half	.L184-.L369
+	.byte	1,5,25,7,9
+	.half	.L60-.L184
+	.byte	3,5,1,5,77,9
+	.half	.L370-.L60
+	.byte	3,126,1,5,25,9
+	.half	.L371-.L370
+	.byte	3,1,1,9
+	.half	.L372-.L371
+	.byte	3,1,1,9
+	.half	.L373-.L372
+	.byte	3,1,1,5,37,9
+	.half	.L374-.L373
+	.byte	3,1,1,5,46,9
+	.half	.L375-.L374
+	.byte	1,5,26,9
+	.half	.L376-.L375
+	.byte	3,1,1,5,17,9
+	.half	.L185-.L376
+	.byte	3,3,1,5,24,7,9
+	.half	.L377-.L185
+	.byte	3,3,1,5,21,9
+	.half	.L378-.L377
+	.byte	1,5,77,7,9
+	.half	.L379-.L378
+	.byte	3,3,1,5,49,9
+	.half	.L380-.L379
+	.byte	1,5,21,9
+	.half	.L63-.L380
+	.byte	3,2,1,5,44,9
+	.half	.L381-.L63
+	.byte	1,5,21,9
+	.half	.L382-.L381
+	.byte	3,1,1,5,43,9
+	.half	.L383-.L382
+	.byte	1,5,41,9
+	.half	.L384-.L383
+	.byte	1,5,46,9
+	.half	.L385-.L384
+	.byte	3,127,1,5,22,9
+	.half	.L62-.L385
+	.byte	3,5,1,5,33,7,9
+	.half	.L386-.L62
+	.byte	3,3,1,5,41,9
+	.half	.L387-.L386
+	.byte	3,3,1,5,35,9
+	.half	.L388-.L387
+	.byte	3,1,1,5,61,9
+	.half	.L389-.L388
+	.byte	3,124,1,5,22,9
+	.half	.L65-.L389
+	.byte	3,7,1,5,25,7,9
+	.half	.L390-.L65
+	.byte	3,2,1,5,47,9
+	.half	.L391-.L390
+	.byte	1,5,21,9
+	.half	.L392-.L391
+	.byte	1,5,47,7,9
+	.half	.L393-.L392
+	.byte	3,3,1,5,45,9
+	.half	.L394-.L393
+	.byte	1,5,70,9
+	.half	.L395-.L394
+	.byte	1,5,25,9
+	.half	.L68-.L395
+	.byte	3,5,1,5,48,9
+	.half	.L396-.L68
+	.byte	1,5,21,9
+	.half	.L69-.L396
+	.byte	3,125,1,5,22,9
+	.half	.L67-.L69
+	.byte	3,7,1,5,43,7,9
+	.half	.L397-.L67
+	.byte	3,3,1,5,41,9
+	.half	.L398-.L397
+	.byte	1,5,66,9
+	.half	.L399-.L398
+	.byte	1,5,22,9
+	.half	.L71-.L399
+	.byte	3,3,1,5,43,7,9
+	.half	.L400-.L71
+	.byte	3,3,1,5,41,9
+	.half	.L401-.L400
+	.byte	1,5,64,9
+	.half	.L402-.L401
+	.byte	1,5,43,9
+	.half	.L73-.L402
+	.byte	3,7,1,5,41,9
+	.half	.L403-.L73
+	.byte	1,5,18,9
+	.half	.L61-.L403
+	.byte	3,5,1,5,17,9
+	.half	.L404-.L61
+	.byte	1,5,102,7,9
+	.half	.L405-.L404
+	.byte	1,5,99,9
+	.half	.L406-.L405
+	.byte	1,5,46,7,9
+	.half	.L407-.L406
+	.byte	3,1,1,5,43,9
+	.half	.L408-.L407
+	.byte	1,5,25,7,9
+	.half	.L75-.L408
+	.byte	3,5,1,5,80,9
+	.half	.L409-.L75
+	.byte	3,126,1,5,25,9
+	.half	.L410-.L409
+	.byte	3,1,1,9
+	.half	.L411-.L410
+	.byte	3,1,1,9
+	.half	.L412-.L411
+	.byte	3,1,1,5,37,9
+	.half	.L413-.L412
+	.byte	3,1,1,5,46,9
+	.half	.L414-.L413
+	.byte	1,5,26,9
+	.half	.L415-.L414
+	.byte	3,1,1,5,17,9
+	.half	.L190-.L415
+	.byte	3,3,1,5,24,7,9
+	.half	.L416-.L190
+	.byte	3,3,1,5,21,9
+	.half	.L417-.L416
+	.byte	1,5,36,7,9
+	.half	.L418-.L417
+	.byte	3,3,1,5,57,9
+	.half	.L419-.L418
+	.byte	1,5,45,9
+	.half	.L420-.L419
+	.byte	1,5,73,9
+	.half	.L421-.L420
+	.byte	1,5,71,9
+	.half	.L422-.L421
+	.byte	1,5,52,9
+	.half	.L423-.L422
+	.byte	3,3,1,5,77,9
+	.half	.L424-.L423
+	.byte	1,5,49,9
+	.half	.L425-.L424
+	.byte	1,5,21,9
+	.half	.L79-.L425
+	.byte	3,3,1,5,43,9
+	.half	.L426-.L79
+	.byte	1,5,41,9
+	.half	.L427-.L426
+	.byte	1,5,21,9
+	.half	.L428-.L427
+	.byte	3,1,1,5,44,9
+	.half	.L429-.L428
+	.byte	1,5,47,9
+	.half	.L430-.L429
+	.byte	3,127,1,5,22,9
+	.half	.L78-.L430
+	.byte	3,6,1,5,33,7,9
+	.half	.L431-.L78
+	.byte	3,3,1,5,41,9
+	.half	.L432-.L431
+	.byte	3,3,1,5,35,9
+	.half	.L433-.L432
+	.byte	3,1,1,5,61,9
+	.half	.L434-.L433
+	.byte	3,124,1,5,22,9
+	.half	.L81-.L434
+	.byte	3,7,1,5,25,7,9
+	.half	.L435-.L81
+	.byte	3,2,1,5,47,9
+	.half	.L436-.L435
+	.byte	1,5,21,9
+	.half	.L437-.L436
+	.byte	1,5,47,7,9
+	.half	.L438-.L437
+	.byte	3,3,1,5,45,9
+	.half	.L439-.L438
+	.byte	1,5,70,9
+	.half	.L440-.L439
+	.byte	1,5,25,9
+	.half	.L84-.L440
+	.byte	3,5,1,5,48,9
+	.half	.L441-.L84
+	.byte	1,5,21,9
+	.half	.L85-.L441
+	.byte	3,125,1,5,22,9
+	.half	.L83-.L85
+	.byte	3,7,1,5,43,7,9
+	.half	.L442-.L83
+	.byte	3,3,1,5,41,9
+	.half	.L443-.L442
+	.byte	1,5,66,9
+	.half	.L444-.L443
+	.byte	1,5,22,9
+	.half	.L87-.L444
+	.byte	3,3,1,5,43,7,9
+	.half	.L445-.L87
+	.byte	3,3,1,5,41,9
+	.half	.L446-.L445
+	.byte	1,5,64,9
+	.half	.L447-.L446
+	.byte	1,5,43,9
+	.half	.L89-.L447
+	.byte	3,7,1,5,41,9
+	.half	.L448-.L89
+	.byte	1,5,17,9
+	.half	.L77-.L448
+	.byte	3,5,1,5,26,7,9
+	.half	.L449-.L77
+	.byte	3,1,1,5,23,9
+	.half	.L450-.L449
+	.byte	1,5,18,7,9
+	.half	.L451-.L450
+	.byte	3,1,1,5,44,9
+	.half	.L452-.L451
+	.byte	1,5,42,9
+	.half	.L453-.L452
+	.byte	1,5,13,7,9
+	.half	.L91-.L453
+	.byte	3,1,1,5,40,9
+	.half	.L454-.L91
+	.byte	1,5,12,9
+	.half	.L455-.L454
+	.byte	1,5,72,7,9
+	.half	.L456-.L455
+	.byte	1,5,27,9
+	.half	.L457-.L456
+	.byte	3,2,1,5,14,9
+	.half	.L93-.L457
+	.byte	3,3,1,5,41,9
+	.half	.L458-.L93
+	.byte	1,5,13,9
+	.half	.L459-.L458
+	.byte	1,5,85,7,9
+	.half	.L460-.L459
+	.byte	1,5,17,7,9
+	.half	.L461-.L460
+	.byte	3,4,1,5,16,9
+	.half	.L462-.L461
+	.byte	1,5,102,7,9
+	.half	.L463-.L462
+	.byte	1,5,99,9
+	.half	.L464-.L463
+	.byte	1,5,162,1,7,9
+	.half	.L465-.L464
+	.byte	1,5,21,7,9
+	.half	.L97-.L465
+	.byte	3,2,1,5,20,9
+	.half	.L466-.L97
+	.byte	1,5,51,7,9
+	.half	.L467-.L466
+	.byte	1,5,70,9
+	.half	.L468-.L467
+	.byte	1,5,92,7,9
+	.half	.L469-.L468
+	.byte	1,5,104,9
+	.half	.L470-.L469
+	.byte	1,5,43,7,9
+	.half	.L471-.L470
+	.byte	3,3,1,5,41,9
+	.half	.L472-.L471
+	.byte	1,5,66,9
+	.half	.L473-.L472
+	.byte	1,5,45,9
+	.half	.L100-.L473
+	.byte	3,6,1,5,43,9
+	.half	.L474-.L100
+	.byte	1,5,13,9
+	.half	.L99-.L474
+	.byte	3,117,1,5,9,9
+	.half	.L104-.L99
+	.byte	3,34,1,9
+	.half	.L50-.L104
+	.byte	3,12,1,5,5,9
+	.half	.L475-.L50
+	.byte	1,5,17,7,9
+	.half	.L476-.L475
+	.byte	3,5,1,9
+	.half	.L477-.L476
+	.byte	3,127,1,5,71,9
+	.half	.L478-.L477
+	.byte	3,126,1,5,17,9
+	.half	.L479-.L478
+	.byte	3,1,1,9
+	.half	.L480-.L479
+	.byte	3,1,1,5,18,9
+	.half	.L481-.L480
+	.byte	3,2,1,5,9,9
+	.half	.L198-.L481
+	.byte	3,1,1,5,27,7,9
+	.half	.L482-.L198
+	.byte	3,2,1,5,55,9
+	.half	.L483-.L482
+	.byte	1,5,78,9
+	.half	.L484-.L483
+	.byte	1,5,13,9
+	.half	.L485-.L484
+	.byte	1,5,20,7,9
+	.half	.L486-.L485
+	.byte	3,2,1,5,47,9
+	.half	.L487-.L486
+	.byte	1,5,17,9
+	.half	.L488-.L487
+	.byte	1,5,47,7,9
+	.half	.L489-.L488
+	.byte	3,2,1,5,45,9
+	.half	.L490-.L489
+	.byte	1,5,41,9
+	.half	.L109-.L490
+	.byte	3,3,1,5,39,9
+	.half	.L491-.L109
+	.byte	1,5,17,9
+	.half	.L492-.L491
+	.byte	3,1,1,5,39,9
+	.half	.L493-.L492
+	.byte	1,5,37,9
+	.half	.L494-.L493
+	.byte	1,5,60,9
+	.half	.L495-.L494
+	.byte	3,127,1,5,39,9
+	.half	.L108-.L495
+	.byte	3,5,1,5,37,9
+	.half	.L496-.L108
+	.byte	1,5,13,9
+	.half	.L110-.L496
+	.byte	3,126,1,5,14,9
+	.half	.L107-.L110
+	.byte	3,6,1,7,9
+	.half	.L497-.L107
+	.byte	1,5,17,9
+	.half	.L112-.L497
+	.byte	3,4,1,5,46,7,9
+	.half	.L498-.L112
+	.byte	3,1,1,5,35,7,9
+	.half	.L114-.L498
+	.byte	3,2,1,5,33,9
+	.half	.L499-.L114
+	.byte	1,5,58,9
+	.half	.L500-.L499
+	.byte	1,5,35,9
+	.half	.L115-.L500
+	.byte	3,5,1,5,33,9
+	.half	.L501-.L115
+	.byte	1,5,8,9
+	.half	.L106-.L501
+	.byte	3,6,1,5,5,9
+	.half	.L502-.L106
+	.byte	1,5,33,7,9
+	.half	.L503-.L502
+	.byte	3,2,1,5,31,9
+	.half	.L504-.L503
+	.byte	1,5,23,9
+	.half	.L505-.L504
+	.byte	3,1,1,5,27,9
+	.half	.L117-.L505
+	.byte	3,4,1,5,5,9
+	.half	.L506-.L117
+	.byte	1,5,65,7,9
+	.half	.L507-.L506
+	.byte	3,3,1,5,9,9
+	.half	.L508-.L507
+	.byte	3,2,1,5,31,9
+	.half	.L509-.L508
+	.byte	1,5,29,9
+	.half	.L510-.L509
+	.byte	1,5,5,9
+	.half	.L118-.L510
+	.byte	3,5,1,5,1,9
+	.half	.L119-.L118
+	.byte	3,1,1,7,9
+	.half	.L130-.L119
+	.byte	0,1,1
+.L211:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Dsp_ReportDataRecordByDTCNumber')
+	.sect	'.debug_ranges'
+.L129:
+	.word	-1,.L121,0,.L130-.L121,0,0
+	.sdecl	'.debug_info',debug,cluster('s_nrRDTCLoopEnd_u8')
+	.sect	'.debug_info'
+.L131:
+	.word	207
+	.half	3
+	.word	.L132
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepDataRecordByDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L122
+	.byte	3
+	.byte	's_nrRDTCLoopEnd_u8',0,6,15,46
+	.word	.L139
+	.byte	5,3
+	.word	s_nrRDTCLoopEnd_u8
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('s_nrRDTCLoopEnd_u8')
+	.sect	'.debug_abbrev'
+.L132:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('s_dataRDTCSubFunc_u8')
+	.sect	'.debug_info'
+.L133:
+	.word	209
+	.half	3
+	.word	.L134
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepDataRecordByDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L122
+	.byte	3
+	.byte	's_dataRDTCSubFunc_u8',0,6,17,46
+	.word	.L139
+	.byte	5,3
+	.word	s_dataRDTCSubFunc_u8
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('s_dataRDTCSubFunc_u8')
+	.sect	'.debug_abbrev'
+.L134:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('s_dataDemDTCOrigin_u8')
+	.sect	'.debug_info'
+.L135:
+	.word	210
+	.half	3
+	.word	.L136
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepDataRecordByDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L122
+	.byte	3
+	.byte	's_dataDemDTCOrigin_u8',0,6,19,46
+	.word	.L139
+	.byte	5,3
+	.word	s_dataDemDTCOrigin_u8
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('s_dataDemDTCOrigin_u8')
+	.sect	'.debug_abbrev'
+.L136:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('s_IsRecordSupported')
+	.sect	'.debug_info'
+.L137:
+	.word	208
+	.half	3
+	.word	.L138
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepDataRecordByDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L122
+	.byte	3
+	.byte	's_IsRecordSupported',0,6,21,46
+	.word	.L139
+	.byte	5,3
+	.word	s_IsRecordSupported
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('s_IsRecordSupported')
+	.sect	'.debug_abbrev'
+.L138:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Dsp_ReportDataRecordByDTCNumber')
+	.sect	'.debug_loc'
+.L120:
+	.word	-1,.L121,0,.L163-.L121
+	.half	2
+	.byte	138,0
+	.word	.L163-.L121,.L140-.L121
+	.half	2
+	.byte	138,24
+	.word	.L140-.L121,.L140-.L121
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L141:
+	.word	-1,.L121,0,.L164-.L121
+	.half	1
+	.byte	84
+	.word	.L6-.L121,.L2-.L121
+	.half	1
+	.byte	84
+	.word	0,0
+.L148:
+	.word	-1,.L121,.L172-.L121,.L140-.L121
+	.half	1
+	.byte	89
+	.word	0,0
+.L145:
+	.word	-1,.L121,0,.L165-.L121
+	.half	1
+	.byte	101
+	.word	.L168-.L121,.L140-.L121
+	.half	2
+	.byte	145,108
+	.word	.L174-.L121,.L21-.L121
+	.half	1
+	.byte	111
+	.word	.L175-.L121,.L16-.L121
+	.half	1
+	.byte	111
+	.word	.L6-.L121,.L176-.L121
+	.half	1
+	.byte	101
+	.word	.L176-.L121,.L2-.L121
+	.half	1
+	.byte	111
+	.word	.L178-.L121,.L35-.L121
+	.half	1
+	.byte	111
+	.word	.L179-.L121,.L34-.L121
+	.half	1
+	.byte	111
+	.word	.L180-.L121,.L46-.L121
+	.half	1
+	.byte	111
+	.word	.L181-.L121,.L45-.L121
+	.half	1
+	.byte	111
+	.word	.L186-.L121,.L68-.L121
+	.half	1
+	.byte	111
+	.word	.L187-.L121,.L71-.L121
+	.half	1
+	.byte	111
+	.word	.L188-.L121,.L73-.L121
+	.half	1
+	.byte	111
+	.word	.L189-.L121,.L61-.L121
+	.half	1
+	.byte	111
+	.word	.L191-.L121,.L84-.L121
+	.half	1
+	.byte	111
+	.word	.L192-.L121,.L87-.L121
+	.half	1
+	.byte	111
+	.word	.L193-.L121,.L89-.L121
+	.half	1
+	.byte	111
+	.word	.L194-.L121,.L77-.L121
+	.half	1
+	.byte	111
+	.word	.L195-.L121,.L91-.L121
+	.half	1
+	.byte	111
+	.word	.L196-.L121,.L93-.L121
+	.half	1
+	.byte	111
+	.word	.L197-.L121,.L100-.L121
+	.half	1
+	.byte	111
+	.word	.L199-.L121,.L110-.L121
+	.half	1
+	.byte	111
+	.word	.L200-.L121,.L115-.L121
+	.half	1
+	.byte	111
+	.word	.L201-.L121,.L106-.L121
+	.half	1
+	.byte	111
+	.word	.L202-.L121,.L203-.L121
+	.half	1
+	.byte	111
+	.word	0,0
+.L147:
+	.word	-1,.L121,.L183-.L121,.L58-.L121
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L59-.L121,.L184-.L121
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L159:
+	.word	0,0
+.L160:
+	.word	-1,.L121,.L190-.L121,.L77-.L121
+	.half	1
+	.byte	82
+	.word	0,0
+.L154:
+	.word	-1,.L121,.L185-.L121,.L61-.L121
+	.half	1
+	.byte	82
+	.word	0,0
+.L155:
+	.word	-1,.L121,.L198-.L121,.L106-.L121
+	.half	1
+	.byte	82
+	.word	0,0
+.L162:
+	.word	-1,.L121,.L173-.L121,.L140-.L121
+	.half	1
+	.byte	90
+	.word	.L204-.L121,.L140-.L121
+	.half	1
+	.byte	82
+	.word	0,0
+.L150:
+	.word	-1,.L121,.L182-.L121,.L50-.L121
+	.half	1
+	.byte	91
+	.word	0,0
+.L161:
+	.word	-1,.L121,.L171-.L121,.L140-.L121
+	.half	1
+	.byte	88
+	.word	0,0
+.L151:
+	.word	-1,.L121,.L169-.L121,.L170-.L121
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L6-.L121,.L2-.L121
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L153:
+	.word	-1,.L121,0,.L140-.L121
+	.half	2
+	.byte	145,104
+	.word	0,0
+.L143:
+	.word	-1,.L121,0,.L166-.L121
+	.half	1
+	.byte	100
+	.word	.L167-.L121,.L140-.L121
+	.half	1
+	.byte	108
+	.word	.L6-.L121,.L2-.L121
+	.half	1
+	.byte	100
+	.word	0,0
+.L158:
+	.word	-1,.L121,0,.L140-.L121
+	.half	2
+	.byte	145,106
+	.word	0,0
+.L157:
+	.word	-1,.L121,.L177-.L121,.L24-.L121
+	.half	1
+	.byte	82
+	.word	0,0
+.L156:
+	.word	-1,.L121,.L165-.L121,.L6-.L121
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L511:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Dsp_ReportDataRecordByDTCNumber')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L511,.L121,.L140-.L121
+	.byte	4
+	.word	(.L163-.L121)/2
+	.byte	19,24,22,26,3,19,138,24,4
+	.word	(.L140-.L163)/2
+	.byte	19,0,8,26,0,0
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   615  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   616  #define DCM_STOP_SEC_CODE /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   617  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   618  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   619  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepDataRecordByDTC.c	   620  
+
+	; Module end

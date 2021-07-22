@@ -1,0 +1,2665 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc16856a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Rba_FeeFs1\\rba_FeeFs1_HlReadBlock.src BSW\\src\\BSW\\Gen\\Rba_FeeFs1\\src\\rba_FeeFs1_HlReadBlock.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Rba_FeeFs1\\src\\rba_FeeFs1_HlReadBlock.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.rba_FeeFs1_HlReadBlock.Fee_HLReadBlock',code,cluster('Fee_HLReadBlock')
+	.sect	'.text.rba_FeeFs1_HlReadBlock.Fee_HLReadBlock'
+	.align	2
+	
+	.global	Fee_HLReadBlock
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	     1  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	     2  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	     3  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	     4  /**
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	     5   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	     6   * \moduledescription
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	     7   *           AUTOSAR FEE
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	     8   *           According to Document Version 3.0.0, Part of Release 4.0, Revision 2
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	     9   * \scope    INTERN
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    10   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    11   */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    12  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    13  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    14  /*
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    15   *********************************************************************
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    16   * Includes
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    17   *********************************************************************
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    18   */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    19  #include "Fee.h"
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    20  #include "rba_FeeFs1_Prv.h"
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    21  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    22  #if(defined(FEE_PRV_CFG_SELECTED_FS) && (1 == FEE_PRV_CFG_SELECTED_FS))
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    23  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    24  #if (FEE_PRESENT == 1)
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    25  /**
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    26   *********************************************************************
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    27   * Fee_HLReadBlock(): Read back block data
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    28   *
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    29   * This function copies the block data of a request block index
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    30   * to a user buffer.
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    31   *
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    32   * \param    none
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    33   *
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    34   * \return   Function result
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    35   * \retval   FEE_ORDER_PENDING_E:       Order is still pending
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    36   * \retval   FEE_BLOCK_INVALIDATED_E:   The requested block is invalidated
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    37   *                                      (data irrelevant)
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    38   * \retval   FEE_ERROR_E:               No valid data available
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    39   * \retval   FEE_ABORTED_E:             Order was aborted due to a wrong
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    40   *                                      FLS compare function call or an
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    41   *                                      internal error occured
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    42   * \retval   FEE_FINISHED_E:            The block was copied successfully
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    43   * \seealso
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    44   * \usedresources
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    45   *********************************************************************
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    46   */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    47  #define FEE_START_SEC_CODE
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    48  #include "Fee_MemMap.h"
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    49  FUNC(Fee_stRetVal_ten, FEE_CODE) Fee_HLReadBlock(void)
+; Function Fee_HLReadBlock
+.L49:
+Fee_HLReadBlock:	.type	func
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    50  {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    51      VAR(Fee_stRetVal_ten, AUTOMATIC) xRetVal = FEE_ORDER_PENDING_E;     /* Function return */
+	mov	d8,#0
+.L70:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    52      VAR(Fee_stRetVal_ten, AUTOMATIC) xtmpRetVal;                        /* Internal function return */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    53      static uint32 xAdrLastBlkHeader_u32 = FEE_MAXUINT32;                /* Block header end address used for the search */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    54      static boolean xSearchRetry_b = FALSE;                              /* First try indicator for finding a block */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    55  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    56      VAR(uint16,AUTOMATIC) Offset = 0;                   /* Offset for data tranfer from flash to the user buffer */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    57      VAR(uint16,AUTOMATIC) Length = 0;                   /* Length for data tranfer from flash to the user buffer */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    58      P2VAR(uint8,AUTOMATIC, FEE_APPL_DATA) DataPtr;      /* Data pointer for the transfer from flash to the user buffer */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    59  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    60  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    61      /* Loop over the read state machine */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    62      switch(Fee_RdWrOrder_st.Fee_HLRdBlock)
+	movh.a	a15,#@his(Fee_RdWrOrder_st)
+	lea	a15,[a15]@los(Fee_RdWrOrder_st)
+.L88:
+	lea	a12,[a15]64
+	ld.w	d0,[a12]
+.L89:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    63      {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    64          case FEE_HL_RDWR_BLK_INIT_E:
+	mov	d15,#0
+	jeq	d15,d0,.L2
+.L90:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    65          {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    66              /* Extract the required information from the configuration table */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    67              Fee_GlobInfoLastRdHeader_st.FeeIndex_u16  =
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    68                      Fee_BlockProperties_st[Fee_OrderFifo_st[Fee_idxActQueue_u8].BlockPropIdx_u16].BlockPersistentId_u16;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    69              /* This length is set below and taken out of the flash (header information) */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    70              Fee_GlobInfoLastRdHeader_st.BlkLength_u16 =
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    71                      Fee_BlockProperties_st[Fee_OrderFifo_st[Fee_idxActQueue_u8].BlockPropIdx_u16].Length_u16;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    72              Fee_GlobInfoLastRdHeader_st.BlkStatus_u8  =
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    73                      (uint8)(Fee_BlockProperties_st[Fee_OrderFifo_st[Fee_idxActQueue_u8].BlockPropIdx_u16].Flags_u16 & 0xFFu);
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    74  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    75              Fee_GlobInfoLastRdHeader_st.AdrBlkHeader_u32   = FEE_NULL;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    76              Fee_GlobInfoLastRdHeader_st.BlkCrc32_u32       = 0;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    77              Fee_GlobInfoLastRdHeader_st.HdrCrc16_u16       = 0;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    78  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    79              /* Set next state */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    80              Fee_RdWrOrder_st.Fee_HLRdBlock = FEE_HL_SEARCH_BLK_HDR_E;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    81          }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    82          /* No break to save time */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    83  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    84          /* MR12 RULE 16.3 VIOLATION: Time critical position */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    85          case FEE_HL_SEARCH_BLK_HDR_E:
+	mov	d1,#1
+	jeq	d1,d0,.L3
+.L91:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    86          {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    87              /* Search for the latest valid block header with the given FeeIdx.
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    88               * The start address for the search can be set with the variable xAdrLastBlkHeader_u32. */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    89              xtmpRetVal = Fee_LLSearchSpecifiedBlkHeader(Fee_OrderFifo_st[Fee_idxActQueue_u8].FeeIdx_u16,  /* FeeIdx */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    90                                                          &xAdrLastBlkHeader_u32,                 /* End address for the search */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    91                                                          &Fee_GlobInfoLastRdHeader_st,              /* Result structure */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    92                                                          xSearchRetry_b);                        /* Indicate first try */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    93  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    94              /* Evaluate the search result */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    95              switch(xtmpRetVal)
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    96              {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    97                  /* Order not finished yet */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    98                  case FEE_ORDER_PENDING_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	    99                  {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   100                      /* Just wait */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   101                      ;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   102                  }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   103                  break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   104  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   105                  /* A valid blockheader was found */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   106                  case FEE_ORDER_FINISHED_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   107                  {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   108                      /* Calculate block checksum in flash to check if the block is valid */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   109                      Fee_RdWrOrder_st.Fee_HLRdBlock = FEE_HL_CHECK_BLK_CS_E;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   110  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   111                      /* Store the header address. If the block checksum is wrong, searching of an old copy will be
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   112                       * done until this address if the last valid header block is reached! */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   113                      xAdrLastBlkHeader_u32 = Fee_GlobInfoLastRdHeader_st.AdrBlkHeader_u32;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   114                  }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   115                  break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   116  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   117                  /* No valid header page was found within the complete flash (all sectors have been checked) */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   118                  case FEE_ERROR_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   119                  {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   120                      /* The cache was already invalidated inside the function Fee_LLSearchSpecifiedBlkHeader */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   121  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   122                      /* Return error */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   123                      xRetVal = FEE_ERROR_E;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   124                  }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   125                  break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   126  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   127                  /* The cache is corrupt */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   128                  case FEE_ABORTED_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   129                      /* The wrong index was found using the cache. The respective entry was already
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   130                       * marked for a manual search during the sector reorganization.
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   131                       * --> "Manual search" will start automatically in order to find other copies */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   132  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   133                      /* Indicate retry */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   134                      xSearchRetry_b = TRUE;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   135                  break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   136  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   137                  /* These cases should never be reached (cannot be returned by Fee_LLSearchSpecifiedBlkHeader) */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   138                  case FEE_BLOCK_INVALIDATED_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   139                  case FEE_NUM_RET_VAL_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   140                  case FEE_ERASE_SECTOR_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   141                  case FEE_SECTORCHANGE_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   142                  case FEE_SECTORFULL_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   143                  default:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   144                  {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   145                      /* Return an error */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   146                      xRetVal = FEE_ABORTED_E;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   147                  }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   148                  break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   149              }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   150          }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   151          break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   152  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   153          /* A valid header was found, evaluate the block content */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   154          case FEE_HL_CHECK_BLK_CS_E:
+	mov	d1,#5
+	jeq	d1,d0,.L4
+.L92:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   155          {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   156              /* Calculate the checksum */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   157              xtmpRetVal = Fee_LLCalcBlkCrcInFlash(&Fee_GlobInfoLastRdHeader_st);
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   158  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   159              /* Evaluate the result */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   160              switch (xtmpRetVal)
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   161              {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   162                  /* Order is still pending */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   163                  case FEE_ORDER_PENDING_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   164                  {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   165                      /* Just wait */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   166                  }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   167                  break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   168  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   169                  /* Order is finished with success (block CRC is correct) */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   170                  case FEE_ORDER_FINISHED_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   171                  {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   172                      /* Data was read successfully from the flash.
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   173                       * The cache was updated inside the function */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   174  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   175                      /* Check whether the block is invalidated in the flash */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   176                      if((Fee_GlobInfoLastRdHeader_st.BlkStatus_u8 & (uint8)FEE_FLAG_INVALID_MSK) > 0)
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   177                      {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   178                          /* Leave this function (block CRC is irrelevant) */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   179                          xRetVal = FEE_BLOCK_INVALIDATED_E;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   180                      }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   181                      else
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   182                      {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   183                          /* Copy the data to the user buffer */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   184                          Fee_RdWrOrder_st.Fee_HLRdBlock = FEE_HL_RD_DATA_FROM_BLK_E;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   185                      }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   186                  }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   187                  break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   188  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   189                  /* The checksum is invalid (block CRC is incorrect) or a read error occured */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   190                  case FEE_ERROR_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   191                  {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   192                      /* If this is a forced read order, copy the data even if block CRC is not valid
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   193                       * or the data was not readable */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   194                      if (Fee_OrderFifo_st[Fee_idxActQueue_u8].Mode_en == FEE_FORCED_READ_ORDER)
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   195                      {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   196                          /* Copy the data to the user buffer */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   197                          Fee_RdWrOrder_st.Fee_HLRdBlock = FEE_HL_RD_DATA_FROM_BLK_E;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   198                      }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   199                      else
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   200                      {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   201                          /* Search for an older copy (last header address was already set in the last state) */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   202                          Fee_RdWrOrder_st.Fee_HLRdBlock = FEE_HL_SEARCH_BLK_HDR_E;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   203  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   204                          /* Workaround Overstamp invalid header to reduce init time */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   205                          #if (defined(RBA_FLSIFX_FLASH) || defined(RBA_FLSJDP_FLASH))
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   206                          if(E_NOT_OK != Fls_Write(Fee_GlobInfoLastRdHeader_st.AdrBlkHeader_u32, Fee_hdrBuffer_au8, FEE_PAGE_LEN))
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   207                          {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   208                              Fee_RdWrOrder_st.Fee_HLRdBlock = FEE_HL_RD_WAIT_FOR_FLS_E;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   209                          }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   210                          else
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   211                          {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   212                          }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   213                          #endif
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   214                          /* END Workaround Overstamp invalid header to reduce init time */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   215  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   216                          /* A reset of the cache in order to be safe against
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   217                           * any kinds of interruptions for the following search
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   218                           * (e.g. Fee_Cancel) was done inside the function already */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   219  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   220                          /* Indicate a retry */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   221                          xSearchRetry_b = TRUE;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   222                      }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   223                  }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   224                  break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   225  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   226                  /* These states should never be reached (cannot be returned by Fee_LLCalcBlkCrcInFlash) */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   227                  case FEE_BLOCK_INVALIDATED_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   228                  case FEE_NUM_RET_VAL_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   229                  case FEE_ERASE_SECTOR_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   230                  case FEE_SECTORCHANGE_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   231                  case FEE_SECTORFULL_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   232                  case FEE_ABORTED_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   233                  default:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   234                  {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   235                      /* Return an error */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   236                      xRetVal = FEE_ABORTED_E;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   237                  }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   238                  break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   239              }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   240          }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   241          break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   242  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   243          /* Workaround Overstamp invalid header to reduce init time */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   244          #if (defined(RBA_FLSIFX_FLASH) || defined(RBA_FLSJDP_FLASH))
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   245  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   246          /* Wait for the flash to finish the overwrite of an invalid header */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   247          case FEE_HL_RD_WAIT_FOR_FLS_E:
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   248          {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   249              if(Fls_GetJobResult() != MEMIF_JOB_PENDING)
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   250              {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   251                  Fee_RdWrOrder_st.Fee_HLRdBlock = FEE_HL_SEARCH_BLK_HDR_E;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   252              }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   253          }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   254          break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   255  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   256          #endif
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   257          /* END Workaround Overstamp invalid header to reduce init time */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   258  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   259          /* Copy the data to the user buffer */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   260          case FEE_HL_RD_DATA_FROM_BLK_E:
+	mov	d15,#6
+	jeq	d15,d0,.L5
+.L93:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   261          {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   262              /* Copy user pointer and block info to Fee internal variables
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   263               * Hint: the data was first read back during the CRC check internally.
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   264               *       The user buffers should only be filled in case the data is
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   265               *       valid (excluding the forced read). */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   266              DataPtr = Fee_OrderFifo_st[Fee_idxActQueue_u8].DataBufferPtr_pu8;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   267              Offset  = Fee_OrderFifo_st[Fee_idxActQueue_u8].Offset_u16;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   268  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   269              /* Copy the original length */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   270              Length = Fee_OrderFifo_st[Fee_idxActQueue_u8].Length_u16;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   271  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   272              /* The cache was set already after verifying the block CRC */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   273              /* The order is finished --> no temporary return value is necessary */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   274              xRetVal = Fee_LLCopyData2Buffer(&Fee_GlobInfoLastRdHeader_st, DataPtr, Offset, Length);
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   275          }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   276          break;
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   277  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   278          /* These states cannot be reached */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   279          case FEE_HL_COMP_BLK_E:
+	mov	d15,#7
+	jeq	d15,d0,.L6
+.L94:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   280          case FEE_HL_WR_BLK_E:
+	mov	d15,#8
+	jeq	d15,d0,.L7
+	j	.L8
+.L2:
+	movh.a	a15,#@his(Fee_idxActQueue_u8)
+	lea	a15,[a15]@los(Fee_idxActQueue_u8)
+	ld.bu	d0,[a15]
+.L95:
+	mul	d15,d0,#24
+.L96:
+	movh.a	a15,#@his(Fee_OrderFifo_st)
+	lea	a15,[a15]@los(Fee_OrderFifo_st)
+.L97:
+	addsc.a	a15,a15,d15,#0
+.L98:
+	ld.hu	d0,[a15]6
+	sha	d0,#4
+.L99:
+	movh.a	a15,#@his(Fee_BlockProperties_st)
+	lea	a15,[a15]@los(Fee_BlockProperties_st)
+.L100:
+	addsc.a	a2,a15,d0,#0
+.L101:
+	movh.a	a15,#@his(Fee_GlobInfoLastRdHeader_st)
+	lea	a15,[a15]@los(Fee_GlobInfoLastRdHeader_st)
+.L102:
+	ld.hu	d15,[a2]0
+.L103:
+	st.h	[a15]12,d15
+.L104:
+	ld.hu	d15,[a2]4
+.L105:
+	st.h	[a15]10,d15
+.L106:
+	ld.hu	d15,[a2]2
+.L107:
+	st.b	[a15]14,d15
+.L108:
+	mov	d15,#0
+.L109:
+	st.w	[a15],d15
+.L110:
+	mov	d15,#0
+.L111:
+	st.w	[a15]4,d15
+.L112:
+	mov	d15,#0
+.L113:
+	st.h	[a15]8,d15
+.L114:
+	mov	d15,#1
+.L115:
+	st.w	[a12],d15
+.L3:
+	movh.a	a15,#@his(Fee_idxActQueue_u8)
+	lea	a15,[a15]@los(Fee_idxActQueue_u8)
+	ld.bu	d15,[a15]
+.L116:
+	mul	d15,d15,#24
+.L117:
+	movh.a	a15,#@his(Fee_OrderFifo_st)
+	lea	a15,[a15]@los(Fee_OrderFifo_st)
+.L118:
+	addsc.a	a2,a15,d15,#0
+.L119:
+	movh.a	a14,#@his(Fee_GlobInfoLastRdHeader_st)
+	lea	a14,[a14]@los(Fee_GlobInfoLastRdHeader_st)
+.L120:
+	movh.a	a13,#@his(_999002_xSearchRetry_b)
+	lea	a13,[a13]@los(_999002_xSearchRetry_b)
+.L121:
+	movh.a	a15,#@his(_999001_xAdrLastBlkHeader_u32)
+	lea	a15,[a15]@los(_999001_xAdrLastBlkHeader_u32)
+.L122:
+	ld.hu	d4,[a2]4
+.L123:
+	ld.bu	d5,[a13]
+	mov.aa	a4,a15
+	mov.aa	a5,a14
+	call	Fee_LLSearchSpecifiedBlkHeader
+.L72:
+	mov	d15,#0
+	jeq	d15,d2,.L9
+.L124:
+	mov	d15,#1
+	jeq	d15,d2,.L10
+.L125:
+	mov	d15,#2
+	jeq	d15,d2,.L11
+.L126:
+	mov	d15,#3
+	jeq	d15,d2,.L12
+.L127:
+	mov	d15,#4
+	jeq	d15,d2,.L13
+.L128:
+	mov	d15,#5
+	jeq	d15,d2,.L14
+.L129:
+	mov	d15,#6
+	jeq	d15,d2,.L15
+.L130:
+	mov	d15,#7
+	jeq	d15,d2,.L16
+.L131:
+	mov	d15,#9
+	jeq	d15,d2,.L17
+	j	.L18
+.L9:
+	j	.L19
+.L10:
+	mov	d15,#5
+.L132:
+	st.w	[a12],d15
+.L133:
+	ld.w	d15,[a14]
+.L134:
+	st.w	[a15],d15
+.L135:
+	j	.L20
+.L12:
+	mov	d8,#3
+.L136:
+	j	.L21
+.L15:
+	mov	d15,#1
+.L137:
+	st.b	[a13],d15
+.L138:
+	j	.L22
+.L11:
+.L17:
+.L16:
+.L13:
+.L14:
+.L18:
+	mov	d8,#6
+.L139:
+	j	.L23
+.L23:
+.L22:
+.L21:
+.L20:
+.L19:
+	j	.L24
+.L4:
+	movh.a	a15,#@his(Fee_GlobInfoLastRdHeader_st)
+	lea	a15,[a15]@los(Fee_GlobInfoLastRdHeader_st)
+	mov.aa	a4,a15
+	call	Fee_LLCalcBlkCrcInFlash
+.L73:
+	mov	d15,#0
+	jeq	d15,d2,.L25
+.L140:
+	mov	d15,#1
+	jeq	d15,d2,.L26
+.L141:
+	mov	d15,#2
+	jeq	d15,d2,.L27
+.L142:
+	mov	d15,#3
+	jeq	d15,d2,.L28
+.L143:
+	mov	d15,#4
+	jeq	d15,d2,.L29
+.L144:
+	mov	d15,#5
+	jeq	d15,d2,.L30
+.L145:
+	mov	d15,#6
+	jeq	d15,d2,.L31
+.L146:
+	mov	d15,#7
+	jeq	d15,d2,.L32
+.L147:
+	mov	d15,#9
+	jeq	d15,d2,.L33
+	j	.L34
+.L25:
+	j	.L35
+.L26:
+	ld.bu	d15,[a15]14
+.L148:
+	jz.t	d15:3,.L36
+.L149:
+	mov	d8,#2
+.L150:
+	j	.L37
+.L36:
+	mov	d15,#6
+.L151:
+	st.w	[a12],d15
+.L37:
+	j	.L38
+.L28:
+	movh.a	a15,#@his(Fee_idxActQueue_u8)
+	lea	a15,[a15]@los(Fee_idxActQueue_u8)
+	ld.bu	d15,[a15]
+.L152:
+	mul	d15,d15,#24
+.L153:
+	movh.a	a15,#@his(Fee_OrderFifo_st)
+	lea	a15,[a15]@los(Fee_OrderFifo_st)
+.L154:
+	addsc.a	a15,a15,d15,#0
+.L155:
+	ld.w	d15,[a15]12
+.L156:
+	jne	d15,#5,.L39
+.L157:
+	mov	d15,#6
+.L158:
+	st.w	[a12],d15
+.L159:
+	j	.L40
+.L39:
+	mov	d15,#1
+.L160:
+	st.w	[a12],d15
+.L161:
+	movh.a	a15,#@his(_999002_xSearchRetry_b)
+	lea	a15,[a15]@los(_999002_xSearchRetry_b)
+.L162:
+	mov	d15,#1
+.L163:
+	st.b	[a15],d15
+.L40:
+	j	.L41
+.L27:
+.L33:
+.L32:
+.L29:
+.L30:
+.L31:
+.L34:
+	mov	d8,#6
+.L164:
+	j	.L42
+.L42:
+.L41:
+.L38:
+.L35:
+	j	.L43
+.L5:
+	movh.a	a15,#@his(Fee_idxActQueue_u8)
+	lea	a15,[a15]@los(Fee_idxActQueue_u8)
+	ld.bu	d15,[a15]
+.L165:
+	mul	d15,d15,#24
+.L166:
+	movh.a	a15,#@his(Fee_OrderFifo_st)
+	lea	a15,[a15]@los(Fee_OrderFifo_st)
+.L167:
+	addsc.a	a15,a15,d15,#0
+.L168:
+	ld.a	a5,[a15]
+.L74:
+	ld.hu	d4,[a15]8
+.L75:
+	ld.hu	d5,[a15]10
+.L76:
+	movh.a	a4,#@his(Fee_GlobInfoLastRdHeader_st)
+	lea	a4,[a4]@los(Fee_GlobInfoLastRdHeader_st)
+.L169:
+	call	Fee_LLCopyData2Buffer
+.L71:
+	mov	d8,d2
+.L77:
+	j	.L44
+.L6:
+.L7:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   281          default:
+.L8:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   282          {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   283              /* Abort this function with an error return */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   284              xRetVal = FEE_ABORTED_E;
+	mov	d8,#6
+.L170:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   285          }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   286          break;
+	j	.L45
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   287      }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   288  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   289      /* Evaluate the result of the function returns */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   290      if (xRetVal != FEE_ORDER_PENDING_E)
+.L45:
+.L44:
+.L43:
+.L24:
+	jeq	d8,#0,.L46
+.L171:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   291      {
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   292          /* Reset state machine */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   293          Fee_RdWrOrder_st.Fee_HLRdBlock = FEE_HL_RDWR_BLK_INIT_E;
+	mov	d15,#0
+.L172:
+	st.w	[a12],d15
+.L173:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   294  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   295          /* Reset the end address of the search */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   296          xAdrLastBlkHeader_u32 = FEE_MAXUINT32;
+	movh.a	a15,#@his(_999001_xAdrLastBlkHeader_u32)
+	lea	a15,[a15]@los(_999001_xAdrLastBlkHeader_u32)
+.L174:
+	mov	d15,#-1
+.L175:
+	st.w	[a15],d15
+.L176:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   297  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   298          /* Reset start search indicator */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   299          xSearchRetry_b = FALSE;
+	movh.a	a15,#@his(_999002_xSearchRetry_b)
+	lea	a15,[a15]@los(_999002_xSearchRetry_b)
+.L177:
+	mov	d15,#0
+.L178:
+	st.b	[a15],d15
+.L46:
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   300      }
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   301  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   302      return (xRetVal);
+	mov	d2,d8
+.L78:
+	j	.L47
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   303  }
+.L47:
+	ret
+.L60:
+	
+__Fee_HLReadBlock_function_end:
+	.size	Fee_HLReadBlock,__Fee_HLReadBlock_function_end-Fee_HLReadBlock
+.L58:
+	; End of function
+	
+	.sdecl	'.data.rba_FeeFs1_HlReadBlock._999001_xAdrLastBlkHeader_u32',data,cluster('_999001_xAdrLastBlkHeader_u32')
+	.sect	'.data.rba_FeeFs1_HlReadBlock._999001_xAdrLastBlkHeader_u32'
+	.align	4
+_999001_xAdrLastBlkHeader_u32:	.type	object
+	.size	_999001_xAdrLastBlkHeader_u32,4
+	.word	-1
+	.sdecl	'.data.rba_FeeFs1_HlReadBlock._999002_xSearchRetry_b',data,cluster('_999002_xSearchRetry_b')
+	.sect	'.data.rba_FeeFs1_HlReadBlock._999002_xSearchRetry_b'
+_999002_xSearchRetry_b:	.type	object
+	.size	_999002_xSearchRetry_b,1
+	.space	1
+	.calls	'Fee_HLReadBlock','Fee_LLSearchSpecifiedBlkHeader'
+	.calls	'Fee_HLReadBlock','Fee_LLCalcBlkCrcInFlash'
+	.calls	'Fee_HLReadBlock','Fee_LLCopyData2Buffer'
+	.extern	Fee_RdWrOrder_st
+	.extern	Fee_OrderFifo_st
+	.extern	Fee_GlobInfoLastRdHeader_st
+	.extern	Fee_idxActQueue_u8
+	.extern	Fee_BlockProperties_st
+	.extern	Fee_LLSearchSpecifiedBlkHeader
+	.extern	Fee_LLCalcBlkCrcInFlash
+	.extern	Fee_LLCopyData2Buffer
+	.calls	'Fee_HLReadBlock','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L51:
+	.word	16349
+	.half	3
+	.word	.L52
+	.byte	4
+.L50:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Rba_FeeFs1\\src\\rba_FeeFs1_HlReadBlock.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L53
+.L63:
+	.byte	2
+	.byte	'unsigned int',0,4,7,3
+	.byte	'Fee_SrvRoundUp',0,3,1,140,11,21
+	.word	155
+	.byte	1,1,4
+	.byte	'value_u32',0,1,140,11,43
+	.word	155
+	.byte	4
+	.byte	'stepsize_u32',0,1,140,11,62
+	.word	155
+	.byte	5,0
+.L59:
+	.byte	6,1,137,2,9,4,7
+	.byte	'FEE_ORDER_PENDING_E',0,0,7
+	.byte	'FEE_ORDER_FINISHED_E',0,1,7
+	.byte	'FEE_BLOCK_INVALIDATED_E',0,2,7
+	.byte	'FEE_ERROR_E',0,3,7
+	.byte	'FEE_SECTORCHANGE_E',0,4,7
+	.byte	'FEE_SECTORFULL_E',0,5,7
+	.byte	'FEE_ABORTED_E',0,6,7
+	.byte	'FEE_ERASE_SECTOR_E',0,7,7
+	.byte	'FEE_SEARCH_ABORTED_E',0,8,7
+	.byte	'FEE_NUM_RET_VAL_E',0,9,0
+.L65:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,8
+	.word	155
+.L64:
+	.byte	2
+	.byte	'unsigned char',0,1,8,9,1,227,5,9,16,10
+	.byte	'AdrBlkHeader_u32',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'BlkCrc32_u32',0
+	.word	155
+	.byte	4,2,35,4,10
+	.byte	'HdrCrc16_u16',0
+	.word	453
+	.byte	2,2,35,8,10
+	.byte	'BlkLength_u16',0
+	.word	453
+	.byte	2,2,35,10,10
+	.byte	'FeeIndex_u16',0
+	.word	453
+	.byte	2,2,35,12,10
+	.byte	'BlkStatus_u8',0
+	.word	480
+	.byte	1,2,35,14,0,8
+	.word	497
+	.byte	11
+	.byte	'Fee_LLSearchSpecifiedBlkHeader',0,1,188,8,41
+	.word	241
+	.byte	1,1,1,1,4
+	.byte	'FeeIdx_u16',0,1,188,8,95
+	.word	453
+	.byte	4
+	.byte	'LastHdrAddr_ptr',0,1,189,8,112
+	.word	475
+	.byte	4
+	.byte	'GlobBlkHdr_ptr',0,1,190,8,134,1
+	.word	641
+	.byte	4
+	.byte	'SearchRetry_b',0,1,191,8,96
+	.word	480
+	.byte	0,12
+	.word	497
+	.byte	8
+	.word	784
+	.byte	11
+	.byte	'Fee_LLCalcBlkCrcInFlash',0,1,212,8,41
+	.word	241
+	.byte	1,1,1,1,4
+	.byte	'HeaderInfo_pcst',0,1,212,8,129,1
+	.word	789
+	.byte	0
+.L68:
+	.byte	8
+	.word	480
+	.byte	11
+	.byte	'Fee_LLCopyData2Buffer',0,1,253,8,41
+	.word	241
+	.byte	1,1,1,1,4
+	.byte	'Fee_GlobInfoLastRdHeader_pcst',0,1,253,8,127
+	.word	789
+	.byte	4
+	.byte	'DataPtr_pu8',0,1,254,8,106
+	.word	858
+	.byte	4
+	.byte	'DataOffset_u16',0,1,255,8,88
+	.word	453
+	.byte	4
+	.byte	'DataLength_u16',0,1,128,9,88
+	.word	453
+	.byte	0,13
+	.word	171
+	.byte	14
+	.word	198
+	.byte	14
+	.word	217
+	.byte	5,0,15,1,8
+	.word	1024
+	.byte	16
+	.byte	'__codeptr',0,2,1,1
+	.word	1026
+	.byte	2
+	.byte	'char',0,1,6,16
+	.byte	'sint8',0,3,76,25
+	.word	1049
+	.byte	16
+	.byte	'uint8',0,3,81,25
+	.word	480
+	.byte	16
+	.byte	'uint16',0,3,91,25
+	.word	453
+	.byte	16
+	.byte	'uint32',0,3,106,24
+	.word	155
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,16
+	.byte	'uint64',0,3,111,30
+	.word	1115
+	.byte	16
+	.byte	'boolean',0,3,127,25
+	.word	480
+	.byte	16
+	.byte	'StatusType',0,4,191,1,27
+	.word	480
+	.byte	16
+	.byte	'Std_ReturnType',0,4,199,1,15
+	.word	480
+	.byte	9,4,206,1,9,8,10
+	.byte	'vendorID',0
+	.word	453
+	.byte	2,2,35,0,10
+	.byte	'moduleID',0
+	.word	453
+	.byte	2,2,35,2,10
+	.byte	'sw_major_version',0
+	.word	480
+	.byte	1,2,35,4,10
+	.byte	'sw_minor_version',0
+	.word	480
+	.byte	1,2,35,5,10
+	.byte	'sw_patch_version',0
+	.word	480
+	.byte	1,2,35,6,0,16
+	.byte	'Std_VersionInfoType',0,4,213,1,3
+	.word	1216
+	.byte	9,5,93,9,8,10
+	.byte	'Class',0
+	.word	480
+	.byte	1,2,35,0,10
+	.byte	'TIN',0
+	.word	480
+	.byte	1,2,35,1,10
+	.byte	'ReturnAddress',0
+	.word	155
+	.byte	4,2,35,4,0,16
+	.byte	'OsTrapInfoType',0,5,97,3
+	.word	1366
+	.byte	17,68
+	.word	155
+	.byte	18,16,0,9,5,154,1,9,68,10
+	.byte	'store',0
+	.word	1446
+	.byte	68,2,35,0,0,17,68
+	.word	1455
+	.byte	18,0,0,16
+	.byte	'Os_JumpBufType',0,5,156,1,3
+	.word	1477
+	.byte	16
+	.byte	'Os_StackTraceType',0,5,174,1,18
+	.word	155
+	.byte	9,5,175,1,9,8,10
+	.byte	'sp',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'ctx',0
+	.word	155
+	.byte	4,2,35,4,0,16
+	.byte	'Os_StackValueType',0,5,175,1,63
+	.word	1537
+	.byte	16
+	.byte	'Os_StackSizeType',0,5,176,1,27
+	.word	1537
+	.byte	19,1,1,8
+	.word	1622
+	.byte	16
+	.byte	'Os_VoidVoidFunctionType',0,5,179,1,16
+	.word	1625
+	.byte	16
+	.byte	'ApplicationType',0,5,193,1,23
+	.word	480
+	.byte	20
+	.byte	'Os_ApplicationConfigurationType_s',0,5,198,1,16,2,10
+	.byte	'app_id',0
+	.word	480
+	.byte	1,2,35,0,10
+	.byte	'access',0
+	.word	480
+	.byte	1,2,35,1,0,16
+	.byte	'Os_ApplicationConfigurationType',0,5,201,1,3
+	.word	1688
+	.byte	16
+	.byte	'Os_CoreStateType',0,5,203,1,16
+	.word	155
+	.byte	16
+	.byte	'AreaIdType',0,5,204,1,16
+	.word	453
+	.byte	16
+	.byte	'Os_PeripheralAddressType',0,5,212,1,22
+	.word	155
+	.byte	16
+	.byte	'TickType',0,5,221,1,22
+	.word	155
+	.byte	16
+	.byte	'Os_StopwatchTickType',0,5,225,1,22
+	.word	155
+	.byte	16
+	.byte	'Os_Lockable',0,5,234,1,18
+	.word	475
+	.byte	16
+	.byte	'CoreIdType',0,5,236,1,16
+	.word	453
+	.byte	16
+	.byte	'SpinlockIdType',0,5,237,1,16
+	.word	453
+	.byte	6,5,239,1,9,4,7
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,7
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,16
+	.byte	'TryToGetSpinlockType',0,5,239,1,74
+	.word	1995
+	.byte	6,5,174,2,9,4,7
+	.byte	'APPLICATION_ACCESSIBLE',0,0,7
+	.byte	'APPLICATION_RESTARTING',0,1,7
+	.byte	'APPLICATION_TERMINATED',0,2,0,16
+	.byte	'ApplicationStateType',0,5,174,2,92
+	.word	2088
+	.byte	21
+	.byte	'void',0,8
+	.word	2200
+	.byte	22,1,1,23
+	.word	480
+	.byte	23
+	.word	2206
+	.byte	0,8
+	.word	2211
+	.byte	16
+	.byte	'Os_FunctionEntryType',0,5,183,2,16
+	.word	2225
+	.byte	20
+	.byte	'Os_MeterInfoType_s',0,5,193,2,16,48,10
+	.byte	'elapsed',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'previous',0
+	.word	155
+	.byte	4,2,35,4,10
+	.byte	'max',0
+	.word	155
+	.byte	4,2,35,8,10
+	.byte	'cumulative',0
+	.word	155
+	.byte	4,2,35,12,10
+	.byte	'stackbase',0
+	.word	1537
+	.byte	8,2,35,16,10
+	.byte	'stackusage',0
+	.word	1537
+	.byte	8,2,35,24,10
+	.byte	'stackmax',0
+	.word	1537
+	.byte	8,2,35,32,10
+	.byte	'stackbudget',0
+	.word	1537
+	.byte	8,2,35,40,0,16
+	.byte	'Os_MeterInfoType',0,5,202,2,3
+	.word	2260
+	.byte	8
+	.word	2260
+	.byte	16
+	.byte	'Os_MeterInfoRefType',0,5,203,2,50
+	.word	2458
+	.byte	16
+	.byte	'EventMaskType',0,5,206,2,15
+	.word	480
+	.byte	16
+	.byte	'Os_imaskType',0,5,211,2,16
+	.word	155
+	.byte	20
+	.byte	'Os_ISRDynType_s',0,5,213,2,16,48,10
+	.byte	'meter',0
+	.word	2260
+	.byte	48,2,35,0,0,16
+	.byte	'Os_ISRDynType',0,5,215,2,3
+	.word	2537
+	.byte	8
+	.word	2537
+	.byte	12
+	.word	2598
+	.byte	20
+	.byte	'Os_ISRType_s',0,5,216,2,16,24,10
+	.byte	'entry_function',0
+	.word	1630
+	.byte	4,2,35,0,10
+	.byte	'dynamic',0
+	.word	2603
+	.byte	4,2,35,4,10
+	.byte	'imask',0
+	.word	155
+	.byte	4,2,35,8,10
+	.byte	'stackbudget',0
+	.word	1537
+	.byte	8,2,35,12,10
+	.byte	'access',0
+	.word	480
+	.byte	1,2,35,20,10
+	.byte	'application',0
+	.word	480
+	.byte	1,2,35,21,0,16
+	.byte	'Os_ISRType',0,5,223,2,3
+	.word	2608
+	.byte	8
+	.word	1622
+	.byte	12
+	.word	2608
+	.byte	8
+	.word	2767
+	.byte	16
+	.byte	'ISRType',0,5,224,2,46
+	.word	2772
+	.byte	16
+	.byte	'Os_bitmask',0,5,239,2,22
+	.word	155
+	.byte	16
+	.byte	'Os_pset0Type',0,5,240,2,20
+	.word	155
+	.byte	16
+	.byte	'Os_pset1Type',0,5,241,2,20
+	.word	155
+	.byte	16
+	.byte	'Os_pset2Type',0,5,242,2,20
+	.word	155
+	.byte	24,5,243,2,9,4,10
+	.byte	'p0',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'p1',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'p2',0
+	.word	155
+	.byte	4,2,35,0,0,16
+	.byte	'Os_psetType',0,5,247,2,3
+	.word	2880
+	.byte	24,5,249,2,9,4,10
+	.byte	't0',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	't1',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	't2',0
+	.word	155
+	.byte	4,2,35,0,0,16
+	.byte	'Os_tpmaskType',0,5,253,2,3
+	.word	2944
+	.byte	16
+	.byte	'Os_ActivationCountType',0,5,254,2,23
+	.word	480
+	.byte	20
+	.byte	'Os_TaskDynType_s',0,5,128,3,16,120,10
+	.byte	'terminate_jump_buf',0
+	.word	1486
+	.byte	68,2,35,0,10
+	.byte	'meter',0
+	.word	2260
+	.byte	48,2,35,68,10
+	.byte	'activation_count',0
+	.word	480
+	.byte	1,2,35,116,0,16
+	.byte	'Os_TaskDynType',0,5,132,3,3
+	.word	3042
+	.byte	17,68
+	.word	1455
+	.byte	18,0,0,8
+	.word	3042
+	.byte	12
+	.word	3168
+	.byte	20
+	.byte	'Os_TaskType_s',0,5,134,3,16,40,10
+	.byte	'dynamic',0
+	.word	3173
+	.byte	4,2,35,0,10
+	.byte	'entry_function',0
+	.word	1630
+	.byte	4,2,35,4,10
+	.byte	'pset',0
+	.word	2880
+	.byte	4,2,35,8,10
+	.byte	'base_tpmask',0
+	.word	2944
+	.byte	4,2,35,12,10
+	.byte	'tpmask',0
+	.word	2944
+	.byte	4,2,35,16,10
+	.byte	'core_id',0
+	.word	453
+	.byte	2,2,35,20,10
+	.byte	'index',0
+	.word	155
+	.byte	4,2,35,24,10
+	.byte	'stackbudget',0
+	.word	1537
+	.byte	8,2,35,28,10
+	.byte	'activation_count',0
+	.word	480
+	.byte	1,2,35,36,10
+	.byte	'access',0
+	.word	480
+	.byte	1,2,35,37,10
+	.byte	'application',0
+	.word	480
+	.byte	1,2,35,38,0,16
+	.byte	'Os_TaskType',0,5,146,3,3
+	.word	3178
+	.byte	12
+	.word	3178
+	.byte	8
+	.word	3428
+	.byte	16
+	.byte	'TaskType',0,5,147,3,47
+	.word	3433
+	.byte	25
+	.byte	'Os_TaskStateType',0,5,155,3,6,4,7
+	.byte	'SUSPENDED',0,0,7
+	.byte	'READY',0,1,7
+	.byte	'WAITING',0,2,7
+	.byte	'RUNNING',0,3,0,16
+	.byte	'TaskStateType',0,5,156,3,31
+	.word	3456
+	.byte	24,5,167,3,3,4,10
+	.byte	'tpmask',0
+	.word	2944
+	.byte	4,2,35,0,0,20
+	.byte	'Os_ResourceDynType_s',0,5,166,3,16,4,10
+	.byte	'saved_priority',0
+	.word	3543
+	.byte	4,2,35,0,0,16
+	.byte	'Os_ResourceDynType',0,5,170,3,3
+	.word	3566
+	.byte	8
+	.word	3566
+	.byte	12
+	.word	3646
+	.byte	20
+	.byte	'Os_ResourceType_s',0,5,171,3,16,12,10
+	.byte	'dynamic',0
+	.word	3651
+	.byte	4,2,35,0,10
+	.byte	'tpmask',0
+	.word	2944
+	.byte	4,2,35,4,10
+	.byte	'access',0
+	.word	480
+	.byte	1,2,35,8,0,16
+	.byte	'Os_ResourceType',0,5,175,3,3
+	.word	3656
+	.byte	9,5,181,3,9,12,10
+	.byte	'maxallowedvalue',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'ticksperbase',0
+	.word	155
+	.byte	4,2,35,4,10
+	.byte	'mincycle',0
+	.word	155
+	.byte	4,2,35,8,0,16
+	.byte	'AlarmBaseType',0,5,185,3,3
+	.word	3755
+	.byte	9,5,206,3,9,8,10
+	.byte	'Running',0
+	.word	480
+	.byte	1,2,35,0,10
+	.byte	'Pending',0
+	.word	480
+	.byte	1,2,35,1,10
+	.byte	'Delay',0
+	.word	155
+	.byte	4,2,35,4,0,16
+	.byte	'Os_CounterStatusType',0,5,210,3,3
+	.word	3850
+	.byte	26
+	.word	480
+	.byte	1,1,8
+	.word	3936
+	.byte	16
+	.byte	'Os_CounterIncrAdvType',0,5,217,3,22
+	.word	3943
+	.byte	20
+	.byte	's_swd',0,5,222,3,12,4,10
+	.byte	'count',0
+	.word	155
+	.byte	4,2,35,0,0,24,5,221,3,3,4,10
+	.byte	'sw',0
+	.word	3979
+	.byte	4,2,35,0,0,20
+	.byte	'Os_CounterDynType_s',0,5,220,3,16,4,10
+	.byte	'type_dependent',0
+	.word	4007
+	.byte	4,2,35,0,0,16
+	.byte	'Os_CounterDynType',0,5,226,3,3
+	.word	4026
+	.byte	8
+	.word	4026
+	.byte	12
+	.word	4104
+	.byte	20
+	.byte	'Os_CounterType_s',0,5,227,3,16,28,10
+	.byte	'dynamic',0
+	.word	4109
+	.byte	4,2,35,0,10
+	.byte	'advincr',0
+	.word	3948
+	.byte	4,2,35,4,10
+	.byte	'base',0
+	.word	3755
+	.byte	12,2,35,8,10
+	.byte	'core',0
+	.word	2206
+	.byte	4,2,35,20,10
+	.byte	'access',0
+	.word	480
+	.byte	1,2,35,24,10
+	.byte	'application',0
+	.word	480
+	.byte	1,2,35,25,0,16
+	.byte	'Os_CounterType',0,5,234,3,3
+	.word	4114
+	.byte	8
+	.word	3936
+	.byte	12
+	.word	4114
+	.byte	8
+	.word	4266
+	.byte	16
+	.byte	'CounterType',0,5,235,3,52
+	.word	4271
+	.byte	25
+	.byte	'Os_ScheduleTableStatusType',0,5,240,3,6,4,7
+	.byte	'SCHEDULETABLE_STOPPED',0,0,7
+	.byte	'SCHEDULETABLE_NEXT',0,1,7
+	.byte	'SCHEDULETABLE_WAITING',0,2,7
+	.byte	'SCHEDULETABLE_RUNNING',0,3,7
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,16
+	.byte	'ScheduleTableStatusType',0,5,241,3,41
+	.word	4297
+	.byte	12
+	.word	.L79-.L51
+	.byte	8
+	.word	4497
+	.byte	16
+	.byte	'ScheduleTableType',0,5,128,4,58
+	.word	4502
+	.byte	20
+	.byte	'Os_ScheduleTableDynType_s',0,5,130,4,16,16,10
+	.byte	'match',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'next',0
+	.word	4507
+	.byte	4,2,35,4,10
+	.byte	'state',0
+	.word	4297
+	.byte	4,2,35,8,10
+	.byte	'config',0
+	.word	453
+	.byte	2,2,35,12,0,8
+	.word	4534
+	.byte	12
+	.word	4627
+.L79:
+	.byte	20
+	.byte	'Os_ScheduleTableType_s',0,5,247,3,16,16,10
+	.byte	'dynamic',0
+	.word	4632
+	.byte	4,2,35,0,10
+	.byte	'counter',0
+	.word	4276
+	.byte	4,2,35,4,10
+	.byte	'repeat',0
+	.word	480
+	.byte	1,2,35,8,10
+	.byte	'config',0
+	.word	453
+	.byte	2,2,35,10,10
+	.byte	'initial',0
+	.word	480
+	.byte	1,2,35,12,10
+	.byte	'access',0
+	.word	480
+	.byte	1,2,35,13,10
+	.byte	'application',0
+	.word	480
+	.byte	1,2,35,14,0,16
+	.byte	'Os_ScheduleTableType',0,5,255,3,3
+	.word	4637
+	.byte	12
+	.word	4637
+	.byte	8
+	.word	4817
+	.byte	12
+	.word	4114
+	.byte	8
+	.word	4827
+	.byte	27
+	.word	1930
+	.byte	27
+	.word	2880
+	.byte	27
+	.word	2777
+	.byte	27
+	.word	3438
+	.byte	27
+	.word	2944
+	.byte	27
+	.word	480
+	.byte	27
+	.word	3438
+	.byte	20
+	.byte	'Os_ControlledCoreType_s',0,5,251,6,16,112,10
+	.byte	'TrapInfo',0
+	.word	1366
+	.byte	8,2,35,0,10
+	.byte	'lock_taskaccess',0
+	.word	4837
+	.byte	4,2,35,8,10
+	.byte	'ReadyTasks',0
+	.word	4842
+	.byte	4,2,35,12,10
+	.byte	'RunningISR',0
+	.word	4847
+	.byte	4,2,35,16,10
+	.byte	'RunningTask',0
+	.word	4852
+	.byte	4,2,35,20,10
+	.byte	'RunningTPMask',0
+	.word	4857
+	.byte	4,2,35,24,10
+	.byte	'CurrentMeteredObject',0
+	.word	2463
+	.byte	4,2,35,28,10
+	.byte	'IdleMeter',0
+	.word	2260
+	.byte	48,2,35,32,10
+	.byte	'AppAccess',0
+	.word	480
+	.byte	1,2,35,80,10
+	.byte	'AppOverride',0
+	.word	4862
+	.byte	1,2,35,81,10
+	.byte	'GetStackValueAdjust',0
+	.word	1537
+	.byte	8,2,35,84,10
+	.byte	'InErrorHook',0
+	.word	480
+	.byte	1,2,35,92,10
+	.byte	'ChainTaskRef',0
+	.word	4867
+	.byte	4,2,35,96,10
+	.byte	'GetStackUsageAdjust',0
+	.word	1537
+	.byte	8,2,35,100,10
+	.byte	'InProtectionHook',0
+	.word	480
+	.byte	1,2,35,108,10
+	.byte	'CoreIsActive',0
+	.word	480
+	.byte	1,2,35,109,10
+	.byte	'InShutdownHook',0
+	.word	480
+	.byte	1,2,35,110,0,16
+	.byte	'Os_ControlledCoreType',0,5,141,7,3
+	.word	4872
+	.byte	8
+	.word	155
+	.byte	12
+	.word	2608
+	.byte	8
+	.word	5328
+	.byte	12
+	.word	3178
+	.byte	8
+	.word	5338
+	.byte	8
+	.word	2260
+	.byte	20
+	.byte	'Os_AnyCoreType_s',0,5,151,7,16,96,10
+	.byte	'DisableAllImask',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'SuspendAllImask',0
+	.word	155
+	.byte	4,2,35,4,10
+	.byte	'SuspendOSImask',0
+	.word	155
+	.byte	4,2,35,8,10
+	.byte	'DisableAllCount',0
+	.word	155
+	.byte	4,2,35,12,10
+	.byte	'SuspendAllCount',0
+	.word	155
+	.byte	4,2,35,16,10
+	.byte	'SuspendOSCount',0
+	.word	155
+	.byte	4,2,35,20,10
+	.byte	'RestartJumpBuf',0
+	.word	1486
+	.byte	68,2,35,24,10
+	.byte	'Restartable',0
+	.word	480
+	.byte	1,2,35,92,0,16
+	.byte	'Os_AnyCoreType',0,5,160,7,3
+	.word	5353
+	.byte	16
+	.byte	'unsigned_int',0,6,116,22
+	.word	155
+	.byte	6,7,31,9,4,7
+	.byte	'MEMIF_JOB_OK',0,0,7
+	.byte	'MEMIF_JOB_FAILED',0,1,7
+	.byte	'MEMIF_JOB_PENDING',0,2,7
+	.byte	'MEMIF_JOB_CANCELED',0,3,7
+	.byte	'MEMIF_BLOCK_INCONSISTENT',0,4,7
+	.byte	'MEMIF_BLOCK_INVALID',0,5,0,16
+	.byte	'MemIf_JobResultType',0,7,39,2
+	.word	5615
+	.byte	6,7,41,9,4,7
+	.byte	'MEMIF_MODE_SLOW',0,0,7
+	.byte	'MEMIF_MODE_FAST',0,1,0,16
+	.byte	'MemIf_ModeType',0,7,45,2
+	.word	5773
+	.byte	16
+	.byte	'PduIdType',0,8,22,19
+	.word	453
+	.byte	16
+	.byte	'PduLengthType',0,8,26,19
+	.word	453
+	.byte	6,9,113,9,4,7
+	.byte	'TP_DATACONF',0,0,7
+	.byte	'TP_DATARETRY',0,1,7
+	.byte	'TP_CONFPENDING',0,2,0,16
+	.byte	'TpDataStateType',0,9,118,3
+	.word	5878
+	.byte	16
+	.byte	'Can_IdType',0,10,32,16
+	.word	155
+	.byte	16
+	.byte	'Can_HwHandleType',0,10,43,16
+	.word	453
+	.byte	16
+	.byte	'Can_TxObjPriorityClassType',0,11,219,3,16
+	.word	155
+	.byte	20
+	.byte	'Can_TxHwObjectConfigType',0,11,231,3,16,8,10
+	.byte	'MsgObjId',0
+	.word	480
+	.byte	1,2,35,0,10
+	.byte	'HwControllerId',0
+	.word	480
+	.byte	1,2,35,1,10
+	.byte	'TxObjPriorityClass',0
+	.word	155
+	.byte	4,2,35,4,0,16
+	.byte	'Can_TxHwObjectConfigType',0,11,252,3,3
+	.word	6034
+	.byte	20
+	.byte	'Can_RxHwObjectConfigType',0,11,129,4,16,12,10
+	.byte	'MaskRef',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'MsgId',0
+	.word	155
+	.byte	4,2,35,4,10
+	.byte	'MsgObjId',0
+	.word	480
+	.byte	1,2,35,8,10
+	.byte	'HwControllerId',0
+	.word	480
+	.byte	1,2,35,9,0,16
+	.byte	'Can_RxHwObjectConfigType',0,11,147,4,3
+	.word	6170
+	.byte	17,4
+	.word	480
+	.byte	18,3,0,20
+	.byte	'Can_ControllerMOMapConfigType',0,11,181,4,16,4,10
+	.byte	'ControllerMOMap',0
+	.word	6310
+	.byte	4,2,35,0,0,16
+	.byte	'Can_ControllerMOMapConfigType',0,11,184,4,3
+	.word	6319
+	.byte	20
+	.byte	'Can_NPCRValueType',0,11,188,4,16,2,10
+	.byte	'Can_NPCRValue',0
+	.word	453
+	.byte	2,2,35,0,0,16
+	.byte	'Can_NPCRValueType',0,11,191,4,3
+	.word	6420
+	.byte	20
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,11,194,4,16,8,10
+	.byte	'CanControllerBaudrate',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'CanControllerBaudrateCfg',0
+	.word	453
+	.byte	2,2,35,4,0,16
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,11,198,4,3
+	.word	6495
+	.byte	12
+	.word	6495
+	.byte	8
+	.word	6660
+	.byte	20
+	.byte	'Can_BaudrateConfigPtrType',0,11,201,4,16,4,10
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	6665
+	.byte	4,2,35,0,0,16
+	.byte	'Can_BaudrateConfigPtrType',0,11,204,4,3
+	.word	6670
+	.byte	20
+	.byte	'Can_EventHandlingType',0,11,226,4,16,4,10
+	.byte	'CanEventType',0
+	.word	6310
+	.byte	4,2,35,0,0,16
+	.byte	'Can_EventHandlingType',0,11,229,4,3
+	.word	6770
+	.byte	16
+	.byte	'Rte_TransformerErrorCode',0,12,130,1,15
+	.word	480
+	.byte	16
+	.byte	'Rte_TransformerClass',0,12,131,1,15
+	.word	480
+	.byte	9,12,168,1,9,12,10
+	.byte	'in',0
+	.word	2206
+	.byte	4,2,35,0,10
+	.byte	'out',0
+	.word	2206
+	.byte	4,2,35,4,10
+	.byte	'used',0
+	.word	453
+	.byte	2,2,35,8,10
+	.byte	'lost_data',0
+	.word	480
+	.byte	1,2,35,10,0,16
+	.byte	'Rte_QDynType',0,12,173,1,3
+	.word	6916
+	.byte	6,12,175,1,9,4,7
+	.byte	'RTE_DRA',0,0,7
+	.byte	'RTE_WOWP',0,1,7
+	.byte	'RTE_TASK',0,2,7
+	.byte	'RTE_ARE',0,3,7
+	.byte	'RTE_EV',0,4,7
+	.byte	'RTE_MSI',0,5,0,16
+	.byte	'Rte_NotificationType',0,12,182,1,3
+	.word	7003
+	.byte	17,128,8
+	.word	480
+	.byte	18,255,7,0,16
+	.byte	'Impl_NVM_DstPtrType_1024',0,13,50,15
+	.word	7101
+	.byte	16
+	.byte	'CanIf_u32_impl',0,13,69,16
+	.word	155
+	.byte	16
+	.byte	'CanIf_u16_impl',0,13,71,16
+	.word	453
+	.byte	16
+	.byte	'CanIf_u8_impl',0,13,73,15
+	.word	480
+	.byte	16
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,13,88,15
+	.word	480
+	.byte	16
+	.byte	'CanIf_PduModeType_Enum_impl',0,13,90,15
+	.word	480
+	.byte	9,13,92,9,2,10
+	.byte	'DeviceMode',0
+	.word	480
+	.byte	1,2,35,0,10
+	.byte	'ChannelMode',0
+	.word	480
+	.byte	1,2,35,1,0,16
+	.byte	'CanIf_ControllerStateType_struct_impl',0,13,95,3
+	.word	7292
+	.byte	16
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,13,100,15
+	.word	480
+	.byte	16
+	.byte	'CanSM_boolean_Impl',0,13,120,15
+	.word	480
+	.byte	16
+	.byte	'CanSM_u8_Impl',0,13,123,15
+	.word	480
+	.byte	16
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,13,128,1,15
+	.word	480
+	.byte	16
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,13,132,1,15
+	.word	480
+	.byte	16
+	.byte	'CanSM_u16_Impl',0,13,136,1,16
+	.word	453
+	.byte	16
+	.byte	'CanSM_TimerStateType_Enum_impl',0,13,138,1,15
+	.word	480
+	.byte	9,13,140,1,9,4,10
+	.byte	'cntTick_u16',0
+	.word	453
+	.byte	2,2,35,0,10
+	.byte	'stTimer',0
+	.word	480
+	.byte	1,2,35,2,0,16
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,13,143,1,3
+	.word	7633
+	.byte	16
+	.byte	'Com_impl_u16',0,13,154,1,16
+	.word	453
+	.byte	16
+	.byte	'Com_impl_u8',0,13,157,1,15
+	.word	480
+	.byte	16
+	.byte	'ComM_uint32_Impl',0,13,173,1,16
+	.word	155
+	.byte	16
+	.byte	'ComM_uint16_Impl',0,13,175,1,16
+	.word	453
+	.byte	16
+	.byte	'ComM_uint8_Impl',0,13,177,1,15
+	.word	480
+	.byte	16
+	.byte	'ComM_bool_Impl',0,13,179,1,15
+	.word	480
+	.byte	9,13,181,1,9,24,10
+	.byte	'ChannelState_e',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'LightTimeoutCtr_u32',0
+	.word	155
+	.byte	4,2,35,4,10
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	453
+	.byte	2,2,35,8,10
+	.byte	'ChannelMode_u8',0
+	.word	480
+	.byte	1,2,35,10,10
+	.byte	'BusSmMode_u8',0
+	.word	480
+	.byte	1,2,35,11,10
+	.byte	'UserRequestCtr_u8',0
+	.word	480
+	.byte	1,2,35,12,10
+	.byte	'PassiveRequestState_u8',0
+	.word	480
+	.byte	1,2,35,13,10
+	.byte	'PncRequestCtr_u8',0
+	.word	480
+	.byte	1,2,35,14,10
+	.byte	'InhibitionReqStatus_u8',0
+	.word	480
+	.byte	1,2,35,15,10
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	480
+	.byte	1,2,35,16,10
+	.byte	'DiagnosticRequestState_b',0
+	.word	480
+	.byte	1,2,35,17,10
+	.byte	'CommunicationAllowed_b',0
+	.word	480
+	.byte	1,2,35,18,10
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	480
+	.byte	1,2,35,19,10
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	480
+	.byte	1,2,35,20,10
+	.byte	'NmNetworkModeStatus_b',0
+	.word	480
+	.byte	1,2,35,21,0,16
+	.byte	'ComM_ChannelStruct_Impl',0,13,197,1,3
+	.word	7865
+	.byte	9,13,206,1,9,10,10
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	453
+	.byte	2,2,35,0,10
+	.byte	'LimitToNoComCtr_u16',0
+	.word	453
+	.byte	2,2,35,2,10
+	.byte	'RequestedUserMode_t',0
+	.word	480
+	.byte	1,2,35,4,10
+	.byte	'IndicatedUserMode_t',0
+	.word	480
+	.byte	1,2,35,5,10
+	.byte	'numChannelsInFullCom_u8',0
+	.word	480
+	.byte	1,2,35,6,10
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	480
+	.byte	1,2,35,7,10
+	.byte	'numChannelsInNoCom_u8',0
+	.word	480
+	.byte	1,2,35,8,0,16
+	.byte	'ComM_UserStruct_Impl',0,13,214,1,3
+	.word	8369
+	.byte	16
+	.byte	'Dcm_IOOperationResponseType',0,13,252,1,15
+	.word	480
+	.byte	16
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	13,138,2,15
+	.word	480
+	.byte	16
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,13,146,2,15
+	.word	480
+	.byte	16
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,13,150,2,15
+	.word	480
+	.byte	16
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,13,154,2,15
+	.word	480
+	.byte	16
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,13,243,3,34
+	.word	7112
+	.byte	17,128,8
+	.word	480
+	.byte	18,255,7,0,16
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,13,246,3,34
+	.word	7112
+	.byte	16
+	.byte	'Fls_LengthType',0,14,173,3,16
+	.word	155
+	.byte	20
+	.byte	'Fls_JobStartType',0,14,175,3,16,1,28
+	.byte	'Reserved1',0,1
+	.word	480
+	.byte	1,7,2,35,0,28
+	.byte	'Write',0,1
+	.word	480
+	.byte	1,6,2,35,0,28
+	.byte	'Erase',0,1
+	.word	480
+	.byte	1,5,2,35,0,28
+	.byte	'Read',0,1
+	.word	480
+	.byte	1,4,2,35,0,28
+	.byte	'Compare',0,1
+	.word	480
+	.byte	1,3,2,35,0,28
+	.byte	'Reserved2',0,1
+	.word	480
+	.byte	3,0,2,35,0,0,16
+	.byte	'Fls_JobStartType',0,14,183,3,3
+	.word	9211
+	.byte	16
+	.byte	'Fls_17_Pmu_Job_Type',0,14,187,3,15
+	.word	480
+	.byte	12
+	.word	480
+	.byte	8
+	.word	9401
+	.byte	17,2
+	.word	480
+	.byte	18,1,0,20
+	.byte	'Fls_17_Pmu_StateType',0,14,198,3,16,48,10
+	.byte	'FlsReadAddress',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'FlsWriteAddress',0
+	.word	155
+	.byte	4,2,35,4,10
+	.byte	'FlsEraseTimeoutCycleCount',0
+	.word	155
+	.byte	4,2,35,8,10
+	.byte	'FlsWriteTimeoutCycleCount',0
+	.word	155
+	.byte	4,2,35,12,10
+	.byte	'FlsReadLength',0
+	.word	155
+	.byte	4,2,35,16,10
+	.byte	'FlsWriteLength',0
+	.word	155
+	.byte	4,2,35,20,10
+	.byte	'FlsReadBufferPtr',0
+	.word	858
+	.byte	4,2,35,24,10
+	.byte	'FlsWriteBufferPtr',0
+	.word	9406
+	.byte	4,2,35,28,10
+	.byte	'FlsJobResult',0
+	.word	5615
+	.byte	4,2,35,32,10
+	.byte	'FlsMode',0
+	.word	5773
+	.byte	4,2,35,36,10
+	.byte	'NotifCaller',0
+	.word	480
+	.byte	1,2,35,40,10
+	.byte	'JobStarted',0
+	.word	9211
+	.byte	1,2,35,41,10
+	.byte	'FlsJobType',0
+	.word	9411
+	.byte	2,2,35,42,10
+	.byte	'FlsOper',0
+	.word	480
+	.byte	1,2,35,44,10
+	.byte	'FlsTimeoutErr',0
+	.word	480
+	.byte	1,2,35,45,10
+	.byte	'FlsTimeoutControl',0
+	.word	480
+	.byte	1,2,35,46,0,16
+	.byte	'Fls_17_Pmu_StateType',0,14,130,4,3
+	.word	9420
+	.byte	16
+	.byte	'Fls_NotifFunctionPtrType',0,14,137,4,16
+	.word	1625
+	.byte	12
+	.word	155
+	.byte	8
+	.word	9898
+	.byte	22,1,1,23
+	.word	155
+	.byte	23
+	.word	155
+	.byte	23
+	.word	9903
+	.byte	23
+	.word	480
+	.byte	0,8
+	.word	9908
+	.byte	16
+	.byte	'Fls_WriteCmdPtrType',0,14,139,4,16
+	.word	9932
+	.byte	22,1,1,23
+	.word	155
+	.byte	0,8
+	.word	9966
+	.byte	16
+	.byte	'Fls_EraseCmdPtrType',0,14,144,4,16
+	.word	9975
+	.byte	6,15,122,9,4,7
+	.byte	'FEE_NO_ORDER',0,0,7
+	.byte	'FEE_READ_ORDER',0,1,7
+	.byte	'FEE_WRITE_ORDER',0,2,7
+	.byte	'FEE_INVALIDATE_ORDER',0,3,7
+	.byte	'FEE_MAINTAIN_ORDER',0,4,7
+	.byte	'FEE_FORCED_READ_ORDER',0,5,0,16
+	.byte	'Fee_HlMode_ten',0,15,132,1,2
+	.word	10009
+	.byte	6,1,147,1,9,4,7
+	.byte	'FEE_NORMAL_PRIO_E',0,0,7
+	.byte	'FEE_HIGH_PRIO_E',0,1,0,16
+	.byte	'Fee_HlPriority_ten',0,1,151,1,2
+	.word	10157
+	.byte	9,1,165,1,9,24,10
+	.byte	'DataBufferPtr_pu8',0
+	.word	858
+	.byte	4,2,35,0,10
+	.byte	'FeeIdx_u16',0
+	.word	453
+	.byte	2,2,35,4,10
+	.byte	'BlockPropIdx_u16',0
+	.word	453
+	.byte	2,2,35,6,10
+	.byte	'Offset_u16',0
+	.word	453
+	.byte	2,2,35,8,10
+	.byte	'Length_u16',0
+	.word	453
+	.byte	2,2,35,10,10
+	.byte	'Mode_en',0
+	.word	10009
+	.byte	4,2,35,12,10
+	.byte	'Prio_en',0
+	.word	10157
+	.byte	4,2,35,16,10
+	.byte	'SecLevel_u8',0
+	.word	480
+	.byte	1,2,35,20,0,16
+	.byte	'Fee_OrderFifo_tst',0,1,175,1,2
+	.word	10230
+	.byte	6,1,246,1,9,4,7
+	.byte	'FEE_SECTOR_STATE_UNDEF_E',0,0,7
+	.byte	'FEE_SECTOR_ERASED_E',0,1,7
+	.byte	'FEE_SECTOR_USED_E',0,2,7
+	.byte	'FEE_SECTOR_FULL_E',0,3,7
+	.byte	'FEE_SECTOR_REQUEST2ERASE_E',0,4,7
+	.byte	'FEE_SECTOR_CONSIDERED_E',0,13,0,16
+	.byte	'Fee_SectorState_ten',0,1,254,1,2
+	.word	10432
+	.byte	16
+	.byte	'Fee_stRetVal_ten',0,1,149,2,2
+	.word	241
+	.byte	12
+	.word	1625
+	.byte	12
+	.word	1625
+	.byte	9,1,192,2,9,16,10
+	.byte	'BlockPersistentId_u16',0
+	.word	453
+	.byte	2,2,35,0,10
+	.byte	'Flags_u16',0
+	.word	453
+	.byte	2,2,35,2,10
+	.byte	'Length_u16',0
+	.word	453
+	.byte	2,2,35,4,10
+	.byte	'JobEndNotification_pfn',0
+	.word	10638
+	.byte	4,2,35,8,10
+	.byte	'JobErrorNotification_pfn',0
+	.word	10643
+	.byte	4,2,35,12,0,16
+	.byte	'Fee_BlockPropertiesType_tst',0,1,199,2,2
+	.word	10648
+	.byte	6,1,210,2,9,4,7
+	.byte	'FEE_LL_MARKER_INIT_E',0,0,7
+	.byte	'FEE_LL_MARKER_BLK_CHK_E',0,1,7
+	.byte	'FEE_LL_MARKER_BLK_CHK_WAIT_E',0,2,7
+	.byte	'FEE_LL_MARKER_BLK_CHK_ERROR_E',0,3,7
+	.byte	'FEE_LL_MARKER_BLK_CHK_FINISHED_E',0,4,7
+	.byte	'FEE_LL_MARKER_WRITE_WAIT_E',0,5,7
+	.byte	'FEE_LL_MARKER_WRITE_ERROR_E',0,6,7
+	.byte	'FEE_LL_MARKER_VERIFY_E',0,7,7
+	.byte	'FEE_LL_MARKER_VERIFY_WAIT_E',0,8,7
+	.byte	'FEE_LL_MARKER_VERIFY_FINISHED_E',0,9,0,16
+	.byte	'Fee_LLWrMarkerType_ten',0,1,222,2,2
+	.word	10828
+	.byte	6,1,225,2,9,4,7
+	.byte	'FEE_HL_RDWR_BLK_INIT_E',0,0,7
+	.byte	'FEE_HL_SEARCH_BLK_HDR_E',0,1,7
+	.byte	'FEE_HL_READ_BLK_HDR_WAIT_E',0,2,7
+	.byte	'FEE_HL_CHECK_BLK_HDR_E',0,3,7
+	.byte	'FEE_HL_CALC_BLK_CS_E',0,4,7
+	.byte	'FEE_HL_CHECK_BLK_CS_E',0,5,7
+	.byte	'FEE_HL_RD_DATA_FROM_BLK_E',0,6,7
+	.byte	'FEE_HL_COMP_BLK_E',0,7,7
+	.byte	'FEE_HL_WR_BLK_E',0,8,0,16
+	.byte	'Fee_HLRdWrBlockType_ten',0,1,243,2,2
+	.word	11162
+	.byte	6,1,246,2,9,4,7
+	.byte	'FEE_LL_WR_BLK_INIT_E',0,0,7
+	.byte	'FEE_LL_WR_WRITEHEADER_E',0,1,7
+	.byte	'FEE_LL_WR_SIZECHECK_HSR_E',0,2,7
+	.byte	'FEE_LL_WR_WRITEHEADER_WAIT_E',0,3,7
+	.byte	'FEE_LL_WR_VERIFYHEADER_E',0,4,7
+	.byte	'FEE_LL_WR_VERIFYHEADER_WAIT_E',0,5,7
+	.byte	'FEE_LL_WR_VERIFYHEADER_ERROR_E',0,6,7
+	.byte	'FEE_LL_WR_WRITEDATA_SEC_A_E',0,7,7
+	.byte	'FEE_LL_WR_WAIT_WRITEDATA_SEC_A_E',0,8,7
+	.byte	'FEE_LL_WR_WRITE_ERROR_E',0,9,7
+	.byte	'FEE_LL_WR_WRITE_FULL_MARKER_E',0,10,7
+	.byte	'FEE_LL_WR_ERASE_SECTOR_E',0,11,7
+	.byte	'FEE_LL_WR_WRITE_USED_MARKER_E',0,12,7
+	.byte	'FEE_LL_WR_WRITE_START_MARKER_E',0,13,7
+	.byte	'FEE_LL_WR_VERIFY_BLK_E',0,14,7
+	.byte	'FEE_LL_WR_WRITEHDRPG2_E',0,15,7
+	.byte	'FEE_LL_WR_WAIT_WRITEHDRPG2_E',0,16,0,16
+	.byte	'Fee_LLWrBlockType_ten',0,1,162,3,2
+	.word	11420
+	.byte	6,1,165,3,9,4,7
+	.byte	'FEE_LL_CMP_BLK_INIT_E',0,0,7
+	.byte	'FEE_LL_CMP_HEADER_E',0,1,7
+	.byte	'FEE_LL_CMP_WAIT_HEADER_E',0,2,7
+	.byte	'FEE_LL_CMP_CHECK_OVERLAP_E',0,3,7
+	.byte	'FEE_LL_CMP_DATA_SEC_A_E',0,4,7
+	.byte	'FEE_LL_CMP_WAIT_DATA_SEC_A_E',0,5,7
+	.byte	'FEE_LL_CMP_FINISHED_E',0,6,0,16
+	.byte	'Fee_LLCmpBlkType_ten',0,1,174,3,2
+	.word	11955
+	.byte	6,1,177,3,9,4,7
+	.byte	'FEE_LL_CPY_BLK_INIT_E',0,0,7
+	.byte	'FEE_LL_CPY_BLOCK_START_E',0,1,7
+	.byte	'FEE_LL_CPY_BLOCK_WAIT_E',0,2,7
+	.byte	'FEE_LL_CPY_BLOCK_ERROR_E',0,3,7
+	.byte	'FEE_LL_CPY_BLOCK_FINISHED_E',0,4,0,16
+	.byte	'Fee_LLCpyBlkType_ten',0,1,184,3,2
+	.word	12175
+	.byte	6,1,187,3,9,4,7
+	.byte	'FEE_LL_CRC_BLK_INIT_E',0,0,7
+	.byte	'FEE_LL_CRC_RD_HD_PAGE_E',0,1,7
+	.byte	'FEE_LL_CRC_RD_PAGE_E',0,2,7
+	.byte	'FEE_LL_CRC_CHECK_OVERLAP_E',0,3,7
+	.byte	'FEE_LL_CRC_RD_ROB_PAGE_E',0,4,7
+	.byte	'FEE_LL_CRC_CHECK_OVERLAP_ROB_E',0,5,7
+	.byte	'FEE_LL_CRC_RD_ROB_PAGE_WAIT_E',0,6,7
+	.byte	'FEE_LL_CRC_RD_PAGE_WAIT_E',0,7,7
+	.byte	'FEE_LL_CRC_RD_ERROR_E',0,8,0,16
+	.byte	'Fee_LLCalcCrcBlkType_ten',0,1,200,3,2
+	.word	12346
+	.byte	6,1,203,3,9,4,7
+	.byte	'FEE_LL_INIT_READ_E',0,0,7
+	.byte	'FEE_LL_BLANK_CHECK_E',0,1,7
+	.byte	'FEE_LL_BLANK_CHECK_WAIT_E',0,2,7
+	.byte	'FEE_LL_READ_PAGE_E',0,3,7
+	.byte	'FEE_LL_WAIT_READ_PAGE_E',0,4,7
+	.byte	'FEE_LL_READ_ERROR_E',0,5,7
+	.byte	'FEE_LL_READ_FINISHED_E',0,6,0,16
+	.byte	'Fee_LLRdStateType_ten',0,1,223,3,3
+	.word	12633
+	.byte	6,1,226,3,9,4,7
+	.byte	'FEE_LL_INIT_BLANK_CHECK_E',0,0,7
+	.byte	'FEE_LL_PERFORM_BLANK_CHECK_E',0,1,7
+	.byte	'FEE_LL_WAIT_PERFORM_BLANK_CHECK_E',0,2,7
+	.byte	'FEE_LL_BLANK_CHECK_ERROR_E',0,3,7
+	.byte	'FEE_LL_BLANK_CHECK_FINISHED_E',0,4,0,16
+	.byte	'Fee_LLBlankCheckType_ten',0,1,233,3,3
+	.word	12837
+	.byte	6,1,236,3,9,4,7
+	.byte	'FEE_LL_FIND_CURRENT_SECTOR_E',0,0,7
+	.byte	'FEE_LL_FIND_LAST_HEADER_E',0,1,7
+	.byte	'FEE_LL_FINISHED_E',0,2,0,16
+	.byte	'Fee_LLFndEmptyPgeType_ten',0,1,249,3,2
+	.word	13034
+	.byte	6,1,252,3,9,4,7
+	.byte	'FEE_LL_SEARCHBLK_INIT_E',0,0,7
+	.byte	'FEE_LL_SEARCHBLK_BLK_HEADER_E',0,1,0,16
+	.byte	'Fee_LLSearchBlkHdrType_ten',0,1,128,4,2
+	.word	13155
+	.byte	6,1,132,4,9,4,7
+	.byte	'FEE_LL_BLD_UP_CACHE_INIT_E',0,0,7
+	.byte	'FEE_LL_BLD_UP_CACHE_READ_E',0,1,0,16
+	.byte	'Fee_LLBuildUpCache_ten',0,1,136,4,2
+	.word	13256
+	.byte	6,1,139,4,9,4,7
+	.byte	'FEE_LL_BLD_UP_CACHE_ALL_SECT_INIT_E',0,0,7
+	.byte	'FEE_LL_BLD_UP_CACHE_ALL_SECT_DO_E',0,1,0,16
+	.byte	'Fee_LLBuildUpCacheAllSect_ten',0,1,143,4,2
+	.word	13353
+	.byte	6,1,168,4,9,4,7
+	.byte	'FEE_LL_REORG_INIT_E',0,0,7
+	.byte	'FEE_LL_REORG_PREP_SEARCH_BLK_E',0,1,7
+	.byte	'FEE_LL_REORG_SEARCH_BLK_E',0,2,7
+	.byte	'FEE_LL_REORG_CHECK_BLOCK_CS_E',0,3,7
+	.byte	'FEE_LL_REORG_REDUNDANT_BLK_CHK_E',0,4,7
+	.byte	'FEE_LL_REORG_WRITE_BLOCK_E',0,5,7
+	.byte	'FEE_LL_REORG_FINISHED_E',0,6,0,16
+	.byte	'Fee_LLSecReorgType_ten',0,1,193,4,2
+	.word	13473
+	.byte	6,1,196,4,9,4,7
+	.byte	'FEE_LL_REDUNDANT_CPY_CHK_INIT_E',0,0,7
+	.byte	'FEE_LL_REDUNDANT_CPY_CHK_SEARCH_HDR_E',0,1,7
+	.byte	'FEE_LL_REDUNDANT_CPY_CHK_BLK_CS_E',0,2,0,16
+	.byte	'Fee_LLRedundantCpyChk_ten',0,1,201,4,2
+	.word	13717
+	.byte	6,1,204,4,9,4,7
+	.byte	'FEE_LL_CPY_FLS2FLS_INIT_E',0,0,7
+	.byte	'FEE_LL_CPY_FLS2FLS_READ_E',0,1,7
+	.byte	'FEE_LL_CPY_FLS2FLS_WAIT_READ_E',0,2,7
+	.byte	'FEE_LL_CPY_FLS2FLS_READ_ERROR_E',0,3,7
+	.byte	'FEE_LL_CPY_FLS2FLS_HDRPG1_WRITE_E',0,4,7
+	.byte	'FEE_LL_CPY_FLS2FLS_WAIT_HDRPG1_WRITE_E',0,5,7
+	.byte	'FEE_LL_CPY_FLS2FLS_HDRPG1_WRITE_ERROR_E',0,6,7
+	.byte	'FEE_LL_CPY_FLS2FLS_HDRPG1_VERIFY_E',0,7,7
+	.byte	'FEE_LL_CPY_FLS2FLS_WAIT_HDRPG1_VERIFY_E',0,8,7
+	.byte	'FEE_LL_CPY_FLS2FLS_HDRPG1_VERIFY_ERROR_E',0,9,7
+	.byte	'FEE_LL_CPY_FLS2FLS_WRITE_E',0,10,7
+	.byte	'FEE_LL_CPY_FLS2FLS_WAIT_WRITE_E',0,11,7
+	.byte	'FEE_LL_CPY_FLS2FLS_WRITE_ERROR_E',0,12,7
+	.byte	'FEE_LL_CPY_FLS2FLS_VERIFY_E',0,13,7
+	.byte	'FEE_LL_CPY_FLS2FLS_WAIT_VERIFY_E',0,14,7
+	.byte	'FEE_LL_CPY_FLS2FLS_VERIFY_ERROR_E',0,15,7
+	.byte	'FEE_LL_CPY_FLS2FLS_HDRPG2_WRITE_E',0,16,7
+	.byte	'FEE_LL_CPY_FLS2FLS_WAIT_HDRPG2_WRITE_E',0,17,7
+	.byte	'FEE_LL_CPY_FLS2FLS_HDRPG2_WRITE_ERROR_E',0,18,7
+	.byte	'FEE_LL_CPY_FLS2FLS_HDRPG2_VERIFY_E',0,19,7
+	.byte	'FEE_LL_CPY_FLS2FLS_WAIT_HDRPG2_VERIFY_E',0,20,7
+	.byte	'FEE_LL_CPY_FLS2FLS_HDRPG2_VERIFY_ERROR_E',0,21,7
+	.byte	'FEE_LL_CPY_FLS2FLS_CHECK_ADR_OVERFLOW_E',0,22,7
+	.byte	'FEE_LL_CPY_FLS2FLS_WRITE_FULL_MARKER_E',0,23,7
+	.byte	'FEE_LL_CPY_FLS2FLS_ERASE_SECTOR_E',0,24,7
+	.byte	'FEE_LL_CPY_FLS2FLS_WRITE_USED_MARKER_E',0,25,7
+	.byte	'FEE_LL_CPY_FLS2FLS_WRITE_START_MARKER_E',0,26,0,16
+	.byte	'Fee_LLCpyBlkFls2Fls_ten',0,1,133,5,2
+	.word	13869
+	.byte	9,1,163,5,9,116,10
+	.byte	'xRdAddress',0
+	.word	155
+	.byte	4,2,35,0,10
+	.byte	'xWrAddress',0
+	.word	155
+	.byte	4,2,35,4,10
+	.byte	'xCmpAddress',0
+	.word	155
+	.byte	4,2,35,8,10
+	.byte	'xCrcAddress',0
+	.word	155
+	.byte	4,2,35,12,10
+	.byte	'xCpyAddress',0
+	.word	155
+	.byte	4,2,35,16,10
+	.byte	'AdrHdSearchStart_u32',0
+	.word	155
+	.byte	4,2,35,20,10
+	.byte	'xStartAddrNextSector_u32',0
+	.word	155
+	.byte	4,2,35,24,10
+	.byte	'xHdPg2Address',0
+	.word	155
+	.byte	4,2,35,28,10
+	.byte	'LastProgrammedAddress_u32',0
+	.word	155
+	.byte	4,2,35,32,10
+	.byte	'LastValidHdrAddress_u32',0
+	.word	155
+	.byte	4,2,35,36,10
+	.byte	'Fee_LLSecReorg_en',0
+	.word	13473
+	.byte	4,2,35,40,10
+	.byte	'Fee_LLRedundantCpyChk_en',0
+	.word	13717
+	.byte	4,2,35,44,10
+	.byte	'Fee_LLCpyBlkFls2Fls_en',0
+	.word	13869
+	.byte	4,2,35,48,10
+	.byte	'Fee_HLWrBlock_en',0
+	.word	11162
+	.byte	4,2,35,52,10
+	.byte	'Fee_HLMtBlock_en',0
+	.word	11162
+	.byte	4,2,35,56,10
+	.byte	'Fee_LLWrBlock_en',0
+	.word	11420
+	.byte	4,2,35,60,10
+	.byte	'Fee_HLRdBlock',0
+	.word	11162
+	.byte	4,2,35,64,10
+	.byte	'Fee_LLNextUsedWrBlock_en',0
+	.word	11420
+	.byte	4,2,35,68,10
+	.byte	'Fee_LLNextEraseWrBlock_en',0
+	.word	11420
+	.byte	4,2,35,72,10
+	.byte	'Fee_LLCompBlk',0
+	.word	11955
+	.byte	4,2,35,76,10
+	.byte	'Fee_LLCopyBlk_en',0
+	.word	12175
+	.byte	4,2,35,80,10
+	.byte	'Fee_LLCalcCrcBlk_en',0
+	.word	12346
+	.byte	4,2,35,84,10
+	.byte	'Fee_LLWrMarker_en',0
+	.word	10828
+	.byte	4,2,35,88,10
+	.byte	'Fee_LLRdState_en',0
+	.word	12633
+	.byte	4,2,35,92,10
+	.byte	'Fee_LLBlankCheckState_en',0
+	.word	12837
+	.byte	4,2,35,96,10
+	.byte	'Fee_LLFindEmptyPageState_en',0
+	.word	13034
+	.byte	4,2,35,100,10
+	.byte	'Fee_LLSearchBlkHdr_en',0
+	.word	13155
+	.byte	4,2,35,104,10
+	.byte	'Fee_LLBuildUpCache_en',0
+	.word	13256
+	.byte	4,2,35,108,10
+	.byte	'Fee_LLBuildUpCacheAllSect_en',0
+	.word	13353
+	.byte	4,2,35,112,0,16
+	.byte	'Fee_RdWrOrder_tst',0,1,224,5,3
+	.word	14915
+	.byte	16
+	.byte	'Fee_GlobInfoLastRdHeader_tst',0,1,235,5,2
+	.word	497
+	.byte	6,1,133,6,9,4,7
+	.byte	'FEE_ERASESEC_IDLE_E',0,0,7
+	.byte	'FEE_ERASESEC_CHECK_CACHE_E',0,1,7
+	.byte	'FEE_ERASESEC_START_E',0,2,7
+	.byte	'FEE_ERASESEC_DO_E',0,3,7
+	.byte	'FEE_ERASESEC_WRITE_MARKER_E',0,4,7
+	.byte	'FEE_ERASESEC_ERROR_E',0,5,0,16
+	.byte	'Fee_LLEraseStateType_ten',0,1,141,6,2
+	.word	15810
+	.byte	17,3
+	.word	480
+	.byte	18,2,0,9,1,151,6,9,16,10
+	.byte	'Preamble_au8',0
+	.word	15998
+	.byte	3,2,35,0,10
+	.byte	'BlkStatus_u8',0
+	.word	480
+	.byte	1,2,35,3,10
+	.byte	'FeeIndex_u16',0
+	.word	453
+	.byte	2,2,35,4,10
+	.byte	'BlkLength_u16',0
+	.word	453
+	.byte	2,2,35,6,10
+	.byte	'HdrCrc16_u16',0
+	.word	453
+	.byte	2,2,35,8,10
+	.byte	'BlkCrc32_u32',0
+	.word	155
+	.byte	4,2,35,12,0,16
+	.byte	'Fee_BlkHeader_tst',0,1,159,6,2
+	.word	16007
+	.byte	29
+	.byte	'Fee_RdWrOrder_st',0,1,144,7,53
+	.word	14915
+	.byte	1,1,17,72
+	.word	10230
+	.byte	18,2,0,29
+	.byte	'Fee_OrderFifo_st',0,1,147,7,53
+	.word	16202
+	.byte	1,1,29
+	.byte	'Fee_GlobInfoLastRdHeader_st',0,1,148,7,53
+	.word	497
+	.byte	1,1,29
+	.byte	'Fee_idxActQueue_u8',0,1,193,7,53
+	.word	480
+	.byte	1,1,17,192,1
+	.word	10648
+	.byte	18,11,0,29
+	.byte	'Fee_BlockProperties_st',0,1,237,7,53
+	.word	16308
+	.byte	1,1,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L52:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,46,1,3,8,32,13,58,15,59,15
+	.byte	57,15,73,19,54,15,39,12,0,0,4,5,0,3,8,58,15,59,15,57,15,73,19,0,0,5,11,0,0,0,6,4,1,58,15,59,15,57,15,11
+	.byte	15,0,0,7,40,0,3,8,28,13,0,0,8,15,0,73,19,0,0,9,19,1,58,15,59,15,57,15,11,15,0,0,10,13,0,3,8,73,19,11,15
+	.byte	56,9,0,0,11,46,1,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,12,38,0,73,19,0,0,13,46,1,49
+	.byte	19,0,0,14,5,0,49,19,0,0,15,21,0,54,15,0,0,16,22,0,3,8,58,15,59,15,57,15,73,19,0,0,17,1,1,11,15,73,19,0
+	.byte	0,18,33,0,47,15,0,0,19,21,0,54,15,39,12,0,0,20,19,1,3,8,58,15,59,15,57,15,11,15,0,0,21,59,0,3,8,0,0,22
+	.byte	21,1,54,15,39,12,0,0,23,5,0,73,19,0,0,24,23,1,58,15,59,15,57,15,11,15,0,0,25,4,1,3,8,58,15,59,15,57,15
+	.byte	11,15,0,0,26,21,0,73,19,54,15,39,12,0,0,27,53,0,73,19,0,0,28,13,0,3,8,11,15,73,19,13,15,12,15,56,9,0,0
+	.byte	29,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L53:
+	.word	.L81-.L80
+.L80:
+	.half	3
+	.word	.L83-.L82
+.L82:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Rba_FeeFs1\\src\\rba_FeeFs1_Prv.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Rba_FeeFs1\\src\\rba_FeeFs1_HlReadBlock.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Integration\\TargetIntegration\\TC275\\Include\\Mcal_TcLib.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\MemIf\\api\\MemIf_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Fls\\inc\\Fls_17_Pmu.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Fee\\api\\Fee.h',0,0,0,0,0
+.L83:
+.L81:
+	.sdecl	'.debug_info',debug,cluster('Fee_HLReadBlock')
+	.sect	'.debug_info'
+.L54:
+	.word	377
+	.half	3
+	.word	.L55
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Rba_FeeFs1\\src\\rba_FeeFs1_HlReadBlock.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L57,.L56
+	.byte	2
+	.word	.L50
+	.byte	3
+	.byte	'Fee_HLReadBlock',0,1,49,34
+	.word	.L59
+	.byte	1,1,1
+	.word	.L49,.L60,.L48
+	.byte	4
+	.word	.L49,.L60
+	.byte	5
+	.byte	'xRetVal',0,1,51,38
+	.word	.L59,.L61
+	.byte	5
+	.byte	'xtmpRetVal',0,1,52,38
+	.word	.L59,.L62
+	.byte	6
+	.byte	'xAdrLastBlkHeader_u32',0,1,53,19
+	.word	.L63
+	.byte	5,3
+	.word	_999001_xAdrLastBlkHeader_u32
+	.byte	6
+	.byte	'xSearchRetry_b',0,1,54,20
+	.word	.L64
+	.byte	5,3
+	.word	_999002_xSearchRetry_b
+	.byte	5
+	.byte	'Offset',0,1,56,27
+	.word	.L65,.L66
+	.byte	5
+	.byte	'Length',0,1,57,27
+	.word	.L65,.L67
+	.byte	5
+	.byte	'DataPtr',0,1,58,43
+	.word	.L68,.L69
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Fee_HLReadBlock')
+	.sect	'.debug_abbrev'
+.L55:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Fee_HLReadBlock')
+	.sect	'.debug_line'
+.L56:
+	.word	.L85-.L84
+.L84:
+	.half	3
+	.word	.L87-.L86
+.L86:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Rba_FeeFs1\\src\\rba_FeeFs1_HlReadBlock.c',0,0,0,0,0
+.L87:
+	.byte	5,46,7,0,5,2
+	.word	.L49
+	.byte	3,50,1,5,12,9
+	.half	.L70-.L49
+	.byte	3,11,1,5,28,9
+	.half	.L88-.L70
+	.byte	1,5,14,9
+	.half	.L89-.L88
+	.byte	3,2,1,9
+	.half	.L90-.L89
+	.byte	3,21,1,9
+	.half	.L91-.L90
+	.byte	3,197,0,1,9
+	.half	.L92-.L91
+	.byte	3,234,0,1,9
+	.half	.L93-.L92
+	.byte	3,19,1,9
+	.half	.L94-.L93
+	.byte	3,1,1,5,61,9
+	.half	.L2-.L94
+	.byte	3,172,126,1,5,60,9
+	.half	.L95-.L2
+	.byte	1,5,44,9
+	.half	.L96-.L95
+	.byte	1,5,60,9
+	.half	.L97-.L96
+	.byte	1,5,80,9
+	.half	.L98-.L97
+	.byte	1,5,21,9
+	.half	.L99-.L98
+	.byte	1,5,43,9
+	.half	.L100-.L99
+	.byte	1,5,13,9
+	.half	.L101-.L100
+	.byte	3,127,1,5,98,9
+	.half	.L102-.L101
+	.byte	3,1,1,5,55,9
+	.half	.L103-.L102
+	.byte	3,127,1,5,98,9
+	.half	.L104-.L103
+	.byte	3,4,1,5,55,9
+	.half	.L105-.L104
+	.byte	3,127,1,5,106,9
+	.half	.L106-.L105
+	.byte	3,3,1,5,55,9
+	.half	.L107-.L106
+	.byte	3,127,1,5,62,9
+	.half	.L108-.L107
+	.byte	3,3,1,5,60,9
+	.half	.L109-.L108
+	.byte	1,5,62,9
+	.half	.L110-.L109
+	.byte	3,1,1,5,60,9
+	.half	.L111-.L110
+	.byte	1,5,62,9
+	.half	.L112-.L111
+	.byte	3,1,1,5,60,9
+	.half	.L113-.L112
+	.byte	1,5,46,9
+	.half	.L114-.L113
+	.byte	3,3,1,5,44,9
+	.half	.L115-.L114
+	.byte	1,5,61,9
+	.half	.L3-.L115
+	.byte	3,116,1,5,60,9
+	.half	.L116-.L3
+	.byte	1,5,44,9
+	.half	.L117-.L116
+	.byte	1,5,60,9
+	.half	.L118-.L117
+	.byte	1,5,13,9
+	.half	.L119-.L118
+	.byte	3,127,1,5,57,9
+	.half	.L120-.L119
+	.byte	3,25,1,5,58,9
+	.half	.L121-.L120
+	.byte	3,126,1,5,93,9
+	.half	.L122-.L121
+	.byte	3,127,1,5,57,9
+	.half	.L123-.L122
+	.byte	3,3,1,5,22,9
+	.half	.L72-.L123
+	.byte	3,6,1,9
+	.half	.L124-.L72
+	.byte	3,8,1,9
+	.half	.L125-.L124
+	.byte	3,32,1,9
+	.half	.L126-.L125
+	.byte	3,108,1,9
+	.half	.L127-.L126
+	.byte	3,23,1,9
+	.half	.L128-.L127
+	.byte	3,1,1,9
+	.half	.L129-.L128
+	.byte	3,114,1,9
+	.half	.L130-.L129
+	.byte	3,12,1,9
+	.half	.L131-.L130
+	.byte	3,127,1,5,17,9
+	.half	.L9-.L131
+	.byte	3,92,1,5,54,9
+	.half	.L10-.L9
+	.byte	3,6,1,5,52,9
+	.half	.L132-.L10
+	.byte	1,5,72,9
+	.half	.L133-.L132
+	.byte	3,4,1,5,43,9
+	.half	.L134-.L133
+	.byte	1,5,17,9
+	.half	.L135-.L134
+	.byte	3,2,1,5,29,9
+	.half	.L12-.L135
+	.byte	3,8,1,5,17,9
+	.half	.L136-.L12
+	.byte	3,2,1,5,38,9
+	.half	.L15-.L136
+	.byte	3,9,1,5,36,9
+	.half	.L137-.L15
+	.byte	1,5,17,9
+	.half	.L138-.L137
+	.byte	3,1,1,5,29,9
+	.half	.L18-.L138
+	.byte	3,11,1,5,17,9
+	.half	.L139-.L18
+	.byte	3,2,1,5,9,9
+	.half	.L19-.L139
+	.byte	3,3,1,5,51,9
+	.half	.L4-.L19
+	.byte	3,6,1,5,22,9
+	.half	.L73-.L4
+	.byte	3,6,1,9
+	.half	.L140-.L73
+	.byte	3,7,1,9
+	.half	.L141-.L140
+	.byte	3,57,1,9
+	.half	.L142-.L141
+	.byte	3,91,1,9
+	.half	.L143-.L142
+	.byte	3,40,1,9
+	.half	.L144-.L143
+	.byte	3,1,1,9
+	.half	.L145-.L144
+	.byte	3,1,1,9
+	.half	.L146-.L145
+	.byte	3,125,1,9
+	.half	.L147-.L146
+	.byte	3,127,1,5,17,9
+	.half	.L25-.L147
+	.byte	3,67,1,5,52,9
+	.half	.L26-.L25
+	.byte	3,9,1,5,21,9
+	.half	.L148-.L26
+	.byte	1,5,33,7,9
+	.half	.L149-.L148
+	.byte	3,3,1,5,58,9
+	.half	.L150-.L149
+	.byte	1,9
+	.half	.L36-.L150
+	.byte	3,5,1,5,56,9
+	.half	.L151-.L36
+	.byte	1,5,17,9
+	.half	.L37-.L151
+	.byte	3,3,1,5,42,9
+	.half	.L28-.L37
+	.byte	3,7,1,5,41,9
+	.half	.L152-.L28
+	.byte	1,5,25,9
+	.half	.L153-.L152
+	.byte	1,5,41,9
+	.half	.L154-.L153
+	.byte	1,5,61,9
+	.half	.L155-.L154
+	.byte	1,5,21,9
+	.half	.L156-.L155
+	.byte	1,5,58,7,9
+	.half	.L157-.L156
+	.byte	3,3,1,5,56,9
+	.half	.L158-.L157
+	.byte	1,5,83,9
+	.half	.L159-.L158
+	.byte	1,5,58,9
+	.half	.L39-.L159
+	.byte	3,5,1,5,56,9
+	.half	.L160-.L39
+	.byte	1,5,25,9
+	.half	.L161-.L160
+	.byte	3,19,1,5,42,9
+	.half	.L162-.L161
+	.byte	1,5,40,9
+	.half	.L163-.L162
+	.byte	1,5,17,9
+	.half	.L40-.L163
+	.byte	3,3,1,5,29,9
+	.half	.L34-.L40
+	.byte	3,12,1,5,17,9
+	.half	.L164-.L34
+	.byte	3,2,1,5,9,9
+	.half	.L35-.L164
+	.byte	3,3,1,5,40,9
+	.half	.L5-.L35
+	.byte	3,25,1,5,39,9
+	.half	.L165-.L5
+	.byte	1,5,23,9
+	.half	.L166-.L165
+	.byte	1,5,39,9
+	.half	.L167-.L166
+	.byte	1,5,59,9
+	.half	.L168-.L167
+	.byte	1,9
+	.half	.L74-.L168
+	.byte	3,1,1,5,58,9
+	.half	.L75-.L74
+	.byte	3,3,1,5,46,9
+	.half	.L76-.L75
+	.byte	3,4,1,5,92,9
+	.half	.L169-.L76
+	.byte	1,5,21,9
+	.half	.L71-.L169
+	.byte	1,5,9,9
+	.half	.L77-.L71
+	.byte	3,2,1,5,21,9
+	.half	.L8-.L77
+	.byte	3,8,1,5,9,9
+	.half	.L170-.L8
+	.byte	3,2,1,5,5,9
+	.half	.L24-.L170
+	.byte	3,4,1,5,42,7,9
+	.half	.L171-.L24
+	.byte	3,3,1,5,40,9
+	.half	.L172-.L171
+	.byte	1,5,9,9
+	.half	.L173-.L172
+	.byte	3,3,1,5,33,9
+	.half	.L174-.L173
+	.byte	1,5,31,9
+	.half	.L175-.L174
+	.byte	1,5,9,9
+	.half	.L176-.L175
+	.byte	3,3,1,5,26,9
+	.half	.L177-.L176
+	.byte	1,5,24,9
+	.half	.L178-.L177
+	.byte	1,5,5,9
+	.half	.L46-.L178
+	.byte	3,3,1,5,1,9
+	.half	.L47-.L46
+	.byte	3,1,1,7,9
+	.half	.L58-.L47
+	.byte	0,1,1
+.L85:
+	.sdecl	'.debug_ranges',debug,cluster('Fee_HLReadBlock')
+	.sect	'.debug_ranges'
+.L57:
+	.word	-1,.L49,0,.L58-.L49,0,0
+	.sdecl	'.debug_loc',debug,cluster('Fee_HLReadBlock')
+	.sect	'.debug_loc'
+.L69:
+	.word	-1,.L49,.L74-.L49,.L71-.L49
+	.half	1
+	.byte	101
+	.word	0,0
+.L48:
+	.word	-1,.L49,0,.L60-.L49
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L67:
+	.word	-1,.L49,.L76-.L49,.L71-.L49
+	.half	1
+	.byte	85
+	.word	0,0
+.L66:
+	.word	-1,.L49,.L75-.L49,.L71-.L49
+	.half	1
+	.byte	84
+	.word	0,0
+.L61:
+	.word	-1,.L49,.L70-.L49,.L71-.L49
+	.half	1
+	.byte	88
+	.word	.L71-.L49,.L8-.L49
+	.half	1
+	.byte	82
+	.word	.L77-.L49,.L60-.L49
+	.half	1
+	.byte	88
+	.word	.L78-.L49,.L60-.L49
+	.half	1
+	.byte	82
+	.word	0,0
+.L62:
+	.word	-1,.L49,.L72-.L49,.L4-.L49
+	.half	1
+	.byte	82
+	.word	.L73-.L49,.L5-.L49
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L179:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Fee_HLReadBlock')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L179,.L49,.L60-.L49
+
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   304  #define FEE_STOP_SEC_CODE
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   305  #include "Fee_MemMap.h"
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   306  /* FEE_PRESENT == 1 */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   307  #endif
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   308  /* 1 == FEE_PRV_CFG_SELECTED_FS */
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   309  #endif
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   310  
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   311  /*<BASDKey>
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   312  **********************************************************************************************************************
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   313  * $History__:$
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   314  **********************************************************************************************************************
+; BSW\src\BSW\Gen\Rba_FeeFs1\src\rba_FeeFs1_HlReadBlock.c	   315  </BASDKey>*/
+
+	; Module end

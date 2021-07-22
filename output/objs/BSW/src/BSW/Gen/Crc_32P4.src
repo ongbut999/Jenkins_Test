@@ -1,0 +1,276 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc17912a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Crc_32P4.src BSW\\src\\BSW\\Gen\\Crc\\Crc_32P4.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Crc\\Crc_32P4.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Crc_32P4.Crc_CalculateCRC32P4',code,cluster('Crc_CalculateCRC32P4')
+	.sect	'.text.Crc_32P4.Crc_CalculateCRC32P4'
+	.align	2
+	
+	.global	Crc_CalculateCRC32P4
+
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	     1  
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	     2  
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	     3  /*
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	     4   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	     5   * Includes
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	     6   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	     7   */
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	     8  #include "Crc.h"
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	     9  
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    10  /**
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    11   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    12   * Crc_calculateCRC32P4
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    13   *
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    14   * \brief Calculates the remainder of a polynomial division: input is divided by the CRC32P4 polynomial
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    15   *
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    16   * Crc_CalculateCRC32P4 calculates the remainder of a polynomial divided by the crc polynomial with Hex-value
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    17   * 0x1F4ACFB13.
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    18   * Crc calculation starts with an initial value, Crc_StartValue32.
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    19   * The Crc remainder is calculated over a reflected data stream *Crc_DataPtr of length Crc_Length.
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    20   * Note, 0xC8DF352F is the reflected data stream of 0xF4ACFB13. 0xF4ACFB13 describes the truncated crc polynomial .
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    21   * Thus, 0xC8DF352F is the reflected data stream of the truncated crc polynomial.
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    22   * The result data are reflected, too.
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    23   * At the end the remainder is manipulated by a XOR operation using the value CRC_XOR_VALUE32.
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    24   *
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    25   * \param    Crc_DataPtr,      Pointer to start address of data block
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    26   * \param    Crc_Length,       Length of data block to be calculated in bytes
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    27   * \param    Crc_StartValue32  Start value when the algorithm starts
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    28   * \return                     Remainder after polynomial division *const Crc_DataPtr / CRC32P4
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    29   **********************************************************************************************************************
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    30   */
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    31  
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    32  #define CRC_START_SEC_CODE
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    33  #include "Crc_MemMap.h"
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    34  
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    35  
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    36  /* TRACE [SWS_Crc_00056]*/
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    37  uint32 Crc_CalculateCRC32P4(const uint8* Crc_DataPtr, uint32 Crc_Length, uint32 Crc_StartValue32,
+; Function Crc_CalculateCRC32P4
+.L6:
+Crc_CalculateCRC32P4:	.type	func
+
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    38                              boolean Crc_IsFirstCall)
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    39  {
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    40      uint32_least  index;
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    41      uint32        crcTemp;
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    42      uint32        result;
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    43  
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    44  
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    45      if (Crc_IsFirstCall != FALSE)
+	jeq	d6,#0,.L2
+.L34:
+
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    46      {
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    47          crcTemp = CRC_INITIAL_VALUE32P4;
+	j	.L3
+.L2:
+
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    48      }
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    49      else
+.L3:
+
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    50      {
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    51          crcTemp = Crc_StartValue32 ^ CRC_XOR_VALUE32P4;
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    52      }
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    53  
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    54  
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    55      return (result);
+	j	.L4
+
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    56  }
+.L4:
+	ret
+.L17:
+	
+__Crc_CalculateCRC32P4_function_end:
+	.size	Crc_CalculateCRC32P4,__Crc_CalculateCRC32P4_function_end-Crc_CalculateCRC32P4
+.L15:
+	; End of function
+	
+	.calls	'Crc_CalculateCRC32P4','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L8:
+	.word	277
+	.half	3
+	.word	.L9
+	.byte	4
+.L7:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Crc\\Crc_32P4.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L10
+.L16:
+	.byte	2
+	.byte	'unsigned int',0,4,7
+.L22:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.word	146
+.L18:
+	.byte	4
+	.word	163
+	.byte	5,1,4
+	.word	173
+	.byte	6
+	.byte	'__codeptr',0,1,1,1
+	.word	175
+	.byte	6
+	.byte	'uint8',0,2,81,25
+	.word	146
+	.byte	2
+	.byte	'unsigned short int',0,2,7,6
+	.byte	'uint16',0,2,91,25
+	.word	212
+	.byte	6
+	.byte	'uint32',0,2,106,24
+	.word	130
+	.byte	6
+	.byte	'boolean',0,2,127,25
+	.word	146
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L9:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,38,0,73,19,0,0,4,15,0,73,19
+	.byte	0,0,5,21,0,54,15,0,0,6,22,0,3,8,58,15,59,15,57,15,73,19,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L10:
+	.word	.L27-.L26
+.L26:
+	.half	3
+	.word	.L29-.L28
+.L28:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Crc\\Crc_32P4.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0,0
+.L29:
+.L27:
+	.sdecl	'.debug_info',debug,cluster('Crc_CalculateCRC32P4')
+	.sect	'.debug_info'
+.L11:
+	.word	334
+	.half	3
+	.word	.L12
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Crc\\Crc_32P4.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L14,.L13
+	.byte	2
+	.word	.L7
+	.byte	3
+	.byte	'Crc_CalculateCRC32P4',0,1,37,8
+	.word	.L16
+	.byte	1,1,1
+	.word	.L6,.L17,.L5
+	.byte	4
+	.byte	'Crc_DataPtr',0,1,37,42
+	.word	.L18,.L19
+	.byte	4
+	.byte	'Crc_Length',0,1,37,62
+	.word	.L16,.L20
+	.byte	4
+	.byte	'Crc_StartValue32',0,1,37,81
+	.word	.L16,.L21
+	.byte	4
+	.byte	'Crc_IsFirstCall',0,1,38,37
+	.word	.L22,.L23
+	.byte	5
+	.word	.L6,.L17
+	.byte	6
+	.byte	'crcTemp',0,1,41,19
+	.word	.L16,.L24
+	.byte	6
+	.byte	'result',0,1,42,19
+	.word	.L16,.L25
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Crc_CalculateCRC32P4')
+	.sect	'.debug_abbrev'
+.L12:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Crc_CalculateCRC32P4')
+	.sect	'.debug_line'
+.L13:
+	.word	.L31-.L30
+.L30:
+	.half	3
+	.word	.L33-.L32
+.L32:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Crc\\Crc_32P4.c',0,0,0,0,0
+.L33:
+	.byte	5,5,7,0,5,2
+	.word	.L6
+	.byte	3,44,1,5,40,7,9
+	.half	.L34-.L6
+	.byte	3,2,1,5,5,9
+	.half	.L3-.L34
+	.byte	3,8,1,5,1,9
+	.half	.L4-.L3
+	.byte	3,1,1,7,9
+	.half	.L15-.L4
+	.byte	0,1,1
+.L31:
+	.sdecl	'.debug_ranges',debug,cluster('Crc_CalculateCRC32P4')
+	.sect	'.debug_ranges'
+.L14:
+	.word	-1,.L6,0,.L15-.L6,0,0
+	.sdecl	'.debug_loc',debug,cluster('Crc_CalculateCRC32P4')
+	.sect	'.debug_loc'
+.L5:
+	.word	-1,.L6,0,.L17-.L6
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L19:
+	.word	-1,.L6,0,.L17-.L6
+	.half	1
+	.byte	100
+	.word	0,0
+.L23:
+	.word	-1,.L6,0,.L17-.L6
+	.half	1
+	.byte	86
+	.word	0,0
+.L20:
+	.word	-1,.L6,0,.L17-.L6
+	.half	1
+	.byte	84
+	.word	0,0
+.L21:
+	.word	-1,.L6,0,.L17-.L6
+	.half	1
+	.byte	85
+	.word	0,0
+.L24:
+	.word	0,0
+.L25:
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L35:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Crc_CalculateCRC32P4')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L35,.L6,.L17-.L6
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    57  
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    58  #define CRC_STOP_SEC_CODE
+; BSW\src\BSW\Gen\Crc\Crc_32P4.c	    59  #include "Crc_MemMap.h"
+
+	; Module end

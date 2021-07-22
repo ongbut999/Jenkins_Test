@@ -1,0 +1,2756 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc17504a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\Targets\\TC275\\MCAL\\MCAL_Gen\\Port_PBCfg.src Targets\\TC275\\MCAL\\MCAL_Gen\\src\\Port_PBCfg.c"
+	.compiler_name		"ctc"
+	;source	'Targets\\TC275\\MCAL\\MCAL_Gen\\src\\Port_PBCfg.c'
+
+	
+$TC16X
+	
+	.sdecl	'.rodata.Port_PBCfg.Port_kConfiguration0',data,rom,cluster('Port_kConfiguration0')
+	.sect	'.rodata.Port_PBCfg.Port_kConfiguration0'
+	.align	4
+Port_kConfiguration0:	.type	object
+	.size	Port_kConfiguration0,448
+	.byte	16,128,128,16
+	.byte	128,16,128,16
+	.byte	16,128,136,16
+	.byte	16,16,16,16
+	.space	12
+	.byte	1
+	.space	3
+	.byte	152,16,16,16
+	.byte	152,16,152,216
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.byte	17
+	.space	15
+	.byte	136,16,16,16
+	.byte	168,16,16,16
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.byte	16
+	.space	15
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.byte	176,16,16,16
+	.space	16
+	.byte	168,168,168,168
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.byte	10
+	.space	15
+	.byte	168,16,16,16
+	.byte	16,16,16,152
+	.byte	16,16,128,16
+	.byte	16,16,16,16
+	.byte	130,1
+	.space	2
+	.word	65792
+	.space	8
+	.byte	168,152,144,16
+	.byte	144
+	.space	1
+	.byte	152,16,152,16
+	.byte	16,16,16,16
+	.byte	16,16,50
+	.space	15
+	.byte	16,16,16,152
+	.byte	16,16,152,16
+	.byte	168,16,168,152
+	.byte	16,152,152,16
+	.byte	200,34
+	.space	11
+	.byte	16
+	.space	2
+	.byte	176,16,16,16
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.space	4
+	.word	286331152
+	.space	8
+	.byte	136,136,136,136
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.space	16
+	.byte	136,16,136,16
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.space	16
+	.byte	16,16,16,128
+	.byte	128,16,16,16
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.byte	24
+	.space	15
+	.byte	16,16,16,128
+	.byte	128,144,128,128
+	.byte	128,128,16,16
+	.byte	128,160,16,16
+	.byte	32,63
+	.space	11
+	.byte	7
+	.space	2
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.byte	16,16,16,16
+	.space	4
+	.word	286331153,17
+	.space	4
+	.sdecl	'.rodata.Port_PBCfg.Port_DiscSet0',data,rom,cluster('Port_DiscSet0')
+	.sect	'.rodata.Port_PBCfg.Port_DiscSet0'
+	.align	2
+Port_DiscSet0:	.type	object
+	.size	Port_DiscSet0,2
+	.half	1023
+	.sdecl	'.rodata.Port_PBCfg.Port_kLVDSConfig0',data,rom,cluster('Port_kLVDSConfig0')
+	.sect	'.rodata.Port_PBCfg.Port_kLVDSConfig0'
+	.align	4
+Port_kLVDSConfig0:	.type	object
+	.size	Port_kLVDSConfig0,36
+	.space	8
+	.word	-65536,-65536,70,24576
+	.space	8
+	.word	-65536
+	.sdecl	'.rodata.Port_PBCfg.Port_kPCSRConfig0',data,rom,cluster('Port_kPCSRConfig0')
+	.sect	'.rodata.Port_PBCfg.Port_kPCSRConfig0'
+	.align	4
+Port_kPCSRConfig0:	.type	object
+	.size	Port_kPCSRConfig0,12
+	.space	12
+	.sdecl	'.rodata.Port_PBCfg.Port_ConfigRoot',data,rom,cluster('Port_ConfigRoot')
+	.sect	'.rodata.Port_PBCfg.Port_ConfigRoot'
+	.global	Port_ConfigRoot
+	.align	4
+Port_ConfigRoot:	.type	object
+	.size	Port_ConfigRoot,16
+	.word	Port_kConfiguration0,Port_DiscSet0,Port_kLVDSConfig0,Port_kPCSRConfig0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L3:
+	.word	5861
+	.half	3
+	.word	.L4
+	.byte	4
+.L2:
+	.byte	1
+	.byte	'Targets\\TC275\\MCAL\\MCAL_Gen\\src\\Port_PBCfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L5
+	.byte	2,1,3
+	.word	144
+	.byte	4
+	.byte	'__codeptr',0,1,1,1
+	.word	146
+	.byte	5
+	.byte	'unsigned char',0,1,8,4
+	.byte	'uint8',0,2,81,25
+	.word	169
+	.byte	5
+	.byte	'unsigned short int',0,2,7,4
+	.byte	'uint16',0,2,91,25
+	.word	200
+	.byte	5
+	.byte	'unsigned int',0,4,7,4
+	.byte	'uint32',0,2,106,24
+	.word	237
+	.byte	4
+	.byte	'boolean',0,2,127,25
+	.word	169
+	.byte	4
+	.byte	'StatusType',0,3,191,1,27
+	.word	169
+	.byte	6,3,206,1,9,8,7
+	.byte	'vendorID',0
+	.word	200
+	.byte	2,2,35,0,7
+	.byte	'moduleID',0
+	.word	200
+	.byte	2,2,35,2,7
+	.byte	'sw_major_version',0
+	.word	169
+	.byte	1,2,35,4,7
+	.byte	'sw_minor_version',0
+	.word	169
+	.byte	1,2,35,5,7
+	.byte	'sw_patch_version',0
+	.word	169
+	.byte	1,2,35,6,0,4
+	.byte	'Std_VersionInfoType',0,3,213,1,3
+	.word	304
+	.byte	6,4,93,9,8,7
+	.byte	'Class',0
+	.word	169
+	.byte	1,2,35,0,7
+	.byte	'TIN',0
+	.word	169
+	.byte	1,2,35,1,7
+	.byte	'ReturnAddress',0
+	.word	237
+	.byte	4,2,35,4,0,4
+	.byte	'OsTrapInfoType',0,4,97,3
+	.word	454
+	.byte	8,68
+	.word	237
+	.byte	9,16,0,6,4,154,1,9,68,7
+	.byte	'store',0
+	.word	534
+	.byte	68,2,35,0,0,8,68
+	.word	543
+	.byte	9,0,0,4
+	.byte	'Os_JumpBufType',0,4,156,1,3
+	.word	565
+	.byte	4
+	.byte	'Os_StackTraceType',0,4,174,1,18
+	.word	237
+	.byte	6,4,175,1,9,8,7
+	.byte	'sp',0
+	.word	237
+	.byte	4,2,35,0,7
+	.byte	'ctx',0
+	.word	237
+	.byte	4,2,35,4,0,4
+	.byte	'Os_StackValueType',0,4,175,1,63
+	.word	625
+	.byte	4
+	.byte	'Os_StackSizeType',0,4,176,1,27
+	.word	625
+	.byte	10,1,1,3
+	.word	710
+	.byte	4
+	.byte	'Os_VoidVoidFunctionType',0,4,179,1,16
+	.word	713
+	.byte	4
+	.byte	'ApplicationType',0,4,193,1,23
+	.word	169
+	.byte	11
+	.byte	'Os_ApplicationConfigurationType_s',0,4,198,1,16,2,7
+	.byte	'app_id',0
+	.word	169
+	.byte	1,2,35,0,7
+	.byte	'access',0
+	.word	169
+	.byte	1,2,35,1,0,4
+	.byte	'Os_ApplicationConfigurationType',0,4,201,1,3
+	.word	776
+	.byte	4
+	.byte	'Os_CoreStateType',0,4,203,1,16
+	.word	237
+	.byte	4
+	.byte	'AreaIdType',0,4,204,1,16
+	.word	200
+	.byte	4
+	.byte	'Os_PeripheralAddressType',0,4,212,1,22
+	.word	237
+	.byte	4
+	.byte	'TickType',0,4,221,1,22
+	.word	237
+	.byte	4
+	.byte	'Os_StopwatchTickType',0,4,225,1,22
+	.word	237
+	.byte	3
+	.word	237
+	.byte	4
+	.byte	'Os_Lockable',0,4,234,1,18
+	.word	1018
+	.byte	4
+	.byte	'CoreIdType',0,4,236,1,16
+	.word	200
+	.byte	4
+	.byte	'SpinlockIdType',0,4,237,1,16
+	.word	200
+	.byte	12,4,239,1,9,4,13
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,13
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,4
+	.byte	'TryToGetSpinlockType',0,4,239,1,74
+	.word	1088
+	.byte	12,4,174,2,9,4,13
+	.byte	'APPLICATION_ACCESSIBLE',0,0,13
+	.byte	'APPLICATION_RESTARTING',0,1,13
+	.byte	'APPLICATION_TERMINATED',0,2,0,4
+	.byte	'ApplicationStateType',0,4,174,2,92
+	.word	1181
+	.byte	14
+	.byte	'void',0,3
+	.word	1293
+	.byte	15,1,1,16
+	.word	169
+	.byte	16
+	.word	1299
+	.byte	0,3
+	.word	1304
+	.byte	4
+	.byte	'Os_FunctionEntryType',0,4,183,2,16
+	.word	1318
+	.byte	11
+	.byte	'Os_MeterInfoType_s',0,4,193,2,16,48,7
+	.byte	'elapsed',0
+	.word	237
+	.byte	4,2,35,0,7
+	.byte	'previous',0
+	.word	237
+	.byte	4,2,35,4,7
+	.byte	'max',0
+	.word	237
+	.byte	4,2,35,8,7
+	.byte	'cumulative',0
+	.word	237
+	.byte	4,2,35,12,7
+	.byte	'stackbase',0
+	.word	625
+	.byte	8,2,35,16,7
+	.byte	'stackusage',0
+	.word	625
+	.byte	8,2,35,24,7
+	.byte	'stackmax',0
+	.word	625
+	.byte	8,2,35,32,7
+	.byte	'stackbudget',0
+	.word	625
+	.byte	8,2,35,40,0,4
+	.byte	'Os_MeterInfoType',0,4,202,2,3
+	.word	1353
+	.byte	3
+	.word	1353
+	.byte	4
+	.byte	'Os_MeterInfoRefType',0,4,203,2,50
+	.word	1551
+	.byte	4
+	.byte	'EventMaskType',0,4,206,2,15
+	.word	169
+	.byte	4
+	.byte	'Os_imaskType',0,4,211,2,16
+	.word	237
+	.byte	11
+	.byte	'Os_ISRDynType_s',0,4,213,2,16,48,7
+	.byte	'meter',0
+	.word	1353
+	.byte	48,2,35,0,0,4
+	.byte	'Os_ISRDynType',0,4,215,2,3
+	.word	1630
+	.byte	3
+	.word	1630
+	.byte	17
+	.word	1691
+	.byte	11
+	.byte	'Os_ISRType_s',0,4,216,2,16,24,7
+	.byte	'entry_function',0
+	.word	718
+	.byte	4,2,35,0,7
+	.byte	'dynamic',0
+	.word	1696
+	.byte	4,2,35,4,7
+	.byte	'imask',0
+	.word	237
+	.byte	4,2,35,8,7
+	.byte	'stackbudget',0
+	.word	625
+	.byte	8,2,35,12,7
+	.byte	'access',0
+	.word	169
+	.byte	1,2,35,20,7
+	.byte	'application',0
+	.word	169
+	.byte	1,2,35,21,0,4
+	.byte	'Os_ISRType',0,4,223,2,3
+	.word	1701
+	.byte	3
+	.word	710
+	.byte	17
+	.word	1701
+	.byte	3
+	.word	1860
+	.byte	4
+	.byte	'ISRType',0,4,224,2,46
+	.word	1865
+	.byte	4
+	.byte	'Os_bitmask',0,4,239,2,22
+	.word	237
+	.byte	4
+	.byte	'Os_pset0Type',0,4,240,2,20
+	.word	237
+	.byte	4
+	.byte	'Os_pset1Type',0,4,241,2,20
+	.word	237
+	.byte	4
+	.byte	'Os_pset2Type',0,4,242,2,20
+	.word	237
+	.byte	18,4,243,2,9,4,7
+	.byte	'p0',0
+	.word	237
+	.byte	4,2,35,0,7
+	.byte	'p1',0
+	.word	237
+	.byte	4,2,35,0,7
+	.byte	'p2',0
+	.word	237
+	.byte	4,2,35,0,0,4
+	.byte	'Os_psetType',0,4,247,2,3
+	.word	1973
+	.byte	18,4,249,2,9,4,7
+	.byte	't0',0
+	.word	237
+	.byte	4,2,35,0,7
+	.byte	't1',0
+	.word	237
+	.byte	4,2,35,0,7
+	.byte	't2',0
+	.word	237
+	.byte	4,2,35,0,0,4
+	.byte	'Os_tpmaskType',0,4,253,2,3
+	.word	2037
+	.byte	4
+	.byte	'Os_ActivationCountType',0,4,254,2,23
+	.word	169
+	.byte	11
+	.byte	'Os_TaskDynType_s',0,4,128,3,16,120,7
+	.byte	'terminate_jump_buf',0
+	.word	574
+	.byte	68,2,35,0,7
+	.byte	'meter',0
+	.word	1353
+	.byte	48,2,35,68,7
+	.byte	'activation_count',0
+	.word	169
+	.byte	1,2,35,116,0,4
+	.byte	'Os_TaskDynType',0,4,132,3,3
+	.word	2135
+	.byte	8,68
+	.word	543
+	.byte	9,0,0,3
+	.word	2135
+	.byte	17
+	.word	2261
+	.byte	11
+	.byte	'Os_TaskType_s',0,4,134,3,16,40,7
+	.byte	'dynamic',0
+	.word	2266
+	.byte	4,2,35,0,7
+	.byte	'entry_function',0
+	.word	718
+	.byte	4,2,35,4,7
+	.byte	'pset',0
+	.word	1973
+	.byte	4,2,35,8,7
+	.byte	'base_tpmask',0
+	.word	2037
+	.byte	4,2,35,12,7
+	.byte	'tpmask',0
+	.word	2037
+	.byte	4,2,35,16,7
+	.byte	'core_id',0
+	.word	200
+	.byte	2,2,35,20,7
+	.byte	'index',0
+	.word	237
+	.byte	4,2,35,24,7
+	.byte	'stackbudget',0
+	.word	625
+	.byte	8,2,35,28,7
+	.byte	'activation_count',0
+	.word	169
+	.byte	1,2,35,36,7
+	.byte	'access',0
+	.word	169
+	.byte	1,2,35,37,7
+	.byte	'application',0
+	.word	169
+	.byte	1,2,35,38,0,4
+	.byte	'Os_TaskType',0,4,146,3,3
+	.word	2271
+	.byte	17
+	.word	2271
+	.byte	3
+	.word	2521
+	.byte	4
+	.byte	'TaskType',0,4,147,3,47
+	.word	2526
+	.byte	19
+	.byte	'Os_TaskStateType',0,4,155,3,6,4,13
+	.byte	'SUSPENDED',0,0,13
+	.byte	'READY',0,1,13
+	.byte	'WAITING',0,2,13
+	.byte	'RUNNING',0,3,0,4
+	.byte	'TaskStateType',0,4,156,3,31
+	.word	2549
+	.byte	18,4,167,3,3,4,7
+	.byte	'tpmask',0
+	.word	2037
+	.byte	4,2,35,0,0,11
+	.byte	'Os_ResourceDynType_s',0,4,166,3,16,4,7
+	.byte	'saved_priority',0
+	.word	2636
+	.byte	4,2,35,0,0,4
+	.byte	'Os_ResourceDynType',0,4,170,3,3
+	.word	2659
+	.byte	3
+	.word	2659
+	.byte	17
+	.word	2739
+	.byte	11
+	.byte	'Os_ResourceType_s',0,4,171,3,16,12,7
+	.byte	'dynamic',0
+	.word	2744
+	.byte	4,2,35,0,7
+	.byte	'tpmask',0
+	.word	2037
+	.byte	4,2,35,4,7
+	.byte	'access',0
+	.word	169
+	.byte	1,2,35,8,0,4
+	.byte	'Os_ResourceType',0,4,175,3,3
+	.word	2749
+	.byte	6,4,181,3,9,12,7
+	.byte	'maxallowedvalue',0
+	.word	237
+	.byte	4,2,35,0,7
+	.byte	'ticksperbase',0
+	.word	237
+	.byte	4,2,35,4,7
+	.byte	'mincycle',0
+	.word	237
+	.byte	4,2,35,8,0,4
+	.byte	'AlarmBaseType',0,4,185,3,3
+	.word	2848
+	.byte	6,4,206,3,9,8,7
+	.byte	'Running',0
+	.word	169
+	.byte	1,2,35,0,7
+	.byte	'Pending',0
+	.word	169
+	.byte	1,2,35,1,7
+	.byte	'Delay',0
+	.word	237
+	.byte	4,2,35,4,0,4
+	.byte	'Os_CounterStatusType',0,4,210,3,3
+	.word	2943
+	.byte	20
+	.word	169
+	.byte	1,1,3
+	.word	3029
+	.byte	4
+	.byte	'Os_CounterIncrAdvType',0,4,217,3,22
+	.word	3036
+	.byte	11
+	.byte	's_swd',0,4,222,3,12,4,7
+	.byte	'count',0
+	.word	237
+	.byte	4,2,35,0,0,18,4,221,3,3,4,7
+	.byte	'sw',0
+	.word	3072
+	.byte	4,2,35,0,0,11
+	.byte	'Os_CounterDynType_s',0,4,220,3,16,4,7
+	.byte	'type_dependent',0
+	.word	3100
+	.byte	4,2,35,0,0,4
+	.byte	'Os_CounterDynType',0,4,226,3,3
+	.word	3119
+	.byte	3
+	.word	3119
+	.byte	17
+	.word	3197
+	.byte	11
+	.byte	'Os_CounterType_s',0,4,227,3,16,28,7
+	.byte	'dynamic',0
+	.word	3202
+	.byte	4,2,35,0,7
+	.byte	'advincr',0
+	.word	3041
+	.byte	4,2,35,4,7
+	.byte	'base',0
+	.word	2848
+	.byte	12,2,35,8,7
+	.byte	'core',0
+	.word	1299
+	.byte	4,2,35,20,7
+	.byte	'access',0
+	.word	169
+	.byte	1,2,35,24,7
+	.byte	'application',0
+	.word	169
+	.byte	1,2,35,25,0,4
+	.byte	'Os_CounterType',0,4,234,3,3
+	.word	3207
+	.byte	3
+	.word	3029
+	.byte	17
+	.word	3207
+	.byte	3
+	.word	3359
+	.byte	4
+	.byte	'CounterType',0,4,235,3,52
+	.word	3364
+	.byte	19
+	.byte	'Os_ScheduleTableStatusType',0,4,240,3,6,4,13
+	.byte	'SCHEDULETABLE_STOPPED',0,0,13
+	.byte	'SCHEDULETABLE_NEXT',0,1,13
+	.byte	'SCHEDULETABLE_WAITING',0,2,13
+	.byte	'SCHEDULETABLE_RUNNING',0,3,13
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,4
+	.byte	'ScheduleTableStatusType',0,4,241,3,41
+	.word	3390
+	.byte	17
+	.word	.L21-.L3
+	.byte	3
+	.word	3590
+	.byte	4
+	.byte	'ScheduleTableType',0,4,128,4,58
+	.word	3595
+	.byte	11
+	.byte	'Os_ScheduleTableDynType_s',0,4,130,4,16,16,7
+	.byte	'match',0
+	.word	237
+	.byte	4,2,35,0,7
+	.byte	'next',0
+	.word	3600
+	.byte	4,2,35,4,7
+	.byte	'state',0
+	.word	3390
+	.byte	4,2,35,8,7
+	.byte	'config',0
+	.word	200
+	.byte	2,2,35,12,0,3
+	.word	3627
+	.byte	17
+	.word	3720
+.L21:
+	.byte	11
+	.byte	'Os_ScheduleTableType_s',0,4,247,3,16,16,7
+	.byte	'dynamic',0
+	.word	3725
+	.byte	4,2,35,0,7
+	.byte	'counter',0
+	.word	3369
+	.byte	4,2,35,4,7
+	.byte	'repeat',0
+	.word	169
+	.byte	1,2,35,8,7
+	.byte	'config',0
+	.word	200
+	.byte	2,2,35,10,7
+	.byte	'initial',0
+	.word	169
+	.byte	1,2,35,12,7
+	.byte	'access',0
+	.word	169
+	.byte	1,2,35,13,7
+	.byte	'application',0
+	.word	169
+	.byte	1,2,35,14,0,4
+	.byte	'Os_ScheduleTableType',0,4,255,3,3
+	.word	3730
+	.byte	17
+	.word	3730
+	.byte	3
+	.word	3910
+	.byte	17
+	.word	3207
+	.byte	3
+	.word	3920
+	.byte	21
+	.word	1023
+	.byte	21
+	.word	1973
+	.byte	21
+	.word	1870
+	.byte	21
+	.word	2531
+	.byte	21
+	.word	2037
+	.byte	21
+	.word	169
+	.byte	21
+	.word	2531
+	.byte	11
+	.byte	'Os_ControlledCoreType_s',0,4,251,6,16,112,7
+	.byte	'TrapInfo',0
+	.word	454
+	.byte	8,2,35,0,7
+	.byte	'lock_taskaccess',0
+	.word	3930
+	.byte	4,2,35,8,7
+	.byte	'ReadyTasks',0
+	.word	3935
+	.byte	4,2,35,12,7
+	.byte	'RunningISR',0
+	.word	3940
+	.byte	4,2,35,16,7
+	.byte	'RunningTask',0
+	.word	3945
+	.byte	4,2,35,20,7
+	.byte	'RunningTPMask',0
+	.word	3950
+	.byte	4,2,35,24,7
+	.byte	'CurrentMeteredObject',0
+	.word	1556
+	.byte	4,2,35,28,7
+	.byte	'IdleMeter',0
+	.word	1353
+	.byte	48,2,35,32,7
+	.byte	'AppAccess',0
+	.word	169
+	.byte	1,2,35,80,7
+	.byte	'AppOverride',0
+	.word	3955
+	.byte	1,2,35,81,7
+	.byte	'GetStackValueAdjust',0
+	.word	625
+	.byte	8,2,35,84,7
+	.byte	'InErrorHook',0
+	.word	169
+	.byte	1,2,35,92,7
+	.byte	'ChainTaskRef',0
+	.word	3960
+	.byte	4,2,35,96,7
+	.byte	'GetStackUsageAdjust',0
+	.word	625
+	.byte	8,2,35,100,7
+	.byte	'InProtectionHook',0
+	.word	169
+	.byte	1,2,35,108,7
+	.byte	'CoreIsActive',0
+	.word	169
+	.byte	1,2,35,109,7
+	.byte	'InShutdownHook',0
+	.word	169
+	.byte	1,2,35,110,0,4
+	.byte	'Os_ControlledCoreType',0,4,141,7,3
+	.word	3965
+	.byte	3
+	.word	237
+	.byte	17
+	.word	1701
+	.byte	3
+	.word	4421
+	.byte	17
+	.word	2271
+	.byte	3
+	.word	4431
+	.byte	3
+	.word	1353
+	.byte	11
+	.byte	'Os_AnyCoreType_s',0,4,151,7,16,96,7
+	.byte	'DisableAllImask',0
+	.word	237
+	.byte	4,2,35,0,7
+	.byte	'SuspendAllImask',0
+	.word	237
+	.byte	4,2,35,4,7
+	.byte	'SuspendOSImask',0
+	.word	237
+	.byte	4,2,35,8,7
+	.byte	'DisableAllCount',0
+	.word	237
+	.byte	4,2,35,12,7
+	.byte	'SuspendAllCount',0
+	.word	237
+	.byte	4,2,35,16,7
+	.byte	'SuspendOSCount',0
+	.word	237
+	.byte	4,2,35,20,7
+	.byte	'RestartJumpBuf',0
+	.word	574
+	.byte	68,2,35,24,7
+	.byte	'Restartable',0
+	.word	169
+	.byte	1,2,35,92,0,4
+	.byte	'Os_AnyCoreType',0,4,160,7,3
+	.word	4446
+	.byte	4
+	.byte	'unsigned_int',0,5,116,22
+	.word	237
+	.byte	6,6,175,2,3,2,22
+	.byte	'P0',0,1
+	.word	169
+	.byte	1,7,2,35,0,22
+	.byte	'P1',0,1
+	.word	169
+	.byte	1,6,2,35,0,22
+	.byte	'P2',0,1
+	.word	169
+	.byte	1,5,2,35,0,22
+	.byte	'P3',0,1
+	.word	169
+	.byte	1,4,2,35,0,22
+	.byte	'P4',0,1
+	.word	169
+	.byte	1,3,2,35,0,22
+	.byte	'P5',0,1
+	.word	169
+	.byte	1,2,2,35,0,22
+	.byte	'P6',0,1
+	.word	169
+	.byte	1,1,2,35,0,22
+	.byte	'P7',0,1
+	.word	169
+	.byte	1,0,2,35,0,22
+	.byte	'P8',0,1
+	.word	169
+	.byte	1,7,2,35,1,22
+	.byte	'P9',0,1
+	.word	169
+	.byte	1,6,2,35,1,22
+	.byte	'P10',0,1
+	.word	169
+	.byte	1,5,2,35,1,22
+	.byte	'P11',0,1
+	.word	169
+	.byte	1,4,2,35,1,22
+	.byte	'P12',0,1
+	.word	169
+	.byte	1,3,2,35,1,22
+	.byte	'P13',0,1
+	.word	169
+	.byte	1,2,2,35,1,22
+	.byte	'P14',0,1
+	.word	169
+	.byte	1,1,2,35,1,22
+	.byte	'P15',0,1
+	.word	169
+	.byte	1,0,2,35,1,0,23
+	.byte	'Port_n_PinType',0,6,173,2,15,4,7
+	.byte	'B',0
+	.word	4708
+	.byte	2,2,35,0,7
+	.byte	'U',0
+	.word	237
+	.byte	4,2,35,0,0,4
+	.byte	'Port_n_PinType',0,6,200,2,3
+	.word	4945
+	.byte	6,6,205,2,3,16,7
+	.byte	'PC0',0
+	.word	169
+	.byte	1,2,35,0,7
+	.byte	'PC1',0
+	.word	169
+	.byte	1,2,35,1,7
+	.byte	'PC2',0
+	.word	169
+	.byte	1,2,35,2,7
+	.byte	'PC3',0
+	.word	169
+	.byte	1,2,35,3,7
+	.byte	'PC4',0
+	.word	169
+	.byte	1,2,35,4,7
+	.byte	'PC5',0
+	.word	169
+	.byte	1,2,35,5,7
+	.byte	'PC6',0
+	.word	169
+	.byte	1,2,35,6,7
+	.byte	'PC7',0
+	.word	169
+	.byte	1,2,35,7,7
+	.byte	'PC8',0
+	.word	169
+	.byte	1,2,35,8,7
+	.byte	'PC9',0
+	.word	169
+	.byte	1,2,35,9,7
+	.byte	'PC10',0
+	.word	169
+	.byte	1,2,35,10,7
+	.byte	'PC11',0
+	.word	169
+	.byte	1,2,35,11,7
+	.byte	'PC12',0
+	.word	169
+	.byte	1,2,35,12,7
+	.byte	'PC13',0
+	.word	169
+	.byte	1,2,35,13,7
+	.byte	'PC14',0
+	.word	169
+	.byte	1,2,35,14,7
+	.byte	'PC15',0
+	.word	169
+	.byte	1,2,35,15,0,8,16
+	.word	237
+	.byte	9,3,0,23
+	.byte	'Port_n_ControlType',0,6,203,2,15,16,7
+	.byte	'B',0
+	.word	5013
+	.byte	16,2,35,0,7
+	.byte	'U',0
+	.word	5234
+	.byte	16,2,35,0,0,4
+	.byte	'Port_n_ControlType',0,6,230,2,2
+	.word	5243
+	.byte	11
+	.byte	'Port_n_ConfigType',0,6,137,3,16,32,7
+	.byte	'PinControl',0
+	.word	5243
+	.byte	16,2,35,0,7
+	.byte	'PinLevel',0
+	.word	4945
+	.byte	4,2,35,16,7
+	.byte	'DriverStrength0',0
+	.word	237
+	.byte	4,2,35,20,7
+	.byte	'DriverStrength1',0
+	.word	237
+	.byte	4,2,35,24,7
+	.byte	'ModeChangeControl',0
+	.word	4945
+	.byte	4,2,35,28,0,4
+	.byte	'Port_n_ConfigType',0,6,161,3,2
+	.word	5319
+	.byte	11
+	.byte	'Port_n_LVDSConfigType',0,6,164,3,16,12,7
+	.byte	'LPCR0',0
+	.word	237
+	.byte	4,2,35,0,7
+	.byte	'LPCR1',0
+	.word	237
+	.byte	4,2,35,4,7
+	.byte	'LPCR2',0
+	.word	237
+	.byte	4,2,35,8,0,4
+	.byte	'Port_n_LVDSConfigType',0,6,188,3,2
+	.word	5486
+	.byte	4
+	.byte	'Port_n_PCSRConfigType',0,6,191,3,16
+	.word	237
+	.byte	17
+	.word	5319
+	.byte	3
+	.word	5622
+	.byte	17
+	.word	200
+	.byte	3
+	.word	5632
+	.byte	17
+	.word	5486
+	.byte	3
+	.word	5642
+	.byte	17
+	.word	237
+	.byte	3
+	.word	5652
+	.byte	11
+	.byte	'Port_ConfigType',0,6,200,3,16,16,7
+	.byte	'PortConfigSetPtr',0
+	.word	5627
+	.byte	4,2,35,0,7
+	.byte	'PDiscSet',0
+	.word	5637
+	.byte	4,2,35,4,7
+	.byte	'Port_LVDSConfigTypePtr',0
+	.word	5647
+	.byte	4,2,35,8,7
+	.byte	'Port_PCSRConfigTypePtr',0
+	.word	5657
+	.byte	4,2,35,12,0,8,16
+	.word	5662
+	.byte	9,0,0
+.L16:
+	.byte	17
+	.word	5793
+	.byte	8,192,3
+	.word	5319
+	.byte	9,13,0
+.L17:
+	.byte	17
+	.word	5807
+	.byte	8,2
+	.word	200
+	.byte	9,0,0
+.L18:
+	.byte	17
+	.word	5822
+	.byte	8,36
+	.word	5486
+	.byte	9,2,0
+.L19:
+	.byte	17
+	.word	5836
+	.byte	8,12
+	.word	237
+	.byte	9,2,0
+.L20:
+	.byte	17
+	.word	5850
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L4:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,21,0,54,15,0,0,3,15,0,73,19,0,0,4,22,0,3,8,58,15,59,15
+	.byte	57,15,73,19,0,0,5,36,0,3,8,11,15,62,15,0,0,6,19,1,58,15,59,15,57,15,11,15,0,0,7,13,0,3,8,73,19,11,15,56
+	.byte	9,0,0,8,1,1,11,15,73,19,0,0,9,33,0,47,15,0,0,10,21,0,54,15,39,12,0,0,11,19,1,3,8,58,15,59,15,57,15,11
+	.byte	15,0,0,12,4,1,58,15,59,15,57,15,11,15,0,0,13,40,0,3,8,28,13,0,0,14,59,0,3,8,0,0,15,21,1,54,15,39,12,0
+	.byte	0,16,5,0,73,19,0,0,17,38,0,73,19,0,0,18,23,1,58,15,59,15,57,15,11,15,0,0,19,4,1,3,8,58,15,59,15,57,15
+	.byte	11,15,0,0,20,21,0,73,19,54,15,39,12,0,0,21,53,0,73,19,0,0,22,13,0,3,8,11,15,73,19,13,15,12,15,56,9,0,0
+	.byte	23,23,1,3,8,58,15,59,15,57,15,11,15,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L5:
+	.word	.L23-.L22
+.L22:
+	.half	3
+	.word	.L25-.L24
+.L24:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Targets\\TC275\\MCAL\\MCAL_Gen\\src\\Port_PBCfg.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Integration\\TargetIntegration\\TC275\\Include\\Mcal_TcLib.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Port\\inc\\Port.h',0,0,0,0,0
+.L25:
+.L23:
+	.sdecl	'.debug_info',debug,cluster('Port_ConfigRoot')
+	.sect	'.debug_info'
+.L6:
+	.word	174
+	.half	3
+	.word	.L7
+	.byte	4,1
+	.byte	'Targets\\TC275\\MCAL\\MCAL_Gen\\src\\Port_PBCfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L2
+	.byte	3
+	.byte	'Port_ConfigRoot',0,1,193,12,23
+	.word	.L16
+	.byte	1,5,3
+	.word	Port_ConfigRoot
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Port_ConfigRoot')
+	.sect	'.debug_abbrev'
+.L7:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Port_kConfiguration0')
+	.sect	'.debug_info'
+.L8:
+	.word	178
+	.half	3
+	.word	.L9
+	.byte	4,1
+	.byte	'Targets\\TC275\\MCAL\\MCAL_Gen\\src\\Port_PBCfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L2
+	.byte	3
+	.byte	'Port_kConfiguration0',0,1,236,1,32
+	.word	.L17
+	.byte	5,3
+	.word	Port_kConfiguration0
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Port_kConfiguration0')
+	.sect	'.debug_abbrev'
+.L9:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('Port_DiscSet0')
+	.sect	'.debug_info'
+.L10:
+	.word	171
+	.half	3
+	.word	.L11
+	.byte	4,1
+	.byte	'Targets\\TC275\\MCAL\\MCAL_Gen\\src\\Port_PBCfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L2
+	.byte	3
+	.byte	'Port_DiscSet0',0,1,178,11,21
+	.word	.L18
+	.byte	5,3
+	.word	Port_DiscSet0
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Port_DiscSet0')
+	.sect	'.debug_abbrev'
+.L11:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('Port_kLVDSConfig0')
+	.sect	'.debug_info'
+.L12:
+	.word	175
+	.half	3
+	.word	.L13
+	.byte	4,1
+	.byte	'Targets\\TC275\\MCAL\\MCAL_Gen\\src\\Port_PBCfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L2
+	.byte	3
+	.byte	'Port_kLVDSConfig0',0,1,202,11,36
+	.word	.L19
+	.byte	5,3
+	.word	Port_kLVDSConfig0
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Port_kLVDSConfig0')
+	.sect	'.debug_abbrev'
+.L13:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('Port_kPCSRConfig0')
+	.sect	'.debug_info'
+.L14:
+	.word	175
+	.half	3
+	.word	.L15
+	.byte	4,1
+	.byte	'Targets\\TC275\\MCAL\\MCAL_Gen\\src\\Port_PBCfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L2
+	.byte	3
+	.byte	'Port_kPCSRConfig0',0,1,253,11,36
+	.word	.L20
+	.byte	5,3
+	.word	Port_kPCSRConfig0
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Port_kPCSRConfig0')
+	.sect	'.debug_abbrev'
+.L15:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	     1  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	     2  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	     3  ** Copyright (C) Infineon Technologies (2013)                                 **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	     4  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	     5  ** All rights reserved.                                                       **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	     6  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	     7  ** This document contains proprietary information belonging to Infineon       **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	     8  ** Technologies. Passing on and copying of this document, and communication   **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	     9  ** of its contents is not permitted without prior written authorization.      **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    10  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    11  ********************************************************************************
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    12  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    13  **  FILENAME  : Port_PBCfg.c                                                  **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    14  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    15  **  $CC VERSION : \main\40 $                                                 **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    16  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    17  **  DATE, TIME: 2021-06-23, 14:06:03                                      **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    18  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    19  **  GENERATOR : Build b141014-0350                                          **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    20  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    21  **  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    22  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    23  **  VENDOR    : Infineon Technologies                                         **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    24  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    25  **  DESCRIPTION  : Port configuration generated from ECU
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    26                     configuration file ( Port.bmd)                             **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    27  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    28  **  MAY BE CHANGED BY USER [yes/no]: No                                       **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    29  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    30  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    31  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    32  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    33  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    34  **                      Includes                                              **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    35  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    36  /* Inclusion of Port Header file */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    37  #include "Port.h"
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    38  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    39  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    40  **                      Private Macro Definitions                             **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    41  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    42  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    43  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    44  ** Name             : Portx_lPdrConfig                                        **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    45  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    46  ** Description      : Macro to configure Portx Pdr register parameters        **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    47  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    48  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    49  /*IFX_MISRA_RULE_19_07_STATUS=Function like macros used for simplification  of
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    50          configuration generation and increase the readability of config file*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    51  /* Macro definition for PORT pad drive control register Pn_PDR0 */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    52  #define  Portx_lPdrConfig1(Pd0,Pd1,Pd2,Pd3,Pd4,Pd5,Pd6,Pd7)                    \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    53           ( ((uint32)(Pd7) << (uint32)28) | ((uint32)(Pd6) << (uint32)24) |     \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    54             ((uint32)(Pd5) << (uint32)20) | ((uint32)(Pd4) << (uint32)16) |     \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    55             ((uint32)(Pd3) << (uint32)12) |  ((uint32)(Pd2) << (uint32)8)  |     \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    56             ((uint32)(Pd1) << (uint32)4)  | (uint32)(Pd0)                        \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    57           )
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    58  /*IFX_MISRA_RULE_19_07_STATUS=Function like macros used for simplification  of
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    59          configuration generation and increase the readability of config file*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    60  /* Macro definition for PORT pad drive control register Pn_PDR1 */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    61  #define  Portx_lPdrConfig2(Pd8,Pd9,Pd10,Pd11,Pd12,Pd13,Pd14,Pd15)              \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    62           ( ((uint32)(Pd15) << (uint32)28) | ((uint32)(Pd14) << (uint32)24) |   \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    63             ((uint32)(Pd13) << (uint32)20) | ((uint32)(Pd12) << (uint32)16) |   \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    64             ((uint32)(Pd11) << (uint32)12)|  ((uint32)(Pd10) << (uint32)8)  |   \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    65             ((uint32)(Pd9) << (uint32)4) | (uint32)(Pd8)                        \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    66           )
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    67   /*IFX_MISRA_RULE_19_07_STATUS=Function like macros used for simplification  of
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    68          configuration generation and increase the readability of config file*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    69  /* Macro definition for PORT Pad Disable Control Register */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    70  #define Port_lDiscSet(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15)   \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    71    ((uint16)(                                                                    \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    72              (uint32)(b0) | ((uint32)(b1) << (uint32)1) |                       \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    73              ((uint32)(b2) << (uint32)2) | ((uint32)(b3) << (uint32)3) |        \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    74              ((uint32)(b4) << (uint32)4) | ((uint32)(b5) << (uint32)5) |        \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    75              ((uint32)(b6) << (uint32)6) | ((uint32)(b7) << (uint32)7) |        \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    76              ((uint32)(b8) << (uint32)8) | ((uint32)(b9) << (uint32)9) |        \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    77              ((uint32)(b10) << (uint32)10) | ((uint32)(b11) << (uint32)11) |    \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    78              ((uint32)(b12) << (uint32)12) | ((uint32)(b13)<< (uint32)13) |     \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    79              ((uint32)(b14) << (uint32)14) | ((uint32)(b15) << (uint32)15)      \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    80             ))
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    81  /*IFX_MISRA_RULE_19_07_STATUS=Function like macros used for simplification  of
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    82          configuration generation and increase the readability of config file*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    83  /* Macro definition for PORT LPCR register for LVDSH */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    84  #define Port_lLvdsh(RDISCL,RDIS,TERM,LRTERM,Reduced_IEEE,TDISCL,TDIS,TPD,TPWD) \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    85    ((uint32)(                                                                    \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    86              ((uint32)(RDISCL)) | ((uint32)(RDIS) << (uint32)1) |               \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    87              ((uint32)(TERM) << (uint32)2) | ((uint32)(LRTERM) << (uint32)3) |  \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    88              ((uint32)(Reduced_IEEE) << (uint32)8) |                            \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    89              ((uint32)(TDISCL) << (uint32)12) | ((uint32)(TDIS) << (uint32)13)| \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    90              ((uint32)(TPD) << (uint32)14) | ((uint32)(TPWD) << (uint32)15)     \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    91             ))
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    92  /*IFX_MISRA_RULE_19_07_STATUS=Function like macros used for simplification  of
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    93          configuration generation and increase the readability of config file*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    94  /* Macro definition for PORT LPCR register for LVDSM */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    95  #define Port_lLvdsm(PS1)                                                       \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    96    ((uint32)(                                                                    \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    97              ((uint32)(PS1) << (uint32)1)                                       \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    98             ))
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	    99  /*IFX_MISRA_RULE_19_07_STATUS=Function like macros used for simplification  of
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   100          configuration generation and increase the readability of config file*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   101  /* Macro definition for PORT PCSR register */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   102  #define Port_lPcsr(b0,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15)      \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   103    ((uint32)(                                                                    \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   104              ((uint32)(b0)) | ((uint32)(b1) << (uint32)1) |                     \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   105              ((uint32)(b2) << (uint32)2) | ((uint32)(b3) << (uint32)3) |        \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   106              ((uint32)(b4) << (uint32)4) | ((uint32)(b5) << (uint32)5) |        \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   107              ((uint32)(b6) << (uint32)6) | ((uint32)(b7) << (uint32)7) |        \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   108              ((uint32)(b8) << (uint32)8) | ((uint32)(b9) << (uint32)9) |        \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   109              ((uint32)(b10) << (uint32)10) | ((uint32)(b11) << (uint32)11) |    \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   110              ((uint32)(b12) << (uint32)12) | ((uint32)(b13) << (uint32)13) |    \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   111              ((uint32)(b14) << (uint32)14) | ((uint32)(b15) << (uint32)15)      \ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   112             ))
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   113  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   114  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   115  **                      Global Constant Definitions                           **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   116  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   117  /* MISRA RULE 87 VIOLATION: Inclusion of MemMap.h in between the code can't
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   118     be avoided as it is required for mapping global variables, constants
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   119     and code
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   120  */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   121  /*lint -esym( 960, 87 ) Note 960: Violates MISRA Required Rule 87,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   122                         only preprocessor statements and comments before
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   123                         '#include MemMap.h'
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   124  */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   125  /*lint -e537 Warning 537: Repeated include file MemMap.h */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   126  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   127  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   128  #define PORT_START_SEC_POSTBUILDCFG
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   129  #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   130  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   131  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   132  **                      Configuration Options                                 **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   133  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   134  /*
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   135                       Container : PortPinConfiguration
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   136  */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   137  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   138  /*
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   139  Configuration Options: Physical pin level
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   140  -LOW  (Low Volatage Level)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   141  -HIGH (High Voltage Level)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   142  */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   143  #define  PORT_PIN_LOW                       (0x00U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   144  #define  PORT_PIN_HIGH                      (0x01U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   145  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   146  /* Macros to define pin Default Input Output control value */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   147  #define  PORT_PIN_DEFAULT                   (0x10U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   148  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   149  /*
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   150  Configuration Options: Pin input characteristics
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   151  -NO PULL
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   152  -PULL DOWN
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   153  -PULL UP
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   154  */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   155  #define  PORT_PIN_IN_NO_PULL                (0x00U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   156  #define  PORT_PIN_IN_PULL_DOWN              (0x08U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   157  #define  PORT_PIN_IN_PULL_UP                (0x10U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   158  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   159  /*
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   160  Configuration Options: Pin output characteristics
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   161  -PUSHPULL
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   162  -OPENDRAIN
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   163  */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   164  #define  PORT_PIN_OUT_PUSHPULL              (0x00U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   165  #define  PORT_PIN_OUT_OPENDRAIN             (0x40U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   166  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   167  /*
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   168  Configuration Options: Pin Pad Level
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   169  */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   170  #define  PORT_PDR_CMOS_AUTOMOTIVE_LEVEL     (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   171  #define  PORT_PDR_TTL_LEVEL                 (0x8U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   172  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   173  /*
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   174  Configuration Options: Pin driver strength
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   175  */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   176  #define  PORT_CMOS_SPEED_GRADE1             (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   177  #define  PORT_CMOS_SPEED_GRADE2             (0x1U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   178  #define  PORT_CMOS_SPEED_GRADE3             (0x2U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   179  #define  PORT_CMOS_SPEED_GRADE4             (0x3U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   180  #define  PORT_LVDS_SPEED_GRADE1             (0x4U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   181  #define  PORT_LVDS_SPEED_GRADE2             (0x5U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   182  #define  PORT_LVDS_SPEED_GRADE3             (0x6U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   183  #define  PORT_LVDS_SPEED_GRADE4             (0x7U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   184  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   185  /* Hysteresis enable for input pin */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   186  #define  PORT_HYSTERESIS_ENABLE             (0x1U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   187  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   188  /* Hysteresis disable for input pin */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   189  #define  PORT_HYSTERESIS_DISABLE            (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   190  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   191  /* Pin driver strength value for the non available pins*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   192  #define  PORT_PIN_PAD_LEVEL_DEFAULT         (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   193  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   194  /* Configuration Options: Pin drive strength, for class Adc type pad    */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   195  #define  PORT_PDR_ADC                       (0x1U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   196  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   197  /*
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   198    Some of the Pins doesn't have driver strength, To access the same
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   199    pin this null value macro is introduced.
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   200  */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   201  #define  PORT_PDR_ZERO                      (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   202  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   203  /* For the Px_DISC register value set */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   204  #define  PORT_PIN_ANALOG_INPUT_ENABLE       (0x1U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   205  #define  PORT_PIN_ANALOG_INPUT_DISABLE      (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   206  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   207  /* For Pn_LPCR registers wrt LVDSH pads */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   208  #define Port_LVDS_PAD_SUPPLY_3_3_VOLT    (0x1U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   209  #define Port_LVDS_PAD_SUPPLY_5_VOLT      (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   210  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   211  /* For Pn_LPCR registers wrt LVDSH pads */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   212  #define PORT_LVDS_PORT_CONTROLLED           (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   213  #define PORT_LVDS_HSCT_CONTROLLED           (0x1U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   214  #define PORT_LVDS_ENABLE                    (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   215  #define PORT_LVDS_DISABLE                   (0x1U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   216  #define PORT_LVDS_INTERNAML_TERMINATION     (0x1U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   217  #define PORT_LVDS_EXTERNAL_TERMINATION      (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   218  #define PORT_LVDS_POLY_RESISTOR_TERM        (0x8U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   219  #define PORT_LVDS_IEEE_GEN_PURPOSE_LINK     (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   220  #define PORT_LVDS_IEEE_REDUCED_LINK         (0x2U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   221  #define PORT_LVDS_SPECIAL_REDUCED_LINK      (0x1U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   222  #define PORT_LVDS_POWER_DOWN                (0x1U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   223  #define PORT_LVDS_POWER_ON                  (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   224  #define PORT_LVDS_POWDOWN_PULDOWN_EN        (0x1U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   225  #define PORT_LVDS_POWDOWN_PULDOWN_DIS       (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   226  #define PORT_LVDS_DEFAULT                   (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   227  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   228  /* For PCSR register */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   229  #define PORT_PCSR_DEFAULT                   (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   230  #define PORT_PCSR_ENABLE                    (0x1U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   231  #define PORT_PCSR_DISABLE                   (0x0U)
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   232  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   233  /******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   234  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   235  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   236  static const Port_n_ConfigType Port_kConfiguration0[] =
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   237  {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   238  /*                              Port0                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   239    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   240      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   241        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   242        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   243           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   244           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   245           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   246           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   247           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   248           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   249           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   250           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   251           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   252           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   253           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   254           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   255           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   256           (PORT_PIN_DEFAULT),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   257           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   258           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   259        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   260      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   261      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   262        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   263        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   264           PORT_PIN_LOW,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   265           PORT_PIN_LOW,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   266           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   267           PORT_PIN_LOW,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   268           PORT_PIN_LOW,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   269           PORT_PIN_LOW,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   270           PORT_PIN_LOW,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   271           PORT_PIN_LOW,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   272           PORT_PIN_LOW,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   273           PORT_PIN_LOW,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   274           PORT_PIN_LOW,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   275           PORT_PIN_LOW,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   276           PORT_PIN_LOW,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   277           0U,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   278           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   279           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   280        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   281      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   282      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   283      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   284           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   285           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   286           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   287           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   288           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   289           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   290           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   291           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   292                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   293      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   294      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   295           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   296           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   297           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   298           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   299           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   300           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   301           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   302           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   303                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   304      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   305        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   306           PORT_PIN_MODE_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   307           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   308           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   309           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   310           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   311           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   312           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   313           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   314           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   315           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   316           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   317           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   318           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   319           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   320           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   321           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   322        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   323      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   324     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   325  /*                              Port2                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   326    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   327      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   328        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   329        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   330           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   331           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   332           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   333           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   334           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   335           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   336           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   337           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_OPENDRAIN | PORT_PIN_MODE_ALT3),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   338           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   339           (PORT_PIN_DEFAULT),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   340           (PORT_PIN_DEFAULT),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   341           (PORT_PIN_DEFAULT),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   342           (PORT_PIN_DEFAULT),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   343           (PORT_PIN_DEFAULT),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   344           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   345           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   346        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   347      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   348      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   349        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   350        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   351           PORT_PIN_HIGH,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   352           PORT_PIN_LOW,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   353           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   354           PORT_PIN_LOW,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   355           PORT_PIN_HIGH,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   356           PORT_PIN_LOW,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   357           PORT_PIN_LOW,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   358           PORT_PIN_LOW,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   359           PORT_PIN_LOW,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   360           0U,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   361           0U,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   362           0U,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   363           0U,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   364           0U,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   365           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   366           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   367        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   368      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   369      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   370      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   371           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   372           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   373           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   374           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   375           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   376           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   377           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   378           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   379                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   380      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   381      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   382           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   383           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   384           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   385           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   386           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   387           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   388           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   389           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   390                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   391      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   392        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   393           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   394           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   395           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   396           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   397           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   398           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   399           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   400           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   401           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   402           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   403           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   404           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   405           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   406           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   407           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   408           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   409        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   410      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   411     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   412  /*                              Port10                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   413    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   414      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   415        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   416        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   417           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   418           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   419           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   420           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   421           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   422           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   423           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   424           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   425           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   426           (PORT_PIN_DEFAULT),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   427           (PORT_PIN_DEFAULT),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   428           (PORT_PIN_DEFAULT),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   429           (PORT_PIN_DEFAULT),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   430           (PORT_PIN_DEFAULT),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   431           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   432           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   433        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   434      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   435      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   436        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   437        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   438           PORT_PIN_LOW,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   439           PORT_PIN_LOW,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   440           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   441           PORT_PIN_LOW,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   442           PORT_PIN_HIGH,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   443           PORT_PIN_LOW,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   444           PORT_PIN_LOW,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   445           PORT_PIN_LOW,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   446           PORT_PIN_LOW,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   447           0U,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   448           0U,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   449           0U,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   450           0U,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   451           0U,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   452           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   453           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   454        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   455      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   456      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   457      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   458           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   459           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   460           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   461           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   462           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   463           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   464           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   465           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   466                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   467      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   468      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   469           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   470           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   471           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   472           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   473           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   474           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   475           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   476           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   477                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   478      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   479        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   480           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   481           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   482           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   483           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   484           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   485           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   486           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   487           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   488           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   489           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   490           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   491           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   492           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   493           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   494           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   495           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   496        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   497      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   498     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   499  /*                              Port11                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   500    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   501      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   502        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   503        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   504           (PORT_PIN_DEFAULT),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   505           (PORT_PIN_DEFAULT),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   506           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   507           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   508           (PORT_PIN_DEFAULT),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   509           (PORT_PIN_DEFAULT),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   510           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   511           (PORT_PIN_DEFAULT),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   512           (PORT_PIN_DEFAULT),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   513           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   514           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   515           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   516           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT6),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   517           (PORT_PIN_DEFAULT),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   518           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   519           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   520        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   521      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   522      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   523        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   524        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   525           0U,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   526           0U,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   527           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   528           PORT_PIN_LOW,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   529           0U,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   530           0U,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   531           PORT_PIN_LOW,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   532           0U,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   533           0U,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   534           PORT_PIN_LOW,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   535           PORT_PIN_LOW,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   536           PORT_PIN_LOW,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   537           PORT_PIN_LOW,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   538           0U,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   539           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   540           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   541        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   542      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   543      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   544      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   545           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   546           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   547           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   548           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   549           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   550           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   551           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   552           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   553                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   554      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   555      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   556           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   557           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   558           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   559           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   560           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   561           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   562           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   563           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   564                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   565      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   566        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   567           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   568           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   569           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   570           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   571           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   572           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   573           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   574           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   575           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   576           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   577           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   578           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   579           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   580           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   581           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   582           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   583        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   584      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   585     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   586  /*                              Port13                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   587    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   588      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   589        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   590        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   591           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   592           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   593           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   594           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   595           (PORT_PIN_DEFAULT),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   596           (PORT_PIN_DEFAULT),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   597           (PORT_PIN_DEFAULT),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   598           (PORT_PIN_DEFAULT),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   599           (PORT_PIN_DEFAULT),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   600           (PORT_PIN_DEFAULT),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   601           (PORT_PIN_DEFAULT),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   602           (PORT_PIN_DEFAULT),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   603           (PORT_PIN_DEFAULT),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   604           (PORT_PIN_DEFAULT),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   605           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   606           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   607        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   608      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   609      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   610        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   611        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   612           PORT_PIN_LOW,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   613           PORT_PIN_HIGH,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   614           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   615           PORT_PIN_HIGH,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   616           0U,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   617           0U,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   618           0U,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   619           0U,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   620           0U,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   621           0U,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   622           0U,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   623           0U,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   624           0U,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   625           0U,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   626           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   627           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   628        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   629      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   630      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   631      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   632           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   633           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   634           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   635           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   636           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   637           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   638           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   639           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   640                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   641      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   642      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   643           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   644           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   645           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   646           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   647           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   648           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   649           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   650           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   651                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   652      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   653        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   654           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   655           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   656           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   657           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   658           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   659           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   660           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   661           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   662           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   663           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   664           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   665           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   666           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   667           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   668           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   669           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   670        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   671      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   672     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   673  /*                              Port14                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   674    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   675      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   676        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   677        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   678           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   679           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   680           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   681           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   682           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   683           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   684           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   685           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   686           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   687           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   688           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   689           (PORT_PIN_DEFAULT),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   690           (PORT_PIN_DEFAULT),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   691           (PORT_PIN_DEFAULT),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   692           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   693           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   694        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   695      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   696      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   697        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   698        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   699           PORT_PIN_LOW,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   700           PORT_PIN_HIGH,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   701           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   702           PORT_PIN_LOW,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   703           PORT_PIN_LOW,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   704           PORT_PIN_LOW,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   705           PORT_PIN_LOW,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   706           PORT_PIN_HIGH,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   707           PORT_PIN_HIGH,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   708           PORT_PIN_LOW,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   709           PORT_PIN_LOW,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   710           0U,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   711           0U,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   712           0U,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   713           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   714           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   715        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   716      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   717      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   718      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   719           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   720           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   721           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   722           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   723           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   724           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   725           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   726           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   727                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   728      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   729      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   730           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   731           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   732           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   733           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   734           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   735           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   736           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   737           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   738                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   739      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   740        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   741           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   742           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   743           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   744           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   745           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   746           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   747           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   748           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   749           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   750           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   751           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   752           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   753           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   754           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   755           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   756           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   757        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   758      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   759     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   760  /*                              Port15                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   761    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   762      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   763        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   764        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   765           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   766           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   767           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT2),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   768           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   769           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT2),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   770           ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   771           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   772           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   773           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   774           (PORT_PIN_DEFAULT),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   775           (PORT_PIN_DEFAULT),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   776           (PORT_PIN_DEFAULT),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   777           (PORT_PIN_DEFAULT),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   778           (PORT_PIN_DEFAULT),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   779           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   780           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   781        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   782      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   783      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   784        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   785        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   786           PORT_PIN_LOW,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   787           PORT_PIN_HIGH,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   788           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   789           PORT_PIN_LOW,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   790           PORT_PIN_HIGH,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   791           PORT_PIN_HIGH,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   792           PORT_PIN_LOW,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   793           PORT_PIN_LOW,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   794           PORT_PIN_LOW,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   795           0U,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   796           0U,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   797           0U,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   798           0U,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   799           0U,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   800           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   801           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   802        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   803      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   804      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   805      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   806           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   807           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   808           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   809           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   810           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   811           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   812           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   813           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   814                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   815      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   816      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   817           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   818           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   819           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   820           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   821           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   822           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   823           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   824           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   825                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   826      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   827        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   828           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   829           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   830           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   831           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   832           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   833           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   834           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   835           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   836           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   837           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   838           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   839           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   840           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   841           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   842           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   843           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   844        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   845      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   846     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   847  /*                              Port20                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   848    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   849      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   850        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   851        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   852           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   853           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   854           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   855           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   856           (PORT_PIN_DEFAULT),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   857           (PORT_PIN_DEFAULT),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   858           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   859           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   860           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   861           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   862           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   863           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   864           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   865           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   866           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   867           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   868        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   869      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   870      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   871        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   872        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   873           PORT_PIN_LOW,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   874           PORT_PIN_LOW,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   875           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   876           PORT_PIN_HIGH,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   877           0U,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   878           0U,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   879           PORT_PIN_HIGH,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   880           PORT_PIN_HIGH,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   881           PORT_PIN_LOW,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   882           PORT_PIN_HIGH,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   883           PORT_PIN_LOW,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   884           PORT_PIN_LOW,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   885           PORT_PIN_LOW,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   886           PORT_PIN_HIGH,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   887           PORT_PIN_LOW,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   888           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   889        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   890      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   891      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   892      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   893           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   894           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   895           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   896           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   897           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   898           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   899           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   900           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   901                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   902      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   903      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   904           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   905           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   906           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   907           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   908           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   909           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   910           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   911           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   912                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   913      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   914        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   915           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   916           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   917           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   918           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   919           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   920           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   921           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   922           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   923           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   924           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   925           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   926           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   927           PORT_PIN_MODE_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   928           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   929           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   930           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   931        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   932      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   933     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   934  /*                              Port21                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   935    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   936      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   937        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   938        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   939           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT6),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   940           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   941           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   942           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   943           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   944           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   945           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   946           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   947           (PORT_PIN_DEFAULT),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   948           (PORT_PIN_DEFAULT),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   949           (PORT_PIN_DEFAULT),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   950           (PORT_PIN_DEFAULT),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   951           (PORT_PIN_DEFAULT),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   952           (PORT_PIN_DEFAULT),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   953           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   954           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   955        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   956      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   957      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   958        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   959        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   960           PORT_PIN_LOW,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   961           PORT_PIN_LOW,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   962           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   963           PORT_PIN_LOW,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   964           PORT_PIN_LOW,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   965           PORT_PIN_LOW,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   966           PORT_PIN_LOW,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   967           PORT_PIN_LOW,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   968           0U,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   969           0U,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   970           0U,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   971           0U,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   972           0U,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   973           0U,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   974           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   975           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   976        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   977      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   978      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   979      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   980           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   981           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   982           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   983           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   984           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   985           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   986           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   987           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   988                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   989      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   990      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   991           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   992           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   993           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   994           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   995           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   996           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   997           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   998           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	   999                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1000      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1001        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1002           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1003           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1004           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1005           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1006           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1007           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1008           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1009           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1010           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1011           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1012           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1013           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1014           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1015           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1016           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1017           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1018        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1019      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1020     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1021  /*                              Port22                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1022    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1023      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1024        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1025        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1026           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1027           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1028           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1029           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1030           (PORT_PIN_DEFAULT),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1031           (PORT_PIN_DEFAULT),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1032           (PORT_PIN_DEFAULT),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1033           (PORT_PIN_DEFAULT),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1034           (PORT_PIN_DEFAULT),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1035           (PORT_PIN_DEFAULT),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1036           (PORT_PIN_DEFAULT),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1037           (PORT_PIN_DEFAULT),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1038           (PORT_PIN_DEFAULT),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1039           (PORT_PIN_DEFAULT),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1040           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1041           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1042        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1043      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1044      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1045        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1046        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1047           PORT_PIN_LOW,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1048           PORT_PIN_LOW,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1049           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1050           PORT_PIN_LOW,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1051           0U,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1052           0U,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1053           0U,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1054           0U,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1055           0U,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1056           0U,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1057           0U,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1058           0U,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1059           0U,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1060           0U,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1061           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1062           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1063        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1064      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1065      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1066      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1067           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1068           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1069           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1070           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1071           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1072           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1073           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1074           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1075                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1076      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1077      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1078           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1079           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1080           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1081           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1082           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1083           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1084           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1085           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1086                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1087      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1088        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1089           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1090           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1091           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1092           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1093           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1094           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1095           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1096           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1097           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1098           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1099           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1100           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1101           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1102           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1103           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1104           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1105        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1106      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1107     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1108  /*                              Port23                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1109    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1110      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1111        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1112        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1113           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1114           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1115           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1116           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1117           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1118           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1119           (PORT_PIN_DEFAULT),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1120           (PORT_PIN_DEFAULT),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1121           (PORT_PIN_DEFAULT),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1122           (PORT_PIN_DEFAULT),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1123           (PORT_PIN_DEFAULT),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1124           (PORT_PIN_DEFAULT),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1125           (PORT_PIN_DEFAULT),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1126           (PORT_PIN_DEFAULT),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1127           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1128           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1129        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1130      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1131      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1132        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1133        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1134           PORT_PIN_LOW,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1135           PORT_PIN_LOW,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1136           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1137           PORT_PIN_LOW,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1138           PORT_PIN_LOW,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1139           PORT_PIN_LOW,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1140           0U,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1141           0U,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1142           0U,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1143           0U,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1144           0U,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1145           0U,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1146           0U,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1147           0U,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1148           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1149           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1150        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1151      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1152      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1153      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1154           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1155           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1156           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1157           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1158           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1159           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1160           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1161           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1162                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1163      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1164      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1165           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1166           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1167           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1168           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1169           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1170           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1171           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1172           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1173                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1174      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1175        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1176           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1177           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1178           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1179           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1180           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1181           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1182           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1183           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1184           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1185           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1186           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1187           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1188           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1189           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1190           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1191           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1192        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1193      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1194     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1195  /*                              Port32                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1196    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1197      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1198        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1199        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1200           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1201           (PORT_PIN_DEFAULT),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1202           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1203           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1204           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1205           (PORT_PIN_DEFAULT),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1206           (PORT_PIN_DEFAULT),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1207           (PORT_PIN_DEFAULT),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1208           (PORT_PIN_DEFAULT),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1209           (PORT_PIN_DEFAULT),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1210           (PORT_PIN_DEFAULT),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1211           (PORT_PIN_DEFAULT),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1212           (PORT_PIN_DEFAULT),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1213           (PORT_PIN_DEFAULT),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1214           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1215           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1216        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1217      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1218      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1219        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1220        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1221           PORT_PIN_LOW,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1222           0U,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1223           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1224           PORT_PIN_HIGH,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1225           PORT_PIN_HIGH,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1226           0U,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1227           0U,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1228           0U,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1229           0U,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1230           0U,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1231           0U,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1232           0U,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1233           0U,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1234           0U,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1235           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1236           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1237        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1238      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1239      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1240      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1241           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1242           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1243           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1244           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1245           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1246           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1247           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1248           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1249                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1250      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1251      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1252           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1253           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1254           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1255           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1256           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1257           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1258           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1259           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1260                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1261      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1262        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1263           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1264           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1265           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1266           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1267           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1268           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1269           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1270           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1271           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1272           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1273           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1274           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1275           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1276           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1277           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1278           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1279        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1280      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1281     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1282  /*                              Port33                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1283    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1284      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1285        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1286        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1287           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1288           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1289           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1290           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1291           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1292           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT2),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1293           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1294           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1295           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1296           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1297           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1298           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1299           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1300           ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT4),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1301           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1302           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1303        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1304      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1305      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1306        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1307        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1308           PORT_PIN_LOW,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1309           PORT_PIN_LOW,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1310           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1311           PORT_PIN_LOW,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1312           PORT_PIN_LOW,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1313           PORT_PIN_HIGH,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1314           PORT_PIN_LOW,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1315           PORT_PIN_LOW,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1316           PORT_PIN_HIGH,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1317           PORT_PIN_HIGH,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1318           PORT_PIN_HIGH,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1319           PORT_PIN_HIGH,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1320           PORT_PIN_HIGH,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1321           PORT_PIN_HIGH,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1322           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1323           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1324        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1325      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1326      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1327      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1328           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1329           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1330           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1331           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1332           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1333           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1334           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1335           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1336                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1337      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1338      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1339           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1340           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1341           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1342           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_DISABLE ),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1343           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1344           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1345           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1346           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1347                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1348      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1349        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1350           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1351           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1352           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1353           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1354           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1355           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1356           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1357           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1358           PORT_PIN_MODE_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1359           PORT_PIN_MODE_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1360           PORT_PIN_MODE_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1361           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1362           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1363           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1364           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1365           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1366        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1367      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1368     },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1369  /*                              Port40                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1370    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1371      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1372        /* Port pins direction, characteristics and mode configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1373        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1374           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1375           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1376           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1377           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1378           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1379           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1380           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1381           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1382           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1383           ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1384           (PORT_PIN_DEFAULT),/*Pin 10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1385           (PORT_PIN_DEFAULT),/*Pin 11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1386           (PORT_PIN_DEFAULT),/*Pin 12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1387           (PORT_PIN_DEFAULT),/*Pin 13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1388           (PORT_PIN_DEFAULT),/*Pin 14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1389           (PORT_PIN_DEFAULT) /*Pin 15*/ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1390        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1391      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1392      {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1393        /* Port pins initial level configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1394        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1395           PORT_PIN_LOW,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1396           PORT_PIN_LOW,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1397           PORT_PIN_LOW,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1398           PORT_PIN_LOW,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1399           PORT_PIN_LOW,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1400           PORT_PIN_LOW,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1401           PORT_PIN_LOW,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1402           PORT_PIN_LOW,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1403           PORT_PIN_LOW,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1404           PORT_PIN_LOW,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1405           0U,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1406           0U,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1407           0U,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1408           0U,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1409           0U,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1410           0U /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1411        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1412      },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1413      /* Port pins drive strength1 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1414      Portx_lPdrConfig1(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1415           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1416           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1417           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1418           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1419           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1420           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1421           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1422           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ) /* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1423                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1424      /* Port pins drive strength2 configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1425      Portx_lPdrConfig2(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1426           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1427           (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_HYSTERESIS_ENABLE ),/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1428           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1429           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1430           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1431           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1432           (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1433           (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1434                       ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1435      {/* Port pin run time mode changeable or not configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1436        {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1437           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1438           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1439           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1440           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1441           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1442           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1443           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1444           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1445           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1446           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1447           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1448           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1449           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1450           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1451           PORT_PIN_MODE_NOT_CHANGEABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1452           PORT_PIN_MODE_NOT_CHANGEABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1453        }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1454      }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1455     }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1456  };
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1457  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1458  static const uint16 Port_DiscSet0[] =
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1459  {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1460  /*                              Port40                       */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1461     Port_lDiscSet(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1462                   PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 0 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1463                   PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 1 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1464                   PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 2 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1465                   PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 3 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1466                   PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 4 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1467                   PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 5 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1468                   PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 6 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1469                   PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 7 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1470                   PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 8 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1471                   PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 9 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1472                   PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 10 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1473                   PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 11 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1474                   PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 12 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1475                   PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 13 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1476                   PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 14 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1477                   PORT_PIN_ANALOG_INPUT_DISABLE /* Pin 15 */ 
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1478                  )
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1479  };
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1480  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1481  /* LVDS configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1482  static const Port_n_LVDSConfigType Port_kLVDSConfig0[] =
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1483  {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1484  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1485    { /*             Port13            */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1486      Port_lLvdsm(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1487                    Port_LVDS_PAD_SUPPLY_5_VOLT
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1488                  ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1489      Port_lLvdsm(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1490                    Port_LVDS_PAD_SUPPLY_5_VOLT
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1491                  ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1492                    PORT_LVDSM_DEFAULT
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1493    },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1494  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1495    { /*             Port21            */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1496                    PORT_LVDSH_DEFAULT,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1497       Port_lLvdsh(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1498                    PORT_LVDS_PORT_CONTROLLED,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1499                    PORT_LVDS_DISABLE,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1500                    PORT_LVDS_INTERNAML_TERMINATION,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1501                    PORT_LVDS_POLY_RESISTOR_TERM,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1502                    PORT_LVDS_DEFAULT,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1503                    PORT_LVDS_DEFAULT,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1504                    PORT_LVDS_DEFAULT,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1505                    PORT_LVDS_DEFAULT,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1506                    PORT_LVDS_DEFAULT
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1507                   ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1508       Port_lLvdsh(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1509                    PORT_LVDS_DEFAULT,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1510                    PORT_LVDS_DEFAULT,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1511                    PORT_LVDS_DEFAULT,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1512                    PORT_LVDS_DEFAULT,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1513                    PORT_LVDS_IEEE_GEN_PURPOSE_LINK,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1514                    PORT_LVDS_PORT_CONTROLLED,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1515                    PORT_LVDS_DISABLE,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1516                    PORT_LVDS_POWER_DOWN,
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1517                    PORT_LVDS_POWDOWN_PULDOWN_DIS
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1518                   )
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1519    },
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1520  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1521    { /*             Port22            */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1522      Port_lLvdsm(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1523                    Port_LVDS_PAD_SUPPLY_5_VOLT
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1524                  ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1525      Port_lLvdsm(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1526                    Port_LVDS_PAD_SUPPLY_5_VOLT
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1527                  ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1528                    PORT_LVDSM_DEFAULT
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1529    }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1530  };
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1531  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1532  /* PCSR configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1533  static const Port_n_PCSRConfigType Port_kPCSRConfig0[] =
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1534  {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1535  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1536                 /*           Port0            */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1537     Port_lPcsr(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1538                 PORT_PCSR_DEFAULT,  /*Pin0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1539                 PORT_PCSR_DEFAULT,  /*Pin1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1540                 PORT_PCSR_DEFAULT,  /*Pin2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1541                 PORT_PCSR_DEFAULT,  /*Pin3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1542                 PORT_PCSR_DISABLE,  /*Pin4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1543                 PORT_PCSR_DISABLE,  /*Pin5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1544                 PORT_PCSR_DEFAULT,  /*Pin6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1545                 PORT_PCSR_DEFAULT,  /*Pin7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1546                 PORT_PCSR_DEFAULT,  /*Pin8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1547                 PORT_PCSR_DEFAULT,  /*Pin9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1548                 PORT_PCSR_DISABLE,  /*Pin10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1549                 PORT_PCSR_DISABLE,  /*Pin11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1550                 PORT_PCSR_DEFAULT,  /*Pin12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1551                 PORT_PCSR_DEFAULT,  /*Pin13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1552                 PORT_PCSR_DEFAULT,  /*Pin14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1553                 PORT_PCSR_DEFAULT   /*Pin15*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1554                ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1555  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1556                 /*           Port11            */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1557     Port_lPcsr(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1558                 PORT_PCSR_DEFAULT,  /*Pin0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1559                 PORT_PCSR_DEFAULT,  /*Pin1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1560                 PORT_PCSR_DISABLE,  /*Pin2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1561                 PORT_PCSR_DISABLE,  /*Pin3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1562                 PORT_PCSR_DEFAULT,  /*Pin4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1563                 PORT_PCSR_DEFAULT,  /*Pin5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1564                 PORT_PCSR_DISABLE,  /*Pin6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1565                 PORT_PCSR_DEFAULT,  /*Pin7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1566                 PORT_PCSR_DEFAULT,  /*Pin8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1567                 PORT_PCSR_DEFAULT,  /*Pin9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1568                 PORT_PCSR_DEFAULT,  /*Pin10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1569                 PORT_PCSR_DEFAULT,  /*Pin11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1570                 PORT_PCSR_DEFAULT,  /*Pin12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1571                 PORT_PCSR_DEFAULT,  /*Pin13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1572                 PORT_PCSR_DEFAULT,  /*Pin14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1573                 PORT_PCSR_DEFAULT   /*Pin15*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1574                ),
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1575  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1576                 /*           Port40            */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1577     Port_lPcsr(
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1578                 PORT_PCSR_DEFAULT,  /*Pin0*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1579                 PORT_PCSR_DISABLE,  /*Pin1*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1580                 PORT_PCSR_DISABLE,  /*Pin2*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1581                 PORT_PCSR_DISABLE,  /*Pin3*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1582                 PORT_PCSR_DEFAULT,  /*Pin4*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1583                 PORT_PCSR_DISABLE,  /*Pin5*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1584                 PORT_PCSR_DEFAULT,  /*Pin6*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1585                 PORT_PCSR_DEFAULT,  /*Pin7*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1586                 PORT_PCSR_DEFAULT,  /*Pin8*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1587                 PORT_PCSR_DEFAULT,  /*Pin9*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1588                 PORT_PCSR_DEFAULT,  /*Pin10*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1589                 PORT_PCSR_DEFAULT,  /*Pin11*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1590                 PORT_PCSR_DEFAULT,  /*Pin12*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1591                 PORT_PCSR_DEFAULT,  /*Pin13*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1592                 PORT_PCSR_DEFAULT,  /*Pin14*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1593                 PORT_PCSR_DEFAULT   /*Pin15*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1594                )
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1595  };
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1596  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1597  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1598  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1599  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1600  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1601  const Port_ConfigType Port_ConfigRoot[1] =
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1602  {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1603    {
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1604          /* Port Configuration set 0 */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1605      &Port_kConfiguration0[0],
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1606      /* Port 40-th Disc configuration set 0 */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1607      &Port_DiscSet0[0],
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1608  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1609  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1610      /* LVDS configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1611      &Port_kLVDSConfig0[0],
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1612      /* PCSR Configuration */
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1613      &Port_kPCSRConfig0[0]
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1614    }
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1615  };
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1616  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1617  #define PORT_STOP_SEC_POSTBUILDCFG
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1618  /*IFX_MISRA_RULE_19_01_STATUS=File inclusion after pre-processor directives is
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1619   allowed only for MemMap.h*/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1620  #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1621  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1622  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1623  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1624  **                      Global Variable Definitions                           **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1625  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1626  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1627  **                      Private Constant Definitions                          **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1628  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1629  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1630  **                      Private Variable Definitions                          **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1631  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1632  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1633  **                      Global Function Definitions                           **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1634  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1635  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1636  **                      Private Function Definitions                          **
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1637  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1638  
+; Targets\TC275\MCAL\MCAL_Gen\src\Port_PBCfg.c	  1639  
+
+	; Module end

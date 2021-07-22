@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-2-2.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>ARPackage_0</SHORT-NAME>
+      <ELEMENTS>
+        <APPLICATION-SW-COMPONENT-TYPE>
+          <SHORT-NAME>ASW_Diag</SHORT-NAME>
+          <PORTS>
+            <P-PORT-PROTOTYPE>
+              <SHORT-NAME>PPort_Routine_DriveVacuumPump</SHORT-NAME>
+              <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Dcm/PortInterfaces/RoutineServices_DcmDspRoutine_DriveVacuumPump</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE>
+              <SHORT-NAME>RPort_DCMServices</SHORT-NAME>
+              <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Dcm/PortInterfaces/DCMServices</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE>
+              <SHORT-NAME>PPort_IOControl_VacuumPumpPressure</SHORT-NAME>
+              <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_VacuumPumpPressure_1100</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE>
+              <SHORT-NAME>P_DataServices_DcmDspData_SystemFaultRank_Read</SHORT-NAME>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_SystemFaultRank</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <P-PORT-PROTOTYPE>
+              <SHORT-NAME>P_DataServices_DcmDspData_VehicleSpeed_Read</SHORT-NAME>
+              <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_VehicleSpeed</PROVIDED-INTERFACE-TREF>
+            </P-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE>
+              <SHORT-NAME>RPort_DataServices_DcmDspData_SystemFaultRank_Write</SHORT-NAME>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_SystemFaultRank</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+            <R-PORT-PROTOTYPE>
+              <SHORT-NAME>RPort_DataServices_DcmDspData_VehicleSpeed_Write</SHORT-NAME>
+              <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_VehicleSpeed</REQUIRED-INTERFACE-TREF>
+            </R-PORT-PROTOTYPE>
+          </PORTS>
+          <INTERNAL-BEHAVIORS>
+            <SWC-INTERNAL-BEHAVIOR UUID="5317a249-bcde-4c34-a11f-cdc093bc0ad9">
+              <SHORT-NAME>IB_Diag_SWC</SHORT-NAME>
+              <DATA-TYPE-MAPPING-REFS>
+                <DATA-TYPE-MAPPING-REF DEST="DATA-TYPE-MAPPING-SET">/AUTOSAR_Dcm/DataTypeMappingSets/DTS_DcmDiagnosticSessionControl</DATA-TYPE-MAPPING-REF>
+                <DATA-TYPE-MAPPING-REF DEST="DATA-TYPE-MAPPING-SET">/AUTOSAR_ComM/DataTypeMappingSets/ComMModeMapping</DATA-TYPE-MAPPING-REF>
+                <DATA-TYPE-MAPPING-REF DEST="DATA-TYPE-MAPPING-SET">/AUTOSAR_Dcm/DataTypeMappingSets/DTS_DcmEcuReset</DATA-TYPE-MAPPING-REF>
+              </DATA-TYPE-MAPPING-REFS>
+              <EVENTS>
+                <TIMING-EVENT UUID="60373f7b-07e2-4e7a-88cd-03847d7d869b">
+                  <SHORT-NAME>TE_Diag_SWC</SHORT-NAME>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/ARPackage_0/ASW_Diag/IB_Diag_SWC/RE_Diag_SWC</START-ON-EVENT-REF>
+                  <PERIOD>0.01</PERIOD>
+                </TIMING-EVENT>
+                <OPERATION-INVOKED-EVENT UUID="77abb141-691f-4254-b7ec-7eebf1784068">
+                  <SHORT-NAME>OIE_IOControl_VacuumPumpPressure_ReadData</SHORT-NAME>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/ARPackage_0/ASW_Diag/IB_Diag_SWC/Diag_IOControl_VacuumPumpPressure_ReadData</START-ON-EVENT-REF>
+                  <OPERATION-IREF>
+                    <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/ARPackage_0/ASW_Diag/PPort_IOControl_VacuumPumpPressure</CONTEXT-P-PORT-REF>
+                    <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_VacuumPumpPressure_1100/ReadData</TARGET-PROVIDED-OPERATION-REF>
+                  </OPERATION-IREF>
+                </OPERATION-INVOKED-EVENT>
+                <OPERATION-INVOKED-EVENT UUID="d0134f7f-ba75-4ebf-ba84-6f22589305f5">
+                  <SHORT-NAME>OIE_IOControl_VacuumPumpPressure_returnControlToECU</SHORT-NAME>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/ARPackage_0/ASW_Diag/IB_Diag_SWC/Diag_IOControl_VacuumPumpPressure_returnControlToECU</START-ON-EVENT-REF>
+                  <OPERATION-IREF>
+                    <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/ARPackage_0/ASW_Diag/PPort_IOControl_VacuumPumpPressure</CONTEXT-P-PORT-REF>
+                    <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_VacuumPumpPressure_1100/ReturnControlToECU</TARGET-PROVIDED-OPERATION-REF>
+                  </OPERATION-IREF>
+                </OPERATION-INVOKED-EVENT>
+                <OPERATION-INVOKED-EVENT UUID="c87ab252-dc19-4258-9e97-3951dde4e779">
+                  <SHORT-NAME>OIE_IOControl_VacuumPumpPressure_resetToDefault</SHORT-NAME>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/ARPackage_0/ASW_Diag/IB_Diag_SWC/Diag_IOControl_VacuumPumpPressure_resetToDefault</START-ON-EVENT-REF>
+                  <OPERATION-IREF>
+                    <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/ARPackage_0/ASW_Diag/PPort_IOControl_VacuumPumpPressure</CONTEXT-P-PORT-REF>
+                    <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_VacuumPumpPressure_1100/ResetToDefault</TARGET-PROVIDED-OPERATION-REF>
+                  </OPERATION-IREF>
+                </OPERATION-INVOKED-EVENT>
+                <OPERATION-INVOKED-EVENT UUID="e06b54fa-5b0d-4d94-8cdf-7a5e72430dfd">
+                  <SHORT-NAME>OIE_IOControl_VacuumPumpPressure_freezeCurrentState</SHORT-NAME>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/ARPackage_0/ASW_Diag/IB_Diag_SWC/Diag_IOControl_VacuumPumpPressure_freezeCurrentState</START-ON-EVENT-REF>
+                  <OPERATION-IREF>
+                    <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/ARPackage_0/ASW_Diag/PPort_IOControl_VacuumPumpPressure</CONTEXT-P-PORT-REF>
+                    <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_VacuumPumpPressure_1100/FreezeCurrentState</TARGET-PROVIDED-OPERATION-REF>
+                  </OPERATION-IREF>
+                </OPERATION-INVOKED-EVENT>
+                <OPERATION-INVOKED-EVENT UUID="0ab64443-3400-4f13-9d69-c593f63e4a41">
+                  <SHORT-NAME>OIE_IOControl_VacuumPumpPressure_shortTermAdjustment</SHORT-NAME>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/ARPackage_0/ASW_Diag/IB_Diag_SWC/Diag_IOControl_VacuumPumpPressure_shortTermAdjustment</START-ON-EVENT-REF>
+                  <OPERATION-IREF>
+                    <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/ARPackage_0/ASW_Diag/PPort_IOControl_VacuumPumpPressure</CONTEXT-P-PORT-REF>
+                    <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_VacuumPumpPressure_1100/ShortTermAdjustment</TARGET-PROVIDED-OPERATION-REF>
+                  </OPERATION-IREF>
+                </OPERATION-INVOKED-EVENT>
+                <OPERATION-INVOKED-EVENT UUID="42c54d04-6c5e-45a6-8068-a0182b559eee">
+                  <SHORT-NAME>OIE_RoutineServices_DriveVacuumPump_Start</SHORT-NAME>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/ARPackage_0/ASW_Diag/IB_Diag_SWC/Diag_RoutineServices_DriveVacuumPump_Start</START-ON-EVENT-REF>
+                  <OPERATION-IREF>
+                    <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/ARPackage_0/ASW_Diag/PPort_Routine_DriveVacuumPump</CONTEXT-P-PORT-REF>
+                    <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Dcm/PortInterfaces/RoutineServices_DcmDspRoutine_DriveVacuumPump/Start</TARGET-PROVIDED-OPERATION-REF>
+                  </OPERATION-IREF>
+                </OPERATION-INVOKED-EVENT>
+                <OPERATION-INVOKED-EVENT UUID="7d1b507b-6a11-4639-b36d-540bbb5b0df5">
+                  <SHORT-NAME>OIE_RoutineServices_DriveVacuumPump_Stop</SHORT-NAME>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/ARPackage_0/ASW_Diag/IB_Diag_SWC/Diag_RoutineServices_DriveVacuumPump_Stop</START-ON-EVENT-REF>
+                  <OPERATION-IREF>
+                    <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/ARPackage_0/ASW_Diag/PPort_Routine_DriveVacuumPump</CONTEXT-P-PORT-REF>
+                    <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Dcm/PortInterfaces/RoutineServices_DcmDspRoutine_DriveVacuumPump/Stop</TARGET-PROVIDED-OPERATION-REF>
+                  </OPERATION-IREF>
+                </OPERATION-INVOKED-EVENT>
+                <OPERATION-INVOKED-EVENT UUID="d392c7ec-67d2-4573-934b-8ddc4fac53c8">
+                  <SHORT-NAME>OIE_RoutineServices_DriveVacuumPump_RequestRoutineResults</SHORT-NAME>
+                  <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/ARPackage_0/ASW_Diag/IB_Diag_SWC/Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults</START-ON-EVENT-REF>
+                  <OPERATION-IREF>
+                    <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/ARPackage_0/ASW_Diag/PPort_Routine_DriveVacuumPump</CONTEXT-P-PORT-REF>
+                    <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Dcm/PortInterfaces/RoutineServices_DcmDspRoutine_DriveVacuumPump/RequestResults</TARGET-PROVIDED-OPERATION-REF>
+                  </OPERATION-IREF>
+                </OPERATION-INVOKED-EVENT>
+              </EVENTS>
+              <RUNNABLES>
+                <RUNNABLE-ENTITY UUID="6987d138-fe7f-4735-9e20-389b66702e69">
+                  <SHORT-NAME>RE_Diag_SWC</SHORT-NAME>
+                  <DATA-RECEIVE-POINT-BY-ARGUMENTS>
+                    <VARIABLE-ACCESS UUID="d3a27084-e4ac-46e8-9a6c-b3c679820db7">
+                      <SHORT-NAME>DcmDspData_SystemFaultRank_Read</SHORT-NAME>
+                      <ACCESSED-VARIABLE>
+                        <AUTOSAR-VARIABLE-IREF>
+                          <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/ARPackage_0/ASW_Diag/RPort_DataServices_DcmDspData_SystemFaultRank_Write</PORT-PROTOTYPE-REF>
+                          <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_SystemFaultRank/Data</TARGET-DATA-PROTOTYPE-REF>
+                        </AUTOSAR-VARIABLE-IREF>
+                      </ACCESSED-VARIABLE>
+                    </VARIABLE-ACCESS>
+                    <VARIABLE-ACCESS UUID="6f077df1-8267-4e80-8d8e-fbb1f02a5f71">
+                      <SHORT-NAME>DcmDspData_VehicleSpeed_Read</SHORT-NAME>
+                      <ACCESSED-VARIABLE>
+                        <AUTOSAR-VARIABLE-IREF>
+                          <PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/ARPackage_0/ASW_Diag/RPort_DataServices_DcmDspData_VehicleSpeed_Write</PORT-PROTOTYPE-REF>
+                          <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_VehicleSpeed/Data</TARGET-DATA-PROTOTYPE-REF>
+                        </AUTOSAR-VARIABLE-IREF>
+                      </ACCESSED-VARIABLE>
+                    </VARIABLE-ACCESS>
+                  </DATA-RECEIVE-POINT-BY-ARGUMENTS>
+                  <DATA-SEND-POINTS>
+                    <VARIABLE-ACCESS UUID="b16396b2-6dfe-4ab5-9bc3-286d779fdb6e">
+                      <SHORT-NAME>DcmDspData_SystemFaultRank_Write</SHORT-NAME>
+                      <ACCESSED-VARIABLE>
+                        <AUTOSAR-VARIABLE-IREF>
+                          <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/ARPackage_0/ASW_Diag/P_DataServices_DcmDspData_SystemFaultRank_Read</PORT-PROTOTYPE-REF>
+                          <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_SystemFaultRank/Data</TARGET-DATA-PROTOTYPE-REF>
+                        </AUTOSAR-VARIABLE-IREF>
+                      </ACCESSED-VARIABLE>
+                    </VARIABLE-ACCESS>
+                    <VARIABLE-ACCESS UUID="b81c3bb3-668a-40b9-a288-e3c4df10dc28">
+                      <SHORT-NAME>DcmDspData_VehicleSpeed_Write</SHORT-NAME>
+                      <ACCESSED-VARIABLE>
+                        <AUTOSAR-VARIABLE-IREF>
+                          <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/ARPackage_0/ASW_Diag/P_DataServices_DcmDspData_VehicleSpeed_Read</PORT-PROTOTYPE-REF>
+                          <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/AUTOSAR_Dcm/PortInterfaces/DataServices_DcmDspData_VehicleSpeed/Data</TARGET-DATA-PROTOTYPE-REF>
+                        </AUTOSAR-VARIABLE-IREF>
+                      </ACCESSED-VARIABLE>
+                    </VARIABLE-ACCESS>
+                  </DATA-SEND-POINTS>
+                  <SYMBOL>RE_Diag_SWC_func</SYMBOL>
+                </RUNNABLE-ENTITY>
+                <RUNNABLE-ENTITY UUID="fab4ed6a-1164-49e4-b495-c9921ed03975">
+                  <SHORT-NAME>Diag_IOControl_VacuumPumpPressure_returnControlToECU</SHORT-NAME>
+                  <SYMBOL>Diag_IOControl_VacuumPumpPressure_returnControlToECU_func</SYMBOL>
+                </RUNNABLE-ENTITY>
+                <RUNNABLE-ENTITY UUID="ee44fb89-102c-404e-a1e7-8ef360f1b739">
+                  <SHORT-NAME>Diag_IOControl_VacuumPumpPressure_resetToDefault</SHORT-NAME>
+                  <SYMBOL>Diag_IOControl_VacuumPumpPressure_resetToDefault_func</SYMBOL>
+                </RUNNABLE-ENTITY>
+                <RUNNABLE-ENTITY UUID="69362652-26ae-45af-b35a-d2fa2d6286fc">
+                  <SHORT-NAME>Diag_IOControl_VacuumPumpPressure_freezeCurrentState</SHORT-NAME>
+                  <SYMBOL>Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func</SYMBOL>
+                </RUNNABLE-ENTITY>
+                <RUNNABLE-ENTITY UUID="8af78f6d-b541-48dc-b634-dc1a3c06d7e5">
+                  <SHORT-NAME>Diag_IOControl_VacuumPumpPressure_shortTermAdjustment</SHORT-NAME>
+                  <SYMBOL>Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func</SYMBOL>
+                </RUNNABLE-ENTITY>
+                <RUNNABLE-ENTITY UUID="e8fd96e4-2b78-4360-ae9c-472a1bb8679b">
+                  <SHORT-NAME>Diag_IOControl_VacuumPumpPressure_ReadData</SHORT-NAME>
+                  <SYMBOL>Diag_IOControl_VacuumPumpPressure_ReadData_func</SYMBOL>
+                </RUNNABLE-ENTITY>
+                <RUNNABLE-ENTITY UUID="ccb00343-cb34-48c9-80cd-6ed563c40860">
+                  <SHORT-NAME>Diag_RoutineServices_DriveVacuumPump_Start</SHORT-NAME>
+                  <SYMBOL>Diag_RoutineServices_DriveVacuumPump_Start_func</SYMBOL>
+                </RUNNABLE-ENTITY>
+                <RUNNABLE-ENTITY UUID="22f65335-b91c-4220-bec0-813a1c85c705">
+                  <SHORT-NAME>Diag_RoutineServices_DriveVacuumPump_Stop</SHORT-NAME>
+                  <SYMBOL>Diag_RoutineServices_DriveVacuumPump_Stop_func</SYMBOL>
+                </RUNNABLE-ENTITY>
+                <RUNNABLE-ENTITY UUID="15d81fea-6859-4466-962a-e46ac18ec7b1">
+                  <SHORT-NAME>Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults</SHORT-NAME>
+                  <SYMBOL>Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func</SYMBOL>
+                </RUNNABLE-ENTITY>
+              </RUNNABLES>
+            </SWC-INTERNAL-BEHAVIOR>
+          </INTERNAL-BEHAVIORS>
+        </APPLICATION-SW-COMPONENT-TYPE>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

@@ -1,0 +1,699 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc9560a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\Integration\\BSW\\rba_BswSrv_MemCompare.src Integration\\BSW\\Src\\rba_BswSrv_MemCompare.c"
+	.compiler_name		"ctc"
+	;source	'Integration\\BSW\\Src\\rba_BswSrv_MemCompare.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.rba_BswSrv_MemCompare.rba_BswSrv_MemCompare',code,cluster('rba_BswSrv_MemCompare')
+	.sect	'.text.rba_BswSrv_MemCompare.rba_BswSrv_MemCompare'
+	.align	2
+	
+	.global	rba_BswSrv_MemCompare
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	     1  /*
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	     2   * This is a template file. It defines integration functions necessary to complete RTA-BSW.
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	     3   * The integrator must complete the templates before deploying software containing functions defined in this file.
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	     4   * Once templates have been completed, the integrator should delete the #error line.
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	     5   * Note: The integrator is responsible for updates made to this file.
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	     6   *
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	     7   * To remove the following error define the macro NOT_READY_FOR_TESTING_OR_DEPLOYMENT with a compiler option (e.g. -D NOT_READY_FOR_TESTING_OR_DEPLOYMENT)
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	     8   * The removal of the error only allows the user to proceed with the building phase
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	     9   */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    10  
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    11  
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    12  
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    13  
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    14  /*
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    15   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    16   * Includes
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    17   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    18   */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    19  #include "rba_BswSrv.h"
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    20  
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    21  /*
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    22   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    23   * Defines
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    24   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    25   */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    26  
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    27  /*
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    28   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    29   * Variables
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    30   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    31   */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    32  
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    33  /*
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    34   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    35   * Functions
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    36   *********************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    37   */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    38  
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    39  #define RBA_BSWSRV_START_SEC_CODE
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    40  #include "rba_BswSrv_MemMap.h"
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    41  /**
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    42   ***********************************************************************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    43   * \brief MemCompare with the same parameters as C90-memcmp
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    44   *
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    45   * This function implements MemCompare with the same parameters as C90-memcmp
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    46   * It compares 32 bit data, if possible. So it is save to compare structures which require consistent 32 bit data.
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    47   *
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    48   * \param[in]       const void* xSrc1_pcv, const void* xSrc2_pcv, uint32 numBytes_u32
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    49   * \return          void*
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    50   ***********************************************************************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    51   */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    52   
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    53  sint32 rba_BswSrv_MemCompare(const void* xSrc1_pcv, const void* xSrc2_pcv, uint32 numBytes_u32)
+; Function rba_BswSrv_MemCompare
+.L18:
+rba_BswSrv_MemCompare:	.type	func
+	sub.a	a10,#16
+.L50:
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    54  {
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    55      const uint32* xSrc1_pcu32 = (const uint32*)xSrc1_pcv;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    56      const uint32* xSrc2_pcu32 = (const uint32*)xSrc2_pcv;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    57      const uint16* xSrc1_pcu16;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    58      const uint16* xSrc2_pcu16;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    59      const uint8* xSrc1_pcu8;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    60      const uint8* xSrc2_pcu8;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    61      uint32 ctLoop_u32;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    62      uint32 xTemp1_u32;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    63      uint32 xTemp2_u32;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    64      uint16 xTemp1_u16;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    65      uint16 xTemp2_u16;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    66  
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    67      /* 32 bit aligned compare */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    68      /* MISRA RULE 11.3 VIOLATION: cast cannot be avoided here */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    69      if ((numBytes_u32 >= 4) && ((((uint32)xSrc1_pcu32 | (uint32)xSrc2_pcu32) & 0x03) == 0))
+	jlt.u	d4,#4,.L2
+.L68:
+	mov.d	d15,a4
+.L51:
+	mov.d	d0,a5
+.L53:
+	or	d15,d0
+.L52:
+	and	d15,#3
+.L69:
+	jne	d15,#0,.L3
+.L70:
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    70      {
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    71          ctLoop_u32 = numBytes_u32 / 4;
+	sh	d0,d4,#-2
+.L54:
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    72          numBytes_u32 &= 0x03;
+	and	d4,d4,#3
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    73          do
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    74          {   
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    75              if(*xSrc1_pcu32 != *xSrc2_pcu32)
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    76              {
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    77                  numBytes_u32 = 4; /* force byte wise check of current word as required for ANSI-C memcmp */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    78                  xTemp1_u32 = *xSrc1_pcu32; /* use additional buffer to ensure that data is not read twice */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    79                  xTemp2_u32 = *xSrc2_pcu32;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    80                  xSrc1_pcu32 = &xTemp1_u32;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    81                  xSrc2_pcu32 = &xTemp2_u32;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    82                  break;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    83              }
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    84              xSrc1_pcu32++;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    85              xSrc2_pcu32++;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    86              ctLoop_u32--;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    87          } while(ctLoop_u32 > 0);
+.L4:
+	ld.w	d15,[a5]
+.L71:
+	ld.w	d1,[a4]
+.L72:
+	jeq	d15,d1,.L5
+.L73:
+	mov	d4,#4
+.L74:
+	st.w	[a10],d1
+.L75:
+	st.w	[a10]4,d15
+.L76:
+	lea	a4,[a10]0
+.L77:
+	lea	a5,[a10]4
+.L78:
+	j	.L6
+.L5:
+	add.a	a4,#4
+.L79:
+	add.a	a5,#4
+.L80:
+	add	d0,#-1
+.L81:
+	jne	d0,#0,.L4
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    88      }
+.L6:
+.L3:
+.L2:
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    89      /* MISRA RULE 11.4 VIOLATION: cast cannot be avoided here */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    90      xSrc1_pcu16 = (const uint16*)xSrc1_pcu32;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    91      xSrc2_pcu16 = (const uint16*)xSrc2_pcu32;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    92  
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    93      /* 16 bit aligned compare */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    94      /* MISRA RULE 11.3 VIOLATION: cast cannot be avoided here */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    95      if ((numBytes_u32 >= 2) && ((((uint32)xSrc1_pcu16 | (uint32)xSrc2_pcu16) & 0x01) == 0))
+	jlt.u	d4,#2,.L7
+.L82:
+	mov.d	d15,a4
+.L55:
+	mov.d	d0,a5
+.L57:
+	or	d15,d0
+.L56:
+	jnz.t	d15:0,.L8
+.L83:
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    96      {
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    97          ctLoop_u32 = numBytes_u32 / 2;
+	sh	d0,d4,#-1
+.L58:
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    98          numBytes_u32 &= 0x01;
+	and	d4,d4,#1
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	    99          do
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   100          {
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   101              if(*xSrc1_pcu16 != *xSrc2_pcu16)
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   102              {
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   103                  numBytes_u32 = 2; /* force byte wise check of current word as required for ANSI-C memcmp */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   104                  xTemp1_u16 = *xSrc1_pcu16; /* use additional buffer to ensure that data is not read twice */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   105                  xTemp2_u16 = *xSrc2_pcu16;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   106                  xSrc1_pcu16 = &xTemp1_u16;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   107                  xSrc2_pcu16 = &xTemp2_u16;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   108                  break;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   109              }
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   110              xSrc1_pcu16++;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   111              xSrc2_pcu16++;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   112              ctLoop_u32--;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   113          } while(ctLoop_u32 > 0);
+.L9:
+	ld.hu	d1,[a5]0
+.L84:
+	ld.hu	d15,[a4]0
+.L85:
+	jeq	d15,d1,.L10
+.L86:
+	mov	d4,#2
+.L87:
+	st.h	[a10]8,d15
+.L88:
+	st.h	[a10]10,d1
+.L89:
+	lea	a4,[a10]8
+.L90:
+	lea	a5,[a10]10
+.L91:
+	j	.L11
+.L10:
+	add.a	a4,#2
+.L92:
+	add.a	a5,#2
+.L93:
+	add	d0,#-1
+.L94:
+	jne	d0,#0,.L9
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   114      }
+.L11:
+.L8:
+.L7:
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   115      /* MISRA RULE 11.4 VIOLATION: cast cannot be avoided here */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   116      xSrc1_pcu8 = (const uint8*)xSrc1_pcu16;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   117      xSrc2_pcu8 = (const uint8*)xSrc2_pcu16;
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   118  
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   119      /* 8 bit compare for remaining data */
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   120      for(ctLoop_u32 = 0; ctLoop_u32 < numBytes_u32; ctLoop_u32++)
+	mov	d0,#0
+.L59:
+	j	.L12
+.L13:
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   121      {
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   122          if(*xSrc1_pcu8 != *xSrc2_pcu8)
+	ld.bu	d1,[a5]
+.L95:
+	ld.bu	d15,[a4]
+.L96:
+	jeq	d15,d1,.L14
+.L97:
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   123          {
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   124              return (*xSrc1_pcu8 - *xSrc2_pcu8);
+	sub	d2,d15,d1
+.L98:
+	j	.L15
+.L14:
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   125          }
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   126          xSrc1_pcu8++;
+	add.a	a4,#1
+.L99:
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   127          xSrc2_pcu8++;
+	add.a	a5,#1
+.L100:
+	add	d0,#1
+.L12:
+	jlt.u	d0,d4,.L13
+.L101:
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   128      }
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   129      return 0;
+	mov	d2,#0
+.L102:
+	j	.L16
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   130  }
+.L16:
+.L15:
+	ret
+.L29:
+	
+__rba_BswSrv_MemCompare_function_end:
+	.size	rba_BswSrv_MemCompare,__rba_BswSrv_MemCompare_function_end-rba_BswSrv_MemCompare
+.L27:
+	; End of function
+	
+	.calls	'rba_BswSrv_MemCompare','',16
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L20:
+	.word	384
+	.half	3
+	.word	.L21
+	.byte	4
+.L19:
+	.byte	1
+	.byte	'Integration\\BSW\\Src\\rba_BswSrv_MemCompare.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L22
+.L28:
+	.byte	2
+	.byte	'int',0,4,5,3
+	.byte	'void',0,4
+	.word	150
+.L30:
+	.byte	5
+	.word	156
+.L33:
+	.byte	2
+	.byte	'unsigned int',0,4,7,4
+	.word	166
+.L35:
+	.byte	5
+	.word	182
+.L47:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,4
+	.word	192
+.L38:
+	.byte	5
+	.word	214
+	.byte	2
+	.byte	'unsigned char',0,1,8,4
+	.word	224
+.L41:
+	.byte	5
+	.word	241
+	.byte	6,1,5
+	.word	251
+	.byte	7
+	.byte	'__codeptr',0,1,1,1
+	.word	253
+	.byte	7
+	.byte	'uint8',0,2,81,25
+	.word	224
+	.byte	7
+	.byte	'uint16',0,2,91,25
+	.word	192
+	.byte	7
+	.byte	'sint32',0,2,96,24
+	.word	143
+	.byte	7
+	.byte	'uint32',0,2,106,24
+	.word	166
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,7
+	.byte	'rba_BswSrv_uint64',0,3,66,28
+	.word	335
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L21:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,59,0,3,8,0,0,4,38,0,73,19,0
+	.byte	0,5,15,0,73,19,0,0,6,21,0,54,15,0,0,7,22,0,3,8,58,15,59,15,57,15,73,19,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L22:
+	.word	.L61-.L60
+.L60:
+	.half	3
+	.word	.L63-.L62
+.L62:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Integration\\BSW\\Src\\rba_BswSrv_MemCompare.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0,0
+.L63:
+.L61:
+	.sdecl	'.debug_info',debug,cluster('rba_BswSrv_MemCompare')
+	.sect	'.debug_info'
+.L23:
+	.word	531
+	.half	3
+	.word	.L24
+	.byte	4,1
+	.byte	'Integration\\BSW\\Src\\rba_BswSrv_MemCompare.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L26,.L25
+	.byte	2
+	.word	.L19
+	.byte	3
+	.byte	'rba_BswSrv_MemCompare',0,1,53,8
+	.word	.L28
+	.byte	1,1,1
+	.word	.L18,.L29,.L17
+	.byte	4
+	.byte	'xSrc1_pcv',0,1,53,42
+	.word	.L30,.L31
+	.byte	4
+	.byte	'xSrc2_pcv',0,1,53,65
+	.word	.L30,.L32
+	.byte	4
+	.byte	'numBytes_u32',0,1,53,83
+	.word	.L33,.L34
+	.byte	5
+	.word	.L18,.L29
+	.byte	6
+	.byte	'xSrc1_pcu32',0,1,55,19
+	.word	.L35,.L36
+	.byte	6
+	.byte	'xSrc2_pcu32',0,1,56,19
+	.word	.L35,.L37
+	.byte	6
+	.byte	'xSrc1_pcu16',0,1,57,19
+	.word	.L38,.L39
+	.byte	6
+	.byte	'xSrc2_pcu16',0,1,58,19
+	.word	.L38,.L40
+	.byte	6
+	.byte	'xSrc1_pcu8',0,1,59,18
+	.word	.L41,.L42
+	.byte	6
+	.byte	'xSrc2_pcu8',0,1,60,18
+	.word	.L41,.L43
+	.byte	6
+	.byte	'ctLoop_u32',0,1,61,12
+	.word	.L33,.L44
+	.byte	6
+	.byte	'xTemp1_u32',0,1,62,12
+	.word	.L33,.L45
+	.byte	6
+	.byte	'xTemp2_u32',0,1,63,12
+	.word	.L33,.L46
+	.byte	6
+	.byte	'xTemp1_u16',0,1,64,12
+	.word	.L47,.L48
+	.byte	6
+	.byte	'xTemp2_u16',0,1,65,12
+	.word	.L47,.L49
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('rba_BswSrv_MemCompare')
+	.sect	'.debug_abbrev'
+.L24:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('rba_BswSrv_MemCompare')
+	.sect	'.debug_line'
+.L25:
+	.word	.L65-.L64
+.L64:
+	.half	3
+	.word	.L67-.L66
+.L66:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Integration\\BSW\\Src\\rba_BswSrv_MemCompare.c',0,0,0,0,0
+.L67:
+	.byte	5,8,7,0,5,2
+	.word	.L18
+	.byte	3,52,1,5,9,9
+	.half	.L50-.L18
+	.byte	3,16,1,5,43,7,9
+	.half	.L68-.L50
+	.byte	1,5,65,9
+	.half	.L51-.L68
+	.byte	1,5,55,9
+	.half	.L53-.L51
+	.byte	1,5,78,9
+	.half	.L52-.L53
+	.byte	1,5,86,9
+	.half	.L69-.L52
+	.byte	1,5,22,7,9
+	.half	.L70-.L69
+	.byte	3,2,1,9
+	.half	.L54-.L70
+	.byte	3,1,1,5,32,9
+	.half	.L4-.L54
+	.byte	3,3,1,5,16,9
+	.half	.L71-.L4
+	.byte	1,5,13,9
+	.half	.L72-.L71
+	.byte	1,5,30,7,9
+	.half	.L73-.L72
+	.byte	3,2,1,5,28,9
+	.half	.L74-.L73
+	.byte	3,1,1,9
+	.half	.L75-.L74
+	.byte	3,1,1,5,32,9
+	.half	.L76-.L75
+	.byte	3,1,1,9
+	.half	.L77-.L76
+	.byte	3,1,1,5,17,9
+	.half	.L78-.L77
+	.byte	3,1,1,5,24,9
+	.half	.L5-.L78
+	.byte	3,2,1,9
+	.half	.L79-.L5
+	.byte	3,1,1,5,23,9
+	.half	.L80-.L79
+	.byte	3,1,1,5,32,9
+	.half	.L81-.L80
+	.byte	3,1,1,5,9,7,9
+	.half	.L2-.L81
+	.byte	3,8,1,5,43,7,9
+	.half	.L82-.L2
+	.byte	1,5,65,9
+	.half	.L55-.L82
+	.byte	1,5,55,9
+	.half	.L57-.L55
+	.byte	1,5,86,9
+	.half	.L56-.L57
+	.byte	1,5,22,7,9
+	.half	.L83-.L56
+	.byte	3,2,1,9
+	.half	.L58-.L83
+	.byte	3,1,1,5,32,9
+	.half	.L9-.L58
+	.byte	3,3,1,5,16,9
+	.half	.L84-.L9
+	.byte	1,5,13,9
+	.half	.L85-.L84
+	.byte	1,5,30,7,9
+	.half	.L86-.L85
+	.byte	3,2,1,5,28,9
+	.half	.L87-.L86
+	.byte	3,1,1,9
+	.half	.L88-.L87
+	.byte	3,1,1,5,32,9
+	.half	.L89-.L88
+	.byte	3,1,1,9
+	.half	.L90-.L89
+	.byte	3,1,1,5,17,9
+	.half	.L91-.L90
+	.byte	3,1,1,5,24,9
+	.half	.L10-.L91
+	.byte	3,2,1,9
+	.half	.L92-.L10
+	.byte	3,1,1,5,23,9
+	.half	.L93-.L92
+	.byte	3,1,1,5,32,9
+	.half	.L94-.L93
+	.byte	3,1,1,5,20,7,9
+	.half	.L7-.L94
+	.byte	3,7,1,5,50,9
+	.half	.L59-.L7
+	.byte	1,5,27,9
+	.half	.L13-.L59
+	.byte	3,2,1,5,12,9
+	.half	.L95-.L13
+	.byte	1,5,9,9
+	.half	.L96-.L95
+	.byte	1,5,33,7,9
+	.half	.L97-.L96
+	.byte	3,2,1,5,13,9
+	.half	.L98-.L97
+	.byte	1,5,19,9
+	.half	.L14-.L98
+	.byte	3,2,1,9
+	.half	.L99-.L14
+	.byte	3,1,1,5,62,9
+	.half	.L100-.L99
+	.byte	3,121,1,5,50,9
+	.half	.L12-.L100
+	.byte	1,5,12,7,9
+	.half	.L101-.L12
+	.byte	3,9,1,5,5,9
+	.half	.L102-.L101
+	.byte	1,5,1,9
+	.half	.L15-.L102
+	.byte	3,1,1,7,9
+	.half	.L27-.L15
+	.byte	0,1,1
+.L65:
+	.sdecl	'.debug_ranges',debug,cluster('rba_BswSrv_MemCompare')
+	.sect	'.debug_ranges'
+.L26:
+	.word	-1,.L18,0,.L27-.L18,0,0
+	.sdecl	'.debug_loc',debug,cluster('rba_BswSrv_MemCompare')
+	.sect	'.debug_loc'
+.L44:
+	.word	-1,.L18,.L54-.L18,.L2-.L18
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L58-.L18,.L7-.L18
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L59-.L18,.L29-.L18
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L34:
+	.word	-1,.L18,0,.L29-.L18
+	.half	1
+	.byte	84
+	.word	0,0
+.L17:
+	.word	-1,.L18,0,.L50-.L18
+	.half	2
+	.byte	138,0
+	.word	.L50-.L18,.L29-.L18
+	.half	2
+	.byte	138,16
+	.word	.L29-.L18,.L29-.L18
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L39:
+	.word	-1,.L18,0,.L29-.L18
+	.half	1
+	.byte	100
+	.word	0,0
+.L36:
+	.word	-1,.L18,0,.L29-.L18
+	.half	1
+	.byte	100
+	.word	.L55-.L18,.L56-.L18
+	.half	1
+	.byte	95
+	.word	0,0
+.L42:
+	.word	-1,.L18,0,.L29-.L18
+	.half	1
+	.byte	100
+	.word	0,0
+.L31:
+	.word	-1,.L18,0,.L29-.L18
+	.half	1
+	.byte	100
+	.word	.L51-.L18,.L52-.L18
+	.half	1
+	.byte	95
+	.word	0,0
+.L40:
+	.word	-1,.L18,0,.L29-.L18
+	.half	1
+	.byte	101
+	.word	0,0
+.L37:
+	.word	-1,.L18,0,.L29-.L18
+	.half	1
+	.byte	101
+	.word	.L57-.L18,.L58-.L18
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L43:
+	.word	-1,.L18,0,.L29-.L18
+	.half	1
+	.byte	101
+	.word	0,0
+.L32:
+	.word	-1,.L18,0,.L29-.L18
+	.half	1
+	.byte	101
+	.word	.L53-.L18,.L54-.L18
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L48:
+	.word	-1,.L18,0,.L29-.L18
+	.half	2
+	.byte	145,120
+	.word	0,0
+.L45:
+	.word	-1,.L18,0,.L29-.L18
+	.half	2
+	.byte	145,112
+	.word	0,0
+.L49:
+	.word	-1,.L18,0,.L29-.L18
+	.half	2
+	.byte	145,122
+	.word	0,0
+.L46:
+	.word	-1,.L18,0,.L29-.L18
+	.half	2
+	.byte	145,116
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L103:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('rba_BswSrv_MemCompare')
+	.sect	'.debug_frame'
+	.word	44
+	.word	.L103,.L18,.L29-.L18
+	.byte	8,18,8,19,8,22,8,23,4
+	.word	(.L50-.L18)/2
+	.byte	19,16,22,26,3,19,138,16,4
+	.word	(.L29-.L50)/2
+	.byte	19,0,8,26,0,0
+
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   131  #define RBA_BSWSRV_STOP_SEC_CODE
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   132  #include "rba_BswSrv_MemMap.h"
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   133  
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   134  /*<BASDKey>
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   135  **********************************************************************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   136  * $History__:$
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   137  **********************************************************************************************************************
+; Integration\BSW\Src\rba_BswSrv_MemCompare.c	   138  </BASDKey>*/
+
+	; Module end

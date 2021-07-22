@@ -1,0 +1,67 @@
+// T32 Sun Dec 22 19:15:07 2019
+
+B::
+
+TOOLBAR   ON
+STATUSBAR ON
+FramePOS 19.5,11.143,,,Maximized
+WinPAGE.RESet
+
+WinPAGE.Create P000
+WinCLEAR
+
+WinPOS 26.375 0.0 58. 7. 10. 1. W006
+RunTime
+
+WinPOS 3.25 9.7857 79. 47. 13. 1. W001
+WinTABS 10. 10. 25.
+Data.List  RE_ASW_NVM_func
+
+WinPOS 0.0 0.0 24. 3. 0. 0. W000
+CORE.SHOWACTIVE
+
+WinPOS 138.0 16.071 97. 40. 5. 0. W004
+Frame /Locals /Caller
+
+WinPOS 137.63 46.714 98. 10. 23. 1. W007
+WinTABS 13. 16. 0. 0. 0. 0. 0. 0. 0. 31.
+b.l
+
+WinPOS 1.875 1.0714 67. 26. 13. 1. W010
+Data.dump (0xb0003a94) /DIALOG
+
+WinPOS 107.5 30.929 74. 26. 0. 1. W002
+WinTABS 49. 26.
+sYmbol.Browse.Function * /Click "Data.List *" /Delete
+
+WinPOS 137.13 0.5 105. 40. 5. 0. W008
+Frame
+
+WinPOS 3.75 2.1429 123. 6. 23. 1. W009
+WinTABS 13. 0. 0. 0. 0. 0. 0. 0. 0. 72.
+Break.List
+
+WinPOS 0.75 0.57143 113. 56. 13. 1. W005
+WinTABS 10. 10. 25.
+d.l
+
+WinPOS 5.625 3.2143 179. 26. 13. 1. W012
+Data.dump (0xaf000ca0) /DIALOG
+
+WinPOS 125.88 0.42857 67. 22. 0. 0. W003
+Var.Watch
+
+VAR.ADDWATCH NvM_Test
+VAR.ADDWATCH Det_ErrorEntryBuffer
+VAR.ADDWATCH Rte_CPim_ASW_NVM_ASW_NVM_BlockNative_1024
+VAR.ADDWATCH Rte_CPim_ASW_NVM_ASW_NVM_BlockRedundant_1024
+VAR.ADDWATCH Rte_ROM_ASW_NVM_ASW_NVM_BlockNative_1024
+VAR.ADDWATCH Rte_ROM_ASW_NVM_ASW_NVM_BlockRedundant_1024
+VAR.ADDWATCH TEST_DATA_NVM_NATIVE_1024
+VAR.ADDWATCH TEST_DATA_NVM_REDUNDANT_1024
+VAR.ADDWATCH shutdown_b
+VAR.ADDWATCH Fls_ConfigPtr->FlsStateVarPtr
+
+WinPAGE.select P000
+
+ENDDO

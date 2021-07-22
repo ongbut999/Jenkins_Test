@@ -1,0 +1,3086 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc15044a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCore_DslDsd_RestoreSecaTimer.src BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.DcmCore_DslDsd_RestoreSecaTimer.Dcm_Prv_SecaPowerOnDelayExpired',code,cluster('Dcm_Prv_SecaPowerOnDelayExpired')
+	.sect	'.text.DcmCore_DslDsd_RestoreSecaTimer.Dcm_Prv_SecaPowerOnDelayExpired'
+	.align	2
+	
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	     1  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	     2  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	     3  #include "DcmCore_DslDsd_Inf.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	     4  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	     5  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	     6  #define DCM_START_SEC_CODE /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	     7  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	     8  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	     9  #if(DCM_CFG_DSP_SECURITYACCESS_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    10  #if(DCM_CFG_RESTORING_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    11  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    12  	static VAR(uint8,AUTOMATIC)   Dcm_Prv_idxSec_qu8;              /* Loop index for Security table */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    13  	static VAR(uint32,AUTOMATIC)  Dcm_Prv_dataSecaGlobaltimer_u32; /* Local variable to calculate the elapsed time */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    14  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    15  #if((DCM_CFG_SECURITY_STOREDELAYCOUNTANDTIMERONJUMP == DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    16  	static VAR(uint32,AUTOMATIC)  Dcm_Prv_nrPowerOnDelay_u32;      /* Local variable to store the power on delay time */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    17  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    18  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    19  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    20   ***********************************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    21   Function name    : Dcm_Prv_SecaPowerOnDelayExpired
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    22   Syntax           : Dcm_Prv_SecaPowerOnDelayExpired(void)
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    23   Description      : Function updates the residual delay time when seca power on delay timer is expired
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    24   Parameter        : None
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    25   Return value     : None
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    26   ***********************************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    27   */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    28  #if((DCM_CFG_SECURITY_STOREDELAYCOUNTANDTIMERONJUMP != DCM_CFG_ON))
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    29  static FUNC(void,DCM_CODE) Dcm_Prv_SecaPowerOnDelayExpired(void)
+; Function Dcm_Prv_SecaPowerOnDelayExpired
+.L18:
+Dcm_Prv_SecaPowerOnDelayExpired:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    30  {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    31  	VAR(uint32,AUTOMATIC)       nrDelay_u32;/* Local variable to store the residual time */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    32  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    33  	/* if power on delay is expired, then check if the failed attempt count has reached the configured attempt count */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    34  	if(Dcm_Dsp_Seca[Dcm_Prv_idxSec_qu8].FailedAtm_cnt_u8 >= Dcm_Dsp_Security[Dcm_Prv_idxSec_qu8].NumAttDelay_u8)
+	movh.a	a12,#@his(Dcm_Prv_idxSec_qu8)
+	lea	a12,[a12]@los(Dcm_Prv_idxSec_qu8)
+	ld.bu	d15,[a12]
+.L85:
+	movh.a	a13,#@his(Dcm_Dsp_Seca)
+	lea	a13,[a13]@los(Dcm_Dsp_Seca)
+.L86:
+	addsc.a	a2,a13,d15,#3
+.L87:
+	ld.bu	d5,[a2]4
+.L88:
+	mul	d15,d15,#40
+.L89:
+	movh.a	a15,#@his(Dcm_Dsp_Security)
+	lea	a15,[a15]@los(Dcm_Dsp_Security)
+.L90:
+	addsc.a	a15,a15,d15,#0
+.L91:
+	ld.bu	d15,[a15]28
+.L92:
+	jlt.u	d5,d15,.L2
+.L93:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    35  	{
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    36          if(Dcm_Dsp_Security[Dcm_Prv_idxSec_qu8].DelayTime_u32 > 0x00u)
+	ld.w	d6,[a15]4
+.L94:
+	jeq	d6,#0,.L3
+.L95:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    37  		{
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    38  		nrDelay_u32 = (Dcm_Dsp_Security[Dcm_Prv_idxSec_qu8].DelayTime_u32 * DCM_CFG_TASK_TIME_MS);
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    39          /* DcmAppl_DcmGetUpdatedDelayTime should return Residual Delay time in milliseconds */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    40          nrDelay_u32 = DcmAppl_DcmGetUpdatedDelayTime( Dcm_Dsp_Security[Dcm_Prv_idxSec_qu8].Security_level_u8,
+	ld.bu	d4,[a15]16
+.L96:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    41          Dcm_Dsp_Seca[Dcm_Prv_idxSec_qu8].FailedAtm_cnt_u8,nrDelay_u32);
+	call	DcmAppl_DcmGetUpdatedDelayTime
+.L64:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    42          nrDelay_u32 = (nrDelay_u32 / DCM_CFG_TASK_TIME_MS);
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    43             if(nrDelay_u32 > Dcm_Prv_dataSecaGlobaltimer_u32)
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    44              {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    45              /* load the delay as the failed attempt count has reached the max value configured */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    46              Dcm_Dsp_Seca[Dcm_Prv_idxSec_qu8].Residual_delay_u32 = (nrDelay_u32 - Dcm_Prv_dataSecaGlobaltimer_u32);
+	ld.bu	d15,[a12]
+.L97:
+	addsc.a	a15,a13,d15,#3
+.L98:
+	movh.a	a2,#@his(Dcm_Prv_dataSecaGlobaltimer_u32)
+	lea	a2,[a2]@los(Dcm_Prv_dataSecaGlobaltimer_u32)
+	ld.w	d15,[a2]
+.L99:
+	jge.u	d15,d2,.L4
+.L100:
+	sub	d2,d15
+.L65:
+	st.w	[a15],d2
+.L101:
+	j	.L5
+.L4:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    47              }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    48  			else
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    49  			{
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    50  			/* Updated Delay if less than the elapsed time in SecaGlobalTimer or failed attempt count
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    51  			has not reached the max configured value , reset the residual delay to zero */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    52  			Dcm_Dsp_Seca[Dcm_Prv_idxSec_qu8].Residual_delay_u32 = 0;
+	mov	d15,#0
+.L102:
+	st.w	[a15],d15
+.L5:
+	j	.L6
+.L3:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    53  			}
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    54          }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    55          else
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    56          {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    57   		Dcm_Dsp_Seca[Dcm_Prv_idxSec_qu8].Residual_delay_u32 = 0;
+	mov	d15,#0
+.L103:
+	st.w	[a2],d15
+.L6:
+	j	.L7
+.L2:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    58          }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    59      }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    60      else
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    61      {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    62      /* Updated Delay if less than the elapsed time in SecaGlobalTimer or failed attempt count has
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    63  	not reached the max configured value , reset the residual delay to zero */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    64      Dcm_Dsp_Seca[Dcm_Prv_idxSec_qu8].Residual_delay_u32 = 0;
+	mov	d15,#0
+.L104:
+	st.w	[a2],d15
+.L7:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    65      }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    66  }
+	ret
+.L56:
+	
+__Dcm_Prv_SecaPowerOnDelayExpired_function_end:
+	.size	Dcm_Prv_SecaPowerOnDelayExpired,__Dcm_Prv_SecaPowerOnDelayExpired_function_end-Dcm_Prv_SecaPowerOnDelayExpired
+.L38:
+	; End of function
+	
+	.sdecl	'.text.DcmCore_DslDsd_RestoreSecaTimer.Dcm_Prv_SecaPowerOnDelayNotExpired',code,cluster('Dcm_Prv_SecaPowerOnDelayNotExpired')
+	.sect	'.text.DcmCore_DslDsd_RestoreSecaTimer.Dcm_Prv_SecaPowerOnDelayNotExpired'
+	.align	2
+	
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    67  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    68   ***********************************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    69   Function name    : Dcm_Prv_SecaPowerOnDelayNotExpired
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    70   Syntax           : Dcm_Prv_SecaPowerOnDelayNotExpired(void)
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    71   Description      : Function updates the residual delay time when seca power on delay timer is not expired
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    72   Parameter        : None
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    73   Return value     : None
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    74   ***********************************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    75   */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    76  static FUNC(void,DCM_CODE) Dcm_Prv_SecaPowerOnDelayNotExpired(void)
+; Function Dcm_Prv_SecaPowerOnDelayNotExpired
+.L20:
+Dcm_Prv_SecaPowerOnDelayNotExpired:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    77  {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    78  	Dcm_Prv_nrPowerOnDelay_u32 = (Dcm_Prv_nrPowerOnDelay_u32 * DCM_CFG_TASK_TIME_MS);
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    79      /* DcmAppl_DcmGetUpdatedDelayTime should return power on Residual Delay time in milliseconds */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    80      Dcm_Prv_nrPowerOnDelay_u32 = DcmAppl_DcmGetUpdatedDelayTime( Dcm_Dsp_Security[Dcm_Prv_idxSec_qu8].Security_level_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    81      Dcm_Dsp_Seca[Dcm_Prv_idxSec_qu8].FailedAtm_cnt_u8,Dcm_Prv_nrPowerOnDelay_u32);
+	movh.a	a12,#@his(Dcm_Prv_idxSec_qu8)
+	lea	a12,[a12]@los(Dcm_Prv_idxSec_qu8)
+	ld.bu	d0,[a12]
+.L109:
+	movh.a	a13,#@his(Dcm_Prv_nrPowerOnDelay_u32)
+	lea	a13,[a13]@los(Dcm_Prv_nrPowerOnDelay_u32)
+.L110:
+	movh.a	a14,#@his(Dcm_Dsp_Seca)
+	lea	a14,[a14]@los(Dcm_Dsp_Seca)
+.L111:
+	mul	d15,d0,#40
+.L112:
+	movh.a	a15,#@his(Dcm_Dsp_Security)
+	lea	a15,[a15]@los(Dcm_Dsp_Security)
+.L113:
+	addsc.a	a15,a15,d15,#0
+.L114:
+	ld.bu	d4,[a15]16
+.L115:
+	addsc.a	a15,a14,d0,#3
+.L116:
+	ld.bu	d5,[a15]4
+.L117:
+	ld.w	d6,[a13]
+	call	DcmAppl_DcmGetUpdatedDelayTime
+.L118:
+	st.w	[a13],d2
+.L119:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    82      Dcm_Prv_nrPowerOnDelay_u32 = (Dcm_Prv_nrPowerOnDelay_u32 / DCM_CFG_TASK_TIME_MS);
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    83  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    84      if(Dcm_Prv_nrPowerOnDelay_u32 > Dcm_Prv_dataSecaGlobaltimer_u32)
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    85      {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    86      /* loading the power on Delay */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    87      Dcm_Dsp_Seca[Dcm_Prv_idxSec_qu8].Residual_delay_u32 = Dcm_Prv_nrPowerOnDelay_u32 - Dcm_Prv_dataSecaGlobaltimer_u32;
+	ld.bu	d15,[a12]
+.L120:
+	addsc.a	a15,a14,d15,#3
+.L121:
+	movh.a	a2,#@his(Dcm_Prv_dataSecaGlobaltimer_u32)
+	lea	a2,[a2]@los(Dcm_Prv_dataSecaGlobaltimer_u32)
+	ld.w	d0,[a2]
+.L122:
+	ld.w	d15,[a13]
+.L123:
+	jge.u	d0,d15,.L8
+.L124:
+	sub	d15,d0
+.L125:
+	st.w	[a15],d15
+.L126:
+	j	.L9
+.L8:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    88      }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    89      else
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    90      {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    91      /* load the residual delay as zero, as it has been already elapsed in BOOT */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    92      Dcm_Dsp_Seca[Dcm_Prv_idxSec_qu8].Residual_delay_u32 = 0;
+	mov	d15,#0
+.L127:
+	st.w	[a15],d15
+.L9:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    93      }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    94  }
+	ret
+.L59:
+	
+__Dcm_Prv_SecaPowerOnDelayNotExpired_function_end:
+	.size	Dcm_Prv_SecaPowerOnDelayNotExpired,__Dcm_Prv_SecaPowerOnDelayNotExpired_function_end-Dcm_Prv_SecaPowerOnDelayNotExpired
+.L43:
+	; End of function
+	
+	.sdecl	'.text.DcmCore_DslDsd_RestoreSecaTimer.Dcm_Prv_SecaWarmStart',code,cluster('Dcm_Prv_SecaWarmStart')
+	.sect	'.text.DcmCore_DslDsd_RestoreSecaTimer.Dcm_Prv_SecaWarmStart'
+	.align	2
+	
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    95  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    96  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    97  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    98   ***********************************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	    99   Function name    : Dcm_Prv_SecaWarmStart
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   100   Syntax           : Dcm_Prv_SecaWarmStart(void)
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   101   Description      : Function gets executed because of seca warm start
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   102   Parameter        : None
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   103   Return value     : None
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   104   ***********************************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   105   */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   106  static FUNC(void,DCM_CODE)Dcm_Prv_SecaWarmStart(void)
+; Function Dcm_Prv_SecaWarmStart
+.L22:
+Dcm_Prv_SecaWarmStart:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   107  {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   108      VAR(uint8,AUTOMATIC)  dataNumBootSeclev_u8;			/* Local variable for number of security levels in Boot */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   109  	VAR(uint8,AUTOMATIC)  l_idxSec_qu8;                 /* Local Loop index for Security table */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   110  #if((DCM_CFG_SECURITY_STOREDELAYCOUNTANDTIMERONJUMP != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   111      VAR(uint8,AUTOMATIC)  idxDcmSeclevel_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   112      dataNumBootSeclev_u8=Dcm_ProgConditions_st.NumOfSecurityLevels;
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   113  #else
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   114      dataNumBootSeclev_u8 = DCM_CFG_DSP_NUMSECURITY;
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   115  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   116  	/* Restore Security Timers */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   117      Dcm_Prv_dataSecaGlobaltimer_u32 = ((Dcm_ProgConditions_st.ElapsedTime * 1000uL)/DCM_CFG_TASK_TIME_US);
+	mov	d0,#1000
+.L132:
+	movh.a	a12,#@his(Dcm_Prv_dataSecaGlobaltimer_u32)
+	lea	a12,[a12]@los(Dcm_Prv_dataSecaGlobaltimer_u32)
+.L133:
+	movh.a	a15,#@his(Dcm_ProgConditions_st)
+	lea	a15,[a15]@los(Dcm_ProgConditions_st)
+.L134:
+	ld.w	d15,[a15]20
+.L135:
+	mul	d15,d0
+.L136:
+	div.u	e0,d15,d0
+.L137:
+	st.w	[a12],d0
+.L138:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   118  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   119      if(Dcm_Dsp_SecaGlobaltimer_u32 != 0xFFFFFFFFuL)
+	movh.a	a15,#@his(Dcm_Dsp_SecaGlobaltimer_u32)
+	lea	a15,[a15]@los(Dcm_Dsp_SecaGlobaltimer_u32)
+	ld.w	d15,[a15]
+.L139:
+	jeq	d15,#-1,.L10
+.L140:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   120      {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   121          /* Loop for all the security levels configured in Boot software */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   122          for(l_idxSec_qu8=0; l_idxSec_qu8 < dataNumBootSeclev_u8; l_idxSec_qu8++)
+	mov	d8,#0
+.L66:
+	j	.L11
+.L12:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   123          {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   124  			Dcm_Prv_idxSec_qu8 = l_idxSec_qu8;
+	movh.a	a15,#@his(Dcm_Prv_idxSec_qu8)
+	lea	a15,[a15]@los(Dcm_Prv_idxSec_qu8)
+.L141:
+	st.b	[a15],d8
+.L142:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   125  #if((DCM_CFG_SECURITY_STOREDELAYCOUNTANDTIMERONJUMP != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   126              for(idxDcmSeclevel_u8=0;idxDcmSeclevel_u8<DCM_CFG_DSP_NUMSECURITY;idxDcmSeclevel_u8++)
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   127              {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   128  				if(Dcm_Dsp_Security[idxDcmSeclevel_u8].Security_level_u8==
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   129  				   Dcm_ProgConditions_st.SecurityInformation[l_idxSec_qu8].SecurityLevel)
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   130                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   131                   break;
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   132                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   133              }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   134  #else
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   135  			Dcm_Prv_nrPowerOnDelay_u32 = (Dcm_Dsp_Security[l_idxSec_qu8].PowerOnDelay_u32);
+	movh.a	a15,#@his(Dcm_Prv_nrPowerOnDelay_u32)
+	lea	a15,[a15]@los(Dcm_Prv_nrPowerOnDelay_u32)
+.L143:
+	mul	d15,d8,#40
+.L144:
+	movh.a	a2,#@his(Dcm_Dsp_Security)
+	lea	a2,[a2]@los(Dcm_Dsp_Security)
+.L145:
+	addsc.a	a2,a2,d15,#0
+.L146:
+	ld.w	d15,[a2]
+.L147:
+	st.w	[a15],d15
+.L148:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   136  			/* if the power on delay is expired */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   137              if(Dcm_Prv_nrPowerOnDelay_u32 <= Dcm_Prv_dataSecaGlobaltimer_u32)
+	ld.w	d15,[a15]
+.L149:
+	ld.w	d0,[a12]
+.L150:
+	jlt.u	d0,d15,.L13
+.L151:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   138              {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   139  				Dcm_Prv_SecaPowerOnDelayExpired();
+	call	Dcm_Prv_SecaPowerOnDelayExpired
+.L152:
+	j	.L14
+.L13:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   140              }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   141              /* power on delay has not expired. */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   142              else
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   143              {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   144  				Dcm_Prv_SecaPowerOnDelayNotExpired();
+	call	Dcm_Prv_SecaPowerOnDelayNotExpired
+.L14:
+	add	d8,#1
+.L67:
+	extr.u	d8,d8,#0,#8
+.L11:
+	jlt.u	d8,#1,.L12
+.L10:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   145              }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   146  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   147  		}
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   148      }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   149  }
+	ret
+.L60:
+	
+__Dcm_Prv_SecaWarmStart_function_end:
+	.size	Dcm_Prv_SecaWarmStart,__Dcm_Prv_SecaWarmStart_function_end-Dcm_Prv_SecaWarmStart
+.L48:
+	; End of function
+	
+	.sdecl	'.text.DcmCore_DslDsd_RestoreSecaTimer.Dcm_DslDsdRestoreSecaTimer',code,cluster('Dcm_DslDsdRestoreSecaTimer')
+	.sect	'.text.DcmCore_DslDsd_RestoreSecaTimer.Dcm_DslDsdRestoreSecaTimer'
+	.align	2
+	
+	.global	Dcm_DslDsdRestoreSecaTimer
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   150  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   151  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   152  
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   153  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   154   ***********************************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   155   Function name    : Dcm_DslDsdRestoreSecaTimer
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   156   Syntax           : Dcm_DslDsdRestoreSecaTimer(void)
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   157   Description      : Function Restores the SECA Timers values
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   158   Parameter        : None
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   159   Return value     : None
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   160   ***********************************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   161   */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   162  FUNC(void,DCM_CODE)Dcm_DslDsdRestoreSecaTimer(void)
+; Function Dcm_DslDsdRestoreSecaTimer
+.L24:
+Dcm_DslDsdRestoreSecaTimer:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   163  {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   164  #if(DCM_CFG_DSP_SECURITYACCESS_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   165  #if(DCM_CFG_RESTORING_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   166      /* Check if the function is called because of WARM START */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   167      if(Dcm_ProgConditions_st.StoreType != DCM_NOTVALID_TYPE)
+	movh.a	a15,#@his(Dcm_ProgConditions_st)
+	lea	a15,[a15]@los(Dcm_ProgConditions_st)
+.L77:
+	ld.bu	d15,[a15]3
+.L78:
+	jeq	d15,#0,.L15
+.L79:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   168      {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   169          Dcm_Prv_SecaWarmStart();
+	call	Dcm_Prv_SecaWarmStart
+.L80:
+	j	.L16
+.L15:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   170      }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   171      else
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   172      {
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   173          /* Normal initialization in boot */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   174          /* Power on delay in case of boot has to be started only if it is normal initialization */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   175          /* If the SECA service is configured and valid power on delay function is configured */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   176          Dcm_Dsp_SecaPowerOnDelayIni();
+	call	Dcm_Dsp_SecaPowerOnDelayIni
+.L16:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   177      }
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   178  #else
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   179      /* If the SECA service is configured and valid power on delay function is configured */
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   180      Dcm_Dsp_SecaPowerOnDelayIni();
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   181  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   182  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   183  }
+	ret
+.L55:
+	
+__Dcm_DslDsdRestoreSecaTimer_function_end:
+	.size	Dcm_DslDsdRestoreSecaTimer,__Dcm_DslDsdRestoreSecaTimer_function_end-Dcm_DslDsdRestoreSecaTimer
+.L33:
+	; End of function
+	
+	.sdecl	'.bss.DcmCore_DslDsd_RestoreSecaTimer.Dcm_Prv_idxSec_qu8',data,cluster('Dcm_Prv_idxSec_qu8')
+	.sect	'.bss.DcmCore_DslDsd_RestoreSecaTimer.Dcm_Prv_idxSec_qu8'
+Dcm_Prv_idxSec_qu8:	.type	object
+	.size	Dcm_Prv_idxSec_qu8,1
+	.space	1
+	.sdecl	'.bss.DcmCore_DslDsd_RestoreSecaTimer.Dcm_Prv_dataSecaGlobaltimer_u32',data,cluster('Dcm_Prv_dataSecaGlobaltimer_u32')
+	.sect	'.bss.DcmCore_DslDsd_RestoreSecaTimer.Dcm_Prv_dataSecaGlobaltimer_u32'
+	.align	4
+Dcm_Prv_dataSecaGlobaltimer_u32:	.type	object
+	.size	Dcm_Prv_dataSecaGlobaltimer_u32,4
+	.space	4
+	.sdecl	'.bss.DcmCore_DslDsd_RestoreSecaTimer.Dcm_Prv_nrPowerOnDelay_u32',data,cluster('Dcm_Prv_nrPowerOnDelay_u32')
+	.sect	'.bss.DcmCore_DslDsd_RestoreSecaTimer.Dcm_Prv_nrPowerOnDelay_u32'
+	.align	4
+Dcm_Prv_nrPowerOnDelay_u32:	.type	object
+	.size	Dcm_Prv_nrPowerOnDelay_u32,4
+	.space	4
+	.calls	'Dcm_Prv_SecaPowerOnDelayExpired','DcmAppl_DcmGetUpdatedDelayTime'
+	.calls	'Dcm_Prv_SecaPowerOnDelayNotExpired','DcmAppl_DcmGetUpdatedDelayTime'
+	.calls	'Dcm_Prv_SecaWarmStart','Dcm_Prv_SecaPowerOnDelayExpired'
+	.calls	'Dcm_Prv_SecaWarmStart','Dcm_Prv_SecaPowerOnDelayNotExpired'
+	.calls	'Dcm_DslDsdRestoreSecaTimer','Dcm_Prv_SecaWarmStart'
+	.calls	'Dcm_DslDsdRestoreSecaTimer','Dcm_Dsp_SecaPowerOnDelayIni'
+	.calls	'Dcm_Prv_SecaPowerOnDelayExpired','',0
+	.calls	'Dcm_Prv_SecaPowerOnDelayNotExpired','',0
+	.calls	'Dcm_Prv_SecaWarmStart','',0
+	.extern	Dcm_Dsp_SecaGlobaltimer_u32
+	.extern	Dcm_Dsp_SecaPowerOnDelayIni
+	.extern	Dcm_Dsp_Seca
+	.extern	Dcm_Dsp_Security
+	.extern	Dcm_ProgConditions_st
+	.extern	DcmAppl_DcmGetUpdatedDelayTime
+	.calls	'Dcm_DslDsdRestoreSecaTimer','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L26:
+	.word	17294
+	.half	3
+	.word	.L27
+	.byte	4
+.L25:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L28
+.L61:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.word	179
+	.byte	4
+	.byte	'rba_DiagLib_Bit8SetBit',0,3,1,36,19,1,1,5
+	.byte	'buffer',0,1,36,49
+	.word	196
+	.byte	5
+	.byte	'bit_position',0,1,36,63
+	.word	179
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBit',0,3,1,42,19,1,1,5
+	.byte	'buffer',0,1,42,51
+	.word	196
+	.byte	5
+	.byte	'bit_position',0,1,42,65
+	.word	179
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit8GetSingleBit',0,3,1,60,20
+	.word	179
+	.byte	1,1,5
+	.byte	'value',0,1,60,55
+	.word	179
+	.byte	5
+	.byte	'bit_position',0,1,60,68
+	.word	179
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBits',0,3,1,77,19,1,1,5
+	.byte	'value',0,1,77,52
+	.word	196
+	.byte	5
+	.byte	'bit_position',0,1,77,65
+	.word	179
+	.byte	5
+	.byte	'number_of_bits',0,1,77,85
+	.word	179
+	.byte	6,0,2
+	.byte	'unsigned short int',0,2,7,3
+	.word	509
+	.byte	4
+	.byte	'rba_DiagLib_Bit16SetBit',0,3,2,36,19,1,1,5
+	.byte	'buffer',0,2,36,51
+	.word	531
+	.byte	5
+	.byte	'bit_position',0,2,36,65
+	.word	179
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBit',0,3,2,42,19,1,1,5
+	.byte	'buffer',0,2,42,53
+	.word	531
+	.byte	5
+	.byte	'bit_position',0,2,42,67
+	.word	179
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit16GetSingleBit',0,3,2,60,21
+	.word	509
+	.byte	1,1,5
+	.byte	'value',0,2,60,58
+	.word	509
+	.byte	5
+	.byte	'bit_position',0,2,60,71
+	.word	179
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBits',0,3,2,78,19,1,1,5
+	.byte	'value',0,2,78,54
+	.word	531
+	.byte	5
+	.byte	'bit_position',0,2,78,67
+	.word	179
+	.byte	5
+	.byte	'number_of_bits',0,2,78,87
+	.word	179
+	.byte	6,0
+.L57:
+	.byte	2
+	.byte	'unsigned int',0,4,7,3
+	.word	848
+	.byte	4
+	.byte	'rba_DiagLib_Bit32SetBit',0,3,3,36,19,1,1,5
+	.byte	'buffer',0,3,36,51
+	.word	864
+	.byte	5
+	.byte	'bit_position',0,3,36,65
+	.word	179
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBit',0,3,3,42,19,1,1,5
+	.byte	'buffer',0,3,42,53
+	.word	864
+	.byte	5
+	.byte	'bit_position',0,3,42,67
+	.word	179
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit32GetSingleBit',0,3,3,60,21
+	.word	848
+	.byte	1,1,5
+	.byte	'value',0,3,60,58
+	.word	848
+	.byte	5
+	.byte	'bit_position',0,3,60,71
+	.word	179
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBits',0,3,3,78,19,1,1,5
+	.byte	'value',0,3,78,54
+	.word	864
+	.byte	5
+	.byte	'bit_position',0,3,78,67
+	.word	179
+	.byte	5
+	.byte	'number_of_bits',0,3,78,87
+	.word	179
+	.byte	6,0,8
+	.byte	'Dcm_Dsp_SecaPowerOnDelayIni',0,4,150,2,28,1,1,1,1,9
+	.word	201
+	.byte	10
+	.word	231
+	.byte	10
+	.word	246
+	.byte	6,0,9
+	.word	269
+	.byte	10
+	.word	301
+	.byte	10
+	.word	316
+	.byte	6,0,9
+	.word	339
+	.byte	10
+	.word	379
+	.byte	10
+	.word	393
+	.byte	6,0,9
+	.word	416
+	.byte	10
+	.word	449
+	.byte	10
+	.word	463
+	.byte	10
+	.word	484
+	.byte	6,0,9
+	.word	536
+	.byte	10
+	.word	567
+	.byte	10
+	.word	582
+	.byte	6,0,9
+	.word	605
+	.byte	10
+	.word	638
+	.byte	10
+	.word	653
+	.byte	6,0,9
+	.word	676
+	.byte	10
+	.word	717
+	.byte	10
+	.word	731
+	.byte	6,0,9
+	.word	754
+	.byte	10
+	.word	788
+	.byte	10
+	.word	802
+	.byte	10
+	.word	823
+	.byte	6,0,9
+	.word	869
+	.byte	10
+	.word	900
+	.byte	10
+	.word	915
+	.byte	6,0,9
+	.word	938
+	.byte	10
+	.word	971
+	.byte	10
+	.word	986
+	.byte	6,0,9
+	.word	1009
+	.byte	10
+	.word	1050
+	.byte	10
+	.word	1064
+	.byte	6,0,9
+	.word	1087
+	.byte	10
+	.word	1121
+	.byte	10
+	.word	1135
+	.byte	10
+	.word	1156
+	.byte	6,0,11
+	.byte	'DcmAppl_DcmGetUpdatedDelayTime',0,5,253,2,35
+	.word	848
+	.byte	1,1,1,1,5
+	.byte	'SecurityLevel',0,5,255,2,26
+	.word	179
+	.byte	5
+	.byte	'Delaycount',0,5,128,3,26
+	.word	179
+	.byte	5
+	.byte	'DelayTime',0,5,129,3,27
+	.word	848
+	.byte	0,12,1,3
+	.word	1544
+	.byte	13
+	.byte	'__codeptr',0,6,1,1
+	.word	1546
+	.byte	2
+	.byte	'char',0,1,6,13
+	.byte	'sint8',0,7,76,25
+	.word	1569
+	.byte	13
+	.byte	'uint8',0,7,81,25
+	.word	179
+	.byte	13
+	.byte	'uint16',0,7,91,25
+	.word	509
+	.byte	13
+	.byte	'uint32',0,7,106,24
+	.word	848
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,13
+	.byte	'uint64',0,7,111,30
+	.word	1635
+	.byte	13
+	.byte	'boolean',0,7,127,25
+	.word	179
+	.byte	2
+	.byte	'unsigned long int',0,4,7,13
+	.byte	'uint16_least',0,7,147,1,25
+	.word	1692
+	.byte	13
+	.byte	'StatusType',0,8,191,1,27
+	.word	179
+	.byte	13
+	.byte	'Std_ReturnType',0,8,199,1,15
+	.word	179
+	.byte	14,8,206,1,9,8,15
+	.byte	'vendorID',0
+	.word	509
+	.byte	2,2,35,0,15
+	.byte	'moduleID',0
+	.word	509
+	.byte	2,2,35,2,15
+	.byte	'sw_major_version',0
+	.word	179
+	.byte	1,2,35,4,15
+	.byte	'sw_minor_version',0
+	.word	179
+	.byte	1,2,35,5,15
+	.byte	'sw_patch_version',0
+	.word	179
+	.byte	1,2,35,6,0,13
+	.byte	'Std_VersionInfoType',0,8,213,1,3
+	.word	1779
+	.byte	13
+	.byte	'PduIdType',0,9,22,19
+	.word	509
+	.byte	13
+	.byte	'PduLengthType',0,9,26,19
+	.word	509
+	.byte	14,10,71,9,8,15
+	.byte	'SduDataPtr',0
+	.word	196
+	.byte	4,2,35,0,15
+	.byte	'SduLength',0
+	.word	509
+	.byte	2,2,35,4,0,13
+	.byte	'PduInfoType',0,10,75,3
+	.word	1969
+	.byte	16,10,113,9,4,17
+	.byte	'TP_DATACONF',0,0,17
+	.byte	'TP_DATARETRY',0,1,17
+	.byte	'TP_CONFPENDING',0,2,0,13
+	.byte	'TpDataStateType',0,10,118,3
+	.word	2034
+	.byte	13
+	.byte	'NetworkHandleType',0,10,128,1,17
+	.word	179
+	.byte	13
+	.byte	'Can_IdType',0,11,32,16
+	.word	848
+	.byte	13
+	.byte	'Can_HwHandleType',0,11,43,16
+	.word	509
+	.byte	14,12,93,9,8,15
+	.byte	'Class',0
+	.word	179
+	.byte	1,2,35,0,15
+	.byte	'TIN',0
+	.word	179
+	.byte	1,2,35,1,15
+	.byte	'ReturnAddress',0
+	.word	848
+	.byte	4,2,35,4,0,13
+	.byte	'OsTrapInfoType',0,12,97,3
+	.word	2181
+	.byte	18,68
+	.word	848
+	.byte	19,16,0,14,12,154,1,9,68,15
+	.byte	'store',0
+	.word	2261
+	.byte	68,2,35,0,0,18,68
+	.word	2270
+	.byte	19,0,0,13
+	.byte	'Os_JumpBufType',0,12,156,1,3
+	.word	2292
+	.byte	13
+	.byte	'Os_StackTraceType',0,12,174,1,18
+	.word	848
+	.byte	14,12,175,1,9,8,15
+	.byte	'sp',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'ctx',0
+	.word	848
+	.byte	4,2,35,4,0,13
+	.byte	'Os_StackValueType',0,12,175,1,63
+	.word	2352
+	.byte	13
+	.byte	'Os_StackSizeType',0,12,176,1,27
+	.word	2352
+	.byte	20,1,1,3
+	.word	2437
+	.byte	13
+	.byte	'Os_VoidVoidFunctionType',0,12,179,1,16
+	.word	2440
+	.byte	13
+	.byte	'ApplicationType',0,12,193,1,23
+	.word	179
+	.byte	21
+	.byte	'Os_ApplicationConfigurationType_s',0,12,198,1,16,2,15
+	.byte	'app_id',0
+	.word	179
+	.byte	1,2,35,0,15
+	.byte	'access',0
+	.word	179
+	.byte	1,2,35,1,0,13
+	.byte	'Os_ApplicationConfigurationType',0,12,201,1,3
+	.word	2503
+	.byte	13
+	.byte	'Os_CoreStateType',0,12,203,1,16
+	.word	848
+	.byte	13
+	.byte	'AreaIdType',0,12,204,1,16
+	.word	509
+	.byte	13
+	.byte	'Os_PeripheralAddressType',0,12,212,1,22
+	.word	848
+	.byte	13
+	.byte	'TickType',0,12,221,1,22
+	.word	848
+	.byte	13
+	.byte	'Os_StopwatchTickType',0,12,225,1,22
+	.word	848
+	.byte	13
+	.byte	'Os_Lockable',0,12,234,1,18
+	.word	864
+	.byte	13
+	.byte	'CoreIdType',0,12,236,1,16
+	.word	509
+	.byte	13
+	.byte	'SpinlockIdType',0,12,237,1,16
+	.word	509
+	.byte	16,12,239,1,9,4,17
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,17
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,13
+	.byte	'TryToGetSpinlockType',0,12,239,1,74
+	.word	2810
+	.byte	16,12,174,2,9,4,17
+	.byte	'APPLICATION_ACCESSIBLE',0,0,17
+	.byte	'APPLICATION_RESTARTING',0,1,17
+	.byte	'APPLICATION_TERMINATED',0,2,0,13
+	.byte	'ApplicationStateType',0,12,174,2,92
+	.word	2903
+	.byte	22
+	.byte	'void',0,3
+	.word	3015
+	.byte	23,1,1,24
+	.word	179
+	.byte	24
+	.word	3021
+	.byte	0,3
+	.word	3026
+	.byte	13
+	.byte	'Os_FunctionEntryType',0,12,183,2,16
+	.word	3040
+	.byte	21
+	.byte	'Os_MeterInfoType_s',0,12,193,2,16,48,15
+	.byte	'elapsed',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'previous',0
+	.word	848
+	.byte	4,2,35,4,15
+	.byte	'max',0
+	.word	848
+	.byte	4,2,35,8,15
+	.byte	'cumulative',0
+	.word	848
+	.byte	4,2,35,12,15
+	.byte	'stackbase',0
+	.word	2352
+	.byte	8,2,35,16,15
+	.byte	'stackusage',0
+	.word	2352
+	.byte	8,2,35,24,15
+	.byte	'stackmax',0
+	.word	2352
+	.byte	8,2,35,32,15
+	.byte	'stackbudget',0
+	.word	2352
+	.byte	8,2,35,40,0,13
+	.byte	'Os_MeterInfoType',0,12,202,2,3
+	.word	3075
+	.byte	3
+	.word	3075
+	.byte	13
+	.byte	'Os_MeterInfoRefType',0,12,203,2,50
+	.word	3273
+	.byte	13
+	.byte	'EventMaskType',0,12,206,2,15
+	.word	179
+	.byte	13
+	.byte	'Os_imaskType',0,12,211,2,16
+	.word	848
+	.byte	21
+	.byte	'Os_ISRDynType_s',0,12,213,2,16,48,15
+	.byte	'meter',0
+	.word	3075
+	.byte	48,2,35,0,0,13
+	.byte	'Os_ISRDynType',0,12,215,2,3
+	.word	3352
+	.byte	3
+	.word	3352
+	.byte	25
+	.word	3413
+	.byte	21
+	.byte	'Os_ISRType_s',0,12,216,2,16,24,15
+	.byte	'entry_function',0
+	.word	2445
+	.byte	4,2,35,0,15
+	.byte	'dynamic',0
+	.word	3418
+	.byte	4,2,35,4,15
+	.byte	'imask',0
+	.word	848
+	.byte	4,2,35,8,15
+	.byte	'stackbudget',0
+	.word	2352
+	.byte	8,2,35,12,15
+	.byte	'access',0
+	.word	179
+	.byte	1,2,35,20,15
+	.byte	'application',0
+	.word	179
+	.byte	1,2,35,21,0,13
+	.byte	'Os_ISRType',0,12,223,2,3
+	.word	3423
+	.byte	3
+	.word	2437
+	.byte	25
+	.word	3423
+	.byte	3
+	.word	3582
+	.byte	13
+	.byte	'ISRType',0,12,224,2,46
+	.word	3587
+	.byte	13
+	.byte	'Os_bitmask',0,12,239,2,22
+	.word	848
+	.byte	13
+	.byte	'Os_pset0Type',0,12,240,2,20
+	.word	848
+	.byte	13
+	.byte	'Os_pset1Type',0,12,241,2,20
+	.word	848
+	.byte	13
+	.byte	'Os_pset2Type',0,12,242,2,20
+	.word	848
+	.byte	26,12,243,2,9,4,15
+	.byte	'p0',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'p1',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'p2',0
+	.word	848
+	.byte	4,2,35,0,0,13
+	.byte	'Os_psetType',0,12,247,2,3
+	.word	3695
+	.byte	26,12,249,2,9,4,15
+	.byte	't0',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	't1',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	't2',0
+	.word	848
+	.byte	4,2,35,0,0,13
+	.byte	'Os_tpmaskType',0,12,253,2,3
+	.word	3759
+	.byte	13
+	.byte	'Os_ActivationCountType',0,12,254,2,23
+	.word	179
+	.byte	21
+	.byte	'Os_TaskDynType_s',0,12,128,3,16,120,15
+	.byte	'terminate_jump_buf',0
+	.word	2301
+	.byte	68,2,35,0,15
+	.byte	'meter',0
+	.word	3075
+	.byte	48,2,35,68,15
+	.byte	'activation_count',0
+	.word	179
+	.byte	1,2,35,116,0,13
+	.byte	'Os_TaskDynType',0,12,132,3,3
+	.word	3857
+	.byte	18,68
+	.word	2270
+	.byte	19,0,0,3
+	.word	3857
+	.byte	25
+	.word	3983
+	.byte	21
+	.byte	'Os_TaskType_s',0,12,134,3,16,40,15
+	.byte	'dynamic',0
+	.word	3988
+	.byte	4,2,35,0,15
+	.byte	'entry_function',0
+	.word	2445
+	.byte	4,2,35,4,15
+	.byte	'pset',0
+	.word	3695
+	.byte	4,2,35,8,15
+	.byte	'base_tpmask',0
+	.word	3759
+	.byte	4,2,35,12,15
+	.byte	'tpmask',0
+	.word	3759
+	.byte	4,2,35,16,15
+	.byte	'core_id',0
+	.word	509
+	.byte	2,2,35,20,15
+	.byte	'index',0
+	.word	848
+	.byte	4,2,35,24,15
+	.byte	'stackbudget',0
+	.word	2352
+	.byte	8,2,35,28,15
+	.byte	'activation_count',0
+	.word	179
+	.byte	1,2,35,36,15
+	.byte	'access',0
+	.word	179
+	.byte	1,2,35,37,15
+	.byte	'application',0
+	.word	179
+	.byte	1,2,35,38,0,13
+	.byte	'Os_TaskType',0,12,146,3,3
+	.word	3993
+	.byte	25
+	.word	3993
+	.byte	3
+	.word	4243
+	.byte	13
+	.byte	'TaskType',0,12,147,3,47
+	.word	4248
+	.byte	27
+	.byte	'Os_TaskStateType',0,12,155,3,6,4,17
+	.byte	'SUSPENDED',0,0,17
+	.byte	'READY',0,1,17
+	.byte	'WAITING',0,2,17
+	.byte	'RUNNING',0,3,0,13
+	.byte	'TaskStateType',0,12,156,3,31
+	.word	4271
+	.byte	26,12,167,3,3,4,15
+	.byte	'tpmask',0
+	.word	3759
+	.byte	4,2,35,0,0,21
+	.byte	'Os_ResourceDynType_s',0,12,166,3,16,4,15
+	.byte	'saved_priority',0
+	.word	4358
+	.byte	4,2,35,0,0,13
+	.byte	'Os_ResourceDynType',0,12,170,3,3
+	.word	4381
+	.byte	3
+	.word	4381
+	.byte	25
+	.word	4461
+	.byte	21
+	.byte	'Os_ResourceType_s',0,12,171,3,16,12,15
+	.byte	'dynamic',0
+	.word	4466
+	.byte	4,2,35,0,15
+	.byte	'tpmask',0
+	.word	3759
+	.byte	4,2,35,4,15
+	.byte	'access',0
+	.word	179
+	.byte	1,2,35,8,0,13
+	.byte	'Os_ResourceType',0,12,175,3,3
+	.word	4471
+	.byte	14,12,181,3,9,12,15
+	.byte	'maxallowedvalue',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'ticksperbase',0
+	.word	848
+	.byte	4,2,35,4,15
+	.byte	'mincycle',0
+	.word	848
+	.byte	4,2,35,8,0,13
+	.byte	'AlarmBaseType',0,12,185,3,3
+	.word	4570
+	.byte	14,12,206,3,9,8,15
+	.byte	'Running',0
+	.word	179
+	.byte	1,2,35,0,15
+	.byte	'Pending',0
+	.word	179
+	.byte	1,2,35,1,15
+	.byte	'Delay',0
+	.word	848
+	.byte	4,2,35,4,0,13
+	.byte	'Os_CounterStatusType',0,12,210,3,3
+	.word	4665
+	.byte	28
+	.word	179
+	.byte	1,1,3
+	.word	4751
+	.byte	13
+	.byte	'Os_CounterIncrAdvType',0,12,217,3,22
+	.word	4758
+	.byte	21
+	.byte	's_swd',0,12,222,3,12,4,15
+	.byte	'count',0
+	.word	848
+	.byte	4,2,35,0,0,26,12,221,3,3,4,15
+	.byte	'sw',0
+	.word	4794
+	.byte	4,2,35,0,0,21
+	.byte	'Os_CounterDynType_s',0,12,220,3,16,4,15
+	.byte	'type_dependent',0
+	.word	4822
+	.byte	4,2,35,0,0,13
+	.byte	'Os_CounterDynType',0,12,226,3,3
+	.word	4841
+	.byte	3
+	.word	4841
+	.byte	25
+	.word	4919
+	.byte	21
+	.byte	'Os_CounterType_s',0,12,227,3,16,28,15
+	.byte	'dynamic',0
+	.word	4924
+	.byte	4,2,35,0,15
+	.byte	'advincr',0
+	.word	4763
+	.byte	4,2,35,4,15
+	.byte	'base',0
+	.word	4570
+	.byte	12,2,35,8,15
+	.byte	'core',0
+	.word	3021
+	.byte	4,2,35,20,15
+	.byte	'access',0
+	.word	179
+	.byte	1,2,35,24,15
+	.byte	'application',0
+	.word	179
+	.byte	1,2,35,25,0,13
+	.byte	'Os_CounterType',0,12,234,3,3
+	.word	4929
+	.byte	3
+	.word	4751
+	.byte	25
+	.word	4929
+	.byte	3
+	.word	5081
+	.byte	13
+	.byte	'CounterType',0,12,235,3,52
+	.word	5086
+	.byte	27
+	.byte	'Os_ScheduleTableStatusType',0,12,240,3,6,4,17
+	.byte	'SCHEDULETABLE_STOPPED',0,0,17
+	.byte	'SCHEDULETABLE_NEXT',0,1,17
+	.byte	'SCHEDULETABLE_WAITING',0,2,17
+	.byte	'SCHEDULETABLE_RUNNING',0,3,17
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,13
+	.byte	'ScheduleTableStatusType',0,12,241,3,41
+	.word	5112
+	.byte	25
+	.word	.L68-.L26
+	.byte	3
+	.word	5312
+	.byte	13
+	.byte	'ScheduleTableType',0,12,128,4,58
+	.word	5317
+	.byte	21
+	.byte	'Os_ScheduleTableDynType_s',0,12,130,4,16,16,15
+	.byte	'match',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'next',0
+	.word	5322
+	.byte	4,2,35,4,15
+	.byte	'state',0
+	.word	5112
+	.byte	4,2,35,8,15
+	.byte	'config',0
+	.word	509
+	.byte	2,2,35,12,0,3
+	.word	5349
+	.byte	25
+	.word	5442
+.L68:
+	.byte	21
+	.byte	'Os_ScheduleTableType_s',0,12,247,3,16,16,15
+	.byte	'dynamic',0
+	.word	5447
+	.byte	4,2,35,0,15
+	.byte	'counter',0
+	.word	5091
+	.byte	4,2,35,4,15
+	.byte	'repeat',0
+	.word	179
+	.byte	1,2,35,8,15
+	.byte	'config',0
+	.word	509
+	.byte	2,2,35,10,15
+	.byte	'initial',0
+	.word	179
+	.byte	1,2,35,12,15
+	.byte	'access',0
+	.word	179
+	.byte	1,2,35,13,15
+	.byte	'application',0
+	.word	179
+	.byte	1,2,35,14,0,13
+	.byte	'Os_ScheduleTableType',0,12,255,3,3
+	.word	5452
+	.byte	25
+	.word	5452
+	.byte	3
+	.word	5632
+	.byte	25
+	.word	4929
+	.byte	3
+	.word	5642
+	.byte	29
+	.word	2745
+	.byte	29
+	.word	3695
+	.byte	29
+	.word	3592
+	.byte	29
+	.word	4253
+	.byte	29
+	.word	3759
+	.byte	29
+	.word	179
+	.byte	29
+	.word	4253
+	.byte	21
+	.byte	'Os_ControlledCoreType_s',0,12,251,6,16,112,15
+	.byte	'TrapInfo',0
+	.word	2181
+	.byte	8,2,35,0,15
+	.byte	'lock_taskaccess',0
+	.word	5652
+	.byte	4,2,35,8,15
+	.byte	'ReadyTasks',0
+	.word	5657
+	.byte	4,2,35,12,15
+	.byte	'RunningISR',0
+	.word	5662
+	.byte	4,2,35,16,15
+	.byte	'RunningTask',0
+	.word	5667
+	.byte	4,2,35,20,15
+	.byte	'RunningTPMask',0
+	.word	5672
+	.byte	4,2,35,24,15
+	.byte	'CurrentMeteredObject',0
+	.word	3278
+	.byte	4,2,35,28,15
+	.byte	'IdleMeter',0
+	.word	3075
+	.byte	48,2,35,32,15
+	.byte	'AppAccess',0
+	.word	179
+	.byte	1,2,35,80,15
+	.byte	'AppOverride',0
+	.word	5677
+	.byte	1,2,35,81,15
+	.byte	'GetStackValueAdjust',0
+	.word	2352
+	.byte	8,2,35,84,15
+	.byte	'InErrorHook',0
+	.word	179
+	.byte	1,2,35,92,15
+	.byte	'ChainTaskRef',0
+	.word	5682
+	.byte	4,2,35,96,15
+	.byte	'GetStackUsageAdjust',0
+	.word	2352
+	.byte	8,2,35,100,15
+	.byte	'InProtectionHook',0
+	.word	179
+	.byte	1,2,35,108,15
+	.byte	'CoreIsActive',0
+	.word	179
+	.byte	1,2,35,109,15
+	.byte	'InShutdownHook',0
+	.word	179
+	.byte	1,2,35,110,0,13
+	.byte	'Os_ControlledCoreType',0,12,141,7,3
+	.word	5687
+	.byte	3
+	.word	848
+	.byte	25
+	.word	3423
+	.byte	3
+	.word	6143
+	.byte	25
+	.word	3993
+	.byte	3
+	.word	6153
+	.byte	3
+	.word	3075
+	.byte	21
+	.byte	'Os_AnyCoreType_s',0,12,151,7,16,96,15
+	.byte	'DisableAllImask',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'SuspendAllImask',0
+	.word	848
+	.byte	4,2,35,4,15
+	.byte	'SuspendOSImask',0
+	.word	848
+	.byte	4,2,35,8,15
+	.byte	'DisableAllCount',0
+	.word	848
+	.byte	4,2,35,12,15
+	.byte	'SuspendAllCount',0
+	.word	848
+	.byte	4,2,35,16,15
+	.byte	'SuspendOSCount',0
+	.word	848
+	.byte	4,2,35,20,15
+	.byte	'RestartJumpBuf',0
+	.word	2301
+	.byte	68,2,35,24,15
+	.byte	'Restartable',0
+	.word	179
+	.byte	1,2,35,92,0,13
+	.byte	'Os_AnyCoreType',0,12,160,7,3
+	.word	6168
+	.byte	13
+	.byte	'Can_TxObjPriorityClassType',0,13,219,3,16
+	.word	848
+	.byte	21
+	.byte	'Can_TxHwObjectConfigType',0,13,231,3,16,8,15
+	.byte	'MsgObjId',0
+	.word	179
+	.byte	1,2,35,0,15
+	.byte	'HwControllerId',0
+	.word	179
+	.byte	1,2,35,1,15
+	.byte	'TxObjPriorityClass',0
+	.word	848
+	.byte	4,2,35,4,0,13
+	.byte	'Can_TxHwObjectConfigType',0,13,252,3,3
+	.word	6445
+	.byte	21
+	.byte	'Can_RxHwObjectConfigType',0,13,129,4,16,12,15
+	.byte	'MaskRef',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'MsgId',0
+	.word	848
+	.byte	4,2,35,4,15
+	.byte	'MsgObjId',0
+	.word	179
+	.byte	1,2,35,8,15
+	.byte	'HwControllerId',0
+	.word	179
+	.byte	1,2,35,9,0,13
+	.byte	'Can_RxHwObjectConfigType',0,13,147,4,3
+	.word	6581
+	.byte	18,4
+	.word	179
+	.byte	19,3,0,21
+	.byte	'Can_ControllerMOMapConfigType',0,13,181,4,16,4,15
+	.byte	'ControllerMOMap',0
+	.word	6721
+	.byte	4,2,35,0,0,13
+	.byte	'Can_ControllerMOMapConfigType',0,13,184,4,3
+	.word	6730
+	.byte	21
+	.byte	'Can_NPCRValueType',0,13,188,4,16,2,15
+	.byte	'Can_NPCRValue',0
+	.word	509
+	.byte	2,2,35,0,0,13
+	.byte	'Can_NPCRValueType',0,13,191,4,3
+	.word	6831
+	.byte	21
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,194,4,16,8,15
+	.byte	'CanControllerBaudrate',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'CanControllerBaudrateCfg',0
+	.word	509
+	.byte	2,2,35,4,0,13
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,198,4,3
+	.word	6906
+	.byte	25
+	.word	6906
+	.byte	3
+	.word	7071
+	.byte	21
+	.byte	'Can_BaudrateConfigPtrType',0,13,201,4,16,4,15
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	7076
+	.byte	4,2,35,0,0,13
+	.byte	'Can_BaudrateConfigPtrType',0,13,204,4,3
+	.word	7081
+	.byte	21
+	.byte	'Can_EventHandlingType',0,13,226,4,16,4,15
+	.byte	'CanEventType',0
+	.word	6721
+	.byte	4,2,35,0,0,13
+	.byte	'Can_EventHandlingType',0,13,229,4,3
+	.word	7181
+	.byte	13
+	.byte	'Rte_TransformerErrorCode',0,14,130,1,15
+	.word	179
+	.byte	13
+	.byte	'Rte_TransformerClass',0,14,131,1,15
+	.word	179
+	.byte	14,14,168,1,9,12,15
+	.byte	'in',0
+	.word	3021
+	.byte	4,2,35,0,15
+	.byte	'out',0
+	.word	3021
+	.byte	4,2,35,4,15
+	.byte	'used',0
+	.word	509
+	.byte	2,2,35,8,15
+	.byte	'lost_data',0
+	.word	179
+	.byte	1,2,35,10,0,13
+	.byte	'Rte_QDynType',0,14,173,1,3
+	.word	7327
+	.byte	16,14,175,1,9,4,17
+	.byte	'RTE_DRA',0,0,17
+	.byte	'RTE_WOWP',0,1,17
+	.byte	'RTE_TASK',0,2,17
+	.byte	'RTE_ARE',0,3,17
+	.byte	'RTE_EV',0,4,17
+	.byte	'RTE_MSI',0,5,0,13
+	.byte	'Rte_NotificationType',0,14,182,1,3
+	.word	7414
+	.byte	3
+	.word	7327
+	.byte	21
+	.byte	'Rte_QCmnType',0,14,184,1,16,24,15
+	.byte	'dynamic',0
+	.word	7512
+	.byte	4,2,35,0,15
+	.byte	'copy',0
+	.word	179
+	.byte	1,2,35,4,15
+	.byte	'queue_size',0
+	.word	509
+	.byte	2,2,35,6,15
+	.byte	'element_size',0
+	.word	509
+	.byte	2,2,35,8,15
+	.byte	'buffer_start',0
+	.word	3021
+	.byte	4,2,35,12,15
+	.byte	'buffer_end',0
+	.word	3021
+	.byte	4,2,35,16,15
+	.byte	'notification_type',0
+	.word	7414
+	.byte	4,2,35,20,0,13
+	.byte	'Rte_QCmnType',0,14,192,1,3
+	.word	7517
+	.byte	13
+	.byte	'Rte_AlarmRefType',0,14,224,1,32
+	.word	848
+	.byte	13
+	.byte	'Rte_AlarmIndexType',0,14,226,1,32
+	.word	509
+	.byte	18,128,8
+	.word	179
+	.byte	19,255,7,0,13
+	.byte	'Impl_NVM_DstPtrType_1024',0,15,50,15
+	.word	7755
+	.byte	13
+	.byte	'CanIf_u32_impl',0,15,69,16
+	.word	848
+	.byte	13
+	.byte	'CanIf_u16_impl',0,15,71,16
+	.word	509
+	.byte	13
+	.byte	'CanIf_u8_impl',0,15,73,15
+	.word	179
+	.byte	13
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,15,88,15
+	.word	179
+	.byte	13
+	.byte	'CanIf_PduModeType_Enum_impl',0,15,90,15
+	.word	179
+	.byte	14,15,92,9,2,15
+	.byte	'DeviceMode',0
+	.word	179
+	.byte	1,2,35,0,15
+	.byte	'ChannelMode',0
+	.word	179
+	.byte	1,2,35,1,0,13
+	.byte	'CanIf_ControllerStateType_struct_impl',0,15,95,3
+	.word	7946
+	.byte	13
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,15,100,15
+	.word	179
+	.byte	13
+	.byte	'CanSM_boolean_Impl',0,15,120,15
+	.word	179
+	.byte	13
+	.byte	'CanSM_u8_Impl',0,15,123,15
+	.word	179
+	.byte	13
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,15,128,1,15
+	.word	179
+	.byte	13
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,15,132,1,15
+	.word	179
+	.byte	13
+	.byte	'CanSM_u16_Impl',0,15,136,1,16
+	.word	509
+	.byte	13
+	.byte	'CanSM_TimerStateType_Enum_impl',0,15,138,1,15
+	.word	179
+	.byte	14,15,140,1,9,4,15
+	.byte	'cntTick_u16',0
+	.word	509
+	.byte	2,2,35,0,15
+	.byte	'stTimer',0
+	.word	179
+	.byte	1,2,35,2,0,13
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,15,143,1,3
+	.word	8287
+	.byte	13
+	.byte	'Com_impl_u16',0,15,154,1,16
+	.word	509
+	.byte	13
+	.byte	'Com_impl_u8',0,15,157,1,15
+	.word	179
+	.byte	13
+	.byte	'ComM_uint32_Impl',0,15,173,1,16
+	.word	848
+	.byte	13
+	.byte	'ComM_uint16_Impl',0,15,175,1,16
+	.word	509
+	.byte	13
+	.byte	'ComM_uint8_Impl',0,15,177,1,15
+	.word	179
+	.byte	13
+	.byte	'ComM_bool_Impl',0,15,179,1,15
+	.word	179
+	.byte	14,15,181,1,9,24,15
+	.byte	'ChannelState_e',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'LightTimeoutCtr_u32',0
+	.word	848
+	.byte	4,2,35,4,15
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	509
+	.byte	2,2,35,8,15
+	.byte	'ChannelMode_u8',0
+	.word	179
+	.byte	1,2,35,10,15
+	.byte	'BusSmMode_u8',0
+	.word	179
+	.byte	1,2,35,11,15
+	.byte	'UserRequestCtr_u8',0
+	.word	179
+	.byte	1,2,35,12,15
+	.byte	'PassiveRequestState_u8',0
+	.word	179
+	.byte	1,2,35,13,15
+	.byte	'PncRequestCtr_u8',0
+	.word	179
+	.byte	1,2,35,14,15
+	.byte	'InhibitionReqStatus_u8',0
+	.word	179
+	.byte	1,2,35,15,15
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	179
+	.byte	1,2,35,16,15
+	.byte	'DiagnosticRequestState_b',0
+	.word	179
+	.byte	1,2,35,17,15
+	.byte	'CommunicationAllowed_b',0
+	.word	179
+	.byte	1,2,35,18,15
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	179
+	.byte	1,2,35,19,15
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	179
+	.byte	1,2,35,20,15
+	.byte	'NmNetworkModeStatus_b',0
+	.word	179
+	.byte	1,2,35,21,0,13
+	.byte	'ComM_ChannelStruct_Impl',0,15,197,1,3
+	.word	8519
+	.byte	14,15,206,1,9,10,15
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	509
+	.byte	2,2,35,0,15
+	.byte	'LimitToNoComCtr_u16',0
+	.word	509
+	.byte	2,2,35,2,15
+	.byte	'RequestedUserMode_t',0
+	.word	179
+	.byte	1,2,35,4,15
+	.byte	'IndicatedUserMode_t',0
+	.word	179
+	.byte	1,2,35,5,15
+	.byte	'numChannelsInFullCom_u8',0
+	.word	179
+	.byte	1,2,35,6,15
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	179
+	.byte	1,2,35,7,15
+	.byte	'numChannelsInNoCom_u8',0
+	.word	179
+	.byte	1,2,35,8,0,13
+	.byte	'ComM_UserStruct_Impl',0,15,214,1,3
+	.word	9023
+	.byte	13
+	.byte	'Dcm_ConfirmationStatusType',0,15,243,1,15
+	.word	179
+	.byte	13
+	.byte	'Dcm_IOOperationResponseType',0,15,252,1,15
+	.word	179
+	.byte	13
+	.byte	'Dcm_NegativeResponseCodeType',0,15,132,2,15
+	.word	179
+	.byte	13
+	.byte	'Dcm_OpStatusType',0,15,134,2,15
+	.word	179
+	.byte	13
+	.byte	'Dcm_ProtocolType',0,15,136,2,15
+	.word	179
+	.byte	13
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	15,138,2,15
+	.word	179
+	.byte	13
+	.byte	'Dcm_SecLevelType',0,15,142,2,15
+	.word	179
+	.byte	13
+	.byte	'Dcm_SesCtrlType',0,15,144,2,15
+	.word	179
+	.byte	13
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,15,146,2,15
+	.word	179
+	.byte	13
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,15,150,2,15
+	.word	179
+	.byte	13
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,15,154,2,15
+	.word	179
+	.byte	13
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,15,243,3,34
+	.word	7766
+	.byte	18,128,8
+	.word	179
+	.byte	19,255,7,0,13
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,15,246,3,34
+	.word	7766
+	.byte	13
+	.byte	'Rte_ModeType_DcmDiagnosticSessionControl',0,16,37,15
+	.word	179
+	.byte	18,8
+	.word	179
+	.byte	19,7,0,18,6
+	.word	179
+	.byte	19,5,0,14,17,122,9,36,15
+	.byte	'ProtocolId',0
+	.word	179
+	.byte	1,2,35,0,15
+	.byte	'Sid',0
+	.word	179
+	.byte	1,2,35,1,15
+	.byte	'SubFncId',0
+	.word	179
+	.byte	1,2,35,2,15
+	.byte	'StoreType',0
+	.word	179
+	.byte	1,2,35,3,15
+	.byte	'SessionLevel',0
+	.word	179
+	.byte	1,2,35,4,15
+	.byte	'SecurityLevel',0
+	.word	179
+	.byte	1,2,35,5,15
+	.byte	'ReqResLen',0
+	.word	179
+	.byte	1,2,35,6,15
+	.byte	'NumWaitPend',0
+	.word	179
+	.byte	1,2,35,7,15
+	.byte	'ReqResBuf',0
+	.word	10067
+	.byte	8,2,35,8,15
+	.byte	'TesterSourceAddr',0
+	.word	509
+	.byte	2,2,35,16,15
+	.byte	'ElapsedTime',0
+	.word	848
+	.byte	4,2,35,20,15
+	.byte	'ReprogramingRequest',0
+	.word	179
+	.byte	1,2,35,24,15
+	.byte	'ApplUpdated',0
+	.word	179
+	.byte	1,2,35,25,15
+	.byte	'ResponseRequired',0
+	.word	179
+	.byte	1,2,35,26,15
+	.byte	'freeForProjectUse',0
+	.word	10076
+	.byte	6,2,35,27,0,13
+	.byte	'Dcm_ProgConditionsType',0,17,143,1,2
+	.word	10085
+	.byte	13
+	.byte	'Dcm_MsgItemType',0,17,182,2,15
+	.word	179
+	.byte	3
+	.word	179
+	.byte	13
+	.byte	'Dcm_MsgType',0,17,188,2,57
+	.word	10472
+	.byte	13
+	.byte	'Dcm_MsgLenType',0,17,197,2,16
+	.word	848
+	.byte	14,17,206,2,9,4,15
+	.byte	'reqType',0
+	.word	179
+	.byte	1,2,35,0,15
+	.byte	'suppressPosResponse',0
+	.word	179
+	.byte	1,2,35,1,15
+	.byte	'sourceofRequest',0
+	.word	179
+	.byte	1,2,35,2,0,13
+	.byte	'Dcm_MsgAddInfoType',0,17,219,2,2
+	.word	10522
+	.byte	13
+	.byte	'Dcm_IdContextType',0,17,225,2,15
+	.word	179
+	.byte	14,17,238,5,9,32,15
+	.byte	'tx_buffer_pa',0
+	.word	10477
+	.byte	4,2,35,0,15
+	.byte	'rx_mainBuffer_pa',0
+	.word	10477
+	.byte	4,2,35,4,15
+	.byte	'tx_buffer_size_u32',0
+	.word	848
+	.byte	4,2,35,8,15
+	.byte	'rx_buffer_size_u32',0
+	.word	848
+	.byte	4,2,35,12,15
+	.byte	'dataP2TmrAdjust',0
+	.word	848
+	.byte	4,2,35,16,15
+	.byte	'dataP2StarTmrAdjust',0
+	.word	848
+	.byte	4,2,35,20,15
+	.byte	'protocolid_u8',0
+	.word	179
+	.byte	1,2,35,24,15
+	.byte	'sid_tableid_u8',0
+	.word	179
+	.byte	1,2,35,25,15
+	.byte	'premption_level_u8',0
+	.word	179
+	.byte	1,2,35,26,15
+	.byte	'pduinfo_idx_u8',0
+	.word	179
+	.byte	1,2,35,27,15
+	.byte	'nrc21_b',0
+	.word	179
+	.byte	1,2,35,28,15
+	.byte	'sendRespPendTransToBoot',0
+	.word	179
+	.byte	1,2,35,29,0,13
+	.byte	'Dcm_Dsld_protocol_tableType',0,17,143,6,2
+	.word	10655
+	.byte	3
+	.word	179
+	.byte	23,1,1,24
+	.word	179
+	.byte	24
+	.word	509
+	.byte	24
+	.word	509
+	.byte	24
+	.word	179
+	.byte	0,3
+	.word	11011
+	.byte	13
+	.byte	'Dcm_ConfirmationApiType',0,17,145,6,16
+	.word	11035
+	.byte	3
+	.word	179
+	.byte	30
+	.word	179
+	.byte	1,1,24
+	.word	11073
+	.byte	24
+	.word	179
+	.byte	24
+	.word	179
+	.byte	0,3
+	.word	11078
+	.byte	14,17,240,2,9,28,15
+	.byte	'resData',0
+	.word	10477
+	.byte	4,2,35,0,15
+	.byte	'reqData',0
+	.word	10477
+	.byte	4,2,35,4,15
+	.byte	'msgAddInfo',0
+	.word	10522
+	.byte	4,2,35,8,15
+	.byte	'resDataLen',0
+	.word	848
+	.byte	4,2,35,12,15
+	.byte	'reqDataLen',0
+	.word	848
+	.byte	4,2,35,16,15
+	.byte	'resMaxDataLen',0
+	.word	848
+	.byte	4,2,35,20,15
+	.byte	'idContext',0
+	.word	179
+	.byte	1,2,35,24,15
+	.byte	'dcmRxPduId',0
+	.word	509
+	.byte	2,2,35,26,0,3
+	.word	11106
+	.byte	30
+	.word	179
+	.byte	1,1,24
+	.word	179
+	.byte	24
+	.word	11269
+	.byte	24
+	.word	11073
+	.byte	0,3
+	.word	11274
+	.byte	14,17,158,6,9,20,15
+	.byte	'allowed_session_b32',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'allowed_security_b32',0
+	.word	848
+	.byte	4,2,35,4,15
+	.byte	'adrUserSubServiceModeRule_pfct',0
+	.word	11101
+	.byte	4,2,35,8,15
+	.byte	'SubFunc_fp',0
+	.word	11297
+	.byte	4,2,35,12,15
+	.byte	'subservice_id_u8',0
+	.word	179
+	.byte	1,2,35,16,15
+	.byte	'isDspRDTCSubFnc_b',0
+	.word	179
+	.byte	1,2,35,17,0,13
+	.byte	'Dcm_Dsld_SubServiceType',0,17,169,6,2
+	.word	11302
+	.byte	25
+	.word	11302
+	.byte	3
+	.word	11514
+	.byte	30
+	.word	179
+	.byte	1,1,24
+	.word	11073
+	.byte	24
+	.word	179
+	.byte	0,3
+	.word	11524
+	.byte	14,17,186,6,9,36,15
+	.byte	'allowed_session_b32',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'allowed_security_b32',0
+	.word	848
+	.byte	4,2,35,4,15
+	.byte	'service_handler_fp',0
+	.word	11297
+	.byte	4,2,35,8,15
+	.byte	'Service_init_fp',0
+	.word	2440
+	.byte	4,2,35,12,15
+	.byte	'sid_u8',0
+	.word	179
+	.byte	1,2,35,16,15
+	.byte	'subfunction_exist_b',0
+	.word	179
+	.byte	1,2,35,17,15
+	.byte	'servicelocator_b',0
+	.word	179
+	.byte	1,2,35,18,15
+	.byte	'ptr_subservice_table_pcs',0
+	.word	11519
+	.byte	4,2,35,20,15
+	.byte	'num_sf_u8',0
+	.word	179
+	.byte	1,2,35,24,15
+	.byte	'adrUserServiceModeRule_pfct',0
+	.word	11542
+	.byte	4,2,35,28,15
+	.byte	'Dcm_ConfirmationService',0
+	.word	11040
+	.byte	4,2,35,32,0,13
+	.byte	'Dcm_Dsld_ServiceType',0,17,204,6,3
+	.word	11547
+	.byte	3
+	.word	11011
+	.byte	25
+	.word	11547
+	.byte	3
+	.word	11895
+	.byte	14,17,218,6,9,8,15
+	.byte	'ptr_service_table_pcs',0
+	.word	11900
+	.byte	4,2,35,0,15
+	.byte	'num_services_u8',0
+	.word	179
+	.byte	1,2,35,4,15
+	.byte	'nrc_sessnot_supported_u8',0
+	.word	179
+	.byte	1,2,35,5,15
+	.byte	'cdtc_index_u8',0
+	.word	179
+	.byte	1,2,35,6,0,13
+	.byte	'Dcm_Dsld_sid_tableType',0,17,224,6,3
+	.word	11905
+	.byte	14,17,238,6,9,14,15
+	.byte	'protocol_num_u8',0
+	.word	179
+	.byte	1,2,35,0,15
+	.byte	'txpduid_num_u8',0
+	.word	509
+	.byte	2,2,35,2,15
+	.byte	'roetype2_txpdu_u8',0
+	.word	509
+	.byte	2,2,35,4,15
+	.byte	'rdpitype2_txpdu_u8',0
+	.word	509
+	.byte	2,2,35,6,15
+	.byte	'testaddr_u16',0
+	.word	509
+	.byte	2,2,35,8,15
+	.byte	'channel_idx_u8',0
+	.word	179
+	.byte	1,2,35,10,15
+	.byte	'ConnectionIndex_u8',0
+	.word	179
+	.byte	1,2,35,11,15
+	.byte	'NumberOfTxpdu_u8',0
+	.word	179
+	.byte	1,2,35,12,0,13
+	.byte	'Dcm_Dsld_connType',0,17,248,6,3
+	.word	12057
+	.byte	16,17,146,7,9,4,17
+	.byte	'DCM_DSLD_NO_COM_MODE',0,0,17
+	.byte	'DCM_DSLD_SILENT_COM_MODE',0,1,17
+	.byte	'DCM_DSLD_FULL_COM_MODE',0,2,0,13
+	.byte	'Dcm_Dsld_commodeType',0,17,151,7,2
+	.word	12295
+	.byte	14,4,46,9,8,15
+	.byte	'Residual_delay_u32',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'FailedAtm_cnt_u8',0
+	.word	179
+	.byte	1,2,35,4,0,13
+	.byte	'Dcm_Dsp_SecaType',0,4,53,2
+	.word	12407
+	.byte	16,4,200,1,9,4,17
+	.byte	'USE_ASYNCH_CLIENT_SERVER',0,0,17
+	.byte	'USE_ASYNCH_FNC',0,1,0,13
+	.byte	'DcmDspSecurityUsePort',0,4,204,1,2
+	.word	12492
+	.byte	25
+	.word	3021
+	.byte	25
+	.word	3021
+	.byte	14,4,223,1,9,40,15
+	.byte	'PowerOnDelay_u32',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'DelayTime_u32',0
+	.word	848
+	.byte	4,2,35,4,15
+	.byte	'Dsp_GetSeed_fp',0
+	.word	12574
+	.byte	4,2,35,8,15
+	.byte	'Dsp_CompareKey_fp',0
+	.word	12579
+	.byte	4,2,35,12,15
+	.byte	'Security_level_u8',0
+	.word	179
+	.byte	1,2,35,16,15
+	.byte	'Seed_size_u32',0
+	.word	848
+	.byte	4,2,35,20,15
+	.byte	'Key_size_u32',0
+	.word	848
+	.byte	4,2,35,24,15
+	.byte	'NumAttDelay_u8',0
+	.word	179
+	.byte	1,2,35,28,15
+	.byte	'NumAttLock_u8',0
+	.word	179
+	.byte	1,2,35,29,15
+	.byte	'AccDataRecsize_u32',0
+	.word	848
+	.byte	4,2,35,32,15
+	.byte	'usePort',0
+	.word	12492
+	.byte	4,2,35,36,0,13
+	.byte	'Dcm_Dsp_Security_t',0,4,253,1,2
+	.word	12584
+	.byte	31
+	.byte	'Dcm_Dsp_SecaGlobaltimer_u32',0,4,144,2,31
+	.word	848
+	.byte	1,1,18,8
+	.word	12407
+	.byte	19,0,0,31
+	.byte	'Dcm_Dsp_Seca',0,4,179,2,40
+	.word	12922
+	.byte	1,1,18,40
+	.word	12584
+	.byte	19,0,0,25
+	.word	12955
+	.byte	31
+	.byte	'Dcm_Dsp_Security',0,4,190,2,45
+	.word	12964
+	.byte	1,1,16,18,22,9,4,17
+	.byte	'DCM_NO_BOOT',0,0,17
+	.byte	'DCM_OEM_BOOT',0,1,17
+	.byte	'DCM_SYS_BOOT',0,2,0,13
+	.byte	'Dcm_SessionForBootType',0,18,27,2
+	.word	12997
+	.byte	16,19,192,3,9,4,17
+	.byte	'DCM_READ_OK',0,0,17
+	.byte	'DCM_READ_FAILED',0,1,17
+	.byte	'DCM_READ_PENDING',0,2,17
+	.byte	'DCM_READ_FORCE_RCRRP',0,3,17
+	.byte	'DCM_READ_NOT_AVAILABLE',0,4,0,13
+	.byte	'Dcm_ReadMemoryRet_t',0,19,199,3,3
+	.word	13078
+	.byte	13
+	.byte	'rba_BswSrv_uint64',0,20,66,28
+	.word	1635
+	.byte	13
+	.byte	'Rte_TaskRefType',0,21,184,1,32
+	.word	4253
+	.byte	13
+	.byte	'Rte_EventRefType',0,21,185,1,32
+	.word	179
+	.byte	13
+	.byte	'Rte_EventType',0,21,186,1,32
+	.word	848
+	.byte	13
+	.byte	'Rte_REActCounterType',0,21,252,1,15
+	.word	179
+	.byte	3
+	.word	179
+	.byte	13
+	.byte	'Rte_REActCounterRefType',0,21,253,1,58
+	.word	13343
+	.byte	14,21,255,1,9,8,15
+	.byte	'task',0
+	.word	13239
+	.byte	4,2,35,0,15
+	.byte	'acnt',0
+	.word	13348
+	.byte	4,2,35,4,0,13
+	.byte	'Rte_REContainerType',0,21,130,2,3
+	.word	13381
+	.byte	25
+	.word	3993
+	.byte	3
+	.word	13445
+	.byte	3
+	.word	179
+	.byte	25
+	.word	13381
+	.byte	3
+	.word	13460
+	.byte	13
+	.byte	'Rte_REContainerRefType',0,21,132,2,60
+	.word	13465
+	.byte	13
+	.byte	'Rte_MSICounterType',0,21,149,2,16
+	.word	509
+	.byte	3
+	.word	509
+	.byte	13
+	.byte	'Rte_MSICounterRefType',0,21,150,2,56
+	.word	13530
+	.byte	13
+	.byte	'Rte_MSIPendingFlagType',0,21,152,2,17
+	.word	179
+	.byte	3
+	.word	179
+	.byte	13
+	.byte	'Rte_MSIPendingFlagRefType',0,21,153,2,60
+	.word	13598
+	.byte	14,21,163,2,9,24,15
+	.byte	'counter',0
+	.word	13535
+	.byte	4,2,35,0,15
+	.byte	'incCounter',0
+	.word	179
+	.byte	1,2,35,4,15
+	.byte	'pending',0
+	.word	13603
+	.byte	4,2,35,8,15
+	.byte	'osTask',0
+	.word	13239
+	.byte	4,2,35,12,15
+	.byte	'acnt',0
+	.word	13348
+	.byte	4,2,35,16,15
+	.byte	'osEvent',0
+	.word	179
+	.byte	1,2,35,20,15
+	.byte	'MSIInit',0
+	.word	509
+	.byte	2,2,35,22,0,13
+	.byte	'Rte_MSITableEntry',0,21,172,2,3
+	.word	13638
+	.byte	3
+	.word	509
+	.byte	3
+	.word	179
+	.byte	13
+	.byte	'Rte_TaskArrayIndex',0,21,179,2,16
+	.word	179
+	.byte	13
+	.byte	'Rte_NrWaitingTasks',0,21,180,2,16
+	.word	179
+	.byte	14,21,182,2,9,4,15
+	.byte	'pending',0
+	.word	179
+	.byte	1,2,35,0,15
+	.byte	'count',0
+	.word	179
+	.byte	1,2,35,1,15
+	.byte	'firstWaitingTask',0
+	.word	179
+	.byte	1,2,35,2,0,13
+	.byte	'Rte_WaitableDatum',0,21,186,2,3
+	.word	13856
+	.byte	3
+	.word	13856
+	.byte	14,21,226,2,9,12,15
+	.byte	'event_id',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'wd',0
+	.word	13948
+	.byte	4,2,35,4,15
+	.byte	'timeout',0
+	.word	848
+	.byte	4,2,35,8,0,13
+	.byte	'Rte_WOWP_NotificationType',0,21,230,2,3
+	.word	13953
+	.byte	25
+	.word	13953
+	.byte	3
+	.word	14042
+	.byte	13
+	.byte	'Rte_WOWP_NotificationRefType',0,21,232,2,66
+	.word	14047
+	.byte	13
+	.byte	'Rte_ARE_NotificationType',0,21,234,2,29
+	.word	13381
+	.byte	21
+	.byte	'Rte_QTaskType',0,21,243,2,16,28,15
+	.byte	'cmn',0
+	.word	7517
+	.byte	24,2,35,0,15
+	.byte	'task',0
+	.word	13239
+	.byte	4,2,35,24,0,13
+	.byte	'Rte_QTaskType',0,21,246,2,3
+	.word	14124
+	.byte	21
+	.byte	'Rte_QREType',0,21,250,2,16,28,15
+	.byte	'cmn',0
+	.word	7517
+	.byte	24,2,35,0,15
+	.byte	're',0
+	.word	13470
+	.byte	4,2,35,24,0,13
+	.byte	'Rte_QREType',0,21,253,2,3
+	.word	14195
+	.byte	25
+	.word	13381
+	.byte	3
+	.word	14260
+	.byte	21
+	.byte	'Rte_QWWPType',0,21,129,3,16,28,15
+	.byte	'cmn',0
+	.word	7517
+	.byte	24,2,35,0,15
+	.byte	'wwp',0
+	.word	14052
+	.byte	4,2,35,24,0,13
+	.byte	'Rte_QWWPType',0,21,132,3,3
+	.word	14270
+	.byte	25
+	.word	13953
+	.byte	3
+	.word	14338
+	.byte	21
+	.byte	'Rte_QEvType',0,21,136,3,16,36,15
+	.byte	'cmn',0
+	.word	7517
+	.byte	24,2,35,0,15
+	.byte	'task',0
+	.word	13239
+	.byte	4,2,35,24,15
+	.byte	'mask',0
+	.word	179
+	.byte	1,2,35,28,15
+	.byte	'acnt',0
+	.word	13348
+	.byte	4,2,35,32,0,13
+	.byte	'Rte_QEvType',0,21,141,3,3
+	.word	14348
+	.byte	21
+	.byte	'Rte_QMSIType',0,21,145,3,16,48,15
+	.byte	'cmn',0
+	.word	7517
+	.byte	24,2,35,0,15
+	.byte	'task',0
+	.word	13239
+	.byte	4,2,35,24,15
+	.byte	'mask',0
+	.word	179
+	.byte	1,2,35,28,15
+	.byte	'acnt',0
+	.word	13348
+	.byte	4,2,35,32,15
+	.byte	'msiCounter',0
+	.word	13535
+	.byte	4,2,35,36,15
+	.byte	'msiPending',0
+	.word	13603
+	.byte	4,2,35,40,15
+	.byte	'msiLimit',0
+	.word	509
+	.byte	2,2,35,44,0,13
+	.byte	'Rte_QMSIType',0,21,153,3,3
+	.word	14443
+	.byte	16,22,21,9,4,17
+	.byte	'DSD_IDLE',0,0,17
+	.byte	'DSD_VERIFY_DIAGNOSTIC_DATA',0,1,17
+	.byte	'DSD_CALL_SERVICE',0,2,17
+	.byte	'DSD_WAITFORTXCONF',0,3,17
+	.byte	'DSD_SENDTXCONF_APPL',0,4,0,13
+	.byte	'Dcm_DsdStatesType_ten',0,22,28,2
+	.word	14598
+	.byte	31
+	.byte	'Dcm_ProgConditions_st',0,23,43,46
+	.word	10085
+	.byte	1,1,16,23,215,2,9,4,17
+	.byte	'DCM_DSLD_POS_RESPONSE',0,0,17
+	.byte	'DCM_DSLD_NEG_RESPONSE',0,1,0,13
+	.byte	'Dcm_DsldResponseType_ten',0,23,219,2,2
+	.word	14767
+	.byte	16,24,148,1,9,4,17
+	.byte	'DCM_ROE_CLEARED',0,0,17
+	.byte	'DCM_ROE_STOPPED',0,1,17
+	.byte	'DCM_ROE_STARTED',0,2,0,13
+	.byte	'Dcm_DspRoeEventState_ten',0,24,153,1,2
+	.word	14856
+	.byte	16,24,231,1,9,4,17
+	.byte	'DCM_CONTROLMASK_NO',0,0,17
+	.byte	'DCM_CONTROLMASK_INTERNAL',0,1,17
+	.byte	'DCM_CONTROLMASK_EXTERNAL',0,2,0,13
+	.byte	'Dcm_Dsp_IocbiCtrlMask_ten',0,24,236,1,2
+	.word	14951
+	.byte	16,19,203,1,9,4,17
+	.byte	'DCM_SUPPORT_READ',0,0,17
+	.byte	'DCM_SUPPORT_WRITE',0,1,17
+	.byte	'DCM_SUPPORT_IOCONTROL',0,2,0,30
+	.word	179
+	.byte	1,1,24
+	.word	11073
+	.byte	24
+	.word	509
+	.byte	24
+	.word	15068
+	.byte	0,3
+	.word	15138
+	.byte	14,24,239,1,9,44,15
+	.byte	'dataAllowedSessRead_u32',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'dataAllowedSecRead_u32',0
+	.word	848
+	.byte	4,2,35,4,15
+	.byte	'adrUserReadModeRule_pfct',0
+	.word	15161
+	.byte	4,2,35,8,15
+	.byte	'dataAllowedSessWrite_u32',0
+	.word	848
+	.byte	4,2,35,12,15
+	.byte	'dataAllowedSecWrite_u32',0
+	.word	848
+	.byte	4,2,35,16,15
+	.byte	'adrUserWriteModeRule_pfct',0
+	.word	15161
+	.byte	4,2,35,20,15
+	.byte	'dataSessBitMask_u32',0
+	.word	848
+	.byte	4,2,35,24,15
+	.byte	'dataSecBitMask_u32',0
+	.word	848
+	.byte	4,2,35,28,15
+	.byte	'adrUserControlModeRule_pfct',0
+	.word	15161
+	.byte	4,2,35,32,15
+	.byte	'dataCtrlMask_en',0
+	.word	14951
+	.byte	4,2,35,36,15
+	.byte	'dataCtrlMaskSize_u8',0
+	.word	179
+	.byte	1,2,35,40,15
+	.byte	'dataIocbirst_b',0
+	.word	179
+	.byte	1,2,35,41,15
+	.byte	'statusmaskIOControl_u8',0
+	.word	179
+	.byte	1,2,35,42,0,13
+	.byte	'Dcm_ExtendedDIDConfig_tst',0,24,141,2,3
+	.word	15166
+	.byte	14,24,200,2,9,4,15
+	.byte	'posnSigBit_u16',0
+	.word	509
+	.byte	2,2,35,0,15
+	.byte	'idxDcmDspDatainfo_u16',0
+	.word	509
+	.byte	2,2,35,2,0,13
+	.byte	'Dcm_SignalDIDConfig_tst',0,24,204,2,3
+	.word	15613
+	.byte	16,25,31,9,4,17
+	.byte	'DCM_RESET_NO_BOOT',0,0,17
+	.byte	'DCM_RESET_OEM_BOOT',0,1,17
+	.byte	'DCM_RESET_SYS_BOOT',0,2,17
+	.byte	'DCM_RESET_DRIVE_TO_DRIVE',0,3,0,13
+	.byte	'Dcm_ResetForBootType',0,25,37,2
+	.word	15708
+	.byte	16,26,205,1,9,4,17
+	.byte	'DCM_IOCBI_IDLESTATE',0,0,17
+	.byte	'DCM_IOCBI_FCS_ACTIVE',0,1,17
+	.byte	'DCM_IOCBI_FCS_PENDING',0,2,17
+	.byte	'DCM_IOCBI_RTD_ACTIVE',0,3,17
+	.byte	'DCM_IOCBI_RTD_PENDING',0,4,17
+	.byte	'DCM_IOCBI_STA_ACTIVE',0,5,17
+	.byte	'DCM_IOCBI_STA_PENDING',0,6,17
+	.byte	'DCM_IOCBI_RCE_ACTIVE',0,7,17
+	.byte	'DCM_IOCBI_RCE_PENDING',0,8,0,13
+	.byte	'Dcm_Dsp_IocbiDidStatus_ten',0,26,216,1,4
+	.word	15832
+	.byte	14,27,26,9,8,15
+	.byte	'posnStart_u16',0
+	.word	509
+	.byte	2,2,35,0,15
+	.byte	'dataLength_u16',0
+	.word	509
+	.byte	2,2,35,2,15
+	.byte	'idxSignal_u16',0
+	.word	509
+	.byte	2,2,35,4,15
+	.byte	'dataEndianness_u8',0
+	.word	179
+	.byte	1,2,35,6,15
+	.byte	'dataType_u8',0
+	.word	179
+	.byte	1,2,35,7,0,13
+	.byte	'Dcm_DspRoutineSignalInfo_tst',0,27,33,3
+	.word	16085
+	.byte	30
+	.word	179
+	.byte	1,1,24
+	.word	11073
+	.byte	24
+	.word	509
+	.byte	24
+	.word	179
+	.byte	0,3
+	.word	16246
+	.byte	25
+	.word	16085
+	.byte	3
+	.word	16274
+	.byte	25
+	.word	16279
+	.byte	25
+	.word	16279
+	.byte	25
+	.word	16279
+	.byte	25
+	.word	16279
+	.byte	25
+	.word	16279
+	.byte	25
+	.word	16279
+	.byte	14,27,35,9,68,15
+	.byte	'dataSecBitMask_u32',0
+	.word	848
+	.byte	4,2,35,0,15
+	.byte	'dataSessBitMask_u32',0
+	.word	848
+	.byte	4,2,35,4,15
+	.byte	'adrUserRidModeRule_pfct',0
+	.word	16269
+	.byte	4,2,35,8,15
+	.byte	'adrStartInSignalRef_cpcst',0
+	.word	16284
+	.byte	4,2,35,12,15
+	.byte	'adrStopInSignalRef_cpcst',0
+	.word	16289
+	.byte	4,2,35,16,15
+	.byte	'adrReqRslInSignalRef_cpcst',0
+	.word	16294
+	.byte	4,2,35,20,15
+	.byte	'adrStartOutSignalRef_cpcst',0
+	.word	16299
+	.byte	4,2,35,24,15
+	.byte	'adrStopOutSignalRef_cpcst',0
+	.word	16304
+	.byte	4,2,35,28,15
+	.byte	'adrReqRsltOutSignalRef_cpcst',0
+	.word	16309
+	.byte	4,2,35,32,15
+	.byte	'dataCtrlOptRecSizeStart_u16',0
+	.word	509
+	.byte	2,2,35,36,15
+	.byte	'dataCtrlOptRecSizeStop_u16',0
+	.word	509
+	.byte	2,2,35,38,15
+	.byte	'dataCtrlOptRecSizeReqRslt_u16',0
+	.word	509
+	.byte	2,2,35,40,15
+	.byte	'dataStsOptRecSizeStart_u16',0
+	.word	509
+	.byte	2,2,35,42,15
+	.byte	'dataStsOptRecSizeStop_u16',0
+	.word	509
+	.byte	2,2,35,44,15
+	.byte	'dataStsOptRecSizeReqRslt_u16',0
+	.word	509
+	.byte	2,2,35,46,15
+	.byte	'dataMinCtrlOptRecSizeStart_u16',0
+	.word	509
+	.byte	2,2,35,48,15
+	.byte	'dataMinCtrlOptRecSizeStop_u16',0
+	.word	509
+	.byte	2,2,35,50,15
+	.byte	'dataMinCtrlOptRecSizeReqRslt_u16',0
+	.word	509
+	.byte	2,2,35,52,15
+	.byte	'dataMinStsOptRecSizeStart_u16',0
+	.word	509
+	.byte	2,2,35,54,15
+	.byte	'dataMinStsOptRecSizeStop_u16',0
+	.word	509
+	.byte	2,2,35,56,15
+	.byte	'dataMinStsOptRecSizeReqRslt_u16',0
+	.word	509
+	.byte	2,2,35,58,15
+	.byte	'nrStartInSignals_u8',0
+	.word	179
+	.byte	1,2,35,60,15
+	.byte	'nrStopInSignals_u8',0
+	.word	179
+	.byte	1,2,35,61,15
+	.byte	'nrReqRslInSignals_u8',0
+	.word	179
+	.byte	1,2,35,62,15
+	.byte	'nrStartOutSignals_u8',0
+	.word	179
+	.byte	1,2,35,63,15
+	.byte	'nrStopOutSignals_u8',0
+	.word	179
+	.byte	1,2,35,64,15
+	.byte	'nrReqRsltOutSignals_u8',0
+	.word	179
+	.byte	1,2,35,65,0,13
+	.byte	'Dcm_DspRoutineInfoType_tst',0,27,69,3
+	.word	16314
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L27:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32
+	.byte	13,58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,46,1,3,8,32,13
+	.byte	58,15,59,15,57,15,73,19,54,15,39,12,0,0,8,46,0,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0,9,46
+	.byte	1,49,19,0,0,10,5,0,49,19,0,0,11,46,1,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,12,21,0,54
+	.byte	15,0,0,13,22,0,3,8,58,15,59,15,57,15,73,19,0,0,14,19,1,58,15,59,15,57,15,11,15,0,0,15,13,0,3,8,73,19,11
+	.byte	15,56,9,0,0,16,4,1,58,15,59,15,57,15,11,15,0,0,17,40,0,3,8,28,13,0,0,18,1,1,11,15,73,19,0,0,19,33,0,47
+	.byte	15,0,0,20,21,0,54,15,39,12,0,0,21,19,1,3,8,58,15,59,15,57,15,11,15,0,0,22,59,0,3,8,0,0,23,21,1,54,15,39
+	.byte	12,0,0,24,5,0,73,19,0,0,25,38,0,73,19,0,0,26,23,1,58,15,59,15,57,15,11,15,0,0,27,4,1,3,8,58,15,59,15,57
+	.byte	15,11,15,0,0,28,21,0,73,19,54,15,39,12,0,0,29,53,0,73,19,0,0,30,21,1,73,19,54,15,39,12,0,0,31,52,0,3,8
+	.byte	58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L28:
+	.word	.L70-.L69
+.L69:
+	.half	3
+	.word	.L72-.L71
+.L71:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits8.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits16.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits32.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Seca_Pub.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\DcmAppl.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Dcm_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmCore_DslDsd_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Dsc_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Uds_Pub.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\Dsd\\Dcm_Dsd.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_Prot.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Uds_Prot.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Er_Prot.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Iocbi_Prot.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rc_Prot.h',0,0,0,0,0
+.L72:
+.L70:
+	.sdecl	'.debug_info',debug,cluster('Dcm_DslDsdRestoreSecaTimer')
+	.sect	'.debug_info'
+.L29:
+	.word	242
+	.half	3
+	.word	.L30
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L32,.L31
+	.byte	2
+	.word	.L25
+	.byte	3
+	.byte	'Dcm_DslDsdRestoreSecaTimer',0,1,162,1,20,1,1,1
+	.word	.L24,.L55,.L23
+	.byte	4
+	.word	.L24,.L55
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_DslDsdRestoreSecaTimer')
+	.sect	'.debug_abbrev'
+.L30:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_DslDsdRestoreSecaTimer')
+	.sect	'.debug_line'
+.L31:
+	.word	.L74-.L73
+.L73:
+	.half	3
+	.word	.L76-.L75
+.L75:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0,0,0,0,0
+.L76:
+	.byte	5,8,7,0,5,2
+	.word	.L24
+	.byte	3,166,1,1,5,29,9
+	.half	.L77-.L24
+	.byte	1,5,5,9
+	.half	.L78-.L77
+	.byte	1,5,30,7,9
+	.half	.L79-.L78
+	.byte	3,2,1,5,32,9
+	.half	.L80-.L79
+	.byte	1,5,36,9
+	.half	.L15-.L80
+	.byte	3,7,1,5,1,9
+	.half	.L16-.L15
+	.byte	3,7,1,7,9
+	.half	.L33-.L16
+	.byte	0,1,1
+.L74:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_DslDsdRestoreSecaTimer')
+	.sect	'.debug_ranges'
+.L32:
+	.word	-1,.L24,0,.L33-.L24,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Prv_SecaPowerOnDelayExpired')
+	.sect	'.debug_info'
+.L34:
+	.word	270
+	.half	3
+	.word	.L35
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L37,.L36
+	.byte	2
+	.word	.L25
+	.byte	3
+	.byte	'Dcm_Prv_SecaPowerOnDelayExpired',0,1,29,28,1,1
+	.word	.L18,.L56,.L17
+	.byte	4
+	.word	.L18,.L56
+	.byte	5
+	.byte	'nrDelay_u32',0,1,31,30
+	.word	.L57,.L58
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Prv_SecaPowerOnDelayExpired')
+	.sect	'.debug_abbrev'
+.L35:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Prv_SecaPowerOnDelayExpired')
+	.sect	'.debug_line'
+.L36:
+	.word	.L82-.L81
+.L81:
+	.half	3
+	.word	.L84-.L83
+.L83:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0,0,0,0,0
+.L84:
+	.byte	5,18,7,0,5,2
+	.word	.L18
+	.byte	3,33,1,5,5,9
+	.half	.L85-.L18
+	.byte	1,5,17,9
+	.half	.L86-.L85
+	.byte	1,5,37,9
+	.half	.L87-.L86
+	.byte	1,5,74,9
+	.half	.L88-.L87
+	.byte	1,5,58,9
+	.half	.L89-.L88
+	.byte	1,5,74,9
+	.half	.L90-.L89
+	.byte	1,5,94,9
+	.half	.L91-.L90
+	.byte	1,5,2,9
+	.half	.L92-.L91
+	.byte	1,5,48,7,9
+	.half	.L93-.L92
+	.byte	3,2,1,5,9,9
+	.half	.L94-.L93
+	.byte	1,5,91,7,9
+	.half	.L95-.L94
+	.byte	3,4,1,5,59,9
+	.half	.L96-.L95
+	.byte	3,1,1,5,26,9
+	.half	.L64-.L96
+	.byte	3,5,1,5,25,9
+	.half	.L97-.L64
+	.byte	1,5,29,9
+	.half	.L98-.L97
+	.byte	3,125,1,5,12,9
+	.half	.L99-.L98
+	.byte	1,5,80,7,9
+	.half	.L100-.L99
+	.byte	3,3,1,5,65,9
+	.half	.L65-.L100
+	.byte	1,5,114,9
+	.half	.L101-.L65
+	.byte	1,5,58,9
+	.half	.L4-.L101
+	.byte	3,6,1,5,56,9
+	.half	.L102-.L4
+	.byte	1,5,4,9
+	.half	.L5-.L102
+	.byte	3,124,1,5,58,9
+	.half	.L3-.L5
+	.byte	3,9,1,5,56,9
+	.half	.L103-.L3
+	.byte	1,5,9,9
+	.half	.L6-.L103
+	.byte	3,126,1,5,59,9
+	.half	.L2-.L6
+	.byte	3,9,1,5,57,9
+	.half	.L104-.L2
+	.byte	1,5,1,9
+	.half	.L7-.L104
+	.byte	3,2,1,7,9
+	.half	.L38-.L7
+	.byte	0,1,1
+.L82:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Prv_SecaPowerOnDelayExpired')
+	.sect	'.debug_ranges'
+.L37:
+	.word	-1,.L18,0,.L38-.L18,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Prv_SecaPowerOnDelayNotExpired')
+	.sect	'.debug_info'
+.L39:
+	.word	248
+	.half	3
+	.word	.L40
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L42,.L41
+	.byte	2
+	.word	.L25
+	.byte	3
+	.byte	'Dcm_Prv_SecaPowerOnDelayNotExpired',0,1,76,28,1,1
+	.word	.L20,.L59,.L19
+	.byte	4
+	.word	.L20,.L59
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Prv_SecaPowerOnDelayNotExpired')
+	.sect	'.debug_abbrev'
+.L40:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Prv_SecaPowerOnDelayNotExpired')
+	.sect	'.debug_line'
+.L41:
+	.word	.L106-.L105
+.L105:
+	.half	3
+	.word	.L108-.L107
+.L107:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0,0,0,0,0
+.L108:
+	.byte	5,18,7,0,5,2
+	.word	.L20
+	.byte	3,208,0,1,5,55,9
+	.half	.L109-.L20
+	.byte	1,5,5,9
+	.half	.L110-.L109
+	.byte	1,5,82,9
+	.half	.L111-.L110
+	.byte	3,127,1,5,66,9
+	.half	.L112-.L111
+	.byte	1,5,82,9
+	.half	.L113-.L112
+	.byte	1,5,102,9
+	.half	.L114-.L113
+	.byte	1,5,17,9
+	.half	.L115-.L114
+	.byte	3,1,1,5,37,9
+	.half	.L116-.L115
+	.byte	1,5,55,9
+	.half	.L117-.L116
+	.byte	1,5,32,9
+	.half	.L118-.L117
+	.byte	3,127,1,5,18,9
+	.half	.L119-.L118
+	.byte	3,7,1,5,17,9
+	.half	.L120-.L119
+	.byte	1,5,37,9
+	.half	.L121-.L120
+	.byte	3,125,1,5,8,9
+	.half	.L122-.L121
+	.byte	1,5,5,9
+	.half	.L123-.L122
+	.byte	1,5,86,7,9
+	.half	.L124-.L123
+	.byte	3,3,1,5,57,9
+	.half	.L125-.L124
+	.byte	1,5,119,9
+	.half	.L126-.L125
+	.byte	1,5,59,9
+	.half	.L8-.L126
+	.byte	3,5,1,5,57,9
+	.half	.L127-.L8
+	.byte	1,5,1,9
+	.half	.L9-.L127
+	.byte	3,2,1,7,9
+	.half	.L43-.L9
+	.byte	0,1,1
+.L106:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Prv_SecaPowerOnDelayNotExpired')
+	.sect	'.debug_ranges'
+.L42:
+	.word	-1,.L20,0,.L43-.L20,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Prv_SecaWarmStart')
+	.sect	'.debug_info'
+.L44:
+	.word	294
+	.half	3
+	.word	.L45
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L47,.L46
+	.byte	2
+	.word	.L25
+	.byte	3
+	.byte	'Dcm_Prv_SecaWarmStart',0,1,106,27,1,1
+	.word	.L22,.L60,.L21
+	.byte	4
+	.word	.L22,.L60
+	.byte	5
+	.byte	'dataNumBootSeclev_u8',0,1,108,27
+	.word	.L61,.L62
+	.byte	5
+	.byte	'l_idxSec_qu8',0,1,109,24
+	.word	.L61,.L63
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Prv_SecaWarmStart')
+	.sect	'.debug_abbrev'
+.L45:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Prv_SecaWarmStart')
+	.sect	'.debug_line'
+.L46:
+	.word	.L129-.L128
+.L128:
+	.half	3
+	.word	.L131-.L130
+.L130:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0,0,0,0,0
+.L131:
+	.byte	5,85,7,0,5,2
+	.word	.L22
+	.byte	3,244,0,1,5,5,9
+	.half	.L132-.L22
+	.byte	1,5,41,9
+	.half	.L133-.L132
+	.byte	1,5,62,9
+	.half	.L134-.L133
+	.byte	1,5,75,9
+	.half	.L135-.L134
+	.byte	1,5,84,9
+	.half	.L136-.L135
+	.byte	1,5,37,9
+	.half	.L137-.L136
+	.byte	1,5,8,9
+	.half	.L138-.L137
+	.byte	3,2,1,5,5,9
+	.half	.L139-.L138
+	.byte	1,5,25,7,9
+	.half	.L140-.L139
+	.byte	3,3,1,5,64,9
+	.half	.L66-.L140
+	.byte	1,5,4,9
+	.half	.L12-.L66
+	.byte	3,2,1,5,23,9
+	.half	.L141-.L12
+	.byte	1,5,4,9
+	.half	.L142-.L141
+	.byte	3,11,1,5,50,9
+	.half	.L143-.L142
+	.byte	1,5,34,9
+	.half	.L144-.L143
+	.byte	1,5,50,9
+	.half	.L145-.L144
+	.byte	1,5,64,9
+	.half	.L146-.L145
+	.byte	1,5,31,9
+	.half	.L147-.L146
+	.byte	1,5,16,9
+	.half	.L148-.L147
+	.byte	3,2,1,5,46,9
+	.half	.L149-.L148
+	.byte	1,5,13,9
+	.half	.L150-.L149
+	.byte	1,5,36,7,9
+	.half	.L151-.L150
+	.byte	3,2,1,5,38,9
+	.half	.L152-.L151
+	.byte	1,5,39,9
+	.half	.L13-.L152
+	.byte	3,5,1,5,78,9
+	.half	.L14-.L13
+	.byte	3,106,1,5,64,9
+	.half	.L11-.L14
+	.byte	1,5,1,7,9
+	.half	.L10-.L11
+	.byte	3,27,1,7,9
+	.half	.L48-.L10
+	.byte	0,1,1
+.L129:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Prv_SecaWarmStart')
+	.sect	'.debug_ranges'
+.L47:
+	.word	-1,.L22,0,.L48-.L22,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Prv_idxSec_qu8')
+	.sect	'.debug_info'
+.L49:
+	.word	210
+	.half	3
+	.word	.L50
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L25
+	.byte	3
+	.byte	'Dcm_Prv_idxSec_qu8',0,6,12,32
+	.word	.L61
+	.byte	5,3
+	.word	Dcm_Prv_idxSec_qu8
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Prv_idxSec_qu8')
+	.sect	'.debug_abbrev'
+.L50:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Prv_dataSecaGlobaltimer_u32')
+	.sect	'.debug_info'
+.L51:
+	.word	223
+	.half	3
+	.word	.L52
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L25
+	.byte	3
+	.byte	'Dcm_Prv_dataSecaGlobaltimer_u32',0,6,13,32
+	.word	.L57
+	.byte	5,3
+	.word	Dcm_Prv_dataSecaGlobaltimer_u32
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Prv_dataSecaGlobaltimer_u32')
+	.sect	'.debug_abbrev'
+.L52:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Prv_nrPowerOnDelay_u32')
+	.sect	'.debug_info'
+.L53:
+	.word	218
+	.half	3
+	.word	.L54
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_RestoreSecaTimer.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L25
+	.byte	3
+	.byte	'Dcm_Prv_nrPowerOnDelay_u32',0,6,16,32
+	.word	.L57
+	.byte	5,3
+	.word	Dcm_Prv_nrPowerOnDelay_u32
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Prv_nrPowerOnDelay_u32')
+	.sect	'.debug_abbrev'
+.L54:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_DslDsdRestoreSecaTimer')
+	.sect	'.debug_loc'
+.L23:
+	.word	-1,.L24,0,.L55-.L24
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Prv_SecaPowerOnDelayExpired')
+	.sect	'.debug_loc'
+.L17:
+	.word	-1,.L18,0,.L56-.L18
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L58:
+	.word	-1,.L18,.L64-.L18,.L65-.L18
+	.half	1
+	.byte	82
+	.word	.L4-.L18,.L5-.L18
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Prv_SecaPowerOnDelayNotExpired')
+	.sect	'.debug_loc'
+.L19:
+	.word	-1,.L20,0,.L59-.L20
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Prv_SecaWarmStart')
+	.sect	'.debug_loc'
+.L21:
+	.word	-1,.L22,0,.L60-.L22
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L62:
+	.word	0,0
+.L63:
+	.word	-1,.L22,.L66-.L22,.L67-.L22
+	.half	1
+	.byte	88
+	.word	.L11-.L22,.L10-.L22
+	.half	1
+	.byte	88
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L153:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Prv_SecaPowerOnDelayExpired')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L153,.L18,.L56-.L18
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Prv_SecaPowerOnDelayNotExpired')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L153,.L20,.L59-.L20
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Prv_SecaWarmStart')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L153,.L22,.L60-.L22
+	.sdecl	'.debug_frame',debug,cluster('Dcm_DslDsdRestoreSecaTimer')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L153,.L24,.L55-.L24
+
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   184  #define DCM_STOP_SEC_CODE /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   185  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmCore\DcmCoreDslDsd\DcmCore_DslDsd_RestoreSecaTimer.c	   186  
+
+	; Module end

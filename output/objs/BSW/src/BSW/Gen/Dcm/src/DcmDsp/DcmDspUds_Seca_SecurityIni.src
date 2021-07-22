@@ -1,0 +1,3001 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc14604a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds_Seca_SecurityIni.src BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.DcmDspUds_Seca_SecurityIni.Dcm_Dsp_SecaIni',code,cluster('Dcm_Dsp_SecaIni')
+	.sect	'.text.DcmDspUds_Seca_SecurityIni.Dcm_Dsp_SecaIni'
+	.align	2
+	
+	.global	Dcm_Dsp_SecaIni
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	     1  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	     2  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	     3  #include "DcmDspUds_Seca_Inf.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	     4  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	     5  #if(DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	     6  #include "DcmDspUds_Seca_Priv.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	     7  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	     8  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	     9  #if(DCM_CFG_DSP_SECURITYACCESS_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    10  #define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    11  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    12  /* Array for all the security levels in the SECA configuration */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    13  VAR (Dcm_Dsp_SecaType,  DCM_VAR) Dcm_Dsp_Seca[DCM_CFG_DSP_NUMSECURITY];
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    14  #define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    15  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    16  #define DCM_START_SEC_VAR_CLEARED_UNSPECIFIED /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    17  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    18  VAR (Dcm_Dsp_SecaStates_ten,DCM_VAR) Dcm_DspSecaStatus_en; /* Status of SECA state machine */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    19  #define DCM_STOP_SEC_VAR_CLEARED_UNSPECIFIED /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    20  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    21  #define DCM_START_SEC_VAR_CLEARED_BOOLEAN /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    22  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    23  VAR (boolean, DCM_VAR) Dcm_DspChgSecLevel_b;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    24  #define DCM_STOP_SEC_VAR_CLEARED_BOOLEAN /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    25  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    26  #define DCM_START_SEC_VAR_CLEARED_8/*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    27  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    28  VAR (Dcm_OpStatusType, DCM_VAR) Dcm_DspSecaOpStatus_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    29  #define DCM_STOP_SEC_VAR_CLEARED_8/*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    30  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    31  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    32  #define DCM_START_SEC_CODE /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    33  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    34  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    35   ***********************************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    36   * Dcm_Dsp_SecaIni : Initialization function for SECA Service
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    37   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    38   * \param           None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    39   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    40   * \retval          None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    41   ***********************************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    42  */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    43  FUNC (void,DCM_CODE) Dcm_Dsp_SecaIni (void)
+; Function Dcm_Dsp_SecaIni
+.L19:
+Dcm_Dsp_SecaIni:	.type	func
+	sub.a	a10,#8
+.L67:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    44  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    45  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    46  #if((DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF) || (DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    47  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    48      P2VAR(void,AUTOMATIC, DCM_INTERN_DATA) ptrSecaFnc;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    49      P2CONST(Dcm_Dsp_Security_t,AUTOMATIC,DCM_INTERN_DATA) ptrSecurityConfig;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    50      VAR(Dcm_NegativeResponseCodeType,AUTOMATIC) dataNegRespCode_u8; /* Local variable to store the NRC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    51  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    52  #if(DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    53      VAR(Dcm_SecLevelType,AUTOMATIC)   dataSecLevel_u8;     /* Local variable to store Security level */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    54  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    55  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    56  #if((DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF)|| (DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    57      dataNegRespCode_u8 = 0x0; /* Initialise the local variable */
+	mov	d15,#0
+.L125:
+	st.b	[a10],d15
+.L126:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    58  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    59  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    60      /* If there is a PENDING operation */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    61      if(Dcm_DspSecaOpStatus_u8 == DCM_PENDING)
+	movh.a	a12,#@his(Dcm_DspSecaOpStatus_u8)
+	lea	a12,[a12]@los(Dcm_DspSecaOpStatus_u8)
+	ld.bu	d15,[a12]
+.L127:
+	jne	d15,#1,.L2
+.L128:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    62      {   /* Pending Get Seed operation ?*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    63  #if((DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF) || (DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    64          ptrSecurityConfig =&Dcm_Dsp_Security[Dcm_DspSecTabIdx_u8];
+	movh.a	a15,#@his(Dcm_DspSecTabIdx_u8)
+	lea	a15,[a15]@los(Dcm_DspSecTabIdx_u8)
+	ld.bu	d15,[a15]
+.L129:
+	mul	d15,d15,#40
+.L130:
+	movh.a	a15,#@his(Dcm_Dsp_Security)
+	lea	a15,[a15]@los(Dcm_Dsp_Security)
+.L131:
+	addsc.a	a15,a15,d15,#0
+.L68:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    65  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    66          if(Dcm_DspSecaStatus_en == DCM_DSP_SECA_GENSEED)
+	movh.a	a13,#@his(Dcm_DspSecaStatus_en)
+	lea	a13,[a13]@los(Dcm_DspSecaStatus_en)
+	ld.w	d15,[a13]
+.L132:
+	jne	d15,#0,.L3
+.L133:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    67          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    68  #if((DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF) || (DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    69              ptrSecaFnc = ptrSecurityConfig->Dsp_GetSeed_fp;
+	ld.a	a2,[a15]8
+.L69:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    70  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    71  #if(DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    72              if(ptrSecurityConfig->usePort == USE_ASYNCH_CLIENT_SERVER)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    73              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    74  #if (DCM_CFG_DSP_SECA_ASP_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    75                  /* Is Asynchronous server call point handling is requested */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    76                  if(ptrSecurityConfig->UseAsynchronousServerCallPoint_b)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    77                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    78                      /* Call the Rte_Call API with In and InOut parameters to cancel the ongoing operation */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    79                      if(ptrSecurityConfig->AccDataRecsize_u32!=0x00u)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    80                         {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    81                             /* MR12 RULE 11.1 VIOLATION: Typecast to function pointer required for implementation -
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    82                             Required for efficient RAM usage by using single void function pointer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    83                             (void)(*(Dcm_GetSeed_ptr5)(ptrSecaFnc))(NULL_PTR,DCM_CANCEL);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    84                         }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    85                         else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    86                         {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    87                             /* MR12 RULE 11.1 VIOLATION: Typecast to function pointer required for implementation -
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    88                             Required for efficient RAM usage by using single void function pointer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    89                             (void)(*(Dcm_GetSeed_ptr6)(ptrSecaFnc))(DCM_CANCEL);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    90                         }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    91                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    92                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    93  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    94                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    95                      if(ptrSecurityConfig->AccDataRecsize_u32!=0x00u)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    96                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    97                          /* MR12 RULE 11.1 VIOLATION: Typecast to function pointer required for implementation -
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    98                          Required for efficient RAM usage by using single void function pointer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	    99                          (void)(*(Dcm_GetSeed_ptr)(ptrSecaFnc))(NULL_PTR,DCM_CANCEL,NULL_PTR,&dataNegRespCode_u8);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   100                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   101                      else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   102                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   103                          /* MR12 RULE 11.1 VIOLATION: Typecast to function pointer required for implementation -
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   104                          Required for efficient RAM usage by using single void function pointer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   105                          (void)(*(Dcm_GetSeed_ptr3)(ptrSecaFnc))(DCM_CANCEL,NULL_PTR,&dataNegRespCode_u8);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   106                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   107                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   108                  (void)dataNegRespCode_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   109              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   110  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   111  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   112  #if(DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   113              if(ptrSecurityConfig->usePort == USE_ASYNCH_FNC)
+	ld.w	d15,[a15]36
+.L134:
+	jne	d15,#1,.L4
+.L135:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   114              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   115                  /* Calculate the security level */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   116                  dataSecLevel_u8  = ((Dcm_DspSecAccType_u8+1u)>>1u);
+	movh.a	a4,#@his(Dcm_DspSecAccType_u8)
+	lea	a4,[a4]@los(Dcm_DspSecAccType_u8)
+	ld.bu	d15,[a4]
+.L136:
+	add	d15,#1
+.L137:
+	sh	d4,d15,#-1
+.L70:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   117                  /* MR12 RULE 11.1 VIOLATION: Typecast to function pointer required for implementation -
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   118                  Required for efficient RAM usage by using single void function pointer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   119                  (void)(*(Dcm_GetSeed_ptr4)(ptrSecaFnc))(
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   120                                              dataSecLevel_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   121                                              ptrSecurityConfig->Seed_size_u32,
+	ld.w	d5,[a15]20
+.L138:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   122                                              ptrSecurityConfig->AccDataRecsize_u32,
+	ld.w	d6,[a15]32
+.L139:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   123                                              NULL_PTR,NULL_PTR,DCM_CANCEL,&dataNegRespCode_u8);
+	mov.a	a4,#0
+.L140:
+	mov.a	a5,#0
+.L141:
+	mov	d7,#2
+.L142:
+	lea	a6,[a10]0
+	calli	a2
+.L4:
+.L3:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   124                  (void)dataNegRespCode_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   125              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   126  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   127          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   128          if(Dcm_DspSecaStatus_en == DCM_DSP_SECA_COMPAREKEY)
+	ld.w	d15,[a13]
+.L143:
+	jne	d15,#1,.L5
+.L144:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   129          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   130  #if((DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF) || (DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   131              ptrSecaFnc = ptrSecurityConfig->Dsp_CompareKey_fp;
+	ld.a	a2,[a15]12
+.L71:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   132  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   133  #if(DCM_CFG_DSP_USE_ASYNCH_CLIENT_SERVER != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   134              if(ptrSecurityConfig->usePort == USE_ASYNCH_CLIENT_SERVER)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   135              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   136  #if (DCM_CFG_DSP_SECA_ASP_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   137                  /* Is ASynchronous server call point handling is requested */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   138                  if(ptrSecurityConfig->UseAsynchronousServerCallPoint_b)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   139                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   140                      /* MR12 RULE 11.1 VIOLATION: Typecast to function pointer required for implementation -
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   141                      Required for efficient RAM usage by using single void function pointer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   142                      (void)(*(Dcm_CompareKey_ptr4)(ptrSecaFnc))(NULL_PTR, DCM_CANCEL);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   143                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   144                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   145  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   146                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   147                      /* MR12 RULE 11.1 VIOLATION: Typecast to function pointer required for implementation -
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   148                      Required for efficient RAM usage by using single void function pointer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   149                      (void)(*(Dcm_CompareKey_ptr1)(ptrSecaFnc))(NULL_PTR, DCM_CANCEL,&dataNegRespCode_u8);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   150                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   151              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   152  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   153  #if(DCM_CFG_DSP_USE_ASYNCH_FNC != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   154              if(ptrSecurityConfig->usePort == USE_ASYNCH_FNC)
+	ld.w	d15,[a15]36
+.L145:
+	jne	d15,#1,.L6
+.L146:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   155              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   156                  /* MR12 RULE 11.1 VIOLATION: Typecast to function pointer required for implementation -
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   157                  Required for efficient RAM usage by using single void function pointer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   158                  (void)(*(Dcm_CompareKey_ptr3)(ptrSecaFnc))(ptrSecurityConfig->Key_size_u32,NULL_PTR,
+	ld.w	d4,[a15]24
+.L147:
+	mov.a	a4,#0
+.L148:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   159                  DCM_CANCEL,&dataNegRespCode_u8);
+	mov	d5,#2
+.L149:
+	lea	a5,[a10]0
+	calli	a2
+.L6:
+.L5:
+.L2:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   160              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   161  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   162          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   163      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   164  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   165      /* Reset the flags defined for Asynchonous Server point handling */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   166  #if (DCM_CFG_DSP_SECA_ASP_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   167      Dcm_ResetAsynchSecaFlag();
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   168  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   169      /* Reset the Seca Opstatus */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   170      Dcm_DspSecaOpStatus_u8 = DCM_INITIAL;
+	mov	d15,#0
+.L150:
+	st.b	[a12],d15
+.L151:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   171  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   172      /* Re-Initialisation of Security Access State and Global parameters */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   173      Dcm_Dsp_SecaSessIni();
+	call	Dcm_Dsp_SecaSessIni
+.L152:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   174  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   175  }
+	ret
+.L57:
+	
+__Dcm_Dsp_SecaIni_function_end:
+	.size	Dcm_Dsp_SecaIni,__Dcm_Dsp_SecaIni_function_end-Dcm_Dsp_SecaIni
+.L42:
+	; End of function
+	
+	.sdecl	'.text.DcmDspUds_Seca_SecurityIni.Dcm_Dsp_SecaPowerOnDelayIni',code,cluster('Dcm_Dsp_SecaPowerOnDelayIni')
+	.sect	'.text.DcmDspUds_Seca_SecurityIni.Dcm_Dsp_SecaPowerOnDelayIni'
+	.align	2
+	
+	.global	Dcm_Dsp_SecaPowerOnDelayIni
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   176  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   177  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   178   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   179   * Dcm_Dsp_SecaPowerOnDelayIni : Initialization of PowerOn delay timer for all security levels configured
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   180   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   181   * \param           None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   182   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   183   * \retval          None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   184   * \seealso
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   185   * \usedresources
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   186   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   187  */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   188  FUNC (void,DCM_CODE) Dcm_Dsp_SecaPowerOnDelayIni (void)
+; Function Dcm_Dsp_SecaPowerOnDelayIni
+.L21:
+Dcm_Dsp_SecaPowerOnDelayIni:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   189  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   190      VAR (uint8_least,AUTOMATIC) idxSecTab_qu8;  /* Local variable to iterate through the security table */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   191      VAR (uint32,AUTOMATIC) dataDelayOnPowerOn_u32;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   192  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   193      for (idxSecTab_qu8=0;idxSecTab_qu8 < DCM_CFG_DSP_NUMSECURITY;idxSecTab_qu8++)
+	mov	d8,#0
+.L72:
+	j	.L7
+.L8:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   194      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   195          if(Dcm_Dsp_Seca[idxSecTab_qu8].FailedAtm_cnt_u8 >= Dcm_Dsp_Security[idxSecTab_qu8].NumAttDelay_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   196          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   197              dataDelayOnPowerOn_u32 =
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   198              (Dcm_Dsp_Security[idxSecTab_qu8].DelayTime_u32 > Dcm_Dsp_Security[idxSecTab_qu8].PowerOnDelay_u32) ?
+	movh.a	a15,#@his(Dcm_Dsp_Security)
+	lea	a15,[a15]@los(Dcm_Dsp_Security)
+.L84:
+	mul	d15,d8,#40
+	addsc.a	a15,a15,d15,#0
+.L85:
+	ld.w	d15,[a15]
+.L86:
+	movh.a	a2,#@his(Dcm_Dsp_Seca)
+	lea	a2,[a2]@los(Dcm_Dsp_Seca)
+.L87:
+	addsc.a	a12,a2,d8,#3
+.L88:
+	ld.bu	d5,[a12]4
+.L89:
+	ld.bu	d0,[a15]28
+.L90:
+	jlt.u	d5,d0,.L9
+.L91:
+	ld.w	d6,[a15]4
+.L92:
+	jge.u	d15,d6,.L10
+.L93:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   199              Dcm_Dsp_Security[idxSecTab_qu8].DelayTime_u32 : Dcm_Dsp_Security[idxSecTab_qu8].PowerOnDelay_u32;
+	j	.L11
+.L10:
+	mov	d6,d15
+.L11:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   200              if(dataDelayOnPowerOn_u32 > 0x00u)
+	jeq	d6,#0,.L12
+.L94:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   201              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   202                  dataDelayOnPowerOn_u32 = dataDelayOnPowerOn_u32 * DCM_CFG_TASK_TIME_MS;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   203                  /* DcmAppl_DcmGetUpdatedDelayTime should return Residual Delay time in Counts of DcmTaskTime */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   204                  dataDelayOnPowerOn_u32 =
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   205                  DcmAppl_DcmGetUpdatedDelayTime(Dcm_Dsp_Security[idxSecTab_qu8].Security_level_u8,
+	ld.bu	d4,[a15]16
+.L95:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   206                  Dcm_Dsp_Seca[idxSecTab_qu8].FailedAtm_cnt_u8,dataDelayOnPowerOn_u32);
+	call	DcmAppl_DcmGetUpdatedDelayTime
+.L73:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   207                  Dcm_Dsp_Seca[idxSecTab_qu8].Residual_delay_u32 =
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   208                  (Dcm_Dsp_SecaGlobaltimer_u32 + (dataDelayOnPowerOn_u32 / DCM_CFG_TASK_TIME_MS));
+	movh.a	a15,#@his(Dcm_Dsp_SecaGlobaltimer_u32)
+	lea	a15,[a15]@los(Dcm_Dsp_SecaGlobaltimer_u32)
+	ld.w	d15,[a15]
+.L96:
+	add	d15,d2
+.L97:
+	st.w	[a12],d15
+.L98:
+	j	.L13
+.L12:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   209              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   210              else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   211              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   212              /*if both PowerOnDelay_u32 and DelayTime_u32 are initialized with 0 then assign Residual_delay_u32 with 0*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   213                  Dcm_Dsp_Seca[idxSecTab_qu8].Residual_delay_u32 = 0x00u;
+	mov	d15,#0
+.L99:
+	st.w	[a12],d15
+.L13:
+	j	.L14
+.L9:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   214              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   215          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   216          else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   217          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   218              if(Dcm_Dsp_Security[idxSecTab_qu8].PowerOnDelay_u32 > 0x00u)
+	jeq	d15,#0,.L15
+.L100:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   219              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   220                  dataDelayOnPowerOn_u32 =
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   221                  DcmAppl_DcmGetUpdatedDelayForPowerOn(Dcm_Dsp_Security[idxSecTab_qu8].Security_level_u8,
+	ld.bu	d4,[a15]16
+.L101:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   222                  Dcm_Dsp_Seca[idxSecTab_qu8].FailedAtm_cnt_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   223                  (Dcm_Dsp_Security[idxSecTab_qu8].PowerOnDelay_u32 * DCM_CFG_TASK_TIME_MS));
+	mov	d6,d15
+	call	DcmAppl_DcmGetUpdatedDelayForPowerOn
+.L74:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   224                  Dcm_Dsp_Seca[idxSecTab_qu8].Residual_delay_u32 = (dataDelayOnPowerOn_u32/DCM_CFG_TASK_TIME_MS);
+	st.w	[a12],d2
+.L102:
+	j	.L16
+.L15:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   225              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   226              else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   227              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   228                  Dcm_Dsp_Seca[idxSecTab_qu8].Residual_delay_u32 = 0x00u;
+	mov	d15,#0
+.L103:
+	st.w	[a12],d15
+.L16:
+.L14:
+	add	d8,#1
+.L7:
+	jeq	d8,#0,.L8
+.L104:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   229              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   230          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   231      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   232      return;
+	j	.L17
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   233  }
+.L17:
+	ret
+.L51:
+	
+__Dcm_Dsp_SecaPowerOnDelayIni_function_end:
+	.size	Dcm_Dsp_SecaPowerOnDelayIni,__Dcm_Dsp_SecaPowerOnDelayIni_function_end-Dcm_Dsp_SecaPowerOnDelayIni
+.L32:
+	; End of function
+	
+	.sdecl	'.text.DcmDspUds_Seca_SecurityIni.Dcm_Dsp_SecaSessIni',code,cluster('Dcm_Dsp_SecaSessIni')
+	.sect	'.text.DcmDspUds_Seca_SecurityIni.Dcm_Dsp_SecaSessIni'
+	.align	2
+	
+	.global	Dcm_Dsp_SecaSessIni
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   234  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   235   ***********************************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   236   * Dcm_Dsp_SecaSesIni : Re-Initialization of all security parameters due to session timeout or change in session.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   237   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   238   * \param           None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   239   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   240   * \retval          None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   241   ***********************************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   242  */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   243  FUNC (void,DCM_CODE) Dcm_Dsp_SecaSessIni (void)
+; Function Dcm_Dsp_SecaSessIni
+.L23:
+Dcm_Dsp_SecaSessIni:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   244  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   245      /* Initialise SECA state machine */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   246      Dcm_SrvOpstatus_u8 = DCM_INITIAL;
+	movh.a	a15,#@his(Dcm_SrvOpstatus_u8)
+	lea	a15,[a15]@los(Dcm_SrvOpstatus_u8)
+.L109:
+	mov	d15,#0
+.L110:
+	st.b	[a15],d15
+.L111:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   247      //Dcm_DspSecaStatus_en = DCM_DSP_SECA_REQUEST;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   248      /* Initialise change security level */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   249      Dcm_DspChgSecLevel_b = FALSE;
+	movh.a	a15,#@his(Dcm_DspChgSecLevel_b)
+	lea	a15,[a15]@los(Dcm_DspChgSecLevel_b)
+.L112:
+	mov	d15,#0
+.L113:
+	st.b	[a15],d15
+.L114:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   250      /* Resetting Stored AccessType */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   251      Dcm_DspSecAccType_u8 = 0x0;
+	movh.a	a15,#@his(Dcm_DspSecAccType_u8)
+	lea	a15,[a15]@los(Dcm_DspSecAccType_u8)
+.L115:
+	mov	d15,#0
+.L116:
+	st.b	[a15],d15
+.L117:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   252      /* Resetting Security Index */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   253      Dcm_DspSecTabIdx_u8  = 0x0;
+	movh.a	a15,#@his(Dcm_DspSecTabIdx_u8)
+	lea	a15,[a15]@los(Dcm_DspSecTabIdx_u8)
+.L118:
+	mov	d15,#0
+.L119:
+	st.b	[a15],d15
+.L120:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   254  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   255  }
+	ret
+.L56:
+	
+__Dcm_Dsp_SecaSessIni_function_end:
+	.size	Dcm_Dsp_SecaSessIni,__Dcm_Dsp_SecaSessIni_function_end-Dcm_Dsp_SecaSessIni
+.L37:
+	; End of function
+	
+	.sdecl	'.bss.DcmDspUds_Seca_SecurityIni.Dcm_Dsp_Seca',data,cluster('Dcm_Dsp_Seca')
+	.sect	'.bss.DcmDspUds_Seca_SecurityIni.Dcm_Dsp_Seca'
+	.global	Dcm_Dsp_Seca
+	.align	4
+Dcm_Dsp_Seca:	.type	object
+	.size	Dcm_Dsp_Seca,8
+	.space	8
+	.sdecl	'.bss.DcmDspUds_Seca_SecurityIni.Dcm_DspSecaStatus_en',data,cluster('Dcm_DspSecaStatus_en')
+	.sect	'.bss.DcmDspUds_Seca_SecurityIni.Dcm_DspSecaStatus_en'
+	.global	Dcm_DspSecaStatus_en
+	.align	4
+Dcm_DspSecaStatus_en:	.type	object
+	.size	Dcm_DspSecaStatus_en,4
+	.space	4
+	.sdecl	'.bss.DcmDspUds_Seca_SecurityIni.Dcm_DspChgSecLevel_b',data,cluster('Dcm_DspChgSecLevel_b')
+	.sect	'.bss.DcmDspUds_Seca_SecurityIni.Dcm_DspChgSecLevel_b'
+	.global	Dcm_DspChgSecLevel_b
+Dcm_DspChgSecLevel_b:	.type	object
+	.size	Dcm_DspChgSecLevel_b,1
+	.space	1
+	.sdecl	'.bss.DcmDspUds_Seca_SecurityIni.Dcm_DspSecaOpStatus_u8',data,cluster('Dcm_DspSecaOpStatus_u8')
+	.sect	'.bss.DcmDspUds_Seca_SecurityIni.Dcm_DspSecaOpStatus_u8'
+	.global	Dcm_DspSecaOpStatus_u8
+Dcm_DspSecaOpStatus_u8:	.type	object
+	.size	Dcm_DspSecaOpStatus_u8,1
+	.space	1
+	.calls	'Dcm_Dsp_SecaIni','__INDIRECT__'
+	.calls	'Dcm_Dsp_SecaIni','Dcm_Dsp_SecaSessIni'
+	.calls	'Dcm_Dsp_SecaPowerOnDelayIni','DcmAppl_DcmGetUpdatedDelayTime'
+	.calls	'Dcm_Dsp_SecaPowerOnDelayIni','DcmAppl_DcmGetUpdatedDelayForPowerOn'
+	.calls	'Dcm_Dsp_SecaIni','',8
+	.calls	'Dcm_Dsp_SecaPowerOnDelayIni','',0
+	.extern	Dcm_Dsp_SecaGlobaltimer_u32
+	.extern	Dcm_Dsp_Security
+	.extern	Dcm_SrvOpstatus_u8
+	.extern	DcmAppl_DcmGetUpdatedDelayTime
+	.extern	DcmAppl_DcmGetUpdatedDelayForPowerOn
+	.extern	Dcm_DspSecTabIdx_u8
+	.extern	Dcm_DspSecAccType_u8
+	.extern	__INDIRECT__
+	.calls	'Dcm_Dsp_SecaSessIni','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L25:
+	.word	15540
+	.half	3
+	.word	.L26
+	.byte	4
+.L24:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L27
+.L62:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.word	169
+	.byte	4
+	.byte	'rba_DiagLib_Bit8SetBit',0,3,1,36,19,1,1,5
+	.byte	'buffer',0,1,36,49
+	.word	186
+	.byte	5
+	.byte	'bit_position',0,1,36,63
+	.word	169
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBit',0,3,1,42,19,1,1,5
+	.byte	'buffer',0,1,42,51
+	.word	186
+	.byte	5
+	.byte	'bit_position',0,1,42,65
+	.word	169
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit8GetSingleBit',0,3,1,60,20
+	.word	169
+	.byte	1,1,5
+	.byte	'value',0,1,60,55
+	.word	169
+	.byte	5
+	.byte	'bit_position',0,1,60,68
+	.word	169
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBits',0,3,1,77,19,1,1,5
+	.byte	'value',0,1,77,52
+	.word	186
+	.byte	5
+	.byte	'bit_position',0,1,77,65
+	.word	169
+	.byte	5
+	.byte	'number_of_bits',0,1,77,85
+	.word	169
+	.byte	6,0,2
+	.byte	'unsigned short int',0,2,7,3
+	.word	499
+	.byte	4
+	.byte	'rba_DiagLib_Bit16SetBit',0,3,2,36,19,1,1,5
+	.byte	'buffer',0,2,36,51
+	.word	521
+	.byte	5
+	.byte	'bit_position',0,2,36,65
+	.word	169
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBit',0,3,2,42,19,1,1,5
+	.byte	'buffer',0,2,42,53
+	.word	521
+	.byte	5
+	.byte	'bit_position',0,2,42,67
+	.word	169
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit16GetSingleBit',0,3,2,60,21
+	.word	499
+	.byte	1,1,5
+	.byte	'value',0,2,60,58
+	.word	499
+	.byte	5
+	.byte	'bit_position',0,2,60,71
+	.word	169
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBits',0,3,2,78,19,1,1,5
+	.byte	'value',0,2,78,54
+	.word	521
+	.byte	5
+	.byte	'bit_position',0,2,78,67
+	.word	169
+	.byte	5
+	.byte	'number_of_bits',0,2,78,87
+	.word	169
+	.byte	6,0
+.L54:
+	.byte	2
+	.byte	'unsigned int',0,4,7,3
+	.word	838
+	.byte	4
+	.byte	'rba_DiagLib_Bit32SetBit',0,3,3,36,19,1,1,5
+	.byte	'buffer',0,3,36,51
+	.word	854
+	.byte	5
+	.byte	'bit_position',0,3,36,65
+	.word	169
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBit',0,3,3,42,19,1,1,5
+	.byte	'buffer',0,3,42,53
+	.word	854
+	.byte	5
+	.byte	'bit_position',0,3,42,67
+	.word	169
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit32GetSingleBit',0,3,3,60,21
+	.word	838
+	.byte	1,1,5
+	.byte	'value',0,3,60,58
+	.word	838
+	.byte	5
+	.byte	'bit_position',0,3,60,71
+	.word	169
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBits',0,3,3,78,19,1,1,5
+	.byte	'value',0,3,78,54
+	.word	854
+	.byte	5
+	.byte	'bit_position',0,3,78,67
+	.word	169
+	.byte	5
+	.byte	'number_of_bits',0,3,78,87
+	.word	169
+	.byte	6,0
+.L52:
+	.byte	2
+	.byte	'unsigned long int',0,4,7,8
+	.byte	'void',0
+.L58:
+	.byte	3
+	.word	1192
+	.byte	9
+	.word	1198
+	.byte	9
+	.word	1198
+	.byte	10,4,200,1,9,4,11
+	.byte	'USE_ASYNCH_CLIENT_SERVER',0,0,11
+	.byte	'USE_ASYNCH_FNC',0,1,0,12,4,223,1,9,40,13
+	.byte	'PowerOnDelay_u32',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'DelayTime_u32',0
+	.word	838
+	.byte	4,2,35,4,13
+	.byte	'Dsp_GetSeed_fp',0
+	.word	1203
+	.byte	4,2,35,8,13
+	.byte	'Dsp_CompareKey_fp',0
+	.word	1208
+	.byte	4,2,35,12,13
+	.byte	'Security_level_u8',0
+	.word	169
+	.byte	1,2,35,16,13
+	.byte	'Seed_size_u32',0
+	.word	838
+	.byte	4,2,35,20,13
+	.byte	'Key_size_u32',0
+	.word	838
+	.byte	4,2,35,24,13
+	.byte	'NumAttDelay_u8',0
+	.word	169
+	.byte	1,2,35,28,13
+	.byte	'NumAttLock_u8',0
+	.word	169
+	.byte	1,2,35,29,13
+	.byte	'AccDataRecsize_u32',0
+	.word	838
+	.byte	4,2,35,32,13
+	.byte	'usePort',0
+	.word	1213
+	.byte	4,2,35,36,0,9
+	.word	1264
+.L60:
+	.byte	3
+	.word	1535
+	.byte	14
+	.word	191
+	.byte	15
+	.word	221
+	.byte	15
+	.word	236
+	.byte	6,0,14
+	.word	259
+	.byte	15
+	.word	291
+	.byte	15
+	.word	306
+	.byte	6,0,14
+	.word	329
+	.byte	15
+	.word	369
+	.byte	15
+	.word	383
+	.byte	6,0,14
+	.word	406
+	.byte	15
+	.word	439
+	.byte	15
+	.word	453
+	.byte	15
+	.word	474
+	.byte	6,0,14
+	.word	526
+	.byte	15
+	.word	557
+	.byte	15
+	.word	572
+	.byte	6,0,14
+	.word	595
+	.byte	15
+	.word	628
+	.byte	15
+	.word	643
+	.byte	6,0,14
+	.word	666
+	.byte	15
+	.word	707
+	.byte	15
+	.word	721
+	.byte	6,0,14
+	.word	744
+	.byte	15
+	.word	778
+	.byte	15
+	.word	792
+	.byte	15
+	.word	813
+	.byte	6,0,14
+	.word	859
+	.byte	15
+	.word	890
+	.byte	15
+	.word	905
+	.byte	6,0,14
+	.word	928
+	.byte	15
+	.word	961
+	.byte	15
+	.word	976
+	.byte	6,0,14
+	.word	999
+	.byte	15
+	.word	1040
+	.byte	15
+	.word	1054
+	.byte	6,0,14
+	.word	1077
+	.byte	15
+	.word	1111
+	.byte	15
+	.word	1125
+	.byte	15
+	.word	1146
+	.byte	6,0,16
+	.byte	'DcmAppl_DcmGetUpdatedDelayTime',0,5,253,2,35
+	.word	838
+	.byte	1,1,1,1,5
+	.byte	'SecurityLevel',0,5,255,2,26
+	.word	169
+	.byte	5
+	.byte	'Delaycount',0,5,128,3,26
+	.word	169
+	.byte	5
+	.byte	'DelayTime',0,5,129,3,27
+	.word	838
+	.byte	0,16
+	.byte	'DcmAppl_DcmGetUpdatedDelayForPowerOn',0,5,132,3,35
+	.word	838
+	.byte	1,1,1,1,5
+	.byte	'SecurityLevel',0,5,134,3,26
+	.word	169
+	.byte	5
+	.byte	'Delaycount',0,5,135,3,26
+	.word	169
+	.byte	5
+	.byte	'DelayTime',0,5,136,3,27
+	.word	838
+	.byte	0,17
+	.byte	'__INDIRECT__',0,6,1,1,1,1,1,18,1,3
+	.word	2004
+	.byte	19
+	.byte	'__codeptr',0,6,1,1
+	.word	2006
+	.byte	2
+	.byte	'char',0,1,6,19
+	.byte	'sint8',0,7,76,25
+	.word	2029
+	.byte	19
+	.byte	'uint8',0,7,81,25
+	.word	169
+	.byte	19
+	.byte	'uint16',0,7,91,25
+	.word	499
+	.byte	19
+	.byte	'uint32',0,7,106,24
+	.word	838
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,19
+	.byte	'uint64',0,7,111,30
+	.word	2095
+	.byte	19
+	.byte	'boolean',0,7,127,25
+	.word	169
+	.byte	19
+	.byte	'uint16_least',0,7,147,1,25
+	.word	1171
+	.byte	19
+	.byte	'StatusType',0,8,191,1,27
+	.word	169
+	.byte	19
+	.byte	'Std_ReturnType',0,8,199,1,15
+	.word	169
+	.byte	12,8,206,1,9,8,13
+	.byte	'vendorID',0
+	.word	499
+	.byte	2,2,35,0,13
+	.byte	'moduleID',0
+	.word	499
+	.byte	2,2,35,2,13
+	.byte	'sw_major_version',0
+	.word	169
+	.byte	1,2,35,4,13
+	.byte	'sw_minor_version',0
+	.word	169
+	.byte	1,2,35,5,13
+	.byte	'sw_patch_version',0
+	.word	169
+	.byte	1,2,35,6,0,19
+	.byte	'Std_VersionInfoType',0,8,213,1,3
+	.word	2218
+	.byte	19
+	.byte	'PduIdType',0,9,22,19
+	.word	499
+	.byte	19
+	.byte	'PduLengthType',0,9,26,19
+	.word	499
+	.byte	12,10,71,9,8,13
+	.byte	'SduDataPtr',0
+	.word	186
+	.byte	4,2,35,0,13
+	.byte	'SduLength',0
+	.word	499
+	.byte	2,2,35,4,0,19
+	.byte	'PduInfoType',0,10,75,3
+	.word	2408
+	.byte	10,10,113,9,4,11
+	.byte	'TP_DATACONF',0,0,11
+	.byte	'TP_DATARETRY',0,1,11
+	.byte	'TP_CONFPENDING',0,2,0,19
+	.byte	'TpDataStateType',0,10,118,3
+	.word	2473
+	.byte	19
+	.byte	'NetworkHandleType',0,10,128,1,17
+	.word	169
+	.byte	19
+	.byte	'Can_IdType',0,11,32,16
+	.word	838
+	.byte	19
+	.byte	'Can_HwHandleType',0,11,43,16
+	.word	499
+	.byte	12,12,93,9,8,13
+	.byte	'Class',0
+	.word	169
+	.byte	1,2,35,0,13
+	.byte	'TIN',0
+	.word	169
+	.byte	1,2,35,1,13
+	.byte	'ReturnAddress',0
+	.word	838
+	.byte	4,2,35,4,0,19
+	.byte	'OsTrapInfoType',0,12,97,3
+	.word	2620
+	.byte	20,68
+	.word	838
+	.byte	21,16,0,12,12,154,1,9,68,13
+	.byte	'store',0
+	.word	2700
+	.byte	68,2,35,0,0,20,68
+	.word	2709
+	.byte	21,0,0,19
+	.byte	'Os_JumpBufType',0,12,156,1,3
+	.word	2731
+	.byte	19
+	.byte	'Os_StackTraceType',0,12,174,1,18
+	.word	838
+	.byte	12,12,175,1,9,8,13
+	.byte	'sp',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'ctx',0
+	.word	838
+	.byte	4,2,35,4,0,19
+	.byte	'Os_StackValueType',0,12,175,1,63
+	.word	2791
+	.byte	19
+	.byte	'Os_StackSizeType',0,12,176,1,27
+	.word	2791
+	.byte	22,1,1,3
+	.word	2876
+	.byte	19
+	.byte	'Os_VoidVoidFunctionType',0,12,179,1,16
+	.word	2879
+	.byte	19
+	.byte	'ApplicationType',0,12,193,1,23
+	.word	169
+	.byte	23
+	.byte	'Os_ApplicationConfigurationType_s',0,12,198,1,16,2,13
+	.byte	'app_id',0
+	.word	169
+	.byte	1,2,35,0,13
+	.byte	'access',0
+	.word	169
+	.byte	1,2,35,1,0,19
+	.byte	'Os_ApplicationConfigurationType',0,12,201,1,3
+	.word	2942
+	.byte	19
+	.byte	'Os_CoreStateType',0,12,203,1,16
+	.word	838
+	.byte	19
+	.byte	'AreaIdType',0,12,204,1,16
+	.word	499
+	.byte	19
+	.byte	'Os_PeripheralAddressType',0,12,212,1,22
+	.word	838
+	.byte	19
+	.byte	'TickType',0,12,221,1,22
+	.word	838
+	.byte	19
+	.byte	'Os_StopwatchTickType',0,12,225,1,22
+	.word	838
+	.byte	19
+	.byte	'Os_Lockable',0,12,234,1,18
+	.word	854
+	.byte	19
+	.byte	'CoreIdType',0,12,236,1,16
+	.word	499
+	.byte	19
+	.byte	'SpinlockIdType',0,12,237,1,16
+	.word	499
+	.byte	10,12,239,1,9,4,11
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,11
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,19
+	.byte	'TryToGetSpinlockType',0,12,239,1,74
+	.word	3249
+	.byte	10,12,174,2,9,4,11
+	.byte	'APPLICATION_ACCESSIBLE',0,0,11
+	.byte	'APPLICATION_RESTARTING',0,1,11
+	.byte	'APPLICATION_TERMINATED',0,2,0,19
+	.byte	'ApplicationStateType',0,12,174,2,92
+	.word	3342
+	.byte	24,1,1,25
+	.word	169
+	.byte	25
+	.word	1198
+	.byte	0,3
+	.word	3454
+	.byte	19
+	.byte	'Os_FunctionEntryType',0,12,183,2,16
+	.word	3468
+	.byte	23
+	.byte	'Os_MeterInfoType_s',0,12,193,2,16,48,13
+	.byte	'elapsed',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'previous',0
+	.word	838
+	.byte	4,2,35,4,13
+	.byte	'max',0
+	.word	838
+	.byte	4,2,35,8,13
+	.byte	'cumulative',0
+	.word	838
+	.byte	4,2,35,12,13
+	.byte	'stackbase',0
+	.word	2791
+	.byte	8,2,35,16,13
+	.byte	'stackusage',0
+	.word	2791
+	.byte	8,2,35,24,13
+	.byte	'stackmax',0
+	.word	2791
+	.byte	8,2,35,32,13
+	.byte	'stackbudget',0
+	.word	2791
+	.byte	8,2,35,40,0,19
+	.byte	'Os_MeterInfoType',0,12,202,2,3
+	.word	3503
+	.byte	3
+	.word	3503
+	.byte	19
+	.byte	'Os_MeterInfoRefType',0,12,203,2,50
+	.word	3701
+	.byte	19
+	.byte	'EventMaskType',0,12,206,2,15
+	.word	169
+	.byte	19
+	.byte	'Os_imaskType',0,12,211,2,16
+	.word	838
+	.byte	23
+	.byte	'Os_ISRDynType_s',0,12,213,2,16,48,13
+	.byte	'meter',0
+	.word	3503
+	.byte	48,2,35,0,0,19
+	.byte	'Os_ISRDynType',0,12,215,2,3
+	.word	3780
+	.byte	3
+	.word	3780
+	.byte	9
+	.word	3841
+	.byte	23
+	.byte	'Os_ISRType_s',0,12,216,2,16,24,13
+	.byte	'entry_function',0
+	.word	2884
+	.byte	4,2,35,0,13
+	.byte	'dynamic',0
+	.word	3846
+	.byte	4,2,35,4,13
+	.byte	'imask',0
+	.word	838
+	.byte	4,2,35,8,13
+	.byte	'stackbudget',0
+	.word	2791
+	.byte	8,2,35,12,13
+	.byte	'access',0
+	.word	169
+	.byte	1,2,35,20,13
+	.byte	'application',0
+	.word	169
+	.byte	1,2,35,21,0,19
+	.byte	'Os_ISRType',0,12,223,2,3
+	.word	3851
+	.byte	3
+	.word	2876
+	.byte	9
+	.word	3851
+	.byte	3
+	.word	4010
+	.byte	19
+	.byte	'ISRType',0,12,224,2,46
+	.word	4015
+	.byte	19
+	.byte	'Os_bitmask',0,12,239,2,22
+	.word	838
+	.byte	19
+	.byte	'Os_pset0Type',0,12,240,2,20
+	.word	838
+	.byte	19
+	.byte	'Os_pset1Type',0,12,241,2,20
+	.word	838
+	.byte	19
+	.byte	'Os_pset2Type',0,12,242,2,20
+	.word	838
+	.byte	26,12,243,2,9,4,13
+	.byte	'p0',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'p1',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'p2',0
+	.word	838
+	.byte	4,2,35,0,0,19
+	.byte	'Os_psetType',0,12,247,2,3
+	.word	4123
+	.byte	26,12,249,2,9,4,13
+	.byte	't0',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	't1',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	't2',0
+	.word	838
+	.byte	4,2,35,0,0,19
+	.byte	'Os_tpmaskType',0,12,253,2,3
+	.word	4187
+	.byte	19
+	.byte	'Os_ActivationCountType',0,12,254,2,23
+	.word	169
+	.byte	23
+	.byte	'Os_TaskDynType_s',0,12,128,3,16,120,13
+	.byte	'terminate_jump_buf',0
+	.word	2740
+	.byte	68,2,35,0,13
+	.byte	'meter',0
+	.word	3503
+	.byte	48,2,35,68,13
+	.byte	'activation_count',0
+	.word	169
+	.byte	1,2,35,116,0,19
+	.byte	'Os_TaskDynType',0,12,132,3,3
+	.word	4285
+	.byte	20,68
+	.word	2709
+	.byte	21,0,0,3
+	.word	4285
+	.byte	9
+	.word	4411
+	.byte	23
+	.byte	'Os_TaskType_s',0,12,134,3,16,40,13
+	.byte	'dynamic',0
+	.word	4416
+	.byte	4,2,35,0,13
+	.byte	'entry_function',0
+	.word	2884
+	.byte	4,2,35,4,13
+	.byte	'pset',0
+	.word	4123
+	.byte	4,2,35,8,13
+	.byte	'base_tpmask',0
+	.word	4187
+	.byte	4,2,35,12,13
+	.byte	'tpmask',0
+	.word	4187
+	.byte	4,2,35,16,13
+	.byte	'core_id',0
+	.word	499
+	.byte	2,2,35,20,13
+	.byte	'index',0
+	.word	838
+	.byte	4,2,35,24,13
+	.byte	'stackbudget',0
+	.word	2791
+	.byte	8,2,35,28,13
+	.byte	'activation_count',0
+	.word	169
+	.byte	1,2,35,36,13
+	.byte	'access',0
+	.word	169
+	.byte	1,2,35,37,13
+	.byte	'application',0
+	.word	169
+	.byte	1,2,35,38,0,19
+	.byte	'Os_TaskType',0,12,146,3,3
+	.word	4421
+	.byte	9
+	.word	4421
+	.byte	3
+	.word	4671
+	.byte	19
+	.byte	'TaskType',0,12,147,3,47
+	.word	4676
+	.byte	27
+	.byte	'Os_TaskStateType',0,12,155,3,6,4,11
+	.byte	'SUSPENDED',0,0,11
+	.byte	'READY',0,1,11
+	.byte	'WAITING',0,2,11
+	.byte	'RUNNING',0,3,0,19
+	.byte	'TaskStateType',0,12,156,3,31
+	.word	4699
+	.byte	26,12,167,3,3,4,13
+	.byte	'tpmask',0
+	.word	4187
+	.byte	4,2,35,0,0,23
+	.byte	'Os_ResourceDynType_s',0,12,166,3,16,4,13
+	.byte	'saved_priority',0
+	.word	4786
+	.byte	4,2,35,0,0,19
+	.byte	'Os_ResourceDynType',0,12,170,3,3
+	.word	4809
+	.byte	3
+	.word	4809
+	.byte	9
+	.word	4889
+	.byte	23
+	.byte	'Os_ResourceType_s',0,12,171,3,16,12,13
+	.byte	'dynamic',0
+	.word	4894
+	.byte	4,2,35,0,13
+	.byte	'tpmask',0
+	.word	4187
+	.byte	4,2,35,4,13
+	.byte	'access',0
+	.word	169
+	.byte	1,2,35,8,0,19
+	.byte	'Os_ResourceType',0,12,175,3,3
+	.word	4899
+	.byte	12,12,181,3,9,12,13
+	.byte	'maxallowedvalue',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'ticksperbase',0
+	.word	838
+	.byte	4,2,35,4,13
+	.byte	'mincycle',0
+	.word	838
+	.byte	4,2,35,8,0,19
+	.byte	'AlarmBaseType',0,12,185,3,3
+	.word	4998
+	.byte	12,12,206,3,9,8,13
+	.byte	'Running',0
+	.word	169
+	.byte	1,2,35,0,13
+	.byte	'Pending',0
+	.word	169
+	.byte	1,2,35,1,13
+	.byte	'Delay',0
+	.word	838
+	.byte	4,2,35,4,0,19
+	.byte	'Os_CounterStatusType',0,12,210,3,3
+	.word	5093
+	.byte	28
+	.word	169
+	.byte	1,1,3
+	.word	5179
+	.byte	19
+	.byte	'Os_CounterIncrAdvType',0,12,217,3,22
+	.word	5186
+	.byte	23
+	.byte	's_swd',0,12,222,3,12,4,13
+	.byte	'count',0
+	.word	838
+	.byte	4,2,35,0,0,26,12,221,3,3,4,13
+	.byte	'sw',0
+	.word	5222
+	.byte	4,2,35,0,0,23
+	.byte	'Os_CounterDynType_s',0,12,220,3,16,4,13
+	.byte	'type_dependent',0
+	.word	5250
+	.byte	4,2,35,0,0,19
+	.byte	'Os_CounterDynType',0,12,226,3,3
+	.word	5269
+	.byte	3
+	.word	5269
+	.byte	9
+	.word	5347
+	.byte	23
+	.byte	'Os_CounterType_s',0,12,227,3,16,28,13
+	.byte	'dynamic',0
+	.word	5352
+	.byte	4,2,35,0,13
+	.byte	'advincr',0
+	.word	5191
+	.byte	4,2,35,4,13
+	.byte	'base',0
+	.word	4998
+	.byte	12,2,35,8,13
+	.byte	'core',0
+	.word	1198
+	.byte	4,2,35,20,13
+	.byte	'access',0
+	.word	169
+	.byte	1,2,35,24,13
+	.byte	'application',0
+	.word	169
+	.byte	1,2,35,25,0,19
+	.byte	'Os_CounterType',0,12,234,3,3
+	.word	5357
+	.byte	3
+	.word	5179
+	.byte	9
+	.word	5357
+	.byte	3
+	.word	5509
+	.byte	19
+	.byte	'CounterType',0,12,235,3,52
+	.word	5514
+	.byte	27
+	.byte	'Os_ScheduleTableStatusType',0,12,240,3,6,4,11
+	.byte	'SCHEDULETABLE_STOPPED',0,0,11
+	.byte	'SCHEDULETABLE_NEXT',0,1,11
+	.byte	'SCHEDULETABLE_WAITING',0,2,11
+	.byte	'SCHEDULETABLE_RUNNING',0,3,11
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,19
+	.byte	'ScheduleTableStatusType',0,12,241,3,41
+	.word	5540
+	.byte	9
+	.word	.L75-.L25
+	.byte	3
+	.word	5740
+	.byte	19
+	.byte	'ScheduleTableType',0,12,128,4,58
+	.word	5745
+	.byte	23
+	.byte	'Os_ScheduleTableDynType_s',0,12,130,4,16,16,13
+	.byte	'match',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'next',0
+	.word	5750
+	.byte	4,2,35,4,13
+	.byte	'state',0
+	.word	5540
+	.byte	4,2,35,8,13
+	.byte	'config',0
+	.word	499
+	.byte	2,2,35,12,0,3
+	.word	5777
+	.byte	9
+	.word	5870
+.L75:
+	.byte	23
+	.byte	'Os_ScheduleTableType_s',0,12,247,3,16,16,13
+	.byte	'dynamic',0
+	.word	5875
+	.byte	4,2,35,0,13
+	.byte	'counter',0
+	.word	5519
+	.byte	4,2,35,4,13
+	.byte	'repeat',0
+	.word	169
+	.byte	1,2,35,8,13
+	.byte	'config',0
+	.word	499
+	.byte	2,2,35,10,13
+	.byte	'initial',0
+	.word	169
+	.byte	1,2,35,12,13
+	.byte	'access',0
+	.word	169
+	.byte	1,2,35,13,13
+	.byte	'application',0
+	.word	169
+	.byte	1,2,35,14,0,19
+	.byte	'Os_ScheduleTableType',0,12,255,3,3
+	.word	5880
+	.byte	9
+	.word	5880
+	.byte	3
+	.word	6060
+	.byte	9
+	.word	5357
+	.byte	3
+	.word	6070
+	.byte	29
+	.word	3184
+	.byte	29
+	.word	4123
+	.byte	29
+	.word	4020
+	.byte	29
+	.word	4681
+	.byte	29
+	.word	4187
+	.byte	29
+	.word	169
+	.byte	29
+	.word	4681
+	.byte	23
+	.byte	'Os_ControlledCoreType_s',0,12,251,6,16,112,13
+	.byte	'TrapInfo',0
+	.word	2620
+	.byte	8,2,35,0,13
+	.byte	'lock_taskaccess',0
+	.word	6080
+	.byte	4,2,35,8,13
+	.byte	'ReadyTasks',0
+	.word	6085
+	.byte	4,2,35,12,13
+	.byte	'RunningISR',0
+	.word	6090
+	.byte	4,2,35,16,13
+	.byte	'RunningTask',0
+	.word	6095
+	.byte	4,2,35,20,13
+	.byte	'RunningTPMask',0
+	.word	6100
+	.byte	4,2,35,24,13
+	.byte	'CurrentMeteredObject',0
+	.word	3706
+	.byte	4,2,35,28,13
+	.byte	'IdleMeter',0
+	.word	3503
+	.byte	48,2,35,32,13
+	.byte	'AppAccess',0
+	.word	169
+	.byte	1,2,35,80,13
+	.byte	'AppOverride',0
+	.word	6105
+	.byte	1,2,35,81,13
+	.byte	'GetStackValueAdjust',0
+	.word	2791
+	.byte	8,2,35,84,13
+	.byte	'InErrorHook',0
+	.word	169
+	.byte	1,2,35,92,13
+	.byte	'ChainTaskRef',0
+	.word	6110
+	.byte	4,2,35,96,13
+	.byte	'GetStackUsageAdjust',0
+	.word	2791
+	.byte	8,2,35,100,13
+	.byte	'InProtectionHook',0
+	.word	169
+	.byte	1,2,35,108,13
+	.byte	'CoreIsActive',0
+	.word	169
+	.byte	1,2,35,109,13
+	.byte	'InShutdownHook',0
+	.word	169
+	.byte	1,2,35,110,0,19
+	.byte	'Os_ControlledCoreType',0,12,141,7,3
+	.word	6115
+	.byte	3
+	.word	838
+	.byte	9
+	.word	3851
+	.byte	3
+	.word	6571
+	.byte	9
+	.word	4421
+	.byte	3
+	.word	6581
+	.byte	3
+	.word	3503
+	.byte	23
+	.byte	'Os_AnyCoreType_s',0,12,151,7,16,96,13
+	.byte	'DisableAllImask',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'SuspendAllImask',0
+	.word	838
+	.byte	4,2,35,4,13
+	.byte	'SuspendOSImask',0
+	.word	838
+	.byte	4,2,35,8,13
+	.byte	'DisableAllCount',0
+	.word	838
+	.byte	4,2,35,12,13
+	.byte	'SuspendAllCount',0
+	.word	838
+	.byte	4,2,35,16,13
+	.byte	'SuspendOSCount',0
+	.word	838
+	.byte	4,2,35,20,13
+	.byte	'RestartJumpBuf',0
+	.word	2740
+	.byte	68,2,35,24,13
+	.byte	'Restartable',0
+	.word	169
+	.byte	1,2,35,92,0,19
+	.byte	'Os_AnyCoreType',0,12,160,7,3
+	.word	6596
+	.byte	19
+	.byte	'Can_TxObjPriorityClassType',0,13,219,3,16
+	.word	838
+	.byte	23
+	.byte	'Can_TxHwObjectConfigType',0,13,231,3,16,8,13
+	.byte	'MsgObjId',0
+	.word	169
+	.byte	1,2,35,0,13
+	.byte	'HwControllerId',0
+	.word	169
+	.byte	1,2,35,1,13
+	.byte	'TxObjPriorityClass',0
+	.word	838
+	.byte	4,2,35,4,0,19
+	.byte	'Can_TxHwObjectConfigType',0,13,252,3,3
+	.word	6873
+	.byte	23
+	.byte	'Can_RxHwObjectConfigType',0,13,129,4,16,12,13
+	.byte	'MaskRef',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'MsgId',0
+	.word	838
+	.byte	4,2,35,4,13
+	.byte	'MsgObjId',0
+	.word	169
+	.byte	1,2,35,8,13
+	.byte	'HwControllerId',0
+	.word	169
+	.byte	1,2,35,9,0,19
+	.byte	'Can_RxHwObjectConfigType',0,13,147,4,3
+	.word	7009
+	.byte	20,4
+	.word	169
+	.byte	21,3,0,23
+	.byte	'Can_ControllerMOMapConfigType',0,13,181,4,16,4,13
+	.byte	'ControllerMOMap',0
+	.word	7149
+	.byte	4,2,35,0,0,19
+	.byte	'Can_ControllerMOMapConfigType',0,13,184,4,3
+	.word	7158
+	.byte	23
+	.byte	'Can_NPCRValueType',0,13,188,4,16,2,13
+	.byte	'Can_NPCRValue',0
+	.word	499
+	.byte	2,2,35,0,0,19
+	.byte	'Can_NPCRValueType',0,13,191,4,3
+	.word	7259
+	.byte	23
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,194,4,16,8,13
+	.byte	'CanControllerBaudrate',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'CanControllerBaudrateCfg',0
+	.word	499
+	.byte	2,2,35,4,0,19
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,198,4,3
+	.word	7334
+	.byte	9
+	.word	7334
+	.byte	3
+	.word	7499
+	.byte	23
+	.byte	'Can_BaudrateConfigPtrType',0,13,201,4,16,4,13
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	7504
+	.byte	4,2,35,0,0,19
+	.byte	'Can_BaudrateConfigPtrType',0,13,204,4,3
+	.word	7509
+	.byte	23
+	.byte	'Can_EventHandlingType',0,13,226,4,16,4,13
+	.byte	'CanEventType',0
+	.word	7149
+	.byte	4,2,35,0,0,19
+	.byte	'Can_EventHandlingType',0,13,229,4,3
+	.word	7609
+	.byte	19
+	.byte	'Rte_TransformerErrorCode',0,14,130,1,15
+	.word	169
+	.byte	19
+	.byte	'Rte_TransformerClass',0,14,131,1,15
+	.word	169
+	.byte	12,14,168,1,9,12,13
+	.byte	'in',0
+	.word	1198
+	.byte	4,2,35,0,13
+	.byte	'out',0
+	.word	1198
+	.byte	4,2,35,4,13
+	.byte	'used',0
+	.word	499
+	.byte	2,2,35,8,13
+	.byte	'lost_data',0
+	.word	169
+	.byte	1,2,35,10,0,19
+	.byte	'Rte_QDynType',0,14,173,1,3
+	.word	7755
+	.byte	10,14,175,1,9,4,11
+	.byte	'RTE_DRA',0,0,11
+	.byte	'RTE_WOWP',0,1,11
+	.byte	'RTE_TASK',0,2,11
+	.byte	'RTE_ARE',0,3,11
+	.byte	'RTE_EV',0,4,11
+	.byte	'RTE_MSI',0,5,0,19
+	.byte	'Rte_NotificationType',0,14,182,1,3
+	.word	7842
+	.byte	3
+	.word	7755
+	.byte	23
+	.byte	'Rte_QCmnType',0,14,184,1,16,24,13
+	.byte	'dynamic',0
+	.word	7940
+	.byte	4,2,35,0,13
+	.byte	'copy',0
+	.word	169
+	.byte	1,2,35,4,13
+	.byte	'queue_size',0
+	.word	499
+	.byte	2,2,35,6,13
+	.byte	'element_size',0
+	.word	499
+	.byte	2,2,35,8,13
+	.byte	'buffer_start',0
+	.word	1198
+	.byte	4,2,35,12,13
+	.byte	'buffer_end',0
+	.word	1198
+	.byte	4,2,35,16,13
+	.byte	'notification_type',0
+	.word	7842
+	.byte	4,2,35,20,0,19
+	.byte	'Rte_QCmnType',0,14,192,1,3
+	.word	7945
+	.byte	19
+	.byte	'Rte_AlarmRefType',0,14,224,1,32
+	.word	838
+	.byte	19
+	.byte	'Rte_AlarmIndexType',0,14,226,1,32
+	.word	499
+	.byte	20,128,8
+	.word	169
+	.byte	21,255,7,0,19
+	.byte	'Impl_NVM_DstPtrType_1024',0,15,50,15
+	.word	8183
+	.byte	19
+	.byte	'CanIf_u32_impl',0,15,69,16
+	.word	838
+	.byte	19
+	.byte	'CanIf_u16_impl',0,15,71,16
+	.word	499
+	.byte	19
+	.byte	'CanIf_u8_impl',0,15,73,15
+	.word	169
+	.byte	19
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,15,88,15
+	.word	169
+	.byte	19
+	.byte	'CanIf_PduModeType_Enum_impl',0,15,90,15
+	.word	169
+	.byte	12,15,92,9,2,13
+	.byte	'DeviceMode',0
+	.word	169
+	.byte	1,2,35,0,13
+	.byte	'ChannelMode',0
+	.word	169
+	.byte	1,2,35,1,0,19
+	.byte	'CanIf_ControllerStateType_struct_impl',0,15,95,3
+	.word	8374
+	.byte	19
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,15,100,15
+	.word	169
+	.byte	19
+	.byte	'CanSM_boolean_Impl',0,15,120,15
+	.word	169
+	.byte	19
+	.byte	'CanSM_u8_Impl',0,15,123,15
+	.word	169
+	.byte	19
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,15,128,1,15
+	.word	169
+	.byte	19
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,15,132,1,15
+	.word	169
+	.byte	19
+	.byte	'CanSM_u16_Impl',0,15,136,1,16
+	.word	499
+	.byte	19
+	.byte	'CanSM_TimerStateType_Enum_impl',0,15,138,1,15
+	.word	169
+	.byte	12,15,140,1,9,4,13
+	.byte	'cntTick_u16',0
+	.word	499
+	.byte	2,2,35,0,13
+	.byte	'stTimer',0
+	.word	169
+	.byte	1,2,35,2,0,19
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,15,143,1,3
+	.word	8715
+	.byte	19
+	.byte	'Com_impl_u16',0,15,154,1,16
+	.word	499
+	.byte	19
+	.byte	'Com_impl_u8',0,15,157,1,15
+	.word	169
+	.byte	19
+	.byte	'ComM_uint32_Impl',0,15,173,1,16
+	.word	838
+	.byte	19
+	.byte	'ComM_uint16_Impl',0,15,175,1,16
+	.word	499
+	.byte	19
+	.byte	'ComM_uint8_Impl',0,15,177,1,15
+	.word	169
+	.byte	19
+	.byte	'ComM_bool_Impl',0,15,179,1,15
+	.word	169
+	.byte	12,15,181,1,9,24,13
+	.byte	'ChannelState_e',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'LightTimeoutCtr_u32',0
+	.word	838
+	.byte	4,2,35,4,13
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	499
+	.byte	2,2,35,8,13
+	.byte	'ChannelMode_u8',0
+	.word	169
+	.byte	1,2,35,10,13
+	.byte	'BusSmMode_u8',0
+	.word	169
+	.byte	1,2,35,11,13
+	.byte	'UserRequestCtr_u8',0
+	.word	169
+	.byte	1,2,35,12,13
+	.byte	'PassiveRequestState_u8',0
+	.word	169
+	.byte	1,2,35,13,13
+	.byte	'PncRequestCtr_u8',0
+	.word	169
+	.byte	1,2,35,14,13
+	.byte	'InhibitionReqStatus_u8',0
+	.word	169
+	.byte	1,2,35,15,13
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	169
+	.byte	1,2,35,16,13
+	.byte	'DiagnosticRequestState_b',0
+	.word	169
+	.byte	1,2,35,17,13
+	.byte	'CommunicationAllowed_b',0
+	.word	169
+	.byte	1,2,35,18,13
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	169
+	.byte	1,2,35,19,13
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	169
+	.byte	1,2,35,20,13
+	.byte	'NmNetworkModeStatus_b',0
+	.word	169
+	.byte	1,2,35,21,0,19
+	.byte	'ComM_ChannelStruct_Impl',0,15,197,1,3
+	.word	8947
+	.byte	12,15,206,1,9,10,13
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	499
+	.byte	2,2,35,0,13
+	.byte	'LimitToNoComCtr_u16',0
+	.word	499
+	.byte	2,2,35,2,13
+	.byte	'RequestedUserMode_t',0
+	.word	169
+	.byte	1,2,35,4,13
+	.byte	'IndicatedUserMode_t',0
+	.word	169
+	.byte	1,2,35,5,13
+	.byte	'numChannelsInFullCom_u8',0
+	.word	169
+	.byte	1,2,35,6,13
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	169
+	.byte	1,2,35,7,13
+	.byte	'numChannelsInNoCom_u8',0
+	.word	169
+	.byte	1,2,35,8,0,19
+	.byte	'ComM_UserStruct_Impl',0,15,214,1,3
+	.word	9451
+	.byte	19
+	.byte	'Dcm_ConfirmationStatusType',0,15,243,1,15
+	.word	169
+	.byte	19
+	.byte	'Dcm_IOOperationResponseType',0,15,252,1,15
+	.word	169
+	.byte	19
+	.byte	'Dcm_NegativeResponseCodeType',0,15,132,2,15
+	.word	169
+	.byte	19
+	.byte	'Dcm_OpStatusType',0,15,134,2,15
+	.word	169
+	.byte	19
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	15,138,2,15
+	.word	169
+	.byte	19
+	.byte	'Dcm_SecLevelType',0,15,142,2,15
+	.word	169
+	.byte	19
+	.byte	'Dcm_SesCtrlType',0,15,144,2,15
+	.word	169
+	.byte	19
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,15,146,2,15
+	.word	169
+	.byte	19
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,15,150,2,15
+	.word	169
+	.byte	19
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,15,154,2,15
+	.word	169
+	.byte	19
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,15,243,3,34
+	.word	8194
+	.byte	20,128,8
+	.word	169
+	.byte	21,255,7,0,19
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,15,246,3,34
+	.word	8194
+	.byte	19
+	.byte	'Rte_ModeType_DcmDiagnosticSessionControl',0,16,37,15
+	.word	169
+	.byte	19
+	.byte	'Dcm_SrvOpStatusType',0,17,62,15
+	.word	169
+	.byte	19
+	.byte	'Dcm_MsgItemType',0,17,182,2,15
+	.word	169
+	.byte	3
+	.word	169
+	.byte	19
+	.byte	'Dcm_MsgType',0,17,188,2,57
+	.word	10522
+	.byte	19
+	.byte	'Dcm_MsgLenType',0,17,197,2,16
+	.word	838
+	.byte	12,17,206,2,9,4,13
+	.byte	'reqType',0
+	.word	169
+	.byte	1,2,35,0,13
+	.byte	'suppressPosResponse',0
+	.word	169
+	.byte	1,2,35,1,13
+	.byte	'sourceofRequest',0
+	.word	169
+	.byte	1,2,35,2,0,19
+	.byte	'Dcm_MsgAddInfoType',0,17,219,2,2
+	.word	10572
+	.byte	19
+	.byte	'Dcm_IdContextType',0,17,225,2,15
+	.word	169
+	.byte	12,17,238,5,9,32,13
+	.byte	'tx_buffer_pa',0
+	.word	10527
+	.byte	4,2,35,0,13
+	.byte	'rx_mainBuffer_pa',0
+	.word	10527
+	.byte	4,2,35,4,13
+	.byte	'tx_buffer_size_u32',0
+	.word	838
+	.byte	4,2,35,8,13
+	.byte	'rx_buffer_size_u32',0
+	.word	838
+	.byte	4,2,35,12,13
+	.byte	'dataP2TmrAdjust',0
+	.word	838
+	.byte	4,2,35,16,13
+	.byte	'dataP2StarTmrAdjust',0
+	.word	838
+	.byte	4,2,35,20,13
+	.byte	'protocolid_u8',0
+	.word	169
+	.byte	1,2,35,24,13
+	.byte	'sid_tableid_u8',0
+	.word	169
+	.byte	1,2,35,25,13
+	.byte	'premption_level_u8',0
+	.word	169
+	.byte	1,2,35,26,13
+	.byte	'pduinfo_idx_u8',0
+	.word	169
+	.byte	1,2,35,27,13
+	.byte	'nrc21_b',0
+	.word	169
+	.byte	1,2,35,28,13
+	.byte	'sendRespPendTransToBoot',0
+	.word	169
+	.byte	1,2,35,29,0,19
+	.byte	'Dcm_Dsld_protocol_tableType',0,17,143,6,2
+	.word	10705
+	.byte	3
+	.word	169
+	.byte	24,1,1,25
+	.word	169
+	.byte	25
+	.word	499
+	.byte	25
+	.word	499
+	.byte	25
+	.word	169
+	.byte	0,3
+	.word	11061
+	.byte	19
+	.byte	'Dcm_ConfirmationApiType',0,17,145,6,16
+	.word	11085
+	.byte	3
+	.word	169
+	.byte	30
+	.word	169
+	.byte	1,1,25
+	.word	11123
+	.byte	25
+	.word	169
+	.byte	25
+	.word	169
+	.byte	0,3
+	.word	11128
+	.byte	12,17,240,2,9,28,13
+	.byte	'resData',0
+	.word	10527
+	.byte	4,2,35,0,13
+	.byte	'reqData',0
+	.word	10527
+	.byte	4,2,35,4,13
+	.byte	'msgAddInfo',0
+	.word	10572
+	.byte	4,2,35,8,13
+	.byte	'resDataLen',0
+	.word	838
+	.byte	4,2,35,12,13
+	.byte	'reqDataLen',0
+	.word	838
+	.byte	4,2,35,16,13
+	.byte	'resMaxDataLen',0
+	.word	838
+	.byte	4,2,35,20,13
+	.byte	'idContext',0
+	.word	169
+	.byte	1,2,35,24,13
+	.byte	'dcmRxPduId',0
+	.word	499
+	.byte	2,2,35,26,0,3
+	.word	11156
+	.byte	30
+	.word	169
+	.byte	1,1,25
+	.word	169
+	.byte	25
+	.word	11319
+	.byte	25
+	.word	11123
+	.byte	0,3
+	.word	11324
+	.byte	12,17,158,6,9,20,13
+	.byte	'allowed_session_b32',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'allowed_security_b32',0
+	.word	838
+	.byte	4,2,35,4,13
+	.byte	'adrUserSubServiceModeRule_pfct',0
+	.word	11151
+	.byte	4,2,35,8,13
+	.byte	'SubFunc_fp',0
+	.word	11347
+	.byte	4,2,35,12,13
+	.byte	'subservice_id_u8',0
+	.word	169
+	.byte	1,2,35,16,13
+	.byte	'isDspRDTCSubFnc_b',0
+	.word	169
+	.byte	1,2,35,17,0,19
+	.byte	'Dcm_Dsld_SubServiceType',0,17,169,6,2
+	.word	11352
+	.byte	9
+	.word	11352
+	.byte	3
+	.word	11564
+	.byte	30
+	.word	169
+	.byte	1,1,25
+	.word	11123
+	.byte	25
+	.word	169
+	.byte	0,3
+	.word	11574
+	.byte	12,17,186,6,9,36,13
+	.byte	'allowed_session_b32',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'allowed_security_b32',0
+	.word	838
+	.byte	4,2,35,4,13
+	.byte	'service_handler_fp',0
+	.word	11347
+	.byte	4,2,35,8,13
+	.byte	'Service_init_fp',0
+	.word	2879
+	.byte	4,2,35,12,13
+	.byte	'sid_u8',0
+	.word	169
+	.byte	1,2,35,16,13
+	.byte	'subfunction_exist_b',0
+	.word	169
+	.byte	1,2,35,17,13
+	.byte	'servicelocator_b',0
+	.word	169
+	.byte	1,2,35,18,13
+	.byte	'ptr_subservice_table_pcs',0
+	.word	11569
+	.byte	4,2,35,20,13
+	.byte	'num_sf_u8',0
+	.word	169
+	.byte	1,2,35,24,13
+	.byte	'adrUserServiceModeRule_pfct',0
+	.word	11592
+	.byte	4,2,35,28,13
+	.byte	'Dcm_ConfirmationService',0
+	.word	11090
+	.byte	4,2,35,32,0,19
+	.byte	'Dcm_Dsld_ServiceType',0,17,204,6,3
+	.word	11597
+	.byte	3
+	.word	11061
+	.byte	9
+	.word	11597
+	.byte	3
+	.word	11945
+	.byte	12,17,218,6,9,8,13
+	.byte	'ptr_service_table_pcs',0
+	.word	11950
+	.byte	4,2,35,0,13
+	.byte	'num_services_u8',0
+	.word	169
+	.byte	1,2,35,4,13
+	.byte	'nrc_sessnot_supported_u8',0
+	.word	169
+	.byte	1,2,35,5,13
+	.byte	'cdtc_index_u8',0
+	.word	169
+	.byte	1,2,35,6,0,19
+	.byte	'Dcm_Dsld_sid_tableType',0,17,224,6,3
+	.word	11955
+	.byte	12,17,238,6,9,14,13
+	.byte	'protocol_num_u8',0
+	.word	169
+	.byte	1,2,35,0,13
+	.byte	'txpduid_num_u8',0
+	.word	499
+	.byte	2,2,35,2,13
+	.byte	'roetype2_txpdu_u8',0
+	.word	499
+	.byte	2,2,35,4,13
+	.byte	'rdpitype2_txpdu_u8',0
+	.word	499
+	.byte	2,2,35,6,13
+	.byte	'testaddr_u16',0
+	.word	499
+	.byte	2,2,35,8,13
+	.byte	'channel_idx_u8',0
+	.word	169
+	.byte	1,2,35,10,13
+	.byte	'ConnectionIndex_u8',0
+	.word	169
+	.byte	1,2,35,11,13
+	.byte	'NumberOfTxpdu_u8',0
+	.word	169
+	.byte	1,2,35,12,0,19
+	.byte	'Dcm_Dsld_connType',0,17,248,6,3
+	.word	12107
+	.byte	10,17,146,7,9,4,11
+	.byte	'DCM_DSLD_NO_COM_MODE',0,0,11
+	.byte	'DCM_DSLD_SILENT_COM_MODE',0,1,11
+	.byte	'DCM_DSLD_FULL_COM_MODE',0,2,0,19
+	.byte	'Dcm_Dsld_commodeType',0,17,151,7,2
+	.word	12345
+	.byte	12,4,46,9,8,13
+	.byte	'Residual_delay_u32',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'FailedAtm_cnt_u8',0
+	.word	169
+	.byte	1,2,35,4,0,19
+	.byte	'Dcm_Dsp_SecaType',0,4,53,2
+	.word	12457
+	.byte	19
+	.byte	'DcmDspSecurityUsePort',0,4,204,1,2
+	.word	1213
+	.byte	19
+	.byte	'Dcm_Dsp_Security_t',0,4,253,1,2
+	.word	1264
+	.byte	31
+	.byte	'Dcm_Dsp_SecaGlobaltimer_u32',0,4,144,2,31
+	.word	838
+	.byte	1,1
+.L65:
+	.byte	20,8
+	.word	12457
+	.byte	21,0,0,20,40
+	.word	1264
+	.byte	21,0,0,9
+	.word	12649
+	.byte	31
+	.byte	'Dcm_Dsp_Security',0,4,190,2,45
+	.word	12658
+	.byte	1,1,10,18,22,9,4,11
+	.byte	'DCM_NO_BOOT',0,0,11
+	.byte	'DCM_OEM_BOOT',0,1,11
+	.byte	'DCM_SYS_BOOT',0,2,0,19
+	.byte	'Dcm_SessionForBootType',0,18,27,2
+	.word	12691
+	.byte	10,19,192,3,9,4,11
+	.byte	'DCM_READ_OK',0,0,11
+	.byte	'DCM_READ_FAILED',0,1,11
+	.byte	'DCM_READ_PENDING',0,2,11
+	.byte	'DCM_READ_FORCE_RCRRP',0,3,11
+	.byte	'DCM_READ_NOT_AVAILABLE',0,4,0,19
+	.byte	'Dcm_ReadMemoryRet_t',0,19,199,3,3
+	.word	12772
+	.byte	31
+	.byte	'Dcm_SrvOpstatus_u8',0,20,80,28
+	.word	169
+	.byte	1,1,19
+	.byte	'Rte_TaskRefType',0,21,184,1,32
+	.word	4681
+	.byte	19
+	.byte	'Rte_EventRefType',0,21,185,1,32
+	.word	169
+	.byte	19
+	.byte	'Rte_EventType',0,21,186,1,32
+	.word	838
+	.byte	19
+	.byte	'Rte_REActCounterType',0,21,252,1,15
+	.word	169
+	.byte	3
+	.word	169
+	.byte	19
+	.byte	'Rte_REActCounterRefType',0,21,253,1,58
+	.word	13040
+	.byte	12,21,255,1,9,8,13
+	.byte	'task',0
+	.word	12936
+	.byte	4,2,35,0,13
+	.byte	'acnt',0
+	.word	13045
+	.byte	4,2,35,4,0,19
+	.byte	'Rte_REContainerType',0,21,130,2,3
+	.word	13078
+	.byte	9
+	.word	4421
+	.byte	3
+	.word	13142
+	.byte	3
+	.word	169
+	.byte	9
+	.word	13078
+	.byte	3
+	.word	13157
+	.byte	19
+	.byte	'Rte_REContainerRefType',0,21,132,2,60
+	.word	13162
+	.byte	19
+	.byte	'Rte_MSICounterType',0,21,149,2,16
+	.word	499
+	.byte	3
+	.word	499
+	.byte	19
+	.byte	'Rte_MSICounterRefType',0,21,150,2,56
+	.word	13227
+	.byte	19
+	.byte	'Rte_MSIPendingFlagType',0,21,152,2,17
+	.word	169
+	.byte	3
+	.word	169
+	.byte	19
+	.byte	'Rte_MSIPendingFlagRefType',0,21,153,2,60
+	.word	13295
+	.byte	12,21,163,2,9,24,13
+	.byte	'counter',0
+	.word	13232
+	.byte	4,2,35,0,13
+	.byte	'incCounter',0
+	.word	169
+	.byte	1,2,35,4,13
+	.byte	'pending',0
+	.word	13300
+	.byte	4,2,35,8,13
+	.byte	'osTask',0
+	.word	12936
+	.byte	4,2,35,12,13
+	.byte	'acnt',0
+	.word	13045
+	.byte	4,2,35,16,13
+	.byte	'osEvent',0
+	.word	169
+	.byte	1,2,35,20,13
+	.byte	'MSIInit',0
+	.word	499
+	.byte	2,2,35,22,0,19
+	.byte	'Rte_MSITableEntry',0,21,172,2,3
+	.word	13335
+	.byte	3
+	.word	499
+	.byte	3
+	.word	169
+	.byte	19
+	.byte	'Rte_TaskArrayIndex',0,21,179,2,16
+	.word	169
+	.byte	19
+	.byte	'Rte_NrWaitingTasks',0,21,180,2,16
+	.word	169
+	.byte	12,21,182,2,9,4,13
+	.byte	'pending',0
+	.word	169
+	.byte	1,2,35,0,13
+	.byte	'count',0
+	.word	169
+	.byte	1,2,35,1,13
+	.byte	'firstWaitingTask',0
+	.word	169
+	.byte	1,2,35,2,0,19
+	.byte	'Rte_WaitableDatum',0,21,186,2,3
+	.word	13553
+	.byte	3
+	.word	13553
+	.byte	12,21,226,2,9,12,13
+	.byte	'event_id',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'wd',0
+	.word	13645
+	.byte	4,2,35,4,13
+	.byte	'timeout',0
+	.word	838
+	.byte	4,2,35,8,0,19
+	.byte	'Rte_WOWP_NotificationType',0,21,230,2,3
+	.word	13650
+	.byte	9
+	.word	13650
+	.byte	3
+	.word	13739
+	.byte	19
+	.byte	'Rte_WOWP_NotificationRefType',0,21,232,2,66
+	.word	13744
+	.byte	19
+	.byte	'Rte_ARE_NotificationType',0,21,234,2,29
+	.word	13078
+	.byte	23
+	.byte	'Rte_QTaskType',0,21,243,2,16,28,13
+	.byte	'cmn',0
+	.word	7945
+	.byte	24,2,35,0,13
+	.byte	'task',0
+	.word	12936
+	.byte	4,2,35,24,0,19
+	.byte	'Rte_QTaskType',0,21,246,2,3
+	.word	13821
+	.byte	23
+	.byte	'Rte_QREType',0,21,250,2,16,28,13
+	.byte	'cmn',0
+	.word	7945
+	.byte	24,2,35,0,13
+	.byte	're',0
+	.word	13167
+	.byte	4,2,35,24,0,19
+	.byte	'Rte_QREType',0,21,253,2,3
+	.word	13892
+	.byte	9
+	.word	13078
+	.byte	3
+	.word	13957
+	.byte	23
+	.byte	'Rte_QWWPType',0,21,129,3,16,28,13
+	.byte	'cmn',0
+	.word	7945
+	.byte	24,2,35,0,13
+	.byte	'wwp',0
+	.word	13749
+	.byte	4,2,35,24,0,19
+	.byte	'Rte_QWWPType',0,21,132,3,3
+	.word	13967
+	.byte	9
+	.word	13650
+	.byte	3
+	.word	14035
+	.byte	23
+	.byte	'Rte_QEvType',0,21,136,3,16,36,13
+	.byte	'cmn',0
+	.word	7945
+	.byte	24,2,35,0,13
+	.byte	'task',0
+	.word	12936
+	.byte	4,2,35,24,13
+	.byte	'mask',0
+	.word	169
+	.byte	1,2,35,28,13
+	.byte	'acnt',0
+	.word	13045
+	.byte	4,2,35,32,0,19
+	.byte	'Rte_QEvType',0,21,141,3,3
+	.word	14045
+	.byte	23
+	.byte	'Rte_QMSIType',0,21,145,3,16,48,13
+	.byte	'cmn',0
+	.word	7945
+	.byte	24,2,35,0,13
+	.byte	'task',0
+	.word	12936
+	.byte	4,2,35,24,13
+	.byte	'mask',0
+	.word	169
+	.byte	1,2,35,28,13
+	.byte	'acnt',0
+	.word	13045
+	.byte	4,2,35,32,13
+	.byte	'msiCounter',0
+	.word	13232
+	.byte	4,2,35,36,13
+	.byte	'msiPending',0
+	.word	13300
+	.byte	4,2,35,40,13
+	.byte	'msiLimit',0
+	.word	499
+	.byte	2,2,35,44,0,19
+	.byte	'Rte_QMSIType',0,21,153,3,3
+	.word	14140
+	.byte	10,22,21,9,4,11
+	.byte	'DSD_IDLE',0,0,11
+	.byte	'DSD_VERIFY_DIAGNOSTIC_DATA',0,1,11
+	.byte	'DSD_CALL_SERVICE',0,2,11
+	.byte	'DSD_WAITFORTXCONF',0,3,11
+	.byte	'DSD_SENDTXCONF_APPL',0,4,0,19
+	.byte	'Dcm_DsdStatesType_ten',0,22,28,2
+	.word	14295
+	.byte	10,23,215,2,9,4,11
+	.byte	'DCM_DSLD_POS_RESPONSE',0,0,11
+	.byte	'DCM_DSLD_NEG_RESPONSE',0,1,0,19
+	.byte	'Dcm_DsldResponseType_ten',0,23,219,2,2
+	.word	14432
+	.byte	10,24,148,1,9,4,11
+	.byte	'DCM_ROE_CLEARED',0,0,11
+	.byte	'DCM_ROE_STOPPED',0,1,11
+	.byte	'DCM_ROE_STARTED',0,2,0,19
+	.byte	'Dcm_DspRoeEventState_ten',0,24,153,1,2
+	.word	14521
+	.byte	10,24,231,1,9,4,11
+	.byte	'DCM_CONTROLMASK_NO',0,0,11
+	.byte	'DCM_CONTROLMASK_INTERNAL',0,1,11
+	.byte	'DCM_CONTROLMASK_EXTERNAL',0,2,0,19
+	.byte	'Dcm_Dsp_IocbiCtrlMask_ten',0,24,236,1,2
+	.word	14616
+	.byte	10,19,203,1,9,4,11
+	.byte	'DCM_SUPPORT_READ',0,0,11
+	.byte	'DCM_SUPPORT_WRITE',0,1,11
+	.byte	'DCM_SUPPORT_IOCONTROL',0,2,0,30
+	.word	169
+	.byte	1,1,25
+	.word	11123
+	.byte	25
+	.word	499
+	.byte	25
+	.word	14733
+	.byte	0,3
+	.word	14803
+	.byte	12,24,239,1,9,44,13
+	.byte	'dataAllowedSessRead_u32',0
+	.word	838
+	.byte	4,2,35,0,13
+	.byte	'dataAllowedSecRead_u32',0
+	.word	838
+	.byte	4,2,35,4,13
+	.byte	'adrUserReadModeRule_pfct',0
+	.word	14826
+	.byte	4,2,35,8,13
+	.byte	'dataAllowedSessWrite_u32',0
+	.word	838
+	.byte	4,2,35,12,13
+	.byte	'dataAllowedSecWrite_u32',0
+	.word	838
+	.byte	4,2,35,16,13
+	.byte	'adrUserWriteModeRule_pfct',0
+	.word	14826
+	.byte	4,2,35,20,13
+	.byte	'dataSessBitMask_u32',0
+	.word	838
+	.byte	4,2,35,24,13
+	.byte	'dataSecBitMask_u32',0
+	.word	838
+	.byte	4,2,35,28,13
+	.byte	'adrUserControlModeRule_pfct',0
+	.word	14826
+	.byte	4,2,35,32,13
+	.byte	'dataCtrlMask_en',0
+	.word	14616
+	.byte	4,2,35,36,13
+	.byte	'dataCtrlMaskSize_u8',0
+	.word	169
+	.byte	1,2,35,40,13
+	.byte	'dataIocbirst_b',0
+	.word	169
+	.byte	1,2,35,41,13
+	.byte	'statusmaskIOControl_u8',0
+	.word	169
+	.byte	1,2,35,42,0,19
+	.byte	'Dcm_ExtendedDIDConfig_tst',0,24,141,2,3
+	.word	14831
+	.byte	12,24,200,2,9,4,13
+	.byte	'posnSigBit_u16',0
+	.word	499
+	.byte	2,2,35,0,13
+	.byte	'idxDcmDspDatainfo_u16',0
+	.word	499
+	.byte	2,2,35,2,0,19
+	.byte	'Dcm_SignalDIDConfig_tst',0,24,204,2,3
+	.word	15278
+.L66:
+	.byte	10,25,20,9,4,11
+	.byte	'DCM_DSP_SECA_GENSEED',0,0,11
+	.byte	'DCM_DSP_SECA_COMPAREKEY',0,1,11
+	.byte	'DCM_DSP_SECA_PENDING',0,2,0,19
+	.byte	'Dcm_Dsp_SecaStates_ten',0,25,25,2
+	.word	15373
+	.byte	31
+	.byte	'Dcm_DspSecTabIdx_u8',0,25,39,29
+	.word	169
+	.byte	1,1,31
+	.byte	'Dcm_DspSecAccType_u8',0,25,40,29
+	.word	169
+	.byte	1,1,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L26:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32
+	.byte	13,58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,46,1,3,8,32,13
+	.byte	58,15,59,15,57,15,73,19,54,15,39,12,0,0,8,59,0,3,8,0,0,9,38,0,73,19,0,0,10,4,1,58,15,59,15,57,15,11,15
+	.byte	0,0,11,40,0,3,8,28,13,0,0,12,19,1,58,15,59,15,57,15,11,15,0,0,13,13,0,3,8,73,19,11,15,56,9,0,0,14,46,1
+	.byte	49,19,0,0,15,5,0,49,19,0,0,16,46,1,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,17,46,0,3,8
+	.byte	58,15,59,15,57,15,54,15,63,12,60,12,0,0,18,21,0,54,15,0,0,19,22,0,3,8,58,15,59,15,57,15,73,19,0,0,20,1
+	.byte	1,11,15,73,19,0,0,21,33,0,47,15,0,0,22,21,0,54,15,39,12,0,0,23,19,1,3,8,58,15,59,15,57,15,11,15,0,0,24
+	.byte	21,1,54,15,39,12,0,0,25,5,0,73,19,0,0,26,23,1,58,15,59,15,57,15,11,15,0,0,27,4,1,3,8,58,15,59,15,57,15
+	.byte	11,15,0,0,28,21,0,73,19,54,15,39,12,0,0,29,53,0,73,19,0,0,30,21,1,73,19,54,15,39,12,0,0,31,52,0,3,8,58
+	.byte	15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L27:
+	.word	.L77-.L76
+.L76:
+	.half	3
+	.word	.L79-.L78
+.L78:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits8.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits16.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits32.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Seca_Pub.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\DcmAppl.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Dcm_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmCore_DslDsd_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Dsc_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Uds_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\Dcm.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\Dsd\\Dcm_Dsd.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_Prot.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Uds_Prot.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_Priv.h',0,0,0,0,0
+.L79:
+.L77:
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_SecaPowerOnDelayIni')
+	.sect	'.debug_info'
+.L28:
+	.word	297
+	.half	3
+	.word	.L29
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L31,.L30
+	.byte	2
+	.word	.L24
+	.byte	3
+	.byte	'Dcm_Dsp_SecaPowerOnDelayIni',0,1,188,1,22,1,1,1
+	.word	.L21,.L51,.L20
+	.byte	4
+	.word	.L21,.L51
+	.byte	5
+	.byte	'idxSecTab_qu8',0,1,190,1,33
+	.word	.L52,.L53
+	.byte	5
+	.byte	'dataDelayOnPowerOn_u32',0,1,191,1,28
+	.word	.L54,.L55
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_SecaPowerOnDelayIni')
+	.sect	'.debug_abbrev'
+.L29:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Dsp_SecaPowerOnDelayIni')
+	.sect	'.debug_line'
+.L30:
+	.word	.L81-.L80
+.L80:
+	.half	3
+	.word	.L83-.L82
+.L82:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c',0,0,0,0,0
+.L83:
+	.byte	5,23,7,0,5,2
+	.word	.L21
+	.byte	3,192,1,1,5,65,9
+	.half	.L72-.L21
+	.byte	1,5,62,9
+	.half	.L8-.L72
+	.byte	3,5,1,5,78,9
+	.half	.L84-.L8
+	.byte	1,5,93,9
+	.half	.L85-.L84
+	.byte	1,5,12,9
+	.half	.L86-.L85
+	.byte	3,125,1,5,24,9
+	.half	.L87-.L86
+	.byte	1,5,39,9
+	.half	.L88-.L87
+	.byte	1,5,91,9
+	.half	.L89-.L88
+	.byte	1,5,9,9
+	.half	.L90-.L89
+	.byte	1,5,45,7,9
+	.half	.L91-.L90
+	.byte	3,3,1,5,13,9
+	.half	.L92-.L91
+	.byte	1,5,59,7,9
+	.half	.L93-.L92
+	.byte	3,1,1,5,112,9
+	.half	.L10-.L93
+	.byte	3,127,1,5,13,9
+	.half	.L11-.L10
+	.byte	3,2,1,5,79,7,9
+	.half	.L94-.L11
+	.byte	3,5,1,5,62,9
+	.half	.L95-.L94
+	.byte	3,1,1,5,18,9
+	.half	.L73-.L95
+	.byte	3,2,1,5,46,9
+	.half	.L96-.L73
+	.byte	1,5,64,9
+	.half	.L97-.L96
+	.byte	3,127,1,5,87,9
+	.half	.L98-.L97
+	.byte	3,123,1,5,66,9
+	.half	.L12-.L98
+	.byte	3,11,1,5,64,9
+	.half	.L99-.L12
+	.byte	1,5,13,9
+	.half	.L13-.L99
+	.byte	3,125,1,9
+	.half	.L9-.L13
+	.byte	3,8,1,5,85,7,9
+	.half	.L100-.L9
+	.byte	3,3,1,5,49,9
+	.half	.L101-.L100
+	.byte	3,2,1,5,64,9
+	.half	.L74-.L101
+	.byte	3,1,1,5,91,9
+	.half	.L102-.L74
+	.byte	3,127,1,5,66,9
+	.half	.L15-.L102
+	.byte	3,5,1,5,64,9
+	.half	.L103-.L15
+	.byte	1,5,79,9
+	.half	.L14-.L103
+	.byte	3,93,1,5,65,9
+	.half	.L7-.L14
+	.byte	1,5,5,7,9
+	.half	.L104-.L7
+	.byte	3,39,1,5,1,9
+	.half	.L17-.L104
+	.byte	3,1,1,7,9
+	.half	.L32-.L17
+	.byte	0,1,1
+.L81:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Dsp_SecaPowerOnDelayIni')
+	.sect	'.debug_ranges'
+.L31:
+	.word	-1,.L21,0,.L32-.L21,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_SecaSessIni')
+	.sect	'.debug_info'
+.L33:
+	.word	225
+	.half	3
+	.word	.L34
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L36,.L35
+	.byte	2
+	.word	.L24
+	.byte	3
+	.byte	'Dcm_Dsp_SecaSessIni',0,1,243,1,22,1,1,1
+	.word	.L23,.L56,.L22
+	.byte	4
+	.word	.L23,.L56
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_SecaSessIni')
+	.sect	'.debug_abbrev'
+.L34:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Dsp_SecaSessIni')
+	.sect	'.debug_line'
+.L35:
+	.word	.L106-.L105
+.L105:
+	.half	3
+	.word	.L108-.L107
+.L107:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c',0,0,0,0,0
+.L108:
+	.byte	5,5,7,0,5,2
+	.word	.L23
+	.byte	3,245,1,1,5,26,9
+	.half	.L109-.L23
+	.byte	1,5,24,9
+	.half	.L110-.L109
+	.byte	1,5,5,9
+	.half	.L111-.L110
+	.byte	3,3,1,5,28,9
+	.half	.L112-.L111
+	.byte	1,5,26,9
+	.half	.L113-.L112
+	.byte	1,5,5,9
+	.half	.L114-.L113
+	.byte	3,2,1,5,28,9
+	.half	.L115-.L114
+	.byte	1,5,26,9
+	.half	.L116-.L115
+	.byte	1,5,5,9
+	.half	.L117-.L116
+	.byte	3,2,1,5,28,9
+	.half	.L118-.L117
+	.byte	1,5,26,9
+	.half	.L119-.L118
+	.byte	1,5,1,9
+	.half	.L120-.L119
+	.byte	3,2,1,7,9
+	.half	.L37-.L120
+	.byte	0,1,1
+.L106:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Dsp_SecaSessIni')
+	.sect	'.debug_ranges'
+.L36:
+	.word	-1,.L23,0,.L37-.L23,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_SecaIni')
+	.sect	'.debug_info'
+.L38:
+	.word	333
+	.half	3
+	.word	.L39
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L41,.L40
+	.byte	2
+	.word	.L24
+	.byte	3
+	.byte	'Dcm_Dsp_SecaIni',0,1,43,22,1,1,1
+	.word	.L19,.L57,.L18
+	.byte	4
+	.word	.L19,.L57
+	.byte	5
+	.byte	'ptrSecaFnc',0,1,48,44
+	.word	.L58,.L59
+	.byte	5
+	.byte	'ptrSecurityConfig',0,1,49,59
+	.word	.L60,.L61
+	.byte	5
+	.byte	'dataNegRespCode_u8',0,1,50,49
+	.word	.L62,.L63
+	.byte	5
+	.byte	'dataSecLevel_u8',0,1,53,39
+	.word	.L62,.L64
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_SecaIni')
+	.sect	'.debug_abbrev'
+.L39:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Dsp_SecaIni')
+	.sect	'.debug_line'
+.L40:
+	.word	.L122-.L121
+.L121:
+	.half	3
+	.word	.L124-.L123
+.L123:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c',0,0,0,0,0
+.L124:
+	.byte	5,22,7,0,5,2
+	.word	.L19
+	.byte	3,42,1,5,26,9
+	.half	.L67-.L19
+	.byte	3,14,1,5,24,9
+	.half	.L125-.L67
+	.byte	1,5,8,9
+	.half	.L126-.L125
+	.byte	3,4,1,5,5,9
+	.half	.L127-.L126
+	.byte	1,5,46,7,9
+	.half	.L128-.L127
+	.byte	3,3,1,5,45,9
+	.half	.L129-.L128
+	.byte	1,5,29,9
+	.half	.L130-.L129
+	.byte	1,5,45,9
+	.half	.L131-.L130
+	.byte	1,5,12,9
+	.half	.L68-.L131
+	.byte	3,2,1,5,9,9
+	.half	.L132-.L68
+	.byte	1,5,43,7,9
+	.half	.L133-.L132
+	.byte	3,3,1,5,33,9
+	.half	.L69-.L133
+	.byte	3,44,1,5,13,9
+	.half	.L134-.L69
+	.byte	1,5,38,7,9
+	.half	.L135-.L134
+	.byte	3,3,1,5,58,9
+	.half	.L136-.L135
+	.byte	1,5,62,9
+	.half	.L137-.L136
+	.byte	1,9
+	.half	.L70-.L137
+	.byte	3,5,1,9
+	.half	.L138-.L70
+	.byte	3,1,1,5,45,9
+	.half	.L139-.L138
+	.byte	3,1,1,5,54,9
+	.half	.L140-.L139
+	.byte	1,5,63,9
+	.half	.L141-.L140
+	.byte	1,5,75,9
+	.half	.L142-.L141
+	.byte	1,5,12,9
+	.half	.L3-.L142
+	.byte	3,5,1,5,9,9
+	.half	.L143-.L3
+	.byte	1,5,43,7,9
+	.half	.L144-.L143
+	.byte	3,3,1,5,33,9
+	.half	.L71-.L144
+	.byte	3,23,1,5,13,9
+	.half	.L145-.L71
+	.byte	1,5,77,7,9
+	.half	.L146-.L145
+	.byte	3,4,1,5,92,9
+	.half	.L147-.L146
+	.byte	1,5,17,9
+	.half	.L148-.L147
+	.byte	3,1,1,5,29,9
+	.half	.L149-.L148
+	.byte	1,5,30,9
+	.half	.L2-.L149
+	.byte	3,11,1,5,28,9
+	.half	.L150-.L2
+	.byte	1,5,24,9
+	.half	.L151-.L150
+	.byte	3,3,1,5,1,9
+	.half	.L152-.L151
+	.byte	3,2,1,7,9
+	.half	.L42-.L152
+	.byte	0,1,1
+.L122:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Dsp_SecaIni')
+	.sect	'.debug_ranges'
+.L41:
+	.word	-1,.L19,0,.L42-.L19,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_Seca')
+	.sect	'.debug_info'
+.L43:
+	.word	195
+	.half	3
+	.word	.L44
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L24
+	.byte	3
+	.byte	'Dcm_Dsp_Seca',0,6,13,34
+	.word	.L65
+	.byte	1,5,3
+	.word	Dcm_Dsp_Seca
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_Seca')
+	.sect	'.debug_abbrev'
+.L44:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_DspSecaOpStatus_u8')
+	.sect	'.debug_info'
+.L45:
+	.word	205
+	.half	3
+	.word	.L46
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L24
+	.byte	3
+	.byte	'Dcm_DspSecaOpStatus_u8',0,6,28,33
+	.word	.L62
+	.byte	1,5,3
+	.word	Dcm_DspSecaOpStatus_u8
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_DspSecaOpStatus_u8')
+	.sect	'.debug_abbrev'
+.L46:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_DspSecaStatus_en')
+	.sect	'.debug_info'
+.L47:
+	.word	203
+	.half	3
+	.word	.L48
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L24
+	.byte	3
+	.byte	'Dcm_DspSecaStatus_en',0,6,18,38
+	.word	.L66
+	.byte	1,5,3
+	.word	Dcm_DspSecaStatus_en
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_DspSecaStatus_en')
+	.sect	'.debug_abbrev'
+.L48:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_DspChgSecLevel_b')
+	.sect	'.debug_info'
+.L49:
+	.word	203
+	.half	3
+	.word	.L50
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Seca_SecurityIni.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L24
+	.byte	3
+	.byte	'Dcm_DspChgSecLevel_b',0,6,23,24
+	.word	.L62
+	.byte	1,5,3
+	.word	Dcm_DspChgSecLevel_b
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_DspChgSecLevel_b')
+	.sect	'.debug_abbrev'
+.L50:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Dsp_SecaIni')
+	.sect	'.debug_loc'
+.L18:
+	.word	-1,.L19,0,.L67-.L19
+	.half	2
+	.byte	138,0
+	.word	.L67-.L19,.L57-.L19
+	.half	2
+	.byte	138,8
+	.word	.L57-.L19,.L57-.L19
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L63:
+	.word	-1,.L19,0,.L57-.L19
+	.half	2
+	.byte	145,120
+	.word	0,0
+.L64:
+	.word	-1,.L19,.L70-.L19,.L3-.L19
+	.half	1
+	.byte	84
+	.word	0,0
+.L59:
+	.word	-1,.L19,.L69-.L19,.L3-.L19
+	.half	1
+	.byte	98
+	.word	.L71-.L19,.L2-.L19
+	.half	1
+	.byte	98
+	.word	0,0
+.L61:
+	.word	-1,.L19,.L68-.L19,.L2-.L19
+	.half	1
+	.byte	111
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Dsp_SecaPowerOnDelayIni')
+	.sect	'.debug_loc'
+.L20:
+	.word	-1,.L21,0,.L51-.L21
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L55:
+	.word	-1,.L21,.L73-.L21,.L12-.L21
+	.half	1
+	.byte	82
+	.word	.L74-.L21,.L15-.L21
+	.half	1
+	.byte	82
+	.word	0,0
+.L53:
+	.word	-1,.L21,.L72-.L21,.L51-.L21
+	.half	1
+	.byte	88
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Dsp_SecaSessIni')
+	.sect	'.debug_loc'
+.L22:
+	.word	-1,.L23,0,.L56-.L23
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L153:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Dsp_SecaIni')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L153,.L19,.L57-.L19
+	.byte	4
+	.word	(.L67-.L19)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L57-.L67)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Dsp_SecaPowerOnDelayIni')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L153,.L21,.L51-.L21
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Dsp_SecaSessIni')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L153,.L23,.L56-.L23
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   256  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   257  #define DCM_STOP_SEC_CODE /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   258  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   259  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   260  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Seca_SecurityIni.c	   261  #endif
+
+	; Module end

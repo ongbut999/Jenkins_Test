@@ -1,0 +1,368 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc18648a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\Integration\\BSW\\Xcp_GetId.src Integration\\BSW\\Src\\Xcp_GetId.c"
+	.compiler_name		"ctc"
+	;source	'Integration\\BSW\\Src\\Xcp_GetId.c'
+
+	
+$TC16X
+	
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L3:
+	.word	2528
+	.half	3
+	.word	.L4
+	.byte	4
+.L2:
+	.byte	1
+	.byte	'Integration\\BSW\\Src\\Xcp_GetId.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L5
+	.byte	2,1,3
+	.word	131
+	.byte	4
+	.byte	'__codeptr',0,1,1,1
+	.word	133
+	.byte	5
+	.byte	'unsigned char',0,1,8,4
+	.byte	'uint8',0,2,81,25
+	.word	156
+	.byte	5
+	.byte	'unsigned short int',0,2,7,4
+	.byte	'uint16',0,2,91,25
+	.word	187
+	.byte	5
+	.byte	'unsigned int',0,4,7,4
+	.byte	'uint32',0,2,106,24
+	.word	224
+	.byte	4
+	.byte	'boolean',0,2,127,25
+	.word	156
+	.byte	4
+	.byte	'Std_ReturnType',0,3,199,1,15
+	.word	156
+	.byte	4
+	.byte	'PduLengthType',0,4,26,19
+	.word	187
+	.byte	6,5,113,9,4,7
+	.byte	'TP_DATACONF',0,0,7
+	.byte	'TP_DATARETRY',0,1,7
+	.byte	'TP_CONFPENDING',0,2,0,4
+	.byte	'TpDataStateType',0,5,118,3
+	.word	317
+	.byte	6,6,225,1,9,4,7
+	.byte	'XCP_STATE_DISCONNECTED',0,0,7
+	.byte	'XCP_STATE_DISCONNECTING',0,1,7
+	.byte	'XCP_STATE_CONNECTED',0,2,7
+	.byte	'XCP_STATE_RESUME',0,3,7
+	.byte	'XCP_STATE_DISABLED',0,240,1,0,4
+	.byte	'Xcp_State_t',0,6,231,1,2
+	.word	393
+	.byte	4
+	.byte	'Xcp_AddrValue',0,6,165,3,23
+	.word	224
+	.byte	4
+	.byte	'Xcp_PduIdType',0,6,174,3,15
+	.word	156
+	.byte	6,6,223,3,9,4,7
+	.byte	'XCP_DAQ_NO_OVERLOAD_INDICATION',0,0,7
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_PID',0,1,7
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_EVENT',0,2,0,4
+	.byte	'Xcp_Overload_t',0,6,228,3,2
+	.word	581
+	.byte	6,6,233,3,9,4,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_ABSOLUTE',0,1,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_BYTE',0,2,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD',0,3,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD_ALIGNED',0,4,0,4
+	.byte	'Xcp_IdField_t',0,6,239,3,2
+	.word	715
+	.byte	6,6,242,3,9,4,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_DEFAULT',0,0,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_16',0,1,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_32',0,2,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_64',0,3,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_ALIGNMENT',0,4,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_MAX_ENTRY_SIZE',0,5,0,4
+	.byte	'Xcp_OdtOptimizationType_t',0,6,250,3,2
+	.word	932
+	.byte	6,6,253,3,9,4,7
+	.byte	'XCP_CONSISTENCY_ODT',0,0,7
+	.byte	'XCP_CONSISTENCY_DAQ',0,1,7
+	.byte	'XCP_CONSISTENCY_EVENT',0,2,7
+	.byte	'XCP_CONSISTENCY_NONE',0,3,0,4
+	.byte	'Xcp_Consistency_t',0,6,131,4,2
+	.word	1208
+	.byte	6,6,134,4,9,4,7
+	.byte	'XCP_TIMESTAMP_TYPE_NO_TIME_STAMP',0,0,7
+	.byte	'XCP_TIMESTAMP_TYPE_ONE_BYTE',0,1,7
+	.byte	'XCP_TIMESTAMP_TYPE_TWO_BYTE',0,2,7
+	.byte	'XCP_TIMESTAMP_TYPE_FOUR_BYTE',0,4,0,4
+	.byte	'Xcp_Timestamp_t',0,6,140,4,2
+	.word	1333
+	.byte	3
+	.word	156
+	.byte	8,5,71,9,8,9
+	.byte	'SduDataPtr',0
+	.word	1491
+	.byte	4,2,35,0,9
+	.byte	'SduLength',0
+	.word	187
+	.byte	2,2,35,4,0,10
+	.word	1496
+	.byte	3
+	.word	1541
+	.byte	11
+	.word	156
+	.byte	1,1,12
+	.word	1546
+	.byte	12
+	.word	156
+	.byte	12
+	.word	156
+	.byte	0,3
+	.word	1551
+	.byte	13,1,1,12
+	.word	156
+	.byte	12
+	.word	156
+	.byte	0,3
+	.word	1579
+	.byte	13,1,1,12
+	.word	156
+	.byte	0,3
+	.word	1598
+	.byte	11
+	.word	156
+	.byte	1,1,12
+	.word	156
+	.byte	0,3
+	.word	1612
+	.byte	3
+	.word	1496
+	.byte	13,1,1,12
+	.word	1546
+	.byte	12
+	.word	1630
+	.byte	12
+	.word	156
+	.byte	0,3
+	.word	1635
+	.byte	11
+	.word	156
+	.byte	1,1,12
+	.word	156
+	.byte	12
+	.word	187
+	.byte	12
+	.word	156
+	.byte	0,3
+	.word	1659
+	.byte	8,7,164,1,9,56,9
+	.byte	'TLTransmit_pfct',0
+	.word	1574
+	.byte	4,2,35,0,9
+	.byte	'TLInit_pfct',0
+	.word	1593
+	.byte	4,2,35,4,9
+	.byte	'TLConnect_pfct',0
+	.word	1607
+	.byte	4,2,35,8,9
+	.byte	'TLDisconnect_pfct',0
+	.word	1625
+	.byte	4,2,35,12,9
+	.byte	'TLTransportLayerCmd_pfct',0
+	.word	1654
+	.byte	4,2,35,16,9
+	.byte	'TLGetTxPduId_pfct',0
+	.word	1682
+	.byte	4,2,35,20,9
+	.byte	'MaxCto_u8',0
+	.word	156
+	.byte	1,2,35,24,9
+	.byte	'MaxDto_u16',0
+	.word	187
+	.byte	2,2,35,26,9
+	.byte	'TimestampType_en',0
+	.word	1333
+	.byte	4,2,35,28,9
+	.byte	'IdFieldType_en',0
+	.word	715
+	.byte	4,2,35,32,9
+	.byte	'OverloadType_en',0
+	.word	581
+	.byte	4,2,35,36,9
+	.byte	'OdtOptimizationType_en',0
+	.word	932
+	.byte	4,2,35,40,9
+	.byte	'Consistency_en',0
+	.word	1208
+	.byte	4,2,35,44,9
+	.byte	'PdRam_u32',0
+	.word	224
+	.byte	4,2,35,48,9
+	.byte	'EdRam_u32',0
+	.word	224
+	.byte	4,2,35,52,0,4
+	.byte	'Xcp_PL_TL_Cfg_t',0,7,184,1,2
+	.word	1687
+	.byte	6,7,188,1,9,4,7
+	.byte	'XCP_RAMSECTION_INVALID',0,0,7
+	.byte	'XCP_RAMSECTION_PD',0,1,7
+	.byte	'XCP_RAMSECTION_ED',0,2,0,4
+	.byte	'Xcp_RamSectionType_t',0,7,193,1,2
+	.word	2085
+	.byte	8,7,195,1,9,12,9
+	.byte	'DaqRamPtr_pu8',0
+	.word	1491
+	.byte	4,2,35,0,9
+	.byte	'DaqRamTotalSize_u32',0
+	.word	224
+	.byte	4,2,35,4,9
+	.byte	'RamSectionType_en',0
+	.word	2085
+	.byte	4,2,35,8,0,4
+	.byte	'Xcp_DaqRamSection_Cfg_t',0,7,200,1,2
+	.word	2187
+	.byte	8,7,230,1,9,4,9
+	.byte	'EventChannelDirection_u8',0
+	.word	156
+	.byte	1,2,35,0,9
+	.byte	'EventChannelTimeCycle_u8',0
+	.word	156
+	.byte	1,2,35,1,9
+	.byte	'EventChannelTimeUnit_u8',0
+	.word	156
+	.byte	1,2,35,2,9
+	.byte	'EventChannelPriority_u8',0
+	.word	156
+	.byte	1,2,35,3,0,4
+	.byte	'Xcp_EventChannel_Cfg_t',0,7,236,1,2
+	.word	2306
+	.byte	5
+	.byte	'unsigned long long int',0,8,7,4
+	.byte	'rba_BswSrv_uint64',0,8,66,28
+	.word	2479
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L4:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,21,0,54,15,0,0,3,15,0,73,19,0,0,4,22,0,3,8,58,15,59,15
+	.byte	57,15,73,19,0,0,5,36,0,3,8,11,15,62,15,0,0,6,4,1,58,15,59,15,57,15,11,15,0,0,7,40,0,3,8,28,13,0,0,8,19
+	.byte	1,58,15,59,15,57,15,11,15,0,0,9,13,0,3,8,73,19,11,15,56,9,0,0,10,38,0,73,19,0,0,11,21,1,73,19,54,15,39
+	.byte	12,0,0,12,5,0,73,19,0,0,13,21,1,54,15,39,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L5:
+	.word	.L7-.L6
+.L6:
+	.half	3
+	.word	.L9-.L8
+.L8:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Integration\\BSW\\Src\\Xcp_GetId.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\Xcp_Cfg.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0,0
+.L9:
+.L7:
+
+; Integration\BSW\Src\Xcp_GetId.c	     1  /*
+; Integration\BSW\Src\Xcp_GetId.c	     2   * This is a template file. It defines integration functions necessary to complete RTA-BSW.
+; Integration\BSW\Src\Xcp_GetId.c	     3   * The integrator must complete the templates before deploying software containing functions defined in this file.
+; Integration\BSW\Src\Xcp_GetId.c	     4   * Once templates have been completed, the integrator should delete the #error line.
+; Integration\BSW\Src\Xcp_GetId.c	     5   * Note: The integrator is responsible for updates made to this file.
+; Integration\BSW\Src\Xcp_GetId.c	     6   *
+; Integration\BSW\Src\Xcp_GetId.c	     7   * To remove the following error define the macro NOT_READY_FOR_TESTING_OR_DEPLOYMENT with a compiler option (e.g. -D NOT_READY_FOR_TESTING_OR_DEPLOYMENT)
+; Integration\BSW\Src\Xcp_GetId.c	     8   * The removal of the error only allows the user to proceed with the building phase
+; Integration\BSW\Src\Xcp_GetId.c	     9   */
+; Integration\BSW\Src\Xcp_GetId.c	    10  
+; Integration\BSW\Src\Xcp_GetId.c	    11  
+; Integration\BSW\Src\Xcp_GetId.c	    12  
+; Integration\BSW\Src\Xcp_GetId.c	    13  
+; Integration\BSW\Src\Xcp_GetId.c	    14  /***************************************************************************************************
+; Integration\BSW\Src\Xcp_GetId.c	    15  * Includes
+; Integration\BSW\Src\Xcp_GetId.c	    16  ***************************************************************************************************/
+; Integration\BSW\Src\Xcp_GetId.c	    17  #include "Xcp_Cbk.h"
+; Integration\BSW\Src\Xcp_GetId.c	    18  
+; Integration\BSW\Src\Xcp_GetId.c	    19  
+; Integration\BSW\Src\Xcp_GetId.c	    20  /***************************************************************************************************
+; Integration\BSW\Src\Xcp_GetId.c	    21  * Variables
+; Integration\BSW\Src\Xcp_GetId.c	    22  ***************************************************************************************************/
+; Integration\BSW\Src\Xcp_GetId.c	    23  #if (XCP_CMD_GET_ID_AVAILABLE == STD_ON)
+; Integration\BSW\Src\Xcp_GetId.c	    24  static uint8 Xcp_SlaveIdType0_au8[] = {0x54,0x65,0x78,0x74}; /* Text */ /* Length = 4 */
+; Integration\BSW\Src\Xcp_GetId.c	    25  static uint8 Xcp_SlaveIdType1_au8[] = {0x41,0x32,0x4C,0x5F,0x66,0x69,0x6C,0x65,0x6E,0x61,0x6D,0x65,0x5F,0x77,0x6F,0x5F,0x70,0x61,0x74,0x68}; /* A2L_filename_wo_path */ /* Length = 20 */
+; Integration\BSW\Src\Xcp_GetId.c	    26  #endif /* (XCP_CMD_GET_ID_AVAILABLE == STD_ON) */
+; Integration\BSW\Src\Xcp_GetId.c	    27  
+; Integration\BSW\Src\Xcp_GetId.c	    28  
+; Integration\BSW\Src\Xcp_GetId.c	    29  /***************************************************************************************************
+; Integration\BSW\Src\Xcp_GetId.c	    30  * Functions
+; Integration\BSW\Src\Xcp_GetId.c	    31  ***************************************************************************************************/
+; Integration\BSW\Src\Xcp_GetId.c	    32  /* ------------------------------------------------------------------------ */
+; Integration\BSW\Src\Xcp_GetId.c	    33  /* Begin section for code */
+; Integration\BSW\Src\Xcp_GetId.c	    34  
+; Integration\BSW\Src\Xcp_GetId.c	    35  #define XCP_START_SEC_CALLOUT_CODE
+; Integration\BSW\Src\Xcp_GetId.c	    36  #include "Xcp_MemMap.h"
+; Integration\BSW\Src\Xcp_GetId.c	    37  
+; Integration\BSW\Src\Xcp_GetId.c	    38  #if (XCP_CMD_GET_ID_AVAILABLE == STD_ON)
+; Integration\BSW\Src\Xcp_GetId.c	    39  /**
+; Integration\BSW\Src\Xcp_GetId.c	    40  ****************************************************************************************************
+; Integration\BSW\Src\Xcp_GetId.c	    41  Function is called when command GET_ID is requested by master.
+; Integration\BSW\Src\Xcp_GetId.c	    42  \param[in]  IdType            Identification Type from CMD [0..4 (0..7 for Xcp v1.4), 128..255]
+; Integration\BSW\Src\Xcp_GetId.c	    43  \param[out] AddrPtr           Pointer to the address where identification shall be stored
+; Integration\BSW\Src\Xcp_GetId.c	    44  \param[in]  ProtocolLayerId   Protocol layer id
+; Integration\BSW\Src\Xcp_GetId.c	    45  \return     Length of identification
+; Integration\BSW\Src\Xcp_GetId.c	    46  \retval     0  Id is not supported
+; Integration\BSW\Src\Xcp_GetId.c	    47  ***************************************************************************************************/
+; Integration\BSW\Src\Xcp_GetId.c	    48  uint32 XcpAppl_GetIdSlave(uint8 IdType, Xcp_AdrPtr* Address, uint8 ProtocolLayerId)
+; Integration\BSW\Src\Xcp_GetId.c	    49  {
+; Integration\BSW\Src\Xcp_GetId.c	    50    /*-----------------------------------------------------------------*/
+; Integration\BSW\Src\Xcp_GetId.c	    51    /* This function is project specific and shall be totally reworked */
+; Integration\BSW\Src\Xcp_GetId.c	    52    /* As an example identification type 0 and 1 is implemented        */
+; Integration\BSW\Src\Xcp_GetId.c	    53    /*-----------------------------------------------------------------*/
+; Integration\BSW\Src\Xcp_GetId.c	    54  
+; Integration\BSW\Src\Xcp_GetId.c	    55    uint32 IdLength = 0;
+; Integration\BSW\Src\Xcp_GetId.c	    56  
+; Integration\BSW\Src\Xcp_GetId.c	    57    /* Remove when parameter used */
+; Integration\BSW\Src\Xcp_GetId.c	    58    XCP_PARAM_UNUSED(ProtocolLayerId);
+; Integration\BSW\Src\Xcp_GetId.c	    59  
+; Integration\BSW\Src\Xcp_GetId.c	    60    /* Check if not null pointer */
+; Integration\BSW\Src\Xcp_GetId.c	    61    if(Address != NULL_PTR)
+; Integration\BSW\Src\Xcp_GetId.c	    62    {
+; Integration\BSW\Src\Xcp_GetId.c	    63      if(IdType == 0)
+; Integration\BSW\Src\Xcp_GetId.c	    64      {
+; Integration\BSW\Src\Xcp_GetId.c	    65        /* Set type0 address and length */
+; Integration\BSW\Src\Xcp_GetId.c	    66        *Address = Xcp_SlaveIdType0_au8;
+; Integration\BSW\Src\Xcp_GetId.c	    67        IdLength = sizeof(Xcp_SlaveIdType0_au8);
+; Integration\BSW\Src\Xcp_GetId.c	    68      }
+; Integration\BSW\Src\Xcp_GetId.c	    69      else if(IdType == 1u)
+; Integration\BSW\Src\Xcp_GetId.c	    70      {
+; Integration\BSW\Src\Xcp_GetId.c	    71        /* Set type1 address and length */
+; Integration\BSW\Src\Xcp_GetId.c	    72        *Address = Xcp_SlaveIdType1_au8;
+; Integration\BSW\Src\Xcp_GetId.c	    73        IdLength = sizeof(Xcp_SlaveIdType1_au8);
+; Integration\BSW\Src\Xcp_GetId.c	    74      }
+; Integration\BSW\Src\Xcp_GetId.c	    75      else
+; Integration\BSW\Src\Xcp_GetId.c	    76      {
+; Integration\BSW\Src\Xcp_GetId.c	    77        /* IdLength = 0 for not supported Ids already set */
+; Integration\BSW\Src\Xcp_GetId.c	    78      }
+; Integration\BSW\Src\Xcp_GetId.c	    79    }
+; Integration\BSW\Src\Xcp_GetId.c	    80    return IdLength;
+; Integration\BSW\Src\Xcp_GetId.c	    81  }
+; Integration\BSW\Src\Xcp_GetId.c	    82  #endif /* (XCP_CMD_GET_ID_AVAILABLE == STD_ON) */
+; Integration\BSW\Src\Xcp_GetId.c	    83  
+; Integration\BSW\Src\Xcp_GetId.c	    84  /* ------------------------------------------------------------------------ */
+; Integration\BSW\Src\Xcp_GetId.c	    85  /* End section for code */
+; Integration\BSW\Src\Xcp_GetId.c	    86  
+; Integration\BSW\Src\Xcp_GetId.c	    87  #define XCP_STOP_SEC_CALLOUT_CODE
+; Integration\BSW\Src\Xcp_GetId.c	    88  #include "Xcp_MemMap.h"
+; Integration\BSW\Src\Xcp_GetId.c	    89  
+; Integration\BSW\Src\Xcp_GetId.c	    90  
+; Integration\BSW\Src\Xcp_GetId.c	    91  
+
+	; Module end

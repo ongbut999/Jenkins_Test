@@ -1,0 +1,149 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc18728a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\Integration\\BSW\\DcmAppl_OBD_Callbacks.src Integration\\BSW\\Appl\\DcmAppl_OBD_Callbacks.c"
+	.compiler_name		"ctc"
+	;source	'Integration\\BSW\\Appl\\DcmAppl_OBD_Callbacks.c'
+
+	
+$TC16X
+	
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L3:
+	.word	166
+	.half	3
+	.word	.L4
+	.byte	4
+.L2:
+	.byte	1
+	.byte	'Integration\\BSW\\Appl\\DcmAppl_OBD_Callbacks.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L5
+	.byte	2,1,3
+	.word	144
+	.byte	4
+	.byte	'__codeptr',0,1,1,1
+	.word	146
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L4:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,21,0,54,15,0,0,3,15,0,73,19,0,0,4,22,0,3,8,58,15,59,15
+	.byte	57,15,73,19,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L5:
+	.word	.L7-.L6
+.L6:
+	.half	3
+	.word	.L9-.L8
+.L8:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Integration\\BSW\\Appl\\DcmAppl_OBD_Callbacks.c',0,0,0,0,0
+.L9:
+.L7:
+
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	     1  /*
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	     2   * This is a template file. It defines integration functions necessary to complete RTA-BSW.
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	     3   * The integrator must complete the templates before deploying software containing functions defined in this file.
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	     4   * Once templates have been completed, the integrator should delete the //#error line.
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	     5   * Note: The integrator is responsible for updates made to this file.
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	     6   *
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	     7   * To remove the following error define the macro NOT_READY_FOR_TESTING_OR_DEPLOYMENT with a compiler option (e.g. -D NOT_READY_FOR_TESTING_OR_DEPLOYMENT)
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	     8   * The removal of the error only allows the user to proceed with the building phase
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	     9   */
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    10  #ifndef NOT_READY_FOR_TESTING_OR_DEPLOYMENT
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    11  //#error The content of this file is a template which provides empty stubs. The content of this file must be completed by the integrator accordingly to project specific requirements
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    12  #else
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    13  //#warning The content of this file is a template which provides empty stubs. The content of this file must be completed by the integrator accordingly to project specific requirements
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    14  #endif /* NOT_READY_FOR_TESTING_OR_DEPLOYMENT */
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    15  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    16  #if (DEM_CFG_OBD != DEM_CFG_OBD_OFF)
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    17  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    18  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    19  #include "rba_DemObdBasic_Dcm.h"
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    20  #include "rba_DemObdBasic_Prv.h"
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    21  #include "DcmDspObd_Mode1_Inf.h"
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    22  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    23  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    24  #define DEM_START_SEC_ROM_CODE
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    25  #include "Dem_Cfg_MemMap.h"
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    26  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    27  extern Std_ReturnType Dem_DcmReadDataOfPID21(uint8* PID21value)
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    28  {
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    29      Std_ReturnType retVal;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    30  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    31      if (rba_DemObdBasic_IsObdMasterEcu())
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    32      {
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    33          (void)PID21value;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    34          retVal = E_OK;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    35      }
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    36      else
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    37      {
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    38          /* PID 21 is calculated by MasterECU */
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    39          retVal = E_NOT_OK;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    40      }
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    41  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    42      return retVal;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    43  }
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    44  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    45  extern Std_ReturnType Dem_DcmReadDataOfPID31(uint8* PID31value)
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    46  {
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    47      Std_ReturnType retVal;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    48  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    49      if (rba_DemObdBasic_IsObdMasterEcu())
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    50      {
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    51          (void)PID31value;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    52          retVal = E_OK;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    53      }
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    54      else
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    55      {
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    56          /* PID 31 is calculated by MasterECU */
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    57          retVal = E_NOT_OK;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    58      }
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    59      return retVal;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    60  }
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    61  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    62  extern Std_ReturnType Dem_DcmReadDataOfPID4D(uint8* PID4Dvalue)
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    63  {
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    64      Std_ReturnType retVal;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    65  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    66      if (rba_DemObdBasic_IsObdMasterEcu())
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    67      {
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    68          (void)PID4Dvalue;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    69          retVal = E_OK;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    70      }
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    71      else
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    72      {
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    73          /* PID 4D is calculated by MasterECU */
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    74          retVal = E_NOT_OK;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    75      }
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    76      return retVal;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    77  }
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    78  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    79  extern Std_ReturnType Dem_DcmReadDataOfPID4E(uint8* PID4Evalue)
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    80  {
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    81      Std_ReturnType retVal;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    82  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    83      if (rba_DemObdBasic_IsObdMasterEcu())
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    84      {
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    85  	(void) PID4Evalue;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    86          retVal = E_OK;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    87      }
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    88      else
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    89      {
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    90          /* PID 4E is calculated by MasterECU */
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    91          retVal = E_NOT_OK;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    92      }
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    93      return retVal;
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    94  }
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    95  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    96  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    97  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    98  #define DEM_STOP_SEC_ROM_CODE
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	    99  #include "Dem_Cfg_MemMap.h"
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	   100  
+; Integration\BSW\Appl\DcmAppl_OBD_Callbacks.c	   100  #endif
+
+	; Module end

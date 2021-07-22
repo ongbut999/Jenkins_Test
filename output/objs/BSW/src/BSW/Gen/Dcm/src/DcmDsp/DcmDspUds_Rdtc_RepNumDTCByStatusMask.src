@@ -1,0 +1,2928 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc5876a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds_Rdtc_RepNumDTCByStatusMask.src BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.DcmDspUds_Rdtc_RepNumDTCByStatusMask.Dcm_Dsp_ReportNumberOfDTC',code,cluster('Dcm_Dsp_ReportNumberOfDTC')
+	.sect	'.text.DcmDspUds_Rdtc_RepNumDTCByStatusMask.Dcm_Dsp_ReportNumberOfDTC'
+	.align	2
+	
+	.global	Dcm_Dsp_ReportNumberOfDTC
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	     1  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	     2  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	     3  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	     4  #include "DcmDspUds_Rdtc_Inf.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	     5  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	     6  #if(DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	     7  #include "DcmDspUds_Rdtc_Priv.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	     8  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x01_ENABLED != DCM_CFG_OFF)||\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	     9      (DCM_CFG_DSP_RDTCSUBFUNC_0x11_ENABLED != DCM_CFG_OFF)||\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    10  /* FC_VariationPoint_START */ \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    11  	(DCM_CFG_DSP_RDTCSUBFUNC_0x12_ENABLED != DCM_CFG_OFF)||\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    12  	/* FC_VariationPoint_END */ \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    13      (DCM_CFG_DSP_RDTCSUBFUNC_0x07_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    14  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    15  #define DCM_START_SEC_CODE /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    16  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    17  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    18   ***************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    19   * Dcm_Dsp_ReportNumberOfDTC
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    20   * This function is used to implement the RDTC service for the following sub functions:
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    21   * 0x01(reportNumberOfDTCByStatusMask),
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    22   * 0x07 (reportNumberOfDTCBySeverityMaskRecord),
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    23   * 0x11(reportNumberOfMirrorMemoryDTCByStatusMask),
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    24   \ifnot COMP_DCM
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    25   * FC_VariationPoint_START
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    26   \endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    27   * 0x12(reportNumberOfEmissionsRelatedOBDDTCByStatusMask)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    28    \ifnot COMP_DCM
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    29   * FC_VariationPoint_END
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    30    \endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    31  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    32   * The request contains the Status mask sent from the tester for subfunctions 0x01,0x11,0x12 and contains
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    33   * severity mask and status mask for subfunction 0x07. The valid bits of the DTC Severity Mask are bits 5
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    34   * to 7 as described in ISO-14229-1. Response sent to the tester contains the Status Availability Mask of
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    35   * the ECU,the format Identifier and the Count of number of DTCs matching the tester Request.
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    36   * \param            pMsgContext    Pointer to message structure
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    37  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    38   * \retval           None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    39  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    40   * \seealso
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    41   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    42   ***************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    43   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    44  FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportNumberOfDTC (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+; Function Dcm_Dsp_ReportNumberOfDTC
+.L29:
+Dcm_Dsp_ReportNumberOfDTC:	.type	func
+	sub.a	a10,#16
+.L59:
+	mov.aa	a12,a4
+.L62:
+	mov.aa	a13,a5
+.L63:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    45  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    46  	VAR(uint16,                              AUTOMATIC) nrFltDTC_u16;      /* Number of filtered DTCs */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    47      VAR(uint8,                               AUTOMATIC) dataRDTCSubFunc_u8;    /* Local Variable to store sub-function level */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    48      VAR(Dem_DTCKindType,                     AUTOMATIC) dataDTCKind_u8;         /* Local Variable to store DTC KIND */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    49      VAR(Dem_DTCOriginType,                   AUTOMATIC) dataDTCOrigin_u8;       /* Local Variable to store DTC ORIGIN*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    50      VAR(uint8,                               AUTOMATIC)	stDTCStatus_u8;       /* Variable to store the DTC status */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    51  	VAR(uint8,                               AUTOMATIC) nrReqLength_u8;       /* Variable to store request length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    52      VAR(uint8,                               AUTOMATIC) dataStatusAvailMask_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    53     /* Variable to store status availability mask */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    54      VAR (Dem_DTCSeverityType,                AUTOMATIC) dataDTCSeverity_u8;     /* Variable to store DTC Severity Mask */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    55      VAR(Dem_FilterWithSeverityType,          AUTOMATIC) dataDTCSeverityType_u8; /* Variable to store Severity type */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    56      VAR(Dem_ReturnSetFilterType,          AUTOMATIC) dataRetSetDTCFilter_u8; /* Return type for Dem_SetDTCFilter*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    57      VAR(Dem_ReturnGetNumberOfFilteredDTCType,AUTOMATIC) dataRetGetNumOfFiltDTC_u8; /* Return type Dem_GetNumberOfFilteredDTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    58      VAR(Std_ReturnType,AUTOMATIC)  dataretVal_u8;                  /* Variable to store the returnType from DcmAppl API          */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    59  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    60      /*Opstatus possed by the central statemachine is unused currently, opstatus variables related to service needs to be
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    61       * removed and the one passed by the central statemachine needs to be used, this would be taken care with task XXXXX*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    62      DCM_UNUSED_PARAM(OpStatus);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    63  	*dataNegRespCode_u8 = 0;  /* Initialization to zero - No error */
+	mov	d15,#0
+.L94:
+	st.b	[a13],d15
+.L95:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    64      dataretVal_u8=DCM_E_PENDING;
+	mov	d9,#10
+.L64:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    65  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    66      if(Dcm_DspRDTCSubFunc_en == DSP_RDTC_SFINIT)
+	movh.a	a14,#@his(Dcm_DspRDTCSubFunc_en)
+	lea	a14,[a14]@los(Dcm_DspRDTCSubFunc_en)
+	ld.w	d0,[a14]
+.L96:
+	jne	d0,#1,.L2
+.L97:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    67      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    68  		dataRDTCSubFunc_u8  =  pMsgContext->reqData[DSP_RDTC_POSSUBFUNC];
+	ld.a	a2,[a12]4
+.L98:
+	ld.bu	d10,[a2]
+.L65:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    69  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x11_ENABLED != DCM_CFG_OFF) || \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    70  		 /* FC_VariationPoint_START */ \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    71  	(DCM_CFG_DSP_RDTCSUBFUNC_0x12_ENABLED != DCM_CFG_OFF) || \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    72  	 /* FC_VariationPoint_END */ \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    73      (DCM_CFG_DSP_RDTCSUBFUNC_0x01_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    74  		nrReqLength_u8     =  DSP_RDTC_01_11_12_REQUEST_LENGTH;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    75  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    76  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    77  #if(DCM_CFG_DSP_RDTCSUBFUNC_0x07_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    78  		if(dataRDTCSubFunc_u8 == DSP_REPORT_NUM_SEVERMASK_DTC)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    79  		{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    80  			nrReqLength_u8 = DSP_RDTC_07_REQUEST_LENGTH;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    81  		}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    82  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    83          /* check for request length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    84          if(pMsgContext->reqDataLen == nrReqLength_u8)
+	ld.w	d15,[a12]16
+.L99:
+	jne	d15,#2,.L3
+.L100:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    85          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    86  			/* Set dataDTCSeverity_u8 to DEM_SEVERITY_NO_SEVERITY for subfunctions 0x01,0x11 and 0x12 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    87  			dataDTCSeverity_u8     = DEM_SEVERITY_NO_SEVERITY;
+	mov	d11,#0
+.L66:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    88  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    89  #if(DCM_CFG_DSP_RDTCSUBFUNC_0x07_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    90  			if(dataRDTCSubFunc_u8 == DSP_REPORT_NUM_SEVERMASK_DTC)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    91  			{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    92  				dataDTCSeverity_u8 = pMsgContext->reqData[1];
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    93  				if((dataDTCSeverity_u8 & 0x1Fu) != 0x0u)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    94  				{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    95  					*dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    96                      dataretVal_u8=E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    97  				}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    98  			}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	    99  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   100              if (*dataNegRespCode_u8 == 0x0)
+	mov	d15,#0
+.L101:
+	jne	d15,#0,.L4
+.L102:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   101  			{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   102  				/* If the status availability mask is read successfully */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   103  				if(Dem_GetDTCStatusAvailabilityMask(&dataStatusAvailMask_u8) == E_OK)
+	lea	a4,[a10]14
+.L61:
+	call	Dem_GetDTCStatusAvailabilityMask
+.L60:
+	jne	d2,#0,.L5
+.L103:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   104  				{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   105  					   /* Fill the response bytes */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   106  					stDTCStatus_u8   			= pMsgContext->reqData[1];
+	ld.a	a15,[a12]4
+.L104:
+	ld.bu	d8,[a15]1
+.L67:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   107  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   108  #if(DCM_CFG_DSP_RDTCSUBFUNC_0x07_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   109  					if(dataRDTCSubFunc_u8 == DSP_REPORT_NUM_SEVERMASK_DTC)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   110  					{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   111  						stDTCStatus_u8 = pMsgContext->reqData[2];
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   112  					}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   113  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   114  					pMsgContext->resData[0] = dataRDTCSubFunc_u8;
+	ld.a	a15,[a12]
+.L105:
+	st.b	[a15],d10
+.L106:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   115  					pMsgContext->resData[1] = dataStatusAvailMask_u8;
+	ld.a	a15,[a12]
+.L107:
+	ld.bu	d15,[a10]14
+.L108:
+	st.b	[a15]1,d15
+.L109:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   116  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   117  					/* Get the DTC Format Identifier and fill into the response buffer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   118  					pMsgContext->resData[2] = Dem_GetTranslationType();
+	ld.a	a15,[a12]
+.L110:
+	call	Dem_GetTranslationType
+.L111:
+	st.b	[a15]2,d2
+.L112:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   119  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   120  					/* Calculate the effective status Mask */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   121  					stDTCStatus_u8 = (dataStatusAvailMask_u8 & stDTCStatus_u8);
+	ld.bu	d15,[a10]14
+.L113:
+	and	d4,d15,d8
+.L68:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   122  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   123  					/* If effective status mask is not equal to zero */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   124  					if(stDTCStatus_u8 != 0x0)
+	jeq	d4,#0,.L6
+.L114:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   125  					{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   126  						switch (dataRDTCSubFunc_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   127  						{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   128  							case DSP_REPORT_NUM_STATUS_MASK_DTC:
+	mov	d15,#1
+	jeq	d15,d10,.L7
+.L115:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   129  							dataDTCKind_u8         = DEM_DTC_KIND_ALL_DTCS;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   130  							dataDTCOrigin_u8       = DEM_DTC_ORIGIN_PRIMARY_MEMORY;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   131  							dataDTCSeverityType_u8 = DEM_FILTER_WITH_SEVERITY_NO;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   132  							break;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   133  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   134  							case DSP_REPORT_NUM_MIRROR_DTC:
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   135  							dataDTCKind_u8   	   = DEM_DTC_KIND_ALL_DTCS;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   136  							dataDTCOrigin_u8       = DEM_DTC_ORIGIN_MIRROR_MEMORY;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   137  							dataDTCSeverityType_u8 = DEM_FILTER_WITH_SEVERITY_NO;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   138  							break;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   139  							/* FC_VariationPoint_START */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   140  							case DSP_REPORT_NUM_EMISSION_DTC:
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   141  							dataDTCKind_u8         = DEM_DTC_KIND_EMISSION_REL_DTCS;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   142  							dataDTCOrigin_u8       = DEM_DTC_ORIGIN_PRIMARY_MEMORY;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   143  							dataDTCSeverityType_u8 = DEM_FILTER_WITH_SEVERITY_NO;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   144  							break;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   145  							/* FC_VariationPoint_END */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   146  							case DSP_REPORT_NUM_SEVERMASK_DTC:
+	mov	d15,#7
+	jeq	d15,d10,.L8
+.L116:
+	mov	d15,#17
+	jeq	d15,d10,.L9
+.L117:
+	mov	d15,#18
+	jeq	d15,d10,.L10
+	j	.L11
+.L7:
+	mov	d5,#1
+.L70:
+	mov	d7,#1
+.L71:
+	mov	d15,#1
+.L72:
+	j	.L12
+.L9:
+	mov	d5,#1
+.L73:
+	mov	d7,#2
+.L74:
+	mov	d15,#1
+.L75:
+	j	.L13
+.L10:
+	mov	d5,#2
+.L76:
+	mov	d7,#1
+.L77:
+	mov	d15,#1
+.L78:
+	j	.L14
+.L8:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   147  							default:
+.L11:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   148  							dataDTCKind_u8         = DEM_DTC_KIND_ALL_DTCS;
+	mov	d5,#1
+.L79:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   149  							dataDTCOrigin_u8       = DEM_DTC_ORIGIN_PRIMARY_MEMORY;
+	mov	d7,#1
+.L80:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   150  							dataDTCSeverityType_u8 = DEM_FILTER_WITH_SEVERITY_YES;
+	mov	d15,#0
+.L81:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   151  							break;
+	j	.L15
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   152  						}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   153  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   154  						/* Set the DTC Filter in DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   155  						dataRetSetDTCFilter_u8 = Dem_SetDTCFilter( stDTCStatus_u8,
+.L15:
+.L14:
+.L13:
+.L12:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   156  															   dataDTCKind_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   157  															   DEM_DTC_FORMAT_UDS,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   158  															   dataDTCOrigin_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   159  															   dataDTCSeverityType_u8,
+	st.b	[a10],d15
+.L118:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   160  															   dataDTCSeverity_u8,
+	st.b	[a10]4,d11
+.L119:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   161  															   DEM_FILTER_FOR_FDC_NO
+	mov	d15,#1
+.L82:
+	st.b	[a10]8,d15
+.L120:
+	mov	d6,#1
+.L121:
+	call	Dem_SetDTCFilter
+.L69:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   162  												             );
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   163  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   164  						/* If the Filter Mask sent is accepted by DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   165  						if(dataRetSetDTCFilter_u8 == DEM_FILTER_ACCEPTED)
+	jne	d2,#0,.L16
+.L122:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   166  						{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   167  							/* Move the state to fill the response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   168  							Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFFILLRESP;
+	mov	d15,#5
+.L123:
+	st.w	[a14],d15
+.L124:
+	j	.L17
+.L16:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   169  						}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   170  						/* Filter Mask not accepted by DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   171  						else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   172  						{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   173  							/* Set Negative response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   174  							*dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+	mov	d15,#49
+.L125:
+	st.b	[a13],d15
+.L126:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   175                              dataretVal_u8=E_NOT_OK;
+	mov	d9,#1
+.L17:
+	j	.L18
+.L6:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   176  						}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   177  					}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   178  					/* If effective status mask is equal to zero, fill response with DTC count = 0x0 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   179  					else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   180  					{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   181  						/* No record to read and fill the DTC count as 0x0000*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   182  						pMsgContext->resData[3] = 0x0;
+	ld.a	a15,[a12]
+.L127:
+	mov	d15,#0
+.L128:
+	st.b	[a15]3,d15
+.L129:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   183  						pMsgContext->resData[4] = 0x0;
+	ld.a	a15,[a12]
+.L130:
+	mov	d15,#0
+.L131:
+	st.b	[a15]4,d15
+.L132:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   184  						pMsgContext->resDataLen = 0x05;
+	mov	d15,#5
+.L133:
+	st.w	[a12]12,d15
+.L134:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   185                          dataretVal_u8=E_OK;
+	mov	d9,#0
+.L18:
+	j	.L19
+.L5:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   186  					}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   187  				}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   188  				/* Status mask is not read properly from DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   189  				else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   190  				{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   191  					/* Set Negative response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   192  					*dataNegRespCode_u8 = DCM_E_CONDITIONSNOTCORRECT;
+	mov	d15,#34
+.L135:
+	st.b	[a13],d15
+.L136:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   193                      dataretVal_u8=E_NOT_OK;
+	mov	d9,#1
+.L19:
+	j	.L20
+.L4:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   194  				}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   195  			}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   196  			else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   197  			{
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   198  				/* Do nothing */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   199                  dataretVal_u8=E_NOT_OK;
+	mov	d9,#1
+.L20:
+	j	.L21
+.L3:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   200  			}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   201  		}
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   202          /* Request Length not correct */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   203          else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   204          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   205              /* Set Negative response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   206              *dataNegRespCode_u8 = DCM_E_INCORRECTMESSAGELENGTHORINVALIDFORMAT;
+	mov	d15,#19
+.L137:
+	st.b	[a13],d15
+.L138:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   207              dataretVal_u8=E_NOT_OK;
+	mov	d9,#1
+.L21:
+.L2:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   208          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   209      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   210  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   211      if (Dcm_DspRDTCSubFunc_en == DSP_RDTC_SFFILLRESP)
+	ld.w	d15,[a14]
+.L139:
+	jne	d15,#5,.L22
+.L140:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   212      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   213          dataRetGetNumOfFiltDTC_u8 = Dem_GetNumberOfFilteredDTC ( &nrFltDTC_u16);
+	lea	a4,[a10]12
+	call	Dem_GetNumberOfFilteredDTC
+.L83:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   214  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   215          if (dataRetGetNumOfFiltDTC_u8 == DEM_NUMBER_OK)
+	jne	d2,#0,.L23
+.L141:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   216          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   217              /* Fill the high byte of the DTC count */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   218              pMsgContext->resData[3] = (uint8) (nrFltDTC_u16>>0x08u);
+	ld.a	a15,[a12]
+.L142:
+	ld.hu	d15,[a10]12
+.L143:
+	sha	d15,#-8
+.L144:
+	st.b	[a15]3,d15
+.L145:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   219  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   220              /*Fill Low Byte of DTC Count*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   221              pMsgContext->resData[4] = (uint8) (nrFltDTC_u16);
+	ld.a	a15,[a12]
+.L146:
+	ld.hu	d15,[a10]12
+.L147:
+	st.b	[a15]4,d15
+.L148:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   222  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   223  			/* Update the response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   224              pMsgContext->resDataLen = 0x05;
+	mov	d15,#5
+.L149:
+	st.w	[a12]12,d15
+.L150:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   225  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   226              /* Reset the state to default state */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   227              Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFINIT;
+	mov	d15,#1
+.L151:
+	st.w	[a14],d15
+.L152:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   228              dataretVal_u8=E_OK;
+	mov	d9,#0
+.L153:
+	j	.L24
+.L23:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   229          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   230          else if (dataRetGetNumOfFiltDTC_u8 == DEM_NUMBER_PENDING)
+	jne	d2,#2,.L25
+.L154:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   231          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   232               /* Do Nothing, the function will be called in the next Raster */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   233               dataretVal_u8=DCM_E_PENDING;
+	mov	d9,#10
+.L155:
+	j	.L26
+.L25:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   234          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   235          else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   236          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   237              *dataNegRespCode_u8 = DCM_E_CONDITIONSNOTCORRECT;
+	mov	d15,#34
+.L156:
+	st.b	[a13],d15
+.L157:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   238              dataretVal_u8=E_NOT_OK;
+	mov	d9,#1
+.L26:
+.L24:
+.L22:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   239          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   240      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   241      return dataretVal_u8;
+	mov	d2,d9
+.L84:
+	j	.L27
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   242  }
+.L27:
+	ret
+.L40:
+	
+__Dcm_Dsp_ReportNumberOfDTC_function_end:
+	.size	Dcm_Dsp_ReportNumberOfDTC,__Dcm_Dsp_ReportNumberOfDTC_function_end-Dcm_Dsp_ReportNumberOfDTC
+.L38:
+	; End of function
+	
+	.calls	'Dcm_Dsp_ReportNumberOfDTC','Dem_GetDTCStatusAvailabilityMask'
+	.calls	'Dcm_Dsp_ReportNumberOfDTC','Dem_GetTranslationType'
+	.calls	'Dcm_Dsp_ReportNumberOfDTC','Dem_SetDTCFilter'
+	.calls	'Dcm_Dsp_ReportNumberOfDTC','Dem_GetNumberOfFilteredDTC'
+	.extern	Dem_GetTranslationType
+	.extern	Dem_GetDTCStatusAvailabilityMask
+	.extern	Dem_SetDTCFilter
+	.extern	Dem_GetNumberOfFilteredDTC
+	.extern	Dcm_DspRDTCSubFunc_en
+	.calls	'Dcm_Dsp_ReportNumberOfDTC','',16
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L31:
+	.word	15528
+	.half	3
+	.word	.L32
+	.byte	4
+.L30:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L33
+.L39:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.word	179
+	.byte	4
+	.byte	'rba_DiagLib_Bit8SetBit',0,3,1,36,19,1,1,5
+	.byte	'buffer',0,1,36,49
+	.word	196
+	.byte	5
+	.byte	'bit_position',0,1,36,63
+	.word	179
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBit',0,3,1,42,19,1,1,5
+	.byte	'buffer',0,1,42,51
+	.word	196
+	.byte	5
+	.byte	'bit_position',0,1,42,65
+	.word	179
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit8GetSingleBit',0,3,1,60,20
+	.word	179
+	.byte	1,1,5
+	.byte	'value',0,1,60,55
+	.word	179
+	.byte	5
+	.byte	'bit_position',0,1,60,68
+	.word	179
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBits',0,3,1,77,19,1,1,5
+	.byte	'value',0,1,77,52
+	.word	196
+	.byte	5
+	.byte	'bit_position',0,1,77,65
+	.word	179
+	.byte	5
+	.byte	'number_of_bits',0,1,77,85
+	.word	179
+	.byte	6,0
+.L46:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,3
+	.word	509
+	.byte	4
+	.byte	'rba_DiagLib_Bit16SetBit',0,3,2,36,19,1,1,5
+	.byte	'buffer',0,2,36,51
+	.word	531
+	.byte	5
+	.byte	'bit_position',0,2,36,65
+	.word	179
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBit',0,3,2,42,19,1,1,5
+	.byte	'buffer',0,2,42,53
+	.word	531
+	.byte	5
+	.byte	'bit_position',0,2,42,67
+	.word	179
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit16GetSingleBit',0,3,2,60,21
+	.word	509
+	.byte	1,1,5
+	.byte	'value',0,2,60,58
+	.word	509
+	.byte	5
+	.byte	'bit_position',0,2,60,71
+	.word	179
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBits',0,3,2,78,19,1,1,5
+	.byte	'value',0,2,78,54
+	.word	531
+	.byte	5
+	.byte	'bit_position',0,2,78,67
+	.word	179
+	.byte	5
+	.byte	'number_of_bits',0,2,78,87
+	.word	179
+	.byte	6,0,2
+	.byte	'unsigned int',0,4,7,3
+	.word	848
+	.byte	4
+	.byte	'rba_DiagLib_Bit32SetBit',0,3,3,36,19,1,1,5
+	.byte	'buffer',0,3,36,51
+	.word	864
+	.byte	5
+	.byte	'bit_position',0,3,36,65
+	.word	179
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBit',0,3,3,42,19,1,1,5
+	.byte	'buffer',0,3,42,53
+	.word	864
+	.byte	5
+	.byte	'bit_position',0,3,42,67
+	.word	179
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit32GetSingleBit',0,3,3,60,21
+	.word	848
+	.byte	1,1,5
+	.byte	'value',0,3,60,58
+	.word	848
+	.byte	5
+	.byte	'bit_position',0,3,60,71
+	.word	179
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBits',0,3,3,78,19,1,1,5
+	.byte	'value',0,3,78,54
+	.word	864
+	.byte	5
+	.byte	'bit_position',0,3,78,67
+	.word	179
+	.byte	5
+	.byte	'number_of_bits',0,3,78,87
+	.word	179
+	.byte	6,0,8
+	.word	201
+	.byte	9
+	.word	231
+	.byte	9
+	.word	246
+	.byte	6,0,8
+	.word	269
+	.byte	9
+	.word	301
+	.byte	9
+	.word	316
+	.byte	6,0,8
+	.word	339
+	.byte	9
+	.word	379
+	.byte	9
+	.word	393
+	.byte	6,0,8
+	.word	416
+	.byte	9
+	.word	449
+	.byte	9
+	.word	463
+	.byte	9
+	.word	484
+	.byte	6,0,8
+	.word	536
+	.byte	9
+	.word	567
+	.byte	9
+	.word	582
+	.byte	6,0,8
+	.word	605
+	.byte	9
+	.word	638
+	.byte	9
+	.word	653
+	.byte	6,0,8
+	.word	676
+	.byte	9
+	.word	717
+	.byte	9
+	.word	731
+	.byte	6,0,8
+	.word	754
+	.byte	9
+	.word	788
+	.byte	9
+	.word	802
+	.byte	9
+	.word	823
+	.byte	6,0,8
+	.word	869
+	.byte	9
+	.word	900
+	.byte	9
+	.word	915
+	.byte	6,0,8
+	.word	938
+	.byte	9
+	.word	971
+	.byte	9
+	.word	986
+	.byte	6,0,8
+	.word	1009
+	.byte	9
+	.word	1050
+	.byte	9
+	.word	1064
+	.byte	6,0,8
+	.word	1087
+	.byte	9
+	.word	1121
+	.byte	9
+	.word	1135
+	.byte	9
+	.word	1156
+	.byte	6,0,10
+	.byte	'Dem_GetTranslationType',0,4,40,30
+	.word	179
+	.byte	1,1,1,1,11
+	.byte	'Dem_GetDTCStatusAvailabilityMask',0,4,54,16
+	.word	179
+	.byte	1,1,1,1,5
+	.byte	'DTCStatusMask',0,4,54,56
+	.word	196
+	.byte	0,11
+	.byte	'Dem_SetDTCFilter',0,4,128,1,25
+	.word	179
+	.byte	1,1,1,1,5
+	.byte	'DTCStatusMask',0,4,128,1,48
+	.word	179
+	.byte	5
+	.byte	'DTCKind',0,4,129,1,58
+	.word	179
+	.byte	5
+	.byte	'DTCFormat',0,4,130,1,60
+	.word	179
+	.byte	5
+	.byte	'DTCOrigin',0,4,131,1,60
+	.word	179
+	.byte	5
+	.byte	'FilterWithSeverity',0,4,132,1,69
+	.word	179
+	.byte	5
+	.byte	'DTCSeverityMask',0,4,133,1,62
+	.word	179
+	.byte	5
+	.byte	'FilterForFaultDetectionCounter',0,4,134,1,63
+	.word	179
+	.byte	0,11
+	.byte	'Dem_GetNumberOfFilteredDTC',0,4,145,1,38
+	.word	179
+	.byte	1,1,1,1,5
+	.byte	'NumberOfFilteredDTC',0,4,145,1,73
+	.word	531
+	.byte	0,3
+	.word	179
+	.byte	12
+	.byte	'Dcm_MsgType',0,5,188,2,57
+	.word	1775
+	.byte	13,5,206,2,9,4,14
+	.byte	'reqType',0
+	.word	179
+	.byte	1,2,35,0,14
+	.byte	'suppressPosResponse',0
+	.word	179
+	.byte	1,2,35,1,14
+	.byte	'sourceofRequest',0
+	.word	179
+	.byte	1,2,35,2,0,13,5,240,2,9,28,14
+	.byte	'resData',0
+	.word	1780
+	.byte	4,2,35,0,14
+	.byte	'reqData',0
+	.word	1780
+	.byte	4,2,35,4,14
+	.byte	'msgAddInfo',0
+	.word	1801
+	.byte	4,2,35,8,14
+	.byte	'resDataLen',0
+	.word	848
+	.byte	4,2,35,12,14
+	.byte	'reqDataLen',0
+	.word	848
+	.byte	4,2,35,16,14
+	.byte	'resMaxDataLen',0
+	.word	848
+	.byte	4,2,35,20,14
+	.byte	'idContext',0
+	.word	179
+	.byte	1,2,35,24,14
+	.byte	'dcmRxPduId',0
+	.word	509
+	.byte	2,2,35,26,0
+.L42:
+	.byte	3
+	.word	1879
+	.byte	3
+	.word	179
+.L44:
+	.byte	3
+	.word	179
+	.byte	15,1,3
+	.word	2057
+	.byte	12
+	.byte	'__codeptr',0,6,1,1
+	.word	2059
+	.byte	2
+	.byte	'char',0,1,6,12
+	.byte	'sint8',0,7,76,25
+	.word	2082
+	.byte	12
+	.byte	'uint8',0,7,81,25
+	.word	179
+	.byte	12
+	.byte	'uint16',0,7,91,25
+	.word	509
+	.byte	12
+	.byte	'uint32',0,7,106,24
+	.word	848
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,12
+	.byte	'uint64',0,7,111,30
+	.word	2148
+	.byte	12
+	.byte	'boolean',0,7,127,25
+	.word	179
+	.byte	2
+	.byte	'unsigned long int',0,4,7,12
+	.byte	'uint16_least',0,7,147,1,25
+	.word	2205
+	.byte	12
+	.byte	'StatusType',0,8,191,1,27
+	.word	179
+	.byte	12
+	.byte	'Std_ReturnType',0,8,199,1,15
+	.word	179
+	.byte	13,8,206,1,9,8,14
+	.byte	'vendorID',0
+	.word	509
+	.byte	2,2,35,0,14
+	.byte	'moduleID',0
+	.word	509
+	.byte	2,2,35,2,14
+	.byte	'sw_major_version',0
+	.word	179
+	.byte	1,2,35,4,14
+	.byte	'sw_minor_version',0
+	.word	179
+	.byte	1,2,35,5,14
+	.byte	'sw_patch_version',0
+	.word	179
+	.byte	1,2,35,6,0,12
+	.byte	'Std_VersionInfoType',0,8,213,1,3
+	.word	2292
+	.byte	12
+	.byte	'PduIdType',0,9,22,19
+	.word	509
+	.byte	12
+	.byte	'PduLengthType',0,9,26,19
+	.word	509
+	.byte	13,10,71,9,8,14
+	.byte	'SduDataPtr',0
+	.word	196
+	.byte	4,2,35,0,14
+	.byte	'SduLength',0
+	.word	509
+	.byte	2,2,35,4,0,12
+	.byte	'PduInfoType',0,10,75,3
+	.word	2482
+	.byte	16,10,113,9,4,17
+	.byte	'TP_DATACONF',0,0,17
+	.byte	'TP_DATARETRY',0,1,17
+	.byte	'TP_CONFPENDING',0,2,0,12
+	.byte	'TpDataStateType',0,10,118,3
+	.word	2547
+	.byte	12
+	.byte	'NetworkHandleType',0,10,128,1,17
+	.word	179
+	.byte	12
+	.byte	'Can_IdType',0,11,32,16
+	.word	848
+	.byte	12
+	.byte	'Can_HwHandleType',0,11,43,16
+	.word	509
+	.byte	13,12,93,9,8,14
+	.byte	'Class',0
+	.word	179
+	.byte	1,2,35,0,14
+	.byte	'TIN',0
+	.word	179
+	.byte	1,2,35,1,14
+	.byte	'ReturnAddress',0
+	.word	848
+	.byte	4,2,35,4,0,12
+	.byte	'OsTrapInfoType',0,12,97,3
+	.word	2694
+	.byte	18,68
+	.word	848
+	.byte	19,16,0,13,12,154,1,9,68,14
+	.byte	'store',0
+	.word	2774
+	.byte	68,2,35,0,0,18,68
+	.word	2783
+	.byte	19,0,0,12
+	.byte	'Os_JumpBufType',0,12,156,1,3
+	.word	2805
+	.byte	12
+	.byte	'Os_StackTraceType',0,12,174,1,18
+	.word	848
+	.byte	13,12,175,1,9,8,14
+	.byte	'sp',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'ctx',0
+	.word	848
+	.byte	4,2,35,4,0,12
+	.byte	'Os_StackValueType',0,12,175,1,63
+	.word	2865
+	.byte	12
+	.byte	'Os_StackSizeType',0,12,176,1,27
+	.word	2865
+	.byte	20,1,1,3
+	.word	2950
+	.byte	12
+	.byte	'Os_VoidVoidFunctionType',0,12,179,1,16
+	.word	2953
+	.byte	12
+	.byte	'ApplicationType',0,12,193,1,23
+	.word	179
+	.byte	21
+	.byte	'Os_ApplicationConfigurationType_s',0,12,198,1,16,2,14
+	.byte	'app_id',0
+	.word	179
+	.byte	1,2,35,0,14
+	.byte	'access',0
+	.word	179
+	.byte	1,2,35,1,0,12
+	.byte	'Os_ApplicationConfigurationType',0,12,201,1,3
+	.word	3016
+	.byte	12
+	.byte	'Os_CoreStateType',0,12,203,1,16
+	.word	848
+	.byte	12
+	.byte	'AreaIdType',0,12,204,1,16
+	.word	509
+	.byte	12
+	.byte	'Os_PeripheralAddressType',0,12,212,1,22
+	.word	848
+	.byte	12
+	.byte	'TickType',0,12,221,1,22
+	.word	848
+	.byte	12
+	.byte	'Os_StopwatchTickType',0,12,225,1,22
+	.word	848
+	.byte	12
+	.byte	'Os_Lockable',0,12,234,1,18
+	.word	864
+	.byte	12
+	.byte	'CoreIdType',0,12,236,1,16
+	.word	509
+	.byte	12
+	.byte	'SpinlockIdType',0,12,237,1,16
+	.word	509
+	.byte	16,12,239,1,9,4,17
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,17
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,12
+	.byte	'TryToGetSpinlockType',0,12,239,1,74
+	.word	3323
+	.byte	16,12,174,2,9,4,17
+	.byte	'APPLICATION_ACCESSIBLE',0,0,17
+	.byte	'APPLICATION_RESTARTING',0,1,17
+	.byte	'APPLICATION_TERMINATED',0,2,0,12
+	.byte	'ApplicationStateType',0,12,174,2,92
+	.word	3416
+	.byte	22
+	.byte	'void',0,3
+	.word	3528
+	.byte	23,1,1,24
+	.word	179
+	.byte	24
+	.word	3534
+	.byte	0,3
+	.word	3539
+	.byte	12
+	.byte	'Os_FunctionEntryType',0,12,183,2,16
+	.word	3553
+	.byte	21
+	.byte	'Os_MeterInfoType_s',0,12,193,2,16,48,14
+	.byte	'elapsed',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'previous',0
+	.word	848
+	.byte	4,2,35,4,14
+	.byte	'max',0
+	.word	848
+	.byte	4,2,35,8,14
+	.byte	'cumulative',0
+	.word	848
+	.byte	4,2,35,12,14
+	.byte	'stackbase',0
+	.word	2865
+	.byte	8,2,35,16,14
+	.byte	'stackusage',0
+	.word	2865
+	.byte	8,2,35,24,14
+	.byte	'stackmax',0
+	.word	2865
+	.byte	8,2,35,32,14
+	.byte	'stackbudget',0
+	.word	2865
+	.byte	8,2,35,40,0,12
+	.byte	'Os_MeterInfoType',0,12,202,2,3
+	.word	3588
+	.byte	3
+	.word	3588
+	.byte	12
+	.byte	'Os_MeterInfoRefType',0,12,203,2,50
+	.word	3786
+	.byte	12
+	.byte	'EventMaskType',0,12,206,2,15
+	.word	179
+	.byte	12
+	.byte	'Os_imaskType',0,12,211,2,16
+	.word	848
+	.byte	21
+	.byte	'Os_ISRDynType_s',0,12,213,2,16,48,14
+	.byte	'meter',0
+	.word	3588
+	.byte	48,2,35,0,0,12
+	.byte	'Os_ISRDynType',0,12,215,2,3
+	.word	3865
+	.byte	3
+	.word	3865
+	.byte	25
+	.word	3926
+	.byte	21
+	.byte	'Os_ISRType_s',0,12,216,2,16,24,14
+	.byte	'entry_function',0
+	.word	2958
+	.byte	4,2,35,0,14
+	.byte	'dynamic',0
+	.word	3931
+	.byte	4,2,35,4,14
+	.byte	'imask',0
+	.word	848
+	.byte	4,2,35,8,14
+	.byte	'stackbudget',0
+	.word	2865
+	.byte	8,2,35,12,14
+	.byte	'access',0
+	.word	179
+	.byte	1,2,35,20,14
+	.byte	'application',0
+	.word	179
+	.byte	1,2,35,21,0,12
+	.byte	'Os_ISRType',0,12,223,2,3
+	.word	3936
+	.byte	3
+	.word	2950
+	.byte	25
+	.word	3936
+	.byte	3
+	.word	4095
+	.byte	12
+	.byte	'ISRType',0,12,224,2,46
+	.word	4100
+	.byte	12
+	.byte	'Os_bitmask',0,12,239,2,22
+	.word	848
+	.byte	12
+	.byte	'Os_pset0Type',0,12,240,2,20
+	.word	848
+	.byte	12
+	.byte	'Os_pset1Type',0,12,241,2,20
+	.word	848
+	.byte	12
+	.byte	'Os_pset2Type',0,12,242,2,20
+	.word	848
+	.byte	26,12,243,2,9,4,14
+	.byte	'p0',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'p1',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'p2',0
+	.word	848
+	.byte	4,2,35,0,0,12
+	.byte	'Os_psetType',0,12,247,2,3
+	.word	4208
+	.byte	26,12,249,2,9,4,14
+	.byte	't0',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	't1',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	't2',0
+	.word	848
+	.byte	4,2,35,0,0,12
+	.byte	'Os_tpmaskType',0,12,253,2,3
+	.word	4272
+	.byte	12
+	.byte	'Os_ActivationCountType',0,12,254,2,23
+	.word	179
+	.byte	21
+	.byte	'Os_TaskDynType_s',0,12,128,3,16,120,14
+	.byte	'terminate_jump_buf',0
+	.word	2814
+	.byte	68,2,35,0,14
+	.byte	'meter',0
+	.word	3588
+	.byte	48,2,35,68,14
+	.byte	'activation_count',0
+	.word	179
+	.byte	1,2,35,116,0,12
+	.byte	'Os_TaskDynType',0,12,132,3,3
+	.word	4370
+	.byte	18,68
+	.word	2783
+	.byte	19,0,0,3
+	.word	4370
+	.byte	25
+	.word	4496
+	.byte	21
+	.byte	'Os_TaskType_s',0,12,134,3,16,40,14
+	.byte	'dynamic',0
+	.word	4501
+	.byte	4,2,35,0,14
+	.byte	'entry_function',0
+	.word	2958
+	.byte	4,2,35,4,14
+	.byte	'pset',0
+	.word	4208
+	.byte	4,2,35,8,14
+	.byte	'base_tpmask',0
+	.word	4272
+	.byte	4,2,35,12,14
+	.byte	'tpmask',0
+	.word	4272
+	.byte	4,2,35,16,14
+	.byte	'core_id',0
+	.word	509
+	.byte	2,2,35,20,14
+	.byte	'index',0
+	.word	848
+	.byte	4,2,35,24,14
+	.byte	'stackbudget',0
+	.word	2865
+	.byte	8,2,35,28,14
+	.byte	'activation_count',0
+	.word	179
+	.byte	1,2,35,36,14
+	.byte	'access',0
+	.word	179
+	.byte	1,2,35,37,14
+	.byte	'application',0
+	.word	179
+	.byte	1,2,35,38,0,12
+	.byte	'Os_TaskType',0,12,146,3,3
+	.word	4506
+	.byte	25
+	.word	4506
+	.byte	3
+	.word	4756
+	.byte	12
+	.byte	'TaskType',0,12,147,3,47
+	.word	4761
+	.byte	27
+	.byte	'Os_TaskStateType',0,12,155,3,6,4,17
+	.byte	'SUSPENDED',0,0,17
+	.byte	'READY',0,1,17
+	.byte	'WAITING',0,2,17
+	.byte	'RUNNING',0,3,0,12
+	.byte	'TaskStateType',0,12,156,3,31
+	.word	4784
+	.byte	26,12,167,3,3,4,14
+	.byte	'tpmask',0
+	.word	4272
+	.byte	4,2,35,0,0,21
+	.byte	'Os_ResourceDynType_s',0,12,166,3,16,4,14
+	.byte	'saved_priority',0
+	.word	4871
+	.byte	4,2,35,0,0,12
+	.byte	'Os_ResourceDynType',0,12,170,3,3
+	.word	4894
+	.byte	3
+	.word	4894
+	.byte	25
+	.word	4974
+	.byte	21
+	.byte	'Os_ResourceType_s',0,12,171,3,16,12,14
+	.byte	'dynamic',0
+	.word	4979
+	.byte	4,2,35,0,14
+	.byte	'tpmask',0
+	.word	4272
+	.byte	4,2,35,4,14
+	.byte	'access',0
+	.word	179
+	.byte	1,2,35,8,0,12
+	.byte	'Os_ResourceType',0,12,175,3,3
+	.word	4984
+	.byte	13,12,181,3,9,12,14
+	.byte	'maxallowedvalue',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'ticksperbase',0
+	.word	848
+	.byte	4,2,35,4,14
+	.byte	'mincycle',0
+	.word	848
+	.byte	4,2,35,8,0,12
+	.byte	'AlarmBaseType',0,12,185,3,3
+	.word	5083
+	.byte	13,12,206,3,9,8,14
+	.byte	'Running',0
+	.word	179
+	.byte	1,2,35,0,14
+	.byte	'Pending',0
+	.word	179
+	.byte	1,2,35,1,14
+	.byte	'Delay',0
+	.word	848
+	.byte	4,2,35,4,0,12
+	.byte	'Os_CounterStatusType',0,12,210,3,3
+	.word	5178
+	.byte	28
+	.word	179
+	.byte	1,1,3
+	.word	5264
+	.byte	12
+	.byte	'Os_CounterIncrAdvType',0,12,217,3,22
+	.word	5271
+	.byte	21
+	.byte	's_swd',0,12,222,3,12,4,14
+	.byte	'count',0
+	.word	848
+	.byte	4,2,35,0,0,26,12,221,3,3,4,14
+	.byte	'sw',0
+	.word	5307
+	.byte	4,2,35,0,0,21
+	.byte	'Os_CounterDynType_s',0,12,220,3,16,4,14
+	.byte	'type_dependent',0
+	.word	5335
+	.byte	4,2,35,0,0,12
+	.byte	'Os_CounterDynType',0,12,226,3,3
+	.word	5354
+	.byte	3
+	.word	5354
+	.byte	25
+	.word	5432
+	.byte	21
+	.byte	'Os_CounterType_s',0,12,227,3,16,28,14
+	.byte	'dynamic',0
+	.word	5437
+	.byte	4,2,35,0,14
+	.byte	'advincr',0
+	.word	5276
+	.byte	4,2,35,4,14
+	.byte	'base',0
+	.word	5083
+	.byte	12,2,35,8,14
+	.byte	'core',0
+	.word	3534
+	.byte	4,2,35,20,14
+	.byte	'access',0
+	.word	179
+	.byte	1,2,35,24,14
+	.byte	'application',0
+	.word	179
+	.byte	1,2,35,25,0,12
+	.byte	'Os_CounterType',0,12,234,3,3
+	.word	5442
+	.byte	3
+	.word	5264
+	.byte	25
+	.word	5442
+	.byte	3
+	.word	5594
+	.byte	12
+	.byte	'CounterType',0,12,235,3,52
+	.word	5599
+	.byte	27
+	.byte	'Os_ScheduleTableStatusType',0,12,240,3,6,4,17
+	.byte	'SCHEDULETABLE_STOPPED',0,0,17
+	.byte	'SCHEDULETABLE_NEXT',0,1,17
+	.byte	'SCHEDULETABLE_WAITING',0,2,17
+	.byte	'SCHEDULETABLE_RUNNING',0,3,17
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,12
+	.byte	'ScheduleTableStatusType',0,12,241,3,41
+	.word	5625
+	.byte	25
+	.word	.L85-.L31
+	.byte	3
+	.word	5825
+	.byte	12
+	.byte	'ScheduleTableType',0,12,128,4,58
+	.word	5830
+	.byte	21
+	.byte	'Os_ScheduleTableDynType_s',0,12,130,4,16,16,14
+	.byte	'match',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'next',0
+	.word	5835
+	.byte	4,2,35,4,14
+	.byte	'state',0
+	.word	5625
+	.byte	4,2,35,8,14
+	.byte	'config',0
+	.word	509
+	.byte	2,2,35,12,0,3
+	.word	5862
+	.byte	25
+	.word	5955
+.L85:
+	.byte	21
+	.byte	'Os_ScheduleTableType_s',0,12,247,3,16,16,14
+	.byte	'dynamic',0
+	.word	5960
+	.byte	4,2,35,0,14
+	.byte	'counter',0
+	.word	5604
+	.byte	4,2,35,4,14
+	.byte	'repeat',0
+	.word	179
+	.byte	1,2,35,8,14
+	.byte	'config',0
+	.word	509
+	.byte	2,2,35,10,14
+	.byte	'initial',0
+	.word	179
+	.byte	1,2,35,12,14
+	.byte	'access',0
+	.word	179
+	.byte	1,2,35,13,14
+	.byte	'application',0
+	.word	179
+	.byte	1,2,35,14,0,12
+	.byte	'Os_ScheduleTableType',0,12,255,3,3
+	.word	5965
+	.byte	25
+	.word	5965
+	.byte	3
+	.word	6145
+	.byte	25
+	.word	5442
+	.byte	3
+	.word	6155
+	.byte	29
+	.word	3258
+	.byte	29
+	.word	4208
+	.byte	29
+	.word	4105
+	.byte	29
+	.word	4766
+	.byte	29
+	.word	4272
+	.byte	29
+	.word	179
+	.byte	29
+	.word	4766
+	.byte	21
+	.byte	'Os_ControlledCoreType_s',0,12,251,6,16,112,14
+	.byte	'TrapInfo',0
+	.word	2694
+	.byte	8,2,35,0,14
+	.byte	'lock_taskaccess',0
+	.word	6165
+	.byte	4,2,35,8,14
+	.byte	'ReadyTasks',0
+	.word	6170
+	.byte	4,2,35,12,14
+	.byte	'RunningISR',0
+	.word	6175
+	.byte	4,2,35,16,14
+	.byte	'RunningTask',0
+	.word	6180
+	.byte	4,2,35,20,14
+	.byte	'RunningTPMask',0
+	.word	6185
+	.byte	4,2,35,24,14
+	.byte	'CurrentMeteredObject',0
+	.word	3791
+	.byte	4,2,35,28,14
+	.byte	'IdleMeter',0
+	.word	3588
+	.byte	48,2,35,32,14
+	.byte	'AppAccess',0
+	.word	179
+	.byte	1,2,35,80,14
+	.byte	'AppOverride',0
+	.word	6190
+	.byte	1,2,35,81,14
+	.byte	'GetStackValueAdjust',0
+	.word	2865
+	.byte	8,2,35,84,14
+	.byte	'InErrorHook',0
+	.word	179
+	.byte	1,2,35,92,14
+	.byte	'ChainTaskRef',0
+	.word	6195
+	.byte	4,2,35,96,14
+	.byte	'GetStackUsageAdjust',0
+	.word	2865
+	.byte	8,2,35,100,14
+	.byte	'InProtectionHook',0
+	.word	179
+	.byte	1,2,35,108,14
+	.byte	'CoreIsActive',0
+	.word	179
+	.byte	1,2,35,109,14
+	.byte	'InShutdownHook',0
+	.word	179
+	.byte	1,2,35,110,0,12
+	.byte	'Os_ControlledCoreType',0,12,141,7,3
+	.word	6200
+	.byte	3
+	.word	848
+	.byte	25
+	.word	3936
+	.byte	3
+	.word	6656
+	.byte	25
+	.word	4506
+	.byte	3
+	.word	6666
+	.byte	3
+	.word	3588
+	.byte	21
+	.byte	'Os_AnyCoreType_s',0,12,151,7,16,96,14
+	.byte	'DisableAllImask',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'SuspendAllImask',0
+	.word	848
+	.byte	4,2,35,4,14
+	.byte	'SuspendOSImask',0
+	.word	848
+	.byte	4,2,35,8,14
+	.byte	'DisableAllCount',0
+	.word	848
+	.byte	4,2,35,12,14
+	.byte	'SuspendAllCount',0
+	.word	848
+	.byte	4,2,35,16,14
+	.byte	'SuspendOSCount',0
+	.word	848
+	.byte	4,2,35,20,14
+	.byte	'RestartJumpBuf',0
+	.word	2814
+	.byte	68,2,35,24,14
+	.byte	'Restartable',0
+	.word	179
+	.byte	1,2,35,92,0,12
+	.byte	'Os_AnyCoreType',0,12,160,7,3
+	.word	6681
+	.byte	12
+	.byte	'Can_TxObjPriorityClassType',0,13,219,3,16
+	.word	848
+	.byte	21
+	.byte	'Can_TxHwObjectConfigType',0,13,231,3,16,8,14
+	.byte	'MsgObjId',0
+	.word	179
+	.byte	1,2,35,0,14
+	.byte	'HwControllerId',0
+	.word	179
+	.byte	1,2,35,1,14
+	.byte	'TxObjPriorityClass',0
+	.word	848
+	.byte	4,2,35,4,0,12
+	.byte	'Can_TxHwObjectConfigType',0,13,252,3,3
+	.word	6958
+	.byte	21
+	.byte	'Can_RxHwObjectConfigType',0,13,129,4,16,12,14
+	.byte	'MaskRef',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'MsgId',0
+	.word	848
+	.byte	4,2,35,4,14
+	.byte	'MsgObjId',0
+	.word	179
+	.byte	1,2,35,8,14
+	.byte	'HwControllerId',0
+	.word	179
+	.byte	1,2,35,9,0,12
+	.byte	'Can_RxHwObjectConfigType',0,13,147,4,3
+	.word	7094
+	.byte	18,4
+	.word	179
+	.byte	19,3,0,21
+	.byte	'Can_ControllerMOMapConfigType',0,13,181,4,16,4,14
+	.byte	'ControllerMOMap',0
+	.word	7234
+	.byte	4,2,35,0,0,12
+	.byte	'Can_ControllerMOMapConfigType',0,13,184,4,3
+	.word	7243
+	.byte	21
+	.byte	'Can_NPCRValueType',0,13,188,4,16,2,14
+	.byte	'Can_NPCRValue',0
+	.word	509
+	.byte	2,2,35,0,0,12
+	.byte	'Can_NPCRValueType',0,13,191,4,3
+	.word	7344
+	.byte	21
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,194,4,16,8,14
+	.byte	'CanControllerBaudrate',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'CanControllerBaudrateCfg',0
+	.word	509
+	.byte	2,2,35,4,0,12
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,198,4,3
+	.word	7419
+	.byte	25
+	.word	7419
+	.byte	3
+	.word	7584
+	.byte	21
+	.byte	'Can_BaudrateConfigPtrType',0,13,201,4,16,4,14
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	7589
+	.byte	4,2,35,0,0,12
+	.byte	'Can_BaudrateConfigPtrType',0,13,204,4,3
+	.word	7594
+	.byte	21
+	.byte	'Can_EventHandlingType',0,13,226,4,16,4,14
+	.byte	'CanEventType',0
+	.word	7234
+	.byte	4,2,35,0,0,12
+	.byte	'Can_EventHandlingType',0,13,229,4,3
+	.word	7694
+	.byte	12
+	.byte	'Rte_TransformerErrorCode',0,14,130,1,15
+	.word	179
+	.byte	12
+	.byte	'Rte_TransformerClass',0,14,131,1,15
+	.word	179
+	.byte	13,14,168,1,9,12,14
+	.byte	'in',0
+	.word	3534
+	.byte	4,2,35,0,14
+	.byte	'out',0
+	.word	3534
+	.byte	4,2,35,4,14
+	.byte	'used',0
+	.word	509
+	.byte	2,2,35,8,14
+	.byte	'lost_data',0
+	.word	179
+	.byte	1,2,35,10,0,12
+	.byte	'Rte_QDynType',0,14,173,1,3
+	.word	7840
+	.byte	16,14,175,1,9,4,17
+	.byte	'RTE_DRA',0,0,17
+	.byte	'RTE_WOWP',0,1,17
+	.byte	'RTE_TASK',0,2,17
+	.byte	'RTE_ARE',0,3,17
+	.byte	'RTE_EV',0,4,17
+	.byte	'RTE_MSI',0,5,0,12
+	.byte	'Rte_NotificationType',0,14,182,1,3
+	.word	7927
+	.byte	3
+	.word	7840
+	.byte	21
+	.byte	'Rte_QCmnType',0,14,184,1,16,24,14
+	.byte	'dynamic',0
+	.word	8025
+	.byte	4,2,35,0,14
+	.byte	'copy',0
+	.word	179
+	.byte	1,2,35,4,14
+	.byte	'queue_size',0
+	.word	509
+	.byte	2,2,35,6,14
+	.byte	'element_size',0
+	.word	509
+	.byte	2,2,35,8,14
+	.byte	'buffer_start',0
+	.word	3534
+	.byte	4,2,35,12,14
+	.byte	'buffer_end',0
+	.word	3534
+	.byte	4,2,35,16,14
+	.byte	'notification_type',0
+	.word	7927
+	.byte	4,2,35,20,0,12
+	.byte	'Rte_QCmnType',0,14,192,1,3
+	.word	8030
+	.byte	12
+	.byte	'Rte_AlarmRefType',0,14,224,1,32
+	.word	848
+	.byte	12
+	.byte	'Rte_AlarmIndexType',0,14,226,1,32
+	.word	509
+	.byte	18,128,8
+	.word	179
+	.byte	19,255,7,0,12
+	.byte	'Impl_NVM_DstPtrType_1024',0,15,50,15
+	.word	8268
+	.byte	12
+	.byte	'CanIf_u32_impl',0,15,69,16
+	.word	848
+	.byte	12
+	.byte	'CanIf_u16_impl',0,15,71,16
+	.word	509
+	.byte	12
+	.byte	'CanIf_u8_impl',0,15,73,15
+	.word	179
+	.byte	12
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,15,88,15
+	.word	179
+	.byte	12
+	.byte	'CanIf_PduModeType_Enum_impl',0,15,90,15
+	.word	179
+	.byte	13,15,92,9,2,14
+	.byte	'DeviceMode',0
+	.word	179
+	.byte	1,2,35,0,14
+	.byte	'ChannelMode',0
+	.word	179
+	.byte	1,2,35,1,0,12
+	.byte	'CanIf_ControllerStateType_struct_impl',0,15,95,3
+	.word	8459
+	.byte	12
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,15,100,15
+	.word	179
+	.byte	12
+	.byte	'CanSM_boolean_Impl',0,15,120,15
+	.word	179
+	.byte	12
+	.byte	'CanSM_u8_Impl',0,15,123,15
+	.word	179
+	.byte	12
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,15,128,1,15
+	.word	179
+	.byte	12
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,15,132,1,15
+	.word	179
+	.byte	12
+	.byte	'CanSM_u16_Impl',0,15,136,1,16
+	.word	509
+	.byte	12
+	.byte	'CanSM_TimerStateType_Enum_impl',0,15,138,1,15
+	.word	179
+	.byte	13,15,140,1,9,4,14
+	.byte	'cntTick_u16',0
+	.word	509
+	.byte	2,2,35,0,14
+	.byte	'stTimer',0
+	.word	179
+	.byte	1,2,35,2,0,12
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,15,143,1,3
+	.word	8800
+	.byte	12
+	.byte	'Com_impl_u16',0,15,154,1,16
+	.word	509
+	.byte	12
+	.byte	'Com_impl_u8',0,15,157,1,15
+	.word	179
+	.byte	12
+	.byte	'ComM_uint32_Impl',0,15,173,1,16
+	.word	848
+	.byte	12
+	.byte	'ComM_uint16_Impl',0,15,175,1,16
+	.word	509
+	.byte	12
+	.byte	'ComM_uint8_Impl',0,15,177,1,15
+	.word	179
+	.byte	12
+	.byte	'ComM_bool_Impl',0,15,179,1,15
+	.word	179
+	.byte	13,15,181,1,9,24,14
+	.byte	'ChannelState_e',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'LightTimeoutCtr_u32',0
+	.word	848
+	.byte	4,2,35,4,14
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	509
+	.byte	2,2,35,8,14
+	.byte	'ChannelMode_u8',0
+	.word	179
+	.byte	1,2,35,10,14
+	.byte	'BusSmMode_u8',0
+	.word	179
+	.byte	1,2,35,11,14
+	.byte	'UserRequestCtr_u8',0
+	.word	179
+	.byte	1,2,35,12,14
+	.byte	'PassiveRequestState_u8',0
+	.word	179
+	.byte	1,2,35,13,14
+	.byte	'PncRequestCtr_u8',0
+	.word	179
+	.byte	1,2,35,14,14
+	.byte	'InhibitionReqStatus_u8',0
+	.word	179
+	.byte	1,2,35,15,14
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	179
+	.byte	1,2,35,16,14
+	.byte	'DiagnosticRequestState_b',0
+	.word	179
+	.byte	1,2,35,17,14
+	.byte	'CommunicationAllowed_b',0
+	.word	179
+	.byte	1,2,35,18,14
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	179
+	.byte	1,2,35,19,14
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	179
+	.byte	1,2,35,20,14
+	.byte	'NmNetworkModeStatus_b',0
+	.word	179
+	.byte	1,2,35,21,0,12
+	.byte	'ComM_ChannelStruct_Impl',0,15,197,1,3
+	.word	9032
+	.byte	13,15,206,1,9,10,14
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	509
+	.byte	2,2,35,0,14
+	.byte	'LimitToNoComCtr_u16',0
+	.word	509
+	.byte	2,2,35,2,14
+	.byte	'RequestedUserMode_t',0
+	.word	179
+	.byte	1,2,35,4,14
+	.byte	'IndicatedUserMode_t',0
+	.word	179
+	.byte	1,2,35,5,14
+	.byte	'numChannelsInFullCom_u8',0
+	.word	179
+	.byte	1,2,35,6,14
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	179
+	.byte	1,2,35,7,14
+	.byte	'numChannelsInNoCom_u8',0
+	.word	179
+	.byte	1,2,35,8,0,12
+	.byte	'ComM_UserStruct_Impl',0,15,214,1,3
+	.word	9536
+	.byte	12
+	.byte	'Dcm_ConfirmationStatusType',0,15,243,1,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_IOOperationResponseType',0,15,252,1,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_NegativeResponseCodeType',0,15,132,2,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_OpStatusType',0,15,134,2,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	15,138,2,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_SecLevelType',0,15,142,2,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_SesCtrlType',0,15,144,2,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,15,146,2,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,15,150,2,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,15,154,2,15
+	.word	179
+	.byte	12
+	.byte	'Dem_DTCFormatType',0,15,160,2,15
+	.word	179
+	.byte	12
+	.byte	'Dem_DTCOriginType',0,15,162,2,15
+	.word	179
+	.byte	12
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,15,243,3,34
+	.word	8279
+	.byte	18,128,8
+	.word	179
+	.byte	19,255,7,0,12
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,15,246,3,34
+	.word	8279
+	.byte	12
+	.byte	'Rte_ModeType_DcmDiagnosticSessionControl',0,16,37,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_SrvOpStatusType',0,5,62,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_MsgItemType',0,5,182,2,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_MsgLenType',0,5,197,2,16
+	.word	848
+	.byte	12
+	.byte	'Dcm_MsgAddInfoType',0,5,219,2,2
+	.word	1801
+	.byte	12
+	.byte	'Dcm_IdContextType',0,5,225,2,15
+	.word	179
+	.byte	12
+	.byte	'Dcm_MsgContextType',0,5,188,3,2
+	.word	1879
+	.byte	13,5,238,5,9,32,14
+	.byte	'tx_buffer_pa',0
+	.word	1780
+	.byte	4,2,35,0,14
+	.byte	'rx_mainBuffer_pa',0
+	.word	1780
+	.byte	4,2,35,4,14
+	.byte	'tx_buffer_size_u32',0
+	.word	848
+	.byte	4,2,35,8,14
+	.byte	'rx_buffer_size_u32',0
+	.word	848
+	.byte	4,2,35,12,14
+	.byte	'dataP2TmrAdjust',0
+	.word	848
+	.byte	4,2,35,16,14
+	.byte	'dataP2StarTmrAdjust',0
+	.word	848
+	.byte	4,2,35,20,14
+	.byte	'protocolid_u8',0
+	.word	179
+	.byte	1,2,35,24,14
+	.byte	'sid_tableid_u8',0
+	.word	179
+	.byte	1,2,35,25,14
+	.byte	'premption_level_u8',0
+	.word	179
+	.byte	1,2,35,26,14
+	.byte	'pduinfo_idx_u8',0
+	.word	179
+	.byte	1,2,35,27,14
+	.byte	'nrc21_b',0
+	.word	179
+	.byte	1,2,35,28,14
+	.byte	'sendRespPendTransToBoot',0
+	.word	179
+	.byte	1,2,35,29,0,12
+	.byte	'Dcm_Dsld_protocol_tableType',0,5,143,6,2
+	.word	10768
+	.byte	23,1,1,24
+	.word	179
+	.byte	24
+	.word	509
+	.byte	24
+	.word	509
+	.byte	24
+	.word	179
+	.byte	0,3
+	.word	11119
+	.byte	12
+	.byte	'Dcm_ConfirmationApiType',0,5,145,6,16
+	.word	11143
+	.byte	3
+	.word	179
+	.byte	30
+	.word	179
+	.byte	1,1,24
+	.word	11181
+	.byte	24
+	.word	179
+	.byte	24
+	.word	179
+	.byte	0,3
+	.word	11186
+	.byte	3
+	.word	1879
+	.byte	30
+	.word	179
+	.byte	1,1,24
+	.word	179
+	.byte	24
+	.word	11214
+	.byte	24
+	.word	11181
+	.byte	0,3
+	.word	11219
+	.byte	13,5,158,6,9,20,14
+	.byte	'allowed_session_b32',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'allowed_security_b32',0
+	.word	848
+	.byte	4,2,35,4,14
+	.byte	'adrUserSubServiceModeRule_pfct',0
+	.word	11209
+	.byte	4,2,35,8,14
+	.byte	'SubFunc_fp',0
+	.word	11242
+	.byte	4,2,35,12,14
+	.byte	'subservice_id_u8',0
+	.word	179
+	.byte	1,2,35,16,14
+	.byte	'isDspRDTCSubFnc_b',0
+	.word	179
+	.byte	1,2,35,17,0,12
+	.byte	'Dcm_Dsld_SubServiceType',0,5,169,6,2
+	.word	11247
+	.byte	25
+	.word	11247
+	.byte	3
+	.word	11459
+	.byte	30
+	.word	179
+	.byte	1,1,24
+	.word	11181
+	.byte	24
+	.word	179
+	.byte	0,3
+	.word	11469
+	.byte	13,5,186,6,9,36,14
+	.byte	'allowed_session_b32',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'allowed_security_b32',0
+	.word	848
+	.byte	4,2,35,4,14
+	.byte	'service_handler_fp',0
+	.word	11242
+	.byte	4,2,35,8,14
+	.byte	'Service_init_fp',0
+	.word	2953
+	.byte	4,2,35,12,14
+	.byte	'sid_u8',0
+	.word	179
+	.byte	1,2,35,16,14
+	.byte	'subfunction_exist_b',0
+	.word	179
+	.byte	1,2,35,17,14
+	.byte	'servicelocator_b',0
+	.word	179
+	.byte	1,2,35,18,14
+	.byte	'ptr_subservice_table_pcs',0
+	.word	11464
+	.byte	4,2,35,20,14
+	.byte	'num_sf_u8',0
+	.word	179
+	.byte	1,2,35,24,14
+	.byte	'adrUserServiceModeRule_pfct',0
+	.word	11487
+	.byte	4,2,35,28,14
+	.byte	'Dcm_ConfirmationService',0
+	.word	11148
+	.byte	4,2,35,32,0,12
+	.byte	'Dcm_Dsld_ServiceType',0,5,204,6,3
+	.word	11492
+	.byte	3
+	.word	11119
+	.byte	25
+	.word	11492
+	.byte	3
+	.word	11840
+	.byte	13,5,218,6,9,8,14
+	.byte	'ptr_service_table_pcs',0
+	.word	11845
+	.byte	4,2,35,0,14
+	.byte	'num_services_u8',0
+	.word	179
+	.byte	1,2,35,4,14
+	.byte	'nrc_sessnot_supported_u8',0
+	.word	179
+	.byte	1,2,35,5,14
+	.byte	'cdtc_index_u8',0
+	.word	179
+	.byte	1,2,35,6,0,12
+	.byte	'Dcm_Dsld_sid_tableType',0,5,224,6,3
+	.word	11850
+	.byte	13,5,238,6,9,14,14
+	.byte	'protocol_num_u8',0
+	.word	179
+	.byte	1,2,35,0,14
+	.byte	'txpduid_num_u8',0
+	.word	509
+	.byte	2,2,35,2,14
+	.byte	'roetype2_txpdu_u8',0
+	.word	509
+	.byte	2,2,35,4,14
+	.byte	'rdpitype2_txpdu_u8',0
+	.word	509
+	.byte	2,2,35,6,14
+	.byte	'testaddr_u16',0
+	.word	509
+	.byte	2,2,35,8,14
+	.byte	'channel_idx_u8',0
+	.word	179
+	.byte	1,2,35,10,14
+	.byte	'ConnectionIndex_u8',0
+	.word	179
+	.byte	1,2,35,11,14
+	.byte	'NumberOfTxpdu_u8',0
+	.word	179
+	.byte	1,2,35,12,0,12
+	.byte	'Dcm_Dsld_connType',0,5,248,6,3
+	.word	12002
+	.byte	16,5,146,7,9,4,17
+	.byte	'DCM_DSLD_NO_COM_MODE',0,0,17
+	.byte	'DCM_DSLD_SILENT_COM_MODE',0,1,17
+	.byte	'DCM_DSLD_FULL_COM_MODE',0,2,0,12
+	.byte	'Dcm_Dsld_commodeType',0,5,151,7,2
+	.word	12240
+	.byte	16,17,200,1,9,4,17
+	.byte	'USE_ASYNCH_CLIENT_SERVER',0,0,17
+	.byte	'USE_ASYNCH_FNC',0,1,0,12
+	.byte	'DcmDspSecurityUsePort',0,17,204,1,2
+	.word	12352
+	.byte	16,18,22,9,4,17
+	.byte	'DCM_NO_BOOT',0,0,17
+	.byte	'DCM_OEM_BOOT',0,1,17
+	.byte	'DCM_SYS_BOOT',0,2,0,12
+	.byte	'Dcm_SessionForBootType',0,18,27,2
+	.word	12434
+	.byte	16,19,192,3,9,4,17
+	.byte	'DCM_READ_OK',0,0,17
+	.byte	'DCM_READ_FAILED',0,1,17
+	.byte	'DCM_READ_PENDING',0,2,17
+	.byte	'DCM_READ_FORCE_RCRRP',0,3,17
+	.byte	'DCM_READ_NOT_AVAILABLE',0,4,0,12
+	.byte	'Dcm_ReadMemoryRet_t',0,19,199,3,3
+	.word	12515
+	.byte	12
+	.byte	'Dem_ReturnSetFilterType',0,20,193,1,15
+	.word	179
+	.byte	12
+	.byte	'Dem_FilterWithSeverityType',0,20,203,1,15
+	.word	179
+	.byte	12
+	.byte	'Dem_DTCSeverityType',0,20,217,1,15
+	.word	179
+	.byte	12
+	.byte	'Dem_FilterForFDCType',0,20,229,1,15
+	.word	179
+	.byte	12
+	.byte	'Dem_ReturnGetNumberOfFilteredDTCType',0,20,145,2,15
+	.word	179
+	.byte	12
+	.byte	'Dem_DTCTranslationFormatType',0,20,161,2,15
+	.word	179
+	.byte	12
+	.byte	'Dem_DTCKindType',0,20,145,3,16
+	.word	179
+	.byte	12
+	.byte	'Rte_TaskRefType',0,21,184,1,32
+	.word	4766
+	.byte	12
+	.byte	'Rte_EventRefType',0,21,185,1,32
+	.word	179
+	.byte	12
+	.byte	'Rte_EventType',0,21,186,1,32
+	.word	848
+	.byte	12
+	.byte	'Rte_REActCounterType',0,21,252,1,15
+	.word	179
+	.byte	3
+	.word	179
+	.byte	12
+	.byte	'Rte_REActCounterRefType',0,21,253,1,58
+	.word	12991
+	.byte	13,21,255,1,9,8,14
+	.byte	'task',0
+	.word	12887
+	.byte	4,2,35,0,14
+	.byte	'acnt',0
+	.word	12996
+	.byte	4,2,35,4,0,12
+	.byte	'Rte_REContainerType',0,21,130,2,3
+	.word	13029
+	.byte	25
+	.word	4506
+	.byte	3
+	.word	13093
+	.byte	3
+	.word	179
+	.byte	25
+	.word	13029
+	.byte	3
+	.word	13108
+	.byte	12
+	.byte	'Rte_REContainerRefType',0,21,132,2,60
+	.word	13113
+	.byte	12
+	.byte	'Rte_MSICounterType',0,21,149,2,16
+	.word	509
+	.byte	3
+	.word	509
+	.byte	12
+	.byte	'Rte_MSICounterRefType',0,21,150,2,56
+	.word	13178
+	.byte	12
+	.byte	'Rte_MSIPendingFlagType',0,21,152,2,17
+	.word	179
+	.byte	3
+	.word	179
+	.byte	12
+	.byte	'Rte_MSIPendingFlagRefType',0,21,153,2,60
+	.word	13246
+	.byte	13,21,163,2,9,24,14
+	.byte	'counter',0
+	.word	13183
+	.byte	4,2,35,0,14
+	.byte	'incCounter',0
+	.word	179
+	.byte	1,2,35,4,14
+	.byte	'pending',0
+	.word	13251
+	.byte	4,2,35,8,14
+	.byte	'osTask',0
+	.word	12887
+	.byte	4,2,35,12,14
+	.byte	'acnt',0
+	.word	12996
+	.byte	4,2,35,16,14
+	.byte	'osEvent',0
+	.word	179
+	.byte	1,2,35,20,14
+	.byte	'MSIInit',0
+	.word	509
+	.byte	2,2,35,22,0,12
+	.byte	'Rte_MSITableEntry',0,21,172,2,3
+	.word	13286
+	.byte	3
+	.word	509
+	.byte	3
+	.word	179
+	.byte	12
+	.byte	'Rte_TaskArrayIndex',0,21,179,2,16
+	.word	179
+	.byte	12
+	.byte	'Rte_NrWaitingTasks',0,21,180,2,16
+	.word	179
+	.byte	13,21,182,2,9,4,14
+	.byte	'pending',0
+	.word	179
+	.byte	1,2,35,0,14
+	.byte	'count',0
+	.word	179
+	.byte	1,2,35,1,14
+	.byte	'firstWaitingTask',0
+	.word	179
+	.byte	1,2,35,2,0,12
+	.byte	'Rte_WaitableDatum',0,21,186,2,3
+	.word	13504
+	.byte	3
+	.word	13504
+	.byte	13,21,226,2,9,12,14
+	.byte	'event_id',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'wd',0
+	.word	13596
+	.byte	4,2,35,4,14
+	.byte	'timeout',0
+	.word	848
+	.byte	4,2,35,8,0,12
+	.byte	'Rte_WOWP_NotificationType',0,21,230,2,3
+	.word	13601
+	.byte	25
+	.word	13601
+	.byte	3
+	.word	13690
+	.byte	12
+	.byte	'Rte_WOWP_NotificationRefType',0,21,232,2,66
+	.word	13695
+	.byte	12
+	.byte	'Rte_ARE_NotificationType',0,21,234,2,29
+	.word	13029
+	.byte	21
+	.byte	'Rte_QTaskType',0,21,243,2,16,28,14
+	.byte	'cmn',0
+	.word	8030
+	.byte	24,2,35,0,14
+	.byte	'task',0
+	.word	12887
+	.byte	4,2,35,24,0,12
+	.byte	'Rte_QTaskType',0,21,246,2,3
+	.word	13772
+	.byte	21
+	.byte	'Rte_QREType',0,21,250,2,16,28,14
+	.byte	'cmn',0
+	.word	8030
+	.byte	24,2,35,0,14
+	.byte	're',0
+	.word	13118
+	.byte	4,2,35,24,0,12
+	.byte	'Rte_QREType',0,21,253,2,3
+	.word	13843
+	.byte	25
+	.word	13029
+	.byte	3
+	.word	13908
+	.byte	21
+	.byte	'Rte_QWWPType',0,21,129,3,16,28,14
+	.byte	'cmn',0
+	.word	8030
+	.byte	24,2,35,0,14
+	.byte	'wwp',0
+	.word	13700
+	.byte	4,2,35,24,0,12
+	.byte	'Rte_QWWPType',0,21,132,3,3
+	.word	13918
+	.byte	25
+	.word	13601
+	.byte	3
+	.word	13986
+	.byte	21
+	.byte	'Rte_QEvType',0,21,136,3,16,36,14
+	.byte	'cmn',0
+	.word	8030
+	.byte	24,2,35,0,14
+	.byte	'task',0
+	.word	12887
+	.byte	4,2,35,24,14
+	.byte	'mask',0
+	.word	179
+	.byte	1,2,35,28,14
+	.byte	'acnt',0
+	.word	12996
+	.byte	4,2,35,32,0,12
+	.byte	'Rte_QEvType',0,21,141,3,3
+	.word	13996
+	.byte	21
+	.byte	'Rte_QMSIType',0,21,145,3,16,48,14
+	.byte	'cmn',0
+	.word	8030
+	.byte	24,2,35,0,14
+	.byte	'task',0
+	.word	12887
+	.byte	4,2,35,24,14
+	.byte	'mask',0
+	.word	179
+	.byte	1,2,35,28,14
+	.byte	'acnt',0
+	.word	12996
+	.byte	4,2,35,32,14
+	.byte	'msiCounter',0
+	.word	13183
+	.byte	4,2,35,36,14
+	.byte	'msiPending',0
+	.word	13251
+	.byte	4,2,35,40,14
+	.byte	'msiLimit',0
+	.word	509
+	.byte	2,2,35,44,0,12
+	.byte	'Rte_QMSIType',0,21,153,3,3
+	.word	14091
+	.byte	16,22,21,9,4,17
+	.byte	'DSD_IDLE',0,0,17
+	.byte	'DSD_VERIFY_DIAGNOSTIC_DATA',0,1,17
+	.byte	'DSD_CALL_SERVICE',0,2,17
+	.byte	'DSD_WAITFORTXCONF',0,3,17
+	.byte	'DSD_SENDTXCONF_APPL',0,4,0,12
+	.byte	'Dcm_DsdStatesType_ten',0,22,28,2
+	.word	14246
+	.byte	16,23,215,2,9,4,17
+	.byte	'DCM_DSLD_POS_RESPONSE',0,0,17
+	.byte	'DCM_DSLD_NEG_RESPONSE',0,1,0,12
+	.byte	'Dcm_DsldResponseType_ten',0,23,219,2,2
+	.word	14383
+	.byte	16,24,148,1,9,4,17
+	.byte	'DCM_ROE_CLEARED',0,0,17
+	.byte	'DCM_ROE_STOPPED',0,1,17
+	.byte	'DCM_ROE_STARTED',0,2,0,12
+	.byte	'Dcm_DspRoeEventState_ten',0,24,153,1,2
+	.word	14472
+	.byte	16,24,231,1,9,4,17
+	.byte	'DCM_CONTROLMASK_NO',0,0,17
+	.byte	'DCM_CONTROLMASK_INTERNAL',0,1,17
+	.byte	'DCM_CONTROLMASK_EXTERNAL',0,2,0,12
+	.byte	'Dcm_Dsp_IocbiCtrlMask_ten',0,24,236,1,2
+	.word	14567
+	.byte	16,19,203,1,9,4,17
+	.byte	'DCM_SUPPORT_READ',0,0,17
+	.byte	'DCM_SUPPORT_WRITE',0,1,17
+	.byte	'DCM_SUPPORT_IOCONTROL',0,2,0,30
+	.word	179
+	.byte	1,1,24
+	.word	11181
+	.byte	24
+	.word	509
+	.byte	24
+	.word	14684
+	.byte	0,3
+	.word	14754
+	.byte	13,24,239,1,9,44,14
+	.byte	'dataAllowedSessRead_u32',0
+	.word	848
+	.byte	4,2,35,0,14
+	.byte	'dataAllowedSecRead_u32',0
+	.word	848
+	.byte	4,2,35,4,14
+	.byte	'adrUserReadModeRule_pfct',0
+	.word	14777
+	.byte	4,2,35,8,14
+	.byte	'dataAllowedSessWrite_u32',0
+	.word	848
+	.byte	4,2,35,12,14
+	.byte	'dataAllowedSecWrite_u32',0
+	.word	848
+	.byte	4,2,35,16,14
+	.byte	'adrUserWriteModeRule_pfct',0
+	.word	14777
+	.byte	4,2,35,20,14
+	.byte	'dataSessBitMask_u32',0
+	.word	848
+	.byte	4,2,35,24,14
+	.byte	'dataSecBitMask_u32',0
+	.word	848
+	.byte	4,2,35,28,14
+	.byte	'adrUserControlModeRule_pfct',0
+	.word	14777
+	.byte	4,2,35,32,14
+	.byte	'dataCtrlMask_en',0
+	.word	14567
+	.byte	4,2,35,36,14
+	.byte	'dataCtrlMaskSize_u8',0
+	.word	179
+	.byte	1,2,35,40,14
+	.byte	'dataIocbirst_b',0
+	.word	179
+	.byte	1,2,35,41,14
+	.byte	'statusmaskIOControl_u8',0
+	.word	179
+	.byte	1,2,35,42,0,12
+	.byte	'Dcm_ExtendedDIDConfig_tst',0,24,141,2,3
+	.word	14782
+	.byte	13,24,200,2,9,4,14
+	.byte	'posnSigBit_u16',0
+	.word	509
+	.byte	2,2,35,0,14
+	.byte	'idxDcmDspDatainfo_u16',0
+	.word	509
+	.byte	2,2,35,2,0,12
+	.byte	'Dcm_SignalDIDConfig_tst',0,24,204,2,3
+	.word	15229
+	.byte	16,25,106,9,4,17
+	.byte	'DSP_RDTC_SFUNINIT',0,0,17
+	.byte	'DSP_RDTC_SFINIT',0,1,17
+	.byte	'DSP_RDTC_SFCALCNUMDTC',0,2,17
+	.byte	'DSP_RDTC_GETFFSIZE',0,3,17
+	.byte	'DSP_RDTC_UPDATEDISABLED',0,4,17
+	.byte	'DSP_RDTC_SFFILLRESP',0,5,0,12
+	.byte	'Dcm_DspRDTCSubFuncStates_ten',0,25,123,2
+	.word	15324
+	.byte	31
+	.byte	'Dcm_DspRDTCSubFunc_en',0,25,136,1,54
+	.word	15324
+	.byte	1,1,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L32:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32
+	.byte	13,58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,46,1,3,8,32,13
+	.byte	58,15,59,15,57,15,73,19,54,15,39,12,0,0,8,46,1,49,19,0,0,9,5,0,49,19,0,0,10,46,0,3,8,58,15,59,15,57,15
+	.byte	73,19,54,15,39,12,63,12,60,12,0,0,11,46,1,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,12,22
+	.byte	0,3,8,58,15,59,15,57,15,73,19,0,0,13,19,1,58,15,59,15,57,15,11,15,0,0,14,13,0,3,8,73,19,11,15,56,9,0,0
+	.byte	15,21,0,54,15,0,0,16,4,1,58,15,59,15,57,15,11,15,0,0,17,40,0,3,8,28,13,0,0,18,1,1,11,15,73,19,0,0,19,33
+	.byte	0,47,15,0,0,20,21,0,54,15,39,12,0,0,21,19,1,3,8,58,15,59,15,57,15,11,15,0,0,22,59,0,3,8,0,0,23,21,1,54
+	.byte	15,39,12,0,0,24,5,0,73,19,0,0,25,38,0,73,19,0,0,26,23,1,58,15,59,15,57,15,11,15,0,0,27,4,1,3,8,58,15,59
+	.byte	15,57,15,11,15,0,0,28,21,0,73,19,54,15,39,12,0,0,29,53,0,73,19,0,0,30,21,1,73,19,54,15,39,12,0,0,31,52
+	.byte	0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L33:
+	.word	.L87-.L86
+.L86:
+	.half	3
+	.word	.L89-.L88
+.L88:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits8.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits16.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits32.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\api\\Dem_Dcm.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmCore_DslDsd_Pub.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Dcm_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Seca_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Dsc_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Uds_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\api\\Dem_Types.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\Dsd\\Dcm_Dsd.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_Prot.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Uds_Prot.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_Priv.h',0,0,0,0,0
+.L89:
+.L87:
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_ReportNumberOfDTC')
+	.sect	'.debug_info'
+.L34:
+	.word	689
+	.half	3
+	.word	.L35
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L37,.L36
+	.byte	2
+	.word	.L30
+	.byte	3
+	.byte	'Dcm_Dsp_ReportNumberOfDTC',0,1,44,31
+	.word	.L39
+	.byte	1,1,1
+	.word	.L29,.L40,.L28
+	.byte	4
+	.byte	'OpStatus',0,1,44,93
+	.word	.L39,.L41
+	.byte	4
+	.byte	'pMsgContext',0,1,44,154,1
+	.word	.L42,.L43
+	.byte	4
+	.byte	'dataNegRespCode_u8',0,1,44,228,1
+	.word	.L44,.L45
+	.byte	5
+	.word	.L29,.L40
+	.byte	6
+	.byte	'nrFltDTC_u16',0,1,46,54
+	.word	.L46,.L47
+	.byte	6
+	.byte	'dataRDTCSubFunc_u8',0,1,47,57
+	.word	.L39,.L48
+	.byte	6
+	.byte	'dataDTCKind_u8',0,1,48,57
+	.word	.L39,.L49
+	.byte	6
+	.byte	'dataDTCOrigin_u8',0,1,49,57
+	.word	.L39,.L50
+	.byte	6
+	.byte	'stDTCStatus_u8',0,1,50,57
+	.word	.L39,.L51
+	.byte	6
+	.byte	'nrReqLength_u8',0,1,51,54
+	.word	.L39,.L52
+	.byte	6
+	.byte	'dataStatusAvailMask_u8',0,1,52,57
+	.word	.L39,.L53
+	.byte	6
+	.byte	'dataDTCSeverity_u8',0,1,54,57
+	.word	.L39,.L54
+	.byte	6
+	.byte	'dataDTCSeverityType_u8',0,1,55,57
+	.word	.L39,.L55
+	.byte	6
+	.byte	'dataRetSetDTCFilter_u8',0,1,56,54
+	.word	.L39,.L56
+	.byte	6
+	.byte	'dataRetGetNumOfFiltDTC_u8',0,1,57,57
+	.word	.L39,.L57
+	.byte	6
+	.byte	'dataretVal_u8',0,1,58,36
+	.word	.L39,.L58
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_ReportNumberOfDTC')
+	.sect	'.debug_abbrev'
+.L35:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Dsp_ReportNumberOfDTC')
+	.sect	'.debug_line'
+.L36:
+	.word	.L91-.L90
+.L90:
+	.half	3
+	.word	.L93-.L92
+.L92:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c',0,0,0,0,0
+.L93:
+	.byte	5,31,7,0,5,2
+	.word	.L29
+	.byte	3,43,1,5,24,9
+	.half	.L63-.L29
+	.byte	3,19,1,5,22,9
+	.half	.L94-.L63
+	.byte	1,5,18,9
+	.half	.L95-.L94
+	.byte	3,1,1,5,8,9
+	.half	.L64-.L95
+	.byte	3,2,1,5,5,9
+	.half	.L96-.L64
+	.byte	1,5,37,7,9
+	.half	.L97-.L96
+	.byte	3,2,1,5,46,9
+	.half	.L98-.L97
+	.byte	1,5,23,9
+	.half	.L65-.L98
+	.byte	3,16,1,5,9,9
+	.half	.L99-.L65
+	.byte	1,5,27,7,9
+	.half	.L100-.L99
+	.byte	3,3,1,5,17,9
+	.half	.L66-.L100
+	.byte	3,13,1,5,13,9
+	.half	.L101-.L66
+	.byte	1,5,42,7,9
+	.half	.L102-.L101
+	.byte	3,3,1,5,5,9
+	.half	.L60-.L102
+	.byte	1,5,39,7,9
+	.half	.L103-.L60
+	.byte	3,3,1,5,48,9
+	.half	.L104-.L103
+	.byte	1,5,17,9
+	.half	.L67-.L104
+	.byte	3,8,1,5,30,9
+	.half	.L105-.L67
+	.byte	1,5,17,9
+	.half	.L106-.L105
+	.byte	3,1,1,5,32,9
+	.half	.L107-.L106
+	.byte	1,5,30,9
+	.half	.L108-.L107
+	.byte	1,5,17,9
+	.half	.L109-.L108
+	.byte	3,3,1,5,54,9
+	.half	.L110-.L109
+	.byte	1,5,30,9
+	.half	.L111-.L110
+	.byte	1,5,24,9
+	.half	.L112-.L111
+	.byte	3,3,1,5,47,9
+	.half	.L113-.L112
+	.byte	1,5,6,9
+	.half	.L68-.L113
+	.byte	3,3,1,5,13,7,9
+	.half	.L114-.L68
+	.byte	3,4,1,9
+	.half	.L115-.L114
+	.byte	3,18,1,9
+	.half	.L116-.L115
+	.byte	3,116,1,9
+	.half	.L117-.L116
+	.byte	3,6,1,5,31,9
+	.half	.L7-.L117
+	.byte	3,117,1,9
+	.half	.L70-.L7
+	.byte	3,1,1,9
+	.half	.L71-.L70
+	.byte	3,1,1,5,8,9
+	.half	.L72-.L71
+	.byte	3,1,1,5,29,9
+	.half	.L9-.L72
+	.byte	3,3,1,5,31,9
+	.half	.L73-.L9
+	.byte	3,1,1,9
+	.half	.L74-.L73
+	.byte	3,1,1,5,8,9
+	.half	.L75-.L74
+	.byte	3,1,1,5,31,9
+	.half	.L10-.L75
+	.byte	3,3,1,9
+	.half	.L76-.L10
+	.byte	3,1,1,9
+	.half	.L77-.L76
+	.byte	3,1,1,5,8,9
+	.half	.L78-.L77
+	.byte	3,1,1,5,31,9
+	.half	.L11-.L78
+	.byte	3,4,1,9
+	.half	.L79-.L11
+	.byte	3,1,1,9
+	.half	.L80-.L79
+	.byte	3,1,1,5,8,9
+	.half	.L81-.L80
+	.byte	3,1,1,5,19,9
+	.half	.L12-.L81
+	.byte	3,8,1,9
+	.half	.L118-.L12
+	.byte	3,1,1,9
+	.half	.L119-.L118
+	.byte	3,1,1,9
+	.half	.L120-.L119
+	.byte	3,124,1,9
+	.half	.L121-.L120
+	.byte	3,1,1,5,7,9
+	.half	.L69-.L121
+	.byte	3,7,1,5,32,7,9
+	.half	.L122-.L69
+	.byte	3,3,1,5,30,9
+	.half	.L123-.L122
+	.byte	1,5,51,9
+	.half	.L124-.L123
+	.byte	1,5,30,9
+	.half	.L16-.L124
+	.byte	3,6,1,5,28,9
+	.half	.L125-.L16
+	.byte	1,5,42,9
+	.half	.L126-.L125
+	.byte	3,1,1,5,7,9
+	.half	.L17-.L126
+	.byte	3,124,1,5,18,9
+	.half	.L6-.L17
+	.byte	3,11,1,5,33,9
+	.half	.L127-.L6
+	.byte	1,5,31,9
+	.half	.L128-.L127
+	.byte	1,5,18,9
+	.half	.L129-.L128
+	.byte	3,1,1,5,33,9
+	.half	.L130-.L129
+	.byte	1,5,31,9
+	.half	.L131-.L130
+	.byte	1,5,33,9
+	.half	.L132-.L131
+	.byte	3,1,1,5,31,9
+	.half	.L133-.L132
+	.byte	1,5,38,9
+	.half	.L134-.L133
+	.byte	3,1,1,5,6,9
+	.half	.L18-.L134
+	.byte	3,122,1,5,28,9
+	.half	.L5-.L18
+	.byte	3,13,1,5,26,9
+	.half	.L135-.L5
+	.byte	1,5,34,9
+	.half	.L136-.L135
+	.byte	3,1,1,5,5,9
+	.half	.L19-.L136
+	.byte	3,124,1,5,30,9
+	.half	.L4-.L19
+	.byte	3,10,1,5,4,9
+	.half	.L20-.L4
+	.byte	3,125,1,5,35,9
+	.half	.L3-.L20
+	.byte	3,10,1,5,33,9
+	.half	.L137-.L3
+	.byte	1,5,26,9
+	.half	.L138-.L137
+	.byte	3,1,1,5,9,9
+	.half	.L2-.L138
+	.byte	3,4,1,5,5,9
+	.half	.L139-.L2
+	.byte	1,5,67,7,9
+	.half	.L140-.L139
+	.byte	3,2,1,5,9,9
+	.half	.L83-.L140
+	.byte	3,2,1,5,24,7,9
+	.half	.L141-.L83
+	.byte	3,3,1,5,48,9
+	.half	.L142-.L141
+	.byte	1,5,60,9
+	.half	.L143-.L142
+	.byte	1,5,37,9
+	.half	.L144-.L143
+	.byte	1,5,24,9
+	.half	.L145-.L144
+	.byte	3,3,1,5,48,9
+	.half	.L146-.L145
+	.byte	1,5,37,9
+	.half	.L147-.L146
+	.byte	1,5,39,9
+	.half	.L148-.L147
+	.byte	3,3,1,5,37,9
+	.half	.L149-.L148
+	.byte	1,9
+	.half	.L150-.L149
+	.byte	3,3,1,5,35,9
+	.half	.L151-.L150
+	.byte	1,5,26,9
+	.half	.L152-.L151
+	.byte	3,1,1,5,68,9
+	.half	.L153-.L152
+	.byte	3,118,1,5,14,9
+	.half	.L23-.L153
+	.byte	3,12,1,5,27,7,9
+	.half	.L154-.L23
+	.byte	3,3,1,5,41,9
+	.half	.L155-.L154
+	.byte	1,5,35,9
+	.half	.L25-.L155
+	.byte	3,4,1,5,33,9
+	.half	.L156-.L25
+	.byte	1,5,26,9
+	.half	.L157-.L156
+	.byte	3,1,1,5,5,9
+	.half	.L22-.L157
+	.byte	3,3,1,5,1,9
+	.half	.L27-.L22
+	.byte	3,1,1,7,9
+	.half	.L38-.L27
+	.byte	0,1,1
+.L91:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Dsp_ReportNumberOfDTC')
+	.sect	'.debug_ranges'
+.L37:
+	.word	-1,.L29,0,.L38-.L29,0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Dsp_ReportNumberOfDTC')
+	.sect	'.debug_loc'
+.L28:
+	.word	-1,.L29,0,.L59-.L29
+	.half	2
+	.byte	138,0
+	.word	.L59-.L29,.L40-.L29
+	.half	2
+	.byte	138,16
+	.word	.L40-.L29,.L40-.L29
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L41:
+	.word	-1,.L29,0,.L60-.L29
+	.half	1
+	.byte	84
+	.word	.L4-.L29,.L20-.L29
+	.half	1
+	.byte	84
+	.word	.L3-.L29,.L2-.L29
+	.half	1
+	.byte	84
+	.word	0,0
+.L49:
+	.word	-1,.L29,.L70-.L29,.L9-.L29
+	.half	1
+	.byte	85
+	.word	.L73-.L29,.L10-.L29
+	.half	1
+	.byte	85
+	.word	.L76-.L29,.L11-.L29
+	.half	1
+	.byte	85
+	.word	.L79-.L29,.L69-.L29
+	.half	1
+	.byte	85
+	.word	0,0
+.L50:
+	.word	-1,.L29,.L71-.L29,.L9-.L29
+	.half	1
+	.byte	87
+	.word	.L74-.L29,.L10-.L29
+	.half	1
+	.byte	87
+	.word	.L77-.L29,.L11-.L29
+	.half	1
+	.byte	87
+	.word	.L80-.L29,.L69-.L29
+	.half	1
+	.byte	87
+	.word	0,0
+.L55:
+	.word	-1,.L29,.L72-.L29,.L9-.L29
+	.half	1
+	.byte	95
+	.word	.L75-.L29,.L10-.L29
+	.half	1
+	.byte	95
+	.word	.L78-.L29,.L11-.L29
+	.half	1
+	.byte	95
+	.word	.L81-.L29,.L82-.L29
+	.half	1
+	.byte	95
+	.word	0,0
+.L54:
+	.word	-1,.L29,.L66-.L29,.L3-.L29
+	.half	1
+	.byte	91
+	.word	0,0
+.L45:
+	.word	-1,.L29,0,.L60-.L29
+	.half	1
+	.byte	101
+	.word	.L63-.L29,.L40-.L29
+	.half	1
+	.byte	109
+	.word	.L4-.L29,.L20-.L29
+	.half	1
+	.byte	101
+	.word	.L3-.L29,.L2-.L29
+	.half	1
+	.byte	101
+	.word	0,0
+.L48:
+	.word	-1,.L29,.L65-.L29,.L2-.L29
+	.half	1
+	.byte	90
+	.word	0,0
+.L57:
+	.word	-1,.L29,.L83-.L29,.L22-.L29
+	.half	1
+	.byte	82
+	.word	0,0
+.L56:
+	.word	-1,.L29,.L69-.L29,.L6-.L29
+	.half	1
+	.byte	82
+	.word	0,0
+.L53:
+	.word	-1,.L29,0,.L40-.L29
+	.half	2
+	.byte	145,126
+	.word	0,0
+.L58:
+	.word	-1,.L29,.L64-.L29,.L40-.L29
+	.half	1
+	.byte	89
+	.word	.L84-.L29,.L40-.L29
+	.half	1
+	.byte	82
+	.word	0,0
+.L47:
+	.word	-1,.L29,0,.L40-.L29
+	.half	2
+	.byte	145,124
+	.word	0,0
+.L52:
+	.word	0,0
+.L43:
+	.word	-1,.L29,0,.L61-.L29
+	.half	1
+	.byte	100
+	.word	.L62-.L29,.L40-.L29
+	.half	1
+	.byte	108
+	.word	.L4-.L29,.L20-.L29
+	.half	1
+	.byte	100
+	.word	.L3-.L29,.L2-.L29
+	.half	1
+	.byte	100
+	.word	0,0
+.L51:
+	.word	-1,.L29,.L67-.L29,.L68-.L29
+	.half	1
+	.byte	88
+	.word	.L68-.L29,.L69-.L29
+	.half	1
+	.byte	84
+	.word	.L6-.L29,.L18-.L29
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L158:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Dsp_ReportNumberOfDTC')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L158,.L29,.L40-.L29
+	.byte	4
+	.word	(.L59-.L29)/2
+	.byte	19,16,22,26,3,19,138,16,4
+	.word	(.L40-.L59)/2
+	.byte	19,0,8,26,0,0
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   243  #define DCM_STOP_SEC_CODE /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   244  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   245  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   246  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepNumDTCByStatusMask.c	   247  
+
+	; Module end

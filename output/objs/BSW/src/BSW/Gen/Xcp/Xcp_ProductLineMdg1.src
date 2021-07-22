@@ -1,0 +1,1104 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc17424a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Xcp\\Xcp_ProductLineMdg1.src BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_ProductLineMdg1.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_ProductLineMdg1.c'
+
+	
+$TC16X
+	
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L3:
+	.word	2542
+	.half	3
+	.word	.L4
+	.byte	4
+.L2:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_ProductLineMdg1.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L5
+	.byte	2,1,3
+	.word	145
+	.byte	4
+	.byte	'__codeptr',0,1,1,1
+	.word	147
+	.byte	5
+	.byte	'unsigned char',0,1,8,4
+	.byte	'uint8',0,2,81,25
+	.word	170
+	.byte	5
+	.byte	'unsigned short int',0,2,7,4
+	.byte	'uint16',0,2,91,25
+	.word	201
+	.byte	5
+	.byte	'unsigned int',0,4,7,4
+	.byte	'uint32',0,2,106,24
+	.word	238
+	.byte	4
+	.byte	'boolean',0,2,127,25
+	.word	170
+	.byte	4
+	.byte	'Std_ReturnType',0,3,199,1,15
+	.word	170
+	.byte	4
+	.byte	'PduLengthType',0,4,26,19
+	.word	201
+	.byte	6,5,113,9,4,7
+	.byte	'TP_DATACONF',0,0,7
+	.byte	'TP_DATARETRY',0,1,7
+	.byte	'TP_CONFPENDING',0,2,0,4
+	.byte	'TpDataStateType',0,5,118,3
+	.word	331
+	.byte	6,6,225,1,9,4,7
+	.byte	'XCP_STATE_DISCONNECTED',0,0,7
+	.byte	'XCP_STATE_DISCONNECTING',0,1,7
+	.byte	'XCP_STATE_CONNECTED',0,2,7
+	.byte	'XCP_STATE_RESUME',0,3,7
+	.byte	'XCP_STATE_DISABLED',0,240,1,0,4
+	.byte	'Xcp_State_t',0,6,231,1,2
+	.word	407
+	.byte	4
+	.byte	'Xcp_AddrValue',0,6,165,3,23
+	.word	238
+	.byte	4
+	.byte	'Xcp_PduIdType',0,6,174,3,15
+	.word	170
+	.byte	6,6,223,3,9,4,7
+	.byte	'XCP_DAQ_NO_OVERLOAD_INDICATION',0,0,7
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_PID',0,1,7
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_EVENT',0,2,0,4
+	.byte	'Xcp_Overload_t',0,6,228,3,2
+	.word	595
+	.byte	6,6,233,3,9,4,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_ABSOLUTE',0,1,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_BYTE',0,2,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD',0,3,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD_ALIGNED',0,4,0,4
+	.byte	'Xcp_IdField_t',0,6,239,3,2
+	.word	729
+	.byte	6,6,242,3,9,4,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_DEFAULT',0,0,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_16',0,1,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_32',0,2,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_64',0,3,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_ALIGNMENT',0,4,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_MAX_ENTRY_SIZE',0,5,0,4
+	.byte	'Xcp_OdtOptimizationType_t',0,6,250,3,2
+	.word	946
+	.byte	6,6,253,3,9,4,7
+	.byte	'XCP_CONSISTENCY_ODT',0,0,7
+	.byte	'XCP_CONSISTENCY_DAQ',0,1,7
+	.byte	'XCP_CONSISTENCY_EVENT',0,2,7
+	.byte	'XCP_CONSISTENCY_NONE',0,3,0,4
+	.byte	'Xcp_Consistency_t',0,6,131,4,2
+	.word	1222
+	.byte	6,6,134,4,9,4,7
+	.byte	'XCP_TIMESTAMP_TYPE_NO_TIME_STAMP',0,0,7
+	.byte	'XCP_TIMESTAMP_TYPE_ONE_BYTE',0,1,7
+	.byte	'XCP_TIMESTAMP_TYPE_TWO_BYTE',0,2,7
+	.byte	'XCP_TIMESTAMP_TYPE_FOUR_BYTE',0,4,0,4
+	.byte	'Xcp_Timestamp_t',0,6,140,4,2
+	.word	1347
+	.byte	3
+	.word	170
+	.byte	8,5,71,9,8,9
+	.byte	'SduDataPtr',0
+	.word	1505
+	.byte	4,2,35,0,9
+	.byte	'SduLength',0
+	.word	201
+	.byte	2,2,35,4,0,10
+	.word	1510
+	.byte	3
+	.word	1555
+	.byte	11
+	.word	170
+	.byte	1,1,12
+	.word	1560
+	.byte	12
+	.word	170
+	.byte	12
+	.word	170
+	.byte	0,3
+	.word	1565
+	.byte	13,1,1,12
+	.word	170
+	.byte	12
+	.word	170
+	.byte	0,3
+	.word	1593
+	.byte	13,1,1,12
+	.word	170
+	.byte	0,3
+	.word	1612
+	.byte	11
+	.word	170
+	.byte	1,1,12
+	.word	170
+	.byte	0,3
+	.word	1626
+	.byte	3
+	.word	1510
+	.byte	13,1,1,12
+	.word	1560
+	.byte	12
+	.word	1644
+	.byte	12
+	.word	170
+	.byte	0,3
+	.word	1649
+	.byte	11
+	.word	170
+	.byte	1,1,12
+	.word	170
+	.byte	12
+	.word	201
+	.byte	12
+	.word	170
+	.byte	0,3
+	.word	1673
+	.byte	8,7,164,1,9,56,9
+	.byte	'TLTransmit_pfct',0
+	.word	1588
+	.byte	4,2,35,0,9
+	.byte	'TLInit_pfct',0
+	.word	1607
+	.byte	4,2,35,4,9
+	.byte	'TLConnect_pfct',0
+	.word	1621
+	.byte	4,2,35,8,9
+	.byte	'TLDisconnect_pfct',0
+	.word	1639
+	.byte	4,2,35,12,9
+	.byte	'TLTransportLayerCmd_pfct',0
+	.word	1668
+	.byte	4,2,35,16,9
+	.byte	'TLGetTxPduId_pfct',0
+	.word	1696
+	.byte	4,2,35,20,9
+	.byte	'MaxCto_u8',0
+	.word	170
+	.byte	1,2,35,24,9
+	.byte	'MaxDto_u16',0
+	.word	201
+	.byte	2,2,35,26,9
+	.byte	'TimestampType_en',0
+	.word	1347
+	.byte	4,2,35,28,9
+	.byte	'IdFieldType_en',0
+	.word	729
+	.byte	4,2,35,32,9
+	.byte	'OverloadType_en',0
+	.word	595
+	.byte	4,2,35,36,9
+	.byte	'OdtOptimizationType_en',0
+	.word	946
+	.byte	4,2,35,40,9
+	.byte	'Consistency_en',0
+	.word	1222
+	.byte	4,2,35,44,9
+	.byte	'PdRam_u32',0
+	.word	238
+	.byte	4,2,35,48,9
+	.byte	'EdRam_u32',0
+	.word	238
+	.byte	4,2,35,52,0,4
+	.byte	'Xcp_PL_TL_Cfg_t',0,7,184,1,2
+	.word	1701
+	.byte	6,7,188,1,9,4,7
+	.byte	'XCP_RAMSECTION_INVALID',0,0,7
+	.byte	'XCP_RAMSECTION_PD',0,1,7
+	.byte	'XCP_RAMSECTION_ED',0,2,0,4
+	.byte	'Xcp_RamSectionType_t',0,7,193,1,2
+	.word	2099
+	.byte	8,7,195,1,9,12,9
+	.byte	'DaqRamPtr_pu8',0
+	.word	1505
+	.byte	4,2,35,0,9
+	.byte	'DaqRamTotalSize_u32',0
+	.word	238
+	.byte	4,2,35,4,9
+	.byte	'RamSectionType_en',0
+	.word	2099
+	.byte	4,2,35,8,0,4
+	.byte	'Xcp_DaqRamSection_Cfg_t',0,7,200,1,2
+	.word	2201
+	.byte	8,7,230,1,9,4,9
+	.byte	'EventChannelDirection_u8',0
+	.word	170
+	.byte	1,2,35,0,9
+	.byte	'EventChannelTimeCycle_u8',0
+	.word	170
+	.byte	1,2,35,1,9
+	.byte	'EventChannelTimeUnit_u8',0
+	.word	170
+	.byte	1,2,35,2,9
+	.byte	'EventChannelPriority_u8',0
+	.word	170
+	.byte	1,2,35,3,0,4
+	.byte	'Xcp_EventChannel_Cfg_t',0,7,236,1,2
+	.word	2320
+	.byte	5
+	.byte	'unsigned long long int',0,8,7,4
+	.byte	'rba_BswSrv_uint64',0,8,66,28
+	.word	2493
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L4:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,21,0,54,15,0,0,3,15,0,73,19,0,0,4,22,0,3,8,58,15,59,15
+	.byte	57,15,73,19,0,0,5,36,0,3,8,11,15,62,15,0,0,6,4,1,58,15,59,15,57,15,11,15,0,0,7,40,0,3,8,28,13,0,0,8,19
+	.byte	1,58,15,59,15,57,15,11,15,0,0,9,13,0,3,8,73,19,11,15,56,9,0,0,10,38,0,73,19,0,0,11,21,1,73,19,54,15,39
+	.byte	12,0,0,12,5,0,73,19,0,0,13,21,1,54,15,39,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L5:
+	.word	.L7-.L6
+.L6:
+	.half	3
+	.word	.L9-.L8
+.L8:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_ProductLineMdg1.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\Xcp_Cfg.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0,0
+.L9:
+.L7:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	     1  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	     2  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	     3  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	     4  * Includes
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	     5  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	     6  #include "Xcp_Cbk.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	     7  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	     8  #if (XCP_PRODUCT_LINE == XCP_PRODUCT_LINE_MDG1)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	     9  #include "Xcp_Cfg_SchM.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    10  #include "rba_Dme.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    11  #include "rba_MemLay.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    12  #include "rba_EcuSecu.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    13  #if (XCP_CMD_RECEIVED_NOTIFICATION == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    14  #include "rba_CalWup.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    15  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    16  #if (XCP_TIMESTAMP == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    17  #include "Mcu_Rb_SystemTimer.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    18  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    19  #include "Xcp_Priv.h" /* Not really wished but only solution to set the enabledResources without getting recursion */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    20  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    21  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    22  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    23  * Variables
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    24  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    25  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    26  /************************** START POWER_ON_CLEARED UNSPECIFIED  **********************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    27  #define XCP_START_SEC_VAR_POWER_ON_CLEARED_UNSPECIFIED
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    28  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    29  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    30  typedef struct
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    31  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    32    uint8 CalPage_u8;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    33  }XcpAppl_Data_t;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    34  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    35  /* XcpAppl_Data also needed for BuildChecksum and Up-/Download, when XCP_PAGE_SWITCHING_PAG off */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    36  static XcpAppl_Data_t XcpAppl_Data[XCP_PL_IDS];
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    37  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    38  #if (XCP_TIMESTAMP == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    39  static uint32 XcpAppl_Timestamp_u32;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    40  static uint32 XcpAppl_ModuloCounter_u32;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    41  static uint32 XcpAppl_LastCounter_u32;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    42  #endif /* (XCP_TIMESTAMP == STD_ON) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    43  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    44  #define XCP_STOP_SEC_VAR_POWER_ON_CLEARED_UNSPECIFIED
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    45  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    46  /************************** STOP POWER_ON_CLEARED UNSPECIFIED  ***********************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    47  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    48  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    49  /************************** START CONST UINT32 *****************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    50  #define XCP_START_SEC_CONST_32
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    51  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    52  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    53  #if(XCP_PL_IDS == 2)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    54  static const uint32 XcpAppl_DmeUser[XCP_PL_IDS] = {RBA_DME_USER_XCP_0, RBA_DME_USER_XCP_1};
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    55  #else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    56  static const uint32 XcpAppl_DmeUser[XCP_PL_IDS] = {RBA_DME_USER_XCP_0};
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    57  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    58  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    59  #define XCP_STOP_SEC_CONST_32
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    60  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    61  /************************** STOP CONST UINT32 *******************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    62  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    63  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    64  /************************** START CLEARED UNSPECIFIED  *********************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    65  #define XCP_START_SEC_VAR_CLEARED_UNSPECIFIED
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    66  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    67  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    68  #if (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    69  /** Checksum global data structure */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    70  typedef struct
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    71  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    72    uint32 BlockSize_u32;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    73    uint32 ChecksumValue;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    74    Xcp_AddrValue XcpAddress;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    75  }XcpAppl_BuildChecksum_t;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    76  static XcpAppl_BuildChecksum_t XcpAppl_BuildChecksumData[XCP_PL_IDS];
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    77  #endif /* (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    78  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    79  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    80  #define XCP_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    81  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    82  /************************** STOP CLEARED UNSPECIFIED  **********************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    83  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    84  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    85  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    86  * Local function declarations
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    87  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    88  static void XcpAppl_EcuSecuDisableCalStim(void);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    89  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    90  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    91  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    92  * Functions
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    93  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    94  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    95  /* Begin section for code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    96  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    97  #define XCP_START_SEC_CALLOUT_CODE
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    98  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	    99  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   100  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   101  * Xcp_BuildChecksum.c_tpl filled out for MDG1
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   102  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   103  #if (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   104  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   105  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   106  Function triggers checksum calculation
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   107  \param[in]  AddrPtr           start address of memory block
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   108  \param[in]  BlockSize         size of memory block from which the checksum should be calculated
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   109  \param[in]  ProtocolLayerId   protocol layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   110  \return     ErrorCode
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   111  \retval     XCP_NO_ERROR      calculation started
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   112  \retval     XCP_ERR_CMD_BUSY  another calculation in progress
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   113  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   114  Xcp_ErrorCode XcpAppl_BuildChecksumTrigger(const Xcp_AddrType_t XcpAddr, uint32 BlockSize, uint8 ProtocolLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   115  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   116    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   117    Xcp_ErrorCode Error;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   118  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   119    /* Check if not another calculation in progress */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   120    if (XcpAppl_BuildChecksumData[ProtocolLayerId].BlockSize_u32 == 0u)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   121    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   122      /* Store data for background checksum calculation (Extension not used in MDG1 so not copied) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   123      XcpAppl_BuildChecksumData[ProtocolLayerId].XcpAddress = XcpAddr.AddrValue;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   124      /* Shall be at the end, because BlockSize > 0 is trigger for checksum calculation */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   125      XcpAppl_BuildChecksumData[ProtocolLayerId].BlockSize_u32 = BlockSize;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   126  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   127      /* Set return value */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   128      Error = XCP_NO_ERROR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   129    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   130    else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   131    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   132      /* Set return value */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   133      Error = XCP_ERR_CMD_BUSY;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   134    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   135    return (Error);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   136  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   137  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   138  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   139  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   140  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   141  Function to process checksum calculation
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   142  \param[out] ChecksumPtr       pointer to where calculated checksum should be stored
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   143  \param[out] ChecksumType      type of the checksum calculated by the process
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   144  \param[in]  ProtocolLayerId   Protocol Layer Id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   145  \return     ErorCode
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   146  \retval     XCP_NO_ERROR            calculation finished
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   147  \retval     XCP_ERR_ACCESS_DENIED   wrong calpage, addr, etc
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   148  \retval     XCP_ERR_CMD_BUSY        another calculation in progress
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   149  \retval     XCP_NO_RESPONSE         nothing to do
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   150  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   151  Xcp_ErrorCode XcpAppl_BuildChecksumMainFunction(uint32* ChecksumPtr, uint8* ChecksumType, uint8 ProtocolLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   152  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   153    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   154    uint32 DmeStatus;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   155    Xcp_ErrorCode Error;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   156  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   157    /* Check if calculation in progress - also checked in Xcp_BuildChecksumMainFunction */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   158    if (XcpAppl_BuildChecksumData[ProtocolLayerId].BlockSize_u32 > 0u)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   159    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   160      /* Check if triggering calculation */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   161      if (XcpAppl_BuildChecksumData[ProtocolLayerId].XcpAddress != 0)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   162      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   163        /* Call external checksum calculation routine with stored parameters */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   164        /* MR12 RULE 11.4 VIOLATION: The cast from pointer to uint32 (address) is required as the function expects an uint32 as first argument */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   165        DmeStatus = rba_Dme_BuildChecksumCrc32((uint32)XcpAppl_BuildChecksumData[ProtocolLayerId].XcpAddress,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   166                                                XcpAppl_Data[ProtocolLayerId].CalPage_u8,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   167                                                XcpAppl_BuildChecksumData[ProtocolLayerId].BlockSize_u32,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   168                                                &XcpAppl_BuildChecksumData[ProtocolLayerId].ChecksumValue,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   169                                                XcpAppl_DmeUser[ProtocolLayerId]);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   170  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   171        /* Clear given address to mark, that calculation is started */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   172        XcpAppl_BuildChecksumData[ProtocolLayerId].XcpAddress = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   173      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   174      /* Or checking if calculation if ready */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   175      else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   176      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   177        /* Check status of calculation */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   178        DmeStatus = rba_Dme_GetState(XcpAppl_DmeUser[ProtocolLayerId]);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   179      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   180  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   181      /* Set type of checksum to return parameter */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   182      *ChecksumType = XCP_CHECKSUM_TYPE_CRC_32;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   183  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   184      /* Check status */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   185      switch (DmeStatus)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   186      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   187        case (uint32) RBA_DME_ST_FINISHED:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   188        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   189          /* Set value of checksum to return parameter */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   190          *ChecksumPtr = XcpAppl_BuildChecksumData[ProtocolLayerId].ChecksumValue;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   191  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   192          /* Clear flag that checksum is being calculated */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   193          XcpAppl_BuildChecksumData[ProtocolLayerId].BlockSize_u32 = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   194  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   195          /* Calculation done */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   196          Error = XCP_NO_ERROR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   197  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   198          break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   199        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   200        case (uint32) RBA_DME_ST_BUSY:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   201        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   202          /* Continue calculation */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   203          Error = XCP_NO_RESPONSE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   204          break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   205        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   206        case (uint32) RBA_DME_ST_REJECTED:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   207        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   208          /* Clear flag that checksum is being calculated */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   209          XcpAppl_BuildChecksumData[ProtocolLayerId].BlockSize_u32 = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   210  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   211          /* Set Error code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   212          Error = XCP_ERR_CMD_BUSY;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   213          break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   214        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   215        case (uint32) RBA_DME_ST_PAGE_NOT_VALID:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   216        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   217          /* Clear flag that checksum is being calculated */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   218          XcpAppl_BuildChecksumData[ProtocolLayerId].BlockSize_u32 = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   219  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   220          /* Set Error code. This error code is not available in ASAM for BUILD_CHECKSUM! */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   221          Error = XCP_ERR_PAGE_NOT_VALID;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   222          break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   223        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   224        case (uint32) RBA_DME_ST_IDLE:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   225        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   226          /* Clear flag that checksum is being calculated */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   227          XcpAppl_BuildChecksumData[ProtocolLayerId].BlockSize_u32 = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   228  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   229          /* Set Error code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   230          Error = XCP_ERR_RES_TEMP_NOT_ACCESS;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   231          break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   232        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   233        default:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   234        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   235          /* Clear flag that checksum is being calculated */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   236          XcpAppl_BuildChecksumData[ProtocolLayerId].BlockSize_u32 = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   237  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   238          /* unknown return value from DME, set generic error */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   239          Error = XCP_ERR_GENERIC;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   240          break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   241        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   242      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   243    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   244    else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   245    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   246      Error = XCP_ERR_RES_TEMP_NOT_ACCESS;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   247    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   248    return(Error);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   249  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   250  #endif /* (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   251  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   252  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   253  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   254  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   255  * Xcp_CalPage.c_tpl filled out for MDG1
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   256  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   257  #if (XCP_CMD_SET_CAL_PAGE_AVAILABLE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   258  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   259  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   260  Function sets active calibration page
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   261  \param[in]  Mode              mode given from the command (ECU, XCP, All)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   262  \param[in]  SegNum            segment number
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   263  \param[in]  PageNum           calibration data page
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   264  \param[in]  ProtocolLayerId   Protocol Layer Id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   265  \retval     XCP_NO_ERROR                sucess
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   266  \retval     XCP_ERR_PAGE_NOT_VALID      Page not valid
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   267  \retval     XCP_ERR_SEGMENT_NOT_VALID   Segment not valid
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   268  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   269  Xcp_ErrorCode XcpAppl_SetCalPage(uint8 Mode, uint8 SegNum, uint8 PageNum, uint8 ProtocolLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   270  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   271    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   272    Xcp_ErrorCode Error;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   273  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   274    /* Remove when parameter used */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   275    XCP_PARAM_UNUSED(SegNum);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   276    XCP_PARAM_UNUSED(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   277  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   278    /* Initial values */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   279    Error = XCP_NO_ERROR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   280  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   281    /* Check if valid page number */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   282    if(PageNum < RBA_DME_NUM_PAGE)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   283    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   284      /* Check if ECU mode request */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   285      if((Mode & XCP_CAL_PAGE_MODE_ECU) != 0u)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   286      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   287        /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   288        uint32 DmeStatus;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   289  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   290        /* Call external function */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   291        DmeStatus = rba_Dme_SetCalPage(PageNum);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   292  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   293        /* Check return value */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   294        switch (DmeStatus)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   295        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   296          case (uint32) RBA_DME_ST_FINISHED:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   297          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   298            /* set Error Code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   299            Error = XCP_NO_ERROR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   300            break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   301          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   302          case (uint32) RBA_DME_ST_PAGE_NOT_VALID:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   303          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   304            /* set Error Code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   305            Error = XCP_ERR_PAGE_NOT_VALID;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   306            break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   307          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   308          default:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   309          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   310            /* unknown return value from DME, set generic Error */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   311            Error = XCP_ERR_GENERIC;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   312            break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   313          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   314        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   315      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   316  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   317      /* Check if XCP mode request */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   318      if((Mode & XCP_CAL_PAGE_MODE_XCP) != 0u)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   319      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   320        /* Store Calibration Page number */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   321        XcpAppl_Data[ProtocolLayerId].CalPage_u8 = PageNum;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   322      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   323    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   324    else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   325    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   326      /* set Error Code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   327      Error = XCP_ERR_PAGE_NOT_VALID;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   328    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   329  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   330    /* return Error Code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   331    return(Error);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   332  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   333  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   334  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   335  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   336  #if (XCP_CMD_GET_CAL_PAGE_AVAILABLE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   337  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   338  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   339  Function gets active calibration page
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   340  \param[in]  Mode              mode given from the command (ECU, XCP, All)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   341  \param[in]  SegNum            segment number
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   342  \param[out] PageNum           calibration data page
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   343  \param[in]  ProtocolLayerId   Protocol Layer Id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   344  \retval     XCP_NO_ERROR                sucess
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   345  \retval     XCP_ERR_SEGMENT_NOT_VALID   Segment not valid
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   346  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   347  Xcp_ErrorCode XcpAppl_GetCalPage(uint8 Mode, uint8 SegNum, uint8* PageNum, uint8 ProtocolLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   348  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   349    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   350    Xcp_ErrorCode Error;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   351  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   352    /* Remove when parameter used */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   353    XCP_PARAM_UNUSED(SegNum);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   354    XCP_PARAM_UNUSED(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   355  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   356    if(Mode == XCP_CAL_PAGE_MODE_ECU)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   357    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   358      /* Call external function */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   359      *PageNum = rba_Dme_GetCalPage();
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   360      Error = XCP_NO_ERROR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   361    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   362    /* Check if XCP mode request */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   363    else if(Mode == XCP_CAL_PAGE_MODE_XCP)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   364    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   365      /* Get locally stored CalPage Number */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   366      *PageNum = XcpAppl_Data[ProtocolLayerId].CalPage_u8;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   367      Error = XCP_NO_ERROR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   368    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   369    /* All other possibilities are invalid */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   370    else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   371    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   372      /* Mode is not supported */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   373      Error = XCP_ERR_MODE_NOT_VALID;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   374    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   375  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   376    /* Return currently active calibration page  */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   377    return(Error);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   378  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   379  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   380  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   381  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   382  #if (XCP_CMD_COPY_CAL_PAGE_AVAILABLE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   383  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   384  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   385  Function copies calibration page
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   386  \param[in]  SegNumSrc         Source Segment
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   387  \param[in]  PageNumSrc        Source Page
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   388  \param[in]  SegNumDst         Destination Segment
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   389  \param[in]  PageNumDst        Destination Page
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   390  \param[in]  ProtocolLayerId   Protocol Layer Id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   391  \retval     XCP_NO_ERROR                sucess
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   392  \retval     XCP_ERR_PAGE_NOT_VALID      Page not valid
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   393  \retval     XCP_ERR_SEGMENT_NOT_VALID   Segment not valid
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   394  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   395  Xcp_ErrorCode XcpAppl_CopyCalPage(uint8 SegNumSrc, uint8 PageNumSrc, uint8 SegNumDst, uint8 PageNumDst, uint8 ProtocolLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   396  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   397    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   398    Xcp_ErrorCode Error;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   399  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   400    /* Remove when parameter used */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   401    XCP_PARAM_UNUSED(SegNumSrc);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   402    XCP_PARAM_UNUSED(SegNumDst);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   403    XCP_PARAM_UNUSED(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   404  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   405    /* Only copy from page 0 to page 1 is supported */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   406    if ((PageNumSrc==0) && (PageNumDst == 1))
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   407    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   408      rba_Dme_Reset();
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   409      Error = XCP_NO_ERROR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   410    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   411    else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   412    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   413      Error = XCP_ERR_PAGE_NOT_VALID;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   414    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   415  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   416    /* return Error Code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   417    return(Error);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   418  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   419  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   420  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   421  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   422  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   423  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   424  * Xcp_CmdReceived.c_tpl filled out for MDG1
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   425  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   426  #if (XCP_CMD_RECEIVED_NOTIFICATION == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   427  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   428  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   429  Function is called when a XCP CMD is received
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   430  \param[in]  XcpCmd            Command pointer
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   431  \param[in]  Length            Command Length
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   432  \param[in]  ProtocolLayerId   Protocol layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   433  \return     -
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   434  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   435  void XcpAppl_CmdReceived(const uint8* XcpCmd, uint8 Length, uint8 ProtocolLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   436  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   437    XCP_PARAM_UNUSED(XcpCmd);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   438    XCP_PARAM_UNUSED(Length);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   439    XCP_PARAM_UNUSED(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   440    /* Indicate received command to rba_CalWup to reset timer */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   441    rba_CalWup_PendingRequest();
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   442  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   443  #endif /* (XCP_CMD_RECEIVED_NOTIFICATION == STD_ON) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   444  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   445  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   446  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   447  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   448  * Xcp_Appl_Init.c_tpl filled out for MDG1
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   449  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   450  #if ( (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON) \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   451     || ((XCP_CALIBRATION_CAL == STD_ON) && (XCP_UPLOAD_DOWNLOAD_MEMORY_ACCESS_BY_APPL == STD_ON)) )
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   452  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   453  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   454  Function to do specific initialization or cancel pending background process
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   455  \param[in]  XcpInitStatus     Xcp Initialization status: XCP_INIT or XCP_UNINIT
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   456  \param[in]  ProtocolLayerId   protocol layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   457  \return     Was initialization successful
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   458  \retval     E_OK              Initialization is finished
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   459  \retval     E_NOT_OK          Initialization is not finished, this function will be called
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   460                                in next Xcp_MainFunction() again until it returns E_OK
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   461  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   462  Std_ReturnType XcpAppl_Init(uint8 XcpInitStatus, uint8 ProtocolLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   463  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   464    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   465    Std_ReturnType status;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   466  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   467    XCP_PARAM_UNUSED(XcpInitStatus);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   468  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   469    /* Disable CAL and STIM depending of EcuSecu EcuMode */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   470    XcpAppl_EcuSecuDisableCalStim();
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   471  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   472    /* Call cancel function to cancel background action */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   473    if (rba_Dme_CancelBackgroundAction(XcpAppl_DmeUser[ProtocolLayerId]) == (uint32)RBA_DME_ST_FINISHED)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   474    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   475      /* Assign as E_OK if cancelled successfully */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   476      status = E_OK;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   477    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   478    else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   479    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   480      /* Assign as E_NOT_OK if cancellation is still ongoing or busy */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   481      status = E_NOT_OK;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   482    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   483  #if (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   484    /* Reset necessary variable */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   485    XcpAppl_BuildChecksumData[ProtocolLayerId].BlockSize_u32 = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   486  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   487  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   488    return(status);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   489  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   490  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   491  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   492  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   493  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   494  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   495  * Xcp_MemoryReadWrite.c_tpl filled out for MDG1
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   496  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   497  #if (XCP_UPLOAD_DOWNLOAD_MEMORY_ACCESS_BY_APPL == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   498  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   499  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   500  Read data from source to destination
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   501  \param[in]  AddrPtrDst        destination address
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   502  \param[in]  AddrPtrSrc        source address
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   503  \param[in]  Length            length of the data to read
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   504  \param[in]  ProtocolLayerId   Protocol Layer Id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   505  \retval     XCP_NO_ERROR              All Ok, process finished successfully
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   506  \retval     XCP_NO_RESPONSE           Process started, but not finished
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   507  \retval     XCP_ERR_MEMORY_OVERFLOW   Memory overflow
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   508  \retval     XCP_ERR_ACCESS_DENIED     Access denied
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   509  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   510  Xcp_ErrorCode XcpAppl_MemRead(uint8* AddrPtrDst, const Xcp_AddrType_t XcpAddrSrc, uint8 Length, uint8 ProtocolLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   511  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   512    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   513    Xcp_ErrorCode Error;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   514    uint32 DmeStatus;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   515  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   516    /* Remove when parameter used */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   517    XCP_PARAM_UNUSED(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   518  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   519    /* Read data by external function */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   520    DmeStatus = rba_Dme_Read(XcpAddrSrc.AddrValue, XcpAppl_Data[ProtocolLayerId].CalPage_u8, Length, AddrPtrDst, XcpAppl_DmeUser[ProtocolLayerId]);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   521  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   522    /* Check read operation status and convert to Xcp_ErrorCode */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   523    switch(DmeStatus)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   524    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   525      case (uint32) RBA_DME_ST_FINISHED:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   526      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   527        Error = XCP_NO_ERROR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   528        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   529      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   530      case (uint32) RBA_DME_ST_PAGE_NOT_VALID:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   531      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   532        /* Set Error code. This error code is not available in ASAM for UPLOAD! */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   533        Error = XCP_ERR_PAGE_NOT_VALID;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   534        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   535      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   536      case (uint32) RBA_DME_ST_REJECTED:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   537      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   538        Error = XCP_ERR_CMD_BUSY;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   539        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   540      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   541      case (uint32) RBA_DME_ST_BUSY:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   542      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   543        Error = XCP_ERR_RES_TEMP_NOT_ACCESS;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   544        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   545      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   546      default:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   547      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   548        /* unknown return value from DME, set generic Error */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   549        Error = XCP_ERR_GENERIC;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   550        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   551      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   552    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   553    return(Error);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   554  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   555  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   556  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   557  # if (XCP_CALIBRATION_CAL == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   558  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   559  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   560  Write data from source to destination
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   561  \param[in]  AddrPtrDst        destination address
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   562  \param[in]  AddrPtrSrc        source address
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   563  \param[in]  Length            length of the data to read
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   564  \param[in]  ProtocolLayerId   Protocol Layer Id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   565  \retval     XCP_NO_ERROR              All Ok, process finished successfully
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   566  \retval     XCP_NO_RESPONSE           Process started, but not finished
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   567  \retval     XCP_ERR_MEMORY_OVERFLOW   Memory overflow
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   568  \retval     XCP_ERR_ACCESS_DENIED     Access denied
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   569  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   570  /* MR12 RULE 8.13 VIOLATION: AddrPtrDst cannot be const as the data is modified in rba_Dme_Write */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   571  Xcp_ErrorCode XcpAppl_MemWrite(Xcp_AddrType_t XcpAddrDst, const uint8* AddrPtrSrc, uint8 Length, uint8 ProtocolLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   572  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   573    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   574    Xcp_ErrorCode Error;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   575    uint32 DmeStatus;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   576  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   577    /* Remove when parameter used */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   578    XCP_PARAM_UNUSED(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   579  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   580    /* Write data by external function */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   581    DmeStatus = rba_Dme_Write(XcpAddrDst.AddrValue, XcpAppl_Data[ProtocolLayerId].CalPage_u8, Length, (uint8*)AddrPtrSrc, XcpAppl_DmeUser[ProtocolLayerId]);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   582  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   583    /* Check write operation status and convert to Xcp_ErrorCode */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   584    switch(DmeStatus)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   585    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   586      case (uint32) RBA_DME_ST_FINISHED:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   587      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   588        Error = XCP_NO_ERROR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   589        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   590      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   591      case (uint32) RBA_DME_ST_BUSY:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   592      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   593        /* Request accepted, will be processed in background, do not send any response */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   594        Error = XCP_NO_RESPONSE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   595        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   596      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   597      case (uint32) RBA_DME_ST_OUT_OF_RAM:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   598      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   599        Error = XCP_ERR_MEMORY_OVERFLOW;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   600        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   601      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   602      case (uint32) RBA_DME_ST_PAGE_NOT_VALID:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   603      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   604        /* Set Error code. This error code is not available in ASAM for DOWNLOAD! */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   605        Error = XCP_ERR_PAGE_NOT_VALID;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   606        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   607      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   608      case (uint32) RBA_DME_ST_REJECTED:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   609      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   610        Error = XCP_ERR_CMD_BUSY;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   611        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   612      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   613      default:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   614      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   615        Error = XCP_ERR_GENERIC;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   616        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   617      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   618    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   619    return(Error);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   620  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   621  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   622  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   623  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   624  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   625  Copy data from source to destination - background process
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   626  \param[in]  ProtocolLayerId   Protocol Layer Id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   627  \retval     XCP_NO_ERROR              All Ok, process finished successfully
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   628  \retval     XCP_NO_RESPONSE           Process started, but not finished
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   629  \retval     XCP_ERR_MEMORY_OVERFLOW   Memory overflow
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   630  \retval     XCP_ERR_ACCESS_DENIED     Access denied
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   631  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   632  Xcp_ErrorCode XcpAppl_MemWriteMainFunction(uint8 ProtocolLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   633  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   634    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   635    Xcp_ErrorCode Error;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   636    uint32 DmeStatus;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   637  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   638    /* Remove when parameter used */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   639    XCP_PARAM_UNUSED(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   640  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   641    /* command triggered to write */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   642    DmeStatus = rba_Dme_GetState(XcpAppl_DmeUser[ProtocolLayerId]);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   643  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   644    /* Check write operation status and convert to Xcp_ErrorCode */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   645    switch(DmeStatus)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   646    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   647      case (uint32) RBA_DME_ST_FINISHED:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   648      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   649        Error = XCP_NO_ERROR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   650        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   651      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   652      case (uint32) RBA_DME_ST_BUSY:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   653      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   654        /* Request accepted, will be processed in background, do not send any response */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   655        Error = XCP_NO_RESPONSE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   656        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   657      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   658      case (uint32) RBA_DME_ST_OUT_OF_RAM:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   659      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   660        Error = XCP_ERR_MEMORY_OVERFLOW;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   661        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   662      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   663      case (uint32) RBA_DME_ST_IDLE:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   664      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   665        Error = XCP_ERR_RES_TEMP_NOT_ACCESS;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   666        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   667      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   668      default:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   669      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   670        Error = XCP_ERR_GENERIC;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   671        break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   672      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   673    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   674    return(Error);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   675  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   676  # endif /* (XCP_CALIBRATION_CAL == STD_ON) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   677  #endif /* (XCP_UPLOAD_DOWNLOAD_MEMORY_ACCESS_BY_APPL == STD_ON) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   678  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   679  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   680  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   681  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   682  * Xcp_Timestamp.c_tpl filled out for MDG1
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   683  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   684  #if (XCP_TIMESTAMP == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   685  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   686  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   687  Function returns the current value of the synchronous data transfer clock (timestamp). The data
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   688  transfer clock is a free running counter, which is never reset or modified and wraps around if an
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   689  overflow occurs. Behaviour of timestamp shall be according to configured "Timestamp Ticks" and
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   690  "Timestamp Unit".
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   691  \param[in]  -
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   692  \return     Timestamp
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   693  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   694  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   695  /* define the number of system timer ticks per configured timestamp tick */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   696  /* system timer must have a time tick of less than 1us                   */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   697  #if ((XCP_TIMESTAMP_TICKS * XCP_TIMESTAMP_UNIT) >= 1000000)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   698  #define XCP_SYSTEMTIMER_TICKS            (MCU_RB_US_TO_TIM1TICKS((XCP_TIMESTAMP_TICKS * XCP_TIMESTAMP_UNIT)/1000000))
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   699  #else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   700  #error "XCP timestamps below 1us are not supported by this implementation. Please change the XCP timestamp configuration"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   701  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   702  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   703  uint32 XcpAppl_GetTimestamp(void)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   704  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   705    uint32 ctCurrentTicks_u32;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   706    uint32 ctModuloTicks_u32;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   707  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   708    /* Disable interrupts */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   709    SchM_Enter_Xcp_GetTimestamp();
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   710  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   711    /* Get current timer value */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   712    ctCurrentTicks_u32 = Mcu_Rb_GetSysTimePart(TIM1);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   713  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   714    /* get the actual modulo counter */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   715    ctModuloTicks_u32  = XcpAppl_ModuloCounter_u32;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   716  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   717    /* add the difference to last timer value to the modulo counter */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   718    ctModuloTicks_u32 += (ctCurrentTicks_u32 - XcpAppl_LastCounter_u32);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   719  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   720    /* check if a new timestamp tick is counted */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   721    /* MR12 RULE 10.4, 14.3 VIOLATION: Rule 10.4 Casting from signed to unsigned here is not a problem as XCP_SYSTEMTIMER_TICKS > 0
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   722                                       Rule 14.3 Macro contains the ternary operator raising this violation, it also depends on other config-parameters,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   723                                                 so there are situations where the compare is required, thus it is left as it is */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   724    if(ctModuloTicks_u32 >= XCP_SYSTEMTIMER_TICKS)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   725    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   726      /* add the number of timestamp ticks to the timestamp */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   727      /* MR12 RULE 10.4, 14.3 VIOLATION: Rule 10.4 Casting from signed to unsigned here is not a problem as XCP_SYSTEMTIMER_TICKS > 0
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   728                                         Rule 14.3 Macro contains the ternary operator raising this violation, it also depends on other config-parameters,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   729                                                   so there are situations where the compare is required, thus it is left as it is */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   730      XcpAppl_Timestamp_u32  += (ctModuloTicks_u32 / XCP_SYSTEMTIMER_TICKS);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   731  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   732      /* calculate the new modulo */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   733      /* MR12 RULE 10.4, 14.3 VIOLATION: Rule 10.4 Casting from signed to unsigned here is not a problem as XCP_SYSTEMTIMER_TICKS > 0
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   734                                         Rule 14.3 Macro contains the ternary operator raising this violation, it also depends on other config-parameters,
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   735                                                   so there are situations where the compare is required, thus it is left as it is */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   736      ctModuloTicks_u32       = (ctModuloTicks_u32 % XCP_SYSTEMTIMER_TICKS);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   737    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   738  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   739    /* Save current system timer value for next calculation */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   740    XcpAppl_LastCounter_u32   = ctCurrentTicks_u32;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   741    /* Save current modulo value for next calculation */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   742    XcpAppl_ModuloCounter_u32 = ctModuloTicks_u32;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   743  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   744    /* Enable interrupts */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   745    SchM_Exit_Xcp_GetTimestamp();
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   746  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   747    return XcpAppl_Timestamp_u32;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   748  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   749  #endif /* (XCP_TIMESTAMP == STD_ON) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   750  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   751  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   752  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   753  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   754  * Local functions
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   755  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   756  #if ( (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON) \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   757     || ((XCP_CALIBRATION_CAL == STD_ON) && (XCP_UPLOAD_DOWNLOAD_MEMORY_ACCESS_BY_APPL == STD_ON)) )
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   758  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   759  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   760  Function disables Cal and Stim feature depending of EcuSecu EcuMode
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   761  \param[in]  -
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   762  \return     -
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   763  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   764  static void XcpAppl_EcuSecuDisableCalStim(void)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   765  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   766    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   767    boolean DisableCalStim = TRUE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   768    /* function pointer to GetEcuMode function of EcuSecu */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   769    rba_EcuSecu_EcuMode_GetEcuMode_tfct *getEcuMode_pfn = NULL_PTR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   770    /* pointer to MemLay info tab entry */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   771    rba_MemLay_InfoTable_tst *infoTable_ptr = NULL_PTR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   772  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   773  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   774    /* get info table pointer from Memlay to determine ECU state application resp. series */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   775    if (rba_MemLay_GetInfTabEntry(RBA_MEMLAY_IB_ECUSECUSRV0_SUBID, RBA_MEMLAY_ECUSECU_GETECUMODE, &infoTable_ptr) == (uint32)E_OK)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   776    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   777      /* Get function pointer to GetEcuMode function of EcuSecu - cast between a pointer to function is needed */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   778      /* MR12 RULE 11.1 VIOLATION: Cast between a pointer to function is needed (CDG-MemLay-Demand) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   779      getEcuMode_pfn = (rba_EcuSecu_EcuMode_GetEcuMode_tfct*) rba_MemLay_GetAddresPtrFromInfotableEntry(infoTable_ptr);
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   780  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   781      if (getEcuMode_pfn != NULL_PTR)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   782      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   783        /* call GetEcuMode function to determine ECU state application resp. series */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   784        /* NULL_PTR is used on purpose, according to EcuSecu doku this is supported */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   785        if (getEcuMode_pfn(NULL_PTR) == (uint32)RBA_ECUSECU_ECUMODE_APPLICATION_E)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   786        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   787          /* ECU is in development mode -> nothing to do as XCP is per default active */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   788          DisableCalStim = FALSE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   789        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   790        else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   791        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   792          /* ECU is in series mode -> CAL and STIM to be disabled if not already done */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   793          /* DisableCalStim = TRUE is set in beginning */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   794        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   795      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   796      else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   797      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   798        /* Something went wrong, GetEcuMode function pointer could not be retrieved */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   799        /* DisableCalStim = TRUE is set in beginning */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   800      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   801    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   802    else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   803    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   804      /* Something went wrong, pointer to memlay info table could not be retrieved */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   805      /* DisableCalStim = TRUE is set in beginning */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   806    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   807  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   808    if (DisableCalStim != FALSE)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   809    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   810      /* Disable CAL and STIM */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   811  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   812      /* Use of Xcp_SetControlMode not possible as we would get a recursion with the following path:
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   813       * XcpAppl_Init -> XcpAppl_EcuSecuDisableCalStim.c -> Xcp_SetControlMode -> Xcp_Disconnect -> XcpAppl_Init */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   814      Xcp_GlobalNoInit.EnabledResources_u8 = (Xcp_GetControlMode() & ((uint8)~(XCP_RESOURCE_CALPAG|XCP_RESOURCE_STIM))) & XCP_RESOURCE_ENABLED;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   815    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   816  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   817  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   818  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   819  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   820  /* End section for code */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   821  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   822  #define XCP_STOP_SEC_CALLOUT_CODE
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   823  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   824  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   825  #endif  /* #if (XCP_PRODUCT_LINE == XCP_PRODUCT_LINE_MDG1) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   826  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_ProductLineMdg1.c	   827  
+
+	; Module end

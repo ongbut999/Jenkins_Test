@@ -1,0 +1,1795 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc9744a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\ASW\\ASW_Dem\\DemSwc_RE_Dem_SWC_func.src ASW\\ASW_Dem\\src\\DemSwc_RE_Dem_SWC_func.c"
+	.compiler_name		"ctc"
+	;source	'ASW\\ASW_Dem\\src\\DemSwc_RE_Dem_SWC_func.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.DemSwc_RE_Dem_SWC_func.DemSwc_RE_Dem_SWC_func',code,cluster('DemSwc_RE_Dem_SWC_func')
+	.sect	'.text.DemSwc_RE_Dem_SWC_func.DemSwc_RE_Dem_SWC_func'
+	.align	2
+	
+	.global	DemSwc_RE_Dem_SWC_func
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	     1  /* *****************************************************************************
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	     2   * BEGIN: Banner
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	     3   *-----------------------------------------------------------------------------
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	     4   *                                 ETAS GmbH
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	     5   *                      D-70469 Stuttgart, Borsigstr. 14
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	     6   *-----------------------------------------------------------------------------
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	     7   *    Administrative Information (automatically filled in by ISOLAR)         
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	     8   *-----------------------------------------------------------------------------
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	     9   * Name: 
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    10   * Description:
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    11   * Version: 1.0
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    12   *-----------------------------------------------------------------------------
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    13   * END: Banner
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    14   ******************************************************************************
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    15  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    16   * Project : GAEI_HCU_ASR_2p0
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    17   * Component: /Dem_SWC/Dem_SWC
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    18   * Runnable : DemSwc_RE_Dem_SWC
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    19   *****************************************************************************
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    20   * Tool Version: ISOLAR-AB 4.0.2
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    21   * Author: had1hc
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    22   * Date : Thu Dec 06 16:25:10 2018
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    23   ****************************************************************************/
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    24  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    25  #include "Rte_ASW_Dem.h"
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    26  #include "SWC_Dem.h"
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    27  /*PROTECTED REGION ID(FileHeaderUserDefinedIncludes :DemSwc_RE_Dem_SWC_func) ENABLED START */
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    28  /* Start of user defined includes  - Do not remove this comment */
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    29  /* End of user defined includes - Do not remove this comment */
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    30  /*PROTECTED REGION END */
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    31  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    32  /*PROTECTED REGION ID(FileHeaderUserDefinedConstants :DemSwc_RE_Dem_SWC_func) ENABLED START */
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    33  /* Start of user defined constant definitions - Do not remove this comment */
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    34  /* End of user defined constant definitions - Do not remove this comment */
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    35  /*PROTECTED REGION END */
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    36  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    37  /*PROTECTED REGION ID(FileHeaderUserDefinedVariables :DemSwc_RE_Dem_SWC_func) ENABLED START */
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    38  /* Start of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    39  #include "ASW_Dem_MemMap.h"
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    40  uint8 Dem_Testcase = 0, genUint8 = 0;
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    41  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    42  #define RTE_STOP_SEC_Partition_Core0_Trusted_VAR_INIT_8
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    43  #include "ASW_Dem_MemMap.h"
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    44  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    45  #define RTE_START_SEC_Partition_Core0_Trusted_VAR_INIT_8
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    46  #include "ASW_Dem_MemMap.h"
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    47  uint8 isQualified = FALSE;
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    48  uint8 PfcQualified_Trigger = FALSE;
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    49  #define RTE_STOP_SEC_Partition_Core0_Trusted_VAR_INIT_8
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    50  #include "ASW_Dem_MemMap.h"
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    51  /* End of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    52  /*PROTECTED REGION END */
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    53  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    54  #define Dem_SWC_START_SEC_CODE                   
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    55  #include "ASW_Dem_MemMap.h"
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    56  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    57  FUNC(void, Dem_SWC_CODE)DemSwc_RE_Dem_SWC_func/* return value & FctID */
+; Function DemSwc_RE_Dem_SWC_func
+.L14:
+DemSwc_RE_Dem_SWC_func:	.type	func
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    58  (
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    59  		void
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    60  )
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    61  {
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    62      Std_ReturnType syncCall2;
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    63      Std_ReturnType syncCall3;
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    64      if( genUint8 == 0 )
+	movh.a	a15,#@his(genUint8)
+	lea	a15,[a15]@los(genUint8)
+	ld.bu	d15,[a15]
+.L54:
+	jne	d15,#0,.L2
+.L55:
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    65      {
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    66      	Rte_Call_RPort_OpCycle_DemOperationCycle_0_SetOperationCycleState(DEM_CYCLE_STATE_START);
+	mov	d4,#0
+	mov	d5,#0
+	call	Dem_SetOperationCycleState
+.L56:
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    67          genUint8 = 1;
+	mov	d15,#1
+.L57:
+	st.b	[a15],d15
+.L2:
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    68      }
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    69  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    70  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    71      switch (Dem_Testcase)
+	movh.a	a15,#@his(Dem_Testcase)
+	lea	a15,[a15]@los(Dem_Testcase)
+	ld.bu	d15,[a15]
+.L58:
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    72      {
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    73      case 0x01:
+	mov	d0,#1
+	jeq	d15,d0,.L3
+.L59:
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    74          syncCall2 = Rte_Call_Event_DemEventParameter_C110117_SetEventStatus(DEM_EVENT_STATUS_PREFAILED);
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    75          Dem_Testcase = 0;
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    76          break;
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    77      case 0x02:
+	mov	d0,#2
+	jeq	d15,d0,.L4
+.L60:
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    78          syncCall2 = Rte_Call_Event_DemEventParameter_C110117_SetEventStatus(DEM_EVENT_STATUS_PREPASSED);
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    79          Dem_Testcase = 0;
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    80          break;
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    81      case 0x03:
+	mov	d0,#3
+	jeq	d15,d0,.L5
+.L61:
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    82          syncCall3 = Rte_Call_Event_DemEventParameter_C110216_SetEventStatus(DEM_EVENT_STATUS_PREFAILED);
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    83          Dem_Testcase = 0;
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    84          break;
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    85      case 0x04:
+	mov	d0,#4
+	jeq	d15,d0,.L6
+	j	.L7
+.L3:
+	mov	d4,#1
+	mov	d5,#3
+	call	Dem_SetEventStatus
+.L62:
+	mov	d15,#0
+.L63:
+	st.b	[a15],d15
+.L64:
+	j	.L8
+.L4:
+	mov	d4,#1
+	mov	d5,#2
+	call	Dem_SetEventStatus
+.L65:
+	mov	d15,#0
+.L66:
+	st.b	[a15],d15
+.L67:
+	j	.L9
+.L5:
+	mov	d4,#2
+	mov	d5,#3
+	call	Dem_SetEventStatus
+.L68:
+	mov	d15,#0
+.L69:
+	st.b	[a15],d15
+.L70:
+	j	.L10
+.L6:
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    86          syncCall3 = Rte_Call_Event_DemEventParameter_C110216_SetEventStatus(DEM_EVENT_STATUS_PREPASSED);
+	mov	d4,#2
+	mov	d5,#2
+	call	Dem_SetEventStatus
+.L71:
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    87          Dem_Testcase = 0;
+	mov	d15,#0
+.L72:
+	st.b	[a15],d15
+.L73:
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    88          break;
+	j	.L11
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    89      default:
+.L7:
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    90          break;
+	j	.L12
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    91      }
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    92  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    93  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    94  }
+.L12:
+.L11:
+.L10:
+.L9:
+.L8:
+	ret
+.L39:
+	
+__DemSwc_RE_Dem_SWC_func_function_end:
+	.size	DemSwc_RE_Dem_SWC_func,__DemSwc_RE_Dem_SWC_func_function_end-DemSwc_RE_Dem_SWC_func
+.L25:
+	; End of function
+	
+	.sdecl	'.text.DemSwc_RE_Dem_SWC_func.RunnableEntity_0_func',code,cluster('RunnableEntity_0_func')
+	.sect	'.text.DemSwc_RE_Dem_SWC_func.RunnableEntity_0_func'
+	.align	2
+	
+	.global	RunnableEntity_0_func
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    95  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    96  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    97  FUNC(void, Dem_SWC_CODE) RunnableEntity_0_func(VAR(boolean, AUTOMATIC) ComponentFailedStatus)
+; Function RunnableEntity_0_func
+.L16:
+RunnableEntity_0_func:	.type	func
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    98  {
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	    99  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	   100  }
+	ret
+.L43:
+	
+__RunnableEntity_0_func_function_end:
+	.size	RunnableEntity_0_func,__RunnableEntity_0_func_function_end-RunnableEntity_0_func
+.L30:
+	; End of function
+	
+	.sdecl	'.data.DemSwc_RE_Dem_SWC_func.Dem_Testcase',data,cluster('Dem_Testcase')
+	.sect	'.data.DemSwc_RE_Dem_SWC_func.Dem_Testcase'
+	.global	Dem_Testcase
+Dem_Testcase:	.type	object
+	.size	Dem_Testcase,1
+	.space	1
+	.sdecl	'.data.DemSwc_RE_Dem_SWC_func.genUint8',data,cluster('genUint8')
+	.sect	'.data.DemSwc_RE_Dem_SWC_func.genUint8'
+	.global	genUint8
+genUint8:	.type	object
+	.size	genUint8,1
+	.space	1
+	.sdecl	'.data.DemSwc_RE_Dem_SWC_func.isQualified',data,cluster('isQualified')
+	.sect	'.data.DemSwc_RE_Dem_SWC_func.isQualified'
+	.global	isQualified
+isQualified:	.type	object
+	.size	isQualified,1
+	.space	1
+	.sdecl	'.data.DemSwc_RE_Dem_SWC_func.PfcQualified_Trigger',data,cluster('PfcQualified_Trigger')
+	.sect	'.data.DemSwc_RE_Dem_SWC_func.PfcQualified_Trigger'
+	.global	PfcQualified_Trigger
+PfcQualified_Trigger:	.type	object
+	.size	PfcQualified_Trigger,1
+	.space	1
+	.calls	'DemSwc_RE_Dem_SWC_func','Dem_SetOperationCycleState'
+	.calls	'DemSwc_RE_Dem_SWC_func','Dem_SetEventStatus'
+	.calls	'DemSwc_RE_Dem_SWC_func','',0
+	.extern	Dem_SetEventStatus
+	.extern	Dem_SetOperationCycleState
+	.calls	'RunnableEntity_0_func','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L18:
+	.word	9993
+	.half	3
+	.word	.L19
+	.byte	4
+.L17:
+	.byte	1
+	.byte	'ASW\\ASW_Dem\\src\\DemSwc_RE_Dem_SWC_func.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L20
+.L40:
+	.byte	2
+	.byte	'unsigned char',0,1,8,2
+	.byte	'unsigned short int',0,2,7,3
+	.byte	'Dem_SetEventStatus',0,1,126,32
+	.word	140
+	.byte	1,1,1,1,4
+	.byte	'Rte_PDAV0',0,1,126,83
+	.word	157
+	.byte	4
+	.byte	'EventStatus',0,1,127,87
+	.word	140
+	.byte	0,3
+	.byte	'Dem_SetOperationCycleState',0,1,129,1,32
+	.word	140
+	.byte	1,1,1,1,4
+	.byte	'Rte_PDAV0',0,1,129,1,100
+	.word	140
+	.byte	4
+	.byte	'CycleState',0,1,130,1,103
+	.word	140
+	.byte	0,5,1,6
+	.word	329
+	.byte	7
+	.byte	'__codeptr',0,2,1,1
+	.word	331
+	.byte	2
+	.byte	'char',0,1,6,7
+	.byte	'sint8',0,3,76,25
+	.word	354
+	.byte	7
+	.byte	'uint8',0,3,81,25
+	.word	140
+	.byte	7
+	.byte	'uint16',0,3,91,25
+	.word	157
+	.byte	2
+	.byte	'unsigned int',0,4,7,7
+	.byte	'uint32',0,3,106,24
+	.word	405
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,7
+	.byte	'uint64',0,3,111,30
+	.word	436
+	.byte	7
+	.byte	'boolean',0,3,127,25
+	.word	140
+	.byte	7
+	.byte	'StatusType',0,4,191,1,27
+	.word	140
+	.byte	7
+	.byte	'Std_ReturnType',0,4,199,1,15
+	.word	140
+	.byte	8,4,206,1,9,8,9
+	.byte	'vendorID',0
+	.word	157
+	.byte	2,2,35,0,9
+	.byte	'moduleID',0
+	.word	157
+	.byte	2,2,35,2,9
+	.byte	'sw_major_version',0
+	.word	140
+	.byte	1,2,35,4,9
+	.byte	'sw_minor_version',0
+	.word	140
+	.byte	1,2,35,5,9
+	.byte	'sw_patch_version',0
+	.word	140
+	.byte	1,2,35,6,0,7
+	.byte	'Std_VersionInfoType',0,4,213,1,3
+	.word	537
+	.byte	7
+	.byte	'PduIdType',0,5,22,19
+	.word	157
+	.byte	7
+	.byte	'PduLengthType',0,5,26,19
+	.word	157
+	.byte	10,6,113,9,4,11
+	.byte	'TP_DATACONF',0,0,11
+	.byte	'TP_DATARETRY',0,1,11
+	.byte	'TP_CONFPENDING',0,2,0,7
+	.byte	'TpDataStateType',0,6,118,3
+	.word	727
+	.byte	7
+	.byte	'Can_IdType',0,7,32,16
+	.word	405
+	.byte	7
+	.byte	'Can_HwHandleType',0,7,43,16
+	.word	157
+	.byte	8,8,93,9,8,9
+	.byte	'Class',0
+	.word	140
+	.byte	1,2,35,0,9
+	.byte	'TIN',0
+	.word	140
+	.byte	1,2,35,1,9
+	.byte	'ReturnAddress',0
+	.word	405
+	.byte	4,2,35,4,0,7
+	.byte	'OsTrapInfoType',0,8,97,3
+	.word	847
+	.byte	12,68
+	.word	405
+	.byte	13,16,0,8,8,154,1,9,68,9
+	.byte	'store',0
+	.word	927
+	.byte	68,2,35,0,0,12,68
+	.word	936
+	.byte	13,0,0,7
+	.byte	'Os_JumpBufType',0,8,156,1,3
+	.word	958
+	.byte	7
+	.byte	'Os_StackTraceType',0,8,174,1,18
+	.word	405
+	.byte	8,8,175,1,9,8,9
+	.byte	'sp',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	'ctx',0
+	.word	405
+	.byte	4,2,35,4,0,7
+	.byte	'Os_StackValueType',0,8,175,1,63
+	.word	1018
+	.byte	7
+	.byte	'Os_StackSizeType',0,8,176,1,27
+	.word	1018
+	.byte	14,1,1,6
+	.word	1103
+	.byte	7
+	.byte	'Os_VoidVoidFunctionType',0,8,179,1,16
+	.word	1106
+	.byte	7
+	.byte	'ApplicationType',0,8,193,1,23
+	.word	140
+	.byte	15
+	.byte	'Os_ApplicationConfigurationType_s',0,8,198,1,16,2,9
+	.byte	'app_id',0
+	.word	140
+	.byte	1,2,35,0,9
+	.byte	'access',0
+	.word	140
+	.byte	1,2,35,1,0,7
+	.byte	'Os_ApplicationConfigurationType',0,8,201,1,3
+	.word	1169
+	.byte	7
+	.byte	'Os_CoreStateType',0,8,203,1,16
+	.word	405
+	.byte	7
+	.byte	'AreaIdType',0,8,204,1,16
+	.word	157
+	.byte	7
+	.byte	'Os_PeripheralAddressType',0,8,212,1,22
+	.word	405
+	.byte	7
+	.byte	'TickType',0,8,221,1,22
+	.word	405
+	.byte	7
+	.byte	'Os_StopwatchTickType',0,8,225,1,22
+	.word	405
+	.byte	6
+	.word	405
+	.byte	7
+	.byte	'Os_Lockable',0,8,234,1,18
+	.word	1411
+	.byte	7
+	.byte	'CoreIdType',0,8,236,1,16
+	.word	157
+	.byte	7
+	.byte	'SpinlockIdType',0,8,237,1,16
+	.word	157
+	.byte	10,8,239,1,9,4,11
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,11
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,7
+	.byte	'TryToGetSpinlockType',0,8,239,1,74
+	.word	1481
+	.byte	10,8,174,2,9,4,11
+	.byte	'APPLICATION_ACCESSIBLE',0,0,11
+	.byte	'APPLICATION_RESTARTING',0,1,11
+	.byte	'APPLICATION_TERMINATED',0,2,0,7
+	.byte	'ApplicationStateType',0,8,174,2,92
+	.word	1574
+	.byte	16
+	.byte	'void',0,6
+	.word	1686
+	.byte	17,1,1,18
+	.word	140
+	.byte	18
+	.word	1692
+	.byte	0,6
+	.word	1697
+	.byte	7
+	.byte	'Os_FunctionEntryType',0,8,183,2,16
+	.word	1711
+	.byte	15
+	.byte	'Os_MeterInfoType_s',0,8,193,2,16,48,9
+	.byte	'elapsed',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	'previous',0
+	.word	405
+	.byte	4,2,35,4,9
+	.byte	'max',0
+	.word	405
+	.byte	4,2,35,8,9
+	.byte	'cumulative',0
+	.word	405
+	.byte	4,2,35,12,9
+	.byte	'stackbase',0
+	.word	1018
+	.byte	8,2,35,16,9
+	.byte	'stackusage',0
+	.word	1018
+	.byte	8,2,35,24,9
+	.byte	'stackmax',0
+	.word	1018
+	.byte	8,2,35,32,9
+	.byte	'stackbudget',0
+	.word	1018
+	.byte	8,2,35,40,0,7
+	.byte	'Os_MeterInfoType',0,8,202,2,3
+	.word	1746
+	.byte	6
+	.word	1746
+	.byte	7
+	.byte	'Os_MeterInfoRefType',0,8,203,2,50
+	.word	1944
+	.byte	7
+	.byte	'EventMaskType',0,8,206,2,15
+	.word	140
+	.byte	7
+	.byte	'Os_imaskType',0,8,211,2,16
+	.word	405
+	.byte	15
+	.byte	'Os_ISRDynType_s',0,8,213,2,16,48,9
+	.byte	'meter',0
+	.word	1746
+	.byte	48,2,35,0,0,7
+	.byte	'Os_ISRDynType',0,8,215,2,3
+	.word	2023
+	.byte	6
+	.word	2023
+	.byte	19
+	.word	2084
+	.byte	15
+	.byte	'Os_ISRType_s',0,8,216,2,16,24,9
+	.byte	'entry_function',0
+	.word	1111
+	.byte	4,2,35,0,9
+	.byte	'dynamic',0
+	.word	2089
+	.byte	4,2,35,4,9
+	.byte	'imask',0
+	.word	405
+	.byte	4,2,35,8,9
+	.byte	'stackbudget',0
+	.word	1018
+	.byte	8,2,35,12,9
+	.byte	'access',0
+	.word	140
+	.byte	1,2,35,20,9
+	.byte	'application',0
+	.word	140
+	.byte	1,2,35,21,0,7
+	.byte	'Os_ISRType',0,8,223,2,3
+	.word	2094
+	.byte	6
+	.word	1103
+	.byte	19
+	.word	2094
+	.byte	6
+	.word	2253
+	.byte	7
+	.byte	'ISRType',0,8,224,2,46
+	.word	2258
+	.byte	7
+	.byte	'Os_bitmask',0,8,239,2,22
+	.word	405
+	.byte	7
+	.byte	'Os_pset0Type',0,8,240,2,20
+	.word	405
+	.byte	7
+	.byte	'Os_pset1Type',0,8,241,2,20
+	.word	405
+	.byte	7
+	.byte	'Os_pset2Type',0,8,242,2,20
+	.word	405
+	.byte	20,8,243,2,9,4,9
+	.byte	'p0',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	'p1',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	'p2',0
+	.word	405
+	.byte	4,2,35,0,0,7
+	.byte	'Os_psetType',0,8,247,2,3
+	.word	2366
+	.byte	20,8,249,2,9,4,9
+	.byte	't0',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	't1',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	't2',0
+	.word	405
+	.byte	4,2,35,0,0,7
+	.byte	'Os_tpmaskType',0,8,253,2,3
+	.word	2430
+	.byte	7
+	.byte	'Os_ActivationCountType',0,8,254,2,23
+	.word	140
+	.byte	15
+	.byte	'Os_TaskDynType_s',0,8,128,3,16,120,9
+	.byte	'terminate_jump_buf',0
+	.word	967
+	.byte	68,2,35,0,9
+	.byte	'meter',0
+	.word	1746
+	.byte	48,2,35,68,9
+	.byte	'activation_count',0
+	.word	140
+	.byte	1,2,35,116,0,7
+	.byte	'Os_TaskDynType',0,8,132,3,3
+	.word	2528
+	.byte	12,68
+	.word	936
+	.byte	13,0,0,6
+	.word	2528
+	.byte	19
+	.word	2654
+	.byte	15
+	.byte	'Os_TaskType_s',0,8,134,3,16,40,9
+	.byte	'dynamic',0
+	.word	2659
+	.byte	4,2,35,0,9
+	.byte	'entry_function',0
+	.word	1111
+	.byte	4,2,35,4,9
+	.byte	'pset',0
+	.word	2366
+	.byte	4,2,35,8,9
+	.byte	'base_tpmask',0
+	.word	2430
+	.byte	4,2,35,12,9
+	.byte	'tpmask',0
+	.word	2430
+	.byte	4,2,35,16,9
+	.byte	'core_id',0
+	.word	157
+	.byte	2,2,35,20,9
+	.byte	'index',0
+	.word	405
+	.byte	4,2,35,24,9
+	.byte	'stackbudget',0
+	.word	1018
+	.byte	8,2,35,28,9
+	.byte	'activation_count',0
+	.word	140
+	.byte	1,2,35,36,9
+	.byte	'access',0
+	.word	140
+	.byte	1,2,35,37,9
+	.byte	'application',0
+	.word	140
+	.byte	1,2,35,38,0,7
+	.byte	'Os_TaskType',0,8,146,3,3
+	.word	2664
+	.byte	19
+	.word	2664
+	.byte	6
+	.word	2914
+	.byte	7
+	.byte	'TaskType',0,8,147,3,47
+	.word	2919
+	.byte	21
+	.byte	'Os_TaskStateType',0,8,155,3,6,4,11
+	.byte	'SUSPENDED',0,0,11
+	.byte	'READY',0,1,11
+	.byte	'WAITING',0,2,11
+	.byte	'RUNNING',0,3,0,7
+	.byte	'TaskStateType',0,8,156,3,31
+	.word	2942
+	.byte	20,8,167,3,3,4,9
+	.byte	'tpmask',0
+	.word	2430
+	.byte	4,2,35,0,0,15
+	.byte	'Os_ResourceDynType_s',0,8,166,3,16,4,9
+	.byte	'saved_priority',0
+	.word	3029
+	.byte	4,2,35,0,0,7
+	.byte	'Os_ResourceDynType',0,8,170,3,3
+	.word	3052
+	.byte	6
+	.word	3052
+	.byte	19
+	.word	3132
+	.byte	15
+	.byte	'Os_ResourceType_s',0,8,171,3,16,12,9
+	.byte	'dynamic',0
+	.word	3137
+	.byte	4,2,35,0,9
+	.byte	'tpmask',0
+	.word	2430
+	.byte	4,2,35,4,9
+	.byte	'access',0
+	.word	140
+	.byte	1,2,35,8,0,7
+	.byte	'Os_ResourceType',0,8,175,3,3
+	.word	3142
+	.byte	8,8,181,3,9,12,9
+	.byte	'maxallowedvalue',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	'ticksperbase',0
+	.word	405
+	.byte	4,2,35,4,9
+	.byte	'mincycle',0
+	.word	405
+	.byte	4,2,35,8,0,7
+	.byte	'AlarmBaseType',0,8,185,3,3
+	.word	3241
+	.byte	8,8,206,3,9,8,9
+	.byte	'Running',0
+	.word	140
+	.byte	1,2,35,0,9
+	.byte	'Pending',0
+	.word	140
+	.byte	1,2,35,1,9
+	.byte	'Delay',0
+	.word	405
+	.byte	4,2,35,4,0,7
+	.byte	'Os_CounterStatusType',0,8,210,3,3
+	.word	3336
+	.byte	22
+	.word	140
+	.byte	1,1,6
+	.word	3422
+	.byte	7
+	.byte	'Os_CounterIncrAdvType',0,8,217,3,22
+	.word	3429
+	.byte	15
+	.byte	's_swd',0,8,222,3,12,4,9
+	.byte	'count',0
+	.word	405
+	.byte	4,2,35,0,0,20,8,221,3,3,4,9
+	.byte	'sw',0
+	.word	3465
+	.byte	4,2,35,0,0,15
+	.byte	'Os_CounterDynType_s',0,8,220,3,16,4,9
+	.byte	'type_dependent',0
+	.word	3493
+	.byte	4,2,35,0,0,7
+	.byte	'Os_CounterDynType',0,8,226,3,3
+	.word	3512
+	.byte	6
+	.word	3512
+	.byte	19
+	.word	3590
+	.byte	15
+	.byte	'Os_CounterType_s',0,8,227,3,16,28,9
+	.byte	'dynamic',0
+	.word	3595
+	.byte	4,2,35,0,9
+	.byte	'advincr',0
+	.word	3434
+	.byte	4,2,35,4,9
+	.byte	'base',0
+	.word	3241
+	.byte	12,2,35,8,9
+	.byte	'core',0
+	.word	1692
+	.byte	4,2,35,20,9
+	.byte	'access',0
+	.word	140
+	.byte	1,2,35,24,9
+	.byte	'application',0
+	.word	140
+	.byte	1,2,35,25,0,7
+	.byte	'Os_CounterType',0,8,234,3,3
+	.word	3600
+	.byte	6
+	.word	3422
+	.byte	19
+	.word	3600
+	.byte	6
+	.word	3752
+	.byte	7
+	.byte	'CounterType',0,8,235,3,52
+	.word	3757
+	.byte	21
+	.byte	'Os_ScheduleTableStatusType',0,8,240,3,6,4,11
+	.byte	'SCHEDULETABLE_STOPPED',0,0,11
+	.byte	'SCHEDULETABLE_NEXT',0,1,11
+	.byte	'SCHEDULETABLE_WAITING',0,2,11
+	.byte	'SCHEDULETABLE_RUNNING',0,3,11
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,7
+	.byte	'ScheduleTableStatusType',0,8,241,3,41
+	.word	3783
+	.byte	19
+	.word	.L45-.L18
+	.byte	6
+	.word	3983
+	.byte	7
+	.byte	'ScheduleTableType',0,8,128,4,58
+	.word	3988
+	.byte	15
+	.byte	'Os_ScheduleTableDynType_s',0,8,130,4,16,16,9
+	.byte	'match',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	'next',0
+	.word	3993
+	.byte	4,2,35,4,9
+	.byte	'state',0
+	.word	3783
+	.byte	4,2,35,8,9
+	.byte	'config',0
+	.word	157
+	.byte	2,2,35,12,0,6
+	.word	4020
+	.byte	19
+	.word	4113
+.L45:
+	.byte	15
+	.byte	'Os_ScheduleTableType_s',0,8,247,3,16,16,9
+	.byte	'dynamic',0
+	.word	4118
+	.byte	4,2,35,0,9
+	.byte	'counter',0
+	.word	3762
+	.byte	4,2,35,4,9
+	.byte	'repeat',0
+	.word	140
+	.byte	1,2,35,8,9
+	.byte	'config',0
+	.word	157
+	.byte	2,2,35,10,9
+	.byte	'initial',0
+	.word	140
+	.byte	1,2,35,12,9
+	.byte	'access',0
+	.word	140
+	.byte	1,2,35,13,9
+	.byte	'application',0
+	.word	140
+	.byte	1,2,35,14,0,7
+	.byte	'Os_ScheduleTableType',0,8,255,3,3
+	.word	4123
+	.byte	19
+	.word	4123
+	.byte	6
+	.word	4303
+	.byte	19
+	.word	3600
+	.byte	6
+	.word	4313
+	.byte	23
+	.word	1416
+	.byte	23
+	.word	2366
+	.byte	23
+	.word	2263
+	.byte	23
+	.word	2924
+	.byte	23
+	.word	2430
+	.byte	23
+	.word	140
+	.byte	23
+	.word	2924
+	.byte	15
+	.byte	'Os_ControlledCoreType_s',0,8,251,6,16,112,9
+	.byte	'TrapInfo',0
+	.word	847
+	.byte	8,2,35,0,9
+	.byte	'lock_taskaccess',0
+	.word	4323
+	.byte	4,2,35,8,9
+	.byte	'ReadyTasks',0
+	.word	4328
+	.byte	4,2,35,12,9
+	.byte	'RunningISR',0
+	.word	4333
+	.byte	4,2,35,16,9
+	.byte	'RunningTask',0
+	.word	4338
+	.byte	4,2,35,20,9
+	.byte	'RunningTPMask',0
+	.word	4343
+	.byte	4,2,35,24,9
+	.byte	'CurrentMeteredObject',0
+	.word	1949
+	.byte	4,2,35,28,9
+	.byte	'IdleMeter',0
+	.word	1746
+	.byte	48,2,35,32,9
+	.byte	'AppAccess',0
+	.word	140
+	.byte	1,2,35,80,9
+	.byte	'AppOverride',0
+	.word	4348
+	.byte	1,2,35,81,9
+	.byte	'GetStackValueAdjust',0
+	.word	1018
+	.byte	8,2,35,84,9
+	.byte	'InErrorHook',0
+	.word	140
+	.byte	1,2,35,92,9
+	.byte	'ChainTaskRef',0
+	.word	4353
+	.byte	4,2,35,96,9
+	.byte	'GetStackUsageAdjust',0
+	.word	1018
+	.byte	8,2,35,100,9
+	.byte	'InProtectionHook',0
+	.word	140
+	.byte	1,2,35,108,9
+	.byte	'CoreIsActive',0
+	.word	140
+	.byte	1,2,35,109,9
+	.byte	'InShutdownHook',0
+	.word	140
+	.byte	1,2,35,110,0,7
+	.byte	'Os_ControlledCoreType',0,8,141,7,3
+	.word	4358
+	.byte	6
+	.word	405
+	.byte	19
+	.word	2094
+	.byte	6
+	.word	4814
+	.byte	19
+	.word	2664
+	.byte	6
+	.word	4824
+	.byte	6
+	.word	1746
+	.byte	15
+	.byte	'Os_AnyCoreType_s',0,8,151,7,16,96,9
+	.byte	'DisableAllImask',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	'SuspendAllImask',0
+	.word	405
+	.byte	4,2,35,4,9
+	.byte	'SuspendOSImask',0
+	.word	405
+	.byte	4,2,35,8,9
+	.byte	'DisableAllCount',0
+	.word	405
+	.byte	4,2,35,12,9
+	.byte	'SuspendAllCount',0
+	.word	405
+	.byte	4,2,35,16,9
+	.byte	'SuspendOSCount',0
+	.word	405
+	.byte	4,2,35,20,9
+	.byte	'RestartJumpBuf',0
+	.word	967
+	.byte	68,2,35,24,9
+	.byte	'Restartable',0
+	.word	140
+	.byte	1,2,35,92,0,7
+	.byte	'Os_AnyCoreType',0,8,160,7,3
+	.word	4839
+	.byte	7
+	.byte	'Can_TxObjPriorityClassType',0,9,219,3,16
+	.word	405
+	.byte	15
+	.byte	'Can_TxHwObjectConfigType',0,9,231,3,16,8,9
+	.byte	'MsgObjId',0
+	.word	140
+	.byte	1,2,35,0,9
+	.byte	'HwControllerId',0
+	.word	140
+	.byte	1,2,35,1,9
+	.byte	'TxObjPriorityClass',0
+	.word	405
+	.byte	4,2,35,4,0,7
+	.byte	'Can_TxHwObjectConfigType',0,9,252,3,3
+	.word	5116
+	.byte	15
+	.byte	'Can_RxHwObjectConfigType',0,9,129,4,16,12,9
+	.byte	'MaskRef',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	'MsgId',0
+	.word	405
+	.byte	4,2,35,4,9
+	.byte	'MsgObjId',0
+	.word	140
+	.byte	1,2,35,8,9
+	.byte	'HwControllerId',0
+	.word	140
+	.byte	1,2,35,9,0,7
+	.byte	'Can_RxHwObjectConfigType',0,9,147,4,3
+	.word	5252
+	.byte	12,4
+	.word	140
+	.byte	13,3,0,15
+	.byte	'Can_ControllerMOMapConfigType',0,9,181,4,16,4,9
+	.byte	'ControllerMOMap',0
+	.word	5392
+	.byte	4,2,35,0,0,7
+	.byte	'Can_ControllerMOMapConfigType',0,9,184,4,3
+	.word	5401
+	.byte	15
+	.byte	'Can_NPCRValueType',0,9,188,4,16,2,9
+	.byte	'Can_NPCRValue',0
+	.word	157
+	.byte	2,2,35,0,0,7
+	.byte	'Can_NPCRValueType',0,9,191,4,3
+	.word	5502
+	.byte	15
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,9,194,4,16,8,9
+	.byte	'CanControllerBaudrate',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	'CanControllerBaudrateCfg',0
+	.word	157
+	.byte	2,2,35,4,0,7
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,9,198,4,3
+	.word	5577
+	.byte	19
+	.word	5577
+	.byte	6
+	.word	5742
+	.byte	15
+	.byte	'Can_BaudrateConfigPtrType',0,9,201,4,16,4,9
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	5747
+	.byte	4,2,35,0,0,7
+	.byte	'Can_BaudrateConfigPtrType',0,9,204,4,3
+	.word	5752
+	.byte	15
+	.byte	'Can_EventHandlingType',0,9,226,4,16,4,9
+	.byte	'CanEventType',0
+	.word	5392
+	.byte	4,2,35,0,0,7
+	.byte	'Can_EventHandlingType',0,9,229,4,3
+	.word	5852
+	.byte	7
+	.byte	'Rte_TransformerErrorCode',0,10,130,1,15
+	.word	140
+	.byte	7
+	.byte	'Rte_TransformerClass',0,10,131,1,15
+	.word	140
+	.byte	8,10,168,1,9,12,9
+	.byte	'in',0
+	.word	1692
+	.byte	4,2,35,0,9
+	.byte	'out',0
+	.word	1692
+	.byte	4,2,35,4,9
+	.byte	'used',0
+	.word	157
+	.byte	2,2,35,8,9
+	.byte	'lost_data',0
+	.word	140
+	.byte	1,2,35,10,0,7
+	.byte	'Rte_QDynType',0,10,173,1,3
+	.word	5998
+	.byte	10,10,175,1,9,4,11
+	.byte	'RTE_DRA',0,0,11
+	.byte	'RTE_WOWP',0,1,11
+	.byte	'RTE_TASK',0,2,11
+	.byte	'RTE_ARE',0,3,11
+	.byte	'RTE_EV',0,4,11
+	.byte	'RTE_MSI',0,5,0,7
+	.byte	'Rte_NotificationType',0,10,182,1,3
+	.word	6085
+	.byte	6
+	.word	5998
+	.byte	15
+	.byte	'Rte_QCmnType',0,10,184,1,16,24,9
+	.byte	'dynamic',0
+	.word	6183
+	.byte	4,2,35,0,9
+	.byte	'copy',0
+	.word	140
+	.byte	1,2,35,4,9
+	.byte	'queue_size',0
+	.word	157
+	.byte	2,2,35,6,9
+	.byte	'element_size',0
+	.word	157
+	.byte	2,2,35,8,9
+	.byte	'buffer_start',0
+	.word	1692
+	.byte	4,2,35,12,9
+	.byte	'buffer_end',0
+	.word	1692
+	.byte	4,2,35,16,9
+	.byte	'notification_type',0
+	.word	6085
+	.byte	4,2,35,20,0,7
+	.byte	'Rte_QCmnType',0,10,192,1,3
+	.word	6188
+	.byte	7
+	.byte	'Rte_AlarmRefType',0,10,224,1,32
+	.word	405
+	.byte	7
+	.byte	'Rte_AlarmIndexType',0,10,226,1,32
+	.word	157
+	.byte	7
+	.byte	'Rte_TaskRefType',0,11,184,1,32
+	.word	2924
+	.byte	7
+	.byte	'Rte_EventRefType',0,11,185,1,32
+	.word	140
+	.byte	7
+	.byte	'Rte_EventType',0,11,186,1,32
+	.word	405
+	.byte	7
+	.byte	'Rte_REActCounterType',0,11,252,1,15
+	.word	140
+	.byte	6
+	.word	140
+	.byte	7
+	.byte	'Rte_REActCounterRefType',0,11,253,1,58
+	.word	6530
+	.byte	8,11,255,1,9,8,9
+	.byte	'task',0
+	.word	6426
+	.byte	4,2,35,0,9
+	.byte	'acnt',0
+	.word	6535
+	.byte	4,2,35,4,0,7
+	.byte	'Rte_REContainerType',0,11,130,2,3
+	.word	6568
+	.byte	19
+	.word	2664
+	.byte	6
+	.word	6632
+	.byte	6
+	.word	140
+	.byte	19
+	.word	6568
+	.byte	6
+	.word	6647
+	.byte	7
+	.byte	'Rte_REContainerRefType',0,11,132,2,60
+	.word	6652
+	.byte	7
+	.byte	'Rte_MSICounterType',0,11,149,2,16
+	.word	157
+	.byte	6
+	.word	157
+	.byte	7
+	.byte	'Rte_MSICounterRefType',0,11,150,2,56
+	.word	6717
+	.byte	7
+	.byte	'Rte_MSIPendingFlagType',0,11,152,2,17
+	.word	140
+	.byte	6
+	.word	140
+	.byte	7
+	.byte	'Rte_MSIPendingFlagRefType',0,11,153,2,60
+	.word	6785
+	.byte	8,11,163,2,9,24,9
+	.byte	'counter',0
+	.word	6722
+	.byte	4,2,35,0,9
+	.byte	'incCounter',0
+	.word	140
+	.byte	1,2,35,4,9
+	.byte	'pending',0
+	.word	6790
+	.byte	4,2,35,8,9
+	.byte	'osTask',0
+	.word	6426
+	.byte	4,2,35,12,9
+	.byte	'acnt',0
+	.word	6535
+	.byte	4,2,35,16,9
+	.byte	'osEvent',0
+	.word	140
+	.byte	1,2,35,20,9
+	.byte	'MSIInit',0
+	.word	157
+	.byte	2,2,35,22,0,7
+	.byte	'Rte_MSITableEntry',0,11,172,2,3
+	.word	6825
+	.byte	6
+	.word	157
+	.byte	6
+	.word	140
+	.byte	7
+	.byte	'Rte_TaskArrayIndex',0,11,179,2,16
+	.word	140
+	.byte	7
+	.byte	'Rte_NrWaitingTasks',0,11,180,2,16
+	.word	140
+	.byte	8,11,182,2,9,4,9
+	.byte	'pending',0
+	.word	140
+	.byte	1,2,35,0,9
+	.byte	'count',0
+	.word	140
+	.byte	1,2,35,1,9
+	.byte	'firstWaitingTask',0
+	.word	140
+	.byte	1,2,35,2,0,7
+	.byte	'Rte_WaitableDatum',0,11,186,2,3
+	.word	7043
+	.byte	6
+	.word	7043
+	.byte	8,11,226,2,9,12,9
+	.byte	'event_id',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	'wd',0
+	.word	7135
+	.byte	4,2,35,4,9
+	.byte	'timeout',0
+	.word	405
+	.byte	4,2,35,8,0,7
+	.byte	'Rte_WOWP_NotificationType',0,11,230,2,3
+	.word	7140
+	.byte	19
+	.word	7140
+	.byte	6
+	.word	7229
+	.byte	7
+	.byte	'Rte_WOWP_NotificationRefType',0,11,232,2,66
+	.word	7234
+	.byte	7
+	.byte	'Rte_ARE_NotificationType',0,11,234,2,29
+	.word	6568
+	.byte	15
+	.byte	'Rte_QTaskType',0,11,243,2,16,28,9
+	.byte	'cmn',0
+	.word	6188
+	.byte	24,2,35,0,9
+	.byte	'task',0
+	.word	6426
+	.byte	4,2,35,24,0,7
+	.byte	'Rte_QTaskType',0,11,246,2,3
+	.word	7311
+	.byte	15
+	.byte	'Rte_QREType',0,11,250,2,16,28,9
+	.byte	'cmn',0
+	.word	6188
+	.byte	24,2,35,0,9
+	.byte	're',0
+	.word	6657
+	.byte	4,2,35,24,0,7
+	.byte	'Rte_QREType',0,11,253,2,3
+	.word	7382
+	.byte	19
+	.word	6568
+	.byte	6
+	.word	7447
+	.byte	15
+	.byte	'Rte_QWWPType',0,11,129,3,16,28,9
+	.byte	'cmn',0
+	.word	6188
+	.byte	24,2,35,0,9
+	.byte	'wwp',0
+	.word	7239
+	.byte	4,2,35,24,0,7
+	.byte	'Rte_QWWPType',0,11,132,3,3
+	.word	7457
+	.byte	19
+	.word	7140
+	.byte	6
+	.word	7525
+	.byte	15
+	.byte	'Rte_QEvType',0,11,136,3,16,36,9
+	.byte	'cmn',0
+	.word	6188
+	.byte	24,2,35,0,9
+	.byte	'task',0
+	.word	6426
+	.byte	4,2,35,24,9
+	.byte	'mask',0
+	.word	140
+	.byte	1,2,35,28,9
+	.byte	'acnt',0
+	.word	6535
+	.byte	4,2,35,32,0,7
+	.byte	'Rte_QEvType',0,11,141,3,3
+	.word	7535
+	.byte	15
+	.byte	'Rte_QMSIType',0,11,145,3,16,48,9
+	.byte	'cmn',0
+	.word	6188
+	.byte	24,2,35,0,9
+	.byte	'task',0
+	.word	6426
+	.byte	4,2,35,24,9
+	.byte	'mask',0
+	.word	140
+	.byte	1,2,35,28,9
+	.byte	'acnt',0
+	.word	6535
+	.byte	4,2,35,32,9
+	.byte	'msiCounter',0
+	.word	6722
+	.byte	4,2,35,36,9
+	.byte	'msiPending',0
+	.word	6790
+	.byte	4,2,35,40,9
+	.byte	'msiLimit',0
+	.word	157
+	.byte	2,2,35,44,0,7
+	.byte	'Rte_QMSIType',0,11,153,3,3
+	.word	7630
+	.byte	12,128,8
+	.word	140
+	.byte	13,255,7,0,7
+	.byte	'Impl_NVM_DstPtrType_1024',0,12,50,15
+	.word	7785
+	.byte	7
+	.byte	'CanIf_u32_impl',0,12,69,16
+	.word	405
+	.byte	7
+	.byte	'CanIf_u16_impl',0,12,71,16
+	.word	157
+	.byte	7
+	.byte	'CanIf_u8_impl',0,12,73,15
+	.word	140
+	.byte	7
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,12,88,15
+	.word	140
+	.byte	7
+	.byte	'CanIf_PduModeType_Enum_impl',0,12,90,15
+	.word	140
+	.byte	8,12,92,9,2,9
+	.byte	'DeviceMode',0
+	.word	140
+	.byte	1,2,35,0,9
+	.byte	'ChannelMode',0
+	.word	140
+	.byte	1,2,35,1,0,7
+	.byte	'CanIf_ControllerStateType_struct_impl',0,12,95,3
+	.word	7976
+	.byte	7
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,12,100,15
+	.word	140
+	.byte	7
+	.byte	'CanSM_boolean_Impl',0,12,120,15
+	.word	140
+	.byte	7
+	.byte	'CanSM_u8_Impl',0,12,123,15
+	.word	140
+	.byte	7
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,12,128,1,15
+	.word	140
+	.byte	7
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,12,132,1,15
+	.word	140
+	.byte	7
+	.byte	'CanSM_u16_Impl',0,12,136,1,16
+	.word	157
+	.byte	7
+	.byte	'CanSM_TimerStateType_Enum_impl',0,12,138,1,15
+	.word	140
+	.byte	8,12,140,1,9,4,9
+	.byte	'cntTick_u16',0
+	.word	157
+	.byte	2,2,35,0,9
+	.byte	'stTimer',0
+	.word	140
+	.byte	1,2,35,2,0,7
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,12,143,1,3
+	.word	8317
+	.byte	7
+	.byte	'Com_impl_u16',0,12,154,1,16
+	.word	157
+	.byte	7
+	.byte	'Com_impl_u8',0,12,157,1,15
+	.word	140
+	.byte	7
+	.byte	'ComM_uint32_Impl',0,12,173,1,16
+	.word	405
+	.byte	7
+	.byte	'ComM_uint16_Impl',0,12,175,1,16
+	.word	157
+	.byte	7
+	.byte	'ComM_uint8_Impl',0,12,177,1,15
+	.word	140
+	.byte	7
+	.byte	'ComM_bool_Impl',0,12,179,1,15
+	.word	140
+	.byte	8,12,181,1,9,24,9
+	.byte	'ChannelState_e',0
+	.word	405
+	.byte	4,2,35,0,9
+	.byte	'LightTimeoutCtr_u32',0
+	.word	405
+	.byte	4,2,35,4,9
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	157
+	.byte	2,2,35,8,9
+	.byte	'ChannelMode_u8',0
+	.word	140
+	.byte	1,2,35,10,9
+	.byte	'BusSmMode_u8',0
+	.word	140
+	.byte	1,2,35,11,9
+	.byte	'UserRequestCtr_u8',0
+	.word	140
+	.byte	1,2,35,12,9
+	.byte	'PassiveRequestState_u8',0
+	.word	140
+	.byte	1,2,35,13,9
+	.byte	'PncRequestCtr_u8',0
+	.word	140
+	.byte	1,2,35,14,9
+	.byte	'InhibitionReqStatus_u8',0
+	.word	140
+	.byte	1,2,35,15,9
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	140
+	.byte	1,2,35,16,9
+	.byte	'DiagnosticRequestState_b',0
+	.word	140
+	.byte	1,2,35,17,9
+	.byte	'CommunicationAllowed_b',0
+	.word	140
+	.byte	1,2,35,18,9
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	140
+	.byte	1,2,35,19,9
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	140
+	.byte	1,2,35,20,9
+	.byte	'NmNetworkModeStatus_b',0
+	.word	140
+	.byte	1,2,35,21,0,7
+	.byte	'ComM_ChannelStruct_Impl',0,12,197,1,3
+	.word	8549
+	.byte	8,12,206,1,9,10,9
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	157
+	.byte	2,2,35,0,9
+	.byte	'LimitToNoComCtr_u16',0
+	.word	157
+	.byte	2,2,35,2,9
+	.byte	'RequestedUserMode_t',0
+	.word	140
+	.byte	1,2,35,4,9
+	.byte	'IndicatedUserMode_t',0
+	.word	140
+	.byte	1,2,35,5,9
+	.byte	'numChannelsInFullCom_u8',0
+	.word	140
+	.byte	1,2,35,6,9
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	140
+	.byte	1,2,35,7,9
+	.byte	'numChannelsInNoCom_u8',0
+	.word	140
+	.byte	1,2,35,8,0,7
+	.byte	'ComM_UserStruct_Impl',0,12,214,1,3
+	.word	9053
+	.byte	7
+	.byte	'Dcm_IOOperationResponseType',0,12,252,1,15
+	.word	140
+	.byte	7
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	12,138,2,15
+	.word	140
+	.byte	7
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,12,146,2,15
+	.word	140
+	.byte	7
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,12,150,2,15
+	.word	140
+	.byte	7
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,12,154,2,15
+	.word	140
+	.byte	7
+	.byte	'Dem_EventIdType',0,12,168,2,16
+	.word	157
+	.byte	7
+	.byte	'Dem_EventStatusType',0,12,170,2,15
+	.word	140
+	.byte	7
+	.byte	'Dem_OperationCycleIdType',0,12,179,2,15
+	.word	140
+	.byte	7
+	.byte	'Dem_OperationCycleStateType',0,12,181,2,15
+	.word	140
+	.byte	7
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,12,243,3,34
+	.word	7796
+	.byte	12,128,8
+	.word	140
+	.byte	13,255,7,0,7
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,12,246,3,34
+	.word	7796
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L19:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,46,1,3,8,58,15,59,15,57,15
+	.byte	73,19,54,15,39,12,63,12,60,12,0,0,4,5,0,3,8,58,15,59,15,57,15,73,19,0,0,5,21,0,54,15,0,0,6,15,0,73,19
+	.byte	0,0,7,22,0,3,8,58,15,59,15,57,15,73,19,0,0,8,19,1,58,15,59,15,57,15,11,15,0,0,9,13,0,3,8,73,19,11,15,56
+	.byte	9,0,0,10,4,1,58,15,59,15,57,15,11,15,0,0,11,40,0,3,8,28,13,0,0,12,1,1,11,15,73,19,0,0,13,33,0,47,15,0
+	.byte	0,14,21,0,54,15,39,12,0,0,15,19,1,3,8,58,15,59,15,57,15,11,15,0,0,16,59,0,3,8,0,0,17,21,1,54,15,39,12
+	.byte	0,0,18,5,0,73,19,0,0,19,38,0,73,19,0,0,20,23,1,58,15,59,15,57,15,11,15,0,0,21,4,1,3,8,58,15,59,15,57,15
+	.byte	11,15,0,0,22,21,0,73,19,54,15,39,12,0,0,23,53,0,73,19,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L20:
+	.word	.L47-.L46
+.L46:
+	.half	3
+	.word	.L49-.L48
+.L48:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\RTE\\gen\\Rte_ASW_Dem.h',0,0,0,0
+	.byte	'ASW\\ASW_Dem\\src\\DemSwc_RE_Dem_SWC_func.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0,0
+.L49:
+.L47:
+	.sdecl	'.debug_info',debug,cluster('DemSwc_RE_Dem_SWC_func')
+	.sect	'.debug_info'
+.L21:
+	.word	243
+	.half	3
+	.word	.L22
+	.byte	4,1
+	.byte	'ASW\\ASW_Dem\\src\\DemSwc_RE_Dem_SWC_func.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L24,.L23
+	.byte	2
+	.word	.L17
+	.byte	3
+	.byte	'DemSwc_RE_Dem_SWC_func',0,1,57,25,1,1,1
+	.word	.L14,.L39,.L13
+	.byte	4
+	.word	.L14,.L39
+	.byte	5
+	.byte	'syncCall2',0,1,62,20
+	.word	.L40,.L41
+	.byte	5
+	.byte	'syncCall3',0,1,63,20
+	.word	.L40,.L42
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('DemSwc_RE_Dem_SWC_func')
+	.sect	'.debug_abbrev'
+.L22:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('DemSwc_RE_Dem_SWC_func')
+	.sect	'.debug_line'
+.L23:
+	.word	.L51-.L50
+.L50:
+	.half	3
+	.word	.L53-.L52
+.L52:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'ASW\\ASW_Dem\\src\\DemSwc_RE_Dem_SWC_func.c',0,0,0,0,0
+.L53:
+	.byte	5,9,7,0,5,2
+	.word	.L14
+	.byte	3,63,1,5,5,9
+	.half	.L54-.L14
+	.byte	1,5,6,7,9
+	.half	.L55-.L54
+	.byte	3,2,1,5,20,9
+	.half	.L56-.L55
+	.byte	3,1,1,5,18,9
+	.half	.L57-.L56
+	.byte	1,5,13,9
+	.half	.L2-.L57
+	.byte	3,4,1,5,10,9
+	.half	.L58-.L2
+	.byte	3,2,1,9
+	.half	.L59-.L58
+	.byte	3,4,1,9
+	.half	.L60-.L59
+	.byte	3,4,1,9
+	.half	.L61-.L60
+	.byte	3,4,1,5,21,9
+	.half	.L3-.L61
+	.byte	3,117,1,5,24,9
+	.half	.L62-.L3
+	.byte	3,1,1,5,22,9
+	.half	.L63-.L62
+	.byte	1,5,9,9
+	.half	.L64-.L63
+	.byte	3,1,1,5,21,9
+	.half	.L4-.L64
+	.byte	3,2,1,5,24,9
+	.half	.L65-.L4
+	.byte	3,1,1,5,22,9
+	.half	.L66-.L65
+	.byte	1,5,9,9
+	.half	.L67-.L66
+	.byte	3,1,1,5,21,9
+	.half	.L5-.L67
+	.byte	3,2,1,5,24,9
+	.half	.L68-.L5
+	.byte	3,1,1,5,22,9
+	.half	.L69-.L68
+	.byte	1,5,9,9
+	.half	.L70-.L69
+	.byte	3,1,1,5,21,9
+	.half	.L6-.L70
+	.byte	3,2,1,5,24,9
+	.half	.L71-.L6
+	.byte	3,1,1,5,22,9
+	.half	.L72-.L71
+	.byte	1,5,9,9
+	.half	.L73-.L72
+	.byte	3,1,1,9
+	.half	.L7-.L73
+	.byte	3,2,1,5,1,9
+	.half	.L8-.L7
+	.byte	3,4,1,7,9
+	.half	.L25-.L8
+	.byte	0,1,1
+.L51:
+	.sdecl	'.debug_ranges',debug,cluster('DemSwc_RE_Dem_SWC_func')
+	.sect	'.debug_ranges'
+.L24:
+	.word	-1,.L14,0,.L25-.L14,0,0
+	.sdecl	'.debug_info',debug,cluster('RunnableEntity_0_func')
+	.sect	'.debug_info'
+.L26:
+	.word	231
+	.half	3
+	.word	.L27
+	.byte	4,1
+	.byte	'ASW\\ASW_Dem\\src\\DemSwc_RE_Dem_SWC_func.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L29,.L28
+	.byte	2
+	.word	.L17
+	.byte	3
+	.byte	'RunnableEntity_0_func',0,1,97,26,1,1,1
+	.word	.L16,.L43,.L15
+	.byte	4
+	.byte	'ComponentFailedStatus',0,1,97,72
+	.word	.L40,.L44
+	.byte	5
+	.word	.L16,.L43
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('RunnableEntity_0_func')
+	.sect	'.debug_abbrev'
+.L27:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('RunnableEntity_0_func')
+	.sect	'.debug_line'
+.L28:
+	.word	.L75-.L74
+.L74:
+	.half	3
+	.word	.L77-.L76
+.L76:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'ASW\\ASW_Dem\\src\\DemSwc_RE_Dem_SWC_func.c',0,0,0,0,0
+.L77:
+	.byte	5,1,7,0,5,2
+	.word	.L16
+	.byte	3,227,0,1,7,9
+	.half	.L30-.L16
+	.byte	0,1,1
+.L75:
+	.sdecl	'.debug_ranges',debug,cluster('RunnableEntity_0_func')
+	.sect	'.debug_ranges'
+.L29:
+	.word	-1,.L16,0,.L30-.L16,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_Testcase')
+	.sect	'.debug_info'
+.L31:
+	.word	166
+	.half	3
+	.word	.L32
+	.byte	4,1
+	.byte	'ASW\\ASW_Dem\\src\\DemSwc_RE_Dem_SWC_func.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L17
+	.byte	3
+	.byte	'Dem_Testcase',0,2,40,7
+	.word	.L40
+	.byte	1,5,3
+	.word	Dem_Testcase
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_Testcase')
+	.sect	'.debug_abbrev'
+.L32:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('genUint8')
+	.sect	'.debug_info'
+.L33:
+	.word	162
+	.half	3
+	.word	.L34
+	.byte	4,1
+	.byte	'ASW\\ASW_Dem\\src\\DemSwc_RE_Dem_SWC_func.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L17
+	.byte	3
+	.byte	'genUint8',0,2,40,25
+	.word	.L40
+	.byte	1,5,3
+	.word	genUint8
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('genUint8')
+	.sect	'.debug_abbrev'
+.L34:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('isQualified')
+	.sect	'.debug_info'
+.L35:
+	.word	165
+	.half	3
+	.word	.L36
+	.byte	4,1
+	.byte	'ASW\\ASW_Dem\\src\\DemSwc_RE_Dem_SWC_func.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L17
+	.byte	3
+	.byte	'isQualified',0,2,47,7
+	.word	.L40
+	.byte	1,5,3
+	.word	isQualified
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('isQualified')
+	.sect	'.debug_abbrev'
+.L36:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('PfcQualified_Trigger')
+	.sect	'.debug_info'
+.L37:
+	.word	174
+	.half	3
+	.word	.L38
+	.byte	4,1
+	.byte	'ASW\\ASW_Dem\\src\\DemSwc_RE_Dem_SWC_func.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L17
+	.byte	3
+	.byte	'PfcQualified_Trigger',0,2,48,7
+	.word	.L40
+	.byte	1,5,3
+	.word	PfcQualified_Trigger
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('PfcQualified_Trigger')
+	.sect	'.debug_abbrev'
+.L38:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('DemSwc_RE_Dem_SWC_func')
+	.sect	'.debug_loc'
+.L13:
+	.word	-1,.L14,0,.L39-.L14
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L41:
+	.word	0,0
+.L42:
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('RunnableEntity_0_func')
+	.sect	'.debug_loc'
+.L44:
+	.word	-1,.L16,0,.L43-.L16
+	.half	1
+	.byte	84
+	.word	0,0
+.L15:
+	.word	-1,.L16,0,.L43-.L16
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L78:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('DemSwc_RE_Dem_SWC_func')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L78,.L14,.L39-.L14
+	.sdecl	'.debug_frame',debug,cluster('RunnableEntity_0_func')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L78,.L16,.L43-.L16
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	   101  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	   102  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	   103  
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	   104  #define Dem_SWC_STOP_SEC_CODE                       
+; ASW\ASW_Dem\src\DemSwc_RE_Dem_SWC_func.c	   105  #include "ASW_Dem_MemMap.h"
+
+	; Module end

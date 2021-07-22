@@ -1,0 +1,5002 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc15968a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Dem\\src\\Dem_EvMemGen.src BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemGen.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemGen.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Dem_EvMemGen.Dem_GetDTCByOccurrenceTime',code,cluster('Dem_GetDTCByOccurrenceTime')
+	.sect	'.text.Dem_EvMemGen.Dem_GetDTCByOccurrenceTime'
+	.align	2
+	
+	.global	Dem_GetDTCByOccurrenceTime
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	     1  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	     2  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	     3  #include "Dem.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	     4  #include "Rte_Dem.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	     5  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	     6  #include "Dem_EvMemGen.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	     7  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	     8  #include "Dem_Main.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	     9  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    10  /* -------------------------------------------------
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    11     service Dem_GetDTCByOccurrenceTime
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    12     -------------------------------------------------
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    13   */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    14  #define DEM_START_SEC_ROM_CODE
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    15  #include "Dem_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    16  #if ( DEM_CFG_EVMEMGENERIC_SUPPORTED != FALSE )
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    17  Dem_ReturnGetDTCByOccurrenceTimeType Dem_GetDTCByOccurrenceTime(Dem_DTCRequestType DTCRequest, Dem_DTCKindType DTCKind, uint32* DTC)
+; Function Dem_GetDTCByOccurrenceTime
+.L42:
+Dem_GetDTCByOccurrenceTime:	.type	func
+
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	     1  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	     2  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	     3  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	     4  #ifndef DEM_MAIN_H
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	     5  #define DEM_MAIN_H
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	     6  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	     7  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	     8  #include "Dem_Types.h"
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	     9  #include "Dem_Cfg_Main.h"
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    10  #include "Dem_Cfg_Events.h"
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    11  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    12  /* Indicates Operational States of Dem */
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    13  typedef uint8 Dem_OpMoStateType;
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    14  #define  DEM_OPMO_STATE_NOTINITIALIZED                  0
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    15  #define  DEM_OPMO_STATE_PREINITIALIZED                  1
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    16  #define  DEM_OPMO_STATE_INITIALIZED                     2
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    17  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    18  #if(DEM_CFG_LOCK_ALLFAILUREINFO == DEM_CFG_LOCK_ALLFAILUREINFO_ON)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    19  #define  DEM_OPMO_STATE_LOCK_ALL_FAILURE_INFO           3
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    20  #endif
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    21  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    22  /* Indicates the State of Fim */
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    23  typedef uint8 Dem_FimStateType;
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    24  #define DEM_FIM_STATE_NOTINITIALIZED                    0
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    25  #define DEM_FIM_STATE_IS_IN_INITIALIZATION              1
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    26  #define DEM_FIM_STATE_INITIALIZED                       2
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    27  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    28  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    29  #define DEM_START_SEC_RAM_INIT
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    30  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    31  extern Dem_OpMoStateType Dem_OpMoState;
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    32  extern Dem_FimStateType Dem_FimState;
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    33  extern Dem_boolean_least Dem_TestFailedStatusInitialized;
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    34  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    35  #define DEM_STOP_SEC_RAM_INIT
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    36  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    37  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    38  /* Dem States and Entry conditions */
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    39  #define DEM_ENTRY_CONDITION_CHECK_DEM_INITIALIZED(APIID,RETURNVALUE)                    do {DEM_ASSERT_ISNOTLOCKED(); if(Dem_OpMoState != DEM_OPMO_STATE_INITIALIZED) {DEM_DET(APIID, DEM_E_UNINIT); return (RETURNVALUE); }} while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    40  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    41  #define DEM_ENTRY_CONDITION_CHECK_DEM_INITIALIZED_OR_FIM_IS_IN_INIT(APIID,RETURNVALUE)   do{DEM_ASSERT_ISNOTLOCKED(); if((Dem_OpMoState != DEM_OPMO_STATE_INITIALIZED) && (Dem_FimState != DEM_FIM_STATE_IS_IN_INITIALIZATION))  \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    42                                                                                              {DEM_DET(APIID, DEM_E_UNINIT); return (RETURNVALUE); }} while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    43  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    44  #define DEM_ENTRY_CONDITION_CHECK_DEM_PREINITIALIZED(APIID,RETURNVALUE)                 do {DEM_ASSERT_ISNOTLOCKED(); if(Dem_OpMoState == DEM_OPMO_STATE_NOTINITIALIZED) {DEM_DET(APIID, DEM_E_UNINIT); return (RETURNVALUE); }} while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    45  #define DEM_ENTRY_CONDITION_CHECK_VOID_API_DEM_PREINITIALIZED(APIID)                    do {DEM_ASSERT_ISNOTLOCKED(); if(Dem_OpMoState == DEM_OPMO_STATE_NOTINITIALIZED) {DEM_DET(APIID, DEM_E_UNINIT); return ; }} while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    46  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    47  #define DEM_ENTRY_CONDITION_CHECK_EVENT_ID_VALID(EVTID,APIID,RETURNVALUE)       do {DEM_ASSERT_ISNOTLOCKED(); if(!Dem_isEventIdValid(EVTID)) {DEM_DET(APIID, DEM_E_WRONG_CONFIGURATION); return (RETURNVALUE); }} while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    48  #define DEM_ENTRY_CONDITION_CHECK_VOID_API_EVENT_ID_VALID(EVTID,APIID)       do {DEM_ASSERT_ISNOTLOCKED(); if(!Dem_isEventIdValid(EVTID)) {DEM_DET(APIID, DEM_E_WRONG_CONFIGURATION); return ; }} while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    49  #define DEM_ENTRY_CONDITION_CHECK_COMPONENT_ID_VALID(COMPID,APIID,RETURNVALUE)  do {DEM_ASSERT_ISNOTLOCKED(); if (!Dem_NodeIdIsValid(COMPID)) {DEM_DET(APIID, DEM_E_WRONG_CONFIGURATION); return (RETURNVALUE); }} while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    50  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    51  #define DEM_ENTRY_CONDITION_CHECK_EVENT_AVAILABLE(EVTID,APIID,RETURNVALUE)      do {DEM_ASSERT_ISNOTLOCKED(); if(Dem_EvtIsSuppressed(EVTID)) {return (RETURNVALUE); }} while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    52  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    53  #define DEM_ENTRY_CONDITION_CHECK_VOID_API_EVENT_AVAILABLE(EVTID,APIID)      do {DEM_ASSERT_ISNOTLOCKED(); if(Dem_EvtIsSuppressed(EVTID)) {return ; }} while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    54  #define DEM_ENTRY_CONDITION_CHECK_EVENT_ID_VALID_AVAILABLE(EVTID,APIID,RETURNVALUE) do {    DEM_ENTRY_CONDITION_CHECK_EVENT_ID_VALID(EVTID,APIID,RETURNVALUE);   \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    55                                                                                              DEM_ENTRY_CONDITION_CHECK_EVENT_AVAILABLE(EVTID,APIID,RETURNVALUE); } while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    56  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    57  #define DEM_ENTRY_CONDITION_CHECK_NOT_NULL_PTR(POINTER,APIID,RETURNVALUE)       do {DEM_ASSERT_ISNOTLOCKED(); if((POINTER)==NULL_PTR) { DEM_DET(APIID, DEM_E_PARAM_POINTER); return (RETURNVALUE); }} while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    58  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    59  #define DEM_ENTRY_CONDITION_CHECK_INIT_EVTIDVALID_EVTAVAILABLE(EVTID,APIID,RETURNVALUE)   do { DEM_ENTRY_CONDITION_CHECK_DEM_INITIALIZED(APIID,RETURNVALUE);    \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    60                                                                                                   DEM_ENTRY_CONDITION_CHECK_EVENT_ID_VALID_AVAILABLE(EVTID,APIID,RETURNVALUE); } while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    61  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    62  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    63  #define DEM_ENTRY_CONDITION_CHECK_PREINIT_EVTIDVALID_EVTAVAILABLE(EVTID,APIID,RETURNVALUE) do { DEM_ENTRY_CONDITION_CHECK_DEM_PREINITIALIZED(APIID,RETURNVALUE);    \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    64                                                                                                    DEM_ENTRY_CONDITION_CHECK_EVENT_ID_VALID_AVAILABLE(EVTID,APIID,RETURNVALUE); } while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    65  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    66  #define DEM_ENTRY_CONDITION_CHECK_VOID_API_PREINIT_EVTIDVALID_EVTAVAILABLE(EVTID,APIID) do {   DEM_ENTRY_CONDITION_CHECK_VOID_API_DEM_PREINITIALIZED(APIID);    \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    67                                                                                                    DEM_ENTRY_CONDITION_CHECK_VOID_API_EVENT_ID_VALID(EVTID,APIID);  \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    68                                                                                                    DEM_ENTRY_CONDITION_CHECK_VOID_API_EVENT_AVAILABLE(EVTID,APIID); } while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    69  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    70  #define DEM_ENTRY_CONDITION_CHECK_INIT_EVTIDVALID(EVTID,APIID,RETURNVALUE)                do { DEM_ENTRY_CONDITION_CHECK_DEM_INITIALIZED(APIID,RETURNVALUE);    \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    71                                                                                                   DEM_ENTRY_CONDITION_CHECK_EVENT_ID_VALID(EVTID,APIID,RETURNVALUE); } while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    72  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    73  #define DEM_ENTRY_CONDITION_CHECK_PREINIT_EVTIDVALID(EVTID,APIID,RETURNVALUE)                do { DEM_ENTRY_CONDITION_CHECK_DEM_PREINITIALIZED(APIID,RETURNVALUE);    \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    74                                                                                                   DEM_ENTRY_CONDITION_CHECK_EVENT_ID_VALID(EVTID,APIID,RETURNVALUE); } while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    75  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    76  #define DEM_ENTRY_CONDITION_CHECK_DEMINIT_OR_OPMO_ALLFAILUREINFOLOCKED(APIID,RETURNVALUE)  do { DEM_ASSERT_ISNOTLOCKED(); if((Dem_OpMoState != DEM_OPMO_STATE_INITIALIZED) && (Dem_OpMoState != DEM_OPMO_STATE_LOCK_ALL_FAILURE_INFO)) \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    77                                                                                                      {DEM_DET(APIID, DEM_E_UNINIT); return (RETURNVALUE); }} while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    78  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    79  #define DEM_ENTRY_CONDITION_CHECK_DEMINIT_OR_FIM_IS_IN_INIT_OR_OPMO_ALLFAILUREINFOLOCKED(APIID,RETURNVALUE)  do { DEM_ASSERT_ISNOTLOCKED(); \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    80                                                                                                              if((Dem_OpMoState != DEM_OPMO_STATE_INITIALIZED) && \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    81                                                                                                                  (Dem_OpMoState != DEM_OPMO_STATE_LOCK_ALL_FAILURE_INFO) &&  \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    82                                                                                                                  (Dem_FimState != DEM_FIM_STATE_IS_IN_INITIALIZATION))   \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    83                                                                                                              {DEM_DET(APIID, DEM_E_UNINIT); return (RETURNVALUE); }} while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    84  #if(DEM_CFG_LOCK_ALLFAILUREINFO == DEM_CFG_LOCK_ALLFAILUREINFO_ON)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    85  #define DEM_ENTRY_CONDITION_CHECK_DEMINIT_OR_OPMO_ALLFAILUREINFOLOCKED_EVTIDVALID_EVTAVAILABLE(EVTID,APIID,RETURNVALUE)   do { DEM_ENTRY_CONDITION_CHECK_DEMINIT_OR_OPMO_ALLFAILUREINFOLOCKED(APIID,RETURNVALUE);    \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    86                                                                                                                              DEM_ENTRY_CONDITION_CHECK_EVENT_ID_VALID_AVAILABLE(EVTID,APIID,RETURNVALUE); } while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    87  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    88  #define DEM_ENTRY_CONDITION_CHECK_DEMINIT_OR_FIM_IS_IN_INIT_OR_OPMO_ALLFAILUREINFOLOCKED_EVTIDVALID_EVTAVAILABLE(EVTID,APIID,RETURNVALUE)    do { DEM_ENTRY_CONDITION_CHECK_DEMINIT_OR_FIM_IS_IN_INIT_OR_OPMO_ALLFAILUREINFOLOCKED(APIID, RETURNVALUE);   \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    89                                                                                                                                               DEM_ENTRY_CONDITION_CHECK_EVENT_ID_VALID_AVAILABLE(EVTID,APIID,RETURNVALUE); } while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    90  #else
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    91  #define DEM_ENTRY_CONDITION_CHECK_DEMINIT_OR_OPMO_ALLFAILUREINFOLOCKED_EVTIDVALID_EVTAVAILABLE(EVTID,APIID,RETURNVALUE)    DEM_ENTRY_CONDITION_CHECK_INIT_EVTIDVALID_EVTAVAILABLE(EVTID,APIID,RETURNVALUE)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    92  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    93  #define DEM_ENTRY_CONDITION_CHECK_DEMINIT_OR_FIM_IS_IN_INIT_OR_OPMO_ALLFAILUREINFOLOCKED_EVTIDVALID_EVTAVAILABLE(EVTID,APIID,RETURNVALUE)  do { DEM_ENTRY_CONDITION_CHECK_DEM_INITIALIZED_OR_FIM_IS_IN_INIT(APIID,RETURNVALUE);    \ 
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    94                                                                                                                                              DEM_ENTRY_CONDITION_CHECK_EVENT_ID_VALID_AVAILABLE(EVTID,APIID,RETURNVALUE); } while(0)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    95  #endif
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    96  
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    97  DEM_INLINE Dem_boolean_least Dem_OpMoIsInitialized(void)
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    98  {
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    99     return (Dem_OpMoState == DEM_OPMO_STATE_INITIALIZED);
+	movh.a	a15,#@his(Dem_OpMoState)
+	lea	a15,[a15]@los(Dem_OpMoState)
+	ld.bu	d15,[a15]
+.L134:
+	eq	d15,d15,#2
+.L135:
+
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	    99     return (Dem_OpMoState == DEM_OPMO_STATE_INITIALIZED);      (inlined)
+	j	.L2
+
+; .\BSW\src\BSW\Gen\Dem\src\main\Dem_Main.h	   100  }      (inlined)
+.L2:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    18  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    19        Dem_DtcIdType DtcId;
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    20  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    21        /* is DEM Initialized ?*/
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    22        if (!Dem_OpMoIsInitialized())
+	jne	d15,#0,.L3
+.L136:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    23        {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    24           DEM_DET(DEM_DET_APIID_GETDTCBYOCCURRENCETIME, DEM_E_UNINIT);
+	mov	d4,#54
+.L108:
+	mov	d5,#0
+.L107:
+	mov	d6,#25
+	mov	d7,#32
+	call	Det_ReportError
+.L106:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    25           return DEM_OCCURR_FAILED;
+	mov	d2,#2
+.L137:
+	j	.L4
+.L3:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    26        }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    27        /* parameter check: DTCRequest */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    28        if ((DTCRequest != DEM_FIRST_FAILED_DTC) &&
+	jeq	d4,#1,.L5
+.L138:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    29              (DTCRequest != DEM_MOST_RECENT_FAILED_DTC) &&
+	jeq	d4,#2,.L6
+.L139:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    30              (DTCRequest != DEM_FIRST_DET_CONFIRMED_DTC) &&
+	jeq	d4,#3,.L7
+.L140:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    31              (DTCRequest != DEM_MOST_REC_DET_CONFIRMED_DTC))
+	jeq	d4,#4,.L8
+.L141:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    32        {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    33           DEM_DET(DEM_DET_APIID_GETDTCBYOCCURRENCETIME, DEM_E_WRONG_CONFIGURATION);
+	mov	d4,#54
+.L111:
+	mov	d5,#0
+.L110:
+	mov	d6,#25
+	mov	d7,#16
+	call	Det_ReportError
+.L109:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    34           return DEM_OCCURR_FAILED;
+	mov	d2,#2
+.L142:
+	j	.L9
+.L8:
+.L7:
+.L6:
+.L5:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    35        }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    36        if (DTC==NULL_PTR)
+	jnz.a	a4,.L10
+.L143:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    37        {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    38            return DEM_OCCURR_FAILED;
+	mov	d2,#2
+.L144:
+	j	.L11
+.L10:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    39        }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    40  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    41        /* parameter check: DTCKind */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    42        if (DTCKind != DEM_DTC_KIND_ALL_DTCS)
+	jeq	d5,#1,.L12
+.L145:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    43        {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    44           DEM_DET(DEM_DET_APIID_GETDTCBYOCCURRENCETIME, DEM_E_WRONG_CONFIGURATION);
+	mov	d4,#54
+.L114:
+	mov	d5,#0
+.L113:
+	mov	d6,#25
+	mov	d7,#16
+	call	Det_ReportError
+.L112:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    45           return DEM_OCCURR_WRONG_DTCKIND;
+	mov	d2,#1
+.L146:
+	j	.L13
+.L12:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     1  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     2  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     3  #ifndef DEM_EVMEMGEN_H
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     4  #define DEM_EVMEMGEN_H
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     5  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     6  #include "Dem_EvMemGenTypes.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     7  #include "Dem_EvMemTypes.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     8  #include "Dem_EvMemBase.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     9  #include "Dem_DTCs.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    10  #include "Dem_GenericNvData.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    11  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    12  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    13  #define DEM_EVMEMGEN_MEMORY_BASE   Dem_GenericNvData
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    14  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    15  #if DEM_CFG_EVMEMGENERIC_SUPPORTED
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    16     #define DEM_EVMEMGEN_GET(OBJ)      (OBJ)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    17     #define DEM_EVMEMGEN_SET(OBJ,VAL)  (OBJ) = (VAL)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    18     #define DEM_EVMEMGEN_CLEAROBJ(OBJ) DEM_EVMEM_CLEAROBJ(OBJ)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    19  #else
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    20     #define DEM_EVMEMGEN_GET(OBJ)      0
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    21     #define DEM_EVMEMGEN_SET(OBJ,VAL)  do {} while (0)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    22     #define DEM_EVMEMGEN_CLEAROBJ(OBJ) do {} while (0)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    23  #endif
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    24  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    25  /* -------------------------------------------------
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    26     service Dem_GetDTCByOccurrenceTime
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    27     -------------------------------------------------
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    28   */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    29  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    30  /* Get stored DtcId by occurrence */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    31  DEM_INLINE Dem_DtcIdType Dem_EvMemGenGetDtcIdByOccIndex(uint32 OccIndex)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    32  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    33  #if DEM_CFG_EVMEMGENERIC_SUPPORTED
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    34      return DEM_EVMEMGEN_GET(DEM_EVMEMGEN_MEMORY_BASE.DtcIdsByOccurrenceTime[OccIndex]);
+	movh.a	a15,#@his(Dem_GenericNvData)
+	lea	a15,[a15]@los(Dem_GenericNvData)
+	addsc.a	a15,a15,d4,#1
+	ld.hu	d0,[a15]8
+.L115:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    34      return DEM_EVMEMGEN_GET(DEM_EVMEMGEN_MEMORY_BASE.DtcIdsByOccurrenceTime[OccIndex]);      (inlined)
+	j	.L14
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    39  }      (inlined)
+.L14:
+
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	     1  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	     2  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	     3  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	     4  #ifndef DEM_MAPPING_H
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	     5  #define DEM_MAPPING_H
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	     6  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	     7  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	     8  #include "Dem_Types.h"
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	     9  #include "Dem_Lib.h"
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    10  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    11  #include "Dem_Cfg_EventId.h"
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    12  #include "Dem_Cfg_DtcId.h"
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    13  #include "Dem_Cfg_NodeId.h"
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    14  #include "Dem_Cfg_Nodes.h"
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    15  #include "Dem_Cfg_EventIndicators.h"
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    16  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    17  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    18  /*** EVENTID *****************************************************************/
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    19  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    20  DEM_INLINE Dem_boolean_least Dem_isEventIdValid(Dem_EventIdType checkID)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    21  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    22     return ((0 < checkID) && (checkID <= DEM_EVENTID_COUNT));
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    23  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    24  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    25  /*Iterator for EventId*/
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    26  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    27  typedef uint16_least Dem_EventIdIterator; /* do not change to uint8_least */
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    28  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    29  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    30  #define DEM_EVENTIDITERATORNEW  1
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    31  DEM_INLINE void Dem_EventIdIteratorNew(Dem_EventIdIterator *it)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    32  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    33     (*it) = DEM_EVENTIDITERATORNEW;
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    34  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    35  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    36  DEM_INLINE Dem_boolean_least Dem_EventIdIteratorIsValid(const Dem_EventIdIterator *it)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    37  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    38     return (*it <= DEM_EVENTID_COUNT);
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    39  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    40  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    41  DEM_INLINE void Dem_EventIdIteratorNext(Dem_EventIdIterator *it)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    42  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    43     (*it)++;
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    44  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    45  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    46  DEM_INLINE Dem_EventIdType Dem_EventIdIteratorCurrent(const Dem_EventIdIterator *it)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    47  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    48     return (Dem_EventIdType)(*it);
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    49  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    50  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    51  /*** NODEID *****************************************************************/
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    52  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    53  #if (DEM_CFG_DEPENDENCY == DEM_CFG_DEPENDENCY_ON)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    54  #define DEM_START_SEC_ROM_CONST
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    55  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    56  extern const Dem_ComponentIdType  Dem_MapEventIdToNodeId[DEM_EVENTID_ARRAYLENGTH];
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    57  extern const Dem_EventIdType Dem_MapNodeIdToEventId[DEM_NODEID_ARRAYLENGTH];
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    58  extern const Dem_ComponentIdType  Dem_MapNodeIdToChildNodeId[DEM_CFG_CHILDNODE_LISTLENGTH];
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    59  extern const uint16 Dem_NodeToChildNodeIndex [DEM_NODEID_ARRAYLENGTH];
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    60  #define DEM_STOP_SEC_ROM_CONST
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    61  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    62  #define DEM_NODEIDITERATOR_NEW()       1
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    63  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    64  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    65  DEM_INLINE Dem_boolean_least Dem_NodeIdIsValid (uint16 checkID)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    66  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    67     return ((0 < checkID) && (checkID <= DEM_NODEID_COUNT));
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    68  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    69  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    70  /*Iterator for NodeID*/
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    71  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    72  typedef uint16_least Dem_NodeIdIterator; /* do not change to uint8_least */
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    73  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    74  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    75  DEM_INLINE void Dem_NodeIdIteratorNew(Dem_NodeIdIterator *it)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    76  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    77     (*it) = DEM_NODEIDITERATOR_NEW();
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    78  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    79  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    80  DEM_INLINE Dem_boolean_least Dem_NodeIdIteratorIsValid(const Dem_NodeIdIterator *it)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    81  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    82     return (*it <= DEM_NODEID_COUNT);
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    83  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    84  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    85  DEM_INLINE void Dem_NodeIdIteratorNext(Dem_NodeIdIterator *it)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    86  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    87     (*it)++;
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    88  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    89  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    90  DEM_INLINE Dem_ComponentIdType Dem_NodeIdIteratorCurrent(const Dem_NodeIdIterator *it)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    91  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    92     return (Dem_ComponentIdType)(*it);
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    93  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    94  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    95  DEM_INLINE Dem_ComponentIdType  Dem_NodeIdFromEventId (Dem_EventIdType id)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    96  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    97     return Dem_MapEventIdToNodeId[id];
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    98  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	    99  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   100  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   101  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   102  #else
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   103  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   104  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   105  DEM_INLINE Dem_ComponentIdType  Dem_NodeIdFromEventId (Dem_EventIdType id)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   106  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   107  	DEM_UNUSED_PARAM(id);
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   108  	return DEM_NODEID_INVALID;
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   109  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   110  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   111  DEM_INLINE Dem_boolean_least Dem_NodeIdIsValid (uint16 checkID)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   112  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   113  	DEM_UNUSED_PARAM(checkID);
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   114  	return FALSE;
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   115  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   116  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   117  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   118  #endif
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   119  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   120  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   121  /*** DTCID *****************************************************************/
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   122  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   123  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   124  #if (DEM_CFG_EVCOMB == DEM_CFG_EVCOMB_DISABLED)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   125  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   126  typedef Dem_EventIdType Dem_MapDtcIdToEventIdType;
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   127  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   128  #else
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   129  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   130  typedef struct {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   131     const Dem_EventIdType *mappingTable;
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   132     uint16 length;
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   133  } Dem_MapDtcIdToEventIdType;
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   134  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   135  #endif
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   136  typedef Dem_DTCGroupIdType Dem_MapDtcIdToGroupIdType;
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   137  #define DEM_START_SEC_ROM_CONST
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   138  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   139  extern const Dem_MapDtcIdToEventIdType  Dem_MapDtcIdToEventId[DEM_DTCID_ARRAYLENGTH];
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   140  extern const Dem_DtcIdType              Dem_MapEventIdToDtcId[DEM_EVENTID_ARRAYLENGTH];
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   141  #define DEM_STOP_SEC_ROM_CONST
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   142  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   143  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   144  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   145  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   146  DEM_INLINE Dem_boolean_least Dem_EventIdIsDtcAssigned (Dem_EventIdType id)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   147  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   148     return (Dem_MapEventIdToDtcId[id] != DEM_DTCID_INVALID);
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   149  }
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   150  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   151  
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   152  DEM_INLINE Dem_boolean_least Dem_isDtcIdValid (Dem_DtcIdType id)
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   153  {
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   154     return ((0 < id) && (id <= DEM_DTCID_COUNT));
+	mov	d1,#0
+.L147:
+
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   154     return ((0 < id) && (id <= DEM_DTCID_COUNT));      (inlined)
+	jeq	d0,#0,.L15
+.L148:
+	ge.u	d15,d0,#5
+.L149:
+	cmovn	d1,d15,#1
+
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   154     return ((0 < id) && (id <= DEM_DTCID_COUNT));      (inlined)
+.L16:
+.L15:
+	j	.L17
+
+; .\BSW\src\BSW\Gen\Dem\src\map\Dem_Mapping.h	   155  }      (inlined)
+.L17:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    46        }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    47        /* get the stored DtcId matching the DTCRequest */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    48        DtcId = Dem_EvMemGenGetDtcIdByOccIndex(DTCRequest);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    49  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    50        /* Is DtcId valid ?*/
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    51        if (!Dem_isDtcIdValid(DtcId))
+	jne	d1,#0,.L18
+.L74:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    52        {   /* No DTC is stored */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    53           return DEM_OCCURR_FAILED;
+	mov	d2,#2
+.L150:
+	j	.L19
+.L18:
+
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	   101  	DEM_ASSERT_RANGECHECK((0 < indx) && (indx < 5));      (inlined)
+.L20:
+
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	     1  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	     2  /********************************************************************************************************************/
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	     3  /*                                                                                                                  */
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	     4  /* TOOL-GENERATED SOURCECODE, DO NOT CHANGE                                                                         */
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	     5  /*                                                                                                                  */
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	     6  /********************************************************************************************************************/
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	     7  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	     8  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	     9  #ifndef DEM_CFG_DTC_DATASTRUCTURES_H
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    10  #define DEM_CFG_DTC_DATASTRUCTURES_H
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    11  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    12  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    13  #include "Dem_Cfg_DTCs.h"
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    14  #include "Dem_Prv_Det.h"
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    15  #include "Dem_Types.h"
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    16  #include "Dem_Lib.h"
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    17  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    18  /*
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    19  #include "Dem_Lock.h"
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    20  #include "Dem_Cfg_StorageCondition.h"
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    21  #include "Dem_Cfg_EnableCondition.h"
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    22  #include "Dem.h"
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    23  #include "rba_DiagLib.h"
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    24  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    25  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    26  #include "Dem_Lib.h"  */
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    27  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    28  /*
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    29  #define DEM_CFG_STOREWAITINGFORMONITORINGEVENT  FALSE
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    30  #define DEM_CFG_DTCFILTER_EXTERNALPROCESSING_OFF  STD_OFF
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    31  #define DEM_CFG_DTCFILTER_EXTERNALPROCESSING_ON   STD_ON
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    32  #define DEM_CFG_DTCFILTER_EXTERNALPROCESSING      DEM_CFG_DTCFILTER_EXTERNALPROCESSING_OFF
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    33  #define DEM_CFG_DTCSTATUS_AVAILABILITYMASK     0xFFu
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    34  #define DEM_CFG_DTC_TRANSLATION_TYPE           DEM_DTC_TRANSLATION_SAEJ1939_73
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    35  #define DEM_CFG_DTCSTATEMANGER_DTCS_PER_CYCLE   5u
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    36  #define DEM_DTC_BP_STATE_SUPPRESSED             0u
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    37  #define DEM_DTC_BP_GROUP_DTCSETTING_DISABLED    1u
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    38  #define DEM_DTC_GROUP_DemGroupOfDTC_0_DTCS           0xFA0u
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    39  #define DEM_DTC_GROUP_DemGroupOfDTC_1_DTCS           0x1388u  */
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    40  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    41  /* --------------------------------------------------- */
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    42  /* DEM_CFG_REPORT_CHRONOLOGICAL_ORDER_HOOKS_ENABLED    */
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    43  /* --------------------------------------------------- */
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    44  // #define DEM_CFG_REPORT_CHRONOLOGICAL_ORDER_HOOKS_ENABLED   FALSE
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    45  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    46  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    47  typedef struct
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    48  {
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    49  	Dem_DtcCodeType DtcCode;
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    50  	Dem_DTCSeverityType Severity;
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    51  	Dem_DTCKindType Kind;
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    52  	boolean DtcCode_Is_Index;
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    53  	uint8 Func_Unit;
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    54  	boolean Nv_Storage;
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    55  } Dem_Cfg_DtcType;
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    56  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    57  #define DEM_START_SEC_ROM_CONST
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    58  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    59  extern const Dem_Cfg_DtcType Dem_Cfg_Dtc[5];
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    60  #define DEM_STOP_SEC_ROM_CONST
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    61  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    62  LOCAL_INLINE Dem_DTCKindType Dem_Cfg_Dtc_GetKind(Dem_DtcIdType indx)
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    63  {
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    64  	DEM_ASSERT_RANGECHECK((0 < indx) && (indx < 5));
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    65  	return Dem_Cfg_Dtc[indx].Kind;
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    66  }
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    67  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    68  LOCAL_INLINE Dem_DTCSeverityType Dem_Cfg_Dtc_GetSeverity(Dem_DtcIdType indx)
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    69  {
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    70  	DEM_ASSERT_RANGECHECK((0 < indx) && (indx < 5));
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    71  	return Dem_Cfg_Dtc[indx].Severity;
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    72  }
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    73  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    74  LOCAL_INLINE boolean Dem_Cfg_Dtc_GetNv_Storage(Dem_DtcIdType indx)
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    75  {
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    76  	DEM_ASSERT_RANGECHECK((0 < indx) && (indx < 5));
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    77  	return Dem_Cfg_Dtc[indx].Nv_Storage;
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    78  }
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    79  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    80  LOCAL_INLINE uint8 Dem_Cfg_Dtc_GetFunc_Unit(Dem_DtcIdType indx)
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    81  {
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    82  	DEM_ASSERT_RANGECHECK((0 < indx) && (indx < 5));
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    83  	return Dem_Cfg_Dtc[indx].Func_Unit;
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    84  }
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    85  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    86  LOCAL_INLINE boolean Dem_Cfg_Dtc_GetDtcCode_Is_Index(Dem_DtcIdType indx)
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    87  {
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    88  	DEM_ASSERT_RANGECHECK((0 < indx) && (indx < 5));
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    89  	return Dem_Cfg_Dtc[indx].DtcCode_Is_Index;
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    90  }
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    91  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    92  /* MR12 RULE 2.7 VIOLATION: the parameter 'indx' is not used because the retrun value is the same for all indices due to the config, it is kept because the code calling the function is not config base but static */ 
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    93  LOCAL_INLINE Dem_DtcCodeType Dem_Cfg_Dtc_GetObd_DtcCode(Dem_DtcIdType indx)
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    94  {
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    95  	DEM_ASSERT_RANGECHECK((0 < indx) && (indx < 5));
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    96  	return DEM_INVALID_DTC; /* feature deactivated */
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    97  }
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    98  
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	    99  LOCAL_INLINE Dem_DtcCodeType Dem_Cfg_Dtc_GetDtcCode(Dem_DtcIdType indx)
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	   100  {
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	   101  	DEM_ASSERT_RANGECHECK((0 < indx) && (indx < 5));
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	   102  	return Dem_Cfg_Dtc[indx].DtcCode;
+	mul	d15,d0,#12
+.L151:
+	movh.a	a15,#@his(Dem_Cfg_Dtc)
+	lea	a15,[a15]@los(Dem_Cfg_Dtc)
+.L152:
+	addsc.a	a15,a15,d15,#0
+.L153:
+	ld.w	d15,[a15]
+.L154:
+
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	   102  	return Dem_Cfg_Dtc[indx].DtcCode;      (inlined)
+	j	.L21
+
+; .\BSW\src\BSW\Gen\Dem\Dem_Cfg_DTC_DataStructures.h	   103  }      (inlined)
+.L21:
+
+; .\BSW\src\BSW\Gen\Dem\src\dtc\Dem_DTCs.h	   240          return Dem_Cfg_Dtc_GetDtcCode(dtcId);      (inlined)
+	j	.L22
+
+; .\BSW\src\BSW\Gen\Dem\src\dtc\Dem_DTCs.h	   242  }      (inlined)
+.L22:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    54        }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    55  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    56        /* get the DTC code */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    57        *DTC = (uint32)Dem_GetDtcCode(DtcId);
+	st.w	[a4],d15
+.L79:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    58        return DEM_OCCURR_OK;
+	mov	d2,#0
+.L155:
+	j	.L23
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    59     }
+.L23:
+.L19:
+.L13:
+.L11:
+.L9:
+.L4:
+	ret
+.L60:
+	
+__Dem_GetDTCByOccurrenceTime_function_end:
+	.size	Dem_GetDTCByOccurrenceTime,__Dem_GetDTCByOccurrenceTime_function_end-Dem_GetDTCByOccurrenceTime
+.L53:
+	; End of function
+	
+	.sdecl	'.text.Dem_EvMemGen.Dem_GetEventMemoryOverflow',code,cluster('Dem_GetEventMemoryOverflow')
+	.sect	'.text.Dem_EvMemGen.Dem_GetEventMemoryOverflow'
+	.align	2
+	
+	.global	Dem_GetEventMemoryOverflow
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    60  #endif
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    61  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    62  /* -------------------------------------------------
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    63     service Dem_GetEventMemoryOverflow
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    64     -------------------------------------------------
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    65   */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    66  Std_ReturnType Dem_GetEventMemoryOverflow(Dem_DTCOriginType DTCOrigin, boolean* OverflowIndication)
+; Function Dem_GetEventMemoryOverflow
+.L44:
+Dem_GetEventMemoryOverflow:	.type	func
+	sub.a	a10,#8
+.L116:
+	st.b	[a10],d4
+.L160:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    67  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    68  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    69     if (Dem_LibGetParamBool(DEM_CFG_EVMEMGENERIC_SUPPORTED))
+	mov	d15,#1
+.L92:
+
+; .\BSW\src\BSW\Gen\Dem\src\lib\Dem_Lib.h	    43      return parameter;      (inlined)
+	j	.L24
+
+; .\BSW\src\BSW\Gen\Dem\src\lib\Dem_Lib.h	    44  }      (inlined)
+.L24:
+	jeq	d15,#0,.L25
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    70     {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    71  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    72         /*   Entry Condition Check   */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    73         DEM_ENTRY_CONDITION_CHECK_DEM_INITIALIZED(DEM_DET_APIID_GETEVENTMEMORYOVERFLOW,E_NOT_OK);
+.L26:
+.L27:
+	movh.a	a15,#@his(Dem_OpMoState)
+	lea	a15,[a15]@los(Dem_OpMoState)
+	ld.bu	d15,[a15]
+	jeq	d15,#2,.L28
+	mov	d4,#54
+.L117:
+	mov	d5,#0
+	mov	d6,#50
+	mov	d7,#32
+	call	Det_ReportError
+.L118:
+	mov	d2,#1
+	j	.L29
+.L28:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    74         DEM_ENTRY_CONDITION_CHECK_NOT_NULL_PTR(OverflowIndication,DEM_DET_APIID_GETEVENTMEMORYOVERFLOW,E_NOT_OK);
+.L30:
+.L31:
+	jnz.a	a4,.L32
+.L161:
+	mov	d4,#54
+.L119:
+	mov	d5,#0
+	mov	d6,#50
+	mov	d7,#17
+	call	Det_ReportError
+.L120:
+	mov	d2,#1
+	j	.L33
+.L32:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    75        /* parameter check: DTCOrigin */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    76        if (!Dem_EvMemIsDtcOriginValid (&DTCOrigin))
+	lea	a15,[a10]0
+.L97:
+
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	     1  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	     2  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	     3  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	     4  #ifndef DEM_EVMEMAPI_H
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	     5  #define DEM_EVMEMAPI_H
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	     6  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	     7  #include "Dem_EvMemTypes.h"
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	     8  #include "Dem_Cfg_EvMem.h"
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	     9  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    10  /* ----------------------------------------------------------------------------
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    11     Interface Functions
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    12     ----------------------------------------------------------------------------
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    13  */
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    14  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    15  typedef struct
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    16  {
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    17    /* DEM API write */
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    18    Dem_DtcIdType            DtcId;
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    19    Dem_DTCOriginType        DTCOrigin;
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    20    uint8                    ReqCounter;
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    21    /* DEM Main write */
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    22    uint8                    DemCounter;
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    23    boolean                  IsValid;
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    24    Dem_EvMemEventMemoryType EventMemory;
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    25  } Dem_EvMemDTCRecordType;
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    26  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    27  #define DEM_START_SEC_RAM_CLEARED
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    28  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    29  extern Dem_EvMemDTCRecordType Dem_EvMemDTCRecord;
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    30  #define DEM_STOP_SEC_RAM_CLEARED
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    31  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    32  #define DEM_START_SEC_ROM_CODE
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    33  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    34  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    35  /* Read Events From EvMem */
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    36  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    37  void Dem_EvMemApiMainFunction(void);
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    38  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    39  #define DEM_STOP_SEC_ROM_CODE
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    40  #include "Dem_Cfg_MemMap.h"
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    41  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    42  /* ----------------------------------------------------------------------------
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    43     Inline Functions
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    44     ----------------------------------------------------------------------------
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    45  */
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    46  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    47  DEM_INLINE Dem_boolean_least Dem_EvMemIsDtcKindValid (Dem_DTCKindType DTCKind)
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    48  {
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    49      return (DTCKind == DEM_DTC_KIND_ALL_DTCS);
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    50  }
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    51  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    52  
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    53  DEM_INLINE Dem_boolean_least Dem_EvMemIsDtcOriginValid (Dem_DTCOriginType  *DTCOrigin)
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    54  {
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    55      if(*DTCOrigin == DEM_DTC_ORIGIN_USERDEFINED_MEMORY)
+	ld.bu	d15,[a15]
+.L162:
+
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    55      if(*DTCOrigin == DEM_DTC_ORIGIN_USERDEFINED_MEMORY)      (inlined)
+	jne	d15,#0,.L34
+.L163:
+
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    56      {
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    57          *DTCOrigin = DEM_DTC_ORIGIN_SECONDARY_MEMORY;
+	mov	d15,#4
+.L164:
+	st.b	[a15],d15
+
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    55      if(*DTCOrigin == DEM_DTC_ORIGIN_USERDEFINED_MEMORY)      (inlined)
+.L34:
+
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    58      }
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    59      return (
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    60                 (*DTCOrigin == DEM_DTC_ORIGIN_PRIMARY_MEMORY)
+	ld.bu	d15,[a15]
+.L165:
+	eq	d15,d15,#1
+.L166:
+
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    59      return (      (inlined)
+	j	.L35
+
+; .\BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemApi.h	    68  }      (inlined)
+.L35:
+	jne	d15,#0,.L36
+.L167:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    77        {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    78           DEM_DET(DEM_DET_APIID_GETEVENTMEMORYOVERFLOW, DEM_E_WRONG_CONFIGURATION);
+	mov	d4,#54
+.L121:
+	mov	d5,#0
+	mov	d6,#50
+	mov	d7,#16
+	call	Det_ReportError
+.L122:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    79           return E_NOT_OK;
+	mov	d2,#1
+.L168:
+	j	.L37
+.L36:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    80        }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    81  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    82        /* get the stored overflow indicator matching the DTCOrigin */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    83        *OverflowIndication = Dem_EvMemGenIsOverflow(DTCOrigin);
+	ld.bu	d15,[a10]
+.L102:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     1  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     2  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     3  #ifndef DEM_EVMEMGEN_H
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     4  #define DEM_EVMEMGEN_H
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     5  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     6  #include "Dem_EvMemGenTypes.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     7  #include "Dem_EvMemTypes.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     8  #include "Dem_EvMemBase.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	     9  #include "Dem_DTCs.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    10  #include "Dem_GenericNvData.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    11  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    12  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    13  #define DEM_EVMEMGEN_MEMORY_BASE   Dem_GenericNvData
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    14  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    15  #if DEM_CFG_EVMEMGENERIC_SUPPORTED
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    16     #define DEM_EVMEMGEN_GET(OBJ)      (OBJ)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    17     #define DEM_EVMEMGEN_SET(OBJ,VAL)  (OBJ) = (VAL)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    18     #define DEM_EVMEMGEN_CLEAROBJ(OBJ) DEM_EVMEM_CLEAROBJ(OBJ)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    19  #else
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    20     #define DEM_EVMEMGEN_GET(OBJ)      0
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    21     #define DEM_EVMEMGEN_SET(OBJ,VAL)  do {} while (0)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    22     #define DEM_EVMEMGEN_CLEAROBJ(OBJ) do {} while (0)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    23  #endif
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    24  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    25  /* -------------------------------------------------
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    26     service Dem_GetDTCByOccurrenceTime
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    27     -------------------------------------------------
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    28   */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    29  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    30  /* Get stored DtcId by occurrence */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    31  DEM_INLINE Dem_DtcIdType Dem_EvMemGenGetDtcIdByOccIndex(uint32 OccIndex)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    32  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    33  #if DEM_CFG_EVMEMGENERIC_SUPPORTED
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    34      return DEM_EVMEMGEN_GET(DEM_EVMEMGEN_MEMORY_BASE.DtcIdsByOccurrenceTime[OccIndex]);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    35  #else
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    36      DEM_UNUSED_PARAM(OccIndex);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    37      return 0;
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    38  #endif
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    39  }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    40  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    41  /* Set stored DtcId by occurrence */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    42  DEM_INLINE void Dem_EvMemGenSetDtcByOccIndex(Dem_DtcIdType DtcId,uint32 OccIndex)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    43  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    44  #if DEM_CFG_EVMEMGENERIC_SUPPORTED
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    45      DEM_EVMEMGEN_SET(DEM_EVMEMGEN_MEMORY_BASE.DtcIdsByOccurrenceTime[OccIndex],DtcId);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    46  #else
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    47      DEM_UNUSED_PARAM(DtcId);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    48      DEM_UNUSED_PARAM(OccIndex);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    49  #endif
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    50  }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    51  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    52  /* Translates MemId to DtcOrigin  */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    53  DEM_INLINE Dem_DTCOriginType Dem_EvMemGenGetDtcOrginFromMemId(uint16_least MemId)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    54  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    55     Dem_DTCOriginType DtcOrigin = DEM_DTC_ORIGIN_PRIMARY_MEMORY;
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    56  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    57     if (Dem_LibGetParamBool(DEM_CFG_EVMEM_SECONDARY_MEMORY_SUPPORTED))
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    58     {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    59        if (MemId == DEM_CFG_EVMEM_MEMID_SECONDARY)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    60        {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    61           DtcOrigin = DEM_DTC_ORIGIN_SECONDARY_MEMORY;
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    62        }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    63     }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    64  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    65     if (Dem_LibGetParamBool(DEM_CFG_EVMEM_MIRROR_MEMORY_SUPPORTED))
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    66     {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    67  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    68        if (MemId == DEM_CFG_EVMEM_MEMID_MIRROR)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    69        {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    70           DtcOrigin = DEM_DTC_ORIGIN_MIRROR_MEMORY;
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    71        }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    72     }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    73  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    74     return DtcOrigin;
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    75  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    76  }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    77  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    78  /* Report event prototype function */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    79  DEM_INLINE void Dem_EvMemGenReportEvent(Dem_EventIdType EventId, uint32 FirstOccIndex, uint32 RecntOccIndex)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    80  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    81     Dem_DtcIdType DtcId;
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    82  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    83     /* get the DtcId of the reported event */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    84     DtcId = Dem_DtcIdFromEventId (EventId);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    85     /* Is the DtcId valid ? */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    86     if (Dem_isDtcIdValid (DtcId))
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    87     {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    88        /* Is stored DtcId of First Entry is invalid ? */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    89        /* HINT: the initial value is zero and therefore invalid! */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    90        if (!Dem_isDtcIdValid(Dem_EvMemGenGetDtcIdByOccIndex(FirstOccIndex)))
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    91        {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    92           /* replace first entry */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    93           Dem_EvMemGenSetDtcByOccIndex(DtcId,FirstOccIndex);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    94           /* notify to store in NVM */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    95           Dem_NvMWriteBlockOnShutdown(DEM_NVM_ID_DEM_GENERIC_NV_DATA);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    96        }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    97        /* Is stored DtcId of Most Recent Entry is not yet stored ? */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    98        if (Dem_EvMemGenGetDtcIdByOccIndex(RecntOccIndex) != DtcId)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	    99        {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   100           /* replace most recent entry */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   101           Dem_EvMemGenSetDtcByOccIndex(DtcId,RecntOccIndex);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   102           /* notify to store in NVM */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   103           Dem_NvMWriteBlockOnShutdown(DEM_NVM_ID_DEM_GENERIC_NV_DATA);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   104        }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   105     }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   106  }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   107  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   108  /* report function to report failed events */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   109  DEM_INLINE void Dem_EvMemGenReportFailedEvent(Dem_EventIdType EventId)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   110  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   111  	if(!Dem_GetEvMemLockInternal())
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   112  	{
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   113  	    /* service Dem_GetDTCByOccurrenceTime has implicit origin DEM_DTC_ORIGIN_PRIMARY_MEMORY */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   114  	    if ( Dem_EvtParam_GetEventIsStoredInPrimary(EventId) )
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   115  	    {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   116  	        /* call prototype function with first and recent FAILED indices */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   117  	        /* This call needs to be locked to avoid a simultaneous access in the Dem_Main task */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   118  	        DEM_ENTERLOCK_MON();
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   119  	        Dem_EvMemGenReportEvent(EventId,DEM_FIRST_FAILED_DTC,DEM_MOST_RECENT_FAILED_DTC);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   120  	        DEM_EXITLOCK_MON();
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   121  	    }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   122  	}
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   123  }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   124  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   125  /* report function to report confirmed events */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   126  DEM_INLINE void Dem_EvMemGenReportConfirmedEvent(Dem_EventIdType EventId, uint16_least MemId)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   127  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   128     /* service Dem_GetDTCByOccurrenceTime has implicit origin DEM_DTC_ORIGIN_PRIMARY_MEMORY */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   129     if (MemId == DEM_CFG_EVMEM_MEMID_PRIMARY)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   130     {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   131        /* call prototype function with first and recent CONFIRMED indices */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   132        Dem_EvMemGenReportEvent(EventId,DEM_FIRST_DET_CONFIRMED_DTC,DEM_MOST_REC_DET_CONFIRMED_DTC);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   133     }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   134  }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   135  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   136  /* clears the DTC Occurrence Entries */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   137  DEM_INLINE void Dem_EvMemGenClearDtcByOccurrenceTime(Dem_DTCOriginType DtcOrigin)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   138  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   139     DEM_UNUSED_PARAM(DtcOrigin);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   140  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   141     if (DtcOrigin == DEM_DTC_ORIGIN_PRIMARY_MEMORY)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   142     {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   143         /* This call needs to be locked to avoid a simultaneous access in SetEventStatus context */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   144        DEM_ENTERLOCK_MON();
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   145        DEM_EVMEMGEN_CLEAROBJ(DEM_EVMEMGEN_MEMORY_BASE.DtcIdsByOccurrenceTime);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   146        DEM_EXITLOCK_MON();
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   147        /* notify to store in NVM */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   148        Dem_NvMClearBlockByWrite(DEM_NVM_ID_DEM_GENERIC_NV_DATA);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   149     }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   150  }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   151  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   152  /* ------------------------------------------------------
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   153    Service to get the Last failed and Last Confirmed DTCs
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   154     -----------------------------------------------------
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   155   */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   156  /* Get the Last Failed DTC */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   157  DEM_INLINE Dem_DtcIdType Dem_EvMemGenGetLastFailedDtcFromGenNvData(void)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   158  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   159  	return Dem_EvMemGenGetDtcIdByOccIndex(DEM_MOST_RECENT_FAILED_DTC);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   160  }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   161  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   162  /* Get the Last Confirmed DTCs */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   163  DEM_INLINE Dem_DtcIdType Dem_EvMemGenGetLastConfirmedDtcFromGenNvData(void)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   164  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   165  	return Dem_EvMemGenGetDtcIdByOccIndex(DEM_MOST_REC_DET_CONFIRMED_DTC);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   166  }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   167  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   168  /* -------------------------------------------------
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   169     service Dem_GetEventMemoryOverflow
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   170     -------------------------------------------------
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   171   */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   172  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   173  /* sets the memory overflow indicator */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   174  DEM_INLINE void Dem_EvMemGenSetOverflow(Dem_DTCOriginType DtcOrigin)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   175  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   176  #if DEM_CFG_EVMEMGENERIC_SUPPORTED
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   177      DEM_EVMEMGEN_SET(DEM_EVMEMGEN_MEMORY_BASE.Overflow[DtcOrigin],TRUE);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   178  #else
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   179      DEM_UNUSED_PARAM(DtcOrigin);
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   180  #endif
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   181  }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   182  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   183  /* gets the overflow indicator */
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   184  DEM_INLINE boolean Dem_EvMemGenIsOverflow(Dem_DTCOriginType DtcOrigin)
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   185  {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   186  #if DEM_CFG_EVMEMGENERIC_SUPPORTED
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   187      return (boolean)DEM_EVMEMGEN_GET(DEM_EVMEMGEN_MEMORY_BASE.Overflow[DtcOrigin]);
+	movh.a	a15,#@his(Dem_GenericNvData)
+	lea	a15,[a15]@los(Dem_GenericNvData)
+	addsc.a	a15,a15,d15,#0
+	ld.bu	d15,[a15]2
+.L169:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   187      return (boolean)DEM_EVMEMGEN_GET(DEM_EVMEMGEN_MEMORY_BASE.Overflow[DtcOrigin]);      (inlined)
+	j	.L38
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.h	   192  }      (inlined)
+.L38:
+	st.b	[a4],d15
+.L170:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    84        return E_OK;
+	mov	d2,#0
+.L171:
+	j	.L39
+.L25:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    85     }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    86     else
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    87     {
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    88  	   DEM_DET(DEM_DET_APIID_GETEVENTMEMORYOVERFLOW, DEM_E_WRONG_CONDITION);
+	mov	d4,#54
+.L123:
+	mov	d5,#0
+	mov	d6,#50
+	mov	d7,#64
+	call	Det_ReportError
+.L124:
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    89  	   return E_NOT_OK;
+	mov	d2,#1
+.L172:
+	j	.L40
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    90     }
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    91  }
+.L40:
+.L39:
+.L37:
+.L33:
+.L29:
+	ret
+.L87:
+	
+__Dem_GetEventMemoryOverflow_function_end:
+	.size	Dem_GetEventMemoryOverflow,__Dem_GetEventMemoryOverflow_function_end-Dem_GetEventMemoryOverflow
+.L58:
+	; End of function
+	
+	.calls	'Dem_GetDTCByOccurrenceTime','Det_ReportError'
+	.calls	'Dem_GetEventMemoryOverflow','Det_ReportError'
+	.calls	'Dem_GetDTCByOccurrenceTime','',0
+	.extern	Det_ReportError
+	.extern	Dem_Cfg_Dtc
+	.extern	Dem_OpMoState
+	.extern	Dem_GenericNvData
+	.calls	'Dem_GetEventMemoryOverflow','',8
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L46:
+	.word	24354
+	.half	3
+	.word	.L47
+	.byte	4
+.L45:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemGen.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L48
+.L59:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.word	144
+	.byte	4
+	.byte	'rba_DiagLib_Bit8SetBit',0,3,1,36,19,1,1,5
+	.byte	'buffer',0,1,36,49
+	.word	161
+	.byte	5
+	.byte	'bit_position',0,1,36,63
+	.word	144
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBit',0,3,1,42,19,1,1,5
+	.byte	'buffer',0,1,42,51
+	.word	161
+	.byte	5
+	.byte	'bit_position',0,1,42,65
+	.word	144
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8OverwriteBit',0,3,1,48,19,1,1,5
+	.byte	'buffer',0,1,48,55
+	.word	161
+	.byte	5
+	.byte	'bit_position',0,1,48,69
+	.word	144
+	.byte	5
+	.byte	'will_bit_be_set',0,1,48,91
+	.word	144
+	.byte	7,6,6,0,0,8
+	.byte	'rba_DiagLib_Bit8GetSingleBit',0,3,1,60,20
+	.word	144
+	.byte	1,1,5
+	.byte	'value',0,1,60,55
+	.word	144
+	.byte	5
+	.byte	'bit_position',0,1,60,68
+	.word	144
+	.byte	6,0,8
+	.byte	'rba_DiagLib_Bit8IsBitSet',0,3,1,64,22
+	.word	144
+	.byte	1,1,5
+	.byte	'value',0,1,64,53
+	.word	144
+	.byte	5
+	.byte	'bit_position',0,1,64,66
+	.word	144
+	.byte	7,6,0,0,8
+	.byte	'rba_DiagLib_Bit8GetBits',0,3,1,69,20
+	.word	144
+	.byte	1,1,5
+	.byte	'value',0,1,69,50
+	.word	144
+	.byte	5
+	.byte	'bit_position',0,1,69,63
+	.word	144
+	.byte	5
+	.byte	'number_of_bits',0,1,69,83
+	.word	144
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBits',0,3,1,77,19,1,1,5
+	.byte	'value',0,1,77,52
+	.word	161
+	.byte	5
+	.byte	'bit_position',0,1,77,65
+	.word	144
+	.byte	5
+	.byte	'number_of_bits',0,1,77,85
+	.word	144
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8OverwriteBits',0,3,1,83,19,1,1,5
+	.byte	'value',0,1,83,56
+	.word	161
+	.byte	5
+	.byte	'bit_position',0,1,83,69
+	.word	144
+	.byte	5
+	.byte	'number_of_bits',0,1,83,89
+	.word	144
+	.byte	5
+	.byte	'newValue',0,1,83,111
+	.word	144
+	.byte	7,6,0,0
+.L65:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,3
+	.word	861
+	.byte	4
+	.byte	'rba_DiagLib_Bit16SetBit',0,3,2,36,19,1,1,5
+	.byte	'buffer',0,2,36,51
+	.word	883
+	.byte	5
+	.byte	'bit_position',0,2,36,65
+	.word	144
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBit',0,3,2,42,19,1,1,5
+	.byte	'buffer',0,2,42,53
+	.word	883
+	.byte	5
+	.byte	'bit_position',0,2,42,67
+	.word	144
+	.byte	6,0,8
+	.byte	'rba_DiagLib_Bit16GetSingleBit',0,3,2,60,21
+	.word	861
+	.byte	1,1,5
+	.byte	'value',0,2,60,58
+	.word	861
+	.byte	5
+	.byte	'bit_position',0,2,60,71
+	.word	144
+	.byte	6,0,8
+	.byte	'rba_DiagLib_Bit16IsBitSet',0,3,2,65,22
+	.word	144
+	.byte	1,1,5
+	.byte	'value',0,2,65,55
+	.word	861
+	.byte	5
+	.byte	'bit_position',0,2,65,68
+	.word	144
+	.byte	7,6,0,0,8
+	.byte	'rba_DiagLib_Bit16GetBits',0,3,2,70,21
+	.word	861
+	.byte	1,1,5
+	.byte	'value',0,2,70,53
+	.word	861
+	.byte	5
+	.byte	'bit_position',0,2,70,66
+	.word	144
+	.byte	5
+	.byte	'number_of_bits',0,2,70,86
+	.word	144
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBits',0,3,2,78,19,1,1,5
+	.byte	'value',0,2,78,54
+	.word	883
+	.byte	5
+	.byte	'bit_position',0,2,78,67
+	.word	144
+	.byte	5
+	.byte	'number_of_bits',0,2,78,87
+	.word	144
+	.byte	6,0,2
+	.byte	'unsigned int',0,4,7
+.L63:
+	.byte	3
+	.word	1372
+	.byte	4
+	.byte	'rba_DiagLib_Bit32SetBit',0,3,3,36,19,1,1,5
+	.byte	'buffer',0,3,36,51
+	.word	1388
+	.byte	5
+	.byte	'bit_position',0,3,36,65
+	.word	144
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBit',0,3,3,42,19,1,1,5
+	.byte	'buffer',0,3,42,53
+	.word	1388
+	.byte	5
+	.byte	'bit_position',0,3,42,67
+	.word	144
+	.byte	6,0,8
+	.byte	'rba_DiagLib_Bit32GetSingleBit',0,3,3,60,21
+	.word	1372
+	.byte	1,1,5
+	.byte	'value',0,3,60,58
+	.word	1372
+	.byte	5
+	.byte	'bit_position',0,3,60,71
+	.word	144
+	.byte	6,0,8
+	.byte	'rba_DiagLib_Bit32IsBitSet',0,3,3,65,22
+	.word	144
+	.byte	1,1,5
+	.byte	'value',0,3,65,55
+	.word	1372
+	.byte	5
+	.byte	'bit_position',0,3,65,68
+	.word	144
+	.byte	7,6,0,0,4
+	.byte	'rba_DiagLib_Bit32ClearBits',0,3,3,78,19,1,1,5
+	.byte	'value',0,3,78,54
+	.word	1388
+	.byte	5
+	.byte	'bit_position',0,3,78,67
+	.word	144
+	.byte	5
+	.byte	'number_of_bits',0,3,78,87
+	.word	144
+	.byte	6,0,8
+	.byte	'rba_BswSrv_ByteOrderSwap32',0,3,4,125,21
+	.word	1372
+	.byte	1,1,5
+	.byte	'Input_u32',0,4,125,55
+	.word	1372
+	.byte	6,0,8
+	.byte	'rba_BswSrv_ByteOrderSwap16',0,3,4,150,1,21
+	.word	861
+	.byte	1,1,5
+	.byte	'Input_u16',0,4,150,1,55
+	.word	861
+	.byte	6,0,2
+	.byte	'int',0,4,5,4
+	.byte	'rba_DiagLib_MemUtils_MemSet',0,3,5,26,19,1,1,5
+	.byte	'xDest_pv',0,5,26,54
+	.word	161
+	.byte	5
+	.byte	'xPattern_u32',0,5,26,71
+	.word	1899
+	.byte	5
+	.byte	'numBytes_s32',0,5,26,92
+	.word	1372
+	.byte	6,0,8
+	.byte	'Dem_LibGetParamUI8',0,3,6,36,18
+	.word	144
+	.byte	1,1,5
+	.byte	'parameter',0,6,36,44
+	.word	144
+	.byte	6,0
+.L91:
+	.byte	8
+	.byte	'Dem_LibGetParamBool',0,3,6,41,20
+	.word	144
+	.byte	1,1
+.L93:
+	.byte	5
+	.byte	'parameter',0,6,41,49
+	.word	144
+.L95:
+	.byte	6,0
+.L83:
+	.byte	8
+	.byte	'Dem_Cfg_Dtc_GetDtcCode',0,3,7,99,30
+	.word	1372
+	.byte	1,1
+.L84:
+	.byte	5
+	.byte	'indx',0,7,99,67
+	.word	861
+.L86:
+	.byte	6,0
+.L67:
+	.byte	8
+	.byte	'Dem_OpMoIsInitialized',0,3,8,97,30
+	.word	144
+	.byte	1,1
+.L68:
+	.byte	6,0,4
+	.byte	'Dem_BitArraySetBit',0,3,9,33,17,1,1,5
+	.byte	'buffer',0,9,33,36
+	.word	1388
+	.byte	5
+	.byte	'bit_position',0,9,33,75
+	.word	1372
+	.byte	6,0,4
+	.byte	'Dem_BitArrayClearBit',0,3,9,46,17,1,1,5
+	.byte	'buffer',0,9,46,38
+	.word	1388
+	.byte	5
+	.byte	'bit_position',0,9,46,77
+	.word	1372
+	.byte	6,0,4
+	.byte	'Dem_BitArrayOverwriteBit',0,3,9,61,17,1,1,5
+	.byte	'buffer',0,9,61,42
+	.word	1388
+	.byte	5
+	.byte	'bit_position',0,9,62,25
+	.word	1372
+	.byte	5
+	.byte	'will_bit_be_set',0,9,62,57
+	.word	144
+	.byte	7,6,6,0,0,9
+	.word	1372
+	.byte	3
+	.word	2414
+	.byte	8
+	.byte	'Dem_BitArrayIsBitSet',0,3,9,75,30
+	.word	144
+	.byte	1,1,5
+	.byte	'buffer',0,9,75,51
+	.word	2419
+	.byte	5
+	.byte	'bit_position',0,9,75,95
+	.word	1372
+	.byte	6,0
+.L73:
+	.byte	8
+	.byte	'Dem_isDtcIdValid',0,3,10,152,1,30
+	.word	144
+	.byte	1,1
+.L75:
+	.byte	5
+	.byte	'id',0,10,152,1,62
+	.word	861
+.L77:
+	.byte	6,0,8
+	.byte	'Dem_DtcIdFromEventId',0,3,10,158,1,27
+	.word	861
+	.byte	1,1,5
+	.byte	'id',0,10,158,1,65
+	.word	861
+	.byte	6,0,8
+	.byte	'Dem_DtcIdGetEventId',0,3,10,166,1,28
+	.word	861
+	.byte	1,1,5
+	.byte	'dtcid',0,10,166,1,63
+	.word	861
+	.byte	6,0,8
+	.byte	'Dem_DtcIdGetFirstEventId',0,3,10,174,1,28
+	.word	861
+	.byte	1,1,5
+	.byte	'dtcid',0,10,174,1,68
+	.word	861
+	.byte	7,6,0,0,8
+	.byte	'Dem_DtcGroupIdIsValid',0,3,10,252,1,30
+	.word	144
+	.byte	1,1,5
+	.byte	'dtcGroupID',0,10,252,1,72
+	.word	144
+	.byte	6,0,9
+	.word	861
+	.byte	3
+	.word	2745
+	.byte	10,10,171,2,9,8,11
+	.byte	'it',0
+	.word	2750
+	.byte	4,2,35,0,11
+	.byte	'end',0
+	.word	2750
+	.byte	4,2,35,4,0,3
+	.word	2755
+	.byte	4
+	.byte	'Dem_EventIdListIteratorNewFromDtcId',0,3,10,177,2,17,1,1,5
+	.byte	'it',0,10,177,2,78
+	.word	2787
+	.byte	5
+	.byte	'dtcid',0,10,177,2,96
+	.word	861
+	.byte	7,6,0,0,9
+	.word	2755
+	.byte	3
+	.word	2867
+	.byte	8
+	.byte	'Dem_EventIdListIteratorIsValid',0,3,10,193,2,30
+	.word	144
+	.byte	1,1,5
+	.byte	'it',0,10,193,2,92
+	.word	2872
+	.byte	6,0,4
+	.byte	'Dem_EventIdListIteratorNext',0,3,10,198,2,17,1,1,5
+	.byte	'it',0,10,198,2,70
+	.word	2787
+	.byte	6,0,8
+	.byte	'Dem_EventIdListIteratorCurrent',0,3,10,203,2,28
+	.word	861
+	.byte	1,1,5
+	.byte	'it',0,10,203,2,90
+	.word	2872
+	.byte	6,0,8
+	.byte	'Dem_EnCoAreAllFulfilled',0,3,11,32,30
+	.word	144
+	.byte	1,1,5
+	.byte	'enableConditionList',0,11,32,68
+	.word	144
+	.byte	6,0,8
+	.byte	'Dem_NvMGetNvMBlocKId',0,3,12,49,28
+	.word	861
+	.byte	1,1,5
+	.byte	'id',0,12,49,68
+	.word	144
+	.byte	6,0,8
+	.byte	'Dem_NvmGetStatus',0,3,12,54,30
+	.word	144
+	.byte	1,1,5
+	.byte	'id',0,12,54,67
+	.word	144
+	.byte	7,6,0,0,4
+	.byte	'Dem_NvMWriteBlockOnShutdown',0,3,12,92,17,1,1,5
+	.byte	'id',0,12,92,64
+	.word	144
+	.byte	6,0,4
+	.byte	'Dem_NvMClearBlockByWrite',0,3,12,102,17,1,1,5
+	.byte	'id',0,12,102,61
+	.word	144
+	.byte	6,0,4
+	.byte	'Dem_NvMClearBlockByInvalidate',0,3,12,107,17,1,1,5
+	.byte	'id',0,12,107,66
+	.word	144
+	.byte	6,0,4
+	.byte	'Dem_NvMStartClear',0,3,12,138,1,17,1,1,6,0,8
+	.byte	'Dem_NvMIsInvalidateAllNVMBlocksRequested',0,3,12,167,1,30
+	.word	144
+	.byte	1,1,6,0,8
+	.byte	'rba_DiagLib_ByteOrderUtils_SwapByteOrderS',0,3,13,36,21
+	.word	861
+	.byte	1,1,5
+	.byte	'val',0,13,36,70
+	.word	861
+	.byte	7,6,0,0,8
+	.byte	'rba_DiagLib_ByteOrderUtils_SwapByteOrderL',0,3,13,41,21
+	.word	1372
+	.byte	1,1,5
+	.byte	'val',0,13,41,70
+	.word	1372
+	.byte	7,6,0,0,8
+	.byte	'Dem_EvtParam_GetStoreTestFailedToNextOC',0,3,14,55,22
+	.word	144
+	.byte	1,1,5
+	.byte	'indx',0,14,55,78
+	.word	861
+	.byte	6,0,8
+	.byte	'Dem_EvtParam_GetEventIsStoredInPrimary',0,3,14,75,22
+	.word	144
+	.byte	1,1,5
+	.byte	'indx',0,14,75,77
+	.word	861
+	.byte	7,6,0,0,8
+	.byte	'Dem_EvtParam_GetEventIsStoredInSecondary',0,3,14,82,22
+	.word	144
+	.byte	1,1,5
+	.byte	'indx',0,14,82,79
+	.word	861
+	.byte	6,0,8
+	.byte	'Dem_EvtParam_GetEventIsStoredInMirror',0,3,14,89,22
+	.word	144
+	.byte	1,1,5
+	.byte	'indx',0,14,89,76
+	.word	861
+	.byte	6,0,8
+	.byte	'Dem_EvtParam_GetAgingAllowed',0,3,14,95,22
+	.word	144
+	.byte	1,1,5
+	.byte	'indx',0,14,95,67
+	.word	861
+	.byte	7,6,0,0,8
+	.byte	'Dem_EvtParam_GetOperationCycleID',0,3,14,122,20
+	.word	144
+	.byte	1,1,5
+	.byte	'indx',0,14,122,69
+	.word	861
+	.byte	6,0,8
+	.byte	'Dem_EvtParam_GetAgingCycleID',0,3,14,129,1,20
+	.word	144
+	.byte	1,1,5
+	.byte	'indx',0,14,129,1,65
+	.word	861
+	.byte	6,0,8
+	.byte	'Dem_EvtParam_GetFailureCycleID',0,3,14,136,1,20
+	.word	144
+	.byte	1,1,5
+	.byte	'indx',0,14,136,1,67
+	.word	861
+	.byte	6,0,8
+	.byte	'Dem_EvtParam_GetDebounceMethodIndex',0,3,14,149,1,20
+	.word	144
+	.byte	1,1,5
+	.byte	'indx',0,14,149,1,72
+	.word	861
+	.byte	6,0,8
+	.byte	'Dem_EvtParam_GetDebounceParamSettingIndex',0,3,14,155,1,21
+	.word	861
+	.byte	1,1,5
+	.byte	'indx',0,14,155,1,79
+	.word	861
+	.byte	7,6,0,0,8
+	.byte	'Dem_EvtParam_GetAgingThreshold',0,3,14,168,1,20
+	.word	144
+	.byte	1,1,5
+	.byte	'indx',0,14,168,1,67
+	.word	861
+	.byte	6,0,8
+	.byte	'Dem_EvtParam_GetEnableConditions',0,3,14,208,1,27
+	.word	144
+	.byte	1,1,5
+	.byte	'indx',0,14,208,1,76
+	.word	861
+	.byte	6,0,2
+	.byte	'short int',0,2,5,8
+	.byte	'Dem_EvtGetDebounceLevel',0,3,15,193,1,19
+	.word	4310
+	.byte	1,1,5
+	.byte	'EventId',0,15,193,1,60
+	.word	861
+	.byte	6,0,8
+	.byte	'Dem_EvtGetLastReportedEvent',0,3,15,219,1,32
+	.word	144
+	.byte	1,1,5
+	.byte	'EventId',0,15,219,1,77
+	.word	861
+	.byte	6,0,4
+	.byte	'Dem_EvtIncreaseGlobalInitMonitoringCounter',0,3,15,227,3,17,1,1,6,0,4
+	.byte	'Dem_EvtSetAnyInitMonitoring',0,3,15,233,3,17,1,1,5
+	.byte	'reason',0,15,233,3,72
+	.word	144
+	.byte	7,6,0,0,8
+	.byte	'Dem_EvtIsSuppressed',0,3,15,244,4,30
+	.word	144
+	.byte	1,1,5
+	.byte	'EventId',0,15,244,4,67
+	.word	861
+	.byte	7,6,0,0,3
+	.word	144
+	.byte	4
+	.byte	'Dem_EnvSetTrigger',0,3,16,17,17,1,1,5
+	.byte	'trigger',0,16,17,52
+	.word	4599
+	.byte	5
+	.byte	'trigger2set',0,16,17,77
+	.word	144
+	.byte	6,0,8
+	.byte	'Dem_EnvIsAnyTriggerSet',0,3,16,22,30
+	.word	144
+	.byte	1,1,5
+	.byte	'trigger2test',0,16,22,69
+	.word	144
+	.byte	6,0,2
+	.byte	'unsigned long int',0,4,7,8
+	.byte	'Dem_DebHandleDebounceAction__processBits',0,3,17,101,30
+	.word	144
+	.byte	1,1,5
+	.byte	'EventId',0,17,101,87
+	.word	861
+	.byte	5
+	.byte	'debAction',0,17,101,120
+	.word	4724
+	.byte	6,0,12
+	.word	861
+	.byte	3
+	.word	4833
+	.byte	4
+	.byte	'Dem_ClientResultType_setResult',0,3,18,27,17,1,1,5
+	.byte	'result',0,18,27,79
+	.word	4838
+	.byte	5
+	.byte	'request',0,18,27,109
+	.word	861
+	.byte	5
+	.byte	'newResult',0,18,27,133,1
+	.word	144
+	.byte	6,0,12
+	.word	861
+	.byte	3
+	.word	4933
+	.byte	4
+	.byte	'Dem_ClientRequestType_setRequest',0,3,18,65,17,1,1,5
+	.byte	'request',0,18,65,82
+	.word	4938
+	.byte	5
+	.byte	'newRequest',0,18,65,97
+	.word	144
+	.byte	6,0,3
+	.word	1372
+	.byte	4
+	.byte	'Dem_ClientSelectionType_invalidateSelectionResult',0,3,18,151,1,17,1,1,5
+	.byte	'selection',0,18,151,1,93
+	.word	5020
+	.byte	6,0,8
+	.byte	'Dem_ClientSelectionType_getTypeOfSelection',0,3,18,168,1,18
+	.word	144
+	.byte	1,1,5
+	.byte	'selection',0,18,168,1,86
+	.word	1372
+	.byte	6,0,4
+	.byte	'Dem_ClientClearMachine_SetMachineActiveClient',0,3,19,53,17,1,1,5
+	.byte	'ClientId',0,19,53,80
+	.word	144
+	.byte	6,0,4
+	.byte	'Dem_ClientClearMachine_SetMachineState',0,3,19,68,17,1,1,5
+	.byte	'state',0,19,68,62
+	.word	144
+	.byte	6,0,8
+	.byte	'Dem_ClientClearMachine_isClearDtcGroupAllDtcsSelected',0,3,19,78,20
+	.word	144
+	.byte	1,1,5
+	.byte	'ClientId',0,19,78,91
+	.word	144
+	.byte	7,6,6,6,6,0,0,8
+	.byte	'Dem_EvMemIsMemIdValid',0,3,20,103,30
+	.word	144
+	.byte	1,1,5
+	.byte	'MemId',0,20,103,65
+	.word	4724
+	.byte	6,0,8
+	.byte	'Dem_EvMemIsEventMemLocIdValid',0,3,20,112,30
+	.word	144
+	.byte	1,1,5
+	.byte	'LocId',0,20,112,73
+	.word	4724
+	.byte	6,0,10,21,133,1,3,4,11
+	.byte	'Status',0
+	.word	861
+	.byte	2,2,35,0,11
+	.byte	'EventId',0
+	.word	861
+	.byte	2,2,35,2,0,13,21,131,1,9,4,11
+	.byte	'Data',0
+	.word	5509
+	.byte	4,2,35,0,0,14,7
+	.word	144
+	.byte	15,6,0,10,21,144,1,9,20,11
+	.byte	'Hdr',0
+	.word	5549
+	.byte	4,2,35,0,11
+	.byte	'Data',0
+	.word	5570
+	.byte	7,2,35,4,11
+	.byte	'FailureCounter',0
+	.word	144
+	.byte	1,2,35,11,11
+	.byte	'FreezeFrameCounter',0
+	.word	144
+	.byte	1,2,35,12,11
+	.byte	'AgingCounter',0
+	.word	144
+	.byte	1,2,35,13,11
+	.byte	'OccurrenceCounter',0
+	.word	144
+	.byte	1,2,35,14,11
+	.byte	'Trigger',0
+	.word	144
+	.byte	1,2,35,15,11
+	.byte	'TimeId',0
+	.word	1372
+	.byte	4,2,35,16,0,9
+	.word	5579
+	.byte	3
+	.word	5747
+	.byte	8
+	.byte	'Dem_EvMemGetEventMemStatusByPtr',0,3,20,134,1,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,134,1,89
+	.word	5752
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetEventMemStatus',0,3,20,139,1,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'LocId',0,20,139,1,65
+	.word	4724
+	.byte	7,6,0,0,8
+	.byte	'Dem_EvMemGetEventMemEventIdByPtr',0,3,20,152,1,28
+	.word	861
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,152,1,93
+	.word	5752
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetEventMemTimeIdByPtr',0,3,20,170,1,19
+	.word	1372
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,170,1,83
+	.word	5752
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetEventMemDtcStatusByPtr',0,3,20,188,1,18
+	.word	144
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,188,1,85
+	.word	5752
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetEventMemFailureCounterByPtr',0,3,20,216,1,24
+	.word	4724
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,216,1,96
+	.word	5752
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetEventMemOccurrenceCounterByPtr',0,3,20,233,1,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,233,1,100
+	.word	5752
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetEventMemAgingCounterByPtr',0,3,20,133,2,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,133,2,95
+	.word	5752
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetEventMemAgingCounter',0,3,20,144,2,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'LocId',0,20,144,2,71
+	.word	4724
+	.byte	7,6,0,0,4
+	.byte	'Dem_EvMemSetEventMemAgingCounter',0,3,20,150,2,17,1,1,5
+	.byte	'LocId',0,20,150,2,63
+	.word	4724
+	.byte	5
+	.byte	'AgingCounter',0,20,150,2,83
+	.word	4724
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetEventMemAgingCounterForTFSLCByPtr',0,3,20,161,2,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,161,2,103
+	.word	5752
+	.byte	6,0,2
+	.byte	'char',0,1,6,8
+	.byte	'Dem_EvMemGetMaxFdcDuringCurrentCycleByPtr',0,3,20,213,2,18
+	.word	6538
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,213,2,92
+	.word	5752
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetMaxFdcSinceLastClearByPtr',0,3,20,224,2,18
+	.word	6538
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,224,2,88
+	.word	5752
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetEventMemFreezeFrameCounterByPtr',0,3,20,238,3,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,238,3,101
+	.word	5752
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetEventMemTriggerByPtr',0,3,20,141,4,28
+	.word	144
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,141,4,93
+	.word	5752
+	.byte	6,0,3
+	.word	5579
+	.byte	8
+	.byte	'Dem_EvMemGetEventMemDataByPtr',0,3,20,170,4,19
+	.word	161
+	.byte	1,1,5
+	.byte	'EventMemory',0,20,170,4,75
+	.word	6843
+	.byte	6,0,8
+	.byte	'Dem_EvMemIsStored',0,3,20,206,4,30
+	.word	144
+	.byte	1,1,5
+	.byte	'Status',0,20,206,4,61
+	.word	4724
+	.byte	6,0,8
+	.byte	'Dem_EvMemIsEmpty',0,3,20,211,4,30
+	.word	144
+	.byte	1,1,5
+	.byte	'Status',0,20,211,4,60
+	.word	4724
+	.byte	6,0,8
+	.byte	'Dem_EvMemSetToEmpty',0,3,20,226,4,25
+	.word	4724
+	.byte	1,1,6,0,8
+	.byte	'Dem_EvMemGetShadowVisibility',0,3,20,242,4,30
+	.word	144
+	.byte	1,1,6,0,8
+	.byte	'Dem_EvMemGetEventMemStartLocId',0,3,20,131,5,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'MemId',0,20,131,5,69
+	.word	4724
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetEventMemEndLocId',0,3,20,143,5,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'MemId',0,20,143,5,67
+	.word	4724
+	.byte	6,0,3
+	.word	4724
+	.byte	4
+	.byte	'Dem_EvMemEventMemoryIteratorNew',0,3,20,179,5,17,1,1,5
+	.byte	'MemId',0,20,179,5,63
+	.word	7203
+	.byte	6,0,9
+	.word	4724
+	.byte	3
+	.word	7265
+	.byte	8
+	.byte	'Dem_EvMemEventMemoryIteratorIsValid',0,3,20,184,5,30
+	.word	144
+	.byte	1,1,5
+	.byte	'MemId',0,20,184,5,86
+	.word	7270
+	.byte	6,0,4
+	.byte	'Dem_EvMemEventMemoryIteratorNext',0,3,20,189,5,17,1,1,5
+	.byte	'MemId',0,20,189,5,64
+	.word	7203
+	.byte	6,0,8
+	.byte	'Dem_EvMemIsEdgeTrigger',0,3,20,247,5,30
+	.word	144
+	.byte	1,1,5
+	.byte	'StatusOld',0,20,247,5,66
+	.word	4724
+	.byte	5
+	.byte	'StatusNew',0,20,247,5,90
+	.word	4724
+	.byte	5
+	.byte	'Trigger',0,20,247,5,114
+	.word	4724
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetRamStsMask',0,3,20,154,7,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'EventId',0,20,154,7,64
+	.word	861
+	.byte	7,6,0,0,3
+	.word	144
+.L96:
+	.byte	8
+	.byte	'Dem_EvMemIsDtcOriginValid',0,3,22,53,30
+	.word	144
+	.byte	1,1
+.L98:
+	.byte	5
+	.byte	'DTCOrigin',0,22,53,77
+	.word	7546
+.L100:
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetCurrentAgingCycleCounterInt',0,3,23,20,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'EventId',0,23,20,81
+	.word	861
+	.byte	6,0,8
+	.byte	'Dem_EvMemIsAged',0,3,23,61,30
+	.word	144
+	.byte	1,1,5
+	.byte	'EventId',0,23,61,62
+	.word	861
+	.byte	5
+	.byte	'LocId',0,23,61,84
+	.word	4724
+	.byte	5
+	.byte	'StatusNew',0,23,61,104
+	.word	4724
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetMemIdForDTCOrigin',0,3,24,150,1,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'DTCOrigin',0,24,150,1,73
+	.word	144
+	.byte	6,0,8
+	.byte	'Dem_EvMemGetMemIdForEvent',0,3,24,222,1,25
+	.word	4724
+	.byte	1,1,5
+	.byte	'EventId',0,24,222,1,67
+	.word	861
+	.byte	7,6,0,0,8
+	.byte	'Dem_GetEvMemLockInternal',0,3,24,137,2,20
+	.word	144
+	.byte	1,1,6,0,8
+	.byte	'Dem_DtcIsSuppressed',0,3,25,118,30
+	.word	144
+	.byte	1,1,5
+	.byte	'dtcId',0,25,118,65
+	.word	861
+	.byte	7,6,0,0,8
+	.byte	'Dem_DtcIsSuppressedDirectly',0,3,25,128,1,30
+	.word	144
+	.byte	1,1,5
+	.byte	'dtcId',0,25,128,1,73
+	.word	861
+	.byte	6,0
+.L78:
+	.byte	8
+	.byte	'Dem_GetDtcCode',0,3,25,223,1,28
+	.word	1372
+	.byte	1,1
+.L80:
+	.byte	5
+	.byte	'dtcId',0,25,223,1,58
+	.word	861
+.L82:
+	.byte	7,6,0,0,8
+	.byte	'Dem_EventUsesOrigin',0,3,25,137,2,30
+	.word	144
+	.byte	1,1,5
+	.byte	'eventId',0,25,137,2,67
+	.word	861
+	.byte	5
+	.byte	'origin',0,25,137,2,94
+	.word	144
+	.byte	7,6,6,6,0,0
+.L69:
+	.byte	8
+	.byte	'Dem_EvMemGenGetDtcIdByOccIndex',0,3,26,31,26
+	.word	861
+	.byte	1,1
+.L70:
+	.byte	5
+	.byte	'OccIndex',0,26,31,64
+	.word	1372
+.L72:
+	.byte	6,0,4
+	.byte	'Dem_EvMemGenSetDtcByOccIndex',0,3,26,42,17,1,1,5
+	.byte	'DtcId',0,26,42,60
+	.word	861
+	.byte	5
+	.byte	'OccIndex',0,26,42,73
+	.word	1372
+	.byte	6,0,4
+	.byte	'Dem_EvMemGenReportEvent',0,3,26,79,17,1,1,5
+	.byte	'EventId',0,26,79,57
+	.word	861
+	.byte	5
+	.byte	'FirstOccIndex',0,26,79,73
+	.word	1372
+	.byte	5
+	.byte	'RecntOccIndex',0,26,79,95
+	.word	1372
+	.byte	7,6,6,6,6,6,6,6,6,6,0,0,4
+	.byte	'Dem_EvMemGenSetOverflow',0,3,26,174,1,17,1,1,5
+	.byte	'DtcOrigin',0,26,174,1,59
+	.word	144
+	.byte	6,0
+.L101:
+	.byte	8
+	.byte	'Dem_EvMemGenIsOverflow',0,3,26,184,1,20
+	.word	144
+	.byte	1,1
+.L103:
+	.byte	5
+	.byte	'DtcOrigin',0,26,184,1,61
+	.word	144
+.L105:
+	.byte	6,0,16
+	.word	166
+	.byte	17
+	.word	196
+	.byte	17
+	.word	211
+	.byte	6,0,16
+	.word	234
+	.byte	17
+	.word	266
+	.byte	17
+	.word	281
+	.byte	6,0,16
+	.word	304
+	.byte	17
+	.word	340
+	.byte	17
+	.word	355
+	.byte	17
+	.word	376
+	.byte	7,18
+	.word	166
+	.byte	17
+	.word	196
+	.byte	17
+	.word	211
+	.byte	19
+	.word	232
+	.byte	0,6,18
+	.word	234
+	.byte	17
+	.word	266
+	.byte	17
+	.word	281
+	.byte	19
+	.word	302
+	.byte	0,6,0,0,16
+	.word	405
+	.byte	17
+	.word	445
+	.byte	17
+	.word	459
+	.byte	6,0,16
+	.word	482
+	.byte	17
+	.word	518
+	.byte	17
+	.word	532
+	.byte	7,18
+	.word	405
+	.byte	17
+	.word	445
+	.byte	17
+	.word	459
+	.byte	19
+	.word	480
+	.byte	0,6,0,0,16
+	.word	557
+	.byte	17
+	.word	592
+	.byte	17
+	.word	606
+	.byte	17
+	.word	627
+	.byte	6,0,16
+	.word	652
+	.byte	17
+	.word	685
+	.byte	17
+	.word	699
+	.byte	17
+	.word	720
+	.byte	6,0,16
+	.word	745
+	.byte	17
+	.word	782
+	.byte	17
+	.word	796
+	.byte	17
+	.word	817
+	.byte	17
+	.word	840
+	.byte	7,18
+	.word	652
+	.byte	17
+	.word	685
+	.byte	17
+	.word	699
+	.byte	17
+	.word	720
+	.byte	19
+	.word	743
+	.byte	0,6,0,0,16
+	.word	888
+	.byte	17
+	.word	919
+	.byte	17
+	.word	934
+	.byte	6,0,16
+	.word	957
+	.byte	17
+	.word	990
+	.byte	17
+	.word	1005
+	.byte	6,0,16
+	.word	1028
+	.byte	17
+	.word	1069
+	.byte	17
+	.word	1083
+	.byte	6,0,16
+	.word	1106
+	.byte	17
+	.word	1143
+	.byte	17
+	.word	1157
+	.byte	7,18
+	.word	1028
+	.byte	17
+	.word	1069
+	.byte	17
+	.word	1083
+	.byte	19
+	.word	1104
+	.byte	0,6,0,0,16
+	.word	1182
+	.byte	17
+	.word	1218
+	.byte	17
+	.word	1232
+	.byte	17
+	.word	1253
+	.byte	6,0,16
+	.word	1278
+	.byte	17
+	.word	1312
+	.byte	17
+	.word	1326
+	.byte	17
+	.word	1347
+	.byte	6,0,16
+	.word	1393
+	.byte	17
+	.word	1424
+	.byte	17
+	.word	1439
+	.byte	6,0,16
+	.word	1462
+	.byte	17
+	.word	1495
+	.byte	17
+	.word	1510
+	.byte	6,0,16
+	.word	1533
+	.byte	17
+	.word	1574
+	.byte	17
+	.word	1588
+	.byte	6,0,16
+	.word	1611
+	.byte	17
+	.word	1648
+	.byte	17
+	.word	1662
+	.byte	7,18
+	.word	1533
+	.byte	17
+	.word	1574
+	.byte	17
+	.word	1588
+	.byte	19
+	.word	1609
+	.byte	0,6,0,0,16
+	.word	1687
+	.byte	17
+	.word	1721
+	.byte	17
+	.word	1735
+	.byte	17
+	.word	1756
+	.byte	6,0
+.L89:
+	.byte	3
+	.word	144
+	.byte	20
+	.byte	'Det_ReportError',0,27,112,16
+	.word	144
+	.byte	1,1,1,1,5
+	.byte	'ModuleId',0,27,112,39
+	.word	861
+	.byte	5
+	.byte	'InstanceId',0,27,112,55
+	.word	144
+	.byte	5
+	.byte	'ApiId',0,27,112,73
+	.word	144
+	.byte	5
+	.byte	'ErrorId',0,27,112,86
+	.word	144
+	.byte	0,16
+	.word	1781
+	.byte	17
+	.word	1819
+	.byte	6,0,16
+	.word	1839
+	.byte	17
+	.word	1878
+	.byte	6,0,16
+	.word	1906
+	.byte	17
+	.word	1941
+	.byte	17
+	.word	1958
+	.byte	17
+	.word	1979
+	.byte	6,0,16
+	.word	2002
+	.byte	17
+	.word	2032
+	.byte	6,0,16
+	.word	2052
+	.byte	17
+	.word	2083
+	.byte	6,0,16
+	.word	2103
+	.byte	17
+	.word	2137
+	.byte	6,0,16
+	.word	2152
+	.byte	6,0,16
+	.word	2187
+	.byte	17
+	.word	2213
+	.byte	17
+	.word	2228
+	.byte	6,0,16
+	.word	2251
+	.byte	17
+	.word	2279
+	.byte	17
+	.word	2294
+	.byte	6,0,16
+	.word	2317
+	.byte	17
+	.word	2349
+	.byte	17
+	.word	2364
+	.byte	17
+	.word	2385
+	.byte	7,18
+	.word	2187
+	.byte	17
+	.word	2213
+	.byte	17
+	.word	2228
+	.byte	19
+	.word	2249
+	.byte	0,6,18
+	.word	2251
+	.byte	17
+	.word	2279
+	.byte	17
+	.word	2294
+	.byte	19
+	.word	2315
+	.byte	0,6,0,0,16
+	.word	2424
+	.byte	17
+	.word	2456
+	.byte	17
+	.word	2471
+	.byte	6,0,16
+	.word	2494
+	.byte	17
+	.word	2523
+	.byte	6,0,16
+	.word	2537
+	.byte	17
+	.word	2570
+	.byte	6,0,16
+	.word	2584
+	.byte	17
+	.word	2616
+	.byte	6,0,16
+	.word	2633
+	.byte	17
+	.word	2670
+	.byte	7,18
+	.word	2584
+	.byte	17
+	.word	2616
+	.byte	19
+	.word	2631
+	.byte	0,6,0,0,16
+	.word	2689
+	.byte	17
+	.word	2723
+	.byte	6,0,16
+	.word	2792
+	.byte	17
+	.word	2836
+	.byte	17
+	.word	2848
+	.byte	7,18
+	.word	2494
+	.byte	17
+	.word	2523
+	.byte	19
+	.word	2535
+	.byte	0,6,0,0,16
+	.word	2877
+	.byte	17
+	.word	2920
+	.byte	6,0,16
+	.word	2934
+	.byte	17
+	.word	2970
+	.byte	6,0,16
+	.word	2984
+	.byte	17
+	.word	3027
+	.byte	6,0,16
+	.word	3041
+	.byte	17
+	.word	3076
+	.byte	6,0,16
+	.word	3106
+	.byte	17
+	.word	3138
+	.byte	6,0,16
+	.word	3151
+	.byte	17
+	.word	3179
+	.byte	7,18
+	.word	3106
+	.byte	17
+	.word	3138
+	.byte	19
+	.word	3149
+	.byte	0,6,0,0,16
+	.word	3194
+	.byte	17
+	.word	3229
+	.byte	6,0,16
+	.word	3242
+	.byte	17
+	.word	3274
+	.byte	6,0,16
+	.word	3287
+	.byte	17
+	.word	3324
+	.byte	6,0,16
+	.word	3337
+	.byte	6,0,16
+	.word	3365
+	.byte	6,0,16
+	.word	3420
+	.byte	17
+	.word	3473
+	.byte	7,18
+	.word	1839
+	.byte	17
+	.word	1878
+	.byte	19
+	.word	1897
+	.byte	0,6,0,0,16
+	.word	3489
+	.byte	17
+	.word	3542
+	.byte	7,18
+	.word	1781
+	.byte	17
+	.word	1819
+	.byte	19
+	.word	1837
+	.byte	0,6,0,0,16
+	.word	3558
+	.byte	17
+	.word	3609
+	.byte	6,0,16
+	.word	3624
+	.byte	17
+	.word	3674
+	.byte	7,18
+	.word	1106
+	.byte	17
+	.word	1143
+	.byte	17
+	.word	1157
+	.byte	21
+	.word	1178
+	.byte	18
+	.word	1028
+	.byte	17
+	.word	1069
+	.byte	17
+	.word	1083
+	.byte	19
+	.word	1104
+	.byte	0,19
+	.word	1179
+	.byte	0,0,6,0,0,16
+	.word	3691
+	.byte	17
+	.word	3743
+	.byte	6,0,16
+	.word	3758
+	.byte	17
+	.word	3807
+	.byte	6,0,16
+	.word	3822
+	.byte	17
+	.word	3862
+	.byte	7,18
+	.word	1106
+	.byte	17
+	.word	1143
+	.byte	17
+	.word	1157
+	.byte	21
+	.word	1178
+	.byte	18
+	.word	1028
+	.byte	17
+	.word	1069
+	.byte	17
+	.word	1083
+	.byte	19
+	.word	1104
+	.byte	0,19
+	.word	1179
+	.byte	0,0,6,0,0,16
+	.word	3879
+	.byte	17
+	.word	3923
+	.byte	6,0,16
+	.word	3938
+	.byte	17
+	.word	3979
+	.byte	6,0,16
+	.word	3995
+	.byte	17
+	.word	4038
+	.byte	6,0,16
+	.word	4054
+	.byte	17
+	.word	4102
+	.byte	6,0,16
+	.word	4118
+	.byte	17
+	.word	4172
+	.byte	7,18
+	.word	1182
+	.byte	17
+	.word	1218
+	.byte	17
+	.word	1232
+	.byte	17
+	.word	1253
+	.byte	19
+	.word	1276
+	.byte	0,6,0,0,16
+	.word	4190
+	.byte	17
+	.word	4233
+	.byte	6,0,16
+	.word	4249
+	.byte	17
+	.word	4294
+	.byte	6,0,16
+	.word	4323
+	.byte	17
+	.word	4359
+	.byte	6,0,16
+	.word	4378
+	.byte	17
+	.word	4418
+	.byte	6,0,16
+	.word	4437
+	.byte	6,0,16
+	.word	4490
+	.byte	17
+	.word	4526
+	.byte	7,18
+	.word	1393
+	.byte	17
+	.word	1424
+	.byte	17
+	.word	1439
+	.byte	19
+	.word	1460
+	.byte	0,6,0,0,16
+	.word	4546
+	.byte	17
+	.word	4578
+	.byte	7,18
+	.word	482
+	.byte	17
+	.word	518
+	.byte	17
+	.word	532
+	.byte	21
+	.word	553
+	.byte	18
+	.word	405
+	.byte	17
+	.word	445
+	.byte	17
+	.word	459
+	.byte	19
+	.word	480
+	.byte	0,19
+	.word	554
+	.byte	0,0,6,0,0,16
+	.word	4604
+	.byte	17
+	.word	4629
+	.byte	17
+	.word	4645
+	.byte	6,0,16
+	.word	4667
+	.byte	17
+	.word	4701
+	.byte	6,0,16
+	.word	4745
+	.byte	17
+	.word	4797
+	.byte	17
+	.word	4813
+	.byte	6,0,16
+	.word	4843
+	.byte	17
+	.word	4881
+	.byte	17
+	.word	4896
+	.byte	17
+	.word	4912
+	.byte	6,0,16
+	.word	4943
+	.byte	17
+	.word	4983
+	.byte	17
+	.word	4999
+	.byte	6,0,16
+	.word	5025
+	.byte	17
+	.word	5083
+	.byte	6,0,16
+	.word	5104
+	.byte	17
+	.word	5159
+	.byte	6,0,16
+	.word	5180
+	.byte	17
+	.word	5233
+	.byte	6,0,16
+	.word	5252
+	.byte	17
+	.word	5298
+	.byte	6,0,16
+	.word	5314
+	.byte	17
+	.word	5379
+	.byte	7,18
+	.word	2002
+	.byte	17
+	.word	2032
+	.byte	19
+	.word	2050
+	.byte	0,6,18
+	.word	2002
+	.byte	17
+	.word	2032
+	.byte	19
+	.word	2050
+	.byte	0,6,18
+	.word	5104
+	.byte	17
+	.word	5159
+	.byte	19
+	.word	5178
+	.byte	0,6,18
+	.word	4843
+	.byte	17
+	.word	4881
+	.byte	17
+	.word	4896
+	.byte	17
+	.word	4912
+	.byte	19
+	.word	4931
+	.byte	0,6,0,0,16
+	.word	5403
+	.byte	17
+	.word	5436
+	.byte	6,0,16
+	.word	5452
+	.byte	17
+	.word	5493
+	.byte	6,0,16
+	.word	5757
+	.byte	17
+	.word	5801
+	.byte	6,0,16
+	.word	5824
+	.byte	17
+	.word	5863
+	.byte	7,18
+	.word	5757
+	.byte	17
+	.word	5801
+	.byte	19
+	.word	5822
+	.byte	0,6,0,0,16
+	.word	5882
+	.byte	17
+	.word	5927
+	.byte	6,0,16
+	.word	5950
+	.byte	17
+	.word	5994
+	.byte	6,0,16
+	.word	6017
+	.byte	17
+	.word	6064
+	.byte	6,0,16
+	.word	6087
+	.byte	17
+	.word	6139
+	.byte	6,0,16
+	.word	6162
+	.byte	17
+	.word	6217
+	.byte	6,0,16
+	.word	6240
+	.byte	17
+	.word	6290
+	.byte	6,0,16
+	.word	6313
+	.byte	17
+	.word	6358
+	.byte	7,18
+	.word	6240
+	.byte	17
+	.word	6290
+	.byte	19
+	.word	6311
+	.byte	0,6,0,0,16
+	.word	6377
+	.byte	17
+	.word	6418
+	.byte	17
+	.word	6433
+	.byte	6,0,16
+	.word	6457
+	.byte	17
+	.word	6515
+	.byte	6,0,16
+	.word	6546
+	.byte	17
+	.word	6600
+	.byte	6,0,16
+	.word	6623
+	.byte	17
+	.word	6673
+	.byte	6,0,16
+	.word	6696
+	.byte	17
+	.word	6752
+	.byte	6,0,16
+	.word	6775
+	.byte	17
+	.word	6820
+	.byte	6,0,16
+	.word	6848
+	.byte	17
+	.word	6890
+	.byte	6,0,16
+	.word	6913
+	.byte	17
+	.word	6943
+	.byte	6,0,16
+	.word	6961
+	.byte	17
+	.word	6990
+	.byte	6,0,16
+	.word	7008
+	.byte	6,0,16
+	.word	7042
+	.byte	6,0,16
+	.word	7085
+	.byte	17
+	.word	7128
+	.byte	6,0,16
+	.word	7145
+	.byte	17
+	.word	7186
+	.byte	6,0,16
+	.word	7208
+	.byte	17
+	.word	7248
+	.byte	6,0,16
+	.word	7275
+	.byte	17
+	.word	7323
+	.byte	6,0,16
+	.word	7340
+	.byte	17
+	.word	7381
+	.byte	6,0,16
+	.word	7398
+	.byte	17
+	.word	7433
+	.byte	17
+	.word	7452
+	.byte	17
+	.word	7471
+	.byte	6,0,16
+	.word	7490
+	.byte	17
+	.word	7525
+	.byte	7,18
+	.word	3558
+	.byte	17
+	.word	3609
+	.byte	19
+	.word	3622
+	.byte	0,6,0,0,16
+	.word	7551
+	.byte	17
+	.word	7588
+	.byte	6,0,16
+	.word	7608
+	.byte	17
+	.word	7659
+	.byte	6,0,16
+	.word	7677
+	.byte	17
+	.word	7704
+	.byte	17
+	.word	7720
+	.byte	17
+	.word	7734
+	.byte	6,0,16
+	.word	7754
+	.byte	17
+	.word	7796
+	.byte	6,0,16
+	.word	7817
+	.byte	17
+	.word	7855
+	.byte	7,18
+	.word	3624
+	.byte	17
+	.word	3674
+	.byte	21
+	.word	3687
+	.byte	18
+	.word	1106
+	.byte	17
+	.word	1143
+	.byte	17
+	.word	1157
+	.byte	21
+	.word	1178
+	.byte	18
+	.word	1028
+	.byte	17
+	.word	1069
+	.byte	17
+	.word	1083
+	.byte	19
+	.word	1104
+	.byte	0,19
+	.word	1179
+	.byte	0,0,19
+	.word	3688
+	.byte	0,0,6,0,0,16
+	.word	7876
+	.byte	6,0,16
+	.word	7915
+	.byte	17
+	.word	7946
+	.byte	7,18
+	.word	482
+	.byte	17
+	.word	518
+	.byte	17
+	.word	532
+	.byte	21
+	.word	553
+	.byte	18
+	.word	405
+	.byte	17
+	.word	445
+	.byte	17
+	.word	459
+	.byte	19
+	.word	480
+	.byte	0,19
+	.word	554
+	.byte	0,0,6,0,0,16
+	.word	7964
+	.byte	17
+	.word	8004
+	.byte	6,0,16
+	.word	8021
+	.byte	17
+	.word	8048
+	.byte	7,18
+	.word	2103
+	.byte	17
+	.word	2137
+	.byte	19
+	.word	2150
+	.byte	0,6,0,0,16
+	.word	8067
+	.byte	17
+	.word	8099
+	.byte	17
+	.word	8116
+	.byte	7,18
+	.word	3691
+	.byte	17
+	.word	3743
+	.byte	19
+	.word	3756
+	.byte	0,6,18
+	.word	3758
+	.byte	17
+	.word	3807
+	.byte	19
+	.word	3820
+	.byte	0,6,18
+	.word	3624
+	.byte	17
+	.word	3674
+	.byte	21
+	.word	3687
+	.byte	18
+	.word	1106
+	.byte	17
+	.word	1143
+	.byte	17
+	.word	1157
+	.byte	21
+	.word	1178
+	.byte	18
+	.word	1028
+	.byte	17
+	.word	1069
+	.byte	17
+	.word	1083
+	.byte	19
+	.word	1104
+	.byte	0,19
+	.word	1179
+	.byte	0,0,19
+	.word	3688
+	.byte	0,0,6,0,0,16
+	.word	8138
+	.byte	17
+	.word	8180
+	.byte	6,0,16
+	.word	8199
+	.byte	17
+	.word	8235
+	.byte	17
+	.word	8249
+	.byte	6,0,16
+	.word	8268
+	.byte	17
+	.word	8299
+	.byte	17
+	.word	8315
+	.byte	17
+	.word	8337
+	.byte	7,18
+	.word	2537
+	.byte	17
+	.word	2570
+	.byte	19
+	.word	2582
+	.byte	0,6,18
+	.word	8138
+	.byte	17
+	.word	8180
+	.byte	19
+	.word	8197
+	.byte	0,6,18
+	.word	8138
+	.byte	17
+	.word	8180
+	.byte	19
+	.word	8197
+	.byte	0,6,18
+	.word	3194
+	.byte	17
+	.word	3229
+	.byte	19
+	.word	3240
+	.byte	0,6,18
+	.word	3194
+	.byte	17
+	.word	3229
+	.byte	19
+	.word	3240
+	.byte	0,6,18
+	.word	8199
+	.byte	17
+	.word	8235
+	.byte	17
+	.word	8249
+	.byte	19
+	.word	8266
+	.byte	0,6,18
+	.word	8199
+	.byte	17
+	.word	8235
+	.byte	17
+	.word	8249
+	.byte	19
+	.word	8266
+	.byte	0,6,18
+	.word	2494
+	.byte	17
+	.word	2523
+	.byte	19
+	.word	2535
+	.byte	0,6,18
+	.word	2494
+	.byte	17
+	.word	2523
+	.byte	19
+	.word	2535
+	.byte	0,6,0,0,16
+	.word	8371
+	.byte	17
+	.word	8403
+	.byte	6,0,16
+	.word	8424
+	.byte	17
+	.word	8459
+	.byte	6,0,22,1,3
+	.word	11251
+	.byte	23
+	.byte	'__codeptr',0,28,1,1
+	.word	11253
+	.byte	23
+	.byte	'sint8',0,29,76,25
+	.word	6538
+	.byte	23
+	.byte	'uint8',0,29,81,25
+	.word	144
+	.byte	23
+	.byte	'sint16',0,29,86,25
+	.word	4310
+	.byte	23
+	.byte	'uint16',0,29,91,25
+	.word	861
+	.byte	23
+	.byte	'sint32',0,29,96,24
+	.word	1899
+	.byte	23
+	.byte	'uint32',0,29,106,24
+	.word	1372
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,23
+	.byte	'uint64',0,29,111,30
+	.word	11364
+	.byte	23
+	.byte	'boolean',0,29,127,25
+	.word	144
+	.byte	23
+	.byte	'uint8_least',0,29,137,1,25
+	.word	4724
+	.byte	23
+	.byte	'uint16_least',0,29,147,1,25
+	.word	4724
+	.byte	23
+	.byte	'StatusType',0,30,191,1,27
+	.word	144
+	.byte	23
+	.byte	'Std_ReturnType',0,30,199,1,15
+	.word	144
+	.byte	10,30,206,1,9,8,11
+	.byte	'vendorID',0
+	.word	861
+	.byte	2,2,35,0,11
+	.byte	'moduleID',0
+	.word	861
+	.byte	2,2,35,2,11
+	.byte	'sw_major_version',0
+	.word	144
+	.byte	1,2,35,4,11
+	.byte	'sw_minor_version',0
+	.word	144
+	.byte	1,2,35,5,11
+	.byte	'sw_patch_version',0
+	.word	144
+	.byte	1,2,35,6,0,23
+	.byte	'Std_VersionInfoType',0,30,213,1,3
+	.word	11508
+	.byte	23
+	.byte	'Dem_ClientRequestType',0,31,46,16
+	.word	861
+	.byte	23
+	.byte	'Dem_ClientResultType',0,31,47,16
+	.word	861
+	.byte	23
+	.byte	'Dem_ClientSelectionType',0,31,48,16
+	.word	1372
+	.byte	23
+	.byte	'Dem_ClientPriorityType',0,31,50,15
+	.word	144
+	.byte	23
+	.byte	'Dem_ComponentIdType',0,32,20,15
+	.word	144
+	.byte	23
+	.byte	'PduIdType',0,33,22,19
+	.word	861
+	.byte	23
+	.byte	'PduLengthType',0,33,26,19
+	.word	861
+	.byte	24,34,113,9,4,25
+	.byte	'TP_DATACONF',0,0,25
+	.byte	'TP_DATARETRY',0,1,25
+	.byte	'TP_CONFPENDING',0,2,0,23
+	.byte	'TpDataStateType',0,34,118,3
+	.word	11848
+	.byte	23
+	.byte	'Can_IdType',0,35,32,16
+	.word	1372
+	.byte	23
+	.byte	'Can_HwHandleType',0,35,43,16
+	.word	861
+	.byte	10,36,93,9,8,11
+	.byte	'Class',0
+	.word	144
+	.byte	1,2,35,0,11
+	.byte	'TIN',0
+	.word	144
+	.byte	1,2,35,1,11
+	.byte	'ReturnAddress',0
+	.word	1372
+	.byte	4,2,35,4,0,23
+	.byte	'OsTrapInfoType',0,36,97,3
+	.word	11968
+	.byte	14,68
+	.word	1372
+	.byte	15,16,0,10,36,154,1,9,68,11
+	.byte	'store',0
+	.word	12048
+	.byte	68,2,35,0,0,14,68
+	.word	12057
+	.byte	15,0,0,23
+	.byte	'Os_JumpBufType',0,36,156,1,3
+	.word	12079
+	.byte	23
+	.byte	'Os_StackTraceType',0,36,174,1,18
+	.word	1372
+	.byte	10,36,175,1,9,8,11
+	.byte	'sp',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'ctx',0
+	.word	1372
+	.byte	4,2,35,4,0,23
+	.byte	'Os_StackValueType',0,36,175,1,63
+	.word	12139
+	.byte	23
+	.byte	'Os_StackSizeType',0,36,176,1,27
+	.word	12139
+	.byte	26,1,1,3
+	.word	12224
+	.byte	23
+	.byte	'Os_VoidVoidFunctionType',0,36,179,1,16
+	.word	12227
+	.byte	23
+	.byte	'ApplicationType',0,36,193,1,23
+	.word	144
+	.byte	27
+	.byte	'Os_ApplicationConfigurationType_s',0,36,198,1,16,2,11
+	.byte	'app_id',0
+	.word	144
+	.byte	1,2,35,0,11
+	.byte	'access',0
+	.word	144
+	.byte	1,2,35,1,0,23
+	.byte	'Os_ApplicationConfigurationType',0,36,201,1,3
+	.word	12290
+	.byte	23
+	.byte	'Os_CoreStateType',0,36,203,1,16
+	.word	1372
+	.byte	23
+	.byte	'AreaIdType',0,36,204,1,16
+	.word	861
+	.byte	23
+	.byte	'Os_PeripheralAddressType',0,36,212,1,22
+	.word	1372
+	.byte	23
+	.byte	'TickType',0,36,221,1,22
+	.word	1372
+	.byte	23
+	.byte	'Os_StopwatchTickType',0,36,225,1,22
+	.word	1372
+	.byte	23
+	.byte	'Os_Lockable',0,36,234,1,18
+	.word	1388
+	.byte	23
+	.byte	'CoreIdType',0,36,236,1,16
+	.word	861
+	.byte	23
+	.byte	'SpinlockIdType',0,36,237,1,16
+	.word	861
+	.byte	24,36,239,1,9,4,25
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,25
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,23
+	.byte	'TryToGetSpinlockType',0,36,239,1,74
+	.word	12597
+	.byte	24,36,174,2,9,4,25
+	.byte	'APPLICATION_ACCESSIBLE',0,0,25
+	.byte	'APPLICATION_RESTARTING',0,1,25
+	.byte	'APPLICATION_TERMINATED',0,2,0,23
+	.byte	'ApplicationStateType',0,36,174,2,92
+	.word	12690
+	.byte	28
+	.byte	'void',0,3
+	.word	12802
+	.byte	29,1,1,30
+	.word	144
+	.byte	30
+	.word	12808
+	.byte	0,3
+	.word	12813
+	.byte	23
+	.byte	'Os_FunctionEntryType',0,36,183,2,16
+	.word	12827
+	.byte	27
+	.byte	'Os_MeterInfoType_s',0,36,193,2,16,48,11
+	.byte	'elapsed',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'previous',0
+	.word	1372
+	.byte	4,2,35,4,11
+	.byte	'max',0
+	.word	1372
+	.byte	4,2,35,8,11
+	.byte	'cumulative',0
+	.word	1372
+	.byte	4,2,35,12,11
+	.byte	'stackbase',0
+	.word	12139
+	.byte	8,2,35,16,11
+	.byte	'stackusage',0
+	.word	12139
+	.byte	8,2,35,24,11
+	.byte	'stackmax',0
+	.word	12139
+	.byte	8,2,35,32,11
+	.byte	'stackbudget',0
+	.word	12139
+	.byte	8,2,35,40,0,23
+	.byte	'Os_MeterInfoType',0,36,202,2,3
+	.word	12862
+	.byte	3
+	.word	12862
+	.byte	23
+	.byte	'Os_MeterInfoRefType',0,36,203,2,50
+	.word	13060
+	.byte	23
+	.byte	'EventMaskType',0,36,206,2,15
+	.word	144
+	.byte	23
+	.byte	'Os_imaskType',0,36,211,2,16
+	.word	1372
+	.byte	27
+	.byte	'Os_ISRDynType_s',0,36,213,2,16,48,11
+	.byte	'meter',0
+	.word	12862
+	.byte	48,2,35,0,0,23
+	.byte	'Os_ISRDynType',0,36,215,2,3
+	.word	13139
+	.byte	3
+	.word	13139
+	.byte	9
+	.word	13200
+	.byte	27
+	.byte	'Os_ISRType_s',0,36,216,2,16,24,11
+	.byte	'entry_function',0
+	.word	12232
+	.byte	4,2,35,0,11
+	.byte	'dynamic',0
+	.word	13205
+	.byte	4,2,35,4,11
+	.byte	'imask',0
+	.word	1372
+	.byte	4,2,35,8,11
+	.byte	'stackbudget',0
+	.word	12139
+	.byte	8,2,35,12,11
+	.byte	'access',0
+	.word	144
+	.byte	1,2,35,20,11
+	.byte	'application',0
+	.word	144
+	.byte	1,2,35,21,0,23
+	.byte	'Os_ISRType',0,36,223,2,3
+	.word	13210
+	.byte	3
+	.word	12224
+	.byte	9
+	.word	13210
+	.byte	3
+	.word	13369
+	.byte	23
+	.byte	'ISRType',0,36,224,2,46
+	.word	13374
+	.byte	23
+	.byte	'Os_bitmask',0,36,239,2,22
+	.word	1372
+	.byte	23
+	.byte	'Os_pset0Type',0,36,240,2,20
+	.word	1372
+	.byte	23
+	.byte	'Os_pset1Type',0,36,241,2,20
+	.word	1372
+	.byte	23
+	.byte	'Os_pset2Type',0,36,242,2,20
+	.word	1372
+	.byte	13,36,243,2,9,4,11
+	.byte	'p0',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'p1',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'p2',0
+	.word	1372
+	.byte	4,2,35,0,0,23
+	.byte	'Os_psetType',0,36,247,2,3
+	.word	13482
+	.byte	13,36,249,2,9,4,11
+	.byte	't0',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	't1',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	't2',0
+	.word	1372
+	.byte	4,2,35,0,0,23
+	.byte	'Os_tpmaskType',0,36,253,2,3
+	.word	13546
+	.byte	23
+	.byte	'Os_ActivationCountType',0,36,254,2,23
+	.word	144
+	.byte	27
+	.byte	'Os_TaskDynType_s',0,36,128,3,16,120,11
+	.byte	'terminate_jump_buf',0
+	.word	12088
+	.byte	68,2,35,0,11
+	.byte	'meter',0
+	.word	12862
+	.byte	48,2,35,68,11
+	.byte	'activation_count',0
+	.word	144
+	.byte	1,2,35,116,0,23
+	.byte	'Os_TaskDynType',0,36,132,3,3
+	.word	13644
+	.byte	14,68
+	.word	12057
+	.byte	15,0,0,3
+	.word	13644
+	.byte	9
+	.word	13770
+	.byte	27
+	.byte	'Os_TaskType_s',0,36,134,3,16,40,11
+	.byte	'dynamic',0
+	.word	13775
+	.byte	4,2,35,0,11
+	.byte	'entry_function',0
+	.word	12232
+	.byte	4,2,35,4,11
+	.byte	'pset',0
+	.word	13482
+	.byte	4,2,35,8,11
+	.byte	'base_tpmask',0
+	.word	13546
+	.byte	4,2,35,12,11
+	.byte	'tpmask',0
+	.word	13546
+	.byte	4,2,35,16,11
+	.byte	'core_id',0
+	.word	861
+	.byte	2,2,35,20,11
+	.byte	'index',0
+	.word	1372
+	.byte	4,2,35,24,11
+	.byte	'stackbudget',0
+	.word	12139
+	.byte	8,2,35,28,11
+	.byte	'activation_count',0
+	.word	144
+	.byte	1,2,35,36,11
+	.byte	'access',0
+	.word	144
+	.byte	1,2,35,37,11
+	.byte	'application',0
+	.word	144
+	.byte	1,2,35,38,0,23
+	.byte	'Os_TaskType',0,36,146,3,3
+	.word	13780
+	.byte	9
+	.word	13780
+	.byte	3
+	.word	14030
+	.byte	23
+	.byte	'TaskType',0,36,147,3,47
+	.word	14035
+	.byte	31
+	.byte	'Os_TaskStateType',0,36,155,3,6,4,25
+	.byte	'SUSPENDED',0,0,25
+	.byte	'READY',0,1,25
+	.byte	'WAITING',0,2,25
+	.byte	'RUNNING',0,3,0,23
+	.byte	'TaskStateType',0,36,156,3,31
+	.word	14058
+	.byte	13,36,167,3,3,4,11
+	.byte	'tpmask',0
+	.word	13546
+	.byte	4,2,35,0,0,27
+	.byte	'Os_ResourceDynType_s',0,36,166,3,16,4,11
+	.byte	'saved_priority',0
+	.word	14145
+	.byte	4,2,35,0,0,23
+	.byte	'Os_ResourceDynType',0,36,170,3,3
+	.word	14168
+	.byte	3
+	.word	14168
+	.byte	9
+	.word	14248
+	.byte	27
+	.byte	'Os_ResourceType_s',0,36,171,3,16,12,11
+	.byte	'dynamic',0
+	.word	14253
+	.byte	4,2,35,0,11
+	.byte	'tpmask',0
+	.word	13546
+	.byte	4,2,35,4,11
+	.byte	'access',0
+	.word	144
+	.byte	1,2,35,8,0,23
+	.byte	'Os_ResourceType',0,36,175,3,3
+	.word	14258
+	.byte	10,36,181,3,9,12,11
+	.byte	'maxallowedvalue',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'ticksperbase',0
+	.word	1372
+	.byte	4,2,35,4,11
+	.byte	'mincycle',0
+	.word	1372
+	.byte	4,2,35,8,0,23
+	.byte	'AlarmBaseType',0,36,185,3,3
+	.word	14357
+	.byte	10,36,206,3,9,8,11
+	.byte	'Running',0
+	.word	144
+	.byte	1,2,35,0,11
+	.byte	'Pending',0
+	.word	144
+	.byte	1,2,35,1,11
+	.byte	'Delay',0
+	.word	1372
+	.byte	4,2,35,4,0,23
+	.byte	'Os_CounterStatusType',0,36,210,3,3
+	.word	14452
+	.byte	32
+	.word	144
+	.byte	1,1,3
+	.word	14538
+	.byte	23
+	.byte	'Os_CounterIncrAdvType',0,36,217,3,22
+	.word	14545
+	.byte	27
+	.byte	's_swd',0,36,222,3,12,4,11
+	.byte	'count',0
+	.word	1372
+	.byte	4,2,35,0,0,13,36,221,3,3,4,11
+	.byte	'sw',0
+	.word	14581
+	.byte	4,2,35,0,0,27
+	.byte	'Os_CounterDynType_s',0,36,220,3,16,4,11
+	.byte	'type_dependent',0
+	.word	14609
+	.byte	4,2,35,0,0,23
+	.byte	'Os_CounterDynType',0,36,226,3,3
+	.word	14628
+	.byte	3
+	.word	14628
+	.byte	9
+	.word	14706
+	.byte	27
+	.byte	'Os_CounterType_s',0,36,227,3,16,28,11
+	.byte	'dynamic',0
+	.word	14711
+	.byte	4,2,35,0,11
+	.byte	'advincr',0
+	.word	14550
+	.byte	4,2,35,4,11
+	.byte	'base',0
+	.word	14357
+	.byte	12,2,35,8,11
+	.byte	'core',0
+	.word	12808
+	.byte	4,2,35,20,11
+	.byte	'access',0
+	.word	144
+	.byte	1,2,35,24,11
+	.byte	'application',0
+	.word	144
+	.byte	1,2,35,25,0,23
+	.byte	'Os_CounterType',0,36,234,3,3
+	.word	14716
+	.byte	3
+	.word	14538
+	.byte	9
+	.word	14716
+	.byte	3
+	.word	14868
+	.byte	23
+	.byte	'CounterType',0,36,235,3,52
+	.word	14873
+	.byte	31
+	.byte	'Os_ScheduleTableStatusType',0,36,240,3,6,4,25
+	.byte	'SCHEDULETABLE_STOPPED',0,0,25
+	.byte	'SCHEDULETABLE_NEXT',0,1,25
+	.byte	'SCHEDULETABLE_WAITING',0,2,25
+	.byte	'SCHEDULETABLE_RUNNING',0,3,25
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,23
+	.byte	'ScheduleTableStatusType',0,36,241,3,41
+	.word	14899
+	.byte	9
+	.word	.L125-.L46
+	.byte	3
+	.word	15099
+	.byte	23
+	.byte	'ScheduleTableType',0,36,128,4,58
+	.word	15104
+	.byte	27
+	.byte	'Os_ScheduleTableDynType_s',0,36,130,4,16,16,11
+	.byte	'match',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'next',0
+	.word	15109
+	.byte	4,2,35,4,11
+	.byte	'state',0
+	.word	14899
+	.byte	4,2,35,8,11
+	.byte	'config',0
+	.word	861
+	.byte	2,2,35,12,0,3
+	.word	15136
+	.byte	9
+	.word	15229
+.L125:
+	.byte	27
+	.byte	'Os_ScheduleTableType_s',0,36,247,3,16,16,11
+	.byte	'dynamic',0
+	.word	15234
+	.byte	4,2,35,0,11
+	.byte	'counter',0
+	.word	14878
+	.byte	4,2,35,4,11
+	.byte	'repeat',0
+	.word	144
+	.byte	1,2,35,8,11
+	.byte	'config',0
+	.word	861
+	.byte	2,2,35,10,11
+	.byte	'initial',0
+	.word	144
+	.byte	1,2,35,12,11
+	.byte	'access',0
+	.word	144
+	.byte	1,2,35,13,11
+	.byte	'application',0
+	.word	144
+	.byte	1,2,35,14,0,23
+	.byte	'Os_ScheduleTableType',0,36,255,3,3
+	.word	15239
+	.byte	9
+	.word	15239
+	.byte	3
+	.word	15419
+	.byte	9
+	.word	14716
+	.byte	3
+	.word	15429
+	.byte	12
+	.word	12532
+	.byte	12
+	.word	13482
+	.byte	12
+	.word	13379
+	.byte	12
+	.word	14040
+	.byte	12
+	.word	13546
+	.byte	12
+	.word	144
+	.byte	12
+	.word	14040
+	.byte	27
+	.byte	'Os_ControlledCoreType_s',0,36,251,6,16,112,11
+	.byte	'TrapInfo',0
+	.word	11968
+	.byte	8,2,35,0,11
+	.byte	'lock_taskaccess',0
+	.word	15439
+	.byte	4,2,35,8,11
+	.byte	'ReadyTasks',0
+	.word	15444
+	.byte	4,2,35,12,11
+	.byte	'RunningISR',0
+	.word	15449
+	.byte	4,2,35,16,11
+	.byte	'RunningTask',0
+	.word	15454
+	.byte	4,2,35,20,11
+	.byte	'RunningTPMask',0
+	.word	15459
+	.byte	4,2,35,24,11
+	.byte	'CurrentMeteredObject',0
+	.word	13065
+	.byte	4,2,35,28,11
+	.byte	'IdleMeter',0
+	.word	12862
+	.byte	48,2,35,32,11
+	.byte	'AppAccess',0
+	.word	144
+	.byte	1,2,35,80,11
+	.byte	'AppOverride',0
+	.word	15464
+	.byte	1,2,35,81,11
+	.byte	'GetStackValueAdjust',0
+	.word	12139
+	.byte	8,2,35,84,11
+	.byte	'InErrorHook',0
+	.word	144
+	.byte	1,2,35,92,11
+	.byte	'ChainTaskRef',0
+	.word	15469
+	.byte	4,2,35,96,11
+	.byte	'GetStackUsageAdjust',0
+	.word	12139
+	.byte	8,2,35,100,11
+	.byte	'InProtectionHook',0
+	.word	144
+	.byte	1,2,35,108,11
+	.byte	'CoreIsActive',0
+	.word	144
+	.byte	1,2,35,109,11
+	.byte	'InShutdownHook',0
+	.word	144
+	.byte	1,2,35,110,0,23
+	.byte	'Os_ControlledCoreType',0,36,141,7,3
+	.word	15474
+	.byte	3
+	.word	1372
+	.byte	9
+	.word	13210
+	.byte	3
+	.word	15930
+	.byte	9
+	.word	13780
+	.byte	3
+	.word	15940
+	.byte	3
+	.word	12862
+	.byte	27
+	.byte	'Os_AnyCoreType_s',0,36,151,7,16,96,11
+	.byte	'DisableAllImask',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'SuspendAllImask',0
+	.word	1372
+	.byte	4,2,35,4,11
+	.byte	'SuspendOSImask',0
+	.word	1372
+	.byte	4,2,35,8,11
+	.byte	'DisableAllCount',0
+	.word	1372
+	.byte	4,2,35,12,11
+	.byte	'SuspendAllCount',0
+	.word	1372
+	.byte	4,2,35,16,11
+	.byte	'SuspendOSCount',0
+	.word	1372
+	.byte	4,2,35,20,11
+	.byte	'RestartJumpBuf',0
+	.word	12088
+	.byte	68,2,35,24,11
+	.byte	'Restartable',0
+	.word	144
+	.byte	1,2,35,92,0,23
+	.byte	'Os_AnyCoreType',0,36,160,7,3
+	.word	15955
+	.byte	23
+	.byte	'Can_TxObjPriorityClassType',0,37,219,3,16
+	.word	1372
+	.byte	27
+	.byte	'Can_TxHwObjectConfigType',0,37,231,3,16,8,11
+	.byte	'MsgObjId',0
+	.word	144
+	.byte	1,2,35,0,11
+	.byte	'HwControllerId',0
+	.word	144
+	.byte	1,2,35,1,11
+	.byte	'TxObjPriorityClass',0
+	.word	1372
+	.byte	4,2,35,4,0,23
+	.byte	'Can_TxHwObjectConfigType',0,37,252,3,3
+	.word	16232
+	.byte	27
+	.byte	'Can_RxHwObjectConfigType',0,37,129,4,16,12,11
+	.byte	'MaskRef',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'MsgId',0
+	.word	1372
+	.byte	4,2,35,4,11
+	.byte	'MsgObjId',0
+	.word	144
+	.byte	1,2,35,8,11
+	.byte	'HwControllerId',0
+	.word	144
+	.byte	1,2,35,9,0,23
+	.byte	'Can_RxHwObjectConfigType',0,37,147,4,3
+	.word	16368
+	.byte	14,4
+	.word	144
+	.byte	15,3,0,27
+	.byte	'Can_ControllerMOMapConfigType',0,37,181,4,16,4,11
+	.byte	'ControllerMOMap',0
+	.word	16508
+	.byte	4,2,35,0,0,23
+	.byte	'Can_ControllerMOMapConfigType',0,37,184,4,3
+	.word	16517
+	.byte	27
+	.byte	'Can_NPCRValueType',0,37,188,4,16,2,11
+	.byte	'Can_NPCRValue',0
+	.word	861
+	.byte	2,2,35,0,0,23
+	.byte	'Can_NPCRValueType',0,37,191,4,3
+	.word	16618
+	.byte	27
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,37,194,4,16,8,11
+	.byte	'CanControllerBaudrate',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'CanControllerBaudrateCfg',0
+	.word	861
+	.byte	2,2,35,4,0,23
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,37,198,4,3
+	.word	16693
+	.byte	9
+	.word	16693
+	.byte	3
+	.word	16858
+	.byte	27
+	.byte	'Can_BaudrateConfigPtrType',0,37,201,4,16,4,11
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	16863
+	.byte	4,2,35,0,0,23
+	.byte	'Can_BaudrateConfigPtrType',0,37,204,4,3
+	.word	16868
+	.byte	27
+	.byte	'Can_EventHandlingType',0,37,226,4,16,4,11
+	.byte	'CanEventType',0
+	.word	16508
+	.byte	4,2,35,0,0,23
+	.byte	'Can_EventHandlingType',0,37,229,4,3
+	.word	16968
+	.byte	23
+	.byte	'Rte_TransformerErrorCode',0,38,130,1,15
+	.word	144
+	.byte	23
+	.byte	'Rte_TransformerClass',0,38,131,1,15
+	.word	144
+	.byte	10,38,168,1,9,12,11
+	.byte	'in',0
+	.word	12808
+	.byte	4,2,35,0,11
+	.byte	'out',0
+	.word	12808
+	.byte	4,2,35,4,11
+	.byte	'used',0
+	.word	861
+	.byte	2,2,35,8,11
+	.byte	'lost_data',0
+	.word	144
+	.byte	1,2,35,10,0,23
+	.byte	'Rte_QDynType',0,38,173,1,3
+	.word	17114
+	.byte	24,38,175,1,9,4,25
+	.byte	'RTE_DRA',0,0,25
+	.byte	'RTE_WOWP',0,1,25
+	.byte	'RTE_TASK',0,2,25
+	.byte	'RTE_ARE',0,3,25
+	.byte	'RTE_EV',0,4,25
+	.byte	'RTE_MSI',0,5,0,23
+	.byte	'Rte_NotificationType',0,38,182,1,3
+	.word	17201
+	.byte	3
+	.word	17114
+	.byte	27
+	.byte	'Rte_QCmnType',0,38,184,1,16,24,11
+	.byte	'dynamic',0
+	.word	17299
+	.byte	4,2,35,0,11
+	.byte	'copy',0
+	.word	144
+	.byte	1,2,35,4,11
+	.byte	'queue_size',0
+	.word	861
+	.byte	2,2,35,6,11
+	.byte	'element_size',0
+	.word	861
+	.byte	2,2,35,8,11
+	.byte	'buffer_start',0
+	.word	12808
+	.byte	4,2,35,12,11
+	.byte	'buffer_end',0
+	.word	12808
+	.byte	4,2,35,16,11
+	.byte	'notification_type',0
+	.word	17201
+	.byte	4,2,35,20,0,23
+	.byte	'Rte_QCmnType',0,38,192,1,3
+	.word	17304
+	.byte	23
+	.byte	'Rte_AlarmRefType',0,38,224,1,32
+	.word	1372
+	.byte	23
+	.byte	'Rte_AlarmIndexType',0,38,226,1,32
+	.word	861
+	.byte	14,128,8
+	.word	144
+	.byte	15,255,7,0,23
+	.byte	'Impl_NVM_DstPtrType_1024',0,39,50,15
+	.word	17542
+	.byte	23
+	.byte	'CanIf_u32_impl',0,39,69,16
+	.word	1372
+	.byte	23
+	.byte	'CanIf_u16_impl',0,39,71,16
+	.word	861
+	.byte	23
+	.byte	'CanIf_u8_impl',0,39,73,15
+	.word	144
+	.byte	23
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,39,88,15
+	.word	144
+	.byte	23
+	.byte	'CanIf_PduModeType_Enum_impl',0,39,90,15
+	.word	144
+	.byte	10,39,92,9,2,11
+	.byte	'DeviceMode',0
+	.word	144
+	.byte	1,2,35,0,11
+	.byte	'ChannelMode',0
+	.word	144
+	.byte	1,2,35,1,0,23
+	.byte	'CanIf_ControllerStateType_struct_impl',0,39,95,3
+	.word	17733
+	.byte	23
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,39,100,15
+	.word	144
+	.byte	23
+	.byte	'CanSM_boolean_Impl',0,39,120,15
+	.word	144
+	.byte	23
+	.byte	'CanSM_u8_Impl',0,39,123,15
+	.word	144
+	.byte	23
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,39,128,1,15
+	.word	144
+	.byte	23
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,39,132,1,15
+	.word	144
+	.byte	23
+	.byte	'CanSM_u16_Impl',0,39,136,1,16
+	.word	861
+	.byte	23
+	.byte	'CanSM_TimerStateType_Enum_impl',0,39,138,1,15
+	.word	144
+	.byte	10,39,140,1,9,4,11
+	.byte	'cntTick_u16',0
+	.word	861
+	.byte	2,2,35,0,11
+	.byte	'stTimer',0
+	.word	144
+	.byte	1,2,35,2,0,23
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,39,143,1,3
+	.word	18074
+	.byte	23
+	.byte	'Com_impl_u16',0,39,154,1,16
+	.word	861
+	.byte	23
+	.byte	'Com_impl_u8',0,39,157,1,15
+	.word	144
+	.byte	23
+	.byte	'ComM_uint32_Impl',0,39,173,1,16
+	.word	1372
+	.byte	23
+	.byte	'ComM_uint16_Impl',0,39,175,1,16
+	.word	861
+	.byte	23
+	.byte	'ComM_uint8_Impl',0,39,177,1,15
+	.word	144
+	.byte	23
+	.byte	'ComM_bool_Impl',0,39,179,1,15
+	.word	144
+	.byte	10,39,181,1,9,24,11
+	.byte	'ChannelState_e',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'LightTimeoutCtr_u32',0
+	.word	1372
+	.byte	4,2,35,4,11
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	861
+	.byte	2,2,35,8,11
+	.byte	'ChannelMode_u8',0
+	.word	144
+	.byte	1,2,35,10,11
+	.byte	'BusSmMode_u8',0
+	.word	144
+	.byte	1,2,35,11,11
+	.byte	'UserRequestCtr_u8',0
+	.word	144
+	.byte	1,2,35,12,11
+	.byte	'PassiveRequestState_u8',0
+	.word	144
+	.byte	1,2,35,13,11
+	.byte	'PncRequestCtr_u8',0
+	.word	144
+	.byte	1,2,35,14,11
+	.byte	'InhibitionReqStatus_u8',0
+	.word	144
+	.byte	1,2,35,15,11
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	144
+	.byte	1,2,35,16,11
+	.byte	'DiagnosticRequestState_b',0
+	.word	144
+	.byte	1,2,35,17,11
+	.byte	'CommunicationAllowed_b',0
+	.word	144
+	.byte	1,2,35,18,11
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	144
+	.byte	1,2,35,19,11
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	144
+	.byte	1,2,35,20,11
+	.byte	'NmNetworkModeStatus_b',0
+	.word	144
+	.byte	1,2,35,21,0,23
+	.byte	'ComM_ChannelStruct_Impl',0,39,197,1,3
+	.word	18306
+	.byte	10,39,206,1,9,10,11
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	861
+	.byte	2,2,35,0,11
+	.byte	'LimitToNoComCtr_u16',0
+	.word	861
+	.byte	2,2,35,2,11
+	.byte	'RequestedUserMode_t',0
+	.word	144
+	.byte	1,2,35,4,11
+	.byte	'IndicatedUserMode_t',0
+	.word	144
+	.byte	1,2,35,5,11
+	.byte	'numChannelsInFullCom_u8',0
+	.word	144
+	.byte	1,2,35,6,11
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	144
+	.byte	1,2,35,7,11
+	.byte	'numChannelsInNoCom_u8',0
+	.word	144
+	.byte	1,2,35,8,0,23
+	.byte	'ComM_UserStruct_Impl',0,39,214,1,3
+	.word	18810
+	.byte	23
+	.byte	'Dcm_IOOperationResponseType',0,39,252,1,15
+	.word	144
+	.byte	23
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	39,138,2,15
+	.word	144
+	.byte	23
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,39,146,2,15
+	.word	144
+	.byte	23
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,39,150,2,15
+	.word	144
+	.byte	23
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,39,154,2,15
+	.word	144
+	.byte	23
+	.byte	'Dem_DTCFormatType',0,39,160,2,15
+	.word	144
+	.byte	23
+	.byte	'Dem_DTCOriginType',0,39,162,2,15
+	.word	144
+	.byte	23
+	.byte	'Dem_EventIdType',0,39,168,2,16
+	.word	861
+	.byte	23
+	.byte	'Dem_EventStatusType',0,39,170,2,15
+	.word	144
+	.byte	23
+	.byte	'Dem_InitMonitorReasonType',0,39,176,2,15
+	.word	144
+	.byte	23
+	.byte	'Dem_OperationCycleIdType',0,39,179,2,15
+	.word	144
+	.byte	23
+	.byte	'NvM_BlockIdType',0,39,215,2,16
+	.word	861
+	.byte	23
+	.byte	'NvM_RequestResultType',0,39,225,2,15
+	.word	144
+	.byte	23
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,39,243,3,34
+	.word	17553
+	.byte	14,128,8
+	.word	144
+	.byte	15,255,7,0,23
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,39,246,3,34
+	.word	17553
+	.byte	23
+	.byte	'Dem_DTCGroupIdType',0,40,49,15
+	.word	144
+	.byte	23
+	.byte	'Dem_DtcIdType',0,40,50,16
+	.word	861
+	.byte	23
+	.byte	'Dem_ClientIdType',0,40,53,15
+	.word	144
+	.byte	23
+	.byte	'Dem_DtcCodeType',0,40,55,16
+	.word	1372
+	.byte	23
+	.byte	'Dem_boolean_least',0,40,60,17
+	.word	144
+	.byte	23
+	.byte	'Dem_EventCategoryType',0,40,62,15
+	.word	144
+	.byte	23
+	.byte	'Dem_DTCSeverityType',0,40,217,1,15
+	.word	144
+	.byte	23
+	.byte	'Dem_DTCRequestType',0,40,204,2,15
+	.word	144
+	.byte	23
+	.byte	'Dem_ReturnGetDTCByOccurrenceTimeType',0,40,234,2,15
+	.word	144
+	.byte	23
+	.byte	'Dem_DebugDataType',0,40,131,3,16
+	.word	1372
+	.byte	23
+	.byte	'Dem_DTCKindType',0,40,145,3,16
+	.word	144
+	.byte	23
+	.byte	'Dem_TriggerType',0,40,167,3,15
+	.word	144
+	.byte	23
+	.byte	'Dem_EnCoList',0,41,31,15
+	.word	144
+	.byte	23
+	.byte	'Dem_OperationCycleList',0,42,23,15
+	.word	144
+	.byte	23
+	.byte	'Dem_StoCoList',0,43,32,15
+	.word	144
+	.byte	23
+	.byte	'Rte_TaskRefType',0,44,184,1,32
+	.word	14040
+	.byte	23
+	.byte	'Rte_EventRefType',0,44,185,1,32
+	.word	144
+	.byte	23
+	.byte	'Rte_EventType',0,44,186,1,32
+	.word	1372
+	.byte	23
+	.byte	'Rte_REActCounterType',0,44,252,1,15
+	.word	144
+	.byte	3
+	.word	144
+	.byte	23
+	.byte	'Rte_REActCounterRefType',0,44,253,1,58
+	.word	20373
+	.byte	10,44,255,1,9,8,11
+	.byte	'task',0
+	.word	20269
+	.byte	4,2,35,0,11
+	.byte	'acnt',0
+	.word	20378
+	.byte	4,2,35,4,0,23
+	.byte	'Rte_REContainerType',0,44,130,2,3
+	.word	20411
+	.byte	9
+	.word	13780
+	.byte	3
+	.word	20475
+	.byte	3
+	.word	144
+	.byte	9
+	.word	20411
+	.byte	3
+	.word	20490
+	.byte	23
+	.byte	'Rte_REContainerRefType',0,44,132,2,60
+	.word	20495
+	.byte	23
+	.byte	'Rte_MSICounterType',0,44,149,2,16
+	.word	861
+	.byte	3
+	.word	861
+	.byte	23
+	.byte	'Rte_MSICounterRefType',0,44,150,2,56
+	.word	20560
+	.byte	23
+	.byte	'Rte_MSIPendingFlagType',0,44,152,2,17
+	.word	144
+	.byte	3
+	.word	144
+	.byte	23
+	.byte	'Rte_MSIPendingFlagRefType',0,44,153,2,60
+	.word	20628
+	.byte	10,44,163,2,9,24,11
+	.byte	'counter',0
+	.word	20565
+	.byte	4,2,35,0,11
+	.byte	'incCounter',0
+	.word	144
+	.byte	1,2,35,4,11
+	.byte	'pending',0
+	.word	20633
+	.byte	4,2,35,8,11
+	.byte	'osTask',0
+	.word	20269
+	.byte	4,2,35,12,11
+	.byte	'acnt',0
+	.word	20378
+	.byte	4,2,35,16,11
+	.byte	'osEvent',0
+	.word	144
+	.byte	1,2,35,20,11
+	.byte	'MSIInit',0
+	.word	861
+	.byte	2,2,35,22,0,23
+	.byte	'Rte_MSITableEntry',0,44,172,2,3
+	.word	20668
+	.byte	3
+	.word	861
+	.byte	3
+	.word	144
+	.byte	23
+	.byte	'Rte_TaskArrayIndex',0,44,179,2,16
+	.word	144
+	.byte	23
+	.byte	'Rte_NrWaitingTasks',0,44,180,2,16
+	.word	144
+	.byte	10,44,182,2,9,4,11
+	.byte	'pending',0
+	.word	144
+	.byte	1,2,35,0,11
+	.byte	'count',0
+	.word	144
+	.byte	1,2,35,1,11
+	.byte	'firstWaitingTask',0
+	.word	144
+	.byte	1,2,35,2,0,23
+	.byte	'Rte_WaitableDatum',0,44,186,2,3
+	.word	20886
+	.byte	3
+	.word	20886
+	.byte	10,44,226,2,9,12,11
+	.byte	'event_id',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'wd',0
+	.word	20978
+	.byte	4,2,35,4,11
+	.byte	'timeout',0
+	.word	1372
+	.byte	4,2,35,8,0,23
+	.byte	'Rte_WOWP_NotificationType',0,44,230,2,3
+	.word	20983
+	.byte	9
+	.word	20983
+	.byte	3
+	.word	21072
+	.byte	23
+	.byte	'Rte_WOWP_NotificationRefType',0,44,232,2,66
+	.word	21077
+	.byte	23
+	.byte	'Rte_ARE_NotificationType',0,44,234,2,29
+	.word	20411
+	.byte	27
+	.byte	'Rte_QTaskType',0,44,243,2,16,28,11
+	.byte	'cmn',0
+	.word	17304
+	.byte	24,2,35,0,11
+	.byte	'task',0
+	.word	20269
+	.byte	4,2,35,24,0,23
+	.byte	'Rte_QTaskType',0,44,246,2,3
+	.word	21154
+	.byte	27
+	.byte	'Rte_QREType',0,44,250,2,16,28,11
+	.byte	'cmn',0
+	.word	17304
+	.byte	24,2,35,0,11
+	.byte	're',0
+	.word	20500
+	.byte	4,2,35,24,0,23
+	.byte	'Rte_QREType',0,44,253,2,3
+	.word	21225
+	.byte	9
+	.word	20411
+	.byte	3
+	.word	21290
+	.byte	27
+	.byte	'Rte_QWWPType',0,44,129,3,16,28,11
+	.byte	'cmn',0
+	.word	17304
+	.byte	24,2,35,0,11
+	.byte	'wwp',0
+	.word	21082
+	.byte	4,2,35,24,0,23
+	.byte	'Rte_QWWPType',0,44,132,3,3
+	.word	21300
+	.byte	9
+	.word	20983
+	.byte	3
+	.word	21368
+	.byte	27
+	.byte	'Rte_QEvType',0,44,136,3,16,36,11
+	.byte	'cmn',0
+	.word	17304
+	.byte	24,2,35,0,11
+	.byte	'task',0
+	.word	20269
+	.byte	4,2,35,24,11
+	.byte	'mask',0
+	.word	144
+	.byte	1,2,35,28,11
+	.byte	'acnt',0
+	.word	20378
+	.byte	4,2,35,32,0,23
+	.byte	'Rte_QEvType',0,44,141,3,3
+	.word	21378
+	.byte	27
+	.byte	'Rte_QMSIType',0,44,145,3,16,48,11
+	.byte	'cmn',0
+	.word	17304
+	.byte	24,2,35,0,11
+	.byte	'task',0
+	.word	20269
+	.byte	4,2,35,24,11
+	.byte	'mask',0
+	.word	144
+	.byte	1,2,35,28,11
+	.byte	'acnt',0
+	.word	20378
+	.byte	4,2,35,32,11
+	.byte	'msiCounter',0
+	.word	20565
+	.byte	4,2,35,36,11
+	.byte	'msiPending',0
+	.word	20633
+	.byte	4,2,35,40,11
+	.byte	'msiLimit',0
+	.word	861
+	.byte	2,2,35,44,0,23
+	.byte	'Rte_QMSIType',0,44,153,3,3
+	.word	21473
+	.byte	23
+	.byte	'Dem_EvtStateType',0,45,151,1,15
+	.word	144
+	.byte	23
+	.byte	'Dem_DtcStateType',0,46,47,15
+	.word	144
+	.byte	23
+	.byte	'rba_BswSrv_uint64',0,4,66,28
+	.word	11364
+	.byte	10,7,47,9,12,11
+	.byte	'DtcCode',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'Severity',0
+	.word	144
+	.byte	1,2,35,4,11
+	.byte	'Kind',0
+	.word	144
+	.byte	1,2,35,5,11
+	.byte	'DtcCode_Is_Index',0
+	.word	144
+	.byte	1,2,35,6,11
+	.byte	'Func_Unit',0
+	.word	144
+	.byte	1,2,35,7,11
+	.byte	'Nv_Storage',0
+	.word	144
+	.byte	1,2,35,8,0,23
+	.byte	'Dem_Cfg_DtcType',0,7,55,3
+	.word	21705
+	.byte	14,60
+	.word	21705
+	.byte	15,4,0,9
+	.word	21849
+	.byte	33
+	.byte	'Dem_Cfg_Dtc',0,7,59,30
+	.word	21858
+	.byte	1,1,23
+	.byte	'Dem_EvMemOccurrenceCounterType',0,21,90,21
+	.word	144
+	.byte	23
+	.byte	'Dem_EvMemAgingCounterType',0,21,99,21
+	.word	144
+	.byte	23
+	.byte	'Dem_EvMemHdrType',0,21,141,1,4
+	.word	5549
+	.byte	23
+	.byte	'Dem_EvMemEventMemoryType',0,21,213,1,4
+	.word	5579
+	.byte	23
+	.byte	'Dem_OpMoStateType',0,8,13,15
+	.word	144
+	.byte	33
+	.byte	'Dem_OpMoState',0,8,31,26
+	.word	144
+	.byte	1,1,23
+	.byte	'Dem_EventIdIterator',0,10,27,22
+	.word	4724
+	.byte	23
+	.byte	'Dem_DtcIdIterator',0,10,197,1,22
+	.word	4724
+	.byte	23
+	.byte	'Dem_DtcGroupIdIterator',0,10,230,1,21
+	.word	4724
+	.byte	23
+	.byte	'Dem_EventIdListIterator',0,10,174,2,3
+	.word	2755
+	.byte	10,10,213,2,9,4,11
+	.byte	'it',0
+	.word	861
+	.byte	2,2,35,0,11
+	.byte	'end',0
+	.word	861
+	.byte	2,2,35,2,0,23
+	.byte	'Dem_DtcIdListIterator',0,10,216,2,3
+	.word	22188
+	.byte	24,47,31,9,4,25
+	.byte	'MEMIF_JOB_OK',0,0,25
+	.byte	'MEMIF_JOB_FAILED',0,1,25
+	.byte	'MEMIF_JOB_PENDING',0,2,25
+	.byte	'MEMIF_JOB_CANCELED',0,3,25
+	.byte	'MEMIF_BLOCK_INCONSISTENT',0,4,25
+	.byte	'MEMIF_BLOCK_INVALID',0,5,0,23
+	.byte	'MemIf_JobResultType',0,47,39,2
+	.word	22251
+	.byte	24,48,49,9,4,25
+	.byte	'NVM_PRV_ACTIVITY_NOT_INIT',0,0,25
+	.byte	'NVM_PRV_ACTIVITY_IDLE',0,1,25
+	.byte	'NVM_PRV_ACTIVITY_ARBITRATE',0,2,25
+	.byte	'NVM_PRV_ACTIVITY_JOB_START',0,3,25
+	.byte	'NVM_PRV_ACTIVITY_POLL_RESULT',0,4,25
+	.byte	'NVM_PRV_ACTIVITY_JOB_COMPLETE',0,5,25
+	.byte	'NVM_PRV_ACTIVITY_RESULT_EVAL',0,6,0,23
+	.byte	'NvM_Prv_Activities_ten',0,48,58,3
+	.word	22409
+	.byte	24,48,104,9,4,25
+	.byte	'NvM_Prv_idJob_Idle_e',0,0,25
+	.byte	'NvM_Prv_idJob_Read_e',0,1,25
+	.byte	'NvM_Prv_idJob_Write_e',0,2,25
+	.byte	'NvM_Prv_idJob_Erase_e',0,3,25
+	.byte	'NvM_Prv_idJob_Restore_e',0,4,25
+	.byte	'NvM_Prv_idJob_Maintain_e',0,5,25
+	.byte	'NvM_Prv_idJob_Validate_e',0,6,25
+	.byte	'NvM_Prv_idJob_Invalidate_e',0,7,25
+	.byte	'NvM_Prv_idJob_ReadIdConfigForReadAll_e',0,8,25
+	.byte	'NvM_Prv_idJob_InvalidateForFirstInitAll_e',0,9,25
+	.byte	'NvM_Prv_idJob_RestoreForImplicitRecovery_e',0,10,25
+	.byte	'NvM_Prv_idJob_InvalidateForRemoveNonResistant_e',0,11,25
+	.byte	'NvM_Prv_idJob_Invalid_e',0,12,25
+	.byte	'NvM_Prv_idJob_Count_e',0,13,0,23
+	.byte	'NvM_Prv_idJob_ten',0,48,115,3
+	.word	22650
+	.byte	23
+	.byte	'NvM_Prv_ServiceBit_tuo',0,48,168,1,16
+	.word	861
+	.byte	23
+	.byte	'NvM_Prv_idService_tuo',0,48,173,1,15
+	.word	144
+	.byte	23
+	.byte	'NvM_Prv_idQueue_tuo',0,48,206,1,15
+	.word	144
+	.byte	10,48,210,1,9,12,11
+	.byte	'idService_uo',0
+	.word	144
+	.byte	1,2,35,0,11
+	.byte	'idBlock_uo',0
+	.word	861
+	.byte	2,2,35,2,11
+	.byte	'ServiceBit_uo',0
+	.word	861
+	.byte	2,2,35,4,11
+	.byte	'BlockData_pv',0
+	.word	12808
+	.byte	4,2,35,8,0,23
+	.byte	'NvM_Prv_QueueEntry_tst',0,48,225,1,3
+	.word	23207
+	.byte	10,48,227,1,9,20,11
+	.byte	'idJob_en',0
+	.word	22650
+	.byte	4,2,35,0,11
+	.byte	'idBlock_uo',0
+	.word	861
+	.byte	2,2,35,4,11
+	.byte	'RamBlock_pu8',0
+	.word	161
+	.byte	4,2,35,8,11
+	.byte	'idxDataset_u8',0
+	.word	144
+	.byte	1,2,35,12,11
+	.byte	'Result_en',0
+	.word	22251
+	.byte	4,2,35,16,0,23
+	.byte	'NvM_Prv_JobData_tst',0,48,240,1,3
+	.word	23333
+	.byte	14,5
+	.word	144
+	.byte	15,4,0,14,10
+	.word	861
+	.byte	15,4,0,10,49,9,9,18,11
+	.byte	'OperationCycleStates',0
+	.word	144
+	.byte	1,2,35,0,11
+	.byte	'OperationCycleQualified',0
+	.word	144
+	.byte	1,2,35,1,11
+	.byte	'Overflow',0
+	.word	23471
+	.byte	5,2,35,2,11
+	.byte	'DtcIdsByOccurrenceTime',0
+	.word	23480
+	.byte	10,2,35,8,0,23
+	.byte	'Dem_GenericNvDataType',0,49,24,4
+	.word	23489
+	.byte	33
+	.byte	'Dem_GenericNvData',0,49,28,30
+	.word	23489
+	.byte	1,1,23
+	.byte	'Dem_NvmBlockIdType',0,50,14,34
+	.word	144
+	.byte	13,50,16,9,20,11
+	.byte	'evMemData',0
+	.word	5579
+	.byte	20,2,35,0,11
+	.byte	'genericNvData',0
+	.word	23489
+	.byte	18,2,35,0,0,23
+	.byte	'Dem_NvMStorageBufferData',0,50,37,3
+	.word	23693
+	.byte	23
+	.byte	'Dem_NvmBlockStatusType',0,50,59,15
+	.word	144
+	.byte	23
+	.byte	'Dem_NvmResultType',0,50,78,31
+	.word	144
+	.byte	3
+	.word	144
+	.byte	34
+	.word	144
+	.byte	1,1,30
+	.word	23831
+	.byte	0,3
+	.word	23836
+	.byte	23
+	.byte	'Dem_EvtClearAllowedFncType',0,14,12,26
+	.word	23849
+	.byte	34
+	.word	144
+	.byte	1,1,30
+	.word	144
+	.byte	0,3
+	.word	23889
+	.byte	23
+	.byte	'Dem_InitMForEAllowedFncType',0,15,38,27
+	.word	23902
+	.byte	9
+	.word	12802
+	.byte	3
+	.word	23943
+	.byte	34
+	.word	4724
+	.byte	1,1,30
+	.word	861
+	.byte	30
+	.word	23831
+	.byte	30
+	.word	23948
+	.byte	30
+	.word	861
+	.byte	0,3
+	.word	23953
+	.byte	23
+	.byte	'Dem_DebFilter',0,51,12,23
+	.word	23981
+	.byte	2
+	.byte	'long int',0,4,5,3
+	.word	24008
+	.byte	29,1,1,30
+	.word	23948
+	.byte	30
+	.word	861
+	.byte	30
+	.word	24020
+	.byte	30
+	.word	24020
+	.byte	0,3
+	.word	24025
+	.byte	23
+	.byte	'Dem_DebGetLimits',0,51,13,23
+	.word	24049
+	.byte	29,1,1,30
+	.word	861
+	.byte	30
+	.word	23948
+	.byte	30
+	.word	861
+	.byte	0,3
+	.word	24079
+	.byte	23
+	.byte	'Dem_DebCyclic',0,51,14,16
+	.word	24098
+	.byte	23
+	.byte	'Dem_DebouncedActionType',0,51,35,21
+	.word	4724
+	.byte	13,52,37,9,4,11
+	.byte	'EnforceAlignment',0
+	.word	1372
+	.byte	4,2,35,0,11
+	.byte	'Buffer',0
+	.word	16508
+	.byte	4,2,35,0,0,23
+	.byte	'Dem_EvBuffEnvDataAlignedType',0,52,47,3
+	.word	24157
+	.byte	10,52,49,9,16,11
+	.byte	'envData',0
+	.word	24157
+	.byte	4,2,35,0,11
+	.byte	'eventType',0
+	.word	144
+	.byte	1,2,35,4,11
+	.byte	'eventId',0
+	.word	861
+	.byte	2,2,35,6,11
+	.byte	'debug0',0
+	.word	1372
+	.byte	4,2,35,8,11
+	.byte	'debug1',0
+	.word	1372
+	.byte	4,2,35,12,0,23
+	.byte	'Dem_EvBuffEvent',0,52,75,2
+	.word	24242
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L47:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32
+	.byte	13,58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,11,1,0,0,8,46
+	.byte	1,3,8,32,13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,9,38,0,73,19,0,0,10,19,1,58,15,59,15,57,15,11,15,0
+	.byte	0,11,13,0,3,8,73,19,11,15,56,9,0,0,12,53,0,73,19,0,0,13,23,1,58,15,59,15,57,15,11,15,0,0,14,1,1,11,15
+	.byte	73,19,0,0,15,33,0,47,15,0,0,16,46,1,49,19,0,0,17,5,0,49,19,0,0,18,29,1,49,19,0,0,19,11,0,49,19,0,0,20
+	.byte	46,1,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,21,11,1,49,19,0,0,22,21,0,54,15,0,0,23,22
+	.byte	0,3,8,58,15,59,15,57,15,73,19,0,0,24,4,1,58,15,59,15,57,15,11,15,0,0,25,40,0,3,8,28,13,0,0,26,21,0,54
+	.byte	15,39,12,0,0,27,19,1,3,8,58,15,59,15,57,15,11,15,0,0,28,59,0,3,8,0,0,29,21,1,54,15,39,12,0,0,30,5,0,73
+	.byte	19,0,0,31,4,1,3,8,58,15,59,15,57,15,11,15,0,0,32,21,0,73,19,54,15,39,12,0,0,33,52,0,3,8,58,15,59,15,57
+	.byte	15,73,19,63,12,60,12,0,0,34,21,1,73,19,54,15,39,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L48:
+	.word	.L127-.L126
+.L126:
+	.half	3
+	.word	.L129-.L128
+.L128:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits8.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits16.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits32.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_MemUtils.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\lib\\Dem_Lib.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_DTC_DataStructures.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\main\\Dem_Main.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\lib\\Dem_BitArray.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\map\\Dem_Mapping.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\enco\\Dem_EnableCondition.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\nvm\\Dem_Nvm.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_ByteOrderUtils.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_Events_DataStructures.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\event\\Dem_Events.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\env\\Dem_EnvTrigger.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_Deb.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\client\\Dem_ClientBaseHandling.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\client\\Dem_ClientClearMachine.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemBase.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemTypes.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemApi.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemAging.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMem.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\dtc\\Dem_DTCs.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemGen.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Det\\api\\Det.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemGen.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\client\\Dem_ClientHandlingTypes.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_NodeId.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\api\\Dem_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_EnableCondition.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_OperationCycle.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_StorageCondition.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_Events.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_DTCs.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\MemIf\\api\\MemIf_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\NvM\\api\\NvM_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\main\\Dem_GenericNvData.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\nvm\\Dem_Nvm_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\deb\\Dem_DebBase.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\evbuff\\Dem_EvBuffEvent.h',0,0,0,0,0
+.L129:
+.L127:
+	.sdecl	'.debug_info',debug,cluster('Dem_GetDTCByOccurrenceTime')
+	.sect	'.debug_info'
+.L49:
+	.word	461
+	.half	3
+	.word	.L50
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemGen.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L52,.L51
+	.byte	2
+	.word	.L45
+	.byte	3
+	.byte	'Dem_GetDTCByOccurrenceTime',0,1,17,38
+	.word	.L59
+	.byte	1,1,1
+	.word	.L42,.L60,.L41
+	.byte	4
+	.byte	'DTCRequest',0,1,17,84
+	.word	.L59,.L61
+	.byte	4
+	.byte	'DTCKind',0,1,17,112
+	.word	.L59,.L62
+	.byte	4
+	.byte	'DTC',0,1,17,129,1
+	.word	.L63,.L64
+	.byte	5
+	.word	.L42,.L60
+	.byte	6
+	.byte	'DtcId',0,1,19,21
+	.word	.L65,.L66
+	.byte	7
+	.word	.L67,.L42,.L2
+	.byte	8
+	.word	.L68,.L42,.L2
+	.byte	0,7
+	.word	.L69,.L12,.L14
+	.byte	9
+	.word	.L70,.L71
+	.byte	8
+	.word	.L72,.L12,.L14
+	.byte	0,7
+	.word	.L73,.L14,.L74
+	.byte	9
+	.word	.L75,.L76
+	.byte	8
+	.word	.L77,.L14,.L74
+	.byte	0,7
+	.word	.L78,.L20,.L79
+	.byte	9
+	.word	.L80,.L81
+	.byte	10
+	.word	.L82,.L20,.L79
+	.byte	7
+	.word	.L83,.L20,.L21
+	.byte	9
+	.word	.L84,.L85
+	.byte	8
+	.word	.L86,.L20,.L21
+	.byte	0,0,0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_GetDTCByOccurrenceTime')
+	.sect	'.debug_abbrev'
+.L50:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,7,29,1,49,16,17,1,18,1,0,0,8,11,0,49,16,17,1,18,1,0,0,9,5,0,49
+	.byte	16,2,6,0,0,10,11,1,49,16,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_GetDTCByOccurrenceTime')
+	.sect	'.debug_line'
+.L51:
+	.word	.L131-.L130
+.L130:
+	.half	3
+	.word	.L133-.L132
+.L132:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemGen.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\main\\Dem_Main.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemGen.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\map\\Dem_Mapping.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\Dem_Cfg_DTC_DataStructures.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\dtc\\Dem_DTCs.h',0,0,0,0,0
+.L133:
+	.byte	4,2,5,12,7,0,5,2
+	.word	.L42
+	.byte	3,226,0,1,5,26,9
+	.half	.L134-.L42
+	.byte	1,5,4,9
+	.half	.L135-.L134
+	.byte	1,4,1,5,12,9
+	.half	.L2-.L135
+	.byte	3,179,127,1,5,10,7,9
+	.half	.L136-.L2
+	.byte	3,2,1,5,17,9
+	.half	.L106-.L136
+	.byte	3,1,1,5,10,9
+	.half	.L137-.L106
+	.byte	1,5,11,9
+	.half	.L3-.L137
+	.byte	3,3,1,5,25,7,9
+	.half	.L138-.L3
+	.byte	3,1,1,7,9
+	.half	.L139-.L138
+	.byte	3,1,1,7,9
+	.half	.L140-.L139
+	.byte	3,1,1,5,10,7,9
+	.half	.L141-.L140
+	.byte	3,2,1,5,17,9
+	.half	.L109-.L141
+	.byte	3,1,1,5,10,9
+	.half	.L142-.L109
+	.byte	1,5,7,9
+	.half	.L5-.L142
+	.byte	3,2,1,5,18,7,9
+	.half	.L143-.L5
+	.byte	3,2,1,5,11,9
+	.half	.L144-.L143
+	.byte	1,5,7,9
+	.half	.L10-.L144
+	.byte	3,4,1,5,10,7,9
+	.half	.L145-.L10
+	.byte	3,2,1,5,17,9
+	.half	.L112-.L145
+	.byte	3,1,1,5,10,9
+	.half	.L146-.L112
+	.byte	1,4,3,5,12,9
+	.half	.L12-.L146
+	.byte	3,117,1,5,5,9
+	.half	.L115-.L12
+	.byte	1,4,4,5,21,9
+	.half	.L14-.L115
+	.byte	3,248,0,1,5,12,9
+	.half	.L147-.L14
+	.byte	1,5,28,7,9
+	.half	.L148-.L147
+	.byte	1,5,21,9
+	.half	.L149-.L148
+	.byte	1,5,4,9
+	.half	.L15-.L149
+	.byte	1,4,1,5,12,9
+	.half	.L17-.L15
+	.byte	3,153,127,1,5,17,7,9
+	.half	.L74-.L17
+	.byte	3,2,1,5,10,9
+	.half	.L150-.L74
+	.byte	1,4,5,5,20,9
+	.half	.L20-.L150
+	.byte	3,49,1,5,9,9
+	.half	.L151-.L20
+	.byte	1,5,20,9
+	.half	.L152-.L151
+	.byte	1,5,26,9
+	.half	.L153-.L152
+	.byte	1,5,2,9
+	.half	.L154-.L153
+	.byte	1,4,6,5,9,9
+	.half	.L21-.L154
+	.byte	3,138,1,1,4,1,5,12,9
+	.half	.L22-.L21
+	.byte	3,201,126,1,5,14,9
+	.half	.L79-.L22
+	.byte	3,1,1,5,7,9
+	.half	.L155-.L79
+	.byte	1,5,4,9
+	.half	.L4-.L155
+	.byte	3,1,1,7,9
+	.half	.L53-.L4
+	.byte	0,1,1
+.L131:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_GetDTCByOccurrenceTime')
+	.sect	'.debug_ranges'
+.L52:
+	.word	-1,.L42,0,.L53-.L42,0,0
+	.sdecl	'.debug_info',debug,cluster('Dem_GetEventMemoryOverflow')
+	.sect	'.debug_info'
+.L54:
+	.word	372
+	.half	3
+	.word	.L55
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemGen.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L57,.L56
+	.byte	2
+	.word	.L45
+	.byte	3
+	.byte	'Dem_GetEventMemoryOverflow',0,1,66,16
+	.word	.L59
+	.byte	1,1,1
+	.word	.L44,.L87,.L43
+	.byte	4
+	.byte	'DTCOrigin',0,1,66,61
+	.word	.L59,.L88
+	.byte	4
+	.byte	'OverflowIndication',0,1,66,81
+	.word	.L89,.L90
+	.byte	5
+	.word	.L44,.L87
+	.byte	6
+	.word	.L91,.L92,.L24
+	.byte	7
+	.word	.L93,.L94
+	.byte	8
+	.word	.L95,.L92,.L24
+	.byte	0,6
+	.word	.L96,.L97,.L35
+	.byte	7
+	.word	.L98,.L99
+	.byte	8
+	.word	.L100,.L97,.L35
+	.byte	0,6
+	.word	.L101,.L102,.L38
+	.byte	7
+	.word	.L103,.L104
+	.byte	8
+	.word	.L105,.L102,.L38
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dem_GetEventMemoryOverflow')
+	.sect	'.debug_abbrev'
+.L55:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	29,1,49,16,17,1,18,1,0,0,7,5,0,49,16,2,6,0,0,8,11,0,49,16,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dem_GetEventMemoryOverflow')
+	.sect	'.debug_line'
+.L56:
+	.word	.L157-.L156
+.L156:
+	.half	3
+	.word	.L159-.L158
+.L158:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemGen.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\lib\\Dem_Lib.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemApi.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dem\\src\\evmem\\Dem_EvMemGen.h',0,0,0,0,0
+.L159:
+	.byte	5,16,7,0,5,2
+	.word	.L44
+	.byte	3,193,0,1,5,28,9
+	.half	.L160-.L44
+	.byte	3,3,1,4,2,5,5,9
+	.half	.L92-.L160
+	.byte	3,102,1,4,1,5,4,9
+	.half	.L24-.L92
+	.byte	3,26,1,5,8,7,9
+	.half	.L27-.L24
+	.byte	3,4,1,9
+	.half	.L31-.L27
+	.byte	3,1,1,7,9
+	.half	.L161-.L31
+	.byte	1,5,40,9
+	.half	.L32-.L161
+	.byte	3,2,1,4,3,5,8,9
+	.half	.L97-.L32
+	.byte	3,107,1,5,5,9
+	.half	.L162-.L97
+	.byte	1,5,22,7,9
+	.half	.L163-.L162
+	.byte	3,2,1,5,20,9
+	.half	.L164-.L163
+	.byte	1,5,17,9
+	.half	.L34-.L164
+	.byte	3,3,1,5,28,9
+	.half	.L165-.L34
+	.byte	1,5,5,9
+	.half	.L166-.L165
+	.byte	3,127,1,4,1,5,12,9
+	.half	.L35-.L166
+	.byte	3,17,1,5,10,7,9
+	.half	.L167-.L35
+	.byte	3,2,1,5,17,9
+	.half	.L122-.L167
+	.byte	3,1,1,5,10,9
+	.half	.L168-.L122
+	.byte	1,5,52,9
+	.half	.L36-.L168
+	.byte	3,4,1,4,4,5,21,9
+	.half	.L102-.L36
+	.byte	3,232,0,1,5,5,9
+	.half	.L169-.L102
+	.byte	1,4,1,5,27,9
+	.half	.L38-.L169
+	.byte	3,152,127,1,5,14,9
+	.half	.L170-.L38
+	.byte	3,1,1,5,7,9
+	.half	.L171-.L170
+	.byte	1,5,5,9
+	.half	.L25-.L171
+	.byte	3,4,1,5,12,9
+	.half	.L124-.L25
+	.byte	3,1,1,5,5,9
+	.half	.L172-.L124
+	.byte	1,5,1,9
+	.half	.L29-.L172
+	.byte	3,2,1,7,9
+	.half	.L58-.L29
+	.byte	0,1,1
+.L157:
+	.sdecl	'.debug_ranges',debug,cluster('Dem_GetEventMemoryOverflow')
+	.sect	'.debug_ranges'
+.L57:
+	.word	-1,.L44,0,.L58-.L44,0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_GetDTCByOccurrenceTime')
+	.sect	'.debug_loc'
+.L64:
+	.word	-1,.L42,0,.L106-.L42
+	.half	1
+	.byte	100
+	.word	.L3-.L42,.L109-.L42
+	.half	1
+	.byte	100
+	.word	.L5-.L42,.L112-.L42
+	.half	1
+	.byte	100
+	.word	.L12-.L42,.L4-.L42
+	.half	1
+	.byte	100
+	.word	0,0
+.L62:
+	.word	-1,.L42,0,.L107-.L42
+	.half	1
+	.byte	85
+	.word	.L3-.L42,.L110-.L42
+	.half	1
+	.byte	85
+	.word	.L5-.L42,.L113-.L42
+	.half	1
+	.byte	85
+	.word	.L12-.L42,.L4-.L42
+	.half	1
+	.byte	85
+	.word	0,0
+.L61:
+	.word	-1,.L42,0,.L108-.L42
+	.half	1
+	.byte	84
+	.word	.L3-.L42,.L111-.L42
+	.half	1
+	.byte	84
+	.word	.L5-.L42,.L114-.L42
+	.half	1
+	.byte	84
+	.word	.L12-.L42,.L4-.L42
+	.half	1
+	.byte	84
+	.word	0,0
+.L41:
+	.word	-1,.L42,0,.L60-.L42
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L66:
+	.word	-1,.L42,.L115-.L42,.L4-.L42
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L71:
+	.word	0,0
+.L81:
+	.word	0,0
+.L76:
+	.word	0,0
+.L85:
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dem_GetEventMemoryOverflow')
+	.sect	'.debug_loc'
+.L99:
+	.word	0,0
+.L88:
+	.word	-1,.L44,0,.L87-.L44
+	.half	2
+	.byte	145,120
+	.word	0,.L117-.L44
+	.half	1
+	.byte	84
+	.word	.L31-.L44,.L119-.L44
+	.half	1
+	.byte	84
+	.word	.L32-.L44,.L121-.L44
+	.half	1
+	.byte	84
+	.word	.L36-.L44,.L123-.L44
+	.half	1
+	.byte	84
+	.word	0,0
+.L43:
+	.word	-1,.L44,0,.L116-.L44
+	.half	2
+	.byte	138,0
+	.word	.L116-.L44,.L87-.L44
+	.half	2
+	.byte	138,8
+	.word	.L87-.L44,.L87-.L44
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L104:
+	.word	0,0
+.L90:
+	.word	-1,.L44,0,.L118-.L44
+	.half	1
+	.byte	100
+	.word	.L31-.L44,.L120-.L44
+	.half	1
+	.byte	100
+	.word	.L32-.L44,.L122-.L44
+	.half	1
+	.byte	100
+	.word	.L36-.L44,.L124-.L44
+	.half	1
+	.byte	100
+	.word	0,0
+.L94:
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L173:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Dem_GetDTCByOccurrenceTime')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L173,.L42,.L60-.L42
+	.sdecl	'.debug_frame',debug,cluster('Dem_GetEventMemoryOverflow')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L173,.L44,.L87-.L44
+	.byte	4
+	.word	(.L116-.L44)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L87-.L116)/2
+	.byte	19,0,8,26,0,0
+
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    92  
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    93  #define DEM_STOP_SEC_ROM_CODE
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    94  #include "Dem_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dem\src\evmem\Dem_EvMemGen.c	    95  
+
+	; Module end

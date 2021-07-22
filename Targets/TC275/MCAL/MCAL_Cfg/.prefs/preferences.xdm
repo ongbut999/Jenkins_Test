@@ -1,0 +1,241 @@
+<?xml version='1.0'?>
+<datamodel version="3.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr name="EcuExtractCreator">
+    <a:a name="DEF" value="XPath:/PreferencesSchema/EcuExtractCreator"/>
+    <d:var name="System" >
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:var name="EcuInstance" >
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:var name="SourceOfSoftwareComposition" >
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:var name="TopLevelComposition" >
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:var name="EcuSwComposition" >
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+  </d:ctr>
+  <d:ctr name="ImporterExporterAdditions">
+    <a:a name="DEF" value="XPath:/PreferencesSchema/ImporterExporterAdditions"/>
+    <d:var name="Version_AutosarImporter" value="2">
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:lst name="AutosarImportersExporters" type="MAP">
+      <d:ctr name="can">
+        <d:var name="FileName" 
+               value="C:\00_JOB\Softwarewc\Targets\TC275\MCAL\MCAL_Cfg\CanEcucValues.arxml"/>
+        <d:var name="ContentType" value="asc:4.0.3"/>
+        <d:var name="Validation" value="FALSE"/>
+        <d:var name="pathMapping" value="TRUE"/>
+        <d:var name="pathMappingAuto" value="TRUE"/>
+        <d:lst name="pathMappings" type="MAP">
+          <d:ctr name="mapping1">
+            <d:var name="source" value="/AURIX/EcucModuleDefs/Can"/>
+            <d:var name="target" value="/AURIX/Can"/>
+          </d:ctr>
+        </d:lst>
+        <d:var name="Strategy" value="Replace"/>
+        <d:var name="ConfigClassPreCompile" value="FALSE"/>
+        <d:var name="ConfigClassLink" value="FALSE"/>
+        <d:var name="ConfigClassPostBuild" value="FALSE"/>
+        <d:var name="OverwriteMode" value="FALSE"/>
+      </d:ctr>
+    </d:lst>
+    <d:var name="Version_SystemDescriptionImporter" value="4">
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:lst name="SystemDescriptionImporters" type="MAP"/>
+    <d:var name="Version_SystemDescriptionExporter" value="1">
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:lst name="SystemDescriptionExporters" type="MAP"/>
+    <d:lst name="ComImportersExporters" type="MAP"/>
+    <d:lst name="OilImportersExporters" type="MAP"/>
+  </d:ctr>
+  <d:ctr name="ECUCNature">
+    <a:a name="DEF" value="XPath:/PreferencesSchema/ECUCNature"/>
+    <d:var name="ReleaseVersion" >
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:var name="ECUId" value="TC275"/>
+    <d:var name="ConfigurationPath" value="config"/>
+    <d:var name="GenerationPath" value="..\MCAL_Gen"/>
+    <d:var name="UnixLF" value="TRUE"/>
+    <d:var name="UnixLFConfigData" value="TRUE"/>
+    <d:var name="DisableMinListChildCreation" value="TRUE"/>
+    <d:var name="ProjectSpecificSettings" value="FALSE"/>
+    <d:var name="ProjectSpecificSettingsConfigurationProject" value="FALSE"/>
+    <d:var name="Target" value="AURIX"/>
+    <d:var name="Derivate" value="TC275"/>
+    <d:var name="DefaultPreConfiguration" value="McuPreConfiguration"/>
+    <d:var name="DefaultRecConfiguration" >
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:ctr name="ConfigTime">
+      <a:a name="ENABLE" value="false"/>
+      <d:var name="PublishedInformation" value="FALSE">
+        <a:a name="IMPORTER_INFO" value="@DEF"/>
+      </d:var>
+      <d:var name="PreCompile" value="TRUE">
+        <a:a name="IMPORTER_INFO" value="@DEF"/>
+      </d:var>
+      <d:var name="Link" value="TRUE">
+        <a:a name="IMPORTER_INFO" value="@DEF"/>
+      </d:var>
+      <d:var name="PostBuild" value="TRUE">
+        <a:a name="IMPORTER_INFO" value="@DEF"/>
+      </d:var>
+    </d:ctr>
+  </d:ctr>
+  <d:ctr name="General">
+    <a:a name="DEF" value="XPath:/PreferencesSchema/General"/>
+    <d:var name="Version" value="16.0.0"/>
+    <d:lst name="ImportersExporters" type="MAP">
+      <d:ctr name="can">
+        <d:var name="Id" value="AutosarImporterExporter"/>
+        <d:var name="Mode" value="import"/>
+      </d:ctr>
+    </d:lst>
+    <d:var name="ReleaseVersion" value="4.0.3"/>
+    <d:var name="ModelExtenderCompatibility" value="TRUE"/>
+    <d:lst name="ModelExtender" type="MAP">
+      <d:ctr name="SystemModel2"/>
+      <d:ctr name="ModelEcuConfiguration"/>
+    </d:lst>
+    <d:lst name="ModuleConfigurations" type="MAP">
+      <d:ctr name="Resource">
+        <d:var name="ConfigurationFileURL" value="config\Resource.xdm"/>
+        <d:var name="ConfigurationFormat" value="xdm"/>
+        <d:var name="PreConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="RecConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="ModuleId" value="Resource_AurixAS403"/>
+        <d:var name="Enabled" value="TRUE"/>
+        <d:var name="Generate" value="TRUE"/>
+        <d:var name="LoadExistingConfigurationFile" value="FALSE"/>
+        <d:var name="SoftwareVersion" value="1.0.0"/>
+      </d:ctr>
+      <d:ctr name="Mcu">
+        <d:var name="ConfigurationFileURL" value="config\Mcu.xdm"/>
+        <d:var name="ConfigurationFormat" value="xdm"/>
+        <d:var name="PreConfig" value="McuPreConfiguration"/>
+        <d:var name="RecConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="ModuleId" value="Mcu_AurixAS403"/>
+        <d:var name="Enabled" value="TRUE"/>
+        <d:var name="Generate" value="TRUE"/>
+        <d:var name="LoadExistingConfigurationFile" value="FALSE"/>
+        <d:var name="SoftwareVersion" value="4.9.1"/>
+      </d:ctr>
+      <d:ctr name="Port">
+        <d:var name="ConfigurationFileURL" value="config\Port.xdm"/>
+        <d:var name="ConfigurationFormat" value="xdm"/>
+        <d:var name="PreConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="RecConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="ModuleId" value="Port_AurixAS403"/>
+        <d:var name="Enabled" value="TRUE"/>
+        <d:var name="Generate" value="TRUE"/>
+        <d:var name="LoadExistingConfigurationFile" value="FALSE"/>
+        <d:var name="SoftwareVersion" value="3.1.2"/>
+      </d:ctr>
+      <d:ctr name="Dio">
+        <d:var name="ModuleId" value="Dio_AurixAS403"/>
+        <d:var name="Enabled" value="TRUE"/>
+        <d:var name="Generate" value="TRUE"/>
+        <d:var name="LoadExistingConfigurationFile" value="FALSE"/>
+        <d:var name="SoftwareVersion" value="3.3.0"/>
+        <d:var name="ConfigurationFileURL" value="config\Dio.xdm"/>
+        <d:var name="ConfigurationFormat" value="xdm"/>
+        <d:var name="PreConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="RecConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+      </d:ctr>
+      <d:ctr name="Fls">
+        <d:var name="ModuleId" value="Fls_AurixAS403"/>
+        <d:var name="Enabled" value="TRUE"/>
+        <d:var name="Generate" value="TRUE"/>
+        <d:var name="LoadExistingConfigurationFile" value="TRUE"/>
+        <d:var name="SoftwareVersion" value="2.6.0"/>
+        <d:var name="ConfigurationFileURL" value="config\Fls.xdm"/>
+        <d:var name="ConfigurationFormat" value="xdm"/>
+        <d:var name="PreConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="RecConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+      </d:ctr>
+      <d:ctr name="Gpt">
+        <d:var name="ConfigurationFileURL" value="config\Gpt.xdm"/>
+        <d:var name="ConfigurationFormat" value="xdm"/>
+        <d:var name="PreConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="RecConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="ModuleId" value="Gpt_AurixAS403"/>
+        <d:var name="Enabled" value="TRUE"/>
+        <d:var name="Generate" value="TRUE"/>
+        <d:var name="LoadExistingConfigurationFile" value="FALSE"/>
+        <d:var name="SoftwareVersion" value="3.4.0"/>
+      </d:ctr>
+      <d:ctr name="Can">
+        <d:var name="ModuleId" value="Can_AurixAS403"/>
+        <d:var name="Enabled" value="TRUE"/>
+        <d:var name="Generate" value="TRUE"/>
+        <d:var name="LoadExistingConfigurationFile" value="FALSE"/>
+        <d:var name="SoftwareVersion" value="3.1.1"/>
+        <d:var name="ConfigurationFileURL" value="config\Can.xdm"/>
+        <d:var name="ConfigurationFormat" value="xdm"/>
+        <d:var name="PreConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+        <d:var name="RecConfig" >
+          <a:a name="IMPORTER_INFO" value="@DEF"/>
+        </d:var>
+      </d:ctr>
+    </d:lst>
+    <d:lst name="AutoconfigureTriggers" type="MAP"/>
+    <d:lst name="WizardConfigurations" type="MAP"/>
+  </d:ctr>
+  <d:ctr name="ComTransformer">
+    <a:a name="DEF" value="XPath:/PreferencesSchema/ComTransformer"/>
+    <d:var name="System" >
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:var name="EcuInstance" >
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:var name="Prefix" >
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:var name="CanBufferAssignment" value="FALSE">
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:var name="InstanceSuffix" value="FALSE">
+      <a:a name="IMPORTER_INFO" value="@DEF"/>
+    </d:var>
+    <d:lst name="ModuleConfigurations" type="MAP"/>
+  </d:ctr>
+
+</datamodel>

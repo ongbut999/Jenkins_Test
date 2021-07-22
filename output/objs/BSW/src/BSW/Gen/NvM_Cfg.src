@@ -1,0 +1,2882 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc16892a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\NvM_Cfg.src BSW\\src\\BSW\\Gen\\NvM\\NvM_Cfg.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\NvM\\NvM_Cfg.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.NvM_Cfg.NvM_Prv_InitRamBlockProperties',code,cluster('NvM_Prv_InitRamBlockProperties')
+	.sect	'.text.NvM_Cfg.NvM_Prv_InitRamBlockProperties'
+	.align	2
+	
+	.global	NvM_Prv_InitRamBlockProperties
+
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	     1  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	     2  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	     3  // TRACE[NVM321]
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	     4  // NvM file containing all configuration parameters which are to be implemented as constants
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	     5  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	     6  /*
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	     7   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	     8   * Includes
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	     9   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    10  */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    11  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    12  #include "NvM.h"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    13  #include "Rte_NvM.h"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    14  #include "MemIf.h"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    15  // TRACE[NVM089]
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    16  // Check version compatibility of included header files
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    17  #if (!defined(MEMIF_AR_RELEASE_MAJOR_VERSION) || (MEMIF_AR_RELEASE_MAJOR_VERSION != NVM_AR_RELEASE_MAJOR_VERSION))
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    18      #error "AUTOSAR major version undefined or mismatched"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    19  #endif
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    20  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    21  #if (!defined(MEMIF_AR_RELEASE_MINOR_VERSION) || ((MEMIF_AR_RELEASE_MINOR_VERSION != 0) && \ 
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    22                                                    (MEMIF_AR_RELEASE_MINOR_VERSION != 2)))
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    23  # error "AUTOSAR minor version undefined or mismatched"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    24  #endif
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    25  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    26  #include "NvM_Prv.h"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    27  #include "NvM_Prv_BlockData.h"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    28  #include "NvM_Prv_ExplicitSynchronization.h"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    29  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    30  // TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-2997]
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    31  // Include custumer/user specific declarations
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    32  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    33  /*
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    34   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    35   * Extern declarations
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    36   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    37  */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    38  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    39  // Single block callback of NVRAM block ECUM_CFG_NVM_BLOCK
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    40  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    41                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    42  extern Std_ReturnType EcuM_Rb_NvMSingleBlockCallbackFunction(uint8 ServiceId, NvM_RequestResultType JobResult);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    43  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    44  // RAM block of NVRAM block ECUM_CFG_NVM_BLOCK
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    45  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    46                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    47  extern uint8 EcuM_Rb_dataShutdownInfo_st[];
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    48  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    49  // RAM block of NVRAM block NvMBlockDescriptor_DID_SystemFaultRank
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    50  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    51                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    52  extern uint8 RamBlock_DID_F199[];
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    53  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    54  // RAM block of NVRAM block NvMBlockDescriptor_DID_VehicleSpeed
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    55  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    56                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    57  extern uint8 RamBlock_DID_F189[];
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    58  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    59  // Explicit sync read callback of NVRAM block NvMBlockDescriptor_Dem_AllEventsStatusByte
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    60  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    61                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    62  extern Std_ReturnType Dem_EventStatusByteReadRamBlockFromNvCallback(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    63  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    64  // Explicit sync write callback of NVRAM block NvMBlockDescriptor_Dem_AllEventsStatusByte
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    65  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    66                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    67  extern Std_ReturnType Dem_EventStatusByteWriteRamBlockToNvCallback(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    68  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    69  // Explicit sync read callback of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory0
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    70  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    71                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    72  extern Std_ReturnType Dem_EvMemNvmReadRamBlockFromNvCallback0(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    73  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    74  // Explicit sync write callback of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory0
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    75  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    76                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    77  extern Std_ReturnType Dem_EvMemNvMWriteRamBlockToNvCallback0(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    78  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    79  // Explicit sync read callback of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory1
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    80  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    81                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    82  extern Std_ReturnType Dem_EvMemNvmReadRamBlockFromNvCallback1(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    83  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    84  // Explicit sync write callback of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory1
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    85  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    86                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    87  extern Std_ReturnType Dem_EvMemNvMWriteRamBlockToNvCallback1(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    88  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    89  // Explicit sync read callback of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory2
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    90  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    91                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    92  extern Std_ReturnType Dem_EvMemNvmReadRamBlockFromNvCallback2(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    93  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    94  // Explicit sync write callback of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory2
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    95  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    96                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    97  extern Std_ReturnType Dem_EvMemNvMWriteRamBlockToNvCallback2(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    98  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	    99  // Explicit sync read callback of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory3
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   100  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   101                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   102  extern Std_ReturnType Dem_EvMemNvmReadRamBlockFromNvCallback3(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   103  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   104  // Explicit sync write callback of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory3
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   105  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   106                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   107  extern Std_ReturnType Dem_EvMemNvMWriteRamBlockToNvCallback3(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   108  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   109  // Explicit sync read callback of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory4
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   110  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   111                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   112  extern Std_ReturnType Dem_EvMemNvmReadRamBlockFromNvCallback4(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   113  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   114  // Explicit sync write callback of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory4
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   115  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   116                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   117  extern Std_ReturnType Dem_EvMemNvMWriteRamBlockToNvCallback4(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   118  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   119  // Explicit sync read callback of NVRAM block NvMBlockDescriptor_Dem_GenericNvData
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   120  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   121                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   122  extern Std_ReturnType Dem_GenericNVDataReadRamBlockFromNvCallback(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   123  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   124  // Explicit sync write callback of NVRAM block NvMBlockDescriptor_Dem_GenericNvData
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   125  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   126                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   127  extern Std_ReturnType Dem_GenericNVDataWriteRamBlockToNvCallback(void* NvMBuffer);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   128  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   129  // RAM block of NVRAM block NvM_NativeBlock_1024_1
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   130  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   131                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   132  extern uint8 Rte_CPim_ASW_NVM_ASW_NVM_BlockNative_1024_1[];
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   133  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   134  // ROM block start address of NVRAM block NvM_NativeBlock_1024_1
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   135  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   136                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   137  extern const uint8 Rte_ROM_ASW_NVM_ASW_NVM_BlockNative_1024_1[];
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   138  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   139  // RAM block of NVRAM block NvM_NativeBlock_1024_2
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   140  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   141                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   142  extern uint8 Rte_CPim_ASW_NVM_ASW_NVM_BlockNative_1024_2[];
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   143  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   144  // ROM block start address of NVRAM block NvM_NativeBlock_1024_2
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   145  /* MR12 RULE 8.5 VIOLATION: If we declared this in NvM_Cfg.h,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   146                              we would effectively re-export this to all NvM users */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   147  extern const uint8 Rte_ROM_ASW_NVM_ASW_NVM_BlockNative_1024_2[];
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   148  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   149  /*
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   150   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   151   * Assertions
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   152   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   153  */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   154  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   155  /*
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   156   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   157   * Constants
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   158   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   159  */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   160  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   161  #define NVM_START_SEC_CONST_UNSPECIFIED
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   162  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   163  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   164  // Array containing (persistent Id, block Id) couples sorted by ascendant persistent Ids
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   165  const NvM_Prv_PersId_BlockId_tst NvM_Prv_PersId_BlockId_acst[NVM_PRV_NR_PERSISTENT_IDS] =
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   166  {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   167      //{PersId, BlockId}
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   168      {16142, 5}, // NvMConf_NvMBlockDescriptor_NvMBlockDescriptor_Dem_AllEventsStatusByte
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   169      {16680, 3}, // NvMConf_NvMBlockDescriptor_NvMBlockDescriptor_DID_SystemFaultRank
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   170      {32872, 8}, // NvMConf_NvMBlockDescriptor_NvMBlockDescriptor_Dem_EvMemEventMemory2
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   171      {33128, 9}, // NvMConf_NvMBlockDescriptor_NvMBlockDescriptor_Dem_EvMemEventMemory3
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   172      {33384, 6}, // NvMConf_NvMBlockDescriptor_NvMBlockDescriptor_Dem_EvMemEventMemory0
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   173      {33640, 7}, // NvMConf_NvMBlockDescriptor_NvMBlockDescriptor_Dem_EvMemEventMemory1
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   174      {34408, 10}, // NvMConf_NvMBlockDescriptor_NvMBlockDescriptor_Dem_EvMemEventMemory4
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   175      {42447, 11}, // NvMConf_NvMBlockDescriptor_NvMBlockDescriptor_Dem_GenericNvData
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   176      {45679, 4}, // NvMConf_NvMBlockDescriptor_NvMBlockDescriptor_DID_VehicleSpeed
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   177      {59972, 12}, // NvMConf_NvMBlockDescriptor_NvM_NativeBlock_1024_1
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   178      {62199, 2}, // NvMConf_NvMBlockDescriptor_ECUM_CFG_NVM_BLOCK
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   179      {63695, 13}, // NvMConf_NvMBlockDescriptor_NvM_NativeBlock_1024_2
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   180  };
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   181  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   182  // TRACE[NVM028_Conf]
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   183  // Structure containing common configuration options
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   184  const NvM_Prv_Common_tst NvM_Prv_Common_cst = {NULL_PTR, NULL_PTR, NULL_PTR};
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   185  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   186  // TRACE[NVM061_Conf]
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   187  // Array containing block descriptors
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   188  // TRACE[NVM140]
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   189  // The block descriptor contents are completely determined by configuration
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   190  const NvM_Prv_BlockDescriptor_tst NvM_Prv_BlockDescriptors_acst[NVM_CFG_NR_BLOCKS] =
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   191  {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   192      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   193          // Block descriptor of NVRAM block NvM_MultiBlock (NvM block ID: 0):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   194          0, // MemIf block ID (this block is not stored on any memory device)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   195          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[0]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   196          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   197          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   198          0, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   199          &(NvM_Prv_RamBlockAdr_acpv[0]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   200          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   201          (const void *)NULL_PTR, // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   202          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   203          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   204          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   205          NULL_PTR, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   206          NULL_PTR, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   207          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   208          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   209          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   210          0
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   211      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   212      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   213          // Block descriptor of NVRAM block NvM_ConfigId (NvM block ID: 1):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   214          0, // MemIf block ID (this block is not stored on any memory device)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   215          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[1]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   216          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   217          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   218          0, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   219          &(NvM_Prv_RamBlockAdr_acpv[1]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   220          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   221          (const void *)NULL_PTR, // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   222          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   223          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   224          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   225          NULL_PTR, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   226          NULL_PTR, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   227          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   228          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   229          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   230          0
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   231      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   232      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   233          // Block descriptor of NVRAM block ECUM_CFG_NVM_BLOCK (NvM block ID: 2, persistent ID: 62199):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   234          FeeConf_FeeBlockConfiguration_ECUM_CFG_NVM_BLOCK, // MemIf block ID
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   235          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[2]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   236          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   237          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   238          0, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   239          &(NvM_Prv_RamBlockAdr_acpv[2]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   240          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   241          (const void *)NULL_PTR, // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   242          &EcuM_Rb_NvMSingleBlockCallbackFunction, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   243          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   244          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   245          NULL_PTR, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   246          NULL_PTR, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   247          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   248          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   249          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   250          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   251          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   252      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   253      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   254          // Block descriptor of NVRAM block NvMBlockDescriptor_DID_SystemFaultRank (NvM block ID: 3, persistent ID: 16680):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   255          FeeConf_FeeBlockConfiguration_NvMBlockDescriptor_DID_SystemFaultRank, // MemIf block ID
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   256          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[3]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   257          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   258          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   259          0, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   260          &(NvM_Prv_RamBlockAdr_acpv[3]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   261          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   262          (const void *)NULL_PTR, // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   263          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   264          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   265          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   266          NULL_PTR, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   267          NULL_PTR, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   268          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   269          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   270          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   271          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   272          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   273      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   274      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   275          // Block descriptor of NVRAM block NvMBlockDescriptor_DID_VehicleSpeed (NvM block ID: 4, persistent ID: 45679):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   276          FeeConf_FeeBlockConfiguration_NvMBlockDescriptor_DID_VehicleSpeed, // MemIf block ID
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   277          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[4]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   278          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   279          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   280          0, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   281          &(NvM_Prv_RamBlockAdr_acpv[4]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   282          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   283          (const void *)NULL_PTR, // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   284          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   285          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   286          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   287          NULL_PTR, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   288          NULL_PTR, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   289          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   290          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   291          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   292          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   293          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   294      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   295      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   296          // Block descriptor of NVRAM block NvMBlockDescriptor_Dem_AllEventsStatusByte (NvM block ID: 5, persistent ID: 16142):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   297          FeeConf_FeeBlockConfiguration_NvMBlockDescriptor_Dem_AllEventsStatusByte, // MemIf block ID
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   298          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[5]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   299          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   300          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   301          0, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   302          &(NvM_Prv_RamBlockAdr_acpv[5]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   303          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   304          (const void *)NULL_PTR, // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   305          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   306          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   307          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   308          &Dem_EventStatusByteReadRamBlockFromNvCallback, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   309          &Dem_EventStatusByteWriteRamBlockToNvCallback, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   310          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   311          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   312          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   313          (uint16)NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   314          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   315          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   316      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   317      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   318          // Block descriptor of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory0 (NvM block ID: 6, persistent ID: 33384):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   319          FeeConf_FeeBlockConfiguration_NvMBlockDescriptor_Dem_EvMemEventMemory0, // MemIf block ID
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   320          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[6]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   321          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   322          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   323          0, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   324          &(NvM_Prv_RamBlockAdr_acpv[6]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   325          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   326          (const void *)NULL_PTR, // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   327          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   328          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   329          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   330          &Dem_EvMemNvmReadRamBlockFromNvCallback0, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   331          &Dem_EvMemNvMWriteRamBlockToNvCallback0, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   332          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   333          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   334          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   335          (uint16)NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   336          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   337          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   338      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   339      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   340          // Block descriptor of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory1 (NvM block ID: 7, persistent ID: 33640):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   341          FeeConf_FeeBlockConfiguration_NvMBlockDescriptor_Dem_EvMemEventMemory1, // MemIf block ID
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   342          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[7]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   343          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   344          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   345          0, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   346          &(NvM_Prv_RamBlockAdr_acpv[7]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   347          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   348          (const void *)NULL_PTR, // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   349          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   350          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   351          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   352          &Dem_EvMemNvmReadRamBlockFromNvCallback1, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   353          &Dem_EvMemNvMWriteRamBlockToNvCallback1, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   354          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   355          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   356          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   357          (uint16)NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   358          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   359          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   360      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   361      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   362          // Block descriptor of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory2 (NvM block ID: 8, persistent ID: 32872):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   363          FeeConf_FeeBlockConfiguration_NvMBlockDescriptor_Dem_EvMemEventMemory2, // MemIf block ID
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   364          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[8]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   365          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   366          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   367          0, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   368          &(NvM_Prv_RamBlockAdr_acpv[8]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   369          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   370          (const void *)NULL_PTR, // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   371          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   372          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   373          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   374          &Dem_EvMemNvmReadRamBlockFromNvCallback2, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   375          &Dem_EvMemNvMWriteRamBlockToNvCallback2, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   376          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   377          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   378          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   379          (uint16)NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   380          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   381          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   382      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   383      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   384          // Block descriptor of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory3 (NvM block ID: 9, persistent ID: 33128):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   385          FeeConf_FeeBlockConfiguration_NvMBlockDescriptor_Dem_EvMemEventMemory3, // MemIf block ID
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   386          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[9]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   387          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   388          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   389          0, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   390          &(NvM_Prv_RamBlockAdr_acpv[9]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   391          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   392          (const void *)NULL_PTR, // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   393          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   394          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   395          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   396          &Dem_EvMemNvmReadRamBlockFromNvCallback3, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   397          &Dem_EvMemNvMWriteRamBlockToNvCallback3, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   398          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   399          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   400          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   401          (uint16)NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   402          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   403          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   404      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   405      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   406          // Block descriptor of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory4 (NvM block ID: 10, persistent ID: 34408):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   407          FeeConf_FeeBlockConfiguration_NvMBlockDescriptor_Dem_EvMemEventMemory4, // MemIf block ID
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   408          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[10]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   409          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   410          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   411          0, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   412          &(NvM_Prv_RamBlockAdr_acpv[10]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   413          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   414          (const void *)NULL_PTR, // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   415          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   416          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   417          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   418          &Dem_EvMemNvmReadRamBlockFromNvCallback4, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   419          &Dem_EvMemNvMWriteRamBlockToNvCallback4, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   420          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   421          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   422          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   423          (uint16)NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   424          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   425          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   426      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   427      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   428          // Block descriptor of NVRAM block NvMBlockDescriptor_Dem_GenericNvData (NvM block ID: 11, persistent ID: 42447):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   429          FeeConf_FeeBlockConfiguration_NvMBlockDescriptor_Dem_GenericNvData, // MemIf block ID
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   430          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[11]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   431          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   432          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   433          0, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   434          &(NvM_Prv_RamBlockAdr_acpv[11]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   435          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   436          (const void *)NULL_PTR, // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   437          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   438          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   439          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   440          &Dem_GenericNVDataReadRamBlockFromNvCallback, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   441          &Dem_GenericNVDataWriteRamBlockToNvCallback, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   442          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   443          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   444          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   445          (uint16)NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   446          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   447          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   448      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   449      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   450          // Block descriptor of NVRAM block NvM_NativeBlock_1024_1 (NvM block ID: 12, persistent ID: 59972):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   451          FeeConf_FeeBlockConfiguration_NvM_NativeBlock_1024_1, // MemIf block ID
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   452          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[12]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   453          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   454          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   455          1, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   456          &(NvM_Prv_RamBlockAdr_acpv[12]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   457          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   458          (const void *)&(Rte_ROM_ASW_NVM_ASW_NVM_BlockNative_1024_1), // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   459          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   460          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   461          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   462          NULL_PTR, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   463          NULL_PTR, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   464          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   465          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   466          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   467          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   468          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   469      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   470      {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   471          // Block descriptor of NVRAM block NvM_NativeBlock_1024_2 (NvM block ID: 13, persistent ID: 63695):
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   472          FeeConf_FeeBlockConfiguration_NvM_NativeBlock_1024_2, // MemIf block ID
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   473          (const uint16 *) &(NvM_Prv_BlockLengths_acu16[13]), // Block length calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   474          0, // Device index (0: Fee, 1..254: Ea)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   475          1, // Number of NV blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   476          1, // Number of ROM blocks
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   477          &(NvM_Prv_RamBlockAdr_acpv[13]), // RAM block data address calculated on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   478          /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   479          (const void *)&(Rte_ROM_ASW_NVM_ASW_NVM_BlockNative_1024_2), // ROM block data address
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   480          NULL_PTR, // Single block callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   481          NULL_PTR, // Single block start callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   482          NULL_PTR, // Initialization callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   483          NULL_PTR, // Explicit sync read callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   484          NULL_PTR, // Explicit sync write callback
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   485          NVM_BLOCK_NATIVE, // Block management type
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   486          1, // Job priority (0: Immediate, 1: Standard)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   487          // Block flags
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   488          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL |
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   489          (uint16)NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   490      },
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   491  };
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   492  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   493  // TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3028]
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   494  // Runtime Calculation feature disabled
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   495  #if (NVM_PRV_RUNTIME_RAM_BLOCK_CONFIG == STD_OFF)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   496  // Used to calculate the NV block lengths on compile time
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   497  // This variable is mapped into the block descriptor NvM_Prv_BlockDescriptors_acst
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   498  const uint16 NvM_Prv_BlockLengths_acu16[NVM_CFG_NR_BLOCKS] =
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   499  {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   500      // Block length of NVRAM block NvM_MultiBlock (NvM block ID: 0)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   501      1,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   502      // Block length of NVRAM block NvM_ConfigId (NvM block ID: 1)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   503      1,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   504      // Block length of NVRAM block ECUM_CFG_NVM_BLOCK (NvM block ID: 2)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   505      4,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   506      // Block length of NVRAM block NvMBlockDescriptor_DID_SystemFaultRank (NvM block ID: 3)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   507      4,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   508      // Block length of NVRAM block NvMBlockDescriptor_DID_VehicleSpeed (NvM block ID: 4)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   509      17,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   510      // Block length of NVRAM block NvMBlockDescriptor_Dem_AllEventsStatusByte (NvM block ID: 5)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   511      6,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   512      // Block length of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory0 (NvM block ID: 6)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   513      20,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   514      // Block length of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory1 (NvM block ID: 7)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   515      20,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   516      // Block length of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory2 (NvM block ID: 8)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   517      20,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   518      // Block length of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory3 (NvM block ID: 9)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   519      20,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   520      // Block length of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory4 (NvM block ID: 10)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   521      20,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   522      // Block length of NVRAM block NvMBlockDescriptor_Dem_GenericNvData (NvM block ID: 11)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   523      16,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   524      // Block length of NVRAM block NvM_NativeBlock_1024_1 (NvM block ID: 12)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   525      1024,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   526      // Block length of NVRAM block NvM_NativeBlock_1024_2 (NvM block ID: 13)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   527      1024,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   528  };
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   529  // Used to calculate the RAM block data addresses on compile runtime
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   530  // This variable is mapped into the block descriptor NvM_Prv_BlockDescriptors_acst
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   531  void * const NvM_Prv_RamBlockAdr_acpv[NVM_CFG_NR_BLOCKS] =
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   532  {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   533      // Permanent RAM address of NVRAM block NvM_MultiBlock (NvM block ID: 0)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   534      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   535      (void *)NULL_PTR,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   536      // Permanent RAM address of NVRAM block NvM_ConfigId (NvM block ID: 1)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   537      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   538      (void *)NULL_PTR,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   539      // Permanent RAM address of NVRAM block ECUM_CFG_NVM_BLOCK (NvM block ID: 2)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   540      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   541      (void *)&(EcuM_Rb_dataShutdownInfo_st),
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   542      // Permanent RAM address of NVRAM block NvMBlockDescriptor_DID_SystemFaultRank (NvM block ID: 3)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   543      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   544      (void *)&(RamBlock_DID_F199),
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   545      // Permanent RAM address of NVRAM block NvMBlockDescriptor_DID_VehicleSpeed (NvM block ID: 4)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   546      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   547      (void *)&(RamBlock_DID_F189),
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   548      // Permanent RAM address of NVRAM block NvMBlockDescriptor_Dem_AllEventsStatusByte (NvM block ID: 5)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   549      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   550      (void *)NvM_Prv_RamMirror_au8,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   551      // Permanent RAM address of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory0 (NvM block ID: 6)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   552      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   553      (void *)NvM_Prv_RamMirror_au8,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   554      // Permanent RAM address of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory1 (NvM block ID: 7)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   555      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   556      (void *)NvM_Prv_RamMirror_au8,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   557      // Permanent RAM address of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory2 (NvM block ID: 8)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   558      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   559      (void *)NvM_Prv_RamMirror_au8,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   560      // Permanent RAM address of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory3 (NvM block ID: 9)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   561      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   562      (void *)NvM_Prv_RamMirror_au8,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   563      // Permanent RAM address of NVRAM block NvMBlockDescriptor_Dem_EvMemEventMemory4 (NvM block ID: 10)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   564      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   565      (void *)NvM_Prv_RamMirror_au8,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   566      // Permanent RAM address of NVRAM block NvMBlockDescriptor_Dem_GenericNvData (NvM block ID: 11)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   567      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   568      (void *)NvM_Prv_RamMirror_au8,
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   569      // Permanent RAM address of NVRAM block NvM_NativeBlock_1024_1 (NvM block ID: 12)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   570      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   571      (void *)&(Rte_CPim_ASW_NVM_ASW_NVM_BlockNative_1024_1),
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   572      // Permanent RAM address of NVRAM block NvM_NativeBlock_1024_2 (NvM block ID: 13)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   573      /* MR12 DIR 1.1, 11.6 VIOLATION: Casting to void pointer can always be done safely */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   574      (void *)&(Rte_CPim_ASW_NVM_ASW_NVM_BlockNative_1024_2),
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   575  };
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   576  #endif
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   577  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   578  #define NVM_STOP_SEC_CONST_UNSPECIFIED
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   579  #include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   580  /*
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   581   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   582   * Variables
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   583   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   584  */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   585  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   586  // TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3028]
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   587  // Runtime Calculation feature enabled
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   588  #if (NVM_PRV_RUNTIME_RAM_BLOCK_CONFIG == STD_ON)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   589  # define NVM_START_SEC_VAR_CLEARED_UNSPECIFIED
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   590  # include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   591  // Used to calculate the NV block lengths and RAM block data addresses on runtime
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   592  // These variables are mapped into the block descriptor NvM_Prv_BlockDescriptors_acst
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   593  uint16 NvM_Prv_BlockLengths_au16[NVM_CFG_NR_BLOCKS];
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   594  void *NvM_Prv_RamBlockAdr_apv[NVM_CFG_NR_BLOCKS];
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   595  # define NVM_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   596  # include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   597  #endif
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   598  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   599  /*
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   600   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   601   * Functions
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   602   **********************************************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   603  */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   604  # define NvM_START_SEC_CODE
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   605  # include "NvM_MemMap.h"
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   606  /********************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   607   * Initialization of NV block length and RAM block data address (permanent RAM address)     *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   608   *                                                                                          *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   609   * In this case NvMRbRuntimeRamBlockConfiguration is enabled                                *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   610   * + NV block length is defined either by NvMRbNvBlockLengthString or NvMNvBlockLength      *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   611   * + RAM block data address is still defined by NvMRamBlockDataAddress but now              *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   612   *   NvMRamBlockDataAddress can also contain C expressions                                  *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   613   *                                                                                          *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   614   * Furthermore if explicit sync feature is enabled the explicit sync buffer is defined here *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   615   * by setting the start address and calculating the buffer size                             *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   616   * Start address and end address is defined by user in common options with the parameters   *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   617   * + NvMRbRuntimeRamBufferAddressStart                                                      *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   618   * + NvMRbRuntimeRamBufferAddressEnd                                                        *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   619   *                                                                                          *
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   620   * ******************************************************************************************
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   621  */
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   622  void NvM_Prv_InitRamBlockProperties(void)
+; Function NvM_Prv_InitRamBlockProperties
+.L3:
+NvM_Prv_InitRamBlockProperties:	.type	func
+
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   623  {
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   624      // TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3028]
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   625      // Runtime Calculation feature enabled
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   626  #if (NVM_PRV_RUNTIME_RAM_BLOCK_CONFIG == STD_ON)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   627  # if (NVM_PRV_HAS_RAM_MIRROR == STD_ON)
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   628      // Calculate explicit synchronization RAM buffer size
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   629      /* MR12 RULE 11.4 VIOLATION: Cast to an integral type is necessary to calculate the size of the object*/
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   630      uint32 RuntimeRamMirrorSize_u32 = (uint32)(0) - (uint32)(0);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   631  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   632      // TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3029] Calculate explicit synchronization RAM buffer
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   633      // TRACE[BSW_SWS_AR4_0_R2_NVRAMManager_Ext-3030] Calculate explicit synchronization RAM buffer
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   634      // Set explicit synchronization RAM buffer start address and its size
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   635      NvM_Prv_InitRuntimeRamMirror((uint8 *)(0),
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   636                                   RuntimeRamMirrorSize_u32);
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   637  # endif
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   638  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   639  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   640  
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   641  #endif
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   642  }
+	ret
+.L23:
+	
+__NvM_Prv_InitRamBlockProperties_function_end:
+	.size	NvM_Prv_InitRamBlockProperties,__NvM_Prv_InitRamBlockProperties_function_end-NvM_Prv_InitRamBlockProperties
+.L12:
+	; End of function
+	
+	.sdecl	'.rodata.NvM_Cfg.NvM_Prv_PersId_BlockId_acst',data,rom,cluster('NvM_Prv_PersId_BlockId_acst')
+	.sect	'.rodata.NvM_Cfg.NvM_Prv_PersId_BlockId_acst'
+	.global	NvM_Prv_PersId_BlockId_acst
+	.align	2
+NvM_Prv_PersId_BlockId_acst:	.type	object
+	.size	NvM_Prv_PersId_BlockId_acst,48
+	.half	16142,5,16680,3
+	.half	32872,8,33128,9
+	.half	33384,6,33640,7
+	.half	34408,10,42447,11
+	.half	45679,4,59972,12
+	.half	62199,2,63695,13
+	.sdecl	'.rodata.NvM_Cfg.NvM_Prv_Common_cst',data,rom,cluster('NvM_Prv_Common_cst')
+	.sect	'.rodata.NvM_Cfg.NvM_Prv_Common_cst'
+	.global	NvM_Prv_Common_cst
+	.align	4
+NvM_Prv_Common_cst:	.type	object
+	.size	NvM_Prv_Common_cst,12
+	.space	12
+	.sdecl	'.rodata.NvM_Cfg.NvM_Prv_BlockDescriptors_acst',data,rom,cluster('NvM_Prv_BlockDescriptors_acst')
+	.sect	'.rodata.NvM_Cfg.NvM_Prv_BlockDescriptors_acst'
+	.global	NvM_Prv_BlockDescriptors_acst
+	.align	4
+NvM_Prv_BlockDescriptors_acst:	.type	object
+	.size	NvM_Prv_BlockDescriptors_acst,672
+	.space	4
+	.word	NvM_Prv_BlockLengths_acu16
+	.space	1
+	.byte	1
+	.space	2
+	.word	NvM_Prv_RamBlockAdr_acpv
+	.space	28
+	.byte	1
+	.space	7
+	.word	NvM_Prv_BlockLengths_acu16+2
+	.space	1
+	.byte	1
+	.space	2
+	.word	NvM_Prv_RamBlockAdr_acpv+4
+	.space	28
+	.byte	1
+	.space	3
+	.half	10
+	.space	2
+	.word	NvM_Prv_BlockLengths_acu16+4
+	.space	1
+	.byte	1
+	.space	2
+	.word	NvM_Prv_RamBlockAdr_acpv+8
+	.space	4
+	.word	EcuM_Rb_NvMSingleBlockCallbackFunction
+	.space	20
+	.byte	1
+	.space	1
+	.half	3,1
+	.space	2
+	.word	NvM_Prv_BlockLengths_acu16+6
+	.space	1
+	.byte	1
+	.space	2
+	.word	NvM_Prv_RamBlockAdr_acpv+12
+	.space	28
+	.byte	1
+	.space	1
+	.half	3,8
+	.space	2
+	.word	NvM_Prv_BlockLengths_acu16+8
+	.space	1
+	.byte	1
+	.space	2
+	.word	NvM_Prv_RamBlockAdr_acpv+16
+	.space	28
+	.byte	1
+	.space	1
+	.half	3
+	.space	4
+	.word	NvM_Prv_BlockLengths_acu16+10
+	.space	1
+	.byte	1
+	.space	2
+	.word	NvM_Prv_RamBlockAdr_acpv+20
+	.space	16
+	.word	Dem_EventStatusByteReadRamBlockFromNvCallback,Dem_EventStatusByteWriteRamBlockToNvCallback
+	.space	4
+	.byte	1
+	.space	1
+	.half	131,4
+	.space	2
+	.word	NvM_Prv_BlockLengths_acu16+12
+	.space	1
+	.byte	1
+	.space	2
+	.word	NvM_Prv_RamBlockAdr_acpv+24
+	.space	16
+	.word	Dem_EvMemNvmReadRamBlockFromNvCallback0,Dem_EvMemNvMWriteRamBlockToNvCallback0
+	.space	4
+	.byte	1
+	.space	1
+	.half	131,5
+	.space	2
+	.word	NvM_Prv_BlockLengths_acu16+14
+	.space	1
+	.byte	1
+	.space	2
+	.word	NvM_Prv_RamBlockAdr_acpv+28
+	.space	16
+	.word	Dem_EvMemNvmReadRamBlockFromNvCallback1,Dem_EvMemNvMWriteRamBlockToNvCallback1
+	.space	4
+	.byte	1
+	.space	1
+	.half	131,2
+	.space	2
+	.word	NvM_Prv_BlockLengths_acu16+16
+	.space	1
+	.byte	1
+	.space	2
+	.word	NvM_Prv_RamBlockAdr_acpv+32
+	.space	16
+	.word	Dem_EvMemNvmReadRamBlockFromNvCallback2,Dem_EvMemNvMWriteRamBlockToNvCallback2
+	.space	4
+	.byte	1
+	.space	1
+	.half	131,3
+	.space	2
+	.word	NvM_Prv_BlockLengths_acu16+18
+	.space	1
+	.byte	1
+	.space	2
+	.word	NvM_Prv_RamBlockAdr_acpv+36
+	.space	16
+	.word	Dem_EvMemNvmReadRamBlockFromNvCallback3,Dem_EvMemNvMWriteRamBlockToNvCallback3
+	.space	4
+	.byte	1
+	.space	1
+	.half	131,6
+	.space	2
+	.word	NvM_Prv_BlockLengths_acu16+20
+	.space	1
+	.byte	1
+	.space	2
+	.word	NvM_Prv_RamBlockAdr_acpv+40
+	.space	16
+	.word	Dem_EvMemNvmReadRamBlockFromNvCallback4,Dem_EvMemNvMWriteRamBlockToNvCallback4
+	.space	4
+	.byte	1
+	.space	1
+	.half	131,7
+	.space	2
+	.word	NvM_Prv_BlockLengths_acu16+22
+	.space	1
+	.byte	1
+	.space	2
+	.word	NvM_Prv_RamBlockAdr_acpv+44
+	.space	16
+	.word	Dem_GenericNVDataReadRamBlockFromNvCallback,Dem_GenericNVDataWriteRamBlockToNvCallback
+	.space	4
+	.byte	1
+	.space	1
+	.half	131,9
+	.space	2
+	.word	NvM_Prv_BlockLengths_acu16+24
+	.space	1
+	.byte	1,1
+	.space	1
+	.word	NvM_Prv_RamBlockAdr_acpv+48,Rte_ROM_ASW_NVM_ASW_NVM_BlockNative_1024_1
+	.space	24
+	.byte	1
+	.space	1
+	.half	3,11
+	.space	2
+	.word	NvM_Prv_BlockLengths_acu16+26
+	.space	1
+	.byte	1,1
+	.space	1
+	.word	NvM_Prv_RamBlockAdr_acpv+52,Rte_ROM_ASW_NVM_ASW_NVM_BlockNative_1024_2
+	.space	24
+	.byte	1
+	.space	1
+	.half	3
+	.sdecl	'.rodata.NvM_Cfg.NvM_Prv_BlockLengths_acu16',data,rom,cluster('NvM_Prv_BlockLengths_acu16')
+	.sect	'.rodata.NvM_Cfg.NvM_Prv_BlockLengths_acu16'
+	.global	NvM_Prv_BlockLengths_acu16
+	.align	2
+NvM_Prv_BlockLengths_acu16:	.type	object
+	.size	NvM_Prv_BlockLengths_acu16,28
+	.half	1,1,4,4
+	.half	17,6,20,20
+	.half	20,20,20,16
+	.half	1024,1024
+	.sdecl	'.rodata.NvM_Cfg.NvM_Prv_RamBlockAdr_acpv',data,rom,cluster('NvM_Prv_RamBlockAdr_acpv')
+	.sect	'.rodata.NvM_Cfg.NvM_Prv_RamBlockAdr_acpv'
+	.global	NvM_Prv_RamBlockAdr_acpv
+	.align	4
+NvM_Prv_RamBlockAdr_acpv:	.type	object
+	.size	NvM_Prv_RamBlockAdr_acpv,56
+	.space	8
+	.word	EcuM_Rb_dataShutdownInfo_st,RamBlock_DID_F199,RamBlock_DID_F189,NvM_Prv_RamMirror_au8
+	.word	NvM_Prv_RamMirror_au8,NvM_Prv_RamMirror_au8,NvM_Prv_RamMirror_au8,NvM_Prv_RamMirror_au8
+	.word	NvM_Prv_RamMirror_au8,NvM_Prv_RamMirror_au8,Rte_CPim_ASW_NVM_ASW_NVM_BlockNative_1024_1,Rte_CPim_ASW_NVM_ASW_NVM_BlockNative_1024_2
+	.calls	'__INDIRECT__','EcuM_Rb_NvMSingleBlockCallbackFunction'
+	.calls	'__INDIRECT__','Dem_EventStatusByteReadRamBlockFromNvCallback'
+	.calls	'__INDIRECT__','Dem_EventStatusByteWriteRamBlockToNvCallback'
+	.calls	'__INDIRECT__','Dem_EvMemNvmReadRamBlockFromNvCallback0'
+	.calls	'__INDIRECT__','Dem_EvMemNvMWriteRamBlockToNvCallback0'
+	.calls	'__INDIRECT__','Dem_EvMemNvmReadRamBlockFromNvCallback1'
+	.calls	'__INDIRECT__','Dem_EvMemNvMWriteRamBlockToNvCallback1'
+	.calls	'__INDIRECT__','Dem_EvMemNvmReadRamBlockFromNvCallback2'
+	.calls	'__INDIRECT__','Dem_EvMemNvMWriteRamBlockToNvCallback2'
+	.calls	'__INDIRECT__','Dem_EvMemNvmReadRamBlockFromNvCallback3'
+	.calls	'__INDIRECT__','Dem_EvMemNvMWriteRamBlockToNvCallback3'
+	.calls	'__INDIRECT__','Dem_EvMemNvmReadRamBlockFromNvCallback4'
+	.calls	'__INDIRECT__','Dem_EvMemNvMWriteRamBlockToNvCallback4'
+	.calls	'__INDIRECT__','Dem_GenericNVDataReadRamBlockFromNvCallback'
+	.calls	'__INDIRECT__','Dem_GenericNVDataWriteRamBlockToNvCallback'
+	.extern	NvM_Prv_RamMirror_au8
+	.extern	EcuM_Rb_NvMSingleBlockCallbackFunction
+	.extern	EcuM_Rb_dataShutdownInfo_st
+	.extern	RamBlock_DID_F199
+	.extern	RamBlock_DID_F189
+	.extern	Dem_EventStatusByteReadRamBlockFromNvCallback
+	.extern	Dem_EventStatusByteWriteRamBlockToNvCallback
+	.extern	Dem_EvMemNvmReadRamBlockFromNvCallback0
+	.extern	Dem_EvMemNvMWriteRamBlockToNvCallback0
+	.extern	Dem_EvMemNvmReadRamBlockFromNvCallback1
+	.extern	Dem_EvMemNvMWriteRamBlockToNvCallback1
+	.extern	Dem_EvMemNvmReadRamBlockFromNvCallback2
+	.extern	Dem_EvMemNvMWriteRamBlockToNvCallback2
+	.extern	Dem_EvMemNvmReadRamBlockFromNvCallback3
+	.extern	Dem_EvMemNvMWriteRamBlockToNvCallback3
+	.extern	Dem_EvMemNvmReadRamBlockFromNvCallback4
+	.extern	Dem_EvMemNvMWriteRamBlockToNvCallback4
+	.extern	Dem_GenericNVDataReadRamBlockFromNvCallback
+	.extern	Dem_GenericNVDataWriteRamBlockToNvCallback
+	.extern	Rte_CPim_ASW_NVM_ASW_NVM_BlockNative_1024_1
+	.extern	Rte_ROM_ASW_NVM_ASW_NVM_BlockNative_1024_1
+	.extern	Rte_CPim_ASW_NVM_ASW_NVM_BlockNative_1024_2
+	.extern	Rte_ROM_ASW_NVM_ASW_NVM_BlockNative_1024_2
+	.extern	__INDIRECT__
+	.calls	'NvM_Prv_InitRamBlockProperties','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L5:
+	.word	15419
+	.half	3
+	.word	.L6
+	.byte	4
+.L4:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\NvM_Cfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L7
+	.byte	2,2,40,9,4,3
+	.byte	'NVM_BLOCK_NATIVE',0,0,3
+	.byte	'NVM_BLOCK_REDUNDANT',0,1,3
+	.byte	'NVM_BLOCK_DATASET',0,2,0,4
+	.byte	'unsigned short int',0,2,7,5
+	.byte	'NvM_Prv_GetBlockType',0,3,1,212,3,38
+	.word	129
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,1,212,3,75
+	.word	196
+	.byte	7,0,4
+	.byte	'unsigned char',0,1,8,5
+	.byte	'NvM_Prv_GetNrNonVolatileBlocks',0,3,1,232,3,20
+	.word	273
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,1,232,3,67
+	.word	196
+	.byte	7,0,8
+	.byte	'void',0,9
+	.word	355
+	.byte	10
+	.word	361
+	.byte	5
+	.byte	'NvM_Prv_GetRomBlockAddress',0,3,1,173,4,26
+	.word	366
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,1,173,4,69
+	.word	196
+	.byte	7,0,5
+	.byte	'NvM_Prv_Block_IsInRom',0,3,3,142,1,22
+	.word	273
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,3,142,1,60
+	.word	196
+	.byte	6
+	.byte	'idxDataset_u8',0,3,142,1,78
+	.word	273
+	.byte	11,7,7,0,0,5
+	.byte	'NvM_Prv_Block_IsWriteProtected',0,3,3,148,1,22
+	.word	273
+	.byte	1,1,6
+	.byte	'idBlock_uo',0,3,148,1,69
+	.word	196
+	.byte	7,0,12
+	.word	218
+	.byte	13
+	.word	251
+	.byte	7,0,12
+	.word	290
+	.byte	13
+	.word	333
+	.byte	7,0,12
+	.word	371
+	.byte	13
+	.word	410
+	.byte	7,0,12
+	.word	432
+	.byte	13
+	.word	466
+	.byte	13
+	.word	486
+	.byte	11,14
+	.word	218
+	.byte	13
+	.word	251
+	.byte	15
+	.word	271
+	.byte	0,7,14
+	.word	290
+	.byte	13
+	.word	333
+	.byte	15
+	.word	353
+	.byte	0,7,0,0,12
+	.word	514
+	.byte	13
+	.word	557
+	.byte	7,0,16
+	.byte	'EcuM_Rb_NvMSingleBlockCallbackFunction',0,4,42,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'ServiceId',0,4,42,68
+	.word	273
+	.byte	6
+	.byte	'JobResult',0,4,42,101
+	.word	273
+	.byte	0,10
+	.word	355
+	.byte	16
+	.byte	'Dem_EventStatusByteReadRamBlockFromNvCallback',0,4,62,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,62,75
+	.word	767
+	.byte	0,16
+	.byte	'Dem_EventStatusByteWriteRamBlockToNvCallback',0,4,67,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,67,74
+	.word	767
+	.byte	0,16
+	.byte	'Dem_EvMemNvmReadRamBlockFromNvCallback0',0,4,72,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,72,69
+	.word	767
+	.byte	0,16
+	.byte	'Dem_EvMemNvMWriteRamBlockToNvCallback0',0,4,77,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,77,68
+	.word	767
+	.byte	0,16
+	.byte	'Dem_EvMemNvmReadRamBlockFromNvCallback1',0,4,82,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,82,69
+	.word	767
+	.byte	0,16
+	.byte	'Dem_EvMemNvMWriteRamBlockToNvCallback1',0,4,87,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,87,68
+	.word	767
+	.byte	0,16
+	.byte	'Dem_EvMemNvmReadRamBlockFromNvCallback2',0,4,92,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,92,69
+	.word	767
+	.byte	0,16
+	.byte	'Dem_EvMemNvMWriteRamBlockToNvCallback2',0,4,97,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,97,68
+	.word	767
+	.byte	0,16
+	.byte	'Dem_EvMemNvmReadRamBlockFromNvCallback3',0,4,102,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,102,69
+	.word	767
+	.byte	0,16
+	.byte	'Dem_EvMemNvMWriteRamBlockToNvCallback3',0,4,107,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,107,68
+	.word	767
+	.byte	0,16
+	.byte	'Dem_EvMemNvmReadRamBlockFromNvCallback4',0,4,112,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,112,69
+	.word	767
+	.byte	0,16
+	.byte	'Dem_EvMemNvMWriteRamBlockToNvCallback4',0,4,117,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,117,68
+	.word	767
+	.byte	0,16
+	.byte	'Dem_GenericNVDataReadRamBlockFromNvCallback',0,4,122,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,122,73
+	.word	767
+	.byte	0,16
+	.byte	'Dem_GenericNVDataWriteRamBlockToNvCallback',0,4,127,23
+	.word	273
+	.byte	1,1,1,1,6
+	.byte	'NvMBuffer',0,4,127,72
+	.word	767
+	.byte	0,17
+	.byte	'__INDIRECT__',0,4,1,1,1,1,1,18,1,10
+	.word	1799
+	.byte	19
+	.byte	'__codeptr',0,4,1,1
+	.word	1801
+	.byte	4
+	.byte	'char',0,1,6,19
+	.byte	'sint8',0,5,76,25
+	.word	1824
+	.byte	19
+	.byte	'uint8',0,5,81,25
+	.word	273
+	.byte	19
+	.byte	'uint16',0,5,91,25
+	.word	196
+	.byte	4
+	.byte	'unsigned int',0,4,7,19
+	.byte	'uint32',0,5,106,24
+	.word	1875
+	.byte	4
+	.byte	'unsigned long long int',0,8,7,19
+	.byte	'uint64',0,5,111,30
+	.word	1906
+	.byte	19
+	.byte	'boolean',0,5,127,25
+	.word	273
+	.byte	19
+	.byte	'StatusType',0,6,191,1,27
+	.word	273
+	.byte	19
+	.byte	'Std_ReturnType',0,6,199,1,15
+	.word	273
+	.byte	20,6,206,1,9,8,21
+	.byte	'vendorID',0
+	.word	196
+	.byte	2,2,35,0,21
+	.byte	'moduleID',0
+	.word	196
+	.byte	2,2,35,2,21
+	.byte	'sw_major_version',0
+	.word	273
+	.byte	1,2,35,4,21
+	.byte	'sw_minor_version',0
+	.word	273
+	.byte	1,2,35,5,21
+	.byte	'sw_patch_version',0
+	.word	273
+	.byte	1,2,35,6,0,19
+	.byte	'Std_VersionInfoType',0,6,213,1,3
+	.word	2007
+	.byte	19
+	.byte	'PduIdType',0,7,22,19
+	.word	196
+	.byte	19
+	.byte	'PduLengthType',0,7,26,19
+	.word	196
+	.byte	2,8,113,9,4,3
+	.byte	'TP_DATACONF',0,0,3
+	.byte	'TP_DATARETRY',0,1,3
+	.byte	'TP_CONFPENDING',0,2,0,19
+	.byte	'TpDataStateType',0,8,118,3
+	.word	2197
+	.byte	19
+	.byte	'Can_IdType',0,9,32,16
+	.word	1875
+	.byte	19
+	.byte	'Can_HwHandleType',0,9,43,16
+	.word	196
+	.byte	20,10,93,9,8,21
+	.byte	'Class',0
+	.word	273
+	.byte	1,2,35,0,21
+	.byte	'TIN',0
+	.word	273
+	.byte	1,2,35,1,21
+	.byte	'ReturnAddress',0
+	.word	1875
+	.byte	4,2,35,4,0,19
+	.byte	'OsTrapInfoType',0,10,97,3
+	.word	2317
+	.byte	22,68
+	.word	1875
+	.byte	23,16,0,20,10,154,1,9,68,21
+	.byte	'store',0
+	.word	2397
+	.byte	68,2,35,0,0,22,68
+	.word	2406
+	.byte	23,0,0,19
+	.byte	'Os_JumpBufType',0,10,156,1,3
+	.word	2428
+	.byte	19
+	.byte	'Os_StackTraceType',0,10,174,1,18
+	.word	1875
+	.byte	20,10,175,1,9,8,21
+	.byte	'sp',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	'ctx',0
+	.word	1875
+	.byte	4,2,35,4,0,19
+	.byte	'Os_StackValueType',0,10,175,1,63
+	.word	2488
+	.byte	19
+	.byte	'Os_StackSizeType',0,10,176,1,27
+	.word	2488
+	.byte	24,1,1,10
+	.word	2573
+	.byte	19
+	.byte	'Os_VoidVoidFunctionType',0,10,179,1,16
+	.word	2576
+	.byte	19
+	.byte	'ApplicationType',0,10,193,1,23
+	.word	273
+	.byte	25
+	.byte	'Os_ApplicationConfigurationType_s',0,10,198,1,16,2,21
+	.byte	'app_id',0
+	.word	273
+	.byte	1,2,35,0,21
+	.byte	'access',0
+	.word	273
+	.byte	1,2,35,1,0,19
+	.byte	'Os_ApplicationConfigurationType',0,10,201,1,3
+	.word	2639
+	.byte	19
+	.byte	'Os_CoreStateType',0,10,203,1,16
+	.word	1875
+	.byte	19
+	.byte	'AreaIdType',0,10,204,1,16
+	.word	196
+	.byte	19
+	.byte	'Os_PeripheralAddressType',0,10,212,1,22
+	.word	1875
+	.byte	19
+	.byte	'TickType',0,10,221,1,22
+	.word	1875
+	.byte	19
+	.byte	'Os_StopwatchTickType',0,10,225,1,22
+	.word	1875
+	.byte	10
+	.word	1875
+	.byte	19
+	.byte	'Os_Lockable',0,10,234,1,18
+	.word	2881
+	.byte	19
+	.byte	'CoreIdType',0,10,236,1,16
+	.word	196
+	.byte	19
+	.byte	'SpinlockIdType',0,10,237,1,16
+	.word	196
+	.byte	2,10,239,1,9,4,3
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,3
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,19
+	.byte	'TryToGetSpinlockType',0,10,239,1,74
+	.word	2951
+	.byte	2,10,174,2,9,4,3
+	.byte	'APPLICATION_ACCESSIBLE',0,0,3
+	.byte	'APPLICATION_RESTARTING',0,1,3
+	.byte	'APPLICATION_TERMINATED',0,2,0,19
+	.byte	'ApplicationStateType',0,10,174,2,92
+	.word	3044
+	.byte	26,1,1,27
+	.word	273
+	.byte	27
+	.word	767
+	.byte	0,10
+	.word	3156
+	.byte	19
+	.byte	'Os_FunctionEntryType',0,10,183,2,16
+	.word	3170
+	.byte	25
+	.byte	'Os_MeterInfoType_s',0,10,193,2,16,48,21
+	.byte	'elapsed',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	'previous',0
+	.word	1875
+	.byte	4,2,35,4,21
+	.byte	'max',0
+	.word	1875
+	.byte	4,2,35,8,21
+	.byte	'cumulative',0
+	.word	1875
+	.byte	4,2,35,12,21
+	.byte	'stackbase',0
+	.word	2488
+	.byte	8,2,35,16,21
+	.byte	'stackusage',0
+	.word	2488
+	.byte	8,2,35,24,21
+	.byte	'stackmax',0
+	.word	2488
+	.byte	8,2,35,32,21
+	.byte	'stackbudget',0
+	.word	2488
+	.byte	8,2,35,40,0,19
+	.byte	'Os_MeterInfoType',0,10,202,2,3
+	.word	3205
+	.byte	10
+	.word	3205
+	.byte	19
+	.byte	'Os_MeterInfoRefType',0,10,203,2,50
+	.word	3403
+	.byte	19
+	.byte	'EventMaskType',0,10,206,2,15
+	.word	273
+	.byte	19
+	.byte	'Os_imaskType',0,10,211,2,16
+	.word	1875
+	.byte	25
+	.byte	'Os_ISRDynType_s',0,10,213,2,16,48,21
+	.byte	'meter',0
+	.word	3205
+	.byte	48,2,35,0,0,19
+	.byte	'Os_ISRDynType',0,10,215,2,3
+	.word	3482
+	.byte	10
+	.word	3482
+	.byte	9
+	.word	3543
+	.byte	25
+	.byte	'Os_ISRType_s',0,10,216,2,16,24,21
+	.byte	'entry_function',0
+	.word	2581
+	.byte	4,2,35,0,21
+	.byte	'dynamic',0
+	.word	3548
+	.byte	4,2,35,4,21
+	.byte	'imask',0
+	.word	1875
+	.byte	4,2,35,8,21
+	.byte	'stackbudget',0
+	.word	2488
+	.byte	8,2,35,12,21
+	.byte	'access',0
+	.word	273
+	.byte	1,2,35,20,21
+	.byte	'application',0
+	.word	273
+	.byte	1,2,35,21,0,19
+	.byte	'Os_ISRType',0,10,223,2,3
+	.word	3553
+	.byte	10
+	.word	2573
+	.byte	9
+	.word	3553
+	.byte	10
+	.word	3712
+	.byte	19
+	.byte	'ISRType',0,10,224,2,46
+	.word	3717
+	.byte	19
+	.byte	'Os_bitmask',0,10,239,2,22
+	.word	1875
+	.byte	19
+	.byte	'Os_pset0Type',0,10,240,2,20
+	.word	1875
+	.byte	19
+	.byte	'Os_pset1Type',0,10,241,2,20
+	.word	1875
+	.byte	19
+	.byte	'Os_pset2Type',0,10,242,2,20
+	.word	1875
+	.byte	28,10,243,2,9,4,21
+	.byte	'p0',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	'p1',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	'p2',0
+	.word	1875
+	.byte	4,2,35,0,0,19
+	.byte	'Os_psetType',0,10,247,2,3
+	.word	3825
+	.byte	28,10,249,2,9,4,21
+	.byte	't0',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	't1',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	't2',0
+	.word	1875
+	.byte	4,2,35,0,0,19
+	.byte	'Os_tpmaskType',0,10,253,2,3
+	.word	3889
+	.byte	19
+	.byte	'Os_ActivationCountType',0,10,254,2,23
+	.word	273
+	.byte	25
+	.byte	'Os_TaskDynType_s',0,10,128,3,16,120,21
+	.byte	'terminate_jump_buf',0
+	.word	2437
+	.byte	68,2,35,0,21
+	.byte	'meter',0
+	.word	3205
+	.byte	48,2,35,68,21
+	.byte	'activation_count',0
+	.word	273
+	.byte	1,2,35,116,0,19
+	.byte	'Os_TaskDynType',0,10,132,3,3
+	.word	3987
+	.byte	22,68
+	.word	2406
+	.byte	23,0,0,10
+	.word	3987
+	.byte	9
+	.word	4113
+	.byte	25
+	.byte	'Os_TaskType_s',0,10,134,3,16,40,21
+	.byte	'dynamic',0
+	.word	4118
+	.byte	4,2,35,0,21
+	.byte	'entry_function',0
+	.word	2581
+	.byte	4,2,35,4,21
+	.byte	'pset',0
+	.word	3825
+	.byte	4,2,35,8,21
+	.byte	'base_tpmask',0
+	.word	3889
+	.byte	4,2,35,12,21
+	.byte	'tpmask',0
+	.word	3889
+	.byte	4,2,35,16,21
+	.byte	'core_id',0
+	.word	196
+	.byte	2,2,35,20,21
+	.byte	'index',0
+	.word	1875
+	.byte	4,2,35,24,21
+	.byte	'stackbudget',0
+	.word	2488
+	.byte	8,2,35,28,21
+	.byte	'activation_count',0
+	.word	273
+	.byte	1,2,35,36,21
+	.byte	'access',0
+	.word	273
+	.byte	1,2,35,37,21
+	.byte	'application',0
+	.word	273
+	.byte	1,2,35,38,0,19
+	.byte	'Os_TaskType',0,10,146,3,3
+	.word	4123
+	.byte	9
+	.word	4123
+	.byte	10
+	.word	4373
+	.byte	19
+	.byte	'TaskType',0,10,147,3,47
+	.word	4378
+	.byte	29
+	.byte	'Os_TaskStateType',0,10,155,3,6,4,3
+	.byte	'SUSPENDED',0,0,3
+	.byte	'READY',0,1,3
+	.byte	'WAITING',0,2,3
+	.byte	'RUNNING',0,3,0,19
+	.byte	'TaskStateType',0,10,156,3,31
+	.word	4401
+	.byte	28,10,167,3,3,4,21
+	.byte	'tpmask',0
+	.word	3889
+	.byte	4,2,35,0,0,25
+	.byte	'Os_ResourceDynType_s',0,10,166,3,16,4,21
+	.byte	'saved_priority',0
+	.word	4488
+	.byte	4,2,35,0,0,19
+	.byte	'Os_ResourceDynType',0,10,170,3,3
+	.word	4511
+	.byte	10
+	.word	4511
+	.byte	9
+	.word	4591
+	.byte	25
+	.byte	'Os_ResourceType_s',0,10,171,3,16,12,21
+	.byte	'dynamic',0
+	.word	4596
+	.byte	4,2,35,0,21
+	.byte	'tpmask',0
+	.word	3889
+	.byte	4,2,35,4,21
+	.byte	'access',0
+	.word	273
+	.byte	1,2,35,8,0,19
+	.byte	'Os_ResourceType',0,10,175,3,3
+	.word	4601
+	.byte	20,10,181,3,9,12,21
+	.byte	'maxallowedvalue',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	'ticksperbase',0
+	.word	1875
+	.byte	4,2,35,4,21
+	.byte	'mincycle',0
+	.word	1875
+	.byte	4,2,35,8,0,19
+	.byte	'AlarmBaseType',0,10,185,3,3
+	.word	4700
+	.byte	20,10,206,3,9,8,21
+	.byte	'Running',0
+	.word	273
+	.byte	1,2,35,0,21
+	.byte	'Pending',0
+	.word	273
+	.byte	1,2,35,1,21
+	.byte	'Delay',0
+	.word	1875
+	.byte	4,2,35,4,0,19
+	.byte	'Os_CounterStatusType',0,10,210,3,3
+	.word	4795
+	.byte	30
+	.word	273
+	.byte	1,1,10
+	.word	4881
+	.byte	19
+	.byte	'Os_CounterIncrAdvType',0,10,217,3,22
+	.word	4888
+	.byte	25
+	.byte	's_swd',0,10,222,3,12,4,21
+	.byte	'count',0
+	.word	1875
+	.byte	4,2,35,0,0,28,10,221,3,3,4,21
+	.byte	'sw',0
+	.word	4924
+	.byte	4,2,35,0,0,25
+	.byte	'Os_CounterDynType_s',0,10,220,3,16,4,21
+	.byte	'type_dependent',0
+	.word	4952
+	.byte	4,2,35,0,0,19
+	.byte	'Os_CounterDynType',0,10,226,3,3
+	.word	4971
+	.byte	10
+	.word	4971
+	.byte	9
+	.word	5049
+	.byte	25
+	.byte	'Os_CounterType_s',0,10,227,3,16,28,21
+	.byte	'dynamic',0
+	.word	5054
+	.byte	4,2,35,0,21
+	.byte	'advincr',0
+	.word	4893
+	.byte	4,2,35,4,21
+	.byte	'base',0
+	.word	4700
+	.byte	12,2,35,8,21
+	.byte	'core',0
+	.word	767
+	.byte	4,2,35,20,21
+	.byte	'access',0
+	.word	273
+	.byte	1,2,35,24,21
+	.byte	'application',0
+	.word	273
+	.byte	1,2,35,25,0,19
+	.byte	'Os_CounterType',0,10,234,3,3
+	.word	5059
+	.byte	10
+	.word	4881
+	.byte	9
+	.word	5059
+	.byte	10
+	.word	5211
+	.byte	19
+	.byte	'CounterType',0,10,235,3,52
+	.word	5216
+	.byte	29
+	.byte	'Os_ScheduleTableStatusType',0,10,240,3,6,4,3
+	.byte	'SCHEDULETABLE_STOPPED',0,0,3
+	.byte	'SCHEDULETABLE_NEXT',0,1,3
+	.byte	'SCHEDULETABLE_WAITING',0,2,3
+	.byte	'SCHEDULETABLE_RUNNING',0,3,3
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,19
+	.byte	'ScheduleTableStatusType',0,10,241,3,41
+	.word	5242
+	.byte	9
+	.word	.L29-.L5
+	.byte	10
+	.word	5442
+	.byte	19
+	.byte	'ScheduleTableType',0,10,128,4,58
+	.word	5447
+	.byte	25
+	.byte	'Os_ScheduleTableDynType_s',0,10,130,4,16,16,21
+	.byte	'match',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	'next',0
+	.word	5452
+	.byte	4,2,35,4,21
+	.byte	'state',0
+	.word	5242
+	.byte	4,2,35,8,21
+	.byte	'config',0
+	.word	196
+	.byte	2,2,35,12,0,10
+	.word	5479
+	.byte	9
+	.word	5572
+.L29:
+	.byte	25
+	.byte	'Os_ScheduleTableType_s',0,10,247,3,16,16,21
+	.byte	'dynamic',0
+	.word	5577
+	.byte	4,2,35,0,21
+	.byte	'counter',0
+	.word	5221
+	.byte	4,2,35,4,21
+	.byte	'repeat',0
+	.word	273
+	.byte	1,2,35,8,21
+	.byte	'config',0
+	.word	196
+	.byte	2,2,35,10,21
+	.byte	'initial',0
+	.word	273
+	.byte	1,2,35,12,21
+	.byte	'access',0
+	.word	273
+	.byte	1,2,35,13,21
+	.byte	'application',0
+	.word	273
+	.byte	1,2,35,14,0,19
+	.byte	'Os_ScheduleTableType',0,10,255,3,3
+	.word	5582
+	.byte	9
+	.word	5582
+	.byte	10
+	.word	5762
+	.byte	9
+	.word	5059
+	.byte	10
+	.word	5772
+	.byte	31
+	.word	2886
+	.byte	31
+	.word	3825
+	.byte	31
+	.word	3722
+	.byte	31
+	.word	4383
+	.byte	31
+	.word	3889
+	.byte	31
+	.word	273
+	.byte	31
+	.word	4383
+	.byte	25
+	.byte	'Os_ControlledCoreType_s',0,10,251,6,16,112,21
+	.byte	'TrapInfo',0
+	.word	2317
+	.byte	8,2,35,0,21
+	.byte	'lock_taskaccess',0
+	.word	5782
+	.byte	4,2,35,8,21
+	.byte	'ReadyTasks',0
+	.word	5787
+	.byte	4,2,35,12,21
+	.byte	'RunningISR',0
+	.word	5792
+	.byte	4,2,35,16,21
+	.byte	'RunningTask',0
+	.word	5797
+	.byte	4,2,35,20,21
+	.byte	'RunningTPMask',0
+	.word	5802
+	.byte	4,2,35,24,21
+	.byte	'CurrentMeteredObject',0
+	.word	3408
+	.byte	4,2,35,28,21
+	.byte	'IdleMeter',0
+	.word	3205
+	.byte	48,2,35,32,21
+	.byte	'AppAccess',0
+	.word	273
+	.byte	1,2,35,80,21
+	.byte	'AppOverride',0
+	.word	5807
+	.byte	1,2,35,81,21
+	.byte	'GetStackValueAdjust',0
+	.word	2488
+	.byte	8,2,35,84,21
+	.byte	'InErrorHook',0
+	.word	273
+	.byte	1,2,35,92,21
+	.byte	'ChainTaskRef',0
+	.word	5812
+	.byte	4,2,35,96,21
+	.byte	'GetStackUsageAdjust',0
+	.word	2488
+	.byte	8,2,35,100,21
+	.byte	'InProtectionHook',0
+	.word	273
+	.byte	1,2,35,108,21
+	.byte	'CoreIsActive',0
+	.word	273
+	.byte	1,2,35,109,21
+	.byte	'InShutdownHook',0
+	.word	273
+	.byte	1,2,35,110,0,19
+	.byte	'Os_ControlledCoreType',0,10,141,7,3
+	.word	5817
+	.byte	10
+	.word	1875
+	.byte	9
+	.word	3553
+	.byte	10
+	.word	6273
+	.byte	9
+	.word	4123
+	.byte	10
+	.word	6283
+	.byte	10
+	.word	3205
+	.byte	25
+	.byte	'Os_AnyCoreType_s',0,10,151,7,16,96,21
+	.byte	'DisableAllImask',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	'SuspendAllImask',0
+	.word	1875
+	.byte	4,2,35,4,21
+	.byte	'SuspendOSImask',0
+	.word	1875
+	.byte	4,2,35,8,21
+	.byte	'DisableAllCount',0
+	.word	1875
+	.byte	4,2,35,12,21
+	.byte	'SuspendAllCount',0
+	.word	1875
+	.byte	4,2,35,16,21
+	.byte	'SuspendOSCount',0
+	.word	1875
+	.byte	4,2,35,20,21
+	.byte	'RestartJumpBuf',0
+	.word	2437
+	.byte	68,2,35,24,21
+	.byte	'Restartable',0
+	.word	273
+	.byte	1,2,35,92,0,19
+	.byte	'Os_AnyCoreType',0,10,160,7,3
+	.word	6298
+	.byte	19
+	.byte	'unsigned_int',0,11,116,22
+	.word	1875
+	.byte	19
+	.byte	'Can_TxObjPriorityClassType',0,12,219,3,16
+	.word	1875
+	.byte	25
+	.byte	'Can_TxHwObjectConfigType',0,12,231,3,16,8,21
+	.byte	'MsgObjId',0
+	.word	273
+	.byte	1,2,35,0,21
+	.byte	'HwControllerId',0
+	.word	273
+	.byte	1,2,35,1,21
+	.byte	'TxObjPriorityClass',0
+	.word	1875
+	.byte	4,2,35,4,0,19
+	.byte	'Can_TxHwObjectConfigType',0,12,252,3,3
+	.word	6596
+	.byte	25
+	.byte	'Can_RxHwObjectConfigType',0,12,129,4,16,12,21
+	.byte	'MaskRef',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	'MsgId',0
+	.word	1875
+	.byte	4,2,35,4,21
+	.byte	'MsgObjId',0
+	.word	273
+	.byte	1,2,35,8,21
+	.byte	'HwControllerId',0
+	.word	273
+	.byte	1,2,35,9,0,19
+	.byte	'Can_RxHwObjectConfigType',0,12,147,4,3
+	.word	6732
+	.byte	22,4
+	.word	273
+	.byte	23,3,0,25
+	.byte	'Can_ControllerMOMapConfigType',0,12,181,4,16,4,21
+	.byte	'ControllerMOMap',0
+	.word	6872
+	.byte	4,2,35,0,0,19
+	.byte	'Can_ControllerMOMapConfigType',0,12,184,4,3
+	.word	6881
+	.byte	25
+	.byte	'Can_NPCRValueType',0,12,188,4,16,2,21
+	.byte	'Can_NPCRValue',0
+	.word	196
+	.byte	2,2,35,0,0,19
+	.byte	'Can_NPCRValueType',0,12,191,4,3
+	.word	6982
+	.byte	25
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,12,194,4,16,8,21
+	.byte	'CanControllerBaudrate',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	'CanControllerBaudrateCfg',0
+	.word	196
+	.byte	2,2,35,4,0,19
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,12,198,4,3
+	.word	7057
+	.byte	9
+	.word	7057
+	.byte	10
+	.word	7222
+	.byte	25
+	.byte	'Can_BaudrateConfigPtrType',0,12,201,4,16,4,21
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	7227
+	.byte	4,2,35,0,0,19
+	.byte	'Can_BaudrateConfigPtrType',0,12,204,4,3
+	.word	7232
+	.byte	25
+	.byte	'Can_EventHandlingType',0,12,226,4,16,4,21
+	.byte	'CanEventType',0
+	.word	6872
+	.byte	4,2,35,0,0,19
+	.byte	'Can_EventHandlingType',0,12,229,4,3
+	.word	7332
+	.byte	19
+	.byte	'Rte_TransformerErrorCode',0,13,130,1,15
+	.word	273
+	.byte	19
+	.byte	'Rte_TransformerClass',0,13,131,1,15
+	.word	273
+	.byte	20,13,168,1,9,12,21
+	.byte	'in',0
+	.word	767
+	.byte	4,2,35,0,21
+	.byte	'out',0
+	.word	767
+	.byte	4,2,35,4,21
+	.byte	'used',0
+	.word	196
+	.byte	2,2,35,8,21
+	.byte	'lost_data',0
+	.word	273
+	.byte	1,2,35,10,0,19
+	.byte	'Rte_QDynType',0,13,173,1,3
+	.word	7478
+	.byte	2,13,175,1,9,4,3
+	.byte	'RTE_DRA',0,0,3
+	.byte	'RTE_WOWP',0,1,3
+	.byte	'RTE_TASK',0,2,3
+	.byte	'RTE_ARE',0,3,3
+	.byte	'RTE_EV',0,4,3
+	.byte	'RTE_MSI',0,5,0,19
+	.byte	'Rte_NotificationType',0,13,182,1,3
+	.word	7565
+	.byte	10
+	.word	7478
+	.byte	25
+	.byte	'Rte_QCmnType',0,13,184,1,16,24,21
+	.byte	'dynamic',0
+	.word	7663
+	.byte	4,2,35,0,21
+	.byte	'copy',0
+	.word	273
+	.byte	1,2,35,4,21
+	.byte	'queue_size',0
+	.word	196
+	.byte	2,2,35,6,21
+	.byte	'element_size',0
+	.word	196
+	.byte	2,2,35,8,21
+	.byte	'buffer_start',0
+	.word	767
+	.byte	4,2,35,12,21
+	.byte	'buffer_end',0
+	.word	767
+	.byte	4,2,35,16,21
+	.byte	'notification_type',0
+	.word	7565
+	.byte	4,2,35,20,0,19
+	.byte	'Rte_QCmnType',0,13,192,1,3
+	.word	7668
+	.byte	19
+	.byte	'Rte_AlarmRefType',0,13,224,1,32
+	.word	1875
+	.byte	19
+	.byte	'Rte_AlarmIndexType',0,13,226,1,32
+	.word	196
+	.byte	22,128,8
+	.word	273
+	.byte	23,255,7,0,19
+	.byte	'Impl_NVM_DstPtrType_1024',0,14,50,15
+	.word	7906
+	.byte	19
+	.byte	'CanIf_u32_impl',0,14,69,16
+	.word	1875
+	.byte	19
+	.byte	'CanIf_u16_impl',0,14,71,16
+	.word	196
+	.byte	19
+	.byte	'CanIf_u8_impl',0,14,73,15
+	.word	273
+	.byte	19
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,14,88,15
+	.word	273
+	.byte	19
+	.byte	'CanIf_PduModeType_Enum_impl',0,14,90,15
+	.word	273
+	.byte	20,14,92,9,2,21
+	.byte	'DeviceMode',0
+	.word	273
+	.byte	1,2,35,0,21
+	.byte	'ChannelMode',0
+	.word	273
+	.byte	1,2,35,1,0,19
+	.byte	'CanIf_ControllerStateType_struct_impl',0,14,95,3
+	.word	8097
+	.byte	19
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,14,100,15
+	.word	273
+	.byte	19
+	.byte	'CanSM_boolean_Impl',0,14,120,15
+	.word	273
+	.byte	19
+	.byte	'CanSM_u8_Impl',0,14,123,15
+	.word	273
+	.byte	19
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,14,128,1,15
+	.word	273
+	.byte	19
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,14,132,1,15
+	.word	273
+	.byte	19
+	.byte	'CanSM_u16_Impl',0,14,136,1,16
+	.word	196
+	.byte	19
+	.byte	'CanSM_TimerStateType_Enum_impl',0,14,138,1,15
+	.word	273
+	.byte	20,14,140,1,9,4,21
+	.byte	'cntTick_u16',0
+	.word	196
+	.byte	2,2,35,0,21
+	.byte	'stTimer',0
+	.word	273
+	.byte	1,2,35,2,0,19
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,14,143,1,3
+	.word	8438
+	.byte	19
+	.byte	'Com_impl_u16',0,14,154,1,16
+	.word	196
+	.byte	19
+	.byte	'Com_impl_u8',0,14,157,1,15
+	.word	273
+	.byte	19
+	.byte	'ComM_uint32_Impl',0,14,173,1,16
+	.word	1875
+	.byte	19
+	.byte	'ComM_uint16_Impl',0,14,175,1,16
+	.word	196
+	.byte	19
+	.byte	'ComM_uint8_Impl',0,14,177,1,15
+	.word	273
+	.byte	19
+	.byte	'ComM_bool_Impl',0,14,179,1,15
+	.word	273
+	.byte	20,14,181,1,9,24,21
+	.byte	'ChannelState_e',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	'LightTimeoutCtr_u32',0
+	.word	1875
+	.byte	4,2,35,4,21
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	196
+	.byte	2,2,35,8,21
+	.byte	'ChannelMode_u8',0
+	.word	273
+	.byte	1,2,35,10,21
+	.byte	'BusSmMode_u8',0
+	.word	273
+	.byte	1,2,35,11,21
+	.byte	'UserRequestCtr_u8',0
+	.word	273
+	.byte	1,2,35,12,21
+	.byte	'PassiveRequestState_u8',0
+	.word	273
+	.byte	1,2,35,13,21
+	.byte	'PncRequestCtr_u8',0
+	.word	273
+	.byte	1,2,35,14,21
+	.byte	'InhibitionReqStatus_u8',0
+	.word	273
+	.byte	1,2,35,15,21
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	273
+	.byte	1,2,35,16,21
+	.byte	'DiagnosticRequestState_b',0
+	.word	273
+	.byte	1,2,35,17,21
+	.byte	'CommunicationAllowed_b',0
+	.word	273
+	.byte	1,2,35,18,21
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	273
+	.byte	1,2,35,19,21
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	273
+	.byte	1,2,35,20,21
+	.byte	'NmNetworkModeStatus_b',0
+	.word	273
+	.byte	1,2,35,21,0,19
+	.byte	'ComM_ChannelStruct_Impl',0,14,197,1,3
+	.word	8670
+	.byte	20,14,206,1,9,10,21
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	196
+	.byte	2,2,35,0,21
+	.byte	'LimitToNoComCtr_u16',0
+	.word	196
+	.byte	2,2,35,2,21
+	.byte	'RequestedUserMode_t',0
+	.word	273
+	.byte	1,2,35,4,21
+	.byte	'IndicatedUserMode_t',0
+	.word	273
+	.byte	1,2,35,5,21
+	.byte	'numChannelsInFullCom_u8',0
+	.word	273
+	.byte	1,2,35,6,21
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	273
+	.byte	1,2,35,7,21
+	.byte	'numChannelsInNoCom_u8',0
+	.word	273
+	.byte	1,2,35,8,0,19
+	.byte	'ComM_UserStruct_Impl',0,14,214,1,3
+	.word	9174
+	.byte	19
+	.byte	'Dcm_IOOperationResponseType',0,14,252,1,15
+	.word	273
+	.byte	19
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	14,138,2,15
+	.word	273
+	.byte	19
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,14,146,2,15
+	.word	273
+	.byte	19
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,14,150,2,15
+	.word	273
+	.byte	19
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,14,154,2,15
+	.word	273
+	.byte	19
+	.byte	'NvM_BlockIdType',0,14,215,2,16
+	.word	196
+	.byte	19
+	.byte	'NvM_RequestResultType',0,14,225,2,15
+	.word	273
+	.byte	19
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,14,243,3,34
+	.word	7917
+	.byte	22,128,8
+	.word	273
+	.byte	23,255,7,0,19
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,14,246,3,34
+	.word	7917
+	.byte	2,15,31,9,4,3
+	.byte	'MEMIF_JOB_OK',0,0,3
+	.byte	'MEMIF_JOB_FAILED',0,1,3
+	.byte	'MEMIF_JOB_PENDING',0,2,3
+	.byte	'MEMIF_JOB_CANCELED',0,3,3
+	.byte	'MEMIF_BLOCK_INCONSISTENT',0,4,3
+	.byte	'MEMIF_BLOCK_INVALID',0,5,0,19
+	.byte	'MemIf_JobResultType',0,15,39,2
+	.word	10048
+	.byte	2,15,41,9,4,3
+	.byte	'MEMIF_MODE_SLOW',0,0,3
+	.byte	'MEMIF_MODE_FAST',0,1,0,19
+	.byte	'MemIf_ModeType',0,15,45,2
+	.word	10206
+	.byte	19
+	.byte	'NvM_BlockManagementType',0,2,45,3
+	.word	129
+	.byte	2,2,49,9,4,3
+	.byte	'NVM_PRV_ACTIVITY_NOT_INIT',0,0,3
+	.byte	'NVM_PRV_ACTIVITY_IDLE',0,1,3
+	.byte	'NVM_PRV_ACTIVITY_ARBITRATE',0,2,3
+	.byte	'NVM_PRV_ACTIVITY_JOB_START',0,3,3
+	.byte	'NVM_PRV_ACTIVITY_POLL_RESULT',0,4,3
+	.byte	'NVM_PRV_ACTIVITY_JOB_COMPLETE',0,5,3
+	.byte	'NVM_PRV_ACTIVITY_RESULT_EVAL',0,6,0,19
+	.byte	'NvM_Prv_Activities_ten',0,2,58,3
+	.word	10303
+	.byte	2,2,104,9,4,3
+	.byte	'NvM_Prv_idJob_Idle_e',0,0,3
+	.byte	'NvM_Prv_idJob_Read_e',0,1,3
+	.byte	'NvM_Prv_idJob_Write_e',0,2,3
+	.byte	'NvM_Prv_idJob_Erase_e',0,3,3
+	.byte	'NvM_Prv_idJob_Restore_e',0,4,3
+	.byte	'NvM_Prv_idJob_Maintain_e',0,5,3
+	.byte	'NvM_Prv_idJob_Validate_e',0,6,3
+	.byte	'NvM_Prv_idJob_Invalidate_e',0,7,3
+	.byte	'NvM_Prv_idJob_ReadIdConfigForReadAll_e',0,8,3
+	.byte	'NvM_Prv_idJob_InvalidateForFirstInitAll_e',0,9,3
+	.byte	'NvM_Prv_idJob_RestoreForImplicitRecovery_e',0,10,3
+	.byte	'NvM_Prv_idJob_InvalidateForRemoveNonResistant_e',0,11,3
+	.byte	'NvM_Prv_idJob_Invalid_e',0,12,3
+	.byte	'NvM_Prv_idJob_Count_e',0,13,0,19
+	.byte	'NvM_Prv_idJob_ten',0,2,115,3
+	.word	10544
+	.byte	19
+	.byte	'NvM_Prv_ServiceBit_tuo',0,2,168,1,16
+	.word	196
+	.byte	19
+	.byte	'NvM_Prv_idService_tuo',0,2,173,1,15
+	.word	273
+	.byte	19
+	.byte	'NvM_Prv_idQueue_tuo',0,2,206,1,15
+	.word	273
+	.byte	20,2,210,1,9,12,21
+	.byte	'idService_uo',0
+	.word	273
+	.byte	1,2,35,0,21
+	.byte	'idBlock_uo',0
+	.word	196
+	.byte	2,2,35,2,21
+	.byte	'ServiceBit_uo',0
+	.word	196
+	.byte	2,2,35,4,21
+	.byte	'BlockData_pv',0
+	.word	767
+	.byte	4,2,35,8,0,19
+	.byte	'NvM_Prv_QueueEntry_tst',0,2,225,1,3
+	.word	11101
+	.byte	10
+	.word	273
+	.byte	20,2,227,1,9,20,21
+	.byte	'idJob_en',0
+	.word	10544
+	.byte	4,2,35,0,21
+	.byte	'idBlock_uo',0
+	.word	196
+	.byte	2,2,35,4,21
+	.byte	'RamBlock_pu8',0
+	.word	11227
+	.byte	4,2,35,8,21
+	.byte	'idxDataset_u8',0
+	.word	273
+	.byte	1,2,35,12,21
+	.byte	'Result_en',0
+	.word	10048
+	.byte	4,2,35,16,0,19
+	.byte	'NvM_Prv_JobData_tst',0,2,240,1,3
+	.word	11232
+	.byte	19
+	.byte	'Rte_TaskRefType',0,16,184,1,32
+	.word	4383
+	.byte	19
+	.byte	'Rte_EventRefType',0,16,185,1,32
+	.word	273
+	.byte	19
+	.byte	'Rte_EventType',0,16,186,1,32
+	.word	1875
+	.byte	19
+	.byte	'Rte_REActCounterType',0,16,252,1,15
+	.word	273
+	.byte	10
+	.word	273
+	.byte	19
+	.byte	'Rte_REActCounterRefType',0,16,253,1,58
+	.word	11474
+	.byte	20,16,255,1,9,8,21
+	.byte	'task',0
+	.word	11370
+	.byte	4,2,35,0,21
+	.byte	'acnt',0
+	.word	11479
+	.byte	4,2,35,4,0,19
+	.byte	'Rte_REContainerType',0,16,130,2,3
+	.word	11512
+	.byte	9
+	.word	4123
+	.byte	10
+	.word	11576
+	.byte	10
+	.word	273
+	.byte	9
+	.word	11512
+	.byte	10
+	.word	11591
+	.byte	19
+	.byte	'Rte_REContainerRefType',0,16,132,2,60
+	.word	11596
+	.byte	19
+	.byte	'Rte_MSICounterType',0,16,149,2,16
+	.word	196
+	.byte	10
+	.word	196
+	.byte	19
+	.byte	'Rte_MSICounterRefType',0,16,150,2,56
+	.word	11661
+	.byte	19
+	.byte	'Rte_MSIPendingFlagType',0,16,152,2,17
+	.word	273
+	.byte	10
+	.word	273
+	.byte	19
+	.byte	'Rte_MSIPendingFlagRefType',0,16,153,2,60
+	.word	11729
+	.byte	20,16,163,2,9,24,21
+	.byte	'counter',0
+	.word	11666
+	.byte	4,2,35,0,21
+	.byte	'incCounter',0
+	.word	273
+	.byte	1,2,35,4,21
+	.byte	'pending',0
+	.word	11734
+	.byte	4,2,35,8,21
+	.byte	'osTask',0
+	.word	11370
+	.byte	4,2,35,12,21
+	.byte	'acnt',0
+	.word	11479
+	.byte	4,2,35,16,21
+	.byte	'osEvent',0
+	.word	273
+	.byte	1,2,35,20,21
+	.byte	'MSIInit',0
+	.word	196
+	.byte	2,2,35,22,0,19
+	.byte	'Rte_MSITableEntry',0,16,172,2,3
+	.word	11769
+	.byte	10
+	.word	196
+	.byte	10
+	.word	273
+	.byte	19
+	.byte	'Rte_TaskArrayIndex',0,16,179,2,16
+	.word	273
+	.byte	19
+	.byte	'Rte_NrWaitingTasks',0,16,180,2,16
+	.word	273
+	.byte	20,16,182,2,9,4,21
+	.byte	'pending',0
+	.word	273
+	.byte	1,2,35,0,21
+	.byte	'count',0
+	.word	273
+	.byte	1,2,35,1,21
+	.byte	'firstWaitingTask',0
+	.word	273
+	.byte	1,2,35,2,0,19
+	.byte	'Rte_WaitableDatum',0,16,186,2,3
+	.word	11987
+	.byte	10
+	.word	11987
+	.byte	20,16,226,2,9,12,21
+	.byte	'event_id',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	'wd',0
+	.word	12079
+	.byte	4,2,35,4,21
+	.byte	'timeout',0
+	.word	1875
+	.byte	4,2,35,8,0,19
+	.byte	'Rte_WOWP_NotificationType',0,16,230,2,3
+	.word	12084
+	.byte	9
+	.word	12084
+	.byte	10
+	.word	12173
+	.byte	19
+	.byte	'Rte_WOWP_NotificationRefType',0,16,232,2,66
+	.word	12178
+	.byte	19
+	.byte	'Rte_ARE_NotificationType',0,16,234,2,29
+	.word	11512
+	.byte	25
+	.byte	'Rte_QTaskType',0,16,243,2,16,28,21
+	.byte	'cmn',0
+	.word	7668
+	.byte	24,2,35,0,21
+	.byte	'task',0
+	.word	11370
+	.byte	4,2,35,24,0,19
+	.byte	'Rte_QTaskType',0,16,246,2,3
+	.word	12255
+	.byte	25
+	.byte	'Rte_QREType',0,16,250,2,16,28,21
+	.byte	'cmn',0
+	.word	7668
+	.byte	24,2,35,0,21
+	.byte	're',0
+	.word	11601
+	.byte	4,2,35,24,0,19
+	.byte	'Rte_QREType',0,16,253,2,3
+	.word	12326
+	.byte	9
+	.word	11512
+	.byte	10
+	.word	12391
+	.byte	25
+	.byte	'Rte_QWWPType',0,16,129,3,16,28,21
+	.byte	'cmn',0
+	.word	7668
+	.byte	24,2,35,0,21
+	.byte	'wwp',0
+	.word	12183
+	.byte	4,2,35,24,0,19
+	.byte	'Rte_QWWPType',0,16,132,3,3
+	.word	12401
+	.byte	9
+	.word	12084
+	.byte	10
+	.word	12469
+	.byte	25
+	.byte	'Rte_QEvType',0,16,136,3,16,36,21
+	.byte	'cmn',0
+	.word	7668
+	.byte	24,2,35,0,21
+	.byte	'task',0
+	.word	11370
+	.byte	4,2,35,24,21
+	.byte	'mask',0
+	.word	273
+	.byte	1,2,35,28,21
+	.byte	'acnt',0
+	.word	11479
+	.byte	4,2,35,32,0,19
+	.byte	'Rte_QEvType',0,16,141,3,3
+	.word	12479
+	.byte	25
+	.byte	'Rte_QMSIType',0,16,145,3,16,48,21
+	.byte	'cmn',0
+	.word	7668
+	.byte	24,2,35,0,21
+	.byte	'task',0
+	.word	11370
+	.byte	4,2,35,24,21
+	.byte	'mask',0
+	.word	273
+	.byte	1,2,35,28,21
+	.byte	'acnt',0
+	.word	11479
+	.byte	4,2,35,32,21
+	.byte	'msiCounter',0
+	.word	11666
+	.byte	4,2,35,36,21
+	.byte	'msiPending',0
+	.word	11734
+	.byte	4,2,35,40,21
+	.byte	'msiLimit',0
+	.word	196
+	.byte	2,2,35,44,0,19
+	.byte	'Rte_QMSIType',0,16,153,3,3
+	.word	12574
+	.byte	19
+	.byte	'Fls_LengthType',0,17,173,3,16
+	.word	1875
+	.byte	25
+	.byte	'Fls_JobStartType',0,17,175,3,16,1,32
+	.byte	'Reserved1',0,1
+	.word	273
+	.byte	1,7,2,35,0,32
+	.byte	'Write',0,1
+	.word	273
+	.byte	1,6,2,35,0,32
+	.byte	'Erase',0,1
+	.word	273
+	.byte	1,5,2,35,0,32
+	.byte	'Read',0,1
+	.word	273
+	.byte	1,4,2,35,0,32
+	.byte	'Compare',0,1
+	.word	273
+	.byte	1,3,2,35,0,32
+	.byte	'Reserved2',0,1
+	.word	273
+	.byte	3,0,2,35,0,0,19
+	.byte	'Fls_JobStartType',0,17,183,3,3
+	.word	12753
+	.byte	19
+	.byte	'Fls_17_Pmu_Job_Type',0,17,187,3,15
+	.word	273
+	.byte	9
+	.word	273
+	.byte	10
+	.word	12943
+	.byte	22,2
+	.word	273
+	.byte	23,1,0,25
+	.byte	'Fls_17_Pmu_StateType',0,17,198,3,16,48,21
+	.byte	'FlsReadAddress',0
+	.word	1875
+	.byte	4,2,35,0,21
+	.byte	'FlsWriteAddress',0
+	.word	1875
+	.byte	4,2,35,4,21
+	.byte	'FlsEraseTimeoutCycleCount',0
+	.word	1875
+	.byte	4,2,35,8,21
+	.byte	'FlsWriteTimeoutCycleCount',0
+	.word	1875
+	.byte	4,2,35,12,21
+	.byte	'FlsReadLength',0
+	.word	1875
+	.byte	4,2,35,16,21
+	.byte	'FlsWriteLength',0
+	.word	1875
+	.byte	4,2,35,20,21
+	.byte	'FlsReadBufferPtr',0
+	.word	11227
+	.byte	4,2,35,24,21
+	.byte	'FlsWriteBufferPtr',0
+	.word	12948
+	.byte	4,2,35,28,21
+	.byte	'FlsJobResult',0
+	.word	10048
+	.byte	4,2,35,32,21
+	.byte	'FlsMode',0
+	.word	10206
+	.byte	4,2,35,36,21
+	.byte	'NotifCaller',0
+	.word	273
+	.byte	1,2,35,40,21
+	.byte	'JobStarted',0
+	.word	12753
+	.byte	1,2,35,41,21
+	.byte	'FlsJobType',0
+	.word	12953
+	.byte	2,2,35,42,21
+	.byte	'FlsOper',0
+	.word	273
+	.byte	1,2,35,44,21
+	.byte	'FlsTimeoutErr',0
+	.word	273
+	.byte	1,2,35,45,21
+	.byte	'FlsTimeoutControl',0
+	.word	273
+	.byte	1,2,35,46,0,19
+	.byte	'Fls_17_Pmu_StateType',0,17,130,4,3
+	.word	12962
+	.byte	19
+	.byte	'Fls_NotifFunctionPtrType',0,17,137,4,16
+	.word	2576
+	.byte	9
+	.word	1875
+	.byte	10
+	.word	13440
+	.byte	26,1,1,27
+	.word	1875
+	.byte	27
+	.word	1875
+	.byte	27
+	.word	13445
+	.byte	27
+	.word	273
+	.byte	0,10
+	.word	13450
+	.byte	19
+	.byte	'Fls_WriteCmdPtrType',0,17,139,4,16
+	.word	13474
+	.byte	26,1,1,27
+	.word	1875
+	.byte	0,10
+	.word	13508
+	.byte	19
+	.byte	'Fls_EraseCmdPtrType',0,17,144,4,16
+	.word	13517
+	.byte	33
+	.word	273
+	.byte	1,1,27
+	.word	767
+	.byte	0,10
+	.word	13551
+	.byte	19
+	.byte	'NvM_Prv_ExplicitSync_Copy_tpfct',0,1,29,26
+	.word	13564
+	.byte	2,1,34,9,4,3
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_READ_ALL',0,1,3
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_WRITE_ALL',0,2,3
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_FIRST_INIT_ALL',0,4,3
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_INIT_AT_LAYOUT_CHANGE',0,8,3
+	.byte	'NVM_PRV_BLOCK_FLAG_WRITE_PROTECTED',0,16,3
+	.byte	'NVM_PRV_BLOCK_FLAG_WRITE_ONCE',0,32,3
+	.byte	'NVM_PRV_BLOCK_FLAG_RESISTANT_TO_CHANGED_SW',0,192,0,3
+	.byte	'NVM_PRV_BLOCK_FLAG_USE_SYNC_MECHANISM',0,128,1,3
+	.byte	'NVM_PRV_BLOCK_FLAG_USE_AUTO_VALIDATION',0,128,2,3
+	.byte	'NVM_PRV_BLOCK_FLAG_USE_VARIABLE_BLOCK_LENGTH',0,128,4,3
+	.byte	'NVM_PRV_BLOCK_FLAG_SELECT_FOR_MIGRATION',0,128,8,3
+	.byte	'NVM_PRV_BLOCK_FLAG_RAM_INIT_UNCONDITIONAL',0,128,16,0,19
+	.byte	'NvM_Prv_BlockConfiguration_ten',0,1,85,3
+	.word	13609
+	.byte	26,1,1,27
+	.word	273
+	.byte	27
+	.word	273
+	.byte	0,10
+	.word	14172
+	.byte	26,1,1,27
+	.word	273
+	.byte	0,10
+	.word	14191
+	.byte	33
+	.word	273
+	.byte	1,1,27
+	.word	196
+	.byte	27
+	.word	273
+	.byte	27
+	.word	273
+	.byte	0,10
+	.word	14205
+	.byte	20,1,91,9,12,21
+	.byte	'MultiBlockCallback_pfct',0
+	.word	14186
+	.byte	4,2,35,0,21
+	.byte	'RbMultiBlockStartCallback_pfct',0
+	.word	14200
+	.byte	4,2,35,4,21
+	.byte	'ObserverCallback_pfct',0
+	.word	14228
+	.byte	4,2,35,8,0,19
+	.byte	'NvM_Prv_Common_tst',0,1,113,3
+	.word	14233
+	.byte	9
+	.word	196
+	.byte	10
+	.word	14370
+	.byte	9
+	.word	767
+	.byte	10
+	.word	14380
+	.byte	33
+	.word	273
+	.byte	1,1,27
+	.word	273
+	.byte	27
+	.word	273
+	.byte	0,10
+	.word	14390
+	.byte	33
+	.word	273
+	.byte	1,1,27
+	.word	273
+	.byte	0,10
+	.word	14413
+	.byte	10
+	.word	4881
+	.byte	20,1,121,9,48,21
+	.byte	'idBlockMemIf_u16',0
+	.word	196
+	.byte	2,2,35,0,21
+	.byte	'nrBlockBytes_pu16',0
+	.word	14375
+	.byte	4,2,35,4,21
+	.byte	'idxDevice_u8',0
+	.word	273
+	.byte	1,2,35,8,21
+	.byte	'nrNvBlocks_u8',0
+	.word	273
+	.byte	1,2,35,9,21
+	.byte	'nrRomBlocks_u8',0
+	.word	273
+	.byte	1,2,35,10,21
+	.byte	'adrRamBlock_ppv',0
+	.word	14385
+	.byte	4,2,35,12,21
+	.byte	'adrRomBlock_pcv',0
+	.word	366
+	.byte	4,2,35,16,21
+	.byte	'SingleBlockCallback_pfct',0
+	.word	14408
+	.byte	4,2,35,20,21
+	.byte	'SingleBlockStartCallback_pfct',0
+	.word	14426
+	.byte	4,2,35,24,21
+	.byte	'InitBlockCallback_pfct',0
+	.word	14431
+	.byte	4,2,35,28,21
+	.byte	'ReadRamBlockFromNvm_pfct',0
+	.word	13564
+	.byte	4,2,35,32,21
+	.byte	'WriteRamBlockToNvm_pfct',0
+	.word	13564
+	.byte	4,2,35,36,21
+	.byte	'BlockManagementType_en',0
+	.word	129
+	.byte	4,2,35,40,21
+	.byte	'JobPriority_u8',0
+	.word	273
+	.byte	1,2,35,44,21
+	.byte	'stFlags_u16',0
+	.word	196
+	.byte	2,2,35,46,0,19
+	.byte	'NvM_Prv_BlockDescriptor_tst',0,1,138,2,3
+	.word	14436
+	.byte	20,1,143,2,9,4,21
+	.byte	'PersistentId_u16',0
+	.word	196
+	.byte	2,2,35,0,21
+	.byte	'BlockId_u16',0
+	.word	196
+	.byte	2,2,35,2,0,19
+	.byte	'NvM_Prv_PersId_BlockId_tst',0,1,147,2,3
+	.word	14900
+.L24:
+	.byte	9
+	.word	14233
+	.byte	22,160,5
+	.word	14436
+	.byte	23,13,0
+.L25:
+	.byte	9
+	.word	14995
+	.byte	22,48
+	.word	14900
+	.byte	23,11,0
+.L26:
+	.byte	9
+	.word	15010
+	.byte	22,28
+	.word	196
+	.byte	23,13,0
+.L27:
+	.byte	9
+	.word	15024
+	.byte	22,56
+	.word	767
+	.byte	23,13,0
+.L28:
+	.byte	9
+	.word	15038
+	.byte	22,20
+	.word	273
+	.byte	23,19,0,34
+	.byte	'NvM_Prv_RamMirror_au8',0,18,36,14
+	.word	15052
+	.byte	1,1,35
+	.word	273
+	.byte	36,0,34
+	.byte	'EcuM_Rb_dataShutdownInfo_st',0,4,47,14
+	.word	15093
+	.byte	1,1,34
+	.byte	'RamBlock_DID_F199',0,4,52,14
+	.word	15093
+	.byte	1,1,34
+	.byte	'RamBlock_DID_F189',0,4,57,14
+	.word	15093
+	.byte	1,1,34
+	.byte	'Rte_CPim_ASW_NVM_ASW_NVM_BlockNative_1024_1',0,4,132,1,14
+	.word	15093
+	.byte	1,1,9
+	.word	15093
+	.byte	34
+	.byte	'Rte_ROM_ASW_NVM_ASW_NVM_BlockNative_1024_1',0,4,137,1,20
+	.word	15249
+	.byte	1,1,34
+	.byte	'Rte_CPim_ASW_NVM_ASW_NVM_BlockNative_1024_2',0,4,142,1,14
+	.word	15093
+	.byte	1,1,9
+	.word	15093
+	.byte	34
+	.byte	'Rte_ROM_ASW_NVM_ASW_NVM_BlockNative_1024_2',0,4,147,1,20
+	.word	15363
+	.byte	1,1,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L6:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,4,1,58,15,59,15,57,15,11,15,0,0,3,40,0,3,8,28,13,0,0,4
+	.byte	36,0,3,8,11,15,62,15,0,0,5,46,1,3,8,32,13,58,15,59,15,57,15,73,19,54,15,39,12,0,0,6,5,0,3,8,58,15,59,15
+	.byte	57,15,73,19,0,0,7,11,0,0,0,8,59,0,3,8,0,0,9,38,0,73,19,0,0,10,15,0,73,19,0,0,11,11,1,0,0,12,46,1,49,19
+	.byte	0,0,13,5,0,49,19,0,0,14,29,1,49,19,0,0,15,11,0,49,19,0,0,16,46,1,3,8,58,15,59,15,57,15,73,19,54,15,39
+	.byte	12,63,12,60,12,0,0,17,46,0,3,8,58,15,59,15,57,15,54,15,63,12,60,12,0,0,18,21,0,54,15,0,0,19,22,0,3,8,58
+	.byte	15,59,15,57,15,73,19,0,0,20,19,1,58,15,59,15,57,15,11,15,0,0,21,13,0,3,8,73,19,11,15,56,9,0,0,22,1,1,11
+	.byte	15,73,19,0,0,23,33,0,47,15,0,0,24,21,0,54,15,39,12,0,0,25,19,1,3,8,58,15,59,15,57,15,11,15,0,0,26,21,1
+	.byte	54,15,39,12,0,0,27,5,0,73,19,0,0,28,23,1,58,15,59,15,57,15,11,15,0,0,29,4,1,3,8,58,15,59,15,57,15,11,15
+	.byte	0,0,30,21,0,73,19,54,15,39,12,0,0,31,53,0,73,19,0,0,32,13,0,3,8,11,15,73,19,13,15,12,15,56,9,0,0,33,21
+	.byte	1,73,19,54,15,39,12,0,0,34,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,35,1,1,73,19,0,0,36,33,0,0
+	.byte	0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L7:
+	.word	.L31-.L30
+.L30:
+	.half	3
+	.word	.L33-.L32
+.L32:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv_BlockDescriptor.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\NvM\\api\\NvM_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv_BlockData.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\NvM_Cfg.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Integration\\TargetIntegration\\TC275\\Include\\Mcal_TcLib.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\MemIf\\api\\MemIf_Types.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Fls\\inc\\Fls_17_Pmu.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\NvM\\src\\NvM_Prv_ExplicitSynchronization.h',0,0,0,0,0
+.L33:
+.L31:
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_InitRamBlockProperties')
+	.sect	'.debug_info'
+.L8:
+	.word	196
+	.half	3
+	.word	.L9
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\NvM_Cfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L11,.L10
+	.byte	2
+	.word	.L4
+	.byte	3
+	.byte	'NvM_Prv_InitRamBlockProperties',0,1,238,4,6,1,1,1
+	.word	.L3,.L23,.L2
+	.byte	4
+	.word	.L3,.L23
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_InitRamBlockProperties')
+	.sect	'.debug_abbrev'
+.L9:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('NvM_Prv_InitRamBlockProperties')
+	.sect	'.debug_line'
+.L10:
+	.word	.L35-.L34
+.L34:
+	.half	3
+	.word	.L37-.L36
+.L36:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\NvM_Cfg.c',0,0,0,0,0
+.L37:
+	.byte	5,1,7,0,5,2
+	.word	.L3
+	.byte	3,129,5,1,7,9
+	.half	.L12-.L3
+	.byte	0,1,1
+.L35:
+	.sdecl	'.debug_ranges',debug,cluster('NvM_Prv_InitRamBlockProperties')
+	.sect	'.debug_ranges'
+.L11:
+	.word	-1,.L3,0,.L12-.L3,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_Common_cst')
+	.sect	'.debug_info'
+.L13:
+	.word	162
+	.half	3
+	.word	.L14
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\NvM_Cfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L4
+	.byte	3
+	.byte	'NvM_Prv_Common_cst',0,4,184,1,26
+	.word	.L24
+	.byte	1,5,3
+	.word	NvM_Prv_Common_cst
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_Common_cst')
+	.sect	'.debug_abbrev'
+.L14:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_BlockDescriptors_acst')
+	.sect	'.debug_info'
+.L15:
+	.word	173
+	.half	3
+	.word	.L16
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\NvM_Cfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L4
+	.byte	3
+	.byte	'NvM_Prv_BlockDescriptors_acst',0,4,190,1,35
+	.word	.L25
+	.byte	1,5,3
+	.word	NvM_Prv_BlockDescriptors_acst
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_BlockDescriptors_acst')
+	.sect	'.debug_abbrev'
+.L16:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_PersId_BlockId_acst')
+	.sect	'.debug_info'
+.L17:
+	.word	171
+	.half	3
+	.word	.L18
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\NvM_Cfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L4
+	.byte	3
+	.byte	'NvM_Prv_PersId_BlockId_acst',0,4,165,1,34
+	.word	.L26
+	.byte	1,5,3
+	.word	NvM_Prv_PersId_BlockId_acst
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_PersId_BlockId_acst')
+	.sect	'.debug_abbrev'
+.L18:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_BlockLengths_acu16')
+	.sect	'.debug_info'
+.L19:
+	.word	170
+	.half	3
+	.word	.L20
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\NvM_Cfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L4
+	.byte	3
+	.byte	'NvM_Prv_BlockLengths_acu16',0,4,242,3,14
+	.word	.L27
+	.byte	1,5,3
+	.word	NvM_Prv_BlockLengths_acu16
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_BlockLengths_acu16')
+	.sect	'.debug_abbrev'
+.L20:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('NvM_Prv_RamBlockAdr_acpv')
+	.sect	'.debug_info'
+.L21:
+	.word	168
+	.half	3
+	.word	.L22
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\NvM\\NvM_Cfg.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L4
+	.byte	3
+	.byte	'NvM_Prv_RamBlockAdr_acpv',0,4,147,4,14
+	.word	.L28
+	.byte	1,5,3
+	.word	NvM_Prv_RamBlockAdr_acpv
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('NvM_Prv_RamBlockAdr_acpv')
+	.sect	'.debug_abbrev'
+.L22:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('NvM_Prv_InitRamBlockProperties')
+	.sect	'.debug_loc'
+.L2:
+	.word	-1,.L3,0,.L23-.L3
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L38:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('NvM_Prv_InitRamBlockProperties')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L38,.L3,.L23-.L3
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   643  # define NVM_STOP_SEC_CODE
+; BSW\src\BSW\Gen\NvM\NvM_Cfg.c	   644  # include "NvM_MemMap.h"
+
+	; Module end

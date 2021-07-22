@@ -1,0 +1,2476 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc14988a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Com\\Com_UnpackSignal.src BSW\\src\\BSW\\Gen\\Com\\src\\Com_UnpackSignal.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Com\\src\\Com_UnpackSignal.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Com_UnpackSignal.Com_UnpackSignal',code,cluster('Com_UnpackSignal')
+	.sect	'.text.Com_UnpackSignal.Com_UnpackSignal'
+	.align	2
+	
+	.global	Com_UnpackSignal
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	     1  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	     2  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	     3  /**************************************************************************************************/
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	     4  /* Preprocessor includes                                                                          */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	     5  /**************************************************************************************************/
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	     6  #include "Com_Prv.h"
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	     7  /**************************************************************************************************/
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	     8  /* Global functions (declared in header files )                                                   */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	     9  /**************************************************************************************************/
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    10  /***************************************************************************************************
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    11   Function name    : Com_UnpackSignal
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    12   Syntax           : Com_SigMaxType Com_UnpackSignal( VAR(uint8, AUTOMATIC)                    Endianess,
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    13                                                       VAR(Com_BitpositionType, AUTOMATIC)      Bit_Pos,
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    14                                                       VAR(Com_BitsizeType, AUTOMATIC)          Bitsize,
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    15                                                       P2CONST(uint8, AUTOMATIC, COM_APPL_DATA) Src_Buf,
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    16                                                       VAR(boolean, AUTOMATIC)                  IsSigned )
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    17   Description      : Internal function used for unpacking the signal from Ipdu Buffer
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    18   Parameter        : Endianess - Little/Big Endian
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    19                      Bit_Pos   - Signal Bit position
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    20                      Bitsize   - Signal Bit size
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    21                      *Src_Buf  - IPdu buffer
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    22                      IsSigned  - Is Signal of signed type
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    23   Return value     : Com_SigMaxType - return unpack signal value
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    24   ***************************************************************************************************/
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    25  #define COM_START_SEC_CODE
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    26  #include "Com_MemMap.h"
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    27  FUNC(Com_SigMaxType, COM_CODE) Com_UnpackSignal( VAR(uint8, AUTOMATIC)                    Endianess,
+; Function Com_UnpackSignal
+.L17:
+Com_UnpackSignal:	.type	func
+	mov	d15,d5
+.L58:
+	mov	d5,d6
+.L56:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    28                                                   VAR(Com_BitpositionType, AUTOMATIC)      Bit_Pos,
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    29                                                   VAR(Com_BitsizeType, AUTOMATIC)          Bitsize,
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    30                                                   P2CONST(uint8, AUTOMATIC, COM_APPL_DATA) Src_Buf,
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    31                                                   VAR(boolean, AUTOMATIC)                  IsSigned )
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    32  {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    33      /* Bfx - AR specific service library is not used, for the signal unpacking operations for below reasons
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    34       *  1. There is a function Bfx_PutBits takes a variable of type of data (uint8/16/32) as source variable and
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    35       *      a Input data pointer of same respective type (uint8/16/32/64),
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    36       *  2. It takes bit string from a source variable and puts them in destination data ptr.
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    37       *  On the similar lines,If this api is used in Com, there will still be many bit type operations which
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    38       *  have to be performed in the Com code, Hence there is no much help, as bit operations (significant in number)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    39       *  are done both in Com and SrvLib
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    40       */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    41  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    42      VAR(Com_SigMaxType, AUTOMATIC)   a_data;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    43      VAR(PduLengthType, AUTOMATIC)    ByteNo;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    44      VAR(uint16_least, AUTOMATIC)     Bits_left;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    45      VAR(uint16_least, AUTOMATIC)     Total_BitsCopied;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    46      VAR(uint8_least, AUTOMATIC)      BitOffsetInByte;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    47  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    48      /* Finding the 1st Byte No */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    49      ByteNo          = (PduLengthType)(Bit_Pos >> 3u);
+	sha	d6,d15,#-3
+.L57:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    50      BitOffsetInByte = (uint8_least)(Bit_Pos % 8u);
+	and	d15,#7
+.L59:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    51  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    52      a_data = (Com_SigMaxType)(*(Src_Buf + ByteNo) >> BitOffsetInByte);
+	addsc.a	a15,a4,d6,#0
+.L81:
+	ld.bu	d0,[a15]
+.L82:
+	mov	d1,d15
+.L62:
+	rsub	d1,#0
+.L61:
+	sha	d0,d0,d1
+.L64:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    53  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    54      if (Bitsize >= (8u - BitOffsetInByte))
+	rsub	d1,d15,#8
+.L63:
+	jlt.u	d5,d1,.L2
+.L83:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    55      {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    56          /* This Part will be executed if the Signal is placed in more than 1 byte */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    57          Total_BitsCopied = (uint16_least)(8u - BitOffsetInByte);
+	j	.L3
+.L2:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    58      }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    59      else
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    60      {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    61          /* This Part will be executed if the Signal is placed within the same byte
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    62           * Once data is copied, ensure the remaining bits are zero */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    63          a_data = a_data & (uint8)(~(uint8)(0xFFu << Bitsize));
+	mov	d15,#255
+.L84:
+	sh	d1,d15,d5
+.L65:
+	extr.u	d1,d1,#0,#8
+.L85:
+	xor	d1,d1,#255
+.L86:
+	and	d0,d1
+.L87:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    64          Total_BitsCopied = Bitsize;
+	mov	d1,d5
+.L3:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    65      }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    66  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    67      while (Total_BitsCopied < Bitsize)
+	j	.L4
+.L5:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    68      {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    69          Bits_left = Bitsize - Total_BitsCopied;
+	sub	d3,d5,d1
+.L66:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    70  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    71          if(Endianess != COM_BIGENDIAN)
+	jeq	d4,#1,.L6
+.L88:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    72          {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    73              ByteNo++;
+	add	d2,d6,#1
+	extr.u	d6,d2,#0,#16
+.L89:
+	j	.L7
+.L6:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    74          }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    75          else
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    76          {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    77              ByteNo--;
+	add	d2,d6,#-1
+	extr.u	d6,d2,#0,#16
+.L7:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    78          }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    79  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    80          if(Bits_left >= 8u)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    81          {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    82              /* The data has been typecasted to Com_SigMaxType, to ensure data is not lost after the shifting. */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    83              a_data |= (((Com_SigMaxType)(*(Src_Buf + ByteNo))) << Total_BitsCopied);
+	addsc.a	a15,a4,d6,#0
+.L90:
+	ld.bu	d2,[a15]
+.L91:
+	jlt.u	d3,#8,.L8
+.L92:
+	sh	d2,d2,d1
+.L93:
+	or	d0,d2
+.L94:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    84  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    85              Total_BitsCopied = Total_BitsCopied + 8u;
+	add	d1,d1,#8
+.L95:
+	j	.L9
+.L8:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    86          }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    87          else
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    88          {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    89              /* The data has been typecasted to Com_SigMaxType, to ensure data is not lost after the shifting. */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    90              a_data |=
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    91              ((Com_SigMaxType)(*(Src_Buf + ByteNo) & ((uint8)(0xFFu >> (8u - Bits_left)))) << Total_BitsCopied);
+	mov	d15,#255
+.L96:
+	rsub	d8,d3,#8
+.L97:
+	rsub	d8,#0
+	sh	d15,d15,d8
+.L98:
+	and	d2,d15
+.L99:
+	sh	d2,d2,d1
+.L100:
+	or	d0,d2
+.L101:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    92  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    93              Total_BitsCopied = Total_BitsCopied + Bits_left;
+	add	d1,d3
+.L9:
+.L4:
+	jlt.u	d1,d5,.L5
+.L102:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    94          }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    95      }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    96  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    97      /* For an integer signed-signal type, perform sign extension if the signal is of Negative value */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    98      if (( IsSigned ) &&
+	jeq	d7,#0,.L10
+.L103:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	    99          ((a_data & ((Com_SigMaxType)0x1u << (Bitsize - 1))) != 0u))
+	add	d5,#-1
+.L60:
+	mov	d15,#1
+.L104:
+	sh	d15,d15,d5
+.L105:
+	and	d15,d0
+.L106:
+	jeq	d15,#0,.L11
+.L107:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   100      {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   101          a_data = Com_PerformSignExtension(a_data, Bitsize);
+	mov	d15,#-1
+	sh	d15,d15,d5
+	or	d0,d15
+.L11:
+.L10:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   102      }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   103  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   104      return(a_data); /* Return the Unpacked data */
+	mov	d2,d0
+.L67:
+	j	.L12
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   105  }
+.L12:
+	ret
+.L35:
+	
+__Com_UnpackSignal_function_end:
+	.size	Com_UnpackSignal,__Com_UnpackSignal_function_end-Com_UnpackSignal
+.L28:
+	; End of function
+	
+	.sdecl	'.text.Com_UnpackSignal.Com_UnpackOpaqueSignal',code,cluster('Com_UnpackOpaqueSignal')
+	.sect	'.text.Com_UnpackSignal.Com_UnpackOpaqueSignal'
+	.align	2
+	
+	.global	Com_UnpackOpaqueSignal
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   106  #define COM_STOP_SEC_CODE
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   107  #include "Com_MemMap.h"
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   108  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   109  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   110  /**************************************************************************************************/
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   111  /* Global functions (declared in header files )                                                   */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   112  /**************************************************************************************************/
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   113  /***************************************************************************************************
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   114   Function name    : Com_UnpackOpaqueSignal
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   115   Syntax           : void Com_UnpackOpaqueSignal(Com_BitpositionType Bit_Pos, Com_BitsizeType SignalLength,
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   116                      uint8 *Src_Buf)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   117   Description      : Internal function used for unpacking a UINT8_N opaque signal from Ipdu Buffer
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   118   Parameter        : Bit_Pos,SignalLength,*Src_Buf
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   119   Return value     : uint32
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   120   ***************************************************************************************************/
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   121  #define COM_START_SEC_CODE
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   122  #include "Com_MemMap.h"
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   123  FUNC(uint32, COM_CODE) Com_UnpackOpaqueSignal(VAR(Com_BitpositionType, AUTOMATIC)      Bit_Pos,
+; Function Com_UnpackOpaqueSignal
+.L19:
+Com_UnpackOpaqueSignal:	.type	func
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   124                                                VAR(Com_BitsizeType, AUTOMATIC)          SignalLength,
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   125                                                P2CONST(uint8, AUTOMATIC, COM_APPL_DATA) Src_Buf)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   126  {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   127      VAR(uint16_least, AUTOMATIC) ByteNo;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   128      VAR(uint32, AUTOMATIC) a_data;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   129  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   130      a_data = 0x00;
+	mov	d2,#0
+.L69:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   131  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   132      /*Find the First Byte of the signal: Bit_Pos >> 8  */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   133      ByteNo = (Bit_Pos >> 3u);
+	sha	d4,#-3
+.L68:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   134  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   135      while (SignalLength > 0)
+	j	.L13
+.L14:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   136      {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   137          a_data = (uint32)( a_data << 8u) | (uint32)(*(Src_Buf + ByteNo));
+	sh	d2,d2,#8
+.L70:
+	addsc.a	a15,a4,d4,#0
+.L112:
+	ld.bu	d15,[a15]
+.L71:
+	or	d2,d15
+.L113:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   138          ByteNo ++;
+	add	d4,#1
+.L114:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   139          SignalLength--;
+	add	d5,#-1
+.L13:
+	jne	d5,#0,.L14
+.L115:
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   140      }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   141  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   142      /*Return the Unpacked data*/
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   143      return(a_data);
+	j	.L15
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   144  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   145  }
+.L15:
+	ret
+.L50:
+	
+__Com_UnpackOpaqueSignal_function_end:
+	.size	Com_UnpackOpaqueSignal,__Com_UnpackOpaqueSignal_function_end-Com_UnpackOpaqueSignal
+.L33:
+	; End of function
+	
+	.calls	'Com_UnpackSignal','',0
+	.calls	'Com_UnpackOpaqueSignal','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L21:
+	.word	12914
+	.half	3
+	.word	.L22
+	.byte	4
+.L20:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Com\\src\\Com_UnpackSignal.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L23
+.L36:
+	.byte	2
+	.byte	'unsigned char',0,1,8
+.L44:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,3
+	.byte	'Bfx_Prv_GetBit_u16u8_u8_Inl',0,3,1,207,2,22
+	.word	142
+	.byte	1,1,4
+	.byte	'Data',0,1,207,2,57
+	.word	159
+	.byte	4
+	.byte	'BitPn',0,1,207,2,69
+	.word	142
+	.byte	5,0
+.L34:
+	.byte	2
+	.byte	'unsigned int',0,4,7,3
+	.byte	'Bfx_Prv_GetBit_u32u8_u8_Inl',0,3,1,227,2,22
+	.word	142
+	.byte	1,1,4
+	.byte	'Data',0,1,227,2,57
+	.word	252
+	.byte	4
+	.byte	'BitPn',0,1,227,2,69
+	.word	142
+	.byte	5,0,3
+	.byte	'Bfx_Prv_GetBit_u8u8_u8_Inl',0,3,1,247,2,22
+	.word	142
+	.byte	1,1,4
+	.byte	'Data',0,1,247,2,55
+	.word	142
+	.byte	4
+	.byte	'BitPn',0,1,247,2,67
+	.word	142
+	.byte	5,0,6
+	.word	159
+	.byte	7
+	.byte	'Bfx_Prv_PutBit_u16u8u8_Inl',0,3,1,200,3,19,1,1,4
+	.byte	'Data',0,1,200,3,54
+	.word	409
+	.byte	4
+	.byte	'BitPn',0,1,200,3,66
+	.word	142
+	.byte	4
+	.byte	'Value',0,1,200,3,81
+	.word	142
+	.byte	5,0,6
+	.word	252
+	.byte	7
+	.byte	'Bfx_Prv_PutBit_u32u8u8_Inl',0,3,1,224,3,19,1,1,4
+	.byte	'Data',0,1,224,3,54
+	.word	495
+	.byte	4
+	.byte	'BitPn',0,1,224,3,66
+	.word	142
+	.byte	4
+	.byte	'Value',0,1,224,3,81
+	.word	142
+	.byte	5,0,6
+	.word	142
+	.byte	7
+	.byte	'Bfx_Prv_PutBit_u8u8u8_Inl',0,3,1,248,3,19,1,1,4
+	.byte	'Data',0,1,248,3,52
+	.word	581
+	.byte	4
+	.byte	'BitPn',0,1,248,3,64
+	.word	142
+	.byte	4
+	.byte	'Value',0,1,248,3,79
+	.word	142
+	.byte	5,0,3
+	.byte	'Bfx_Prv_TstParityEven_u32_u8_Inl',0,3,1,143,10,22
+	.word	142
+	.byte	1,1,4
+	.byte	'Data',0,1,143,10,62
+	.word	252
+	.byte	5,0,8
+	.word	181
+	.byte	9
+	.word	221
+	.byte	9
+	.word	235
+	.byte	5,0,8
+	.word	268
+	.byte	9
+	.word	308
+	.byte	9
+	.word	322
+	.byte	5,0,8
+	.word	339
+	.byte	9
+	.word	378
+	.byte	9
+	.word	392
+	.byte	5,0,8
+	.word	414
+	.byte	9
+	.word	449
+	.byte	9
+	.word	463
+	.byte	9
+	.word	478
+	.byte	5,0,8
+	.word	500
+	.byte	9
+	.word	535
+	.byte	9
+	.word	549
+	.byte	9
+	.word	564
+	.byte	5,0,8
+	.word	586
+	.byte	9
+	.word	620
+	.byte	9
+	.word	634
+	.byte	9
+	.word	649
+	.byte	5,0,8
+	.word	666
+	.byte	9
+	.word	711
+	.byte	5,0,10
+	.word	142
+.L40:
+	.byte	6
+	.word	856
+.L46:
+	.byte	2
+	.byte	'unsigned long int',0,4,7,11,1,6
+	.word	887
+	.byte	12
+	.byte	'__codeptr',0,2,1,1
+	.word	889
+	.byte	2
+	.byte	'char',0,1,6,12
+	.byte	'sint8',0,3,76,25
+	.word	912
+	.byte	12
+	.byte	'uint8',0,3,81,25
+	.word	142
+	.byte	12
+	.byte	'uint16',0,3,91,25
+	.word	159
+	.byte	12
+	.byte	'uint32',0,3,106,24
+	.word	252
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,12
+	.byte	'uint64',0,3,111,30
+	.word	978
+	.byte	12
+	.byte	'boolean',0,3,127,25
+	.word	142
+	.byte	12
+	.byte	'StatusType',0,4,191,1,27
+	.word	142
+	.byte	12
+	.byte	'Std_ReturnType',0,4,199,1,15
+	.word	142
+	.byte	13,4,206,1,9,8,14
+	.byte	'vendorID',0
+	.word	159
+	.byte	2,2,35,0,14
+	.byte	'moduleID',0
+	.word	159
+	.byte	2,2,35,2,14
+	.byte	'sw_major_version',0
+	.word	142
+	.byte	1,2,35,4,14
+	.byte	'sw_minor_version',0
+	.word	142
+	.byte	1,2,35,5,14
+	.byte	'sw_patch_version',0
+	.word	142
+	.byte	1,2,35,6,0,12
+	.byte	'Std_VersionInfoType',0,4,213,1,3
+	.word	1079
+	.byte	12
+	.byte	'PduIdType',0,5,22,19
+	.word	159
+	.byte	12
+	.byte	'PduLengthType',0,5,26,19
+	.word	159
+	.byte	15,6,113,9,4,16
+	.byte	'TP_DATACONF',0,0,16
+	.byte	'TP_DATARETRY',0,1,16
+	.byte	'TP_CONFPENDING',0,2,0,12
+	.byte	'TpDataStateType',0,6,118,3
+	.word	1269
+	.byte	12
+	.byte	'Com_SignalIdType',0,7,100,16
+	.word	159
+	.byte	12
+	.byte	'Com_SignalGroupIdType',0,7,102,16
+	.word	159
+	.byte	12
+	.byte	'Com_IpduIdType',0,7,104,15
+	.word	142
+	.byte	12
+	.byte	'Com_GrpSignalIdType',0,7,107,18
+	.word	142
+	.byte	12
+	.byte	'Com_TxIntSignalIdType',0,8,138,3,18
+	.word	142
+	.byte	12
+	.byte	'Com_RxIntSignalIdType',0,8,139,3,18
+	.word	142
+	.byte	12
+	.byte	'Com_BitsizeType',0,8,155,3,17
+	.word	142
+	.byte	12
+	.byte	'Com_BitpositionType',0,8,156,3,15
+	.word	142
+	.byte	12
+	.byte	'Com_RxGwQueueIndexType',0,8,161,3,15
+	.word	142
+	.byte	12
+	.byte	'Com_SigBuffIndexType',0,8,164,3,15
+	.word	142
+	.byte	12
+	.byte	'Com_SigMaxType',0,8,198,3,16
+	.word	252
+	.byte	12
+	.byte	'Com_MainFuncType',0,8,231,3,16
+	.word	142
+	.byte	12
+	.byte	'Com_NumOfIpdusType',0,8,233,3,15
+	.word	142
+	.byte	12
+	.byte	'Com_TimeBaseType',0,8,235,3,15
+	.word	142
+	.byte	12
+	.byte	'Can_IdType',0,9,32,16
+	.word	252
+	.byte	12
+	.byte	'Can_HwHandleType',0,9,43,16
+	.word	159
+	.byte	13,10,93,9,8,14
+	.byte	'Class',0
+	.word	142
+	.byte	1,2,35,0,14
+	.byte	'TIN',0
+	.word	142
+	.byte	1,2,35,1,14
+	.byte	'ReturnAddress',0
+	.word	252
+	.byte	4,2,35,4,0,12
+	.byte	'OsTrapInfoType',0,10,97,3
+	.word	1777
+	.byte	17,68
+	.word	252
+	.byte	18,16,0,13,10,154,1,9,68,14
+	.byte	'store',0
+	.word	1857
+	.byte	68,2,35,0,0,17,68
+	.word	1866
+	.byte	18,0,0,12
+	.byte	'Os_JumpBufType',0,10,156,1,3
+	.word	1888
+	.byte	12
+	.byte	'Os_StackTraceType',0,10,174,1,18
+	.word	252
+	.byte	13,10,175,1,9,8,14
+	.byte	'sp',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	'ctx',0
+	.word	252
+	.byte	4,2,35,4,0,12
+	.byte	'Os_StackValueType',0,10,175,1,63
+	.word	1948
+	.byte	12
+	.byte	'Os_StackSizeType',0,10,176,1,27
+	.word	1948
+	.byte	19,1,1,6
+	.word	2033
+	.byte	12
+	.byte	'Os_VoidVoidFunctionType',0,10,179,1,16
+	.word	2036
+	.byte	12
+	.byte	'ApplicationType',0,10,193,1,23
+	.word	142
+	.byte	20
+	.byte	'Os_ApplicationConfigurationType_s',0,10,198,1,16,2,14
+	.byte	'app_id',0
+	.word	142
+	.byte	1,2,35,0,14
+	.byte	'access',0
+	.word	142
+	.byte	1,2,35,1,0,12
+	.byte	'Os_ApplicationConfigurationType',0,10,201,1,3
+	.word	2099
+	.byte	12
+	.byte	'Os_CoreStateType',0,10,203,1,16
+	.word	252
+	.byte	12
+	.byte	'AreaIdType',0,10,204,1,16
+	.word	159
+	.byte	12
+	.byte	'Os_PeripheralAddressType',0,10,212,1,22
+	.word	252
+	.byte	12
+	.byte	'TickType',0,10,221,1,22
+	.word	252
+	.byte	12
+	.byte	'Os_StopwatchTickType',0,10,225,1,22
+	.word	252
+	.byte	12
+	.byte	'Os_Lockable',0,10,234,1,18
+	.word	495
+	.byte	12
+	.byte	'CoreIdType',0,10,236,1,16
+	.word	159
+	.byte	12
+	.byte	'SpinlockIdType',0,10,237,1,16
+	.word	159
+	.byte	15,10,239,1,9,4,16
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,16
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,12
+	.byte	'TryToGetSpinlockType',0,10,239,1,74
+	.word	2406
+	.byte	15,10,174,2,9,4,16
+	.byte	'APPLICATION_ACCESSIBLE',0,0,16
+	.byte	'APPLICATION_RESTARTING',0,1,16
+	.byte	'APPLICATION_TERMINATED',0,2,0,12
+	.byte	'ApplicationStateType',0,10,174,2,92
+	.word	2499
+	.byte	21
+	.byte	'void',0,6
+	.word	2611
+	.byte	22,1,1,23
+	.word	142
+	.byte	23
+	.word	2617
+	.byte	0,6
+	.word	2622
+	.byte	12
+	.byte	'Os_FunctionEntryType',0,10,183,2,16
+	.word	2636
+	.byte	20
+	.byte	'Os_MeterInfoType_s',0,10,193,2,16,48,14
+	.byte	'elapsed',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	'previous',0
+	.word	252
+	.byte	4,2,35,4,14
+	.byte	'max',0
+	.word	252
+	.byte	4,2,35,8,14
+	.byte	'cumulative',0
+	.word	252
+	.byte	4,2,35,12,14
+	.byte	'stackbase',0
+	.word	1948
+	.byte	8,2,35,16,14
+	.byte	'stackusage',0
+	.word	1948
+	.byte	8,2,35,24,14
+	.byte	'stackmax',0
+	.word	1948
+	.byte	8,2,35,32,14
+	.byte	'stackbudget',0
+	.word	1948
+	.byte	8,2,35,40,0,12
+	.byte	'Os_MeterInfoType',0,10,202,2,3
+	.word	2671
+	.byte	6
+	.word	2671
+	.byte	12
+	.byte	'Os_MeterInfoRefType',0,10,203,2,50
+	.word	2869
+	.byte	12
+	.byte	'EventMaskType',0,10,206,2,15
+	.word	142
+	.byte	12
+	.byte	'Os_imaskType',0,10,211,2,16
+	.word	252
+	.byte	20
+	.byte	'Os_ISRDynType_s',0,10,213,2,16,48,14
+	.byte	'meter',0
+	.word	2671
+	.byte	48,2,35,0,0,12
+	.byte	'Os_ISRDynType',0,10,215,2,3
+	.word	2948
+	.byte	6
+	.word	2948
+	.byte	10
+	.word	3009
+	.byte	20
+	.byte	'Os_ISRType_s',0,10,216,2,16,24,14
+	.byte	'entry_function',0
+	.word	2041
+	.byte	4,2,35,0,14
+	.byte	'dynamic',0
+	.word	3014
+	.byte	4,2,35,4,14
+	.byte	'imask',0
+	.word	252
+	.byte	4,2,35,8,14
+	.byte	'stackbudget',0
+	.word	1948
+	.byte	8,2,35,12,14
+	.byte	'access',0
+	.word	142
+	.byte	1,2,35,20,14
+	.byte	'application',0
+	.word	142
+	.byte	1,2,35,21,0,12
+	.byte	'Os_ISRType',0,10,223,2,3
+	.word	3019
+	.byte	6
+	.word	2033
+	.byte	10
+	.word	3019
+	.byte	6
+	.word	3178
+	.byte	12
+	.byte	'ISRType',0,10,224,2,46
+	.word	3183
+	.byte	12
+	.byte	'Os_bitmask',0,10,239,2,22
+	.word	252
+	.byte	12
+	.byte	'Os_pset0Type',0,10,240,2,20
+	.word	252
+	.byte	12
+	.byte	'Os_pset1Type',0,10,241,2,20
+	.word	252
+	.byte	12
+	.byte	'Os_pset2Type',0,10,242,2,20
+	.word	252
+	.byte	24,10,243,2,9,4,14
+	.byte	'p0',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	'p1',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	'p2',0
+	.word	252
+	.byte	4,2,35,0,0,12
+	.byte	'Os_psetType',0,10,247,2,3
+	.word	3291
+	.byte	24,10,249,2,9,4,14
+	.byte	't0',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	't1',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	't2',0
+	.word	252
+	.byte	4,2,35,0,0,12
+	.byte	'Os_tpmaskType',0,10,253,2,3
+	.word	3355
+	.byte	12
+	.byte	'Os_ActivationCountType',0,10,254,2,23
+	.word	142
+	.byte	20
+	.byte	'Os_TaskDynType_s',0,10,128,3,16,120,14
+	.byte	'terminate_jump_buf',0
+	.word	1897
+	.byte	68,2,35,0,14
+	.byte	'meter',0
+	.word	2671
+	.byte	48,2,35,68,14
+	.byte	'activation_count',0
+	.word	142
+	.byte	1,2,35,116,0,12
+	.byte	'Os_TaskDynType',0,10,132,3,3
+	.word	3453
+	.byte	17,68
+	.word	1866
+	.byte	18,0,0,6
+	.word	3453
+	.byte	10
+	.word	3579
+	.byte	20
+	.byte	'Os_TaskType_s',0,10,134,3,16,40,14
+	.byte	'dynamic',0
+	.word	3584
+	.byte	4,2,35,0,14
+	.byte	'entry_function',0
+	.word	2041
+	.byte	4,2,35,4,14
+	.byte	'pset',0
+	.word	3291
+	.byte	4,2,35,8,14
+	.byte	'base_tpmask',0
+	.word	3355
+	.byte	4,2,35,12,14
+	.byte	'tpmask',0
+	.word	3355
+	.byte	4,2,35,16,14
+	.byte	'core_id',0
+	.word	159
+	.byte	2,2,35,20,14
+	.byte	'index',0
+	.word	252
+	.byte	4,2,35,24,14
+	.byte	'stackbudget',0
+	.word	1948
+	.byte	8,2,35,28,14
+	.byte	'activation_count',0
+	.word	142
+	.byte	1,2,35,36,14
+	.byte	'access',0
+	.word	142
+	.byte	1,2,35,37,14
+	.byte	'application',0
+	.word	142
+	.byte	1,2,35,38,0,12
+	.byte	'Os_TaskType',0,10,146,3,3
+	.word	3589
+	.byte	10
+	.word	3589
+	.byte	6
+	.word	3839
+	.byte	12
+	.byte	'TaskType',0,10,147,3,47
+	.word	3844
+	.byte	25
+	.byte	'Os_TaskStateType',0,10,155,3,6,4,16
+	.byte	'SUSPENDED',0,0,16
+	.byte	'READY',0,1,16
+	.byte	'WAITING',0,2,16
+	.byte	'RUNNING',0,3,0,12
+	.byte	'TaskStateType',0,10,156,3,31
+	.word	3867
+	.byte	24,10,167,3,3,4,14
+	.byte	'tpmask',0
+	.word	3355
+	.byte	4,2,35,0,0,20
+	.byte	'Os_ResourceDynType_s',0,10,166,3,16,4,14
+	.byte	'saved_priority',0
+	.word	3954
+	.byte	4,2,35,0,0,12
+	.byte	'Os_ResourceDynType',0,10,170,3,3
+	.word	3977
+	.byte	6
+	.word	3977
+	.byte	10
+	.word	4057
+	.byte	20
+	.byte	'Os_ResourceType_s',0,10,171,3,16,12,14
+	.byte	'dynamic',0
+	.word	4062
+	.byte	4,2,35,0,14
+	.byte	'tpmask',0
+	.word	3355
+	.byte	4,2,35,4,14
+	.byte	'access',0
+	.word	142
+	.byte	1,2,35,8,0,12
+	.byte	'Os_ResourceType',0,10,175,3,3
+	.word	4067
+	.byte	13,10,181,3,9,12,14
+	.byte	'maxallowedvalue',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	'ticksperbase',0
+	.word	252
+	.byte	4,2,35,4,14
+	.byte	'mincycle',0
+	.word	252
+	.byte	4,2,35,8,0,12
+	.byte	'AlarmBaseType',0,10,185,3,3
+	.word	4166
+	.byte	13,10,206,3,9,8,14
+	.byte	'Running',0
+	.word	142
+	.byte	1,2,35,0,14
+	.byte	'Pending',0
+	.word	142
+	.byte	1,2,35,1,14
+	.byte	'Delay',0
+	.word	252
+	.byte	4,2,35,4,0,12
+	.byte	'Os_CounterStatusType',0,10,210,3,3
+	.word	4261
+	.byte	26
+	.word	142
+	.byte	1,1,6
+	.word	4347
+	.byte	12
+	.byte	'Os_CounterIncrAdvType',0,10,217,3,22
+	.word	4354
+	.byte	20
+	.byte	's_swd',0,10,222,3,12,4,14
+	.byte	'count',0
+	.word	252
+	.byte	4,2,35,0,0,24,10,221,3,3,4,14
+	.byte	'sw',0
+	.word	4390
+	.byte	4,2,35,0,0,20
+	.byte	'Os_CounterDynType_s',0,10,220,3,16,4,14
+	.byte	'type_dependent',0
+	.word	4418
+	.byte	4,2,35,0,0,12
+	.byte	'Os_CounterDynType',0,10,226,3,3
+	.word	4437
+	.byte	6
+	.word	4437
+	.byte	10
+	.word	4515
+	.byte	20
+	.byte	'Os_CounterType_s',0,10,227,3,16,28,14
+	.byte	'dynamic',0
+	.word	4520
+	.byte	4,2,35,0,14
+	.byte	'advincr',0
+	.word	4359
+	.byte	4,2,35,4,14
+	.byte	'base',0
+	.word	4166
+	.byte	12,2,35,8,14
+	.byte	'core',0
+	.word	2617
+	.byte	4,2,35,20,14
+	.byte	'access',0
+	.word	142
+	.byte	1,2,35,24,14
+	.byte	'application',0
+	.word	142
+	.byte	1,2,35,25,0,12
+	.byte	'Os_CounterType',0,10,234,3,3
+	.word	4525
+	.byte	6
+	.word	4347
+	.byte	10
+	.word	4525
+	.byte	6
+	.word	4677
+	.byte	12
+	.byte	'CounterType',0,10,235,3,52
+	.word	4682
+	.byte	25
+	.byte	'Os_ScheduleTableStatusType',0,10,240,3,6,4,16
+	.byte	'SCHEDULETABLE_STOPPED',0,0,16
+	.byte	'SCHEDULETABLE_NEXT',0,1,16
+	.byte	'SCHEDULETABLE_WAITING',0,2,16
+	.byte	'SCHEDULETABLE_RUNNING',0,3,16
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,12
+	.byte	'ScheduleTableStatusType',0,10,241,3,41
+	.word	4708
+	.byte	10
+	.word	.L72-.L21
+	.byte	6
+	.word	4908
+	.byte	12
+	.byte	'ScheduleTableType',0,10,128,4,58
+	.word	4913
+	.byte	20
+	.byte	'Os_ScheduleTableDynType_s',0,10,130,4,16,16,14
+	.byte	'match',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	'next',0
+	.word	4918
+	.byte	4,2,35,4,14
+	.byte	'state',0
+	.word	4708
+	.byte	4,2,35,8,14
+	.byte	'config',0
+	.word	159
+	.byte	2,2,35,12,0,6
+	.word	4945
+	.byte	10
+	.word	5038
+.L72:
+	.byte	20
+	.byte	'Os_ScheduleTableType_s',0,10,247,3,16,16,14
+	.byte	'dynamic',0
+	.word	5043
+	.byte	4,2,35,0,14
+	.byte	'counter',0
+	.word	4687
+	.byte	4,2,35,4,14
+	.byte	'repeat',0
+	.word	142
+	.byte	1,2,35,8,14
+	.byte	'config',0
+	.word	159
+	.byte	2,2,35,10,14
+	.byte	'initial',0
+	.word	142
+	.byte	1,2,35,12,14
+	.byte	'access',0
+	.word	142
+	.byte	1,2,35,13,14
+	.byte	'application',0
+	.word	142
+	.byte	1,2,35,14,0,12
+	.byte	'Os_ScheduleTableType',0,10,255,3,3
+	.word	5048
+	.byte	10
+	.word	5048
+	.byte	6
+	.word	5228
+	.byte	10
+	.word	4525
+	.byte	6
+	.word	5238
+	.byte	27
+	.word	2341
+	.byte	27
+	.word	3291
+	.byte	27
+	.word	3188
+	.byte	27
+	.word	3849
+	.byte	27
+	.word	3355
+	.byte	27
+	.word	142
+	.byte	27
+	.word	3849
+	.byte	20
+	.byte	'Os_ControlledCoreType_s',0,10,251,6,16,112,14
+	.byte	'TrapInfo',0
+	.word	1777
+	.byte	8,2,35,0,14
+	.byte	'lock_taskaccess',0
+	.word	5248
+	.byte	4,2,35,8,14
+	.byte	'ReadyTasks',0
+	.word	5253
+	.byte	4,2,35,12,14
+	.byte	'RunningISR',0
+	.word	5258
+	.byte	4,2,35,16,14
+	.byte	'RunningTask',0
+	.word	5263
+	.byte	4,2,35,20,14
+	.byte	'RunningTPMask',0
+	.word	5268
+	.byte	4,2,35,24,14
+	.byte	'CurrentMeteredObject',0
+	.word	2874
+	.byte	4,2,35,28,14
+	.byte	'IdleMeter',0
+	.word	2671
+	.byte	48,2,35,32,14
+	.byte	'AppAccess',0
+	.word	142
+	.byte	1,2,35,80,14
+	.byte	'AppOverride',0
+	.word	5273
+	.byte	1,2,35,81,14
+	.byte	'GetStackValueAdjust',0
+	.word	1948
+	.byte	8,2,35,84,14
+	.byte	'InErrorHook',0
+	.word	142
+	.byte	1,2,35,92,14
+	.byte	'ChainTaskRef',0
+	.word	5278
+	.byte	4,2,35,96,14
+	.byte	'GetStackUsageAdjust',0
+	.word	1948
+	.byte	8,2,35,100,14
+	.byte	'InProtectionHook',0
+	.word	142
+	.byte	1,2,35,108,14
+	.byte	'CoreIsActive',0
+	.word	142
+	.byte	1,2,35,109,14
+	.byte	'InShutdownHook',0
+	.word	142
+	.byte	1,2,35,110,0,12
+	.byte	'Os_ControlledCoreType',0,10,141,7,3
+	.word	5283
+	.byte	6
+	.word	252
+	.byte	10
+	.word	3019
+	.byte	6
+	.word	5739
+	.byte	10
+	.word	3589
+	.byte	6
+	.word	5749
+	.byte	6
+	.word	2671
+	.byte	20
+	.byte	'Os_AnyCoreType_s',0,10,151,7,16,96,14
+	.byte	'DisableAllImask',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	'SuspendAllImask',0
+	.word	252
+	.byte	4,2,35,4,14
+	.byte	'SuspendOSImask',0
+	.word	252
+	.byte	4,2,35,8,14
+	.byte	'DisableAllCount',0
+	.word	252
+	.byte	4,2,35,12,14
+	.byte	'SuspendAllCount',0
+	.word	252
+	.byte	4,2,35,16,14
+	.byte	'SuspendOSCount',0
+	.word	252
+	.byte	4,2,35,20,14
+	.byte	'RestartJumpBuf',0
+	.word	1897
+	.byte	68,2,35,24,14
+	.byte	'Restartable',0
+	.word	142
+	.byte	1,2,35,92,0,12
+	.byte	'Os_AnyCoreType',0,10,160,7,3
+	.word	5764
+	.byte	12
+	.byte	'Can_TxObjPriorityClassType',0,11,219,3,16
+	.word	252
+	.byte	20
+	.byte	'Can_TxHwObjectConfigType',0,11,231,3,16,8,14
+	.byte	'MsgObjId',0
+	.word	142
+	.byte	1,2,35,0,14
+	.byte	'HwControllerId',0
+	.word	142
+	.byte	1,2,35,1,14
+	.byte	'TxObjPriorityClass',0
+	.word	252
+	.byte	4,2,35,4,0,12
+	.byte	'Can_TxHwObjectConfigType',0,11,252,3,3
+	.word	6041
+	.byte	20
+	.byte	'Can_RxHwObjectConfigType',0,11,129,4,16,12,14
+	.byte	'MaskRef',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	'MsgId',0
+	.word	252
+	.byte	4,2,35,4,14
+	.byte	'MsgObjId',0
+	.word	142
+	.byte	1,2,35,8,14
+	.byte	'HwControllerId',0
+	.word	142
+	.byte	1,2,35,9,0,12
+	.byte	'Can_RxHwObjectConfigType',0,11,147,4,3
+	.word	6177
+	.byte	17,4
+	.word	142
+	.byte	18,3,0,20
+	.byte	'Can_ControllerMOMapConfigType',0,11,181,4,16,4,14
+	.byte	'ControllerMOMap',0
+	.word	6317
+	.byte	4,2,35,0,0,12
+	.byte	'Can_ControllerMOMapConfigType',0,11,184,4,3
+	.word	6326
+	.byte	20
+	.byte	'Can_NPCRValueType',0,11,188,4,16,2,14
+	.byte	'Can_NPCRValue',0
+	.word	159
+	.byte	2,2,35,0,0,12
+	.byte	'Can_NPCRValueType',0,11,191,4,3
+	.word	6427
+	.byte	20
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,11,194,4,16,8,14
+	.byte	'CanControllerBaudrate',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	'CanControllerBaudrateCfg',0
+	.word	159
+	.byte	2,2,35,4,0,12
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,11,198,4,3
+	.word	6502
+	.byte	10
+	.word	6502
+	.byte	6
+	.word	6667
+	.byte	20
+	.byte	'Can_BaudrateConfigPtrType',0,11,201,4,16,4,14
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	6672
+	.byte	4,2,35,0,0,12
+	.byte	'Can_BaudrateConfigPtrType',0,11,204,4,3
+	.word	6677
+	.byte	20
+	.byte	'Can_EventHandlingType',0,11,226,4,16,4,14
+	.byte	'CanEventType',0
+	.word	6317
+	.byte	4,2,35,0,0,12
+	.byte	'Can_EventHandlingType',0,11,229,4,3
+	.word	6777
+	.byte	12
+	.byte	'Rte_TransformerErrorCode',0,12,130,1,15
+	.word	142
+	.byte	12
+	.byte	'Rte_TransformerClass',0,12,131,1,15
+	.word	142
+	.byte	13,12,168,1,9,12,14
+	.byte	'in',0
+	.word	2617
+	.byte	4,2,35,0,14
+	.byte	'out',0
+	.word	2617
+	.byte	4,2,35,4,14
+	.byte	'used',0
+	.word	159
+	.byte	2,2,35,8,14
+	.byte	'lost_data',0
+	.word	142
+	.byte	1,2,35,10,0,12
+	.byte	'Rte_QDynType',0,12,173,1,3
+	.word	6923
+	.byte	15,12,175,1,9,4,16
+	.byte	'RTE_DRA',0,0,16
+	.byte	'RTE_WOWP',0,1,16
+	.byte	'RTE_TASK',0,2,16
+	.byte	'RTE_ARE',0,3,16
+	.byte	'RTE_EV',0,4,16
+	.byte	'RTE_MSI',0,5,0,12
+	.byte	'Rte_NotificationType',0,12,182,1,3
+	.word	7010
+	.byte	6
+	.word	6923
+	.byte	20
+	.byte	'Rte_QCmnType',0,12,184,1,16,24,14
+	.byte	'dynamic',0
+	.word	7108
+	.byte	4,2,35,0,14
+	.byte	'copy',0
+	.word	142
+	.byte	1,2,35,4,14
+	.byte	'queue_size',0
+	.word	159
+	.byte	2,2,35,6,14
+	.byte	'element_size',0
+	.word	159
+	.byte	2,2,35,8,14
+	.byte	'buffer_start',0
+	.word	2617
+	.byte	4,2,35,12,14
+	.byte	'buffer_end',0
+	.word	2617
+	.byte	4,2,35,16,14
+	.byte	'notification_type',0
+	.word	7010
+	.byte	4,2,35,20,0,12
+	.byte	'Rte_QCmnType',0,12,192,1,3
+	.word	7113
+	.byte	12
+	.byte	'Rte_AlarmRefType',0,12,224,1,32
+	.word	252
+	.byte	12
+	.byte	'Rte_AlarmIndexType',0,12,226,1,32
+	.word	159
+	.byte	17,128,8
+	.word	142
+	.byte	18,255,7,0,12
+	.byte	'Impl_NVM_DstPtrType_1024',0,13,50,15
+	.word	7351
+	.byte	12
+	.byte	'CanIf_u32_impl',0,13,69,16
+	.word	252
+	.byte	12
+	.byte	'CanIf_u16_impl',0,13,71,16
+	.word	159
+	.byte	12
+	.byte	'CanIf_u8_impl',0,13,73,15
+	.word	142
+	.byte	12
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,13,88,15
+	.word	142
+	.byte	12
+	.byte	'CanIf_PduModeType_Enum_impl',0,13,90,15
+	.word	142
+	.byte	13,13,92,9,2,14
+	.byte	'DeviceMode',0
+	.word	142
+	.byte	1,2,35,0,14
+	.byte	'ChannelMode',0
+	.word	142
+	.byte	1,2,35,1,0,12
+	.byte	'CanIf_ControllerStateType_struct_impl',0,13,95,3
+	.word	7542
+	.byte	12
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,13,100,15
+	.word	142
+	.byte	12
+	.byte	'CanSM_boolean_Impl',0,13,120,15
+	.word	142
+	.byte	12
+	.byte	'CanSM_u8_Impl',0,13,123,15
+	.word	142
+	.byte	12
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,13,128,1,15
+	.word	142
+	.byte	12
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,13,132,1,15
+	.word	142
+	.byte	12
+	.byte	'CanSM_u16_Impl',0,13,136,1,16
+	.word	159
+	.byte	12
+	.byte	'CanSM_TimerStateType_Enum_impl',0,13,138,1,15
+	.word	142
+	.byte	13,13,140,1,9,4,14
+	.byte	'cntTick_u16',0
+	.word	159
+	.byte	2,2,35,0,14
+	.byte	'stTimer',0
+	.word	142
+	.byte	1,2,35,2,0,12
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,13,143,1,3
+	.word	7883
+	.byte	12
+	.byte	'Com_impl_u16',0,13,154,1,16
+	.word	159
+	.byte	12
+	.byte	'Com_impl_u8',0,13,157,1,15
+	.word	142
+	.byte	12
+	.byte	'ComM_uint32_Impl',0,13,173,1,16
+	.word	252
+	.byte	12
+	.byte	'ComM_uint16_Impl',0,13,175,1,16
+	.word	159
+	.byte	12
+	.byte	'ComM_uint8_Impl',0,13,177,1,15
+	.word	142
+	.byte	12
+	.byte	'ComM_bool_Impl',0,13,179,1,15
+	.word	142
+	.byte	13,13,181,1,9,24,14
+	.byte	'ChannelState_e',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	'LightTimeoutCtr_u32',0
+	.word	252
+	.byte	4,2,35,4,14
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	159
+	.byte	2,2,35,8,14
+	.byte	'ChannelMode_u8',0
+	.word	142
+	.byte	1,2,35,10,14
+	.byte	'BusSmMode_u8',0
+	.word	142
+	.byte	1,2,35,11,14
+	.byte	'UserRequestCtr_u8',0
+	.word	142
+	.byte	1,2,35,12,14
+	.byte	'PassiveRequestState_u8',0
+	.word	142
+	.byte	1,2,35,13,14
+	.byte	'PncRequestCtr_u8',0
+	.word	142
+	.byte	1,2,35,14,14
+	.byte	'InhibitionReqStatus_u8',0
+	.word	142
+	.byte	1,2,35,15,14
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	142
+	.byte	1,2,35,16,14
+	.byte	'DiagnosticRequestState_b',0
+	.word	142
+	.byte	1,2,35,17,14
+	.byte	'CommunicationAllowed_b',0
+	.word	142
+	.byte	1,2,35,18,14
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	142
+	.byte	1,2,35,19,14
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	142
+	.byte	1,2,35,20,14
+	.byte	'NmNetworkModeStatus_b',0
+	.word	142
+	.byte	1,2,35,21,0,12
+	.byte	'ComM_ChannelStruct_Impl',0,13,197,1,3
+	.word	8115
+	.byte	13,13,206,1,9,10,14
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	159
+	.byte	2,2,35,0,14
+	.byte	'LimitToNoComCtr_u16',0
+	.word	159
+	.byte	2,2,35,2,14
+	.byte	'RequestedUserMode_t',0
+	.word	142
+	.byte	1,2,35,4,14
+	.byte	'IndicatedUserMode_t',0
+	.word	142
+	.byte	1,2,35,5,14
+	.byte	'numChannelsInFullCom_u8',0
+	.word	142
+	.byte	1,2,35,6,14
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	142
+	.byte	1,2,35,7,14
+	.byte	'numChannelsInNoCom_u8',0
+	.word	142
+	.byte	1,2,35,8,0,12
+	.byte	'ComM_UserStruct_Impl',0,13,214,1,3
+	.word	8619
+	.byte	12
+	.byte	'Dcm_IOOperationResponseType',0,13,252,1,15
+	.word	142
+	.byte	12
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	13,138,2,15
+	.word	142
+	.byte	12
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,13,146,2,15
+	.word	142
+	.byte	12
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,13,150,2,15
+	.word	142
+	.byte	12
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,13,154,2,15
+	.word	142
+	.byte	12
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,13,243,3,34
+	.word	7362
+	.byte	17,128,8
+	.word	142
+	.byte	18,255,7,0,12
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,13,246,3,34
+	.word	7362
+	.byte	12
+	.byte	'Rte_TaskRefType',0,14,184,1,32
+	.word	3849
+	.byte	12
+	.byte	'Rte_EventRefType',0,14,185,1,32
+	.word	142
+	.byte	12
+	.byte	'Rte_EventType',0,14,186,1,32
+	.word	252
+	.byte	12
+	.byte	'Rte_REActCounterType',0,14,252,1,15
+	.word	142
+	.byte	6
+	.word	142
+	.byte	12
+	.byte	'Rte_REActCounterRefType',0,14,253,1,58
+	.word	9541
+	.byte	13,14,255,1,9,8,14
+	.byte	'task',0
+	.word	9437
+	.byte	4,2,35,0,14
+	.byte	'acnt',0
+	.word	9546
+	.byte	4,2,35,4,0,12
+	.byte	'Rte_REContainerType',0,14,130,2,3
+	.word	9579
+	.byte	10
+	.word	3589
+	.byte	6
+	.word	9643
+	.byte	6
+	.word	142
+	.byte	10
+	.word	9579
+	.byte	6
+	.word	9658
+	.byte	12
+	.byte	'Rte_REContainerRefType',0,14,132,2,60
+	.word	9663
+	.byte	12
+	.byte	'Rte_MSICounterType',0,14,149,2,16
+	.word	159
+	.byte	6
+	.word	159
+	.byte	12
+	.byte	'Rte_MSICounterRefType',0,14,150,2,56
+	.word	9728
+	.byte	12
+	.byte	'Rte_MSIPendingFlagType',0,14,152,2,17
+	.word	142
+	.byte	6
+	.word	142
+	.byte	12
+	.byte	'Rte_MSIPendingFlagRefType',0,14,153,2,60
+	.word	9796
+	.byte	13,14,163,2,9,24,14
+	.byte	'counter',0
+	.word	9733
+	.byte	4,2,35,0,14
+	.byte	'incCounter',0
+	.word	142
+	.byte	1,2,35,4,14
+	.byte	'pending',0
+	.word	9801
+	.byte	4,2,35,8,14
+	.byte	'osTask',0
+	.word	9437
+	.byte	4,2,35,12,14
+	.byte	'acnt',0
+	.word	9546
+	.byte	4,2,35,16,14
+	.byte	'osEvent',0
+	.word	142
+	.byte	1,2,35,20,14
+	.byte	'MSIInit',0
+	.word	159
+	.byte	2,2,35,22,0,12
+	.byte	'Rte_MSITableEntry',0,14,172,2,3
+	.word	9836
+	.byte	6
+	.word	159
+	.byte	6
+	.word	142
+	.byte	12
+	.byte	'Rte_TaskArrayIndex',0,14,179,2,16
+	.word	142
+	.byte	12
+	.byte	'Rte_NrWaitingTasks',0,14,180,2,16
+	.word	142
+	.byte	13,14,182,2,9,4,14
+	.byte	'pending',0
+	.word	142
+	.byte	1,2,35,0,14
+	.byte	'count',0
+	.word	142
+	.byte	1,2,35,1,14
+	.byte	'firstWaitingTask',0
+	.word	142
+	.byte	1,2,35,2,0,12
+	.byte	'Rte_WaitableDatum',0,14,186,2,3
+	.word	10054
+	.byte	6
+	.word	10054
+	.byte	13,14,226,2,9,12,14
+	.byte	'event_id',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	'wd',0
+	.word	10146
+	.byte	4,2,35,4,14
+	.byte	'timeout',0
+	.word	252
+	.byte	4,2,35,8,0,12
+	.byte	'Rte_WOWP_NotificationType',0,14,230,2,3
+	.word	10151
+	.byte	10
+	.word	10151
+	.byte	6
+	.word	10240
+	.byte	12
+	.byte	'Rte_WOWP_NotificationRefType',0,14,232,2,66
+	.word	10245
+	.byte	12
+	.byte	'Rte_ARE_NotificationType',0,14,234,2,29
+	.word	9579
+	.byte	20
+	.byte	'Rte_QTaskType',0,14,243,2,16,28,14
+	.byte	'cmn',0
+	.word	7113
+	.byte	24,2,35,0,14
+	.byte	'task',0
+	.word	9437
+	.byte	4,2,35,24,0,12
+	.byte	'Rte_QTaskType',0,14,246,2,3
+	.word	10322
+	.byte	20
+	.byte	'Rte_QREType',0,14,250,2,16,28,14
+	.byte	'cmn',0
+	.word	7113
+	.byte	24,2,35,0,14
+	.byte	're',0
+	.word	9668
+	.byte	4,2,35,24,0,12
+	.byte	'Rte_QREType',0,14,253,2,3
+	.word	10393
+	.byte	10
+	.word	9579
+	.byte	6
+	.word	10458
+	.byte	20
+	.byte	'Rte_QWWPType',0,14,129,3,16,28,14
+	.byte	'cmn',0
+	.word	7113
+	.byte	24,2,35,0,14
+	.byte	'wwp',0
+	.word	10250
+	.byte	4,2,35,24,0,12
+	.byte	'Rte_QWWPType',0,14,132,3,3
+	.word	10468
+	.byte	10
+	.word	10151
+	.byte	6
+	.word	10536
+	.byte	20
+	.byte	'Rte_QEvType',0,14,136,3,16,36,14
+	.byte	'cmn',0
+	.word	7113
+	.byte	24,2,35,0,14
+	.byte	'task',0
+	.word	9437
+	.byte	4,2,35,24,14
+	.byte	'mask',0
+	.word	142
+	.byte	1,2,35,28,14
+	.byte	'acnt',0
+	.word	9546
+	.byte	4,2,35,32,0,12
+	.byte	'Rte_QEvType',0,14,141,3,3
+	.word	10546
+	.byte	20
+	.byte	'Rte_QMSIType',0,14,145,3,16,48,14
+	.byte	'cmn',0
+	.word	7113
+	.byte	24,2,35,0,14
+	.byte	'task',0
+	.word	9437
+	.byte	4,2,35,24,14
+	.byte	'mask',0
+	.word	142
+	.byte	1,2,35,28,14
+	.byte	'acnt',0
+	.word	9546
+	.byte	4,2,35,32,14
+	.byte	'msiCounter',0
+	.word	9733
+	.byte	4,2,35,36,14
+	.byte	'msiPending',0
+	.word	9801
+	.byte	4,2,35,40,14
+	.byte	'msiLimit',0
+	.word	159
+	.byte	2,2,35,44,0,12
+	.byte	'Rte_QMSIType',0,14,153,3,3
+	.word	10641
+	.byte	13,15,76,9,8,14
+	.byte	'TimePeriodFact',0
+	.word	159
+	.byte	2,2,35,0,14
+	.byte	'TimeOffsetFact',0
+	.word	159
+	.byte	2,2,35,2,14
+	.byte	'RepetitionPeriodFact',0
+	.word	159
+	.byte	2,2,35,4,14
+	.byte	'NumOfRepetitions',0
+	.word	142
+	.byte	1,2,35,6,14
+	.byte	'Mode',0
+	.word	142
+	.byte	1,2,35,7,0,12
+	.byte	'Com_TransModeInfo',0,15,93,2
+	.word	10796
+	.byte	10
+	.word	10796
+	.byte	6
+	.word	10946
+	.byte	12
+	.byte	'Com_TMConstPtrType',0,15,103,65
+	.word	10951
+	.byte	13,15,136,1,9,12,14
+	.byte	'Init_Val',0
+	.word	252
+	.byte	4,2,35,0,14
+	.byte	'txSignalFields',0
+	.word	159
+	.byte	2,2,35,4,14
+	.byte	'Bit_Pos',0
+	.word	142
+	.byte	1,2,35,6,14
+	.byte	'BitSize',0
+	.word	142
+	.byte	1,2,35,7,14
+	.byte	'IpduRef',0
+	.word	142
+	.byte	1,2,35,8,14
+	.byte	'General',0
+	.word	142
+	.byte	1,2,35,9,0,12
+	.byte	'Com_Prv_xTxSigCfg_tst',0,15,201,1,2
+	.word	10983
+	.byte	13,15,247,1,9,16,14
+	.byte	'Notification_Cbk',0
+	.word	2036
+	.byte	4,2,35,0,14
+	.byte	'Init_Val',0
+	.word	252
+	.byte	4,2,35,4,14
+	.byte	'Bit_Pos',0
+	.word	142
+	.byte	1,2,35,8,14
+	.byte	'SigBuff_Index',0
+	.word	142
+	.byte	1,2,35,9,14
+	.byte	'BitSize',0
+	.word	142
+	.byte	1,2,35,10,14
+	.byte	'IpduRef',0
+	.word	142
+	.byte	1,2,35,11,14
+	.byte	'General',0
+	.word	142
+	.byte	1,2,35,12,14
+	.byte	'rxSignalFields',0
+	.word	142
+	.byte	1,2,35,13,0,12
+	.byte	'Com_Prv_xRxSigCfg_tst',0,15,171,2,2
+	.word	11131
+	.byte	13,15,211,5,9,24,14
+	.byte	'BuffPtr',0
+	.word	581
+	.byte	4,2,35,0,14
+	.byte	'Com_TMConstPtr',0
+	.word	10951
+	.byte	4,2,35,4,14
+	.byte	'Size',0
+	.word	159
+	.byte	2,2,35,8,14
+	.byte	'Timeout_Fact',0
+	.word	159
+	.byte	2,2,35,10,14
+	.byte	'Min_Delay_Time_Fact',0
+	.word	159
+	.byte	2,2,35,12,14
+	.byte	'No_Of_Sig_Ref',0
+	.word	159
+	.byte	2,2,35,14,14
+	.byte	'PdurId',0
+	.word	159
+	.byte	2,2,35,16,14
+	.byte	'TxSigId_Index',0
+	.word	142
+	.byte	1,2,35,18,14
+	.byte	'txIPduFields',0
+	.word	159
+	.byte	2,2,35,20,14
+	.byte	'MainFunctionRef',0
+	.word	142
+	.byte	1,2,35,22,14
+	.byte	'PaddingByte',0
+	.word	142
+	.byte	1,2,35,23,0,12
+	.byte	'Com_Prv_xTxIpduInfoCfg_tst',0,15,162,6,3
+	.word	11328
+	.byte	13,15,137,7,9,20,14
+	.byte	'BuffPtr',0
+	.word	581
+	.byte	4,2,35,0,14
+	.byte	'TimeOutNotification_Cbk',0
+	.word	2036
+	.byte	4,2,35,4,14
+	.byte	'Size',0
+	.word	159
+	.byte	2,2,35,8,14
+	.byte	'FirstTimeout_Factor',0
+	.word	159
+	.byte	2,2,35,10,14
+	.byte	'Timeout_Fact',0
+	.word	159
+	.byte	2,2,35,12,14
+	.byte	'No_Of_Sig_Ref',0
+	.word	159
+	.byte	2,2,35,14,14
+	.byte	'RxSigId_Index',0
+	.word	142
+	.byte	1,2,35,16,14
+	.byte	'MainFunctionRef',0
+	.word	142
+	.byte	1,2,35,17,14
+	.byte	'rxIPduFields',0
+	.word	142
+	.byte	1,2,35,18,0,12
+	.byte	'Com_Prv_xRxIpduInfoCfg_tst',0,15,197,7,3
+	.word	11607
+	.byte	13,15,219,7,9,4,14
+	.byte	'FirstIpdu_Index',0
+	.word	159
+	.byte	2,2,35,0,14
+	.byte	'NoOfRxPdus',0
+	.word	159
+	.byte	2,2,35,2,0,12
+	.byte	'Com_Prv_xIpduGrpInfoCfg_tst',0,15,224,7,3
+	.word	11858
+	.byte	13,15,244,7,9,1,14
+	.byte	'txSigRAMFields',0
+	.word	142
+	.byte	1,2,35,0,0,12
+	.byte	'Com_TxSignalFlagType',0,15,248,7,2
+	.word	11947
+	.byte	13,15,167,8,9,1,14
+	.byte	'rxSigRAMFields',0
+	.word	142
+	.byte	1,2,35,0,0,12
+	.byte	'Com_RxSignalFlagType',0,15,171,8,2
+	.word	12008
+	.byte	13,15,135,9,9,16,14
+	.byte	'CurrentTxModePtr',0
+	.word	10956
+	.byte	4,2,35,0,14
+	.byte	'Com_MinDelayTick',0
+	.word	159
+	.byte	2,2,35,4,14
+	.byte	'Com_Tick_Tx',0
+	.word	159
+	.byte	2,2,35,6,14
+	.byte	'Com_n_Tick_Tx',0
+	.word	159
+	.byte	2,2,35,8,14
+	.byte	'Com_TickTxTimeout',0
+	.word	159
+	.byte	2,2,35,10,14
+	.byte	'Com_TxFlags',0
+	.word	159
+	.byte	2,2,35,12,14
+	.byte	'Com_n',0
+	.word	142
+	.byte	1,2,35,14,14
+	.byte	'Com_TransMode',0
+	.word	142
+	.byte	1,2,35,15,0,12
+	.byte	'Com_TxIpduRamData',0,15,189,9,3
+	.word	12069
+	.byte	10
+	.word	10796
+	.byte	6
+	.word	12285
+	.byte	13,15,218,9,9,6,14
+	.byte	'RxIPduLength',0
+	.word	159
+	.byte	2,2,35,0,14
+	.byte	'RxTicks_u16',0
+	.word	159
+	.byte	2,2,35,2,14
+	.byte	'RxFlags',0
+	.word	142
+	.byte	1,2,35,4,0,12
+	.byte	'Com_RxIpduRamData',0,15,245,9,2
+	.word	12295
+	.byte	6
+	.word	159
+	.byte	13,15,128,10,9,8,14
+	.byte	'RxGwQueuePtr',0
+	.word	12389
+	.byte	4,2,35,0,14
+	.byte	'Com_RxGwQueueWrite_ux',0
+	.word	142
+	.byte	1,2,35,4,14
+	.byte	'Com_RxGwQueueRead_ux',0
+	.word	142
+	.byte	1,2,35,5,0,12
+	.byte	'Com_RxGwQueueRAMType',0,15,133,10,2
+	.word	12394
+	.byte	13,15,138,10,9,4,14
+	.byte	'indexGwMapSigDestIdArray',0
+	.word	159
+	.byte	2,2,35,0,14
+	.byte	'destCount',0
+	.word	142
+	.byte	1,2,35,2,0,12
+	.byte	'Com_Prv_xGwMapSigCfg_tst',0,15,142,10,2
+	.word	12514
+	.byte	13,15,147,10,9,2,14
+	.byte	'GwMap_DestId',0
+	.word	159
+	.byte	2,2,35,0,0,12
+	.byte	'Com_Prv_xGwMapSigIdCfg_tst',0,15,150,10,2
+	.word	12608
+	.byte	13,15,183,10,9,4,14
+	.byte	'StartIPduId',0
+	.word	142
+	.byte	1,2,35,0,14
+	.byte	'NumOfIpdus',0
+	.word	142
+	.byte	1,2,35,1,14
+	.byte	'TimeBaseInMs',0
+	.word	142
+	.byte	1,2,35,2,0,12
+	.byte	'Com_MainFunctionCfgType',0,15,188,10,3
+	.word	12673
+	.byte	13,15,194,10,9,12,14
+	.byte	'Com_SigType_pu8',0
+	.word	581
+	.byte	4,2,35,0,14
+	.byte	'Com_SigType_pu16',0
+	.word	409
+	.byte	4,2,35,4,14
+	.byte	'Com_SigType_pu32',0
+	.word	495
+	.byte	4,2,35,8,0,12
+	.byte	'Com_Prv_xRxRamBuf_tst',0,15,253,10,3
+	.word	12776
+	.byte	12
+	.byte	'rba_BswSrv_uint64',0,16,66,28
+	.word	978
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L22:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,46,1,3,8,32,13,58,15,59,15
+	.byte	57,15,73,19,54,15,39,12,0,0,4,5,0,3,8,58,15,59,15,57,15,73,19,0,0,5,11,0,0,0,6,15,0,73,19,0,0,7,46,1,3
+	.byte	8,32,13,58,15,59,15,57,15,54,15,39,12,0,0,8,46,1,49,19,0,0,9,5,0,49,19,0,0,10,38,0,73,19,0,0,11,21,0,54
+	.byte	15,0,0,12,22,0,3,8,58,15,59,15,57,15,73,19,0,0,13,19,1,58,15,59,15,57,15,11,15,0,0,14,13,0,3,8,73,19,11
+	.byte	15,56,9,0,0,15,4,1,58,15,59,15,57,15,11,15,0,0,16,40,0,3,8,28,13,0,0,17,1,1,11,15,73,19,0,0,18,33,0,47
+	.byte	15,0,0,19,21,0,54,15,39,12,0,0,20,19,1,3,8,58,15,59,15,57,15,11,15,0,0,21,59,0,3,8,0,0,22,21,1,54,15,39
+	.byte	12,0,0,23,5,0,73,19,0,0,24,23,1,58,15,59,15,57,15,11,15,0,0,25,4,1,3,8,58,15,59,15,57,15,11,15,0,0,26
+	.byte	21,0,73,19,54,15,39,12,0,0,27,53,0,73,19,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L23:
+	.word	.L74-.L73
+.L73:
+	.half	3
+	.word	.L76-.L75
+.L75:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Bfx\\api\\Bfx_Bit_Inl.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Com\\src\\Com_UnpackSignal.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Com\\Com_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Com\\Com_Cfg_Internal.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Com\\src\\Com_Prv_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0,0
+.L76:
+.L74:
+	.sdecl	'.debug_info',debug,cluster('Com_UnpackSignal')
+	.sect	'.debug_info'
+.L24:
+	.word	419
+	.half	3
+	.word	.L25
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Com\\src\\Com_UnpackSignal.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L27,.L26
+	.byte	2
+	.word	.L20
+	.byte	3
+	.byte	'Com_UnpackSignal',0,1,27,32
+	.word	.L34
+	.byte	1,1,1
+	.word	.L17,.L35,.L16
+	.byte	4
+	.byte	'Endianess',0,1,27,91
+	.word	.L36,.L37
+	.byte	4
+	.byte	'Bit_Pos',0,1,28,91
+	.word	.L36,.L38
+	.byte	4
+	.byte	'Bitsize',0,1,29,91
+	.word	.L36,.L39
+	.byte	4
+	.byte	'Src_Buf',0,1,30,91
+	.word	.L40,.L41
+	.byte	4
+	.byte	'IsSigned',0,1,31,91
+	.word	.L36,.L42
+	.byte	5
+	.word	.L17,.L35
+	.byte	6
+	.byte	'a_data',0,1,42,38
+	.word	.L34,.L43
+	.byte	6
+	.byte	'ByteNo',0,1,43,38
+	.word	.L44,.L45
+	.byte	6
+	.byte	'Bits_left',0,1,44,38
+	.word	.L46,.L47
+	.byte	6
+	.byte	'Total_BitsCopied',0,1,45,38
+	.word	.L46,.L48
+	.byte	6
+	.byte	'BitOffsetInByte',0,1,46,38
+	.word	.L46,.L49
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Com_UnpackSignal')
+	.sect	'.debug_abbrev'
+.L25:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Com_UnpackSignal')
+	.sect	'.debug_line'
+.L26:
+	.word	.L78-.L77
+.L77:
+	.half	3
+	.word	.L80-.L79
+.L79:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Com\\src\\Com_UnpackSignal.c',0,0,0,0,0
+.L80:
+	.byte	5,32,7,0,5,2
+	.word	.L17
+	.byte	3,26,1,5,47,9
+	.half	.L56-.L17
+	.byte	3,22,1,5,37,9
+	.half	.L57-.L56
+	.byte	3,1,1,5,41,9
+	.half	.L59-.L57
+	.byte	3,2,1,5,31,9
+	.half	.L81-.L59
+	.byte	1,5,51,9
+	.half	.L82-.L81
+	.byte	1,5,24,9
+	.half	.L64-.L82
+	.byte	3,2,1,5,5,9
+	.half	.L63-.L64
+	.byte	1,5,64,7,9
+	.half	.L83-.L63
+	.byte	3,3,1,5,44,9
+	.half	.L2-.L83
+	.byte	3,6,1,5,50,9
+	.half	.L84-.L2
+	.byte	1,5,36,9
+	.half	.L65-.L84
+	.byte	1,5,35,9
+	.half	.L85-.L65
+	.byte	1,5,25,9
+	.half	.L86-.L85
+	.byte	1,5,26,9
+	.half	.L87-.L86
+	.byte	3,1,1,5,38,9
+	.half	.L3-.L87
+	.byte	3,3,1,5,29,9
+	.half	.L5-.L3
+	.byte	3,2,1,5,9,9
+	.half	.L66-.L5
+	.byte	3,2,1,5,19,7,9
+	.half	.L88-.L66
+	.byte	3,2,1,5,21,9
+	.half	.L89-.L88
+	.byte	1,5,19,9
+	.half	.L6-.L89
+	.byte	3,4,1,5,52,9
+	.half	.L7-.L6
+	.byte	3,6,1,5,42,9
+	.half	.L90-.L7
+	.byte	1,5,9,9
+	.half	.L91-.L90
+	.byte	3,125,1,5,64,7,9
+	.half	.L92-.L91
+	.byte	3,3,1,5,20,9
+	.half	.L93-.L92
+	.byte	1,5,49,9
+	.half	.L94-.L93
+	.byte	3,2,1,5,84,9
+	.half	.L95-.L94
+	.byte	3,126,1,5,62,9
+	.half	.L8-.L95
+	.byte	3,8,1,5,75,9
+	.half	.L96-.L8
+	.byte	1,5,68,9
+	.half	.L97-.L96
+	.byte	1,5,51,9
+	.half	.L98-.L97
+	.byte	1,5,91,9
+	.half	.L99-.L98
+	.byte	1,5,20,9
+	.half	.L100-.L99
+	.byte	3,127,1,5,49,9
+	.half	.L101-.L100
+	.byte	3,3,1,5,38,9
+	.half	.L4-.L101
+	.byte	3,102,1,5,9,7,9
+	.half	.L102-.L4
+	.byte	3,31,1,5,54,7,9
+	.half	.L103-.L102
+	.byte	3,1,1,5,37,9
+	.half	.L60-.L103
+	.byte	1,5,42,9
+	.half	.L104-.L60
+	.byte	1,5,18,9
+	.half	.L105-.L104
+	.byte	1,5,61,9
+	.half	.L106-.L105
+	.byte	1,5,18,7,9
+	.half	.L107-.L106
+	.byte	3,2,1,5,5,9
+	.half	.L10-.L107
+	.byte	3,3,1,5,1,9
+	.half	.L12-.L10
+	.byte	3,1,1,7,9
+	.half	.L28-.L12
+	.byte	0,1,1
+.L78:
+	.sdecl	'.debug_ranges',debug,cluster('Com_UnpackSignal')
+	.sect	'.debug_ranges'
+.L27:
+	.word	-1,.L17,0,.L28-.L17,0,0
+	.sdecl	'.debug_info',debug,cluster('Com_UnpackOpaqueSignal')
+	.sect	'.debug_info'
+.L29:
+	.word	309
+	.half	3
+	.word	.L30
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Com\\src\\Com_UnpackSignal.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L32,.L31
+	.byte	2
+	.word	.L20
+	.byte	3
+	.byte	'Com_UnpackOpaqueSignal',0,1,123,24
+	.word	.L34
+	.byte	1,1,1
+	.word	.L19,.L50,.L18
+	.byte	4
+	.byte	'Bit_Pos',0,1,123,88
+	.word	.L36,.L51
+	.byte	4
+	.byte	'SignalLength',0,1,124,88
+	.word	.L36,.L52
+	.byte	4
+	.byte	'Src_Buf',0,1,125,88
+	.word	.L40,.L53
+	.byte	5
+	.word	.L19,.L50
+	.byte	6
+	.byte	'ByteNo',0,1,127,34
+	.word	.L46,.L54
+	.byte	6
+	.byte	'a_data',0,1,128,1,28
+	.word	.L34,.L55
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Com_UnpackOpaqueSignal')
+	.sect	'.debug_abbrev'
+.L30:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Com_UnpackOpaqueSignal')
+	.sect	'.debug_line'
+.L31:
+	.word	.L109-.L108
+.L108:
+	.half	3
+	.word	.L111-.L110
+.L110:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Com\\src\\Com_UnpackSignal.c',0,0,0,0,0
+.L111:
+	.byte	5,12,7,0,5,2
+	.word	.L19
+	.byte	3,129,1,1,5,23,9
+	.half	.L69-.L19
+	.byte	3,3,1,5,28,9
+	.half	.L68-.L69
+	.byte	3,2,1,5,35,9
+	.half	.L14-.L68
+	.byte	3,2,1,5,63,9
+	.half	.L70-.L14
+	.byte	1,5,53,9
+	.half	.L112-.L70
+	.byte	1,5,42,9
+	.half	.L71-.L112
+	.byte	1,5,16,9
+	.half	.L113-.L71
+	.byte	3,1,1,5,21,9
+	.half	.L114-.L113
+	.byte	3,1,1,5,28,9
+	.half	.L13-.L114
+	.byte	3,124,1,5,5,7,9
+	.half	.L115-.L13
+	.byte	3,8,1,5,1,9
+	.half	.L15-.L115
+	.byte	3,2,1,7,9
+	.half	.L33-.L15
+	.byte	0,1,1
+.L109:
+	.sdecl	'.debug_ranges',debug,cluster('Com_UnpackOpaqueSignal')
+	.sect	'.debug_ranges'
+.L32:
+	.word	-1,.L19,0,.L33-.L19,0,0
+	.sdecl	'.debug_loc',debug,cluster('Com_UnpackOpaqueSignal')
+	.sect	'.debug_loc'
+.L51:
+	.word	-1,.L19,0,.L68-.L19
+	.half	1
+	.byte	84
+	.word	0,0
+.L54:
+	.word	-1,.L19,.L69-.L19,.L50-.L19
+	.half	1
+	.byte	84
+	.word	0,0
+.L18:
+	.word	-1,.L19,0,.L50-.L19
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L52:
+	.word	-1,.L19,0,.L50-.L19
+	.half	1
+	.byte	85
+	.word	0,0
+.L53:
+	.word	-1,.L19,0,.L50-.L19
+	.half	1
+	.byte	100
+	.word	0,0
+.L55:
+	.word	-1,.L19,.L69-.L19,.L70-.L19
+	.half	1
+	.byte	82
+	.word	.L71-.L19,.L50-.L19
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Com_UnpackSignal')
+	.sect	'.debug_loc'
+.L49:
+	.word	-1,.L17,.L57-.L17,.L61-.L17
+	.half	1
+	.byte	95
+	.word	.L62-.L17,.L63-.L17
+	.half	1
+	.byte	81
+	.word	.L64-.L17,.L63-.L17
+	.half	1
+	.byte	95
+	.word	0,0
+.L38:
+	.word	-1,.L17,0,.L56-.L17
+	.half	1
+	.byte	85
+	.word	.L58-.L17,.L59-.L17
+	.half	1
+	.byte	95
+	.word	0,0
+.L47:
+	.word	-1,.L17,.L66-.L17,.L4-.L17
+	.half	1
+	.byte	83
+	.word	0,0
+.L39:
+	.word	-1,.L17,0,.L57-.L17
+	.half	1
+	.byte	86
+	.word	.L56-.L17,.L60-.L17
+	.half	1
+	.byte	85
+	.word	0,0
+.L45:
+	.word	-1,.L17,.L57-.L17,.L35-.L17
+	.half	1
+	.byte	86
+	.word	0,0
+.L16:
+	.word	-1,.L17,0,.L35-.L17
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L37:
+	.word	-1,.L17,0,.L35-.L17
+	.half	1
+	.byte	84
+	.word	0,0
+.L42:
+	.word	-1,.L17,0,.L35-.L17
+	.half	1
+	.byte	87
+	.word	0,0
+.L41:
+	.word	-1,.L17,0,.L35-.L17
+	.half	1
+	.byte	100
+	.word	0,0
+.L48:
+	.word	-1,.L17,.L63-.L17,.L65-.L17
+	.half	1
+	.byte	81
+	.word	.L3-.L17,.L35-.L17
+	.half	1
+	.byte	81
+	.word	0,0
+.L43:
+	.word	-1,.L17,.L64-.L17,.L35-.L17
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L67-.L17,.L35-.L17
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L116:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Com_UnpackSignal')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L116,.L17,.L35-.L17
+	.byte	8,18,8,19,8,21,8,22,8,23,0,0
+	.sdecl	'.debug_frame',debug,cluster('Com_UnpackOpaqueSignal')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L116,.L19,.L50-.L19
+	.byte	8,18,8,19,8,21,8,22,8,23,0,0
+
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   146  #define COM_STOP_SEC_CODE
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   147  #include "Com_MemMap.h"
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   148  /* FC_VariationPoint_START */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   149  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   150  #if defined (COM_RXSIG_FLOAT64SUPP ) || defined(COM_RXGRPSIG_FLOAT64SUPP)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   151  #define COM_START_SEC_CODE
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   152  #include "Com_MemMap.h"
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   153  /**************************************************************************************************/
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   154  /* Global functions (declared in header files )                                                   */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   155  /**************************************************************************************************/
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   156  /***************************************************************************************************
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   157   Function name    : Com_UnPackFloatSignal
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   158   Syntax           : float64 Com_UnPackFloatSignal(uint8 Endianess,Com_BitpositionType Bit_Pos, uint8* Src_Buf)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   159   Description      : Internal function used for packing the signal into Ipdubuffer
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   160   Parameter        : Endianess -> Little Endian/Big Endian
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   161                    : Bit_Pos ->   Position of the signal in the ipdu
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   162                    : Src_Buf ->   Buffer where signal data is available
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   163   Return value     : The function returns the unpacked Float64 value
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   164   Operation        : This function only packs Float64 signals/ group signals into Tx Ipdu buffer.
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   165   There can be two possibilities in packing a float signal
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   166   1. Signal lies in the byte boundary:
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   167    If signal lies in byte boundary, then all the 8 bytes of float data (64 bits) is copied into the uint8 destination buffer using memcpy function
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   168  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   169   2. Signal does not lie in the byte boundary:
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   170    If the signal bit position is not in the byte boundary, then the first and last bytes are displaced from the byte boundary
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   171    and need a bit copy of corresponding displaced bits. Where as the other 7 bytes of data can be copied with memcpy function
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   172    i.e : If the Bit position of the signal is 21,
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   173          1. first three bits are packed in 3rd byte of IPdu buffer with LSB being bit number 21.
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   174          2. Next 7 bytes of float data is copied into the next 7 bytes of IPdu buffer
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   175          3. The 11th byte of Ipdu buffer is then packed with remaining 5 bits of data.
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   176   Return value     : None
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   177  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   178  FUNC(float64, COM_CODE) Com_UnPackFloatSignal(VAR(uint8, AUTOMATIC) Endianess, VAR(Com_BitpositionType, AUTOMATIC) Bit_Pos,
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   179                  P2CONST(uint8,AUTOMATIC,COM_APPL_DATA) Src_Buf)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   180  {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   181  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   182      VAR(PduLengthType, AUTOMATIC) ByteNo;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   183      VAR(PduLengthType, AUTOMATIC) NoofBytes;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   184      VAR(uint8_least, AUTOMATIC) BitOffsetInByte;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   185      VAR(float64, AUTOMATIC) Dest_Buf_f64;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   186      VAR(uint8, AUTOMATIC) destdata_u8[8] = {0,0,0,0,0,0,0,0};
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   187  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   188      /* Float64 data type has 8 bytes */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   189      NoofBytes = 8;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   190      ByteNo = Bit_Pos >> 3u;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   191      BitOffsetInByte = (uint8)(Bit_Pos % 8u);
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   192  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   193      if(BitOffsetInByte ==  (uint8_least)0)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   194      {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   195          if(Endianess == COM_LITTLEENDIAN)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   196          {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   197              /* MR12 DIR 1.1 VIOLATION: Explicit cast is provided in line with rba_BswSrv_MemCopy() definition.
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   198                 But the void pointer is always deferenced to a type based on the pointers address alignment.
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   199                 Hence the alignment warning can safely be ignored. */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   200              (void)rba_BswSrv_MemCopy( (void *)destdata_u8, (const void *)(Src_Buf+ByteNo), NoofBytes );
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   201  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   202          }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   203          else
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   204          {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   205              uint8 index_u8;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   206              for(index_u8 = 0 ; index_u8 < NoofBytes; index_u8++)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   207              {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   208                  destdata_u8[index_u8] = *(Src_Buf+ByteNo);
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   209                  ByteNo--;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   210              }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   211          }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   212      }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   213      else
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   214      {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   215          uint16_least index_u16;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   216          if(Endianess == COM_LITTLEENDIAN)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   217          {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   218              /* Run the loop for NoofBytes times with an offset to Ipdu buffer */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   219              for(index_u16 = 0; index_u16 < NoofBytes; index_u16++)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   220              {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   221                  /* Below Function is to be masked for protection ? */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   222                  /* Copy the left over part of first byte and additional part of next byte into the Ipdu buffer */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   223                  destdata_u8[index_u16] = (uint8)((uint8)(*(Src_Buf+ByteNo)) >> BitOffsetInByte) | (uint8)((*(Src_Buf+(ByteNo + 1u))) << (8u-BitOffsetInByte));
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   224  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   225                  ByteNo++;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   226              }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   227          }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   228          else
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   229          {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   230              /* Decrement the byte number to point to the next byte */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   231              for(index_u16 = 0; index_u16 < NoofBytes; index_u16++)
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   232              {
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   233                  /* Below Function is to be masked for protection ? */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   234                  /* Copy the left over part of first byte and additional part of next byte into the Ipdu buffer */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   235                  destdata_u8[index_u16] = (uint8)((*(Src_Buf+ByteNo)) >> BitOffsetInByte) | (uint8)((*(Src_Buf+(ByteNo -1u))) << (8u-BitOffsetInByte));
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   236  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   237                  ByteNo--;
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   238              }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   239          }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   240      }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   241      /* Convert the data into float64 type */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   242      /* MR12 DIR 1.1 VIOLATION: Explicit cast is provided in line with rba_BswSrv_MemCopy() definition.
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   243         But the void pointer is always deferenced to a type based on the pointers address alignment.
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   244         Hence the alignment warning can safely be ignored. */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   245      (void)rba_BswSrv_MemCopy( (void *)&Dest_Buf_f64, (const void *)destdata_u8, NoofBytes );
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   246  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   247      return(Dest_Buf_f64);
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   248  }
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   249  #define COM_STOP_SEC_CODE
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   250  #include "Com_MemMap.h"
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   251  
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   252  #endif
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   253  /* FC_VariationPoint_END */
+; BSW\src\BSW\Gen\Com\src\Com_UnpackSignal.c	   254  
+
+	; Module end

@@ -1,0 +1,2214 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc16052a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Xcp\\Xcp_CmdUnlock.src BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_CmdUnlock.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_CmdUnlock.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Xcp_CmdUnlock.Xcp_CmdUnlock',code,cluster('Xcp_CmdUnlock')
+	.sect	'.text.Xcp_CmdUnlock.Xcp_CmdUnlock'
+	.align	2
+	
+	.global	Xcp_CmdUnlock
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	     1  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	     2  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	     3  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	     4  * Includes
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	     5  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	     6  #include "Xcp.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	     7  #include "Xcp_Priv.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	     8  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	     9  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    10  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    11  * Variables
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    12  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    13  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    14  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    15  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    16  * Functions
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    17  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    18  #if(XCP_CMD_UNLOCK_AVAILABLE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    19  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    20  #define XCP_START_SEC_CODE
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    21  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    22  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    23  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    24  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    25  This service unlock protected resource (only if Key is matching)
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    26  \param[in]  XcpPacket     pointer to the received XcpPacket
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    27  \param[in]  protLayerId   protocol layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    28  \return     -
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    29  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    30  void Xcp_CmdUnlock(const PduInfoType* XcpPacket, uint8 protLayerId)
+; Function Xcp_CmdUnlock
+.L14:
+Xcp_CmdUnlock:	.type	func
+	sub.a	a10,#8
+.L36:
+	mov	d8,d4
+.L39:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    31  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    32    /*Start of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    33    XCP_RTM_TIMETRACK_START()
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    34  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    35    /* Command variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    36    /* MR12 RULE 11.5, 1.1 VIOLATION: This function is called with data (a PDU) from the CanIf/FrIf/EthIf which ensure 4-Byte-Alignment.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    37                                      The cast allows easier (= safer) access to the data in the PDU.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    38                                      Casting over void* is necessary as otherwise some compilers complain */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    39    const Xcp_CmdUnlock_t* const CmdPtr = (const Xcp_CmdUnlock_t*) (void*) XcpPacket->SduDataPtr;
+	ld.a	a2,[a4]
+.L40:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    40    /* MR12 RULE 11.5, 1.1 VIOLATION: Compiler ensures the correct alignment in the datastructure, thus casting is no problem.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    41                                      The cast allows easier (= safer) access to the data in the PDU.
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    42                                      Casting over void* is necessary as otherwise some compilers complain */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    43    Xcp_ResUnlock_t* ResPtr = (Xcp_ResUnlock_t*) (void*) XCP_RES_BUFFER_PTR(protLayerId);
+	mov	d15,#336
+	mul	d15,d8
+	movh.a	a15,#@his(Xcp_Cleared)
+	lea	a15,[a15]@los(Xcp_Cleared)
+	addsc.a	a15,a15,d15,#0
+	lea	a12,[a15]12
+.L42:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    44  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    45    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    46    uint8 UnlockedResource;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    47    Xcp_ErrorCode Error;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    48  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    49    /* Initial values */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    50    Error = XCP_NO_ERROR;
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    51    UnlockedResource = 0;
+	mov	d15,#0
+.L57:
+	st.b	[a10],d15
+.L58:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    52  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    53    if (CmdPtr->LengthOfKey_u8 > 0u)
+	ld.bu	d5,[a2]1
+.L59:
+	jeq	d5,#0,.L2
+.L60:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    54    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    55      /* Check if seed was already requested */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    56      if(Xcp_Cleared[protLayerId].SeedAndKey.SeedWaitingKey_b == TRUE)
+	ld.bu	d15,[a15]308
+.L61:
+	jne	d15,#1,.L3
+.L62:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    57      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    58        /* Get unlocked resource */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    59        Error = XcpAppl_Unlock(CmdPtr->Key_au8, ((uint8)XCP_MIN(XcpPacket->SduLength - 2u, CmdPtr->LengthOfKey_u8)), CmdPtr->LengthOfKey_u8, &UnlockedResource, protLayerId);
+	ld.hu	d15,[a4]4
+	add	d15,#-2
+	jge.u	d15,d5,.L4
+	j	.L5
+.L4:
+	mov	d15,d5
+.L5:
+	add.a	a2,#2
+.L63:
+	extr.u	d4,d15,#0,#8
+.L38:
+	lea	a5,[a10]0
+.L64:
+	mov.aa	a4,a2
+.L37:
+	mov	d6,d8
+.L43:
+	call	XcpAppl_Unlock
+.L41:
+	j	.L6
+.L3:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    60      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    61      else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    62      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    63        /* Set error response 0x29 */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    64        Error = XCP_ERR_SEQUENCE;
+	mov	d2,#41
+.L6:
+	j	.L7
+.L2:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    65      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    66    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    67    else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    68    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    69      /* No Key data */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    70      Error = XCP_ERR_CMD_SYNTAX;
+	mov	d2,#33
+.L7:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    71    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    72  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    73    /* Check if no error */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    74    if (Error == XCP_NO_ERROR)
+	mov	d15,#255
+.L65:
+	jne	d15,d2,.L8
+.L66:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    75    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    76      /* Check if resource shall be unlocked with this key */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    77      if(UnlockedResource > 0u)
+	ld.bu	d15,[a10]
+.L67:
+	jeq	d15,#0,.L9
+.L68:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    78      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    79        /* Unlock the resource */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    80        Xcp_NoInit[protLayerId].Session.ResourceProtStatus_u8 &= (uint8)~UnlockedResource;
+	mul	d15,d8,#80
+.L69:
+	movh.a	a2,#@his(Xcp_NoInit)
+	lea	a2,[a2]@los(Xcp_NoInit)
+.L70:
+	addsc.a	a2,a2,d15,#0
+.L71:
+	add.a	a2,#5
+	ld.bu	d15,[a2]
+.L72:
+	ld.bu	d0,[a10]
+.L73:
+	xor	d0,d0,#255
+.L74:
+	and	d15,d0
+	st.b	[a2],d15
+.L75:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    81  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    82        /* Reset seed and key procedure */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    83        Xcp_Cleared[protLayerId].SeedAndKey.SeedWaitingKey_b = FALSE;
+	mov	d15,#0
+.L76:
+	st.b	[a15]308,d15
+.L9:
+	mul	d15,d8,#80
+.L77:
+	movh.a	a2,#@his(Xcp_NoInit)
+	lea	a2,[a2]@los(Xcp_NoInit)
+.L78:
+	addsc.a	a2,a2,d15,#0
+.L79:
+	add.a	a2,#5
+.L80:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    84      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    85  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    86      /* Fill response data */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    87      XCP_RES_BUFFER_LENGTH(protLayerId) = XCP_RES_UNLOCK_LENGTH;
+	mov	d15,#2
+.L81:
+	st.w	[a15]20,d15
+.L82:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    88      ResPtr->PacketId_u8 = XCP_PACKET_ID_RES;
+	mov	d15,#255
+.L83:
+	st.b	[a12],d15
+.L84:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    89      ResPtr->ProtectionStatus_u8 = Xcp_NoInit[protLayerId].Session.ResourceProtStatus_u8;
+	ld.bu	d15,[a2]
+.L85:
+	st.b	[a15]13,d15
+.L86:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    90  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    91      /* Send positive response */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    92      Xcp_SendRes(protLayerId);
+	mov	d4,d8
+.L45:
+	call	Xcp_SendRes
+.L44:
+	j	.L10
+.L8:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    93    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    94    else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    95    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    96      /* Reset seed and key procedure */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    97      Xcp_Cleared[protLayerId].SeedAndKey.SeedWaitingKey_b = FALSE;
+	mov	d15,#0
+.L87:
+	st.b	[a15]308,d15
+.L88:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    98  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	    99      /* Invalid Key? */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   100      if (Error == XCP_ERR_ACCESS_LOCKED)
+	mov	d15,#37
+.L89:
+	jne	d15,d2,.L11
+.L90:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   101      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   102        /* Disconnect Protocol layer */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   103        Xcp_DoDisconnect(protLayerId, XCP_ERR_ACCESS_LOCKED);
+	mov	d5,#37
+	mov	d4,d8
+.L47:
+	call	Xcp_DoDisconnect
+.L46:
+	j	.L12
+.L11:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   104      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   105      else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   106      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   107        /* Send negative response */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   108        Xcp_SendErrRes(Error, protLayerId);
+	mov	e4,d8,d2
+	call	Xcp_SendErrRes
+.L12:
+.L10:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   109      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   110    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   111  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   112    /*End of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   113    XCP_RTM_TIMETRACK_FINISH()
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   114  }
+	ret
+.L24:
+	
+__Xcp_CmdUnlock_function_end:
+	.size	Xcp_CmdUnlock,__Xcp_CmdUnlock_function_end-Xcp_CmdUnlock
+.L23:
+	; End of function
+	
+	.calls	'Xcp_CmdUnlock','XcpAppl_Unlock'
+	.calls	'Xcp_CmdUnlock','Xcp_SendRes'
+	.calls	'Xcp_CmdUnlock','Xcp_DoDisconnect'
+	.calls	'Xcp_CmdUnlock','Xcp_SendErrRes'
+	.extern	XcpAppl_Unlock
+	.extern	Xcp_NoInit
+	.extern	Xcp_Cleared
+	.extern	Xcp_SendRes
+	.extern	Xcp_SendErrRes
+	.extern	Xcp_DoDisconnect
+	.calls	'Xcp_CmdUnlock','',8
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L16:
+	.word	14410
+	.half	3
+	.word	.L17
+	.byte	4
+.L15:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_CmdUnlock.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L18
+.L34:
+	.byte	2,2,177,3,9,4,3
+	.byte	'XCP_ERR_CMD_SYNCH',0,0,3
+	.byte	'XCP_ERR_CMD_BUSY',0,16,3
+	.byte	'XCP_ERR_DAQ_ACTIVE',0,17,3
+	.byte	'XCP_ERR_PGM_ACTIVE',0,18,3
+	.byte	'XCP_ERR_CMD_UNKNOWN',0,32,3
+	.byte	'XCP_ERR_CMD_SYNTAX',0,33,3
+	.byte	'XCP_ERR_OUT_OF_RANGE',0,34,3
+	.byte	'XCP_ERR_WRITE_PROTECTED',0,35,3
+	.byte	'XCP_ERR_ACCESS_DENIED',0,36,3
+	.byte	'XCP_ERR_ACCESS_LOCKED',0,37,3
+	.byte	'XCP_ERR_PAGE_NOT_VALID',0,38,3
+	.byte	'XCP_ERR_MODE_NOT_VALID',0,39,3
+	.byte	'XCP_ERR_SEGMENT_NOT_VALID',0,40,3
+	.byte	'XCP_ERR_SEQUENCE',0,41,3
+	.byte	'XCP_ERR_DAQ_CONFIG',0,42,3
+	.byte	'XCP_ERR_MEMORY_OVERFLOW',0,48,3
+	.byte	'XCP_ERR_GENERIC',0,49,3
+	.byte	'XCP_ERR_VERIFY',0,50,3
+	.byte	'XCP_ERR_RES_TEMP_NOT_ACCESS',0,51,3
+	.byte	'XCP_ERR_SUBCMD_UNKNOWN',0,52,3
+	.byte	'XCP_REPEAT_COMMAND',0,252,1,3
+	.byte	'XCP_NO_ACCESS_HIDE',0,253,1,3
+	.byte	'XCP_NO_RESPONSE',0,254,1,3
+	.byte	'XCP_NO_ERROR',0,255,1,0
+.L27:
+	.byte	4
+	.byte	'unsigned char',0,1,8,5
+	.word	680
+	.byte	6
+	.word	697
+	.byte	6
+	.word	680
+	.byte	7
+	.byte	'XcpAppl_Unlock',0,1,233,2,22
+	.word	139
+	.byte	1,1,1,1,8
+	.byte	'KeyPtr',0,1,233,2,50
+	.word	702
+	.byte	8
+	.byte	'KeyPartLength',0,1,233,2,64
+	.word	680
+	.byte	8
+	.byte	'RemainingKeyLength',0,1,233,2,85
+	.word	680
+	.byte	8
+	.byte	'UnlockedResource',0,1,233,2,112
+	.word	707
+	.byte	8
+	.byte	'ProtocolLayerId',0,1,233,2,136,1
+	.word	680
+	.byte	0,9
+	.byte	'Xcp_SendRes',0,3,178,4,13,1,1,1,1,8
+	.byte	'protLayerId',0,3,178,4,31
+	.word	680
+	.byte	0,9
+	.byte	'Xcp_SendErrRes',0,3,180,4,13,1,1,1,1,8
+	.byte	'ErrorCode',0,3,180,4,42
+	.word	139
+	.byte	8
+	.byte	'protLayerId',0,3,180,4,59
+	.word	680
+	.byte	0,9
+	.byte	'Xcp_DoDisconnect',0,3,230,4,13,1,1,1,1,8
+	.byte	'protLayerId',0,3,230,4,36
+	.word	680
+	.byte	8
+	.byte	'Response',0,3,230,4,63
+	.word	139
+	.byte	0,4
+	.byte	'unsigned short int',0,2,7,10,4,71,9,8,11
+	.byte	'SduDataPtr',0
+	.word	707
+	.byte	4,2,35,0,11
+	.byte	'SduLength',0
+	.word	1034
+	.byte	2,2,35,4,0,5
+	.word	1056
+.L25:
+	.byte	6
+	.word	1101
+	.byte	12,6
+	.word	680
+	.byte	13,5,0,10,5,138,2,9,8,11
+	.byte	'CommandCode_u8',0
+	.word	680
+	.byte	1,2,35,0,11
+	.byte	'LengthOfKey_u8',0
+	.word	680
+	.byte	1,2,35,1,11
+	.byte	'Key_au8',0
+	.word	1111
+	.byte	6,2,35,2,0,5
+	.word	1120
+	.byte	6
+	.word	1192
+.L29:
+	.byte	5
+	.word	1197
+	.byte	10,5,145,2,9,2,11
+	.byte	'PacketId_u8',0
+	.word	680
+	.byte	1,2,35,0,11
+	.byte	'ProtectionStatus_u8',0
+	.word	680
+	.byte	1,2,35,1,0
+.L31:
+	.byte	6
+	.word	1207
+	.byte	14,1,6
+	.word	1269
+	.byte	15
+	.byte	'__codeptr',0,6,1,1
+	.word	1271
+	.byte	4
+	.byte	'char',0,1,6,15
+	.byte	'sint8',0,7,76,25
+	.word	1294
+	.byte	15
+	.byte	'uint8',0,7,81,25
+	.word	680
+	.byte	15
+	.byte	'uint16',0,7,91,25
+	.word	1034
+	.byte	4
+	.byte	'unsigned int',0,4,7,15
+	.byte	'uint32',0,7,106,24
+	.word	1345
+	.byte	4
+	.byte	'unsigned long long int',0,8,7,15
+	.byte	'uint64',0,7,111,30
+	.word	1376
+	.byte	15
+	.byte	'boolean',0,7,127,25
+	.word	680
+	.byte	15
+	.byte	'StatusType',0,8,191,1,27
+	.word	680
+	.byte	15
+	.byte	'Std_ReturnType',0,8,199,1,15
+	.word	680
+	.byte	10,8,206,1,9,8,11
+	.byte	'vendorID',0
+	.word	1034
+	.byte	2,2,35,0,11
+	.byte	'moduleID',0
+	.word	1034
+	.byte	2,2,35,2,11
+	.byte	'sw_major_version',0
+	.word	680
+	.byte	1,2,35,4,11
+	.byte	'sw_minor_version',0
+	.word	680
+	.byte	1,2,35,5,11
+	.byte	'sw_patch_version',0
+	.word	680
+	.byte	1,2,35,6,0,15
+	.byte	'Std_VersionInfoType',0,8,213,1,3
+	.word	1477
+	.byte	15
+	.byte	'PduIdType',0,9,22,19
+	.word	1034
+	.byte	15
+	.byte	'PduLengthType',0,9,26,19
+	.word	1034
+	.byte	15
+	.byte	'PduInfoType',0,4,75,3
+	.word	1056
+	.byte	2,4,113,9,4,3
+	.byte	'TP_DATACONF',0,0,3
+	.byte	'TP_DATARETRY',0,1,3
+	.byte	'TP_CONFPENDING',0,2,0,15
+	.byte	'TpDataStateType',0,4,118,3
+	.word	1687
+	.byte	2,2,225,1,9,4,3
+	.byte	'XCP_STATE_DISCONNECTED',0,0,3
+	.byte	'XCP_STATE_DISCONNECTING',0,1,3
+	.byte	'XCP_STATE_CONNECTED',0,2,3
+	.byte	'XCP_STATE_RESUME',0,3,3
+	.byte	'XCP_STATE_DISABLED',0,240,1,0,15
+	.byte	'Xcp_State_t',0,2,231,1,2
+	.word	1763
+	.byte	15
+	.byte	'Xcp_AddrValue',0,2,165,3,23
+	.word	1345
+	.byte	10,2,168,3,9,8,11
+	.byte	'AddrValue',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	'Extension',0
+	.word	680
+	.byte	1,2,35,4,0,15
+	.byte	'Xcp_AddrType_t',0,2,172,3,3
+	.word	1928
+	.byte	15
+	.byte	'Xcp_PduIdType',0,2,174,3,15
+	.word	680
+	.byte	15
+	.byte	'Xcp_ErrorCode',0,2,204,3,2
+	.word	139
+	.byte	2,2,207,3,9,4,3
+	.byte	'XCP_DAQ_STATE_NO_DAQ',0,0,3
+	.byte	'XCP_DAQ_STATE_FREE_DAQ',0,1,3
+	.byte	'XCP_DAQ_STATE_ALLOC_DAQ',0,2,3
+	.byte	'XCP_DAQ_STATE_ALLOC_ODT',0,3,3
+	.byte	'XCP_DAQ_STATE_ALLOC_ODT_ENTRY',0,4,3
+	.byte	'XCP_DAQ_STATE_WRITE_DAQ',0,5,3
+	.byte	'XCP_DAQ_STATE_PREPARE_START',0,6,3
+	.byte	'XCP_DAQ_STATE_SHIFTING',0,7,3
+	.byte	'XCP_DAQ_STATE_STOP_REQUESTED',0,8,3
+	.byte	'XCP_DAQ_STATE_READY_TO_RUN',0,9,3
+	.byte	'XCP_DAQ_STATE_RUNNING',0,10,0,15
+	.byte	'Xcp_DaqState_t',0,2,220,3,2
+	.word	2043
+	.byte	2,2,223,3,9,4,3
+	.byte	'XCP_DAQ_NO_OVERLOAD_INDICATION',0,0,3
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_PID',0,1,3
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_EVENT',0,2,0,15
+	.byte	'Xcp_Overload_t',0,2,228,3,2
+	.word	2371
+	.byte	2,2,233,3,9,4,3
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_ABSOLUTE',0,1,3
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_BYTE',0,2,3
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD',0,3,3
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD_ALIGNED',0,4,0,15
+	.byte	'Xcp_IdField_t',0,2,239,3,2
+	.word	2505
+	.byte	2,2,242,3,9,4,3
+	.byte	'XCP_ODT_OPTIMIZATION_OM_DEFAULT',0,0,3
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_16',0,1,3
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_32',0,2,3
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_64',0,3,3
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_ALIGNMENT',0,4,3
+	.byte	'XCP_ODT_OPTIMIZATION_OM_MAX_ENTRY_SIZE',0,5,0,15
+	.byte	'Xcp_OdtOptimizationType_t',0,2,250,3,2
+	.word	2722
+	.byte	2,2,253,3,9,4,3
+	.byte	'XCP_CONSISTENCY_ODT',0,0,3
+	.byte	'XCP_CONSISTENCY_DAQ',0,1,3
+	.byte	'XCP_CONSISTENCY_EVENT',0,2,3
+	.byte	'XCP_CONSISTENCY_NONE',0,3,0,15
+	.byte	'Xcp_Consistency_t',0,2,131,4,2
+	.word	2998
+	.byte	2,2,134,4,9,4,3
+	.byte	'XCP_TIMESTAMP_TYPE_NO_TIME_STAMP',0,0,3
+	.byte	'XCP_TIMESTAMP_TYPE_ONE_BYTE',0,1,3
+	.byte	'XCP_TIMESTAMP_TYPE_TWO_BYTE',0,2,3
+	.byte	'XCP_TIMESTAMP_TYPE_FOUR_BYTE',0,4,0,15
+	.byte	'Xcp_Timestamp_t',0,2,140,4,2
+	.word	3123
+	.byte	12,8
+	.word	680
+	.byte	13,7,0,10,2,174,4,9,12,11
+	.byte	'Buffer_au8',0
+	.word	3281
+	.byte	8,2,35,0,11
+	.byte	'Length_u32',0
+	.word	1345
+	.byte	4,2,35,8,0,15
+	.byte	'Xcp_Cto8_t',0,2,178,4,2
+	.word	3290
+	.byte	5
+	.word	1056
+	.byte	6
+	.word	3357
+	.byte	16
+	.word	680
+	.byte	1,1,17
+	.word	3362
+	.byte	17
+	.word	680
+	.byte	17
+	.word	680
+	.byte	0,6
+	.word	3367
+	.byte	18,1,1,17
+	.word	680
+	.byte	17
+	.word	680
+	.byte	0,6
+	.word	3395
+	.byte	18,1,1,17
+	.word	680
+	.byte	0,6
+	.word	3414
+	.byte	16
+	.word	680
+	.byte	1,1,17
+	.word	680
+	.byte	0,6
+	.word	3428
+	.byte	6
+	.word	1056
+	.byte	18,1,1,17
+	.word	3362
+	.byte	17
+	.word	3446
+	.byte	17
+	.word	680
+	.byte	0,6
+	.word	3451
+	.byte	16
+	.word	680
+	.byte	1,1,17
+	.word	680
+	.byte	17
+	.word	1034
+	.byte	17
+	.word	680
+	.byte	0,6
+	.word	3475
+	.byte	10,10,164,1,9,56,11
+	.byte	'TLTransmit_pfct',0
+	.word	3390
+	.byte	4,2,35,0,11
+	.byte	'TLInit_pfct',0
+	.word	3409
+	.byte	4,2,35,4,11
+	.byte	'TLConnect_pfct',0
+	.word	3423
+	.byte	4,2,35,8,11
+	.byte	'TLDisconnect_pfct',0
+	.word	3441
+	.byte	4,2,35,12,11
+	.byte	'TLTransportLayerCmd_pfct',0
+	.word	3470
+	.byte	4,2,35,16,11
+	.byte	'TLGetTxPduId_pfct',0
+	.word	3498
+	.byte	4,2,35,20,11
+	.byte	'MaxCto_u8',0
+	.word	680
+	.byte	1,2,35,24,11
+	.byte	'MaxDto_u16',0
+	.word	1034
+	.byte	2,2,35,26,11
+	.byte	'TimestampType_en',0
+	.word	3123
+	.byte	4,2,35,28,11
+	.byte	'IdFieldType_en',0
+	.word	2505
+	.byte	4,2,35,32,11
+	.byte	'OverloadType_en',0
+	.word	2371
+	.byte	4,2,35,36,11
+	.byte	'OdtOptimizationType_en',0
+	.word	2722
+	.byte	4,2,35,40,11
+	.byte	'Consistency_en',0
+	.word	2998
+	.byte	4,2,35,44,11
+	.byte	'PdRam_u32',0
+	.word	1345
+	.byte	4,2,35,48,11
+	.byte	'EdRam_u32',0
+	.word	1345
+	.byte	4,2,35,52,0,15
+	.byte	'Xcp_PL_TL_Cfg_t',0,10,184,1,2
+	.word	3503
+	.byte	2,10,188,1,9,4,3
+	.byte	'XCP_RAMSECTION_INVALID',0,0,3
+	.byte	'XCP_RAMSECTION_PD',0,1,3
+	.byte	'XCP_RAMSECTION_ED',0,2,0,15
+	.byte	'Xcp_RamSectionType_t',0,10,193,1,2
+	.word	3901
+	.byte	10,10,195,1,9,12,11
+	.byte	'DaqRamPtr_pu8',0
+	.word	707
+	.byte	4,2,35,0,11
+	.byte	'DaqRamTotalSize_u32',0
+	.word	1345
+	.byte	4,2,35,4,11
+	.byte	'RamSectionType_en',0
+	.word	3901
+	.byte	4,2,35,8,0,15
+	.byte	'Xcp_DaqRamSection_Cfg_t',0,10,200,1,2
+	.word	4003
+	.byte	12,1
+	.word	680
+	.byte	13,0,0,10,10,203,1,9,8,11
+	.byte	'DaqRamFreeSize_u32',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	'PLConnected_ab',0
+	.word	4122
+	.byte	1,2,35,4,0,15
+	.byte	'Xcp_DaqRamSections_t',0,10,207,1,2
+	.word	4131
+	.byte	10,10,230,1,9,4,11
+	.byte	'EventChannelDirection_u8',0
+	.word	680
+	.byte	1,2,35,0,11
+	.byte	'EventChannelTimeCycle_u8',0
+	.word	680
+	.byte	1,2,35,1,11
+	.byte	'EventChannelTimeUnit_u8',0
+	.word	680
+	.byte	1,2,35,2,11
+	.byte	'EventChannelPriority_u8',0
+	.word	680
+	.byte	1,2,35,3,0,15
+	.byte	'Xcp_EventChannel_Cfg_t',0,10,236,1,2
+	.word	4220
+	.byte	15
+	.byte	'rba_BswSrv_uint64',0,11,66,28
+	.word	1376
+	.byte	15
+	.byte	'Can_IdType',0,12,32,16
+	.word	1345
+	.byte	15
+	.byte	'Can_HwHandleType',0,12,43,16
+	.word	1034
+	.byte	10,13,93,9,8,11
+	.byte	'Class',0
+	.word	680
+	.byte	1,2,35,0,11
+	.byte	'TIN',0
+	.word	680
+	.byte	1,2,35,1,11
+	.byte	'ReturnAddress',0
+	.word	1345
+	.byte	4,2,35,4,0,15
+	.byte	'OsTrapInfoType',0,13,97,3
+	.word	4463
+	.byte	12,68
+	.word	1345
+	.byte	13,16,0,10,13,154,1,9,68,11
+	.byte	'store',0
+	.word	4543
+	.byte	68,2,35,0,0,12,68
+	.word	4552
+	.byte	13,0,0,15
+	.byte	'Os_JumpBufType',0,13,156,1,3
+	.word	4574
+	.byte	15
+	.byte	'Os_StackTraceType',0,13,174,1,18
+	.word	1345
+	.byte	10,13,175,1,9,8,11
+	.byte	'sp',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	'ctx',0
+	.word	1345
+	.byte	4,2,35,4,0,15
+	.byte	'Os_StackValueType',0,13,175,1,63
+	.word	4634
+	.byte	15
+	.byte	'Os_StackSizeType',0,13,176,1,27
+	.word	4634
+	.byte	19,1,1,6
+	.word	4719
+	.byte	15
+	.byte	'Os_VoidVoidFunctionType',0,13,179,1,16
+	.word	4722
+	.byte	15
+	.byte	'ApplicationType',0,13,193,1,23
+	.word	680
+	.byte	20
+	.byte	'Os_ApplicationConfigurationType_s',0,13,198,1,16,2,11
+	.byte	'app_id',0
+	.word	680
+	.byte	1,2,35,0,11
+	.byte	'access',0
+	.word	680
+	.byte	1,2,35,1,0,15
+	.byte	'Os_ApplicationConfigurationType',0,13,201,1,3
+	.word	4785
+	.byte	15
+	.byte	'Os_CoreStateType',0,13,203,1,16
+	.word	1345
+	.byte	15
+	.byte	'AreaIdType',0,13,204,1,16
+	.word	1034
+	.byte	15
+	.byte	'Os_PeripheralAddressType',0,13,212,1,22
+	.word	1345
+	.byte	15
+	.byte	'TickType',0,13,221,1,22
+	.word	1345
+	.byte	15
+	.byte	'Os_StopwatchTickType',0,13,225,1,22
+	.word	1345
+	.byte	6
+	.word	1345
+	.byte	15
+	.byte	'Os_Lockable',0,13,234,1,18
+	.word	5027
+	.byte	15
+	.byte	'CoreIdType',0,13,236,1,16
+	.word	1034
+	.byte	15
+	.byte	'SpinlockIdType',0,13,237,1,16
+	.word	1034
+	.byte	2,13,239,1,9,4,3
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,3
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,15
+	.byte	'TryToGetSpinlockType',0,13,239,1,74
+	.word	5097
+	.byte	2,13,174,2,9,4,3
+	.byte	'APPLICATION_ACCESSIBLE',0,0,3
+	.byte	'APPLICATION_RESTARTING',0,1,3
+	.byte	'APPLICATION_TERMINATED',0,2,0,15
+	.byte	'ApplicationStateType',0,13,174,2,92
+	.word	5190
+	.byte	21
+	.byte	'void',0,6
+	.word	5302
+	.byte	18,1,1,17
+	.word	680
+	.byte	17
+	.word	5308
+	.byte	0,6
+	.word	5313
+	.byte	15
+	.byte	'Os_FunctionEntryType',0,13,183,2,16
+	.word	5327
+	.byte	20
+	.byte	'Os_MeterInfoType_s',0,13,193,2,16,48,11
+	.byte	'elapsed',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	'previous',0
+	.word	1345
+	.byte	4,2,35,4,11
+	.byte	'max',0
+	.word	1345
+	.byte	4,2,35,8,11
+	.byte	'cumulative',0
+	.word	1345
+	.byte	4,2,35,12,11
+	.byte	'stackbase',0
+	.word	4634
+	.byte	8,2,35,16,11
+	.byte	'stackusage',0
+	.word	4634
+	.byte	8,2,35,24,11
+	.byte	'stackmax',0
+	.word	4634
+	.byte	8,2,35,32,11
+	.byte	'stackbudget',0
+	.word	4634
+	.byte	8,2,35,40,0,15
+	.byte	'Os_MeterInfoType',0,13,202,2,3
+	.word	5362
+	.byte	6
+	.word	5362
+	.byte	15
+	.byte	'Os_MeterInfoRefType',0,13,203,2,50
+	.word	5560
+	.byte	15
+	.byte	'EventMaskType',0,13,206,2,15
+	.word	680
+	.byte	15
+	.byte	'Os_imaskType',0,13,211,2,16
+	.word	1345
+	.byte	20
+	.byte	'Os_ISRDynType_s',0,13,213,2,16,48,11
+	.byte	'meter',0
+	.word	5362
+	.byte	48,2,35,0,0,15
+	.byte	'Os_ISRDynType',0,13,215,2,3
+	.word	5639
+	.byte	6
+	.word	5639
+	.byte	5
+	.word	5700
+	.byte	20
+	.byte	'Os_ISRType_s',0,13,216,2,16,24,11
+	.byte	'entry_function',0
+	.word	4727
+	.byte	4,2,35,0,11
+	.byte	'dynamic',0
+	.word	5705
+	.byte	4,2,35,4,11
+	.byte	'imask',0
+	.word	1345
+	.byte	4,2,35,8,11
+	.byte	'stackbudget',0
+	.word	4634
+	.byte	8,2,35,12,11
+	.byte	'access',0
+	.word	680
+	.byte	1,2,35,20,11
+	.byte	'application',0
+	.word	680
+	.byte	1,2,35,21,0,15
+	.byte	'Os_ISRType',0,13,223,2,3
+	.word	5710
+	.byte	6
+	.word	4719
+	.byte	5
+	.word	5710
+	.byte	6
+	.word	5869
+	.byte	15
+	.byte	'ISRType',0,13,224,2,46
+	.word	5874
+	.byte	15
+	.byte	'Os_bitmask',0,13,239,2,22
+	.word	1345
+	.byte	15
+	.byte	'Os_pset0Type',0,13,240,2,20
+	.word	1345
+	.byte	15
+	.byte	'Os_pset1Type',0,13,241,2,20
+	.word	1345
+	.byte	15
+	.byte	'Os_pset2Type',0,13,242,2,20
+	.word	1345
+	.byte	22,13,243,2,9,4,11
+	.byte	'p0',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	'p1',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	'p2',0
+	.word	1345
+	.byte	4,2,35,0,0,15
+	.byte	'Os_psetType',0,13,247,2,3
+	.word	5982
+	.byte	22,13,249,2,9,4,11
+	.byte	't0',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	't1',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	't2',0
+	.word	1345
+	.byte	4,2,35,0,0,15
+	.byte	'Os_tpmaskType',0,13,253,2,3
+	.word	6046
+	.byte	15
+	.byte	'Os_ActivationCountType',0,13,254,2,23
+	.word	680
+	.byte	20
+	.byte	'Os_TaskDynType_s',0,13,128,3,16,120,11
+	.byte	'terminate_jump_buf',0
+	.word	4583
+	.byte	68,2,35,0,11
+	.byte	'meter',0
+	.word	5362
+	.byte	48,2,35,68,11
+	.byte	'activation_count',0
+	.word	680
+	.byte	1,2,35,116,0,15
+	.byte	'Os_TaskDynType',0,13,132,3,3
+	.word	6144
+	.byte	12,68
+	.word	4552
+	.byte	13,0,0,6
+	.word	6144
+	.byte	5
+	.word	6270
+	.byte	20
+	.byte	'Os_TaskType_s',0,13,134,3,16,40,11
+	.byte	'dynamic',0
+	.word	6275
+	.byte	4,2,35,0,11
+	.byte	'entry_function',0
+	.word	4727
+	.byte	4,2,35,4,11
+	.byte	'pset',0
+	.word	5982
+	.byte	4,2,35,8,11
+	.byte	'base_tpmask',0
+	.word	6046
+	.byte	4,2,35,12,11
+	.byte	'tpmask',0
+	.word	6046
+	.byte	4,2,35,16,11
+	.byte	'core_id',0
+	.word	1034
+	.byte	2,2,35,20,11
+	.byte	'index',0
+	.word	1345
+	.byte	4,2,35,24,11
+	.byte	'stackbudget',0
+	.word	4634
+	.byte	8,2,35,28,11
+	.byte	'activation_count',0
+	.word	680
+	.byte	1,2,35,36,11
+	.byte	'access',0
+	.word	680
+	.byte	1,2,35,37,11
+	.byte	'application',0
+	.word	680
+	.byte	1,2,35,38,0,15
+	.byte	'Os_TaskType',0,13,146,3,3
+	.word	6280
+	.byte	5
+	.word	6280
+	.byte	6
+	.word	6530
+	.byte	15
+	.byte	'TaskType',0,13,147,3,47
+	.word	6535
+	.byte	23
+	.byte	'Os_TaskStateType',0,13,155,3,6,4,3
+	.byte	'SUSPENDED',0,0,3
+	.byte	'READY',0,1,3
+	.byte	'WAITING',0,2,3
+	.byte	'RUNNING',0,3,0,15
+	.byte	'TaskStateType',0,13,156,3,31
+	.word	6558
+	.byte	22,13,167,3,3,4,11
+	.byte	'tpmask',0
+	.word	6046
+	.byte	4,2,35,0,0,20
+	.byte	'Os_ResourceDynType_s',0,13,166,3,16,4,11
+	.byte	'saved_priority',0
+	.word	6645
+	.byte	4,2,35,0,0,15
+	.byte	'Os_ResourceDynType',0,13,170,3,3
+	.word	6668
+	.byte	6
+	.word	6668
+	.byte	5
+	.word	6748
+	.byte	20
+	.byte	'Os_ResourceType_s',0,13,171,3,16,12,11
+	.byte	'dynamic',0
+	.word	6753
+	.byte	4,2,35,0,11
+	.byte	'tpmask',0
+	.word	6046
+	.byte	4,2,35,4,11
+	.byte	'access',0
+	.word	680
+	.byte	1,2,35,8,0,15
+	.byte	'Os_ResourceType',0,13,175,3,3
+	.word	6758
+	.byte	10,13,181,3,9,12,11
+	.byte	'maxallowedvalue',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	'ticksperbase',0
+	.word	1345
+	.byte	4,2,35,4,11
+	.byte	'mincycle',0
+	.word	1345
+	.byte	4,2,35,8,0,15
+	.byte	'AlarmBaseType',0,13,185,3,3
+	.word	6857
+	.byte	10,13,206,3,9,8,11
+	.byte	'Running',0
+	.word	680
+	.byte	1,2,35,0,11
+	.byte	'Pending',0
+	.word	680
+	.byte	1,2,35,1,11
+	.byte	'Delay',0
+	.word	1345
+	.byte	4,2,35,4,0,15
+	.byte	'Os_CounterStatusType',0,13,210,3,3
+	.word	6952
+	.byte	24
+	.word	680
+	.byte	1,1,6
+	.word	7038
+	.byte	15
+	.byte	'Os_CounterIncrAdvType',0,13,217,3,22
+	.word	7045
+	.byte	20
+	.byte	's_swd',0,13,222,3,12,4,11
+	.byte	'count',0
+	.word	1345
+	.byte	4,2,35,0,0,22,13,221,3,3,4,11
+	.byte	'sw',0
+	.word	7081
+	.byte	4,2,35,0,0,20
+	.byte	'Os_CounterDynType_s',0,13,220,3,16,4,11
+	.byte	'type_dependent',0
+	.word	7109
+	.byte	4,2,35,0,0,15
+	.byte	'Os_CounterDynType',0,13,226,3,3
+	.word	7128
+	.byte	6
+	.word	7128
+	.byte	5
+	.word	7206
+	.byte	20
+	.byte	'Os_CounterType_s',0,13,227,3,16,28,11
+	.byte	'dynamic',0
+	.word	7211
+	.byte	4,2,35,0,11
+	.byte	'advincr',0
+	.word	7050
+	.byte	4,2,35,4,11
+	.byte	'base',0
+	.word	6857
+	.byte	12,2,35,8,11
+	.byte	'core',0
+	.word	5308
+	.byte	4,2,35,20,11
+	.byte	'access',0
+	.word	680
+	.byte	1,2,35,24,11
+	.byte	'application',0
+	.word	680
+	.byte	1,2,35,25,0,15
+	.byte	'Os_CounterType',0,13,234,3,3
+	.word	7216
+	.byte	6
+	.word	7038
+	.byte	5
+	.word	7216
+	.byte	6
+	.word	7368
+	.byte	15
+	.byte	'CounterType',0,13,235,3,52
+	.word	7373
+	.byte	23
+	.byte	'Os_ScheduleTableStatusType',0,13,240,3,6,4,3
+	.byte	'SCHEDULETABLE_STOPPED',0,0,3
+	.byte	'SCHEDULETABLE_NEXT',0,1,3
+	.byte	'SCHEDULETABLE_WAITING',0,2,3
+	.byte	'SCHEDULETABLE_RUNNING',0,3,3
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,15
+	.byte	'ScheduleTableStatusType',0,13,241,3,41
+	.word	7399
+	.byte	5
+	.word	.L48-.L16
+	.byte	6
+	.word	7599
+	.byte	15
+	.byte	'ScheduleTableType',0,13,128,4,58
+	.word	7604
+	.byte	20
+	.byte	'Os_ScheduleTableDynType_s',0,13,130,4,16,16,11
+	.byte	'match',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	'next',0
+	.word	7609
+	.byte	4,2,35,4,11
+	.byte	'state',0
+	.word	7399
+	.byte	4,2,35,8,11
+	.byte	'config',0
+	.word	1034
+	.byte	2,2,35,12,0,6
+	.word	7636
+	.byte	5
+	.word	7729
+.L48:
+	.byte	20
+	.byte	'Os_ScheduleTableType_s',0,13,247,3,16,16,11
+	.byte	'dynamic',0
+	.word	7734
+	.byte	4,2,35,0,11
+	.byte	'counter',0
+	.word	7378
+	.byte	4,2,35,4,11
+	.byte	'repeat',0
+	.word	680
+	.byte	1,2,35,8,11
+	.byte	'config',0
+	.word	1034
+	.byte	2,2,35,10,11
+	.byte	'initial',0
+	.word	680
+	.byte	1,2,35,12,11
+	.byte	'access',0
+	.word	680
+	.byte	1,2,35,13,11
+	.byte	'application',0
+	.word	680
+	.byte	1,2,35,14,0,15
+	.byte	'Os_ScheduleTableType',0,13,255,3,3
+	.word	7739
+	.byte	5
+	.word	7739
+	.byte	6
+	.word	7919
+	.byte	5
+	.word	7216
+	.byte	6
+	.word	7929
+	.byte	25
+	.word	5032
+	.byte	25
+	.word	5982
+	.byte	25
+	.word	5879
+	.byte	25
+	.word	6540
+	.byte	25
+	.word	6046
+	.byte	25
+	.word	680
+	.byte	25
+	.word	6540
+	.byte	20
+	.byte	'Os_ControlledCoreType_s',0,13,251,6,16,112,11
+	.byte	'TrapInfo',0
+	.word	4463
+	.byte	8,2,35,0,11
+	.byte	'lock_taskaccess',0
+	.word	7939
+	.byte	4,2,35,8,11
+	.byte	'ReadyTasks',0
+	.word	7944
+	.byte	4,2,35,12,11
+	.byte	'RunningISR',0
+	.word	7949
+	.byte	4,2,35,16,11
+	.byte	'RunningTask',0
+	.word	7954
+	.byte	4,2,35,20,11
+	.byte	'RunningTPMask',0
+	.word	7959
+	.byte	4,2,35,24,11
+	.byte	'CurrentMeteredObject',0
+	.word	5565
+	.byte	4,2,35,28,11
+	.byte	'IdleMeter',0
+	.word	5362
+	.byte	48,2,35,32,11
+	.byte	'AppAccess',0
+	.word	680
+	.byte	1,2,35,80,11
+	.byte	'AppOverride',0
+	.word	7964
+	.byte	1,2,35,81,11
+	.byte	'GetStackValueAdjust',0
+	.word	4634
+	.byte	8,2,35,84,11
+	.byte	'InErrorHook',0
+	.word	680
+	.byte	1,2,35,92,11
+	.byte	'ChainTaskRef',0
+	.word	7969
+	.byte	4,2,35,96,11
+	.byte	'GetStackUsageAdjust',0
+	.word	4634
+	.byte	8,2,35,100,11
+	.byte	'InProtectionHook',0
+	.word	680
+	.byte	1,2,35,108,11
+	.byte	'CoreIsActive',0
+	.word	680
+	.byte	1,2,35,109,11
+	.byte	'InShutdownHook',0
+	.word	680
+	.byte	1,2,35,110,0,15
+	.byte	'Os_ControlledCoreType',0,13,141,7,3
+	.word	7974
+	.byte	6
+	.word	1345
+	.byte	5
+	.word	5710
+	.byte	6
+	.word	8430
+	.byte	5
+	.word	6280
+	.byte	6
+	.word	8440
+	.byte	6
+	.word	5362
+	.byte	20
+	.byte	'Os_AnyCoreType_s',0,13,151,7,16,96,11
+	.byte	'DisableAllImask',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	'SuspendAllImask',0
+	.word	1345
+	.byte	4,2,35,4,11
+	.byte	'SuspendOSImask',0
+	.word	1345
+	.byte	4,2,35,8,11
+	.byte	'DisableAllCount',0
+	.word	1345
+	.byte	4,2,35,12,11
+	.byte	'SuspendAllCount',0
+	.word	1345
+	.byte	4,2,35,16,11
+	.byte	'SuspendOSCount',0
+	.word	1345
+	.byte	4,2,35,20,11
+	.byte	'RestartJumpBuf',0
+	.word	4583
+	.byte	68,2,35,24,11
+	.byte	'Restartable',0
+	.word	680
+	.byte	1,2,35,92,0,15
+	.byte	'Os_AnyCoreType',0,13,160,7,3
+	.word	8455
+	.byte	15
+	.byte	'Can_TxObjPriorityClassType',0,14,219,3,16
+	.word	1345
+	.byte	20
+	.byte	'Can_TxHwObjectConfigType',0,14,231,3,16,8,11
+	.byte	'MsgObjId',0
+	.word	680
+	.byte	1,2,35,0,11
+	.byte	'HwControllerId',0
+	.word	680
+	.byte	1,2,35,1,11
+	.byte	'TxObjPriorityClass',0
+	.word	1345
+	.byte	4,2,35,4,0,15
+	.byte	'Can_TxHwObjectConfigType',0,14,252,3,3
+	.word	8732
+	.byte	20
+	.byte	'Can_RxHwObjectConfigType',0,14,129,4,16,12,11
+	.byte	'MaskRef',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	'MsgId',0
+	.word	1345
+	.byte	4,2,35,4,11
+	.byte	'MsgObjId',0
+	.word	680
+	.byte	1,2,35,8,11
+	.byte	'HwControllerId',0
+	.word	680
+	.byte	1,2,35,9,0,15
+	.byte	'Can_RxHwObjectConfigType',0,14,147,4,3
+	.word	8868
+	.byte	12,4
+	.word	680
+	.byte	13,3,0,20
+	.byte	'Can_ControllerMOMapConfigType',0,14,181,4,16,4,11
+	.byte	'ControllerMOMap',0
+	.word	9008
+	.byte	4,2,35,0,0,15
+	.byte	'Can_ControllerMOMapConfigType',0,14,184,4,3
+	.word	9017
+	.byte	20
+	.byte	'Can_NPCRValueType',0,14,188,4,16,2,11
+	.byte	'Can_NPCRValue',0
+	.word	1034
+	.byte	2,2,35,0,0,15
+	.byte	'Can_NPCRValueType',0,14,191,4,3
+	.word	9118
+	.byte	20
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,14,194,4,16,8,11
+	.byte	'CanControllerBaudrate',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	'CanControllerBaudrateCfg',0
+	.word	1034
+	.byte	2,2,35,4,0,15
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,14,198,4,3
+	.word	9193
+	.byte	5
+	.word	9193
+	.byte	6
+	.word	9358
+	.byte	20
+	.byte	'Can_BaudrateConfigPtrType',0,14,201,4,16,4,11
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	9363
+	.byte	4,2,35,0,0,15
+	.byte	'Can_BaudrateConfigPtrType',0,14,204,4,3
+	.word	9368
+	.byte	20
+	.byte	'Can_EventHandlingType',0,14,226,4,16,4,11
+	.byte	'CanEventType',0
+	.word	9008
+	.byte	4,2,35,0,0,15
+	.byte	'Can_EventHandlingType',0,14,229,4,3
+	.word	9468
+	.byte	15
+	.byte	'Rte_TransformerErrorCode',0,15,130,1,15
+	.word	680
+	.byte	15
+	.byte	'Rte_TransformerClass',0,15,131,1,15
+	.word	680
+	.byte	10,15,168,1,9,12,11
+	.byte	'in',0
+	.word	5308
+	.byte	4,2,35,0,11
+	.byte	'out',0
+	.word	5308
+	.byte	4,2,35,4,11
+	.byte	'used',0
+	.word	1034
+	.byte	2,2,35,8,11
+	.byte	'lost_data',0
+	.word	680
+	.byte	1,2,35,10,0,15
+	.byte	'Rte_QDynType',0,15,173,1,3
+	.word	9614
+	.byte	2,15,175,1,9,4,3
+	.byte	'RTE_DRA',0,0,3
+	.byte	'RTE_WOWP',0,1,3
+	.byte	'RTE_TASK',0,2,3
+	.byte	'RTE_ARE',0,3,3
+	.byte	'RTE_EV',0,4,3
+	.byte	'RTE_MSI',0,5,0,15
+	.byte	'Rte_NotificationType',0,15,182,1,3
+	.word	9701
+	.byte	12,128,8
+	.word	680
+	.byte	13,255,7,0,15
+	.byte	'Impl_NVM_DstPtrType_1024',0,16,50,15
+	.word	9799
+	.byte	15
+	.byte	'CanIf_u32_impl',0,16,69,16
+	.word	1345
+	.byte	15
+	.byte	'CanIf_u16_impl',0,16,71,16
+	.word	1034
+	.byte	15
+	.byte	'CanIf_u8_impl',0,16,73,15
+	.word	680
+	.byte	15
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,16,88,15
+	.word	680
+	.byte	15
+	.byte	'CanIf_PduModeType_Enum_impl',0,16,90,15
+	.word	680
+	.byte	10,16,92,9,2,11
+	.byte	'DeviceMode',0
+	.word	680
+	.byte	1,2,35,0,11
+	.byte	'ChannelMode',0
+	.word	680
+	.byte	1,2,35,1,0,15
+	.byte	'CanIf_ControllerStateType_struct_impl',0,16,95,3
+	.word	9990
+	.byte	15
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,16,100,15
+	.word	680
+	.byte	15
+	.byte	'CanSM_boolean_Impl',0,16,120,15
+	.word	680
+	.byte	15
+	.byte	'CanSM_u8_Impl',0,16,123,15
+	.word	680
+	.byte	15
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,16,128,1,15
+	.word	680
+	.byte	15
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,16,132,1,15
+	.word	680
+	.byte	15
+	.byte	'CanSM_u16_Impl',0,16,136,1,16
+	.word	1034
+	.byte	15
+	.byte	'CanSM_TimerStateType_Enum_impl',0,16,138,1,15
+	.word	680
+	.byte	10,16,140,1,9,4,11
+	.byte	'cntTick_u16',0
+	.word	1034
+	.byte	2,2,35,0,11
+	.byte	'stTimer',0
+	.word	680
+	.byte	1,2,35,2,0,15
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,16,143,1,3
+	.word	10331
+	.byte	15
+	.byte	'Com_impl_u16',0,16,154,1,16
+	.word	1034
+	.byte	15
+	.byte	'Com_impl_u8',0,16,157,1,15
+	.word	680
+	.byte	15
+	.byte	'ComM_uint32_Impl',0,16,173,1,16
+	.word	1345
+	.byte	15
+	.byte	'ComM_uint16_Impl',0,16,175,1,16
+	.word	1034
+	.byte	15
+	.byte	'ComM_uint8_Impl',0,16,177,1,15
+	.word	680
+	.byte	15
+	.byte	'ComM_bool_Impl',0,16,179,1,15
+	.word	680
+	.byte	10,16,181,1,9,24,11
+	.byte	'ChannelState_e',0
+	.word	1345
+	.byte	4,2,35,0,11
+	.byte	'LightTimeoutCtr_u32',0
+	.word	1345
+	.byte	4,2,35,4,11
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	1034
+	.byte	2,2,35,8,11
+	.byte	'ChannelMode_u8',0
+	.word	680
+	.byte	1,2,35,10,11
+	.byte	'BusSmMode_u8',0
+	.word	680
+	.byte	1,2,35,11,11
+	.byte	'UserRequestCtr_u8',0
+	.word	680
+	.byte	1,2,35,12,11
+	.byte	'PassiveRequestState_u8',0
+	.word	680
+	.byte	1,2,35,13,11
+	.byte	'PncRequestCtr_u8',0
+	.word	680
+	.byte	1,2,35,14,11
+	.byte	'InhibitionReqStatus_u8',0
+	.word	680
+	.byte	1,2,35,15,11
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	680
+	.byte	1,2,35,16,11
+	.byte	'DiagnosticRequestState_b',0
+	.word	680
+	.byte	1,2,35,17,11
+	.byte	'CommunicationAllowed_b',0
+	.word	680
+	.byte	1,2,35,18,11
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	680
+	.byte	1,2,35,19,11
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	680
+	.byte	1,2,35,20,11
+	.byte	'NmNetworkModeStatus_b',0
+	.word	680
+	.byte	1,2,35,21,0,15
+	.byte	'ComM_ChannelStruct_Impl',0,16,197,1,3
+	.word	10563
+	.byte	10,16,206,1,9,10,11
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	1034
+	.byte	2,2,35,0,11
+	.byte	'LimitToNoComCtr_u16',0
+	.word	1034
+	.byte	2,2,35,2,11
+	.byte	'RequestedUserMode_t',0
+	.word	680
+	.byte	1,2,35,4,11
+	.byte	'IndicatedUserMode_t',0
+	.word	680
+	.byte	1,2,35,5,11
+	.byte	'numChannelsInFullCom_u8',0
+	.word	680
+	.byte	1,2,35,6,11
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	680
+	.byte	1,2,35,7,11
+	.byte	'numChannelsInNoCom_u8',0
+	.word	680
+	.byte	1,2,35,8,0,15
+	.byte	'ComM_UserStruct_Impl',0,16,214,1,3
+	.word	11067
+	.byte	15
+	.byte	'Dcm_IOOperationResponseType',0,16,252,1,15
+	.word	680
+	.byte	15
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	16,138,2,15
+	.word	680
+	.byte	15
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,16,146,2,15
+	.word	680
+	.byte	15
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,16,150,2,15
+	.word	680
+	.byte	15
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,16,154,2,15
+	.word	680
+	.byte	15
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,16,243,3,34
+	.word	9810
+	.byte	12,128,8
+	.word	680
+	.byte	13,255,7,0,15
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,16,246,3,34
+	.word	9810
+	.byte	2,3,216,1,9,4,3
+	.byte	'XCP_BG_IDLE',0,0,3
+	.byte	'XCP_BG_CHKSUM',0,1,3
+	.byte	'XCP_BG_MEM_WRITE',0,2,3
+	.byte	'XCP_BG_REPEAT_CMD',0,3,3
+	.byte	'XCP_BG_DO_DISCONNECT',0,4,3
+	.byte	'XCP_BG_CANCEL_REQ',0,5,0,15
+	.byte	'Xcp_BgActivity_t',0,3,224,1,3
+	.word	11885
+	.byte	18,1,1,17
+	.word	3362
+	.byte	17
+	.word	680
+	.byte	0,6
+	.word	12030
+	.byte	15
+	.byte	'Xcp_CmdFunctionPtr',0,3,230,1,16
+	.word	12044
+	.byte	10,3,241,1,9,8,11
+	.byte	'WritePos_u16',0
+	.word	1034
+	.byte	2,2,35,0,11
+	.byte	'ReadPos_u16',0
+	.word	1034
+	.byte	2,2,35,2,11
+	.byte	'ReadPos_OdtNum_u16',0
+	.word	1034
+	.byte	2,2,35,4,11
+	.byte	'QueSize_u16',0
+	.word	1034
+	.byte	2,2,35,6,0,15
+	.byte	'Xcp_Que_t',0,3,247,1,3
+	.word	12077
+	.byte	10,3,250,1,9,24,11
+	.byte	'XcpState_en',0
+	.word	1763
+	.byte	4,2,35,0,11
+	.byte	'ConnectedTlId_u8',0
+	.word	680
+	.byte	1,2,35,4,11
+	.byte	'ResourceProtStatus_u8',0
+	.word	680
+	.byte	1,2,35,5,11
+	.byte	'Mta',0
+	.word	1928
+	.byte	8,2,35,8,11
+	.byte	'MaxDto_u16',0
+	.word	1034
+	.byte	2,2,35,16,11
+	.byte	'MaxDtoAligned_u16',0
+	.word	1034
+	.byte	2,2,35,18,11
+	.byte	'MaxCto_u8',0
+	.word	680
+	.byte	1,2,35,20,0,15
+	.byte	'Xcp_Session_t',0,3,138,2,2
+	.word	12195
+	.byte	10,3,149,2,9,12,11
+	.byte	'Buffer_au8',0
+	.word	3281
+	.byte	8,2,35,0,11
+	.byte	'Length_u32',0
+	.word	1345
+	.byte	4,2,35,8,0,15
+	.byte	'Xcp_CtoMax_t',0,3,153,2,2
+	.word	12382
+	.byte	12,255,1
+	.word	680
+	.byte	13,254,1,0,10,3,157,2,9,132,2,11
+	.byte	'UploadRunning_b',0
+	.word	680
+	.byte	1,2,35,0,11
+	.byte	'RemainingSize_u8',0
+	.word	680
+	.byte	1,2,35,1,11
+	.byte	'DownloadSize_u8',0
+	.word	680
+	.byte	1,2,35,2,11
+	.byte	'ReceivedSize_u8',0
+	.word	680
+	.byte	1,2,35,3,11
+	.byte	'DownloadBuffer_au8',0
+	.word	12451
+	.byte	255,1,2,35,4,0,15
+	.byte	'Xcp_Mem_t',0,3,178,2,2
+	.word	12462
+	.byte	10,3,183,2,9,2,11
+	.byte	'SeedWaitingKey_b',0
+	.word	680
+	.byte	1,2,35,0,11
+	.byte	'SeedRemaingSize_u8',0
+	.word	680
+	.byte	1,2,35,1,0,15
+	.byte	'Xcp_SeedAndKey_t',0,3,187,2,2
+	.word	12619
+	.byte	10,3,192,2,9,4,11
+	.byte	'BlockSize_u32',0
+	.word	1345
+	.byte	4,2,35,0,0,15
+	.byte	'Xcp_Checksum_t',0,3,198,2,2
+	.word	12706
+	.byte	10,3,203,2,9,18,11
+	.byte	'Xcp_Debug_TransmitOkCtr',0
+	.word	1034
+	.byte	2,2,35,0,11
+	.byte	'Xcp_Debug_TransmitNotOkCtr',0
+	.word	1034
+	.byte	2,2,35,2,11
+	.byte	'Xcp_Debug_SendResTxConfCtr',0
+	.word	1034
+	.byte	2,2,35,4,11
+	.byte	'Xcp_Debug_SendResCtr',0
+	.word	1034
+	.byte	2,2,35,6,11
+	.byte	'Xcp_Debug_SendEvTxConfCtr',0
+	.word	1034
+	.byte	2,2,35,8,11
+	.byte	'Xcp_Debug_SendEvCtr',0
+	.word	1034
+	.byte	2,2,35,10,11
+	.byte	'Xcp_Debug_SendDaqTxConfCtr',0
+	.word	1034
+	.byte	2,2,35,12,11
+	.byte	'Xcp_Debug_SendDaqCtr',0
+	.word	1034
+	.byte	2,2,35,14,11
+	.byte	'Xcp_Debug_TxConfCtr',0
+	.word	1034
+	.byte	2,2,35,16,0,15
+	.byte	'Xcp_Debug_t',0,3,216,2,2
+	.word	12760
+	.byte	10,3,225,2,9,8,11
+	.byte	'OdtEntryPos_u16',0
+	.word	1034
+	.byte	2,2,35,0,11
+	.byte	'OdtEntryMax_u16',0
+	.word	1034
+	.byte	2,2,35,2,11
+	.byte	'DaqListNum_u16',0
+	.word	1034
+	.byte	2,2,35,4,11
+	.byte	'AbsOdtNum_u16',0
+	.word	1034
+	.byte	2,2,35,6,0,15
+	.byte	'Xcp_SelectedOdtEntry_t',0,3,231,2,2
+	.word	13082
+	.byte	10,3,234,2,9,6,11
+	.byte	'OdtEntryFirst_u16',0
+	.word	1034
+	.byte	2,2,35,0,11
+	.byte	'OdtEntryCnt_u8',0
+	.word	680
+	.byte	1,2,35,2,11
+	.byte	'CopyRoutine_u8',0
+	.word	680
+	.byte	1,2,35,3,11
+	.byte	'Length_u16',0
+	.word	1034
+	.byte	2,2,35,4,0,15
+	.byte	'Xcp_Odt_t',0,3,240,2,2
+	.word	13218
+	.byte	25
+	.word	680
+	.byte	25
+	.word	680
+	.byte	10,3,254,2,9,24,11
+	.byte	'DaqListQue_p',0
+	.word	707
+	.byte	4,2,35,0,11
+	.byte	'DaqListQuePos',0
+	.word	12077
+	.byte	8,2,35,4,11
+	.byte	'OdtFirst_u16',0
+	.word	1034
+	.byte	2,2,35,12,11
+	.byte	'EventChannelNum_u16',0
+	.word	1034
+	.byte	2,2,35,14,11
+	.byte	'OdtCnt_u8',0
+	.word	680
+	.byte	1,2,35,16,11
+	.byte	'XcpTxPduId',0
+	.word	680
+	.byte	1,2,35,17,11
+	.byte	'Prescaler_u8',0
+	.word	680
+	.byte	1,2,35,18,11
+	.byte	'CycleCnt_u8',0
+	.word	680
+	.byte	1,2,35,19,11
+	.byte	'Priority_u8',0
+	.word	680
+	.byte	1,2,35,20,11
+	.byte	'Flags_u8',0
+	.word	680
+	.byte	1,2,35,21,11
+	.byte	'Mode_u8',0
+	.word	13339
+	.byte	1,2,35,22,11
+	.byte	'CurrentlyRunning_b',0
+	.word	13344
+	.byte	1,2,35,23,0,15
+	.byte	'Xcp_DaqList_t',0,3,143,3,2
+	.word	13349
+	.byte	6
+	.word	13349
+	.byte	6
+	.word	13218
+	.byte	6
+	.word	1345
+	.byte	6
+	.word	1034
+	.byte	10,3,146,3,9,56,11
+	.byte	'DaqList_p',0
+	.word	13641
+	.byte	4,2,35,0,11
+	.byte	'Odt_p',0
+	.word	13646
+	.byte	4,2,35,4,11
+	.byte	'OdtEntryAddress_p',0
+	.word	13651
+	.byte	4,2,35,8,11
+	.byte	'OdtEntrySize_p',0
+	.word	707
+	.byte	4,2,35,12,11
+	.byte	'PriorityList_p',0
+	.word	13656
+	.byte	4,2,35,16,11
+	.byte	'DaqQue_p',0
+	.word	707
+	.byte	4,2,35,20,11
+	.byte	'DaqListCnt_u16',0
+	.word	1034
+	.byte	2,2,35,24,11
+	.byte	'OdtCnt_u16',0
+	.word	1034
+	.byte	2,2,35,26,11
+	.byte	'OdtEntryCnt_u16',0
+	.word	1034
+	.byte	2,2,35,28,11
+	.byte	'SelectedOdtEntry',0
+	.word	13082
+	.byte	8,2,35,30,11
+	.byte	'DaqRamPtr_pu8',0
+	.word	707
+	.byte	4,2,35,40,11
+	.byte	'DaqRamSize_u32',0
+	.word	1345
+	.byte	4,2,35,44,11
+	.byte	'DaqListSendingCnt_u16',0
+	.word	1034
+	.byte	2,2,35,48,11
+	.byte	'DaqListSending_u16',0
+	.word	1034
+	.byte	2,2,35,50,11
+	.byte	'DaqState_en',0
+	.word	2043
+	.byte	4,2,35,52,0,15
+	.byte	'Xcp_DaqConfig_t',0,3,180,3,2
+	.word	13661
+	.byte	10,3,225,3,9,80,11
+	.byte	'Session',0
+	.word	12195
+	.byte	24,2,35,0,11
+	.byte	'DaqConfig',0
+	.word	13661
+	.byte	56,2,35,24,0,15
+	.byte	'Xcp_NoInit_t',0,3,234,3,2
+	.word	14042
+	.byte	10,3,130,4,9,208,2,11
+	.byte	'Wait4TxConfCtr_u8',0
+	.word	680
+	.byte	1,2,35,0,11
+	.byte	'BgDoDisconnect_Response',0
+	.word	139
+	.byte	4,2,35,4,11
+	.byte	'BgActivityState',0
+	.word	11885
+	.byte	4,2,35,8,11
+	.byte	'ResBuffer',0
+	.word	12382
+	.byte	12,2,35,12,11
+	.byte	'EvBuffer',0
+	.word	3290
+	.byte	12,2,35,24,11
+	.byte	'CmdBuffer',0
+	.word	3290
+	.byte	12,2,35,36,11
+	.byte	'Mem',0
+	.word	12462
+	.byte	132,2,2,35,48,11
+	.byte	'SeedAndKey',0
+	.word	12619
+	.byte	2,3,35,180,2,11
+	.byte	'Checksum',0
+	.word	12706
+	.byte	4,3,35,184,2,11
+	.byte	'Debug',0
+	.word	12760
+	.byte	18,3,35,188,2,0,15
+	.byte	'Xcp_Cleared_t',0,3,150,4,2
+	.word	14107
+	.byte	12,80
+	.word	14042
+	.byte	13,0,0,26
+	.byte	'Xcp_NoInit',0,3,158,4,29
+	.word	14349
+	.byte	1,1,12,208,2
+	.word	14107
+	.byte	13,0,0,26
+	.byte	'Xcp_Cleared',0,3,165,4,29
+	.word	14380
+	.byte	1,1,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L17:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,4,1,58,15,59,15,57,15,11,15,0,0,3,40,0,3,8,28,13,0,0,4
+	.byte	36,0,3,8,11,15,62,15,0,0,5,38,0,73,19,0,0,6,15,0,73,19,0,0,7,46,1,3,8,58,15,59,15,57,15,73,19,54,15,39
+	.byte	12,63,12,60,12,0,0,8,5,0,3,8,58,15,59,15,57,15,73,19,0,0,9,46,1,3,8,58,15,59,15,57,15,54,15,39,12,63,12
+	.byte	60,12,0,0,10,19,1,58,15,59,15,57,15,11,15,0,0,11,13,0,3,8,73,19,11,15,56,9,0,0,12,1,1,11,15,73,19,0,0
+	.byte	13,33,0,47,15,0,0,14,21,0,54,15,0,0,15,22,0,3,8,58,15,59,15,57,15,73,19,0,0,16,21,1,73,19,54,15,39,12
+	.byte	0,0,17,5,0,73,19,0,0,18,21,1,54,15,39,12,0,0,19,21,0,54,15,39,12,0,0,20,19,1,3,8,58,15,59,15,57,15,11
+	.byte	15,0,0,21,59,0,3,8,0,0,22,23,1,58,15,59,15,57,15,11,15,0,0,23,4,1,3,8,58,15,59,15,57,15,11,15,0,0,24,21
+	.byte	0,73,19,54,15,39,12,0,0,25,53,0,73,19,0,0,26,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L18:
+	.word	.L50-.L49
+.L49:
+	.half	3
+	.word	.L52-.L51
+.L51:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Cbk.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Priv.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Commands.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_CmdUnlock.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\Xcp_Cfg.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0,0
+.L52:
+.L50:
+	.sdecl	'.debug_info',debug,cluster('Xcp_CmdUnlock')
+	.sect	'.debug_info'
+.L19:
+	.word	320
+	.half	3
+	.word	.L20
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_CmdUnlock.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L22,.L21
+	.byte	2
+	.word	.L15
+	.byte	3
+	.byte	'Xcp_CmdUnlock',0,1,30,6,1,1,1
+	.word	.L14,.L24,.L13
+	.byte	4
+	.byte	'XcpPacket',0,1,30,39
+	.word	.L25,.L26
+	.byte	4
+	.byte	'protLayerId',0,1,30,56
+	.word	.L27,.L28
+	.byte	5
+	.word	.L14,.L24
+	.byte	6
+	.byte	'CmdPtr',0,1,39,32
+	.word	.L29,.L30
+	.byte	6
+	.byte	'ResPtr',0,1,43,20
+	.word	.L31,.L32
+	.byte	6
+	.byte	'UnlockedResource',0,1,46,9
+	.word	.L27,.L33
+	.byte	6
+	.byte	'Error',0,1,47,17
+	.word	.L34,.L35
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_CmdUnlock')
+	.sect	'.debug_abbrev'
+.L20:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Xcp_CmdUnlock')
+	.sect	'.debug_line'
+.L21:
+	.word	.L54-.L53
+.L53:
+	.half	3
+	.word	.L56-.L55
+.L55:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp_CmdUnlock.c',0,0,0,0,0
+.L56:
+	.byte	5,6,7,0,5,2
+	.word	.L14
+	.byte	3,29,1,5,83,9
+	.half	.L39-.L14
+	.byte	3,9,1,5,56,9
+	.half	.L40-.L39
+	.byte	3,4,1,5,22,9
+	.half	.L42-.L40
+	.byte	3,8,1,5,20,9
+	.half	.L57-.L42
+	.byte	1,5,13,9
+	.half	.L58-.L57
+	.byte	3,2,1,5,3,9
+	.half	.L59-.L58
+	.byte	1,5,43,7,9
+	.half	.L60-.L59
+	.byte	3,3,1,5,5,9
+	.half	.L61-.L60
+	.byte	1,5,55,7,9
+	.half	.L62-.L61
+	.byte	3,3,1,5,36,9
+	.half	.L5-.L62
+	.byte	1,5,48,9
+	.half	.L63-.L5
+	.byte	1,5,141,1,9
+	.half	.L38-.L63
+	.byte	1,5,159,1,9
+	.half	.L64-.L38
+	.byte	1,5,171,1,9
+	.half	.L41-.L64
+	.byte	1,5,13,9
+	.half	.L3-.L41
+	.byte	3,5,1,5,5,9
+	.half	.L6-.L3
+	.byte	3,125,1,5,11,9
+	.half	.L2-.L6
+	.byte	3,9,1,5,16,9
+	.half	.L7-.L2
+	.byte	3,4,1,5,3,9
+	.half	.L65-.L7
+	.byte	1,5,8,7,9
+	.half	.L66-.L65
+	.byte	3,3,1,5,5,9
+	.half	.L67-.L66
+	.byte	1,5,17,7,9
+	.half	.L68-.L67
+	.byte	3,3,1,5,7,9
+	.half	.L69-.L68
+	.byte	1,5,17,9
+	.half	.L70-.L69
+	.byte	1,5,38,9
+	.half	.L71-.L70
+	.byte	1,5,72,9
+	.half	.L72-.L71
+	.byte	1,5,71,9
+	.half	.L73-.L72
+	.byte	1,5,61,9
+	.half	.L74-.L73
+	.byte	1,5,62,9
+	.half	.L75-.L74
+	.byte	3,3,1,5,60,9
+	.half	.L76-.L75
+	.byte	1,5,17,9
+	.half	.L9-.L76
+	.byte	3,125,1,5,7,9
+	.half	.L77-.L9
+	.byte	1,5,17,9
+	.half	.L78-.L77
+	.byte	1,5,38,9
+	.half	.L79-.L78
+	.byte	1,5,42,9
+	.half	.L80-.L79
+	.byte	3,7,1,5,40,9
+	.half	.L81-.L80
+	.byte	1,5,27,9
+	.half	.L82-.L81
+	.byte	3,1,1,5,25,9
+	.half	.L83-.L82
+	.byte	1,5,66,9
+	.half	.L84-.L83
+	.byte	3,1,1,5,33,9
+	.half	.L85-.L84
+	.byte	1,5,17,9
+	.half	.L86-.L85
+	.byte	3,3,1,5,63,9
+	.half	.L44-.L86
+	.byte	3,123,1,5,60,9
+	.half	.L8-.L44
+	.byte	3,10,1,5,58,9
+	.half	.L87-.L8
+	.byte	1,5,18,9
+	.half	.L88-.L87
+	.byte	3,3,1,5,5,9
+	.half	.L89-.L88
+	.byte	1,5,37,7,9
+	.half	.L90-.L89
+	.byte	3,3,1,5,59,9
+	.half	.L46-.L90
+	.byte	1,5,29,9
+	.half	.L11-.L46
+	.byte	3,5,1,5,1,9
+	.half	.L10-.L11
+	.byte	3,6,1,7,9
+	.half	.L23-.L10
+	.byte	0,1,1
+.L54:
+	.sdecl	'.debug_ranges',debug,cluster('Xcp_CmdUnlock')
+	.sect	'.debug_ranges'
+.L22:
+	.word	-1,.L14,0,.L23-.L14,0,0
+	.sdecl	'.debug_loc',debug,cluster('Xcp_CmdUnlock')
+	.sect	'.debug_loc'
+.L30:
+	.word	-1,.L14,.L40-.L14,.L41-.L14
+	.half	1
+	.byte	98
+	.word	.L37-.L14,.L41-.L14
+	.half	1
+	.byte	100
+	.word	.L3-.L14,.L6-.L14
+	.half	1
+	.byte	98
+	.word	.L2-.L14,.L7-.L14
+	.half	1
+	.byte	98
+	.word	0,0
+.L35:
+	.word	-1,.L14,.L41-.L14,.L3-.L14
+	.half	1
+	.byte	82
+	.word	.L6-.L14,.L2-.L14
+	.half	1
+	.byte	82
+	.word	.L7-.L14,.L44-.L14
+	.half	1
+	.byte	82
+	.word	.L8-.L14,.L46-.L14
+	.half	1
+	.byte	82
+	.word	.L11-.L14,.L10-.L14
+	.half	1
+	.byte	82
+	.word	0,0
+.L32:
+	.word	-1,.L14,.L42-.L14,.L24-.L14
+	.half	1
+	.byte	108
+	.word	0,0
+.L33:
+	.word	-1,.L14,0,.L24-.L14
+	.half	2
+	.byte	145,120
+	.word	0,0
+.L26:
+	.word	-1,.L14,0,.L37-.L14
+	.half	1
+	.byte	100
+	.word	.L3-.L14,.L6-.L14
+	.half	1
+	.byte	100
+	.word	.L2-.L14,.L7-.L14
+	.half	1
+	.byte	100
+	.word	0,0
+.L13:
+	.word	-1,.L14,0,.L36-.L14
+	.half	2
+	.byte	138,0
+	.word	.L36-.L14,.L24-.L14
+	.half	2
+	.byte	138,8
+	.word	.L24-.L14,.L24-.L14
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L28:
+	.word	-1,.L14,0,.L38-.L14
+	.half	1
+	.byte	84
+	.word	.L39-.L14,.L24-.L14
+	.half	1
+	.byte	88
+	.word	.L43-.L14,.L41-.L14
+	.half	1
+	.byte	86
+	.word	.L3-.L14,.L6-.L14
+	.half	1
+	.byte	84
+	.word	.L2-.L14,.L7-.L14
+	.half	1
+	.byte	84
+	.word	.L45-.L14,.L44-.L14
+	.half	1
+	.byte	84
+	.word	.L47-.L14,.L46-.L14
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L91:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Xcp_CmdUnlock')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L91,.L14,.L24-.L14
+	.byte	4
+	.word	(.L36-.L14)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L24-.L36)/2
+	.byte	19,0,8,26,0,0
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   115  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   116  #define XCP_STOP_SEC_CODE
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   117  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   118  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   119  #else
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   120    /* HIS METRIC COMF VIOLATION IN Xcp_CmdUnlock.c: The command is not enabled - no code is needed in this file */
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   121  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   122  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   123  
+; BSW\src\BSW\Gen\Xcp\src\Xcp_CmdUnlock.c	   124  
+
+	; Module end

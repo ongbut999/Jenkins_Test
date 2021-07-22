@@ -1,0 +1,2985 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc18012a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\Targets\\TC275\\MCAL\\MCAL_Modules\\Dio\\Dio_Ver.src Targets\\TC275\\MCAL\\MCAL_Modules\\Dio\\src\\Dio_Ver.c"
+	.compiler_name		"ctc"
+	;source	'Targets\\TC275\\MCAL\\MCAL_Modules\\Dio\\src\\Dio_Ver.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Dio_Ver.Dio_Init',code,cluster('Dio_Init')
+	.sect	'.text.Dio_Ver.Dio_Init'
+	.align	2
+	
+	.global	Dio_Init
+
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	     1  /******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	     2  **                                                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	     3  ** Copyright (C) Infineon Technologies (2014)                                **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	     4  **                                                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	     5  ** All rights reserved.                                                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	     6  **                                                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	     7  ** This document contains proprietary information belonging to Infineon      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	     8  ** Technologies. Passing on and copying of this document, and communication  **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	     9  ** of its contents is not permitted without prior written authorization.     **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    10  **                                                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    11  *******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    12  **                                                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    13  **  $FILENAME   : Dio_Ver.c $                                                **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    14  **                                                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    15  **  $CC VERSION : \main\21 $                                                 **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    16  **                                                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    17  **  $DATE       : 2016-07-01 $                                               **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    18  **                                                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    19  **  AUTHOR      : DL-AUTOSAR-Engineering                                     **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    20  **                                                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    21  **  VENDOR      : Infineon Technologies                                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    22  **                                                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    23  **  DESCRIPTION : This contains the functionality for DIO driver             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    24  **                                                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    25  **  MAY BE CHANGED BY USER [yes/no]: No                                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    26  **                                                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    27  *******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    28  ** TRACEABILITY : [cover parentID= DS_NAS_DIO_PR699,DS_NAS_DIO_PR730,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    29                                     DS_MCAL_DIO_0517,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    30                                     DS_MCAL_DIO_0503_0504_0508,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    31                                     DS_MCAL_DIO_0509_1_0513_0_0500]      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    32  **                [/cover]                                                   **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    33  ******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    34  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    35  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    36  **                      Includes                                              **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    37  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    38  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    39  /* Own header file, this includes own configuration file also */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    40  /* DIO117: Inclusion structure */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    41  #include "Dio.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    42  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    43  /* AS Version Specific header file */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    44  #include "Dio_Ver.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    45  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    46  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    47  **                      Imported Compiler Switch Check                        **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    48  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    49  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    50  /* Version checks */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    51  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    52  #ifndef DIO_AR_RELEASE_MAJOR_VERSION
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    53    #error "DIO_AR_RELEASE_MAJOR_VERSION is not defined. "
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    54  #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    55  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    56  #ifndef DIO_AR_RELEASE_MINOR_VERSION
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    57    #error "DIO_AR_RELEASE_MINOR_VERSION is not defined. "
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    58  #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    59  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    60  #ifndef DIO_AR_RELEASE_REVISION_VERSION
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    61    #error "DIO_AR_RELEASE_REVISION_VERSION is not defined. "
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    62  #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    63  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    64  #if ( DIO_AR_RELEASE_MAJOR_VERSION != 4U)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    65    #error "DIO_AR_RELEASE_MAJOR_VERSION does not match. "
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    66  #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    67  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    68  #if ( DIO_AR_RELEASE_MINOR_VERSION != 0U )
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    69    #error "DIO_AR_RELEASE_MINOR_VERSION does not match. "
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    70  #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    71  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    72  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    73  #if (DIO_DEV_ERROR_DETECT == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    74  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    75  #ifndef DET_AR_RELEASE_MAJOR_VERSION
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    76    #error "DET_AR_RELEASE_MAJOR_VERSION is not defined. "
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    77  #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    78  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    79  #ifndef DET_AR_RELEASE_MINOR_VERSION
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    80    #error "DET_AR_RELEASE_MINOR_VERSION is not defined. "
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    81  #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    82  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    83  /* UTP AI00251674 fix */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    84  #if (IFX_DET_VERSION_CHECK == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    85  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    86  #if ( DET_AR_RELEASE_MAJOR_VERSION != 4U )
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    87    #error "DET_AR_RELEASE_MAJOR_VERSION does not match. "
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    88  #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    89  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    90  #if ( DET_AR_RELEASE_MINOR_VERSION != 0U )
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    91    #error "DET_AR_RELEASE_MINOR_VERSION does not match. "
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    92  #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    93  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    94  #endif /* (IFX_DET_VERSION_CHECK == STD_ON) */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    95  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    96  #endif /*#if (DIO_DEV_ERROR_DETECT == STD_ON)*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    97  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    98  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	    99  **                      Private Variable macro                                **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   100  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   101  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   102  /* IOCR0 register offset in Port_RegType */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   103  #define DIO_PORT_IOCR0_REG_OFFSET  (4U)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   104  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   105  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   106  **                      Private Variable Definitions                          **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   107  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   108  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   109  #if((DIO_LOADABLE_USED == STD_ON) || (DIO_CONFIG_COUNT > 1U))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   110    #define DIO_START_SEC_VAR_32BIT
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   111    #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   112  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   113    const Dio_ConfigType  *Dio_kConfigPtr;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   114  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   115    #define DIO_STOP_SEC_VAR_32BIT
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   116    /*IFX_MISRA_RULE_19_01_STATUS=File inclusion after pre-processor directives
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   117    is allowed only for MemMap.h*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   118    #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   119  #else
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   120    #if((DIO_DEV_ERROR_DETECT == STD_ON) || (DIO_SAFETY_ENABLE == STD_ON))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   121      #if(DIO_PB_FIXED_ADDRESS == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   122        #define DIO_START_SEC_CONST_32BIT
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   123        #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   124  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   125        const Dio_ConfigType * const Dio_kConfigPtr = &Dio_ConfigRoot[0];
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   126  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   127        #define DIO_STOP_SEC_CONST_32BIT
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   128        /*IFX_MISRA_RULE_19_01_STATUS=File inclusion after
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   129          pre-processor directives is allowed only for MemMap.h*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   130        #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   131      #else
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   132        #define DIO_START_SEC_VAR_32BIT
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   133        #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   134  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   135        const Dio_ConfigType  *Dio_kConfigPtr;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   136  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   137        #define DIO_STOP_SEC_VAR_32BIT
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   138        /*IFX_MISRA_RULE_19_01_STATUS=File inclusion after
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   139          pre-processor directives is allowed only for MemMap.h*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   140        #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   141      #endif /* DIO_PB_FIXED_ADDRESS == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   142    #endif /* DIO_DEV_ERROR_DETECT == STD_ON || DIO_SAFETY_ENABLE == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   143  #endif /* DIO_LOADABLE_USED == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   144  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   145  #if (DIO_DEV_ERROR_DETECT == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   146    #define DIO_START_SEC_VAR_8BIT
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   147    /*IFX_MISRA_RULE_19_01_STATUS=File inclusion after pre-processor directives
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   148      is allowed only for MemMap.h*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   149    #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   150    /* Init Status Variable.
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   151       It has to be initialized to "0U" after every reset,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   152       as "0" represents the deinitialized state */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   153    static  uint8 Dio_InitStatus;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   154    #define DIO_STOP_SEC_VAR_8BIT
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   155    /*IFX_MISRA_RULE_19_01_STATUS=File inclusion after pre-processor directives
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   156      is allowed only for MemMap.h*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   157    #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   158  #endif /* DIO_DEV_ERROR_DETECT == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   159  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   160  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   161  **                      Private Function Declarations                         **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   162  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   163  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   164  #if(DIO_DEV_ERROR_DETECT == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   165  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   166  /*Memory Map of the DIO Code*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   167  #define DIO_START_SEC_CODE
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   168  /*mapping of code and data to specific memory sections via memory mapping file*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   169  /*IFX_MISRA_RULE_19_01_STATUS=File inclusion after pre-processor directives
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   170    is allowed only for MemMap.h*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   171  #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   172  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   173  /* This function returns the init status of DIO module */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   174  static uint8 Dio_lcheckDetStatus(uint8 ApiId);
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   175  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   176  /*Memory Map of the DIO Code*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   177  #define DIO_STOP_SEC_CODE
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   178  /*mapping of code and data to specific memory sections via memory mapping file*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   179  /*IFX_MISRA_RULE_19_01_STATUS=File inclusion after pre-processor directives
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   180    is allowed only for MemMap.h*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   181  #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   182  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   183  #endif /* DIO_DEV_ERROR_DETECT */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   184  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   185  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   186  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   187  **                      Private Function Definition                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   188  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   189  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   190  /*Memory Map of the DIO Code*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   191  #define DIO_START_SEC_CODE
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   192  /*mapping of code and data to specific memory sections via memory mapping file*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   193  /*IFX_MISRA_RULE_19_01_STATUS=File inclusion after pre-processor directives
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   194    is allowed only for MemMap.h*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   195  #include "MemMap.h"
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   196  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   197  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   198  ** Traceability     : [cover parentID=DS_AS40X_DIO165,DS_AS40X_DIO166,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   199                         DS_AS40X_DIO167_DIO176,DS_AS40X_DIO129,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   200                         SAS_MCAL_AS4XX_DIO_0500]                               **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   201  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   202  ** Syntax           : void Dio_Init                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   203  **                    (                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   204  **                      const Dio_ConfigType * ConfigPtr                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   205  **                    )                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   206  ** [/cover]                                                                   **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   207  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   208  ** Service ID       : 0x10                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   209  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   210  ** Sync/Async       : Synchronous                                             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   211  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   212  ** Reentrancy       : non - reentrant                                         **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   213  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   214  ** Parameters(in)   : ConfigPtr - Pointer to DIO configuration                **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   215  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   216  ** Parameters (out) : none                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   217  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   218  ** Return value     : none                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   219  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   220  ** Description      : This function:                                          **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   221  **   - DIO166: Initializes all global variables of the Dio module             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   222  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   223  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   224  void Dio_Init(const Dio_ConfigType *ConfigPtr)
+; Function Dio_Init
+.L4:
+Dio_Init:	.type	func
+
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   225  {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   226     #if((DIO_DEV_ERROR_DETECT == STD_ON) || (DIO_SAFETY_ENABLE == STD_ON))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   227     uint8 DetError;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   228     #if(DIO_PB_FIXED_ADDRESS == STD_OFF)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   229       if (ConfigPtr == NULL_PTR)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   230       {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   231          DetError = 1U;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   232       }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   233     #else
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   234       if(ConfigPtr != Dio_kConfigPtr)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   235       {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   236          DetError = 1U;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   237       }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   238     #endif /*DIO_PB_FIXED_ADDRESS*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   239  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   240     #if(DIO_SAFETY_ENABLE == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   241       else if((ConfigPtr->Dio_MarkerCheckValue) !=
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   242        (((uint32)DIO_MODULE_ID << DIO_MODULEID_SHIFT_VAL) | DIO_INSTANCE_ID))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   243       {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   244          DetError = 1U;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   245       }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   246     #endif /* DIO_SAFETY_ENABLE == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   247     else
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   248     {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   249        DetError = 0U;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   250     }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   251     if(DetError != 1U)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   252     #endif /* (DIO_DEV_ERROR_DETECT) || (DIO_SAFETY_ENABLE == STD_ON)*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   253     {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   254     /* Store ConfigPtr to use in other APIs */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   255     #if((DIO_LOADABLE_USED == STD_ON) || (DIO_CONFIG_COUNT > 1U))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   256      Dio_kConfigPtr = ConfigPtr;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   257     #else
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   258      #if((DIO_PB_FIXED_ADDRESS == STD_OFF) &&           \ 
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   259          ((DIO_DEV_ERROR_DETECT == STD_ON) || (DIO_SAFETY_ENABLE == STD_ON)))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   260        Dio_kConfigPtr = ConfigPtr;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   261      #else
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   262        UNUSED_PARAMETER(ConfigPtr)
+	jz.a	a4,.L2
+.L2:
+
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   263      #endif /* PBfixed && (DET || Safety) */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   264     #endif /* DIO_LOADABLE_USED */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   265  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   266     #if(DIO_DEV_ERROR_DETECT == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   267     Dio_InitStatus = DIO_INITIALIZED;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   268     #endif /* DIO_DEV_ERROR_DETECT == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   269     }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   270     #if((DIO_DEV_ERROR_DETECT == STD_ON) || (DIO_SAFETY_ENABLE == STD_ON))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   271     else
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   272     {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   273      #if(DIO_DEV_ERROR_DETECT == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   274         /* Report DIO_E_PARAM_CONFIG DET */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   275         Det_ReportError(
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   276           (uint16)DIO_MODULE_ID,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   277           DIO_INSTANCE_ID,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   278           DIO_SID_INIT,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   279           DIO_E_PARAM_CONFIG);
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   280      #endif /* DIO_DEV_ERROR_DETECT == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   281  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   282      #if(DIO_SAFETY_ENABLE == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   283         /* Report DIO_E_PARAM_CONFIG DET */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   284         SafeMcal_ReportError(
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   285           (uint16)DIO_MODULE_ID,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   286           DIO_INSTANCE_ID,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   287           DIO_SID_INIT,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   288           DIO_E_PARAM_CONFIG);
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   289      #endif /* DIO_SAFETY_ENABLE == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   290     }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   291     #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   292     /* DIO_DEV_ERROR_DETECT == STD_ON) || (DIO_SAFETY_ENABLE == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   293  }/* Dio_Init */
+	ret
+.L14:
+	
+__Dio_Init_function_end:
+	.size	Dio_Init,__Dio_Init_function_end-Dio_Init
+.L13:
+	; End of function
+	
+	.calls	'Dio_Init','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L6:
+	.word	13543
+	.half	3
+	.word	.L7
+	.byte	4
+.L5:
+	.byte	1
+	.byte	'Targets\\TC275\\MCAL\\MCAL_Modules\\Dio\\src\\Dio_Ver.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L8
+	.byte	2
+	.byte	'unsigned int',0,4,7,3
+	.byte	'Dio_PortChannelIdType',0,1,139,2,16,8,4
+	.byte	'Dio_PortIdConfig',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'Dio_ChannelConfig',0
+	.word	149
+	.byte	4,2,35,4,0,5
+	.word	165
+	.byte	6
+	.word	247
+	.byte	2
+	.byte	'unsigned short int',0,2,7,2
+	.byte	'unsigned char',0,1,8,3
+	.byte	'Dio_ChannelGroupType',0,1,129,2,16,4,4
+	.byte	'mask',0
+	.word	257
+	.byte	2,2,35,0,4
+	.byte	'offset',0
+	.word	279
+	.byte	1,2,35,2,4
+	.byte	'port',0
+	.word	279
+	.byte	1,2,35,3,0,5
+	.word	296
+	.byte	6
+	.word	368
+	.byte	3
+	.byte	'Dio_ConfigType',0,1,147,2,16,12,4
+	.byte	'Dio_PortChannelConfigPtr',0
+	.word	252
+	.byte	4,2,35,0,4
+	.byte	'Dio_ChannelGroupConfigPtr',0
+	.word	373
+	.byte	4,2,35,4,4
+	.byte	'Dio_ChannelGroupConfigSize',0
+	.word	149
+	.byte	4,2,35,8,0,5
+	.word	378
+.L15:
+	.byte	6
+	.word	505
+	.byte	7,1,6
+	.word	515
+	.byte	8
+	.byte	'__codeptr',0,2,1,1
+	.word	517
+	.byte	8
+	.byte	'uint8',0,3,81,25
+	.word	279
+	.byte	8
+	.byte	'uint16',0,3,91,25
+	.word	257
+	.byte	8
+	.byte	'uint32',0,3,106,24
+	.word	149
+	.byte	8
+	.byte	'boolean',0,3,127,25
+	.word	279
+	.byte	8
+	.byte	'StatusType',0,4,191,1,27
+	.word	279
+	.byte	9,4,206,1,9,8,4
+	.byte	'vendorID',0
+	.word	257
+	.byte	2,2,35,0,4
+	.byte	'moduleID',0
+	.word	257
+	.byte	2,2,35,2,4
+	.byte	'sw_major_version',0
+	.word	279
+	.byte	1,2,35,4,4
+	.byte	'sw_minor_version',0
+	.word	279
+	.byte	1,2,35,5,4
+	.byte	'sw_patch_version',0
+	.word	279
+	.byte	1,2,35,6,0,8
+	.byte	'Std_VersionInfoType',0,4,213,1,3
+	.word	620
+	.byte	9,5,93,9,8,4
+	.byte	'Class',0
+	.word	279
+	.byte	1,2,35,0,4
+	.byte	'TIN',0
+	.word	279
+	.byte	1,2,35,1,4
+	.byte	'ReturnAddress',0
+	.word	149
+	.byte	4,2,35,4,0,8
+	.byte	'OsTrapInfoType',0,5,97,3
+	.word	770
+	.byte	10,68
+	.word	149
+	.byte	11,16,0,9,5,154,1,9,68,4
+	.byte	'store',0
+	.word	850
+	.byte	68,2,35,0,0,10,68
+	.word	859
+	.byte	11,0,0,8
+	.byte	'Os_JumpBufType',0,5,156,1,3
+	.word	881
+	.byte	8
+	.byte	'Os_StackTraceType',0,5,174,1,18
+	.word	149
+	.byte	9,5,175,1,9,8,4
+	.byte	'sp',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'ctx',0
+	.word	149
+	.byte	4,2,35,4,0,8
+	.byte	'Os_StackValueType',0,5,175,1,63
+	.word	941
+	.byte	8
+	.byte	'Os_StackSizeType',0,5,176,1,27
+	.word	941
+	.byte	12,1,1,6
+	.word	1026
+	.byte	8
+	.byte	'Os_VoidVoidFunctionType',0,5,179,1,16
+	.word	1029
+	.byte	8
+	.byte	'ApplicationType',0,5,193,1,23
+	.word	279
+	.byte	3
+	.byte	'Os_ApplicationConfigurationType_s',0,5,198,1,16,2,4
+	.byte	'app_id',0
+	.word	279
+	.byte	1,2,35,0,4
+	.byte	'access',0
+	.word	279
+	.byte	1,2,35,1,0,8
+	.byte	'Os_ApplicationConfigurationType',0,5,201,1,3
+	.word	1092
+	.byte	8
+	.byte	'Os_CoreStateType',0,5,203,1,16
+	.word	149
+	.byte	8
+	.byte	'AreaIdType',0,5,204,1,16
+	.word	257
+	.byte	8
+	.byte	'Os_PeripheralAddressType',0,5,212,1,22
+	.word	149
+	.byte	8
+	.byte	'TickType',0,5,221,1,22
+	.word	149
+	.byte	8
+	.byte	'Os_StopwatchTickType',0,5,225,1,22
+	.word	149
+	.byte	6
+	.word	149
+	.byte	8
+	.byte	'Os_Lockable',0,5,234,1,18
+	.word	1334
+	.byte	8
+	.byte	'CoreIdType',0,5,236,1,16
+	.word	257
+	.byte	8
+	.byte	'SpinlockIdType',0,5,237,1,16
+	.word	257
+	.byte	13,5,239,1,9,4,14
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,14
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,8
+	.byte	'TryToGetSpinlockType',0,5,239,1,74
+	.word	1404
+	.byte	13,5,174,2,9,4,14
+	.byte	'APPLICATION_ACCESSIBLE',0,0,14
+	.byte	'APPLICATION_RESTARTING',0,1,14
+	.byte	'APPLICATION_TERMINATED',0,2,0,8
+	.byte	'ApplicationStateType',0,5,174,2,92
+	.word	1497
+	.byte	15
+	.byte	'void',0,6
+	.word	1609
+	.byte	16,1,1,17
+	.word	279
+	.byte	17
+	.word	1615
+	.byte	0,6
+	.word	1620
+	.byte	8
+	.byte	'Os_FunctionEntryType',0,5,183,2,16
+	.word	1634
+	.byte	3
+	.byte	'Os_MeterInfoType_s',0,5,193,2,16,48,4
+	.byte	'elapsed',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'previous',0
+	.word	149
+	.byte	4,2,35,4,4
+	.byte	'max',0
+	.word	149
+	.byte	4,2,35,8,4
+	.byte	'cumulative',0
+	.word	149
+	.byte	4,2,35,12,4
+	.byte	'stackbase',0
+	.word	941
+	.byte	8,2,35,16,4
+	.byte	'stackusage',0
+	.word	941
+	.byte	8,2,35,24,4
+	.byte	'stackmax',0
+	.word	941
+	.byte	8,2,35,32,4
+	.byte	'stackbudget',0
+	.word	941
+	.byte	8,2,35,40,0,8
+	.byte	'Os_MeterInfoType',0,5,202,2,3
+	.word	1669
+	.byte	6
+	.word	1669
+	.byte	8
+	.byte	'Os_MeterInfoRefType',0,5,203,2,50
+	.word	1867
+	.byte	8
+	.byte	'EventMaskType',0,5,206,2,15
+	.word	279
+	.byte	8
+	.byte	'Os_imaskType',0,5,211,2,16
+	.word	149
+	.byte	3
+	.byte	'Os_ISRDynType_s',0,5,213,2,16,48,4
+	.byte	'meter',0
+	.word	1669
+	.byte	48,2,35,0,0,8
+	.byte	'Os_ISRDynType',0,5,215,2,3
+	.word	1946
+	.byte	6
+	.word	1946
+	.byte	5
+	.word	2007
+	.byte	3
+	.byte	'Os_ISRType_s',0,5,216,2,16,24,4
+	.byte	'entry_function',0
+	.word	1034
+	.byte	4,2,35,0,4
+	.byte	'dynamic',0
+	.word	2012
+	.byte	4,2,35,4,4
+	.byte	'imask',0
+	.word	149
+	.byte	4,2,35,8,4
+	.byte	'stackbudget',0
+	.word	941
+	.byte	8,2,35,12,4
+	.byte	'access',0
+	.word	279
+	.byte	1,2,35,20,4
+	.byte	'application',0
+	.word	279
+	.byte	1,2,35,21,0,8
+	.byte	'Os_ISRType',0,5,223,2,3
+	.word	2017
+	.byte	6
+	.word	1026
+	.byte	5
+	.word	2017
+	.byte	6
+	.word	2176
+	.byte	8
+	.byte	'ISRType',0,5,224,2,46
+	.word	2181
+	.byte	8
+	.byte	'Os_bitmask',0,5,239,2,22
+	.word	149
+	.byte	8
+	.byte	'Os_pset0Type',0,5,240,2,20
+	.word	149
+	.byte	8
+	.byte	'Os_pset1Type',0,5,241,2,20
+	.word	149
+	.byte	8
+	.byte	'Os_pset2Type',0,5,242,2,20
+	.word	149
+	.byte	18,5,243,2,9,4,4
+	.byte	'p0',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'p1',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'p2',0
+	.word	149
+	.byte	4,2,35,0,0,8
+	.byte	'Os_psetType',0,5,247,2,3
+	.word	2289
+	.byte	18,5,249,2,9,4,4
+	.byte	't0',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	't1',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	't2',0
+	.word	149
+	.byte	4,2,35,0,0,8
+	.byte	'Os_tpmaskType',0,5,253,2,3
+	.word	2353
+	.byte	8
+	.byte	'Os_ActivationCountType',0,5,254,2,23
+	.word	279
+	.byte	3
+	.byte	'Os_TaskDynType_s',0,5,128,3,16,120,4
+	.byte	'terminate_jump_buf',0
+	.word	890
+	.byte	68,2,35,0,4
+	.byte	'meter',0
+	.word	1669
+	.byte	48,2,35,68,4
+	.byte	'activation_count',0
+	.word	279
+	.byte	1,2,35,116,0,8
+	.byte	'Os_TaskDynType',0,5,132,3,3
+	.word	2451
+	.byte	10,68
+	.word	859
+	.byte	11,0,0,6
+	.word	2451
+	.byte	5
+	.word	2577
+	.byte	3
+	.byte	'Os_TaskType_s',0,5,134,3,16,40,4
+	.byte	'dynamic',0
+	.word	2582
+	.byte	4,2,35,0,4
+	.byte	'entry_function',0
+	.word	1034
+	.byte	4,2,35,4,4
+	.byte	'pset',0
+	.word	2289
+	.byte	4,2,35,8,4
+	.byte	'base_tpmask',0
+	.word	2353
+	.byte	4,2,35,12,4
+	.byte	'tpmask',0
+	.word	2353
+	.byte	4,2,35,16,4
+	.byte	'core_id',0
+	.word	257
+	.byte	2,2,35,20,4
+	.byte	'index',0
+	.word	149
+	.byte	4,2,35,24,4
+	.byte	'stackbudget',0
+	.word	941
+	.byte	8,2,35,28,4
+	.byte	'activation_count',0
+	.word	279
+	.byte	1,2,35,36,4
+	.byte	'access',0
+	.word	279
+	.byte	1,2,35,37,4
+	.byte	'application',0
+	.word	279
+	.byte	1,2,35,38,0,8
+	.byte	'Os_TaskType',0,5,146,3,3
+	.word	2587
+	.byte	5
+	.word	2587
+	.byte	6
+	.word	2837
+	.byte	8
+	.byte	'TaskType',0,5,147,3,47
+	.word	2842
+	.byte	19
+	.byte	'Os_TaskStateType',0,5,155,3,6,4,14
+	.byte	'SUSPENDED',0,0,14
+	.byte	'READY',0,1,14
+	.byte	'WAITING',0,2,14
+	.byte	'RUNNING',0,3,0,8
+	.byte	'TaskStateType',0,5,156,3,31
+	.word	2865
+	.byte	18,5,167,3,3,4,4
+	.byte	'tpmask',0
+	.word	2353
+	.byte	4,2,35,0,0,3
+	.byte	'Os_ResourceDynType_s',0,5,166,3,16,4,4
+	.byte	'saved_priority',0
+	.word	2952
+	.byte	4,2,35,0,0,8
+	.byte	'Os_ResourceDynType',0,5,170,3,3
+	.word	2975
+	.byte	6
+	.word	2975
+	.byte	5
+	.word	3055
+	.byte	3
+	.byte	'Os_ResourceType_s',0,5,171,3,16,12,4
+	.byte	'dynamic',0
+	.word	3060
+	.byte	4,2,35,0,4
+	.byte	'tpmask',0
+	.word	2353
+	.byte	4,2,35,4,4
+	.byte	'access',0
+	.word	279
+	.byte	1,2,35,8,0,8
+	.byte	'Os_ResourceType',0,5,175,3,3
+	.word	3065
+	.byte	9,5,181,3,9,12,4
+	.byte	'maxallowedvalue',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'ticksperbase',0
+	.word	149
+	.byte	4,2,35,4,4
+	.byte	'mincycle',0
+	.word	149
+	.byte	4,2,35,8,0,8
+	.byte	'AlarmBaseType',0,5,185,3,3
+	.word	3164
+	.byte	9,5,206,3,9,8,4
+	.byte	'Running',0
+	.word	279
+	.byte	1,2,35,0,4
+	.byte	'Pending',0
+	.word	279
+	.byte	1,2,35,1,4
+	.byte	'Delay',0
+	.word	149
+	.byte	4,2,35,4,0,8
+	.byte	'Os_CounterStatusType',0,5,210,3,3
+	.word	3259
+	.byte	20
+	.word	279
+	.byte	1,1,6
+	.word	3345
+	.byte	8
+	.byte	'Os_CounterIncrAdvType',0,5,217,3,22
+	.word	3352
+	.byte	3
+	.byte	's_swd',0,5,222,3,12,4,4
+	.byte	'count',0
+	.word	149
+	.byte	4,2,35,0,0,18,5,221,3,3,4,4
+	.byte	'sw',0
+	.word	3388
+	.byte	4,2,35,0,0,3
+	.byte	'Os_CounterDynType_s',0,5,220,3,16,4,4
+	.byte	'type_dependent',0
+	.word	3416
+	.byte	4,2,35,0,0,8
+	.byte	'Os_CounterDynType',0,5,226,3,3
+	.word	3435
+	.byte	6
+	.word	3435
+	.byte	5
+	.word	3513
+	.byte	3
+	.byte	'Os_CounterType_s',0,5,227,3,16,28,4
+	.byte	'dynamic',0
+	.word	3518
+	.byte	4,2,35,0,4
+	.byte	'advincr',0
+	.word	3357
+	.byte	4,2,35,4,4
+	.byte	'base',0
+	.word	3164
+	.byte	12,2,35,8,4
+	.byte	'core',0
+	.word	1615
+	.byte	4,2,35,20,4
+	.byte	'access',0
+	.word	279
+	.byte	1,2,35,24,4
+	.byte	'application',0
+	.word	279
+	.byte	1,2,35,25,0,8
+	.byte	'Os_CounterType',0,5,234,3,3
+	.word	3523
+	.byte	6
+	.word	3345
+	.byte	5
+	.word	3523
+	.byte	6
+	.word	3675
+	.byte	8
+	.byte	'CounterType',0,5,235,3,52
+	.word	3680
+	.byte	19
+	.byte	'Os_ScheduleTableStatusType',0,5,240,3,6,4,14
+	.byte	'SCHEDULETABLE_STOPPED',0,0,14
+	.byte	'SCHEDULETABLE_NEXT',0,1,14
+	.byte	'SCHEDULETABLE_WAITING',0,2,14
+	.byte	'SCHEDULETABLE_RUNNING',0,3,14
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,8
+	.byte	'ScheduleTableStatusType',0,5,241,3,41
+	.word	3706
+	.byte	5
+	.word	.L17-.L6
+	.byte	6
+	.word	3906
+	.byte	8
+	.byte	'ScheduleTableType',0,5,128,4,58
+	.word	3911
+	.byte	3
+	.byte	'Os_ScheduleTableDynType_s',0,5,130,4,16,16,4
+	.byte	'match',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'next',0
+	.word	3916
+	.byte	4,2,35,4,4
+	.byte	'state',0
+	.word	3706
+	.byte	4,2,35,8,4
+	.byte	'config',0
+	.word	257
+	.byte	2,2,35,12,0,6
+	.word	3943
+	.byte	5
+	.word	4036
+.L17:
+	.byte	3
+	.byte	'Os_ScheduleTableType_s',0,5,247,3,16,16,4
+	.byte	'dynamic',0
+	.word	4041
+	.byte	4,2,35,0,4
+	.byte	'counter',0
+	.word	3685
+	.byte	4,2,35,4,4
+	.byte	'repeat',0
+	.word	279
+	.byte	1,2,35,8,4
+	.byte	'config',0
+	.word	257
+	.byte	2,2,35,10,4
+	.byte	'initial',0
+	.word	279
+	.byte	1,2,35,12,4
+	.byte	'access',0
+	.word	279
+	.byte	1,2,35,13,4
+	.byte	'application',0
+	.word	279
+	.byte	1,2,35,14,0,8
+	.byte	'Os_ScheduleTableType',0,5,255,3,3
+	.word	4046
+	.byte	5
+	.word	4046
+	.byte	6
+	.word	4226
+	.byte	5
+	.word	3523
+	.byte	6
+	.word	4236
+	.byte	21
+	.word	1339
+	.byte	21
+	.word	2289
+	.byte	21
+	.word	2186
+	.byte	21
+	.word	2847
+	.byte	21
+	.word	2353
+	.byte	21
+	.word	279
+	.byte	21
+	.word	2847
+	.byte	3
+	.byte	'Os_ControlledCoreType_s',0,5,251,6,16,112,4
+	.byte	'TrapInfo',0
+	.word	770
+	.byte	8,2,35,0,4
+	.byte	'lock_taskaccess',0
+	.word	4246
+	.byte	4,2,35,8,4
+	.byte	'ReadyTasks',0
+	.word	4251
+	.byte	4,2,35,12,4
+	.byte	'RunningISR',0
+	.word	4256
+	.byte	4,2,35,16,4
+	.byte	'RunningTask',0
+	.word	4261
+	.byte	4,2,35,20,4
+	.byte	'RunningTPMask',0
+	.word	4266
+	.byte	4,2,35,24,4
+	.byte	'CurrentMeteredObject',0
+	.word	1872
+	.byte	4,2,35,28,4
+	.byte	'IdleMeter',0
+	.word	1669
+	.byte	48,2,35,32,4
+	.byte	'AppAccess',0
+	.word	279
+	.byte	1,2,35,80,4
+	.byte	'AppOverride',0
+	.word	4271
+	.byte	1,2,35,81,4
+	.byte	'GetStackValueAdjust',0
+	.word	941
+	.byte	8,2,35,84,4
+	.byte	'InErrorHook',0
+	.word	279
+	.byte	1,2,35,92,4
+	.byte	'ChainTaskRef',0
+	.word	4276
+	.byte	4,2,35,96,4
+	.byte	'GetStackUsageAdjust',0
+	.word	941
+	.byte	8,2,35,100,4
+	.byte	'InProtectionHook',0
+	.word	279
+	.byte	1,2,35,108,4
+	.byte	'CoreIsActive',0
+	.word	279
+	.byte	1,2,35,109,4
+	.byte	'InShutdownHook',0
+	.word	279
+	.byte	1,2,35,110,0,8
+	.byte	'Os_ControlledCoreType',0,5,141,7,3
+	.word	4281
+	.byte	6
+	.word	149
+	.byte	5
+	.word	2017
+	.byte	6
+	.word	4737
+	.byte	5
+	.word	2587
+	.byte	6
+	.word	4747
+	.byte	6
+	.word	1669
+	.byte	3
+	.byte	'Os_AnyCoreType_s',0,5,151,7,16,96,4
+	.byte	'DisableAllImask',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'SuspendAllImask',0
+	.word	149
+	.byte	4,2,35,4,4
+	.byte	'SuspendOSImask',0
+	.word	149
+	.byte	4,2,35,8,4
+	.byte	'DisableAllCount',0
+	.word	149
+	.byte	4,2,35,12,4
+	.byte	'SuspendAllCount',0
+	.word	149
+	.byte	4,2,35,16,4
+	.byte	'SuspendOSCount',0
+	.word	149
+	.byte	4,2,35,20,4
+	.byte	'RestartJumpBuf',0
+	.word	890
+	.byte	68,2,35,24,4
+	.byte	'Restartable',0
+	.word	279
+	.byte	1,2,35,92,0,8
+	.byte	'Os_AnyCoreType',0,5,160,7,3
+	.word	4762
+	.byte	3
+	.byte	'_Ifx_P_ACCEN0_Bits',0,6,45,16,4,22
+	.byte	'EN0',0,1
+	.word	279
+	.byte	1,7,2,35,0,22
+	.byte	'EN1',0,1
+	.word	279
+	.byte	1,6,2,35,0,22
+	.byte	'EN2',0,1
+	.word	279
+	.byte	1,5,2,35,0,22
+	.byte	'EN3',0,1
+	.word	279
+	.byte	1,4,2,35,0,22
+	.byte	'EN4',0,1
+	.word	279
+	.byte	1,3,2,35,0,22
+	.byte	'EN5',0,1
+	.word	279
+	.byte	1,2,2,35,0,22
+	.byte	'EN6',0,1
+	.word	279
+	.byte	1,1,2,35,0,22
+	.byte	'EN7',0,1
+	.word	279
+	.byte	1,0,2,35,0,22
+	.byte	'EN8',0,1
+	.word	279
+	.byte	1,7,2,35,1,22
+	.byte	'EN9',0,1
+	.word	279
+	.byte	1,6,2,35,1,22
+	.byte	'EN10',0,1
+	.word	279
+	.byte	1,5,2,35,1,22
+	.byte	'EN11',0,1
+	.word	279
+	.byte	1,4,2,35,1,22
+	.byte	'EN12',0,1
+	.word	279
+	.byte	1,3,2,35,1,22
+	.byte	'EN13',0,1
+	.word	279
+	.byte	1,2,2,35,1,22
+	.byte	'EN14',0,1
+	.word	279
+	.byte	1,1,2,35,1,22
+	.byte	'EN15',0,1
+	.word	279
+	.byte	1,0,2,35,1,22
+	.byte	'EN16',0,1
+	.word	279
+	.byte	1,7,2,35,2,22
+	.byte	'EN17',0,1
+	.word	279
+	.byte	1,6,2,35,2,22
+	.byte	'EN18',0,1
+	.word	279
+	.byte	1,5,2,35,2,22
+	.byte	'EN19',0,1
+	.word	279
+	.byte	1,4,2,35,2,22
+	.byte	'EN20',0,1
+	.word	279
+	.byte	1,3,2,35,2,22
+	.byte	'EN21',0,1
+	.word	279
+	.byte	1,2,2,35,2,22
+	.byte	'EN22',0,1
+	.word	279
+	.byte	1,1,2,35,2,22
+	.byte	'EN23',0,1
+	.word	279
+	.byte	1,0,2,35,2,22
+	.byte	'EN24',0,1
+	.word	279
+	.byte	1,7,2,35,3,22
+	.byte	'EN25',0,1
+	.word	279
+	.byte	1,6,2,35,3,22
+	.byte	'EN26',0,1
+	.word	279
+	.byte	1,5,2,35,3,22
+	.byte	'EN27',0,1
+	.word	279
+	.byte	1,4,2,35,3,22
+	.byte	'EN28',0,1
+	.word	279
+	.byte	1,3,2,35,3,22
+	.byte	'EN29',0,1
+	.word	279
+	.byte	1,2,2,35,3,22
+	.byte	'EN30',0,1
+	.word	279
+	.byte	1,1,2,35,3,22
+	.byte	'EN31',0,1
+	.word	279
+	.byte	1,0,2,35,3,0,8
+	.byte	'Ifx_P_ACCEN0_Bits',0,6,79,3
+	.word	5003
+	.byte	3
+	.byte	'_Ifx_P_ACCEN1_Bits',0,6,82,16,4,22
+	.byte	'reserved_0',0,4
+	.word	149
+	.byte	32,0,2,35,0,0,8
+	.byte	'Ifx_P_ACCEN1_Bits',0,6,85,3
+	.word	5556
+	.byte	3
+	.byte	'_Ifx_P_ESR_Bits',0,6,88,16,4,22
+	.byte	'EN0',0,1
+	.word	279
+	.byte	1,7,2,35,0,22
+	.byte	'EN1',0,1
+	.word	279
+	.byte	1,6,2,35,0,22
+	.byte	'EN2',0,1
+	.word	279
+	.byte	1,5,2,35,0,22
+	.byte	'EN3',0,1
+	.word	279
+	.byte	1,4,2,35,0,22
+	.byte	'EN4',0,1
+	.word	279
+	.byte	1,3,2,35,0,22
+	.byte	'EN5',0,1
+	.word	279
+	.byte	1,2,2,35,0,22
+	.byte	'EN6',0,1
+	.word	279
+	.byte	1,1,2,35,0,22
+	.byte	'EN7',0,1
+	.word	279
+	.byte	1,0,2,35,0,22
+	.byte	'EN8',0,1
+	.word	279
+	.byte	1,7,2,35,1,22
+	.byte	'EN9',0,1
+	.word	279
+	.byte	1,6,2,35,1,22
+	.byte	'EN10',0,1
+	.word	279
+	.byte	1,5,2,35,1,22
+	.byte	'EN11',0,1
+	.word	279
+	.byte	1,4,2,35,1,22
+	.byte	'EN12',0,1
+	.word	279
+	.byte	1,3,2,35,1,22
+	.byte	'EN13',0,1
+	.word	279
+	.byte	1,2,2,35,1,22
+	.byte	'EN14',0,1
+	.word	279
+	.byte	1,1,2,35,1,22
+	.byte	'EN15',0,1
+	.word	279
+	.byte	1,0,2,35,1,22
+	.byte	'reserved_16',0,2
+	.word	257
+	.byte	16,0,2,35,2,0,8
+	.byte	'Ifx_P_ESR_Bits',0,6,107,3
+	.word	5629
+	.byte	3
+	.byte	'_Ifx_P_ID_Bits',0,6,110,16,4,22
+	.byte	'MODREV',0,1
+	.word	279
+	.byte	8,0,2,35,0,22
+	.byte	'MODTYPE',0,1
+	.word	279
+	.byte	8,0,2,35,1,22
+	.byte	'MODNUMBER',0,2
+	.word	257
+	.byte	16,0,2,35,2,0,8
+	.byte	'Ifx_P_ID_Bits',0,6,115,3
+	.word	5943
+	.byte	3
+	.byte	'_Ifx_P_IN_Bits',0,6,118,16,4,22
+	.byte	'P0',0,1
+	.word	279
+	.byte	1,7,2,35,0,22
+	.byte	'P1',0,1
+	.word	279
+	.byte	1,6,2,35,0,22
+	.byte	'P2',0,1
+	.word	279
+	.byte	1,5,2,35,0,22
+	.byte	'P3',0,1
+	.word	279
+	.byte	1,4,2,35,0,22
+	.byte	'P4',0,1
+	.word	279
+	.byte	1,3,2,35,0,22
+	.byte	'P5',0,1
+	.word	279
+	.byte	1,2,2,35,0,22
+	.byte	'P6',0,1
+	.word	279
+	.byte	1,1,2,35,0,22
+	.byte	'P7',0,1
+	.word	279
+	.byte	1,0,2,35,0,22
+	.byte	'P8',0,1
+	.word	279
+	.byte	1,7,2,35,1,22
+	.byte	'P9',0,1
+	.word	279
+	.byte	1,6,2,35,1,22
+	.byte	'P10',0,1
+	.word	279
+	.byte	1,5,2,35,1,22
+	.byte	'P11',0,1
+	.word	279
+	.byte	1,4,2,35,1,22
+	.byte	'P12',0,1
+	.word	279
+	.byte	1,3,2,35,1,22
+	.byte	'P13',0,1
+	.word	279
+	.byte	1,2,2,35,1,22
+	.byte	'P14',0,1
+	.word	279
+	.byte	1,1,2,35,1,22
+	.byte	'P15',0,1
+	.word	279
+	.byte	1,0,2,35,1,22
+	.byte	'reserved_16',0,2
+	.word	257
+	.byte	16,0,2,35,2,0,8
+	.byte	'Ifx_P_IN_Bits',0,6,137,1,3
+	.word	6044
+	.byte	3
+	.byte	'_Ifx_P_IOCR0_Bits',0,6,140,1,16,4,22
+	.byte	'reserved_0',0,1
+	.word	279
+	.byte	3,5,2,35,0,22
+	.byte	'PC0',0,1
+	.word	279
+	.byte	5,0,2,35,0,22
+	.byte	'reserved_8',0,1
+	.word	279
+	.byte	3,5,2,35,1,22
+	.byte	'PC1',0,1
+	.word	279
+	.byte	5,0,2,35,1,22
+	.byte	'reserved_16',0,1
+	.word	279
+	.byte	3,5,2,35,2,22
+	.byte	'PC2',0,1
+	.word	279
+	.byte	5,0,2,35,2,22
+	.byte	'reserved_24',0,1
+	.word	279
+	.byte	3,5,2,35,3,22
+	.byte	'PC3',0,1
+	.word	279
+	.byte	5,0,2,35,3,0,8
+	.byte	'Ifx_P_IOCR0_Bits',0,6,150,1,3
+	.word	6341
+	.byte	3
+	.byte	'_Ifx_P_IOCR12_Bits',0,6,153,1,16,4,22
+	.byte	'reserved_0',0,1
+	.word	279
+	.byte	3,5,2,35,0,22
+	.byte	'PC12',0,1
+	.word	279
+	.byte	5,0,2,35,0,22
+	.byte	'reserved_8',0,1
+	.word	279
+	.byte	3,5,2,35,1,22
+	.byte	'PC13',0,1
+	.word	279
+	.byte	5,0,2,35,1,22
+	.byte	'reserved_16',0,1
+	.word	279
+	.byte	3,5,2,35,2,22
+	.byte	'PC14',0,1
+	.word	279
+	.byte	5,0,2,35,2,22
+	.byte	'reserved_24',0,1
+	.word	279
+	.byte	3,5,2,35,3,22
+	.byte	'PC15',0,1
+	.word	279
+	.byte	5,0,2,35,3,0,8
+	.byte	'Ifx_P_IOCR12_Bits',0,6,163,1,3
+	.word	6542
+	.byte	3
+	.byte	'_Ifx_P_IOCR4_Bits',0,6,166,1,16,4,22
+	.byte	'reserved_0',0,1
+	.word	279
+	.byte	3,5,2,35,0,22
+	.byte	'PC4',0,1
+	.word	279
+	.byte	5,0,2,35,0,22
+	.byte	'reserved_8',0,1
+	.word	279
+	.byte	3,5,2,35,1,22
+	.byte	'PC5',0,1
+	.word	279
+	.byte	5,0,2,35,1,22
+	.byte	'reserved_16',0,1
+	.word	279
+	.byte	3,5,2,35,2,22
+	.byte	'PC6',0,1
+	.word	279
+	.byte	5,0,2,35,2,22
+	.byte	'reserved_24',0,1
+	.word	279
+	.byte	3,5,2,35,3,22
+	.byte	'PC7',0,1
+	.word	279
+	.byte	5,0,2,35,3,0,8
+	.byte	'Ifx_P_IOCR4_Bits',0,6,176,1,3
+	.word	6749
+	.byte	3
+	.byte	'_Ifx_P_IOCR8_Bits',0,6,179,1,16,4,22
+	.byte	'reserved_0',0,1
+	.word	279
+	.byte	3,5,2,35,0,22
+	.byte	'PC8',0,1
+	.word	279
+	.byte	5,0,2,35,0,22
+	.byte	'reserved_8',0,1
+	.word	279
+	.byte	3,5,2,35,1,22
+	.byte	'PC9',0,1
+	.word	279
+	.byte	5,0,2,35,1,22
+	.byte	'reserved_16',0,1
+	.word	279
+	.byte	3,5,2,35,2,22
+	.byte	'PC10',0,1
+	.word	279
+	.byte	5,0,2,35,2,22
+	.byte	'reserved_24',0,1
+	.word	279
+	.byte	3,5,2,35,3,22
+	.byte	'PC11',0,1
+	.word	279
+	.byte	5,0,2,35,3,0,8
+	.byte	'Ifx_P_IOCR8_Bits',0,6,189,1,3
+	.word	6950
+	.byte	3
+	.byte	'_Ifx_P_LPCR0_Bits',0,6,192,1,16,4,22
+	.byte	'reserved_0',0,1
+	.word	279
+	.byte	1,7,2,35,0,22
+	.byte	'PS1',0,1
+	.word	279
+	.byte	1,6,2,35,0,22
+	.byte	'reserved_2',0,4
+	.word	149
+	.byte	30,0,2,35,0,0,8
+	.byte	'Ifx_P_LPCR0_Bits',0,6,197,1,3
+	.word	7153
+	.byte	3
+	.byte	'_Ifx_P_LPCR1_Bits',0,6,200,1,16,4,22
+	.byte	'reserved_0',0,1
+	.word	279
+	.byte	1,7,2,35,0,22
+	.byte	'PS1',0,1
+	.word	279
+	.byte	1,6,2,35,0,22
+	.byte	'reserved_2',0,4
+	.word	149
+	.byte	30,0,2,35,0,0,8
+	.byte	'Ifx_P_LPCR1_Bits',0,6,205,1,3
+	.word	7263
+	.byte	3
+	.byte	'_Ifx_P_LPCR1_P21_Bits',0,6,208,1,16,4,22
+	.byte	'RDIS_CTRL',0,1
+	.word	279
+	.byte	1,7,2,35,0,22
+	.byte	'RX_DIS',0,1
+	.word	279
+	.byte	1,6,2,35,0,22
+	.byte	'TERM',0,1
+	.word	279
+	.byte	1,5,2,35,0,22
+	.byte	'LRXTERM',0,1
+	.word	279
+	.byte	5,0,2,35,0,22
+	.byte	'reserved_8',0,4
+	.word	149
+	.byte	24,0,2,35,0,0,8
+	.byte	'Ifx_P_LPCR1_P21_Bits',0,6,215,1,3
+	.word	7373
+	.byte	3
+	.byte	'_Ifx_P_LPCR2_Bits',0,6,218,1,16,4,22
+	.byte	'reserved_0',0,1
+	.word	279
+	.byte	8,0,2,35,0,22
+	.byte	'LVDSR',0,1
+	.word	279
+	.byte	1,7,2,35,1,22
+	.byte	'LVDSRL',0,1
+	.word	279
+	.byte	1,6,2,35,1,22
+	.byte	'reserved_10',0,1
+	.word	279
+	.byte	2,4,2,35,1,22
+	.byte	'TDIS_CTRL',0,1
+	.word	279
+	.byte	1,3,2,35,1,22
+	.byte	'TX_DIS',0,1
+	.word	279
+	.byte	1,2,2,35,1,22
+	.byte	'TX_PD',0,1
+	.word	279
+	.byte	1,1,2,35,1,22
+	.byte	'TX_PWDPD',0,1
+	.word	279
+	.byte	1,0,2,35,1,22
+	.byte	'reserved_16',0,2
+	.word	257
+	.byte	16,0,2,35,2,0,8
+	.byte	'Ifx_P_LPCR2_Bits',0,6,229,1,3
+	.word	7528
+	.byte	3
+	.byte	'_Ifx_P_OMCR0_Bits',0,6,232,1,16,4,22
+	.byte	'reserved_0',0,2
+	.word	257
+	.byte	16,0,2,35,0,22
+	.byte	'PCL0',0,1
+	.word	279
+	.byte	1,7,2,35,2,22
+	.byte	'PCL1',0,1
+	.word	279
+	.byte	1,6,2,35,2,22
+	.byte	'PCL2',0,1
+	.word	279
+	.byte	1,5,2,35,2,22
+	.byte	'PCL3',0,1
+	.word	279
+	.byte	1,4,2,35,2,22
+	.byte	'reserved_20',0,2
+	.word	257
+	.byte	12,0,2,35,2,0,8
+	.byte	'Ifx_P_OMCR0_Bits',0,6,240,1,3
+	.word	7758
+	.byte	3
+	.byte	'_Ifx_P_OMCR12_Bits',0,6,243,1,16,4,22
+	.byte	'reserved_0',0,4
+	.word	149
+	.byte	28,4,2,35,0,22
+	.byte	'PCL12',0,1
+	.word	279
+	.byte	1,3,2,35,3,22
+	.byte	'PCL13',0,1
+	.word	279
+	.byte	1,2,2,35,3,22
+	.byte	'PCL14',0,1
+	.word	279
+	.byte	1,1,2,35,3,22
+	.byte	'PCL15',0,1
+	.word	279
+	.byte	1,0,2,35,3,0,8
+	.byte	'Ifx_P_OMCR12_Bits',0,6,250,1,3
+	.word	7918
+	.byte	3
+	.byte	'_Ifx_P_OMCR4_Bits',0,6,253,1,16,4,22
+	.byte	'reserved_0',0,4
+	.word	149
+	.byte	20,12,2,35,0,22
+	.byte	'PCL4',0,1
+	.word	279
+	.byte	1,3,2,35,2,22
+	.byte	'PCL5',0,1
+	.word	279
+	.byte	1,2,2,35,2,22
+	.byte	'PCL6',0,1
+	.word	279
+	.byte	1,1,2,35,2,22
+	.byte	'PCL7',0,1
+	.word	279
+	.byte	1,0,2,35,2,22
+	.byte	'reserved_24',0,1
+	.word	279
+	.byte	8,0,2,35,3,0,8
+	.byte	'Ifx_P_OMCR4_Bits',0,6,133,2,3
+	.word	8061
+	.byte	3
+	.byte	'_Ifx_P_OMCR8_Bits',0,6,136,2,16,4,22
+	.byte	'reserved_0',0,4
+	.word	149
+	.byte	24,8,2,35,0,22
+	.byte	'PCL8',0,1
+	.word	279
+	.byte	1,7,2,35,3,22
+	.byte	'PCL9',0,1
+	.word	279
+	.byte	1,6,2,35,3,22
+	.byte	'PCL10',0,1
+	.word	279
+	.byte	1,5,2,35,3,22
+	.byte	'PCL11',0,1
+	.word	279
+	.byte	1,4,2,35,3,22
+	.byte	'reserved_28',0,1
+	.word	279
+	.byte	4,0,2,35,3,0,8
+	.byte	'Ifx_P_OMCR8_Bits',0,6,144,2,3
+	.word	8221
+	.byte	3
+	.byte	'_Ifx_P_OMCR_Bits',0,6,147,2,16,4,22
+	.byte	'reserved_0',0,2
+	.word	257
+	.byte	16,0,2,35,0,22
+	.byte	'PCL0',0,1
+	.word	279
+	.byte	1,7,2,35,2,22
+	.byte	'PCL1',0,1
+	.word	279
+	.byte	1,6,2,35,2,22
+	.byte	'PCL2',0,1
+	.word	279
+	.byte	1,5,2,35,2,22
+	.byte	'PCL3',0,1
+	.word	279
+	.byte	1,4,2,35,2,22
+	.byte	'PCL4',0,1
+	.word	279
+	.byte	1,3,2,35,2,22
+	.byte	'PCL5',0,1
+	.word	279
+	.byte	1,2,2,35,2,22
+	.byte	'PCL6',0,1
+	.word	279
+	.byte	1,1,2,35,2,22
+	.byte	'PCL7',0,1
+	.word	279
+	.byte	1,0,2,35,2,22
+	.byte	'PCL8',0,1
+	.word	279
+	.byte	1,7,2,35,3,22
+	.byte	'PCL9',0,1
+	.word	279
+	.byte	1,6,2,35,3,22
+	.byte	'PCL10',0,1
+	.word	279
+	.byte	1,5,2,35,3,22
+	.byte	'PCL11',0,1
+	.word	279
+	.byte	1,4,2,35,3,22
+	.byte	'PCL12',0,1
+	.word	279
+	.byte	1,3,2,35,3,22
+	.byte	'PCL13',0,1
+	.word	279
+	.byte	1,2,2,35,3,22
+	.byte	'PCL14',0,1
+	.word	279
+	.byte	1,1,2,35,3,22
+	.byte	'PCL15',0,1
+	.word	279
+	.byte	1,0,2,35,3,0,8
+	.byte	'Ifx_P_OMCR_Bits',0,6,166,2,3
+	.word	8383
+	.byte	3
+	.byte	'_Ifx_P_OMR_Bits',0,6,169,2,16,4,22
+	.byte	'PS0',0,1
+	.word	279
+	.byte	1,7,2,35,0,22
+	.byte	'PS1',0,1
+	.word	279
+	.byte	1,6,2,35,0,22
+	.byte	'PS2',0,1
+	.word	279
+	.byte	1,5,2,35,0,22
+	.byte	'PS3',0,1
+	.word	279
+	.byte	1,4,2,35,0,22
+	.byte	'PS4',0,1
+	.word	279
+	.byte	1,3,2,35,0,22
+	.byte	'PS5',0,1
+	.word	279
+	.byte	1,2,2,35,0,22
+	.byte	'PS6',0,1
+	.word	279
+	.byte	1,1,2,35,0,22
+	.byte	'PS7',0,1
+	.word	279
+	.byte	1,0,2,35,0,22
+	.byte	'PS8',0,1
+	.word	279
+	.byte	1,7,2,35,1,22
+	.byte	'PS9',0,1
+	.word	279
+	.byte	1,6,2,35,1,22
+	.byte	'PS10',0,1
+	.word	279
+	.byte	1,5,2,35,1,22
+	.byte	'PS11',0,1
+	.word	279
+	.byte	1,4,2,35,1,22
+	.byte	'PS12',0,1
+	.word	279
+	.byte	1,3,2,35,1,22
+	.byte	'PS13',0,1
+	.word	279
+	.byte	1,2,2,35,1,22
+	.byte	'PS14',0,1
+	.word	279
+	.byte	1,1,2,35,1,22
+	.byte	'PS15',0,1
+	.word	279
+	.byte	1,0,2,35,1,22
+	.byte	'PCL0',0,1
+	.word	279
+	.byte	1,7,2,35,2,22
+	.byte	'PCL1',0,1
+	.word	279
+	.byte	1,6,2,35,2,22
+	.byte	'PCL2',0,1
+	.word	279
+	.byte	1,5,2,35,2,22
+	.byte	'PCL3',0,1
+	.word	279
+	.byte	1,4,2,35,2,22
+	.byte	'PCL4',0,1
+	.word	279
+	.byte	1,3,2,35,2,22
+	.byte	'PCL5',0,1
+	.word	279
+	.byte	1,2,2,35,2,22
+	.byte	'PCL6',0,1
+	.word	279
+	.byte	1,1,2,35,2,22
+	.byte	'PCL7',0,1
+	.word	279
+	.byte	1,0,2,35,2,22
+	.byte	'PCL8',0,1
+	.word	279
+	.byte	1,7,2,35,3,22
+	.byte	'PCL9',0,1
+	.word	279
+	.byte	1,6,2,35,3,22
+	.byte	'PCL10',0,1
+	.word	279
+	.byte	1,5,2,35,3,22
+	.byte	'PCL11',0,1
+	.word	279
+	.byte	1,4,2,35,3,22
+	.byte	'PCL12',0,1
+	.word	279
+	.byte	1,3,2,35,3,22
+	.byte	'PCL13',0,1
+	.word	279
+	.byte	1,2,2,35,3,22
+	.byte	'PCL14',0,1
+	.word	279
+	.byte	1,1,2,35,3,22
+	.byte	'PCL15',0,1
+	.word	279
+	.byte	1,0,2,35,3,0,8
+	.byte	'Ifx_P_OMR_Bits',0,6,203,2,3
+	.word	8716
+	.byte	3
+	.byte	'_Ifx_P_OMSR0_Bits',0,6,206,2,16,4,22
+	.byte	'PS0',0,1
+	.word	279
+	.byte	1,7,2,35,0,22
+	.byte	'PS1',0,1
+	.word	279
+	.byte	1,6,2,35,0,22
+	.byte	'PS2',0,1
+	.word	279
+	.byte	1,5,2,35,0,22
+	.byte	'PS3',0,1
+	.word	279
+	.byte	1,4,2,35,0,22
+	.byte	'reserved_4',0,4
+	.word	149
+	.byte	28,0,2,35,0,0,8
+	.byte	'Ifx_P_OMSR0_Bits',0,6,213,2,3
+	.word	9271
+	.byte	3
+	.byte	'_Ifx_P_OMSR12_Bits',0,6,216,2,16,4,22
+	.byte	'reserved_0',0,2
+	.word	257
+	.byte	12,4,2,35,0,22
+	.byte	'PS12',0,1
+	.word	279
+	.byte	1,3,2,35,1,22
+	.byte	'PS13',0,1
+	.word	279
+	.byte	1,2,2,35,1,22
+	.byte	'PS14',0,1
+	.word	279
+	.byte	1,1,2,35,1,22
+	.byte	'PS15',0,1
+	.word	279
+	.byte	1,0,2,35,1,22
+	.byte	'reserved_16',0,2
+	.word	257
+	.byte	16,0,2,35,2,0,8
+	.byte	'Ifx_P_OMSR12_Bits',0,6,224,2,3
+	.word	9404
+	.byte	3
+	.byte	'_Ifx_P_OMSR4_Bits',0,6,227,2,16,4,22
+	.byte	'reserved_0',0,1
+	.word	279
+	.byte	4,4,2,35,0,22
+	.byte	'PS4',0,1
+	.word	279
+	.byte	1,3,2,35,0,22
+	.byte	'PS5',0,1
+	.word	279
+	.byte	1,2,2,35,0,22
+	.byte	'PS6',0,1
+	.word	279
+	.byte	1,1,2,35,0,22
+	.byte	'PS7',0,1
+	.word	279
+	.byte	1,0,2,35,0,22
+	.byte	'reserved_8',0,4
+	.word	149
+	.byte	24,0,2,35,0,0,8
+	.byte	'Ifx_P_OMSR4_Bits',0,6,235,2,3
+	.word	9566
+	.byte	3
+	.byte	'_Ifx_P_OMSR8_Bits',0,6,238,2,16,4,22
+	.byte	'reserved_0',0,1
+	.word	279
+	.byte	8,0,2,35,0,22
+	.byte	'PS8',0,1
+	.word	279
+	.byte	1,7,2,35,1,22
+	.byte	'PS9',0,1
+	.word	279
+	.byte	1,6,2,35,1,22
+	.byte	'PS10',0,1
+	.word	279
+	.byte	1,5,2,35,1,22
+	.byte	'PS11',0,1
+	.word	279
+	.byte	1,4,2,35,1,22
+	.byte	'reserved_12',0,4
+	.word	149
+	.byte	20,0,2,35,0,0,8
+	.byte	'Ifx_P_OMSR8_Bits',0,6,246,2,3
+	.word	9721
+	.byte	3
+	.byte	'_Ifx_P_OMSR_Bits',0,6,249,2,16,4,22
+	.byte	'PS0',0,1
+	.word	279
+	.byte	1,7,2,35,0,22
+	.byte	'PS1',0,1
+	.word	279
+	.byte	1,6,2,35,0,22
+	.byte	'PS2',0,1
+	.word	279
+	.byte	1,5,2,35,0,22
+	.byte	'PS3',0,1
+	.word	279
+	.byte	1,4,2,35,0,22
+	.byte	'PS4',0,1
+	.word	279
+	.byte	1,3,2,35,0,22
+	.byte	'PS5',0,1
+	.word	279
+	.byte	1,2,2,35,0,22
+	.byte	'PS6',0,1
+	.word	279
+	.byte	1,1,2,35,0,22
+	.byte	'PS7',0,1
+	.word	279
+	.byte	1,0,2,35,0,22
+	.byte	'PS8',0,1
+	.word	279
+	.byte	1,7,2,35,1,22
+	.byte	'PS9',0,1
+	.word	279
+	.byte	1,6,2,35,1,22
+	.byte	'PS10',0,1
+	.word	279
+	.byte	1,5,2,35,1,22
+	.byte	'PS11',0,1
+	.word	279
+	.byte	1,4,2,35,1,22
+	.byte	'PS12',0,1
+	.word	279
+	.byte	1,3,2,35,1,22
+	.byte	'PS13',0,1
+	.word	279
+	.byte	1,2,2,35,1,22
+	.byte	'PS14',0,1
+	.word	279
+	.byte	1,1,2,35,1,22
+	.byte	'PS15',0,1
+	.word	279
+	.byte	1,0,2,35,1,22
+	.byte	'reserved_16',0,2
+	.word	257
+	.byte	16,0,2,35,2,0,8
+	.byte	'Ifx_P_OMSR_Bits',0,6,140,3,3
+	.word	9879
+	.byte	3
+	.byte	'_Ifx_P_OUT_Bits',0,6,143,3,16,4,22
+	.byte	'P0',0,1
+	.word	279
+	.byte	1,7,2,35,0,22
+	.byte	'P1',0,1
+	.word	279
+	.byte	1,6,2,35,0,22
+	.byte	'P2',0,1
+	.word	279
+	.byte	1,5,2,35,0,22
+	.byte	'P3',0,1
+	.word	279
+	.byte	1,4,2,35,0,22
+	.byte	'P4',0,1
+	.word	279
+	.byte	1,3,2,35,0,22
+	.byte	'P5',0,1
+	.word	279
+	.byte	1,2,2,35,0,22
+	.byte	'P6',0,1
+	.word	279
+	.byte	1,1,2,35,0,22
+	.byte	'P7',0,1
+	.word	279
+	.byte	1,0,2,35,0,22
+	.byte	'P8',0,1
+	.word	279
+	.byte	1,7,2,35,1,22
+	.byte	'P9',0,1
+	.word	279
+	.byte	1,6,2,35,1,22
+	.byte	'P10',0,1
+	.word	279
+	.byte	1,5,2,35,1,22
+	.byte	'P11',0,1
+	.word	279
+	.byte	1,4,2,35,1,22
+	.byte	'P12',0,1
+	.word	279
+	.byte	1,3,2,35,1,22
+	.byte	'P13',0,1
+	.word	279
+	.byte	1,2,2,35,1,22
+	.byte	'P14',0,1
+	.word	279
+	.byte	1,1,2,35,1,22
+	.byte	'P15',0,1
+	.word	279
+	.byte	1,0,2,35,1,22
+	.byte	'reserved_16',0,2
+	.word	257
+	.byte	16,0,2,35,2,0,8
+	.byte	'Ifx_P_OUT_Bits',0,6,162,3,3
+	.word	10197
+	.byte	3
+	.byte	'_Ifx_P_PCSR_Bits',0,6,165,3,16,4,22
+	.byte	'SEL0',0,1
+	.word	279
+	.byte	1,7,2,35,0,22
+	.byte	'SEL1',0,1
+	.word	279
+	.byte	1,6,2,35,0,22
+	.byte	'SEL2',0,1
+	.word	279
+	.byte	1,5,2,35,0,22
+	.byte	'SEL3',0,1
+	.word	279
+	.byte	1,4,2,35,0,22
+	.byte	'SEL4',0,1
+	.word	279
+	.byte	1,3,2,35,0,22
+	.byte	'SEL5',0,1
+	.word	279
+	.byte	1,2,2,35,0,22
+	.byte	'SEL6',0,1
+	.word	279
+	.byte	1,1,2,35,0,22
+	.byte	'reserved_7',0,2
+	.word	257
+	.byte	3,6,2,35,0,22
+	.byte	'SEL10',0,1
+	.word	279
+	.byte	1,5,2,35,1,22
+	.byte	'SEL11',0,1
+	.word	279
+	.byte	1,4,2,35,1,22
+	.byte	'reserved_12',0,4
+	.word	149
+	.byte	19,1,2,35,0,22
+	.byte	'LCK',0,1
+	.word	279
+	.byte	1,0,2,35,3,0,8
+	.byte	'Ifx_P_PCSR_Bits',0,6,179,3,3
+	.word	10497
+	.byte	3
+	.byte	'_Ifx_P_PDISC_Bits',0,6,182,3,16,4,22
+	.byte	'PDIS0',0,1
+	.word	279
+	.byte	1,7,2,35,0,22
+	.byte	'PDIS1',0,1
+	.word	279
+	.byte	1,6,2,35,0,22
+	.byte	'PDIS2',0,1
+	.word	279
+	.byte	1,5,2,35,0,22
+	.byte	'PDIS3',0,1
+	.word	279
+	.byte	1,4,2,35,0,22
+	.byte	'PDIS4',0,1
+	.word	279
+	.byte	1,3,2,35,0,22
+	.byte	'PDIS5',0,1
+	.word	279
+	.byte	1,2,2,35,0,22
+	.byte	'PDIS6',0,1
+	.word	279
+	.byte	1,1,2,35,0,22
+	.byte	'PDIS7',0,1
+	.word	279
+	.byte	1,0,2,35,0,22
+	.byte	'PDIS8',0,1
+	.word	279
+	.byte	1,7,2,35,1,22
+	.byte	'PDIS9',0,1
+	.word	279
+	.byte	1,6,2,35,1,22
+	.byte	'PDIS10',0,1
+	.word	279
+	.byte	1,5,2,35,1,22
+	.byte	'PDIS11',0,1
+	.word	279
+	.byte	1,4,2,35,1,22
+	.byte	'PDIS12',0,1
+	.word	279
+	.byte	1,3,2,35,1,22
+	.byte	'PDIS13',0,1
+	.word	279
+	.byte	1,2,2,35,1,22
+	.byte	'PDIS14',0,1
+	.word	279
+	.byte	1,1,2,35,1,22
+	.byte	'PDIS15',0,1
+	.word	279
+	.byte	1,0,2,35,1,22
+	.byte	'reserved_16',0,2
+	.word	257
+	.byte	16,0,2,35,2,0,8
+	.byte	'Ifx_P_PDISC_Bits',0,6,201,3,3
+	.word	10752
+	.byte	3
+	.byte	'_Ifx_P_PDR0_Bits',0,6,204,3,16,4,22
+	.byte	'PD0',0,1
+	.word	279
+	.byte	3,5,2,35,0,22
+	.byte	'PL0',0,1
+	.word	279
+	.byte	1,4,2,35,0,22
+	.byte	'PD1',0,1
+	.word	279
+	.byte	3,1,2,35,0,22
+	.byte	'PL1',0,1
+	.word	279
+	.byte	1,0,2,35,0,22
+	.byte	'PD2',0,1
+	.word	279
+	.byte	3,5,2,35,1,22
+	.byte	'PL2',0,1
+	.word	279
+	.byte	1,4,2,35,1,22
+	.byte	'PD3',0,1
+	.word	279
+	.byte	3,1,2,35,1,22
+	.byte	'PL3',0,1
+	.word	279
+	.byte	1,0,2,35,1,22
+	.byte	'PD4',0,1
+	.word	279
+	.byte	3,5,2,35,2,22
+	.byte	'PL4',0,1
+	.word	279
+	.byte	1,4,2,35,2,22
+	.byte	'PD5',0,1
+	.word	279
+	.byte	3,1,2,35,2,22
+	.byte	'PL5',0,1
+	.word	279
+	.byte	1,0,2,35,2,22
+	.byte	'PD6',0,1
+	.word	279
+	.byte	3,5,2,35,3,22
+	.byte	'PL6',0,1
+	.word	279
+	.byte	1,4,2,35,3,22
+	.byte	'PD7',0,1
+	.word	279
+	.byte	3,1,2,35,3,22
+	.byte	'PL7',0,1
+	.word	279
+	.byte	1,0,2,35,3,0,8
+	.byte	'Ifx_P_PDR0_Bits',0,6,222,3,3
+	.word	11104
+	.byte	3
+	.byte	'_Ifx_P_PDR1_Bits',0,6,225,3,16,4,22
+	.byte	'PD8',0,1
+	.word	279
+	.byte	3,5,2,35,0,22
+	.byte	'PL8',0,1
+	.word	279
+	.byte	1,4,2,35,0,22
+	.byte	'PD9',0,1
+	.word	279
+	.byte	3,1,2,35,0,22
+	.byte	'PL9',0,1
+	.word	279
+	.byte	1,0,2,35,0,22
+	.byte	'PD10',0,1
+	.word	279
+	.byte	3,5,2,35,1,22
+	.byte	'PL10',0,1
+	.word	279
+	.byte	1,4,2,35,1,22
+	.byte	'PD11',0,1
+	.word	279
+	.byte	3,1,2,35,1,22
+	.byte	'PL11',0,1
+	.word	279
+	.byte	1,0,2,35,1,22
+	.byte	'PD12',0,1
+	.word	279
+	.byte	3,5,2,35,2,22
+	.byte	'PL12',0,1
+	.word	279
+	.byte	1,4,2,35,2,22
+	.byte	'PD13',0,1
+	.word	279
+	.byte	3,1,2,35,2,22
+	.byte	'PL13',0,1
+	.word	279
+	.byte	1,0,2,35,2,22
+	.byte	'PD14',0,1
+	.word	279
+	.byte	3,5,2,35,3,22
+	.byte	'PL14',0,1
+	.word	279
+	.byte	1,4,2,35,3,22
+	.byte	'PD15',0,1
+	.word	279
+	.byte	3,1,2,35,3,22
+	.byte	'PL15',0,1
+	.word	279
+	.byte	1,0,2,35,3,0,8
+	.byte	'Ifx_P_PDR1_Bits',0,6,243,3,3
+	.word	11393
+	.byte	2
+	.byte	'int',0,4,5,18,6,251,3,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	5003
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_ACCEN0',0,6,128,4,3
+	.word	11701
+	.byte	18,6,131,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	5556
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_ACCEN1',0,6,136,4,3
+	.word	11763
+	.byte	18,6,139,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	5629
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_ESR',0,6,144,4,3
+	.word	11825
+	.byte	18,6,147,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	5943
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_ID',0,6,152,4,3
+	.word	11884
+	.byte	18,6,155,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	6044
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_IN',0,6,160,4,3
+	.word	11942
+	.byte	18,6,163,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	6341
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_IOCR0',0,6,168,4,3
+	.word	12000
+	.byte	18,6,171,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	6542
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_IOCR12',0,6,176,4,3
+	.word	12061
+	.byte	18,6,179,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	6749
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_IOCR4',0,6,184,4,3
+	.word	12123
+	.byte	18,6,187,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	6950
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_IOCR8',0,6,192,4,3
+	.word	12184
+	.byte	18,6,195,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	7153
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_LPCR0',0,6,200,4,3
+	.word	12245
+	.byte	18,6,203,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	7263
+	.byte	4,2,35,0,4
+	.byte	'B_P21',0
+	.word	7373
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_LPCR1',0,6,209,4,3
+	.word	12306
+	.byte	18,6,212,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	7528
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_LPCR2',0,6,217,4,3
+	.word	12382
+	.byte	18,6,220,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	8383
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_OMCR',0,6,225,4,3
+	.word	12443
+	.byte	18,6,228,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	7758
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_OMCR0',0,6,233,4,3
+	.word	12503
+	.byte	18,6,236,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	7918
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_OMCR12',0,6,241,4,3
+	.word	12564
+	.byte	18,6,244,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	8061
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_OMCR4',0,6,249,4,3
+	.word	12626
+	.byte	18,6,252,4,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	8221
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_OMCR8',0,6,129,5,3
+	.word	12687
+	.byte	18,6,132,5,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	8716
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_OMR',0,6,137,5,3
+	.word	12748
+	.byte	18,6,140,5,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	9879
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_OMSR',0,6,145,5,3
+	.word	12807
+	.byte	18,6,148,5,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	9271
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_OMSR0',0,6,153,5,3
+	.word	12867
+	.byte	18,6,156,5,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	9404
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_OMSR12',0,6,161,5,3
+	.word	12928
+	.byte	18,6,164,5,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	9566
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_OMSR4',0,6,169,5,3
+	.word	12990
+	.byte	18,6,172,5,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	9721
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_OMSR8',0,6,177,5,3
+	.word	13051
+	.byte	18,6,180,5,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	10197
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_OUT',0,6,185,5,3
+	.word	13112
+	.byte	18,6,188,5,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	10497
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_PCSR',0,6,193,5,3
+	.word	13171
+	.byte	18,6,196,5,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	10752
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_PDISC',0,6,201,5,3
+	.word	13231
+	.byte	18,6,204,5,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	11104
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_PDR0',0,6,209,5,3
+	.word	13292
+	.byte	18,6,212,5,9,4,4
+	.byte	'U',0
+	.word	149
+	.byte	4,2,35,0,4
+	.byte	'I',0
+	.word	11694
+	.byte	4,2,35,0,4
+	.byte	'B',0
+	.word	11393
+	.byte	4,2,35,0,0,8
+	.byte	'Ifx_P_PDR1',0,6,217,5,3
+	.word	13352
+	.byte	8
+	.byte	'Dio_PortType',0,1,249,1,17
+	.word	279
+	.byte	8
+	.byte	'Dio_PortLevelType',0,1,252,1,17
+	.word	257
+	.byte	8
+	.byte	'Dio_ChannelGroupType',0,1,137,2,3
+	.word	296
+	.byte	8
+	.byte	'Dio_PortChannelIdType',0,1,145,2,2
+	.word	165
+	.byte	8
+	.byte	'Dio_ConfigType',0,1,179,2,2
+	.word	378
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L7:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,19,1,3,8,58,15,59,15,57,15
+	.byte	11,15,0,0,4,13,0,3,8,73,19,11,15,56,9,0,0,5,38,0,73,19,0,0,6,15,0,73,19,0,0,7,21,0,54,15,0,0,8,22,0,3
+	.byte	8,58,15,59,15,57,15,73,19,0,0,9,19,1,58,15,59,15,57,15,11,15,0,0,10,1,1,11,15,73,19,0,0,11,33,0,47,15
+	.byte	0,0,12,21,0,54,15,39,12,0,0,13,4,1,58,15,59,15,57,15,11,15,0,0,14,40,0,3,8,28,13,0,0,15,59,0,3,8,0,0,16
+	.byte	21,1,54,15,39,12,0,0,17,5,0,73,19,0,0,18,23,1,58,15,59,15,57,15,11,15,0,0,19,4,1,3,8,58,15,59,15,57,15
+	.byte	11,15,0,0,20,21,0,73,19,54,15,39,12,0,0,21,53,0,73,19,0,0,22,13,0,3,8,11,15,73,19,13,15,12,15,56,9,0,0
+	.byte	0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L8:
+	.word	.L19-.L18
+.L18:
+	.half	3
+	.word	.L21-.L20
+.L20:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Dio\\inc\\Dio.h',0,0,0,0
+	.byte	'Targets\\TC275\\MCAL\\MCAL_Modules\\Dio\\src\\Dio_Ver.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Integration\\TargetIntegration\\TC275\\reg\\IfxPort_regdef.h',0,0,0,0,0
+.L21:
+.L19:
+	.sdecl	'.debug_info',debug,cluster('Dio_Init')
+	.sect	'.debug_info'
+.L9:
+	.word	217
+	.half	3
+	.word	.L10
+	.byte	4,1
+	.byte	'Targets\\TC275\\MCAL\\MCAL_Modules\\Dio\\src\\Dio_Ver.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L12,.L11
+	.byte	2
+	.word	.L5
+	.byte	3
+	.byte	'Dio_Init',0,1,224,1,6,1,1,1
+	.word	.L4,.L14,.L3
+	.byte	4
+	.byte	'ConfigPtr',0,1,224,1,37
+	.word	.L15,.L16
+	.byte	5
+	.word	.L4,.L14
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_Init')
+	.sect	'.debug_abbrev'
+.L10:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_Init')
+	.sect	'.debug_line'
+.L11:
+	.word	.L23-.L22
+.L22:
+	.half	3
+	.word	.L25-.L24
+.L24:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'Targets\\TC275\\MCAL\\MCAL_Modules\\Dio\\src\\Dio_Ver.c',0,0,0,0,0
+.L25:
+	.byte	5,7,7,0,5,2
+	.word	.L4
+	.byte	3,133,2,1,5,1,7,9
+	.half	.L2-.L4
+	.byte	3,31,1,7,9
+	.half	.L13-.L2
+	.byte	0,1,1
+.L23:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_Init')
+	.sect	'.debug_ranges'
+.L12:
+	.word	-1,.L4,0,.L13-.L4,0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_Init')
+	.sect	'.debug_loc'
+.L16:
+	.word	-1,.L4,0,.L14-.L4
+	.half	1
+	.byte	100
+	.word	0,0
+.L3:
+	.word	-1,.L4,0,.L14-.L4
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L26:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Dio_Init')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L26,.L4,.L14-.L4
+	.byte	8,18,8,19,8,21,8,22,8,23,0,0
+
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   294  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   295  #if (DIO_INITCHECK_API == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   296  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   297  ** Traceability     : [cover parentID= DS_MCAL_AS4XX_DIO_0528,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   298                                         DS_AS4XX_DIO_PR912_4,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   299  **                                     DS_MCAL_AS4XX_DIO_0520,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   300  **                                     DS_MCAL_AS4XX_DIO_0523,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   301  **                                     DS_MCAL_AS4XX_DIO_0521,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   302  **                                     DS_MCAL_AS4XX_DIO_0522]           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   303  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   304  ** Syntax           : Std_ReturnType Dio_InitCheck                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   305  **                    (                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   306  **                      const Dio_ConfigType * ConfigPtr                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   307  **                    )                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   308  ** [/cover]                                                                   **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   309  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   310  ** Service ID       : 0x10                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   311  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   312  ** Sync/Async       : Synchronous                                             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   313  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   314  ** Reentrancy       : non - reentrant                                         **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   315  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   316  ** Parameters(in)   : ConfigPtr - Pointer to DIO configuration                **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   317  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   318  ** Parameters (out) : none                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   319  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   320  ** Return value     : RetVal                                                  **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   321  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   322  ** Description      : This function verifies the initialization               **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   323  **                    done by Dio_Init                                        **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   324  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   325  Std_ReturnType Dio_InitCheck(const Dio_ConfigType *ConfigPtr)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   326  {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   327    Std_ReturnType RetVal;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   328  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   329    RetVal = E_NOT_OK;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   330  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   331    if(Dio_kConfigPtr == ConfigPtr)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   332    {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   333      RetVal = E_OK;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   334    }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   335    return(RetVal);
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   336  }/* Dio_InitCheck */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   337  #endif /* (DIO_INITCHECK_API == STD_ON) */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   338  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   339  /* Enable / Disable the use of the function */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   340  #if (DIO_FLIP_CHANNEL_API == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   341  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   342  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   343  ** Traceability     : [cover parentID=DS_AS40X_DIO190,DS_AS40X_DIO191,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   344                         DS_AS40X_DIO192,DS_AS40X_DIO193,DS_AS40X_DIO060_3,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   345                         DS_AS_DIO089,DS_AS40X_DIO118_4,DS_AS4XX_DIO_PR912_1]   **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   346  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   347  ** Syntax           : Dio_LevelType Dio_FlipChannel                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   348  **                    (                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   349  **                      Dio_ChannelType ChannelId                             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   350  **                    )                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   351  ** [/cover]                                                                   **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   352  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   353  ** Service ID       : 0x11                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   354  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   355  ** Sync/Async       : Synchronous                                             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   356  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   357  ** Reentrancy       : Reentrant                                               **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   358  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   359  ** Parameters (in)  : ChannelId - ChannelId whose level to be inverted        **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   360  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   361  ** Parameters (out) : none                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   362  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   363  ** Return value     : Dio_LevelType - The function returns value or the level **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   364  **                  of the specified channel which is of type Dio_LevelType   **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   365  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   366  ** Description      : This function: Flip the channel level                   **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   367  **      - DIO191: returns the inverted level of specified output channel      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   368  **      - DIO192: The specified channel is input, API shall have no influence **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   369  **                      on the physical output of the channel                 **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   370  **      - DIO193: The specified channel is input, API shall have no influence **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   371  **                      on the result of next Read service                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   372  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   373  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   374  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   375  Dio_LevelType Dio_FlipChannel(Dio_ChannelType ChannelId)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   376  {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   377    Ifx_P           *GetPortAddressPtr;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   378    uint32           OmrVal;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   379    uint32           PinNumber;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   380    uint32           PinPosition;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   381    Dio_LevelType    RetVal;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   382    volatile uint32  *IocrRegPtr;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   383  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   384    RetVal = (Dio_LevelType)STD_LOW;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   385    OmrVal = DIO_OMR_RESET_BIT;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   386  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   387    #if(DIO_DEV_ERROR_DETECT == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   388    if(Dio_lcheckDetStatus(DIO_SID_FLIPCHANNEL) == DIO_NO_ERROR)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   389    #endif /* DIO_DEV_ERROR_DETECT == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   390    {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   391      /* Check for the validity of symbolic channel ID
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   392         Reported DET if error detected */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   393    #if((DIO_SAFETY_ENABLE == STD_ON) || (DIO_DEV_ERROR_DETECT == STD_ON))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   394      if(Dio_lCheckChannelId(DIO_SID_FLIPCHANNEL,ChannelId) ==
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   395                (uint8)DIO_NO_ERROR)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   396    #endif /*DIO_DEV_ERROR_DETECT == STD_ON || DIO_SAFETY_ENABLE == STD_ON*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   397      {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   398        /* GetPortAddressPtr will hold the port address */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   399        GetPortAddressPtr = Dio_lGetPortAdr(Dio_lGetPortNumber(ChannelId));
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   400  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   401        /* Get the IOCR0 register address of particular port */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   402        /*IFX_MISRA_RULE_17_04_STATUS=Pointer arithmetic used
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   403          due to GetPortAddressPtr pointing to a structure and
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   404          is within allowed range.*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   405        IocrRegPtr = ((volatile uint32*)(volatile void*)GetPortAddressPtr +
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   406                                                   DIO_PORT_IOCR0_REG_OFFSET);
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   407        PinNumber = Dio_lGetPinNumber(ChannelId);
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   408  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   409        /* Get the Pin position */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   410        PinPosition = ((uint32)0x01U << Dio_lGetPinNumber(ChannelId));
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   411  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   412        /* Read the Channel level and decide the return value */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   413        if((PinPosition & (DIO_SFR_RUNTIME_USER_MODE_READ32\ 
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   414                             (GetPortAddressPtr->IN.U)))!= (Dio_LevelType)STD_LOW)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   415        {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   416          /* current level of the channel*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   417           RetVal = (Dio_LevelType)STD_HIGH;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   418        }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   419        /*Check the channel is configured as output channel*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   420        /*IFX_MISRA_RULE_17_04_STATUS=Pointer arithmetic used
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   421          due to IocrRegPtr pointing to a structure and
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   422          is within allowed range.*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   423        if(((DIO_SFR_RUNTIME_USER_MODE_READ32(*(IocrRegPtr + \ 
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   424             (PinNumber/DIO_NUM_FOUR))) >> DIO_IOCR0_BIT_SHIFT_COUNT(PinNumber))\ 
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   425                     & (uint32)DIO_PORT_DIR_MSK) != (uint32)DIO_PORT_PIN_IN)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   426        {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   427           /* Invert the Level of dio channel */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   428           if(RetVal == STD_LOW)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   429           {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   430              RetVal = (Dio_LevelType)STD_HIGH;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   431              OmrVal = 0x01U;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   432           }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   433           else
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   434           {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   435              RetVal = (Dio_LevelType)STD_LOW;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   436           }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   437           /* Write to the PORT OMR register to reflect at the channel*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   438           DIO_SFR_RUNTIME_USER_MODE_WRITE32(GetPortAddressPtr->OMR.U, \ 
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   439                                          (unsigned_int)(OmrVal << PinNumber));
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   440        }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   441      }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   442    }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   443    return RetVal;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   444  }/* Dio_FlipChannel */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   445  #endif /*(DIO_FLIP_CHANNEL_API == STD_ON) */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   446  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   447  #if(DIO_DEV_ERROR_DETECT == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   448  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   449  ** Syntax           : static uint8 Dio_lcheckDetStatus                        **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   450  **                    (                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   451  **                      uint8 ApiId                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   452  **                    )                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   453  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   454  ** Service ID       : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   455  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   456  ** Sync/Async       : Synchronous                                             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   457  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   458  ** Reentrancy       : Reentrant                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   459  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   460  ** Parameters (in)  : ApiId - Service ID                                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   461  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   462  ** Parameters (out) : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   463  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   464  ** Return value     : RetVal                                                  **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   465  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   466  ** Description      :                                                         **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   467  ** - This function returns the init status of DIO module                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   468  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   469  static uint8 Dio_lcheckDetStatus(uint8 ApiId)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   470  {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   471    if(Dio_InitStatus != DIO_INITIALIZED)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   472    {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   473      Det_ReportError(
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   474        (uint16)DIO_MODULE_ID,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   475        DIO_INSTANCE_ID,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   476        ApiId,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   477        DIO_E_UNINIT);
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   478    }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   479    return Dio_InitStatus;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   480  }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   481  #endif /* DIO_DEV_ERROR_DETECT */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   482  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   483  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   484  #if((DIO_DEV_ERROR_DETECT == STD_ON) || (DIO_SAFETY_ENABLE == STD_ON))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   485  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   486  ** Syntax           : uint8 Dio_lErrorCheckChannelGroupDet                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   487  **                    (                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   488  **                      const Dio_ChannelGroupType *ChannelGroupIdPtr,        **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   489  **                      uint8 ApiId                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   490  **                    )                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   491  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   492  ** Service ID       : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   493  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   494  ** Sync/Async       : Synchronous                                             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   495  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   496  ** Reentrancy       : Reentrant                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   497  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   498  ** Parameters (in)  : ApiId - Service ID                                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   499  **                    *ChannelGroupIdPtr - Pointer to the Group ofchannels    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   500  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   501  ** Parameters (out) : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   502  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   503  ** Return value     : RetVal                                                  **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   504  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   505  ** Description      :                                                         **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   506  ** - This function returns the validity of the ChannelGroup                   **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   507  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   508  uint8 Dio_lErrorCheckChannelGroupDet(
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   509               const Dio_ChannelGroupType *ChannelGroupIdPtr,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   510               uint8 ApiId)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   511  {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   512    uint8 RetVal;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   513    RetVal = DIO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   514  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   515    #if(DIO_DEV_ERROR_DETECT == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   516    if(Dio_lcheckDetStatus(ApiId) == (uint8)DIO_NO_ERROR)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   517    #endif /* DIO_DEV_ERROR_DETECT == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   518    {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   519       /* Check for the validity of group configuration
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   520          Reports DET error if detected */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   521       if(Dio_lCheckGroupId(ApiId,ChannelGroupIdPtr) == (uint8)DIO_NO_ERROR)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   522       {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   523          RetVal = DIO_NO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   524       }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   525    }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   526    return RetVal;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   527  }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   528  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   529  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   530  ** Syntax           : uint8 Dio_lErrorCheckChannelDet                         **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   531  **                    (                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   532  **                      Dio_ChannelType ChannelId,                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   533  **                      uint8 ApiId                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   534  **                    )                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   535  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   536  ** Service ID       : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   537  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   538  ** Sync/Async       : Synchronous                                             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   539  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   540  ** Reentrancy       : Reentrant                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   541  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   542  ** Parameters (in)  : ApiId - Service ID                                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   543  **                    ChannelId - Identifier for the PortPin                  **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   544  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   545  ** Parameters (out) : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   546  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   547  ** Return value     : RetVal                                                  **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   548  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   549  ** Description      :                                                         **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   550  ** - This function returns the validity of the ChannelId                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   551  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   552  uint8 Dio_lErrorCheckChannelDet(
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   553               Dio_ChannelType ChannelId,
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   554               uint8 ApiId)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   555  {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   556    uint8 RetVal;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   557  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   558    RetVal = DIO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   559  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   560    #if(DIO_DEV_ERROR_DETECT == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   561    if(Dio_lcheckDetStatus(ApiId) == (uint8)DIO_NO_ERROR)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   562    #endif /* DIO_DEV_ERROR_DETECT == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   563    {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   564       /* Check for the validity of group configuration
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   565          Reports DET error if detected */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   566       if(Dio_lCheckChannelId(ApiId,ChannelId) == (uint8)DIO_NO_ERROR)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   567       {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   568          RetVal = DIO_NO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   569       }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   570    }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   571    return RetVal;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   572  }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   573  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   574  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   575  ** Syntax           : uint8 Dio_lErrorCheckPortDet                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   576  **                    (                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   577  **                      Dio_ChannelType PortId,                               **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   578  **                      uint8 ApiId                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   579  **                    )                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   580  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   581  ** Service ID       : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   582  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   583  ** Sync/Async       : Synchronous                                             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   584  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   585  ** Reentrancy       : Reentrant                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   586  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   587  ** Parameters (in)  : ApiId - Service ID                                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   588  **                    PortId - Identifier for the Port                        **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   589  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   590  ** Parameters (out) : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   591  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   592  ** Return value     : RetVal                                                  **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   593  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   594  ** Description      :                                                         **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   595  ** - This function returns the validity of the PortId                         **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   596  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   597  uint8 Dio_lErrorCheckPortDet(Dio_PortType PortId, uint8 ApiId)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   598  {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   599    uint8 RetVal;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   600    RetVal = DIO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   601  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   602    #if(DIO_DEV_ERROR_DETECT == STD_ON)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   603    if(Dio_lcheckDetStatus(ApiId) == (uint8)DIO_NO_ERROR)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   604    #endif /* DIO_DEV_ERROR_DETECT == STD_ON */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   605    {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   606       /* Check for the validity of group configuration
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   607          Reports DET error if detected */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   608       if(Dio_lCheckPortId(ApiId,PortId) == (uint8)DIO_NO_ERROR)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   609       {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   610          RetVal = DIO_NO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   611       }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   612    }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   613    return RetVal;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   614  }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   615  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   616  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   617  ** Syntax           : uint8 Dio_lCheckChGrpValue                              **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   618  **                    (                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   619  **                      const Dio_ChannelGroupType *GroupIdPtr                **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   620  **                    )                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   621  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   622  ** Service ID       : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   623  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   624  ** Sync/Async       : Synchronous                                             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   625  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   626  ** Reentrancy       : Reentrant                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   627  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   628  ** Parameters (in)  : ApiId - Service ID                                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   629  **                    ChGroupId - Identifier for the Channel Group            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   630  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   631  ** Parameters (out) : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   632  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   633  ** Return value     : RetVal                                                  **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   634  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   635  ** Description      :                                                         **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   636  ** - This function returns the validity of the ChGrpId                        **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   637  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   638  uint8 Dio_lCheckChGrpValue(const Dio_ChannelGroupType *GroupIdPtr)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   639  {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   640  #if((DIO_CONFIG_COUNT == 1U) || (DIO_CH_GRP_SET_U > 1U))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   641     uint32 Index;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   642  #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   643     uint8  ErrStatus = DIO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   644  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   645  #if(DIO_CONFIG_COUNT == 1U)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   646     for(Index = 0U;Index < (Dio_kConfigPtr->Dio_ChannelGroupConfigSize);Index++)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   647     {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   648       /*IFX_MISRA_RULE_17_04_STATUS=Pointer arithmetic used
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   649         due to PBConfigStructure and is within allowed range.*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   650       if (GroupIdPtr == &(Dio_kConfigPtr->Dio_ChannelGroupConfigPtr[Index]))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   651       {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   652       /*DIO114: channel group is valid within the current configuration*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   653         ErrStatus = (uint8)DIO_NO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   654         break;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   655       }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   656     }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   657  #else
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   658    #if(DIO_CH_GRP_SET_U == 1U)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   659     if (GroupIdPtr == &(Dio_kConfigPtr->Dio_ChGrpIdMap[0U]))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   660     {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   661     /*DIO114: channel group is valid within the current configuration*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   662       ErrStatus = (uint8)DIO_NO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   663     }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   664    #elif(DIO_CH_GRP_SET_U > 1U)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   665     for(Index = 0U; Index < (DIO_CH_GRP_SET_U); Index++)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   666     {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   667       if (GroupIdPtr == &(Dio_kConfigPtr->Dio_ChGrpIdMap[Index]))
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   668       {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   669       /*DIO114: channel group is valid within the current configuration*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   670         ErrStatus = (uint8)DIO_NO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   671         break;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   672       }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   673     }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   674    #else
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   675     UNUSED_PARAMETER(GroupIdPtr)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   676    #endif /* DIO_CH_GRP_SET_U > 1U */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   677  #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   678  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   679     return ErrStatus;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   680  }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   681  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   682  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   683  ** Syntax           : uint8 Dio_lCheckAnalogChannel                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   684  **                    (                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   685  **                      uint8 ApiId, uint32 PortReadOnly                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   686  **                    )                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   687  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   688  ** Service ID       : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   689  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   690  ** Sync/Async       : Synchronous                                             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   691  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   692  ** Reentrancy       : Reentrant                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   693  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   694  ** Parameters (in)  : ApiId - Service ID                                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   695  **                    PortReadOnly - Flag to represent Analog PortPins        **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   696  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   697  ** Parameters (out) : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   698  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   699  ** Return value     : RetVal                                                  **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   700  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   701  ** Description      :                                                         **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   702  ** - This function returns status for Read/Write Called on Analog Ports       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   703  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   704  uint8 Dio_lCheckAnalogChannel(uint8 ApiId, uint32 PortReadOnly)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   705  {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   706     uint8 ErrStatus;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   707     ErrStatus = (uint8)DIO_NO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   708  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   709     #if( DIO_FLIP_CHANNEL_API == STD_ON )
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   710     if( ( (ApiId == DIO_SID_WRITECHANNEL) ||
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   711           (ApiId == DIO_SID_FLIPCHANNEL)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   712         ) &&  (PortReadOnly != 0U)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   713       )
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   714       {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   715         /* Error status = Error has occurred */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   716         ErrStatus = (uint8)DIO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   717       }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   718     #else
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   719     if( (ApiId == DIO_SID_WRITECHANNEL) &&  (PortReadOnly != 0U) )
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   720     {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   721       /* Error status = Error has occurred */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   722       ErrStatus = (uint8)DIO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   723     }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   724     #endif
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   725     return ErrStatus;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   726  }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   727  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   728  /*******************************************************************************
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   729  ** Syntax           : uint8 Dio_lCheckAnalogPort                              **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   730  **                    (                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   731  **                      uint8 ApiId, uint32 PortReadOnly                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   732  **                    )                                                       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   733  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   734  ** Service ID       : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   735  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   736  ** Sync/Async       : Synchronous                                             **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   737  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   738  ** Reentrancy       : Reentrant                                           **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   739  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   740  ** Parameters (in)  : ApiId - Service ID                                      **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   741  **                    PortReadOnly - Flag to represent Analog PortPins        **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   742  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   743  ** Parameters (out) : None                                                    **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   744  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   745  ** Return value     : RetVal                                                  **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   746  **                                                                            **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   747  ** Description      :                                                         **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   748  ** - This function returns status for Read/Write Called on Analog Ports       **
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   749  *******************************************************************************/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   750  uint8 Dio_lCheckAnalogPort(uint8 ApiId, uint32 PortReadOnly)
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   751  {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   752     uint8 ErrStatus;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   753     ErrStatus = (uint8)DIO_NO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   754  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   755     if( (ApiId == DIO_SID_WRITEPORT) &&  (PortReadOnly != 0U) )
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   756     {
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   757       /* Error status = Error has occurred */
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   758       ErrStatus = (uint8)DIO_ERROR;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   759     }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   760     return ErrStatus;
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   761  }
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   762  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   763  #endif /* DIO_DEV_ERROR_DETECT == STD_ON || DIO_SAFETY_ENABLE == STD_ON*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   764  
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   765  /*Memory Map of the DIO Code*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   766  #define DIO_STOP_SEC_CODE
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   767  /*mapping of code and data to specific memory sections via memory mapping file*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   768  /*IFX_MISRA_RULE_19_01_STATUS=File inclusion after pre-processor directives
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   769    is allowed only for MemMap.h*/
+; Targets\TC275\MCAL\MCAL_Modules\Dio\src\Dio_Ver.c	   770  #include "MemMap.h"
+
+	; Module end

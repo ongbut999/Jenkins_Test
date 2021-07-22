@@ -1,0 +1,4452 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc16132a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Xcp\\Xcp.src BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Xcp.Xcp_MainFunction',code,cluster('Xcp_MainFunction')
+	.sect	'.text.Xcp.Xcp_MainFunction'
+	.align	2
+	
+	.global	Xcp_MainFunction
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	     1  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	     2  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	     3  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	     4  * Includes
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	     5  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	     6  #include "Xcp.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	     7  #include "Xcp_Priv.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	     8  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	     9  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    10  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    11  * Variables
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    12  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    13  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    14  #define XCP_START_SEC_VAR_POWER_ON_CLEARED_UNSPECIFIED
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    15  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    16  Xcp_NoInit_t         Xcp_NoInit[XCP_PL_IDS];
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    17  Xcp_GlobalNoInit_t   Xcp_GlobalNoInit;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    18  #define XCP_STOP_SEC_VAR_POWER_ON_CLEARED_UNSPECIFIED
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    19  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    20  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    21  #define XCP_START_SEC_VAR_CLEARED_UNSPECIFIED
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    22  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    23  Xcp_Cleared_t        Xcp_Cleared[XCP_PL_IDS];
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    24  #define XCP_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    25  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    26  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    27  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    28  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    29  * Local function declarations
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    30  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    31  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    32  #define XCP_START_SEC_CODE
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    33  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    34  static void Xcp_Background_Tasks(uint8 ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    35  LOCAL_INLINE void Xcp_FinishDisconnect(uint8 ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    36  #define XCP_STOP_SEC_CODE
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    37  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    38  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    39  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    40  /***************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    41  * Functions
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    42  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    43  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    44  #define XCP_START_SEC_CODE
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    45  #include "Xcp_MemMap.h"
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    46  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    47  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    48  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    49  Scheduled function of the XCP module
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    50  \param[in]  -
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    51  \return     -
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    52  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    53  /* HIS METRIC CALLS VIOLATION IN Xcp_MainFunction: Long and short SchM locks are still needed. It is planned combine the calls -> metric no longer violated */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    54  void Xcp_MainFunction(void)
+; Function Xcp_MainFunction
+.L69:
+Xcp_MainFunction:	.type	func
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    55  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    56    /*Start of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    57    XCP_RTM_TIMETRACK_START()
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    58  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    59    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    60    uint8 ProtocolLayerId;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    61    uint8 TransportLayerId;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    62    boolean connected;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    63  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    64    /* initilization */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    65    connected = FALSE;
+	mov	d8,#0
+.L176:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    66  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    67    /* Do for all protocol layers */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    68    for (ProtocolLayerId = 0; ProtocolLayerId < XCP_PL_IDS; ProtocolLayerId++)
+	mov	d9,#0
+.L177:
+	j	.L2
+.L3:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    69    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    70      if (Xcp_NoInit[ProtocolLayerId].Session.XcpState_en == XCP_STATE_CONNECTED)
+	movh.a	a12,#@his(Xcp_NoInit)
+	lea	a12,[a12]@los(Xcp_NoInit)
+.L241:
+	mul	d15,d9,#80
+	addsc.a	a13,a12,d15,#0
+.L242:
+	ld.w	d0,[a13]
+.L243:
+	eq	d15,d0,#2
+.L244:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    71      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    72        connected = TRUE;
+	cmov	d8,d15,#1
+.L4:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    73      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    74  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    75      if (  (Xcp_NoInit[ProtocolLayerId].Session.XcpState_en == XCP_STATE_CONNECTED)
+	jeq	d0,#2,.L5
+.L245:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    76         || (Xcp_NoInit[ProtocolLayerId].Session.XcpState_en == XCP_STATE_DISCONNECTING)
+	jne	d0,#1,.L6
+.L5:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    77         )
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    78      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    79        Xcp_Background_Tasks(ProtocolLayerId);
+	mov	d4,d9
+.L178:
+	call	Xcp_Background_Tasks
+.L179:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    80  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    81        /* Xcp_TxConfirmation() is expected shortly after call to Xcp_Transmit(). */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    82        /* If TxConfirmation is lost in lower layer, Wait4TxConfCtr must be reset to prevent endless waiting. */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    83        SchM_Enter_Xcp_SendingLong();
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    84        SchM_Enter_Xcp_SendingShort();
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    85        if (Xcp_Cleared[ProtocolLayerId].Wait4TxConfCtr_u8 > 0)
+	movh.a	a2,#@his(Xcp_Cleared)
+	lea	a2,[a2]@los(Xcp_Cleared)
+.L246:
+	mov	d0,#336
+	mul	d0,d9
+	addsc.a	a2,a2,d0,#0
+.L247:
+	ld.bu	d15,[a2]
+.L248:
+	jeq	d15,#0,.L7
+.L249:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    86        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    87          Xcp_Cleared[ProtocolLayerId].Wait4TxConfCtr_u8--;
+	add	d15,#-1
+	st.b	[a2],d15
+.L7:
+.L6:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    88        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    89        SchM_Exit_Xcp_SendingShort();
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    90        SchM_Exit_Xcp_SendingLong();
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    91      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    92  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    93      /* Disconnect the transport layers with an active disconnect request
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    94       * and where the response buffer is empty or the Wait4TxConfCtr has expired (e.g. due to a lost TxConfirmation from the lower layer)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    95       */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    96      if (   (Xcp_NoInit[ProtocolLayerId].Session.XcpState_en == XCP_STATE_DISCONNECTING)
+	ld.w	d15,[a13]
+.L250:
+	jne	d15,#1,.L8
+.L251:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    97          && ((XCP_RES_BUFFER_LENGTH(ProtocolLayerId) == 0u) || (Xcp_Cleared[ProtocolLayerId].Wait4TxConfCtr_u8 == 0u))
+	movh.a	a15,#@his(Xcp_Cleared)
+	lea	a15,[a15]@los(Xcp_Cleared)
+	mov	d15,#336
+	mul	d15,d9
+	addsc.a	a15,a15,d15,#0
+	ld.w	d15,[a15]20
+.L252:
+	jeq	d15,#0,.L9
+.L253:
+	ld.bu	d15,[a15]
+.L254:
+	jne	d15,#0,.L10
+.L9:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    98         )
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	    99      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   100        /* Call TL disconnect function. */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   101        TransportLayerId = XCP_ACTIVE_TL_ID(ProtocolLayerId);
+	ld.bu	d4,[a13]4
+.L180:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   102        if (TransportLayerId < XCP_TL_IDS)
+	jne	d4,#0,.L11
+.L255:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   103        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   104          if (Xcp_PlCfgConst.TlCfg[TransportLayerId].TLDisconnect_pfct(TransportLayerId) == E_OK)
+	movh.a	a15,#@his(Xcp_PlCfgConst)
+	lea	a15,[a15]@los(Xcp_PlCfgConst)
+.L256:
+	mul	d15,d4,#56
+	addsc.a	a15,a15,d15,#0
+.L257:
+	ld.a	a15,[a15]12
+.L258:
+	calli	a15
+.L181:
+	jne	d2,#0,.L12
+.L259:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   105          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   106            /* Remove the TL from the TL-to-PL-lookup-table */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   107            Xcp_GlobalNoInit.Tl2PlRef_au8[TransportLayerId] = XCP_INVALID_PROTLAYER_ID;
+	movh.a	a13,#@his(Xcp_GlobalNoInit)
+	lea	a13,[a13]@los(Xcp_GlobalNoInit)
+.L260:
+	lea	a15,[a13]9
+.L261:
+	add.a	a15,#0
+.L262:
+	mov	d15,#255
+.L263:
+	st.b	[a15],d15
+.L140:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   108  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   109            Xcp_FinishDisconnect(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   110          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   111          else /* TLDisconnect_pfct not OK */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   112          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   113            /* empty  */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   114          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   115        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   116        else /* not a valid TL ID */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   117        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   118          Xcp_FinishDisconnect(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   119        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   120      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   121    } /* for-loop */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   122  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   123  #if (XCP_RESUME_MODE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   124    Xcp_ResumeModeStorage();
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   125  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   126    /* execute only, if at least one protocol layer is connected */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   127    if (connected == TRUE)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   128    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   129  #if( (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON) && (XCP_DAQRAM_SHIFTING == STD_ON) )
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   130      /* call function for moving of protocol layer */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   131      Xcp_DaqRamMainMovePL();
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   132  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   133  #if (XCP_TIMESTAMP == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   134      /* call timestamp periodically to prevent time jumps if used timestamp counter wraps around */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   135      (void)XcpAppl_GetTimestamp();
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   136  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   137    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   138  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   139    /*End of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   140    XCP_RTM_TIMETRACK_FINISH()
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   141  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   142  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   143  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   144  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   145  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   146  Function that handles the background activities for one PL
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   147  \param[in]  ProtocolLayerId   Protocol Layer Id
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   148  \return     -
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   149  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   150  static void Xcp_Background_Tasks(uint8 ProtocolLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   151  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   152    switch (Xcp_Cleared[ProtocolLayerId].BgActivityState)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   153    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   154  #if ( (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON) \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   155   || ((XCP_CALIBRATION_CAL == STD_ON) && (XCP_UPLOAD_DOWNLOAD_MEMORY_ACCESS_BY_APPL == STD_ON)) )
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   156      case XCP_BG_CANCEL_REQ:
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   157      { /* SYNCH-Command received - every background activity must be canceled */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   158        Xcp_CmdSynch_Cancel(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   159      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   160      break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   161  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   162  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   163  #if (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   164      case XCP_BG_CHKSUM:
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   165      { /* Checksum calculation background process */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   166        Xcp_BuildChecksumMainFunction(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   167      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   168      break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   169  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   170  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   171  #if((XCP_CALIBRATION_CAL == STD_ON) && (XCP_UPLOAD_DOWNLOAD_MEMORY_ACCESS_BY_APPL == STD_ON))
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   172      case XCP_BG_MEM_WRITE:
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   173      { /* Download background process */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   174        Xcp_MemWriteMainFunction(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   175      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   176      break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   177  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   178  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   179      case XCP_BG_REPEAT_CMD:
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   180      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   181        PduInfoType XcpPacket;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   182  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   183        /* Set BgActivity to Idle. Will be set again, if preconditions still are not met */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   184        Xcp_Cleared[ProtocolLayerId].BgActivityState = XCP_BG_IDLE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   185  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   186        /* fake reception of packet to be processed again */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   187        XcpPacket.SduLength = (PduLengthType) XCP_CMD_BUFFER_LENGTH(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   188        XcpPacket.SduDataPtr = XCP_CMD_BUFFER_PTR(ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   189  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   190        Xcp_ReceiveCommand(&XcpPacket, ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   191      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   192      break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   193  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   194      case XCP_BG_DO_DISCONNECT:
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   195      { /* Trigger disconnect-processing again */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   196        Xcp_DoDisconnect(ProtocolLayerId, Xcp_Cleared[ProtocolLayerId].BgDoDisconnect_Response);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   197      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   198      break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   199  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   200      case XCP_BG_IDLE:
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   201      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   202        /* Nothing to do */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   203      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   204      break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   205  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   206      default:
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   207      { /* Something weird happened - set State to IDLE */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   208        Xcp_Cleared[ProtocolLayerId].BgActivityState = XCP_BG_IDLE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   209      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   210      break;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   211    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   212    /* Send EV_CMD_PENDING if any of the background task is running */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   213    /* To avoid the sending event during checksum calculation */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   214  #if 0
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   215    if (Xcp_Cleared[ProtocolLayerId].BgActivityState != XCP_BG_IDLE)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   216    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   217        Xcp_SendEv_Code(XCP_EV_CMD_PENDING, ProtocolLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   218    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   219  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   220  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   221  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   222  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   223  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   224  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   225  \brief Disconnect XCP protocol layer
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   226  \param[in]  protLayerId   Protocol Layer Id
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   227  \param[in]  response      Response that shall be send after Disconnect-Preparation finished
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   228  \return     -
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   229  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   230  \details When the PL shall be disconnected (via CMD or function call) this function is called.
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   231           It stops all DaqLists and if none is running anymore it reset/reinitializes all Appl-data and the PL data,
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   232           then it sends the requested response (which can also be no response).
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   233           After that the PL-state is set to DISCONNECTING to finally disconnect the TL from the PL.
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   234  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   235           If DaqLists are still running, this function is called again from the BG-task until it finishes successfully
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   236  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   237  /* HIS METRIC CALLS VIOLATION IN Xcp_DoDisconnect: This function is reininitializing Xcp and thus calling the various Init-functions - it cannot be split without decreasing maintainability */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   238  void Xcp_DoDisconnect(uint8 protLayerId, Xcp_ErrorCode Response)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   239  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   240    /*Start of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   241    XCP_RTM_TIMETRACK_START()
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   242  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   243  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   244  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   245      if (Xcp_DaqListStopAll(protLayerId) == XCP_NO_ERROR)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   246      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   247        /* reset daq command sequence
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   248         *
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   249         * DaqListStopAll sets the DaqState to STOP_REQUESTED - which prevents EventChannel from starting
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   250         * NO_DAQ must only be set after all DaqLists are really stopped - otherwise the MainFunction could not detect that something is still running
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   251         */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   252        Xcp_NoInit[protLayerId].DaqConfig.DaqState_en = XCP_DAQ_STATE_NO_DAQ;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   253  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   254  # if (XCP_DAQRAM_SHIFTING == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   255        Xcp_DaqRamResetShift(protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   256  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   257  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   258  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   259        /* clear response buffer */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   260        XCP_RES_BUFFER_LENGTH(protLayerId) = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   261        /* clear event buffer */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   262        XCP_EV_BUFFER_LENGTH(protLayerId)  = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   263        /* Reset background activities */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   264        Xcp_Cleared[protLayerId].BgActivityState = XCP_BG_IDLE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   265  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   266  #if ( (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON) \ 
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   267      || ((XCP_CALIBRATION_CAL == STD_ON) && (XCP_UPLOAD_DOWNLOAD_MEMORY_ACCESS_BY_APPL == STD_ON)) )
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   268        /* Call application function to initialize and cancel background request */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   269        (void)XcpAppl_Init(Xcp_GlobalNoInit.InitStatus_u8, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   270  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   271        /* Call command initialization functions */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   272        Xcp_InitUpload(protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   273  #if(XCP_CALIBRATION_CAL == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   274        Xcp_InitDownload(protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   275  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   276  #if (XCP_CMD_BUILD_CHECKSUM_AVAILABLE == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   277        Xcp_InitChecksum(protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   278  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   279  #if(XCP_SEED_AND_KEY == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   280        Xcp_InitSeedKey(protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   281  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   282  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   283        /* Transport layer disconnect functions will be called from Xcp_MainFunction to be able to send the response. */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   284  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   285        /* Disconnect has stopped and reinitialized everything but the TLs - now send a response (if required) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   286        if (Response == XCP_NO_ERROR)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   287        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   288          Xcp_SendPosRes(protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   289        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   290        else if (Response == XCP_NO_RESPONSE)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   291        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   292          /* No response shall be sent */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   293        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   294        else if (Response < XCP_REPEAT_COMMAND)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   295        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   296          /* Send negative response for the defined (ASAM) errors */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   297          Xcp_SendErrRes(Response, protLayerId);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   298        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   299        else
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   300        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   301          /* This Response is not allowed by ASAM - send nothing */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   302        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   303  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   304        /* The DISCONNECTING state is set at the end after sending the response to avoid disconnecting the TL(in MainFunction) before sending. */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   305        Xcp_NoInit[protLayerId].Session.XcpState_en = XCP_STATE_DISCONNECTING;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   306  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   307  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   308      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   309      else /* (Error == XCP_REPEAT_COMMAND): Not all DaqLists are stopped and no longer running - retry later (BgActivity) */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   310      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   311        Xcp_Cleared[protLayerId].BgDoDisconnect_Response = Response;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   312        Xcp_Cleared[protLayerId].BgActivityState = XCP_BG_DO_DISCONNECT;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   313      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   314  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   315  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   316    /*End of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   317    XCP_RTM_TIMETRACK_FINISH()
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   318  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   319  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   320  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   321  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   322  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   323  \brief Finish the disconnection of the PL
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   324  \param[in]  ProtocolLayerId   Protocol Layer Id
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   325  \return     -
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   326  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   327  LOCAL_INLINE void Xcp_FinishDisconnect(uint8 ProtocolLayerId)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   328  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   329  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   330    /* remove protocol layer from ram section */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   331    Xcp_InitDaqConfig(ProtocolLayerId);
+	mov	d4,d9
+.L182:
+	call	Xcp_InitDaqConfig
+.L183:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   332  #endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   333  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   334    /* The disconnect order has to be always: first set the invalid TL Id then the state DISCONNECT or DISABLED */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   335    XCP_ACTIVE_TL_ID(ProtocolLayerId) = 0xFF;
+	mul	d15,d9,#80
+	addsc.a	a15,a12,d15,#0
+.L264:
+	mov	d15,#255
+.L265:
+	st.b	[a15]4,d15
+.L266:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   336    if (Xcp_GlobalNoInit.EnabledResources_u8 == 0u)
+	ld.bu	d15,[a13]10
+.L267:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   336    if (Xcp_GlobalNoInit.EnabledResources_u8 == 0u)      (inlined)
+	jne	d15,#0,.L13
+.L268:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   337    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   338      /* A Xcp_SetControlMode request was received and resources are 0 so the XCP state must be DISABLED */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   339      Xcp_NoInit[ProtocolLayerId].Session.XcpState_en = XCP_STATE_DISABLED;
+	mov	d15,#240
+.L269:
+	st.w	[a15],d15
+.L270:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   339      Xcp_NoInit[ProtocolLayerId].Session.XcpState_en = XCP_STATE_DISABLED;      (inlined)
+	j	.L14
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   336    if (Xcp_GlobalNoInit.EnabledResources_u8 == 0u)      (inlined)
+.L13:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   340    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   341    else
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   342    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   343      Xcp_NoInit[ProtocolLayerId].Session.XcpState_en = XCP_STATE_DISCONNECTED;
+	mov	d15,#0
+.L271:
+	st.w	[a15],d15
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   341    else      (inlined)
+.L14:
+	j	.L15
+.L12:
+.L15:
+	j	.L16
+.L11:
+	mov	d4,d9
+.L184:
+	call	Xcp_InitDaqConfig
+.L185:
+	mul	d15,d9,#80
+	addsc.a	a15,a12,d15,#0
+.L272:
+	mov	d15,#255
+.L273:
+	st.b	[a15]4,d15
+.L274:
+	movh.a	a2,#@his(Xcp_GlobalNoInit)
+	lea	a2,[a2]@los(Xcp_GlobalNoInit)
+.L275:
+	ld.bu	d15,[a2]10
+.L276:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   336    if (Xcp_GlobalNoInit.EnabledResources_u8 == 0u)      (inlined)
+	jne	d15,#0,.L17
+.L277:
+	mov	d15,#240
+.L278:
+	st.w	[a15],d15
+.L279:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   339      Xcp_NoInit[ProtocolLayerId].Session.XcpState_en = XCP_STATE_DISABLED;      (inlined)
+	j	.L18
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   336    if (Xcp_GlobalNoInit.EnabledResources_u8 == 0u)      (inlined)
+.L17:
+	mov	d15,#0
+.L280:
+	st.w	[a15],d15
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   341    else      (inlined)
+.L18:
+.L16:
+.L10:
+.L8:
+	add	d9,#1
+.L2:
+	jeq	d9,#0,.L3
+.L281:
+	jne	d8,#1,.L19
+.L282:
+	call	XcpAppl_GetTimestamp
+.L19:
+	ret
+.L134:
+	
+__Xcp_MainFunction_function_end:
+	.size	Xcp_MainFunction,__Xcp_MainFunction_function_end-Xcp_MainFunction
+.L92:
+	; End of function
+	
+	.sdecl	'.text.Xcp.Xcp_Background_Tasks',code,cluster('Xcp_Background_Tasks')
+	.sect	'.text.Xcp.Xcp_Background_Tasks'
+	.align	2
+	
+; Function Xcp_Background_Tasks
+.L71:
+Xcp_Background_Tasks:	.type	func
+	sub.a	a10,#8
+.L186:
+	movh.a	a15,#@his(Xcp_Cleared)
+	lea	a15,[a15]@los(Xcp_Cleared)
+.L382:
+	mov	d15,#336
+	mul	d15,d4
+	addsc.a	a15,a15,d15,#0
+.L383:
+	lea	a2,[a15]8
+	ld.w	d15,[a2]
+.L384:
+	mov	d0,#0
+	jeq	d15,d0,.L20
+.L385:
+	mov	d0,#1
+	jeq	d15,d0,.L21
+.L386:
+	mov	d0,#2
+	jeq	d15,d0,.L22
+.L387:
+	mov	d0,#3
+	jeq	d15,d0,.L23
+.L388:
+	mov	d0,#4
+	jeq	d15,d0,.L24
+.L389:
+	mov	d0,#5
+	jeq	d15,d0,.L25
+	j	.L26
+.L25:
+	call	Xcp_CmdSynch_Cancel
+.L187:
+	j	.L27
+.L21:
+	call	Xcp_BuildChecksumMainFunction
+.L188:
+	j	.L28
+.L22:
+	call	Xcp_MemWriteMainFunction
+.L189:
+	j	.L29
+.L23:
+	mov	d15,#0
+.L390:
+	st.w	[a2],d15
+.L391:
+	ld.w	d15,[a15]44
+.L392:
+	st.h	[a10]4,d15
+.L393:
+	lea	a15,[a15]36
+.L394:
+	st.a	[a10],a15
+.L395:
+	lea	a4,[a10]0
+.L396:
+	call	Xcp_ReceiveCommand
+.L170:
+	j	.L30
+.L24:
+	ld.w	d5,[a15]4
+	call	Xcp_DoDisconnect
+.L190:
+	j	.L31
+.L20:
+	j	.L32
+.L26:
+	mov	d15,#0
+.L397:
+	st.w	[a2],d15
+.L398:
+	j	.L33
+.L33:
+.L32:
+.L31:
+.L30:
+.L29:
+.L28:
+.L27:
+	ret
+.L168:
+	
+__Xcp_Background_Tasks_function_end:
+	.size	Xcp_Background_Tasks,__Xcp_Background_Tasks_function_end-Xcp_Background_Tasks
+.L127:
+	; End of function
+	
+	.sdecl	'.text.Xcp.Xcp_DoDisconnect',code,cluster('Xcp_DoDisconnect')
+	.sect	'.text.Xcp.Xcp_DoDisconnect'
+	.align	2
+	
+	.global	Xcp_DoDisconnect
+; Function Xcp_DoDisconnect
+.L73:
+Xcp_DoDisconnect:	.type	func
+	mov	e8,d5,d4
+.L359:
+	mov	d0,#336
+.L192:
+	mul	d0,d8
+.L193:
+	movh.a	a15,#@his(Xcp_Cleared)
+	lea	a15,[a15]@los(Xcp_Cleared)
+.L360:
+	addsc.a	a15,a15,d0,#0
+.L361:
+	lea	a12,[a15]8
+.L194:
+	mov	d4,d8
+.L195:
+	call	Xcp_DaqListStopAll
+.L191:
+	mov	d15,#255
+.L362:
+	jne	d15,d2,.L34
+.L196:
+	mul	d15,d8,#80
+.L197:
+	movh.a	a2,#@his(Xcp_NoInit)
+	lea	a2,[a2]@los(Xcp_NoInit)
+.L363:
+	addsc.a	a13,a2,d15,#0
+.L364:
+	mov	d0,#0
+.L365:
+	st.w	[a13]76,d0
+.L366:
+	mov	d15,#0
+.L367:
+	st.w	[a15]20,d15
+.L368:
+	mov	d15,#0
+.L369:
+	st.w	[a15]32,d15
+.L370:
+	mov	d15,#0
+.L371:
+	st.w	[a12],d15
+.L372:
+	movh.a	a15,#@his(Xcp_GlobalNoInit)
+	lea	a15,[a15]@los(Xcp_GlobalNoInit)
+.L373:
+	ld.bu	d4,[a15]11
+.L198:
+	mov	d5,d8
+.L199:
+	call	XcpAppl_Init
+.L200:
+	mov	d4,d8
+.L201:
+	call	Xcp_InitUpload
+.L202:
+	mov	d4,d8
+.L203:
+	call	Xcp_InitDownload
+.L204:
+	mov	d4,d8
+.L205:
+	call	Xcp_InitChecksum
+.L206:
+	mov	d4,d8
+.L207:
+	call	Xcp_InitSeedKey
+.L208:
+	mov	d15,#255
+.L209:
+	jne	d15,d9,.L35
+.L210:
+	mov	d4,d8
+.L211:
+	call	Xcp_SendPosRes
+.L212:
+	j	.L36
+.L35:
+	mov	d15,#254
+.L213:
+	jne	d15,d9,.L37
+.L214:
+	j	.L38
+.L37:
+	mov	d15,#252
+.L215:
+	jge	d9,d15,.L39
+.L217:
+	mov	e4,d8,d9
+.L216:
+	call	Xcp_SendErrRes
+.L374:
+	j	.L40
+.L39:
+.L40:
+.L38:
+.L36:
+	mov	d15,#1
+.L375:
+	st.w	[a13],d15
+.L376:
+	j	.L41
+.L34:
+	st.w	[a15]4,d9
+.L218:
+	mov	d15,#4
+.L377:
+	st.w	[a12],d15
+.L41:
+	ret
+.L164:
+	
+__Xcp_DoDisconnect_function_end:
+	.size	Xcp_DoDisconnect,__Xcp_DoDisconnect_function_end-Xcp_DoDisconnect
+.L122:
+	; End of function
+	
+	.sdecl	'.text.Xcp.Xcp_GetStateForCalSup',code,cluster('Xcp_GetStateForCalSup')
+	.sect	'.text.Xcp.Xcp_GetStateForCalSup'
+	.align	2
+	
+	.global	Xcp_GetStateForCalSup
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   344    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   345  }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   346  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   347  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   348  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   349  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   350  This function will return the actual status of XCP:
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   351  - connected if any protocol layer is connected
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   352  - daq state
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   353  - stim state
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   354  \param[in]  -
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   355  \return     Status of Xcp
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   356  \retval     XcpState_en
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   357              - XCP_STATE_DISCONNECTED
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   358              - XCP_STATE_CONNECTED
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   359  \retval     DaqState_u8
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   360              - 0x01 XCP_STATE_DAQ_HAS_STOPPED: daq transmission has been stopped (changed since last call)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   361  \retval     StimState_u8
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   362              - 0x01 XCP_STATE_DAQ_HAS_STOPPED: stim transmission has been stopped (changed since last call)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   363              - 0x02 XCP_STATE_ALL_STIM_DATA_RECEIVED: all stim daq lists have a complete data set
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   364  \retval     reserved_u8  for future use, no viable output
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   365  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   366  /* HIS METRIC PATH VIOLATION IN Xcp_GetStateForCalSup: Function has to check and set multiple attributes that require separate checks. HIS metric compliance would decrease readability and maintainability. */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   367  Xcp_GetState_t Xcp_GetStateForCalSup(void)
+; Function Xcp_GetStateForCalSup
+.L75:
+Xcp_GetStateForCalSup:	.type	func
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   368  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   369    /*Start of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   370    XCP_RTM_TIMETRACK_START()
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   371  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   372    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   373    Xcp_GetState_t retVal;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   374    uint8_least  protLayerId;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   375  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   376  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   377    /* initialization */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   378    retVal.XcpState_en  = XCP_STATE_DISCONNECTED;
+	mov	d2,#0
+.L316:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   379    retVal.DaqState_u8  = 0;
+	mov	d15,#0
+.L219:
+	insert	d3,d3,d15,#0,#8
+.L317:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   380    retVal.StimState_u8 = XCP_STATE_ALL_STIM_DATA_RECEIVED;
+	mov	d15,#2
+.L318:
+	insert	d3,d3,d15,#8,#8
+.L319:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   381    retVal.reserved_u8  = 0;
+	mov	d15,#0
+.L320:
+	insert	d3,d3,d15,#16,#8
+.L321:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   382  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   383    /* loop through all protocol layers */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   384    for (protLayerId = 0; protLayerId < XCP_PL_IDS; protLayerId++)
+	mov	d0,#0
+.L220:
+	j	.L42
+.L43:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   385    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   386      if ( (Xcp_NoInit[protLayerId].Session.XcpState_en == XCP_STATE_CONNECTED)
+	movh.a	a15,#@his(Xcp_NoInit)
+	lea	a15,[a15]@los(Xcp_NoInit)
+.L322:
+	mul	d15,d0,#80
+	addsc.a	a15,a15,d15,#0
+.L323:
+	ld.w	d15,[a15]
+.L324:
+	jeq	d15,#2,.L44
+.L325:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   387        || (Xcp_NoInit[protLayerId].Session.XcpState_en == XCP_STATE_RESUME)
+	jne	d15,#3,.L45
+.L44:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   388         )
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   389      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   390        /* at least one protocol layer is connected */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   391        retVal.XcpState_en = Xcp_NoInit[protLayerId].Session.XcpState_en;
+	mov	d2,d15
+.L326:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   392        break;
+	j	.L46
+.L45:
+	add	d0,#1
+.L42:
+	jeq	d0,#0,.L43
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   393      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   394    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   395  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   396  #if (XCP_SYNCHRONOUS_DATA_STIMULATION_STIM == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   397    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   398      Xcp_DaqList_t* daqListPtr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   399      uint16_least  daqNum;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   400      uint16 stimCtr;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   401  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   402      stimCtr = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   403  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   404      while ((protLayerId < XCP_PL_IDS) && ((retVal.StimState_u8 & XCP_STATE_ALL_STIM_DATA_RECEIVED) == XCP_STATE_ALL_STIM_DATA_RECEIVED) )
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   405      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   406        daqNum = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   407        /* loop through all daq lists */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   408        while ( daqNum < Xcp_NoInit[protLayerId].DaqConfig.DaqListCnt_u16 )
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   409        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   410          daqListPtr = &(Xcp_NoInit[protLayerId].DaqConfig.DaqList_p[daqNum]);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   411  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   412          /* is daq direction STIM */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   413          if ( (daqListPtr->Mode_u8 & XCP_DAQLISTMODE_DIRECTION_STIM) != 0u)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   414          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   415            /* increment Stim Counter */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   416            stimCtr++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   417  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   418            if( (daqListPtr->BufferInfo.Status_u8 & XCP_STATUSBIT_STIM_ERR_NO_DATA_AVAILABLE) == XCP_STATUSBIT_STIM_ERR_NO_DATA_AVAILABLE )
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   419            {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   420              /* this stim has never received a complete dataset */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   421              retVal.StimState_u8 = (retVal.StimState_u8 & (uint8)(~XCP_STATE_ALL_STIM_DATA_RECEIVED));
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   422              break /* from daq loop */;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   423            }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   424          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   425          /* next daq loop */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   426          daqNum++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   427        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   428        /* next protocol layer loop */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   429        protLayerId++;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   430      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   431  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   432      if (stimCtr == 0)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   433      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   434        /* reset XCP_STATE_ALL_STIM_DATA_RECEIVED, because no STIM was found */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   435        retVal.StimState_u8 = 0;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   436      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   437    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   438  #endif /* XCP_SYNCHRONOUS_DATA_STIMULATION_STIM */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   439  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   440  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   441    /* check whether DAQ transmission changed / stopped */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   442    if (Xcp_GlobalNoInit.DaqTransmissionStopped_b == TRUE)
+.L46:
+	movh.a	a15,#@his(Xcp_GlobalNoInit)
+	lea	a15,[a15]@los(Xcp_GlobalNoInit)
+.L327:
+	lea	a15,[a15]8
+	ld.bu	d15,[a15]
+.L328:
+	jne	d15,#1,.L47
+.L329:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   443    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   444      /* reset global flag */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   445      Xcp_GlobalNoInit.DaqTransmissionStopped_b = FALSE;
+	mov	d15,#0
+.L330:
+	st.b	[a15],d15
+.L331:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   446      /* set status bits */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   447      retVal.DaqState_u8 |= XCP_STATE_DAQ_HAS_STOPPED;
+	extr.u	d15,d3,#0,#8
+.L332:
+	or	d15,#1
+	insert	d3,d3,d15,#0,#8
+.L47:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   448    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   449  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   450  # if (XCP_SYNCHRONOUS_DATA_STIMULATION_STIM == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   451    /* check whether DAQ transmission changed / stopped */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   452    if (Xcp_GlobalNoInit.StimTransmissionStopped_b == TRUE)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   453    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   454      /* reset global flag */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   455      Xcp_GlobalNoInit.StimTransmissionStopped_b = FALSE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   456      /* set status bits */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   457      retVal.StimState_u8 |= XCP_STATE_DAQ_HAS_STOPPED;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   458    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   459  # endif
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   460  #endif /* XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   461  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   462    /*End of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   463    XCP_RTM_TIMETRACK_FINISH()
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   464    return retVal;
+	j	.L48
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   465  }
+.L48:
+	ret
+.L152:
+	
+__Xcp_GetStateForCalSup_function_end:
+	.size	Xcp_GetStateForCalSup,__Xcp_GetStateForCalSup_function_end-Xcp_GetStateForCalSup
+.L112:
+	; End of function
+	
+	.sdecl	'.text.Xcp.Xcp_SetControlMode',code,cluster('Xcp_SetControlMode')
+	.sect	'.text.Xcp.Xcp_SetControlMode'
+	.align	2
+	
+	.global	Xcp_SetControlMode
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   466  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   467  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   468  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   469  This service enables or disables XCP resources
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   470  \param[in]  Xcp_CtlMode_u8  Control mode to enable or to disable the below resource
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   471                              - Bit 0: calibration/paging activated (1) or not (0) -> \ref XCP_RESOURCE_CALPAG
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   472                              - Bit 1: reserved
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   473                              - Bit 2: DAQ lists activated (1) or not (0)          -> \ref XCP_RESOURCE_DAQ
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   474                              - Bit 3: stimulation activated (1) or not (0)        -> \ref XCP_RESOURCE_STIM
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   475                              - Bit 4: Flash programming activated (1) or not (0)  -> \ref XCP_RESOURCE_PGM
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   476                              - Bit 5: reserved
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   477                              - Bit 6: reserved
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   478                              - Bit 7: reserved
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   479  \return     -
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   480  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   481  void Xcp_SetControlMode(uint8 Xcp_CtlMode_u8)
+; Function Xcp_SetControlMode
+.L77:
+Xcp_SetControlMode:	.type	func
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   482  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   483    /*Start of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   484    XCP_RTM_TIMETRACK_START()
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   485  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   486    uint8 ProtocolLayerId;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   487    uint8 Resources;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   488  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   489    /* filter available resources */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   490    Resources = Xcp_CtlMode_u8 & XCP_RESOURCE_ENABLED;
+	and	d8,d4,#5
+.L221:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   491  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   492    if (Resources == 0)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   493    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   494      /* disconnect all protocol layers */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   495      for (ProtocolLayerId = 0; ProtocolLayerId < XCP_PL_IDS; ProtocolLayerId++)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   496      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   497        /* Initiate disconnect */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   498        Xcp_DoDisconnect(ProtocolLayerId, XCP_NO_RESPONSE);
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   499      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   500    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   501    else /* Resources are to be enabled */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   502    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   503      /* is XCP in state XCP_STATE_DISABLED now ? */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   504      if (Xcp_GlobalNoInit.EnabledResources_u8 == 0)
+	movh.a	a15,#@his(Xcp_GlobalNoInit)
+	lea	a15,[a15]@los(Xcp_GlobalNoInit)
+.L287:
+	lea	a15,[a15]10
+.L288:
+	jne	d8,#0,.L49
+.L289:
+	mov	d15,#0
+.L222:
+	j	.L50
+.L51:
+	mov	d5,#254
+	mov	d4,d15
+.L223:
+	call	Xcp_DoDisconnect
+.L224:
+	add	d15,#1
+.L50:
+	jeq	d15,#0,.L51
+.L290:
+	j	.L52
+.L49:
+	ld.bu	d15,[a15]
+.L291:
+	jne	d15,#0,.L53
+.L292:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   505      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   506        for (ProtocolLayerId = 0; ProtocolLayerId < XCP_PL_IDS; ProtocolLayerId++)
+	mov	d0,#0
+.L225:
+	j	.L54
+.L55:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   507        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   508          /* set protocol layers to disconnected */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   509          Xcp_NoInit[ProtocolLayerId].Session.XcpState_en = XCP_STATE_DISCONNECTED;
+	movh.a	a2,#@his(Xcp_NoInit)
+	lea	a2,[a2]@los(Xcp_NoInit)
+.L293:
+	mul	d15,d0,#80
+	addsc.a	a2,a2,d15,#0
+.L294:
+	mov	d15,#0
+.L295:
+	st.w	[a2],d15
+.L296:
+	add	d0,#1
+.L54:
+	jeq	d0,#0,.L55
+.L53:
+.L52:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   510        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   511      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   512    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   513  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   514    /* Set global ControlMode */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   515    Xcp_GlobalNoInit.EnabledResources_u8 = Resources;
+	st.b	[a15],d8
+.L297:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   516  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   517    /*End of run time measurement*/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   518    XCP_RTM_TIMETRACK_FINISH()
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   519  }
+	ret
+.L144:
+	
+__Xcp_SetControlMode_function_end:
+	.size	Xcp_SetControlMode,__Xcp_SetControlMode_function_end-Xcp_SetControlMode
+.L97:
+	; End of function
+	
+	.sdecl	'.text.Xcp.Xcp_GetControlMode',code,cluster('Xcp_GetControlMode')
+	.sect	'.text.Xcp.Xcp_GetControlMode'
+	.align	2
+	
+	.global	Xcp_GetControlMode
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   520  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   521  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   522  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   523  This service returns the actual control mode or enabled resource from Xcp
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   524  \param[in]  -
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   525  \return     Returns enabled resource from Xcp \n
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   526  \retval     Control mode to enable or to disable the below resource
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   527              - Bit 0: calibration/paging activated (1) or not (0) -> \ref XCP_RESOURCE_CALPAG
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   528              - Bit 1: reserved
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   529              - Bit 2: DAQ lists activated (1) or not (0)          -> \ref XCP_RESOURCE_DAQ
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   530              - Bit 3: stimulation activated (1) or not (0)        -> \ref XCP_RESOURCE_STIM
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   531              - Bit 4: Flash programming activated (1) or not (0)  -> \ref XCP_RESOURCE_PGM
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   532              - Bit 5: reserved
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   533              - Bit 6: reserved
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   534              - Bit 7: reserved
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   535  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   536  uint8 Xcp_GetControlMode(void)
+; Function Xcp_GetControlMode
+.L79:
+Xcp_GetControlMode:	.type	func
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   537  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   538    return(Xcp_GlobalNoInit.EnabledResources_u8);
+	movh.a	a15,#@his(Xcp_GlobalNoInit)
+	lea	a15,[a15]@los(Xcp_GlobalNoInit)
+.L302:
+	ld.bu	d2,[a15]10
+.L303:
+	j	.L56
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   539  }
+.L56:
+	ret
+.L148:
+	
+__Xcp_GetControlMode_function_end:
+	.size	Xcp_GetControlMode,__Xcp_GetControlMode_function_end-Xcp_GetControlMode
+.L102:
+	; End of function
+	
+	.sdecl	'.text.Xcp.Xcp_GetConnectedTransportLayerId',code,cluster('Xcp_GetConnectedTransportLayerId')
+	.sect	'.text.Xcp.Xcp_GetConnectedTransportLayerId'
+	.align	2
+	
+	.global	Xcp_GetConnectedTransportLayerId
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   540  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   541  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   542  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   543  This service returns the connected transport layer id to a given protocol layer
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   544  \param[in]  ProtocolLayerId - Protocol layer Id \n
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   545  \return     Connected transport layer id
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   546  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   547  uint8 Xcp_GetConnectedTransportLayerId(uint8 ProtocolLayerId)
+; Function Xcp_GetConnectedTransportLayerId
+.L81:
+Xcp_GetConnectedTransportLayerId:	.type	func
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   548  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   549    return(Xcp_NoInit[ProtocolLayerId].Session.ConnectedTlId_u8);
+	mul	d15,d4,#80
+.L308:
+	movh.a	a15,#@his(Xcp_NoInit)
+	lea	a15,[a15]@los(Xcp_NoInit)
+.L309:
+	addsc.a	a15,a15,d15,#0
+.L310:
+	ld.bu	d2,[a15]4
+.L311:
+	j	.L57
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   550  }
+.L57:
+	ret
+.L149:
+	
+__Xcp_GetConnectedTransportLayerId_function_end:
+	.size	Xcp_GetConnectedTransportLayerId,__Xcp_GetConnectedTransportLayerId_function_end-Xcp_GetConnectedTransportLayerId
+.L107:
+	; End of function
+	
+	.sdecl	'.text.Xcp.Xcp_GetStatus',code,cluster('Xcp_GetStatus')
+	.sect	'.text.Xcp.Xcp_GetStatus'
+	.align	2
+	
+	.global	Xcp_GetStatus
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   551  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   552  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   553  /**
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   554  ****************************************************************************************************
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   555  This function will return the actual status of XCP:
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   556  - connected if any protocol layer is connected
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   557  - daq state
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   558  - stim state
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   559  \param[in]  -
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   560  \return     Status of Xcp
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   561  \retval     XcpStatus_en
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   562              - XCP_STATE_DISCONNECTED
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   563              - XCP_STATE_CONNECTED
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   564  \retval     DaqActive_b
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   565              - TRUE  Daq is active, at least one daq list in direction daq is running
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   566              - FALSE Daq is inactive, no daq list in direction daq is running
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   567  \retval     StimActive_b
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   568              - TRUE  Stim is active, at least one daq list in direction stim is running
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   569              - FALSE Stim is inactive, no daq list in direction stim is running
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   570  ***************************************************************************************************/
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   571  /* HIS METRIC LEVEL VIOLATION IN Xcp_GetStatus: Function contains several necessary if statements. HIS metric compliance would decrease readability and maintainability. */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   572  Xcp_GetStatus_t Xcp_GetStatus(void)
+; Function Xcp_GetStatus
+.L83:
+Xcp_GetStatus:	.type	func
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   573  {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   574    /* Local variables */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   575    Xcp_GetStatus_t retVal;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   576    uint8_least protLayerId;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   577  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   578    uint16_least daqNum;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   579    uint8 daqListMode;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   580    uint8 daqListTypesToCheck;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   581    uint8 daqListTypesFound;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   582  #endif /* XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   583  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   584    /* initialization */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   585    retVal.XcpStatus_en = XCP_STATE_DISCONNECTED;
+	mov	d2,#0
+.L337:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   586    retVal.DaqActive_b = FALSE;
+	mov	d15,#0
+.L226:
+	insert	d3,d3,d15,#0,#8
+.L338:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   587    retVal.StimActive_b = FALSE;
+	mov	d15,#0
+.L339:
+	insert	d3,d3,d15,#8,#8
+.L340:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   588  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   589    /* daqListTypesToCheck specifies, which type of the daqlist needs to be checked */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   590    daqListTypesToCheck = 0u;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   591    daqListTypesFound = 0u;
+	mov	d0,#0
+.L227:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   592    daqListTypesToCheck = daqListTypesToCheck | XCP_DAQ_IS_ACTIVE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   593  # if (XCP_SYNCHRONOUS_DATA_STIMULATION_STIM == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   594    daqListTypesToCheck = daqListTypesToCheck | XCP_STIM_IS_ACTIVE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   595  # endif /* XCP_SYNCHRONOUS_DATA_STIMULATION_STIM == STD_ON */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   596  #endif /* XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   597  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   598    /* loop through all protocol layers */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   599    for (protLayerId = 0; protLayerId < XCP_PL_IDS; protLayerId++)
+	mov	d1,#0
+.L228:
+	j	.L58
+.L59:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   600    {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   601      if ((Xcp_NoInit[protLayerId].Session.XcpState_en == XCP_STATE_CONNECTED)
+	movh.a	a15,#@his(Xcp_NoInit)
+	lea	a15,[a15]@los(Xcp_NoInit)
+.L341:
+	mul	d15,d1,#80
+	addsc.a	a15,a15,d15,#0
+.L342:
+	ld.w	d15,[a15]
+.L343:
+	jeq	d15,#2,.L60
+.L344:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   602          || (Xcp_NoInit[protLayerId].Session.XcpState_en == XCP_STATE_RESUME)
+	jne	d15,#3,.L61
+.L60:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   603         )
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   604      {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   605        /* at least one protocol layer is connected */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   606        retVal.XcpStatus_en = XCP_STATE_CONNECTED;
+	mov	d2,#2
+.L345:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   607  #if (XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   608        daqNum = 0;
+	mov	d4,#0
+.L229:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   609        /* loop through all daq lists. If at least one running daq list is found in every specified daq list type, then exit the while loop */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   610        while ((daqNum < Xcp_NoInit[protLayerId].DaqConfig.DaqListCnt_u16) && (daqListTypesFound != daqListTypesToCheck))
+	j	.L62
+.L63:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   611        {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   612          /* Mode_u8 is volatile - so it would be fetched every time it is accessed.
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   613           * Here multiple checks on the same data shall be done, so a local variable is used
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   614           */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   615          daqListMode = Xcp_NoInit[protLayerId].DaqConfig.DaqList_p[daqNum].Mode_u8;
+	mul	d15,d4,#24
+.L346:
+	ld.a	a2,[a15]24
+.L347:
+	addsc.a	a2,a2,d15,#0
+.L348:
+	ld.bu	d15,[a2]22
+.L230:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   616  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   617          /* is the daq list running? */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   618          if ((daqListMode & XCP_DAQLISTMODE_RUNNING) == XCP_DAQLISTMODE_RUNNING)
+	jz.t	d15:6,.L64
+.L349:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   619          {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   620  # if (XCP_SYNCHRONOUS_DATA_STIMULATION_STIM == STD_ON)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   621            /* Is the daq list direction STIM? */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   622            if ((daqListMode & XCP_DAQLISTMODE_DIRECTION) == XCP_DAQLISTMODE_DIRECTION_STIM)
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   623            {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   624              retVal.StimActive_b = TRUE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   625              daqListTypesFound = daqListTypesFound | XCP_STIM_IS_ACTIVE;
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   626            }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   627  # endif /* XCP_SYNCHRONOUS_DATA_STIMULATION_STIM == STD_ON */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   628            /* Is the daq list direction DAQ? */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   629            if ((daqListMode & XCP_DAQLISTMODE_DIRECTION) == XCP_DAQLISTMODE_DIRECTION_DAQ)
+	jnz.t	d15:1,.L65
+.L350:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   630            {
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   631              retVal.DaqActive_b = TRUE;
+	mov	d15,#1
+.L231:
+	insert	d3,d3,d15,#0,#8
+.L351:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   632              daqListTypesFound = daqListTypesFound | XCP_DAQ_IS_ACTIVE;
+	or	d0,d0,#1
+.L65:
+.L64:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   633            }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   634          }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   635          /* next daq loop */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   636          daqNum++;
+	add	d4,#1
+.L62:
+	ld.hu	d15,[a15]48
+.L352:
+	jge.u	d4,d15,.L66
+.L353:
+	jne	d0,#1,.L63
+.L66:
+.L61:
+	add	d1,#1
+.L58:
+	jeq	d1,#0,.L59
+.L354:
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   637        }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   638  #endif /* XCP_SYNCHRONOUS_DATA_ACQUISITION_DAQ == STD_ON */
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   639      }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   640    }
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   641    return retVal;
+	j	.L67
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   642  }
+.L67:
+	ret
+.L157:
+	
+__Xcp_GetStatus_function_end:
+	.size	Xcp_GetStatus,__Xcp_GetStatus_function_end-Xcp_GetStatus
+.L117:
+	; End of function
+	
+	.sdecl	'.bss.Xcp.Xcp_NoInit',data,cluster('Xcp_NoInit')
+	.sect	'.bss.Xcp.Xcp_NoInit'
+	.global	Xcp_NoInit
+	.align	4
+Xcp_NoInit:	.type	object
+	.size	Xcp_NoInit,80
+	.space	80
+	.sdecl	'.bss.Xcp.Xcp_GlobalNoInit',data,cluster('Xcp_GlobalNoInit')
+	.sect	'.bss.Xcp.Xcp_GlobalNoInit'
+	.global	Xcp_GlobalNoInit
+	.align	4
+Xcp_GlobalNoInit:	.type	object
+	.size	Xcp_GlobalNoInit,12
+	.space	12
+	.sdecl	'.bss.Xcp.Xcp_Cleared',data,cluster('Xcp_Cleared')
+	.sect	'.bss.Xcp.Xcp_Cleared'
+	.global	Xcp_Cleared
+	.align	4
+Xcp_Cleared:	.type	object
+	.size	Xcp_Cleared,336
+	.space	336
+	.calls	'Xcp_MainFunction','Xcp_Background_Tasks'
+	.calls	'Xcp_MainFunction','__INDIRECT__'
+	.calls	'Xcp_MainFunction','Xcp_InitDaqConfig'
+	.calls	'Xcp_MainFunction','XcpAppl_GetTimestamp'
+	.calls	'Xcp_Background_Tasks','Xcp_CmdSynch_Cancel'
+	.calls	'Xcp_Background_Tasks','Xcp_BuildChecksumMainFunction'
+	.calls	'Xcp_Background_Tasks','Xcp_MemWriteMainFunction'
+	.calls	'Xcp_Background_Tasks','Xcp_ReceiveCommand'
+	.calls	'Xcp_Background_Tasks','Xcp_DoDisconnect'
+	.calls	'Xcp_DoDisconnect','Xcp_DaqListStopAll'
+	.calls	'Xcp_DoDisconnect','XcpAppl_Init'
+	.calls	'Xcp_DoDisconnect','Xcp_InitUpload'
+	.calls	'Xcp_DoDisconnect','Xcp_InitDownload'
+	.calls	'Xcp_DoDisconnect','Xcp_InitChecksum'
+	.calls	'Xcp_DoDisconnect','Xcp_InitSeedKey'
+	.calls	'Xcp_DoDisconnect','Xcp_SendPosRes'
+	.calls	'Xcp_DoDisconnect','Xcp_SendErrRes'
+	.calls	'Xcp_SetControlMode','Xcp_DoDisconnect'
+	.calls	'Xcp_MainFunction','',0
+	.calls	'Xcp_Background_Tasks','',8
+	.calls	'Xcp_DoDisconnect','',0
+	.calls	'Xcp_GetStateForCalSup','',0
+	.calls	'Xcp_SetControlMode','',0
+	.calls	'Xcp_GetControlMode','',0
+	.calls	'Xcp_GetConnectedTransportLayerId','',0
+	.extern	Xcp_PlCfgConst
+	.extern	XcpAppl_Init
+	.extern	XcpAppl_GetTimestamp
+	.extern	Xcp_SendPosRes
+	.extern	Xcp_SendErrRes
+	.extern	Xcp_DaqListStopAll
+	.extern	Xcp_InitDaqConfig
+	.extern	Xcp_CmdSynch_Cancel
+	.extern	Xcp_BuildChecksumMainFunction
+	.extern	Xcp_InitChecksum
+	.extern	Xcp_InitSeedKey
+	.extern	Xcp_InitUpload
+	.extern	Xcp_InitDownload
+	.extern	Xcp_ReceiveCommand
+	.extern	Xcp_MemWriteMainFunction
+	.extern	__INDIRECT__
+	.calls	'Xcp_GetStatus','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L85:
+	.word	15274
+	.half	3
+	.word	.L86
+	.byte	4
+.L84:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L87
+.L135:
+	.byte	2
+	.byte	'unsigned char',0,1,8
+.L139:
+	.byte	3
+	.byte	'Xcp_FinishDisconnect',0,3,1,199,2,19,1,1
+.L141:
+	.byte	4
+	.byte	'ProtocolLayerId',0,1,199,2,46
+	.word	129
+.L143:
+	.byte	5,0,6,2,225,1,9,4,7
+	.byte	'XCP_STATE_DISCONNECTED',0,0,7
+	.byte	'XCP_STATE_DISCONNECTING',0,1,7
+	.byte	'XCP_STATE_CONNECTED',0,2,7
+	.byte	'XCP_STATE_RESUME',0,3,7
+	.byte	'XCP_STATE_DISABLED',0,240,1,0
+.L151:
+	.byte	8,2,166,4,9,8,9
+	.byte	'XcpState_en',0
+	.word	202
+	.byte	4,2,35,0,9
+	.byte	'DaqState_u8',0
+	.word	129
+	.byte	1,2,35,4,9
+	.byte	'StimState_u8',0
+	.word	129
+	.byte	1,2,35,5,9
+	.byte	'reserved_u8',0
+	.word	129
+	.byte	1,2,35,6,0
+.L154:
+	.byte	2
+	.byte	'unsigned long int',0,4,7
+.L156:
+	.byte	8,2,159,4,9,8,9
+	.byte	'XcpStatus_en',0
+	.word	202
+	.byte	4,2,35,0,9
+	.byte	'DaqActive_b',0
+	.word	129
+	.byte	1,2,35,4,9
+	.byte	'StimActive_b',0
+	.word	129
+	.byte	1,2,35,5,0,10
+	.byte	'XcpAppl_Init',0,3,205,1,23
+	.word	129
+	.byte	1,1,1,1,4
+	.byte	'XcpInitStatus',0,3,205,1,42
+	.word	129
+	.byte	4
+	.byte	'ProtocolLayerId',0,3,205,1,63
+	.word	129
+	.byte	0,2
+	.byte	'unsigned int',0,4,7,11
+	.byte	'XcpAppl_GetTimestamp',0,3,247,2,15
+	.word	583
+	.byte	1,1,1,1,12
+	.byte	'Xcp_SendPosRes',0,4,179,4,13,1,1,1,1,4
+	.byte	'protLayerId',0,4,179,4,34
+	.word	129
+	.byte	0
+.L166:
+	.byte	6,2,177,3,9,4,7
+	.byte	'XCP_ERR_CMD_SYNCH',0,0,7
+	.byte	'XCP_ERR_CMD_BUSY',0,16,7
+	.byte	'XCP_ERR_DAQ_ACTIVE',0,17,7
+	.byte	'XCP_ERR_PGM_ACTIVE',0,18,7
+	.byte	'XCP_ERR_CMD_UNKNOWN',0,32,7
+	.byte	'XCP_ERR_CMD_SYNTAX',0,33,7
+	.byte	'XCP_ERR_OUT_OF_RANGE',0,34,7
+	.byte	'XCP_ERR_WRITE_PROTECTED',0,35,7
+	.byte	'XCP_ERR_ACCESS_DENIED',0,36,7
+	.byte	'XCP_ERR_ACCESS_LOCKED',0,37,7
+	.byte	'XCP_ERR_PAGE_NOT_VALID',0,38,7
+	.byte	'XCP_ERR_MODE_NOT_VALID',0,39,7
+	.byte	'XCP_ERR_SEGMENT_NOT_VALID',0,40,7
+	.byte	'XCP_ERR_SEQUENCE',0,41,7
+	.byte	'XCP_ERR_DAQ_CONFIG',0,42,7
+	.byte	'XCP_ERR_MEMORY_OVERFLOW',0,48,7
+	.byte	'XCP_ERR_GENERIC',0,49,7
+	.byte	'XCP_ERR_VERIFY',0,50,7
+	.byte	'XCP_ERR_RES_TEMP_NOT_ACCESS',0,51,7
+	.byte	'XCP_ERR_SUBCMD_UNKNOWN',0,52,7
+	.byte	'XCP_REPEAT_COMMAND',0,252,1,7
+	.byte	'XCP_NO_ACCESS_HIDE',0,253,1,7
+	.byte	'XCP_NO_RESPONSE',0,254,1,7
+	.byte	'XCP_NO_ERROR',0,255,1,0,12
+	.byte	'Xcp_SendErrRes',0,4,180,4,13,1,1,1,1,4
+	.byte	'ErrorCode',0,4,180,4,42
+	.word	679
+	.byte	4
+	.byte	'protLayerId',0,4,180,4,59
+	.word	129
+	.byte	0,10
+	.byte	'Xcp_DaqListStopAll',0,4,196,4,23
+	.word	679
+	.byte	1,1,1,1,4
+	.byte	'protLayerId',0,4,196,4,48
+	.word	129
+	.byte	0,12
+	.byte	'Xcp_InitDaqConfig',0,4,206,4,16,1,1,1,1,4
+	.byte	'protLayerId',0,4,206,4,40
+	.word	129
+	.byte	0,12
+	.byte	'Xcp_CmdSynch_Cancel',0,4,219,4,13,1,1,1,1,4
+	.byte	'protLayerId',0,4,219,4,39
+	.word	129
+	.byte	0,12
+	.byte	'Xcp_BuildChecksumMainFunction',0,4,233,4,13,1,1,1,1,4
+	.byte	'protLayerId',0,4,233,4,49
+	.word	129
+	.byte	0,12
+	.byte	'Xcp_InitChecksum',0,4,239,4,13,1,1,1,1,4
+	.byte	'protLayerId',0,4,239,4,36
+	.word	129
+	.byte	0,12
+	.byte	'Xcp_InitSeedKey',0,4,242,4,13,1,1,1,1,4
+	.byte	'protLayerId',0,4,242,4,35
+	.word	129
+	.byte	0,12
+	.byte	'Xcp_InitUpload',0,4,244,4,13,1,1,1,1,4
+	.byte	'protLayerId',0,4,244,4,34
+	.word	129
+	.byte	0,12
+	.byte	'Xcp_InitDownload',0,4,246,4,13,1,1,1,1,4
+	.byte	'protLayerId',0,4,246,4,36
+	.word	129
+	.byte	0,13
+	.word	129
+	.byte	2
+	.byte	'unsigned short int',0,2,7
+.L171:
+	.byte	8,5,71,9,8,9
+	.byte	'SduDataPtr',0
+	.word	1689
+	.byte	4,2,35,0,9
+	.byte	'SduLength',0
+	.word	1694
+	.byte	2,2,35,4,0,14
+	.word	1716
+	.byte	13
+	.word	1761
+	.byte	12
+	.byte	'Xcp_ReceiveCommand',0,4,252,4,15,1,1,1,1,4
+	.byte	'XcpPacketPtr',0,4,252,4,53
+	.word	1766
+	.byte	4
+	.byte	'protLayerId',0,4,252,4,73
+	.word	129
+	.byte	0,12
+	.byte	'Xcp_MemWriteMainFunction',0,4,145,5,13,1,1,1,1,4
+	.byte	'protLayerId',0,4,145,5,44
+	.word	129
+	.byte	0,15
+	.word	146
+	.byte	16
+	.word	175
+	.byte	5,0,17
+	.byte	'__INDIRECT__',0,1,1,1,1,1,1,18,1,13
+	.word	1931
+	.byte	19
+	.byte	'__codeptr',0,1,1,1
+	.word	1933
+	.byte	2
+	.byte	'char',0,1,6,19
+	.byte	'sint8',0,6,76,25
+	.word	1956
+	.byte	19
+	.byte	'uint8',0,6,81,25
+	.word	129
+	.byte	19
+	.byte	'uint16',0,6,91,25
+	.word	1694
+	.byte	19
+	.byte	'uint32',0,6,106,24
+	.word	583
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,19
+	.byte	'uint64',0,6,111,30
+	.word	2022
+	.byte	19
+	.byte	'boolean',0,6,127,25
+	.word	129
+	.byte	19
+	.byte	'StatusType',0,7,191,1,27
+	.word	129
+	.byte	19
+	.byte	'Std_ReturnType',0,7,199,1,15
+	.word	129
+	.byte	8,7,206,1,9,8,9
+	.byte	'vendorID',0
+	.word	1694
+	.byte	2,2,35,0,9
+	.byte	'moduleID',0
+	.word	1694
+	.byte	2,2,35,2,9
+	.byte	'sw_major_version',0
+	.word	129
+	.byte	1,2,35,4,9
+	.byte	'sw_minor_version',0
+	.word	129
+	.byte	1,2,35,5,9
+	.byte	'sw_patch_version',0
+	.word	129
+	.byte	1,2,35,6,0,19
+	.byte	'Std_VersionInfoType',0,7,213,1,3
+	.word	2123
+	.byte	19
+	.byte	'PduIdType',0,8,22,19
+	.word	1694
+	.byte	19
+	.byte	'PduLengthType',0,8,26,19
+	.word	1694
+	.byte	19
+	.byte	'PduInfoType',0,5,75,3
+	.word	1716
+	.byte	6,5,113,9,4,7
+	.byte	'TP_DATACONF',0,0,7
+	.byte	'TP_DATARETRY',0,1,7
+	.byte	'TP_CONFPENDING',0,2,0,19
+	.byte	'TpDataStateType',0,5,118,3
+	.word	2333
+	.byte	19
+	.byte	'Xcp_State_t',0,2,231,1,2
+	.word	202
+	.byte	19
+	.byte	'Xcp_AddrValue',0,2,165,3,23
+	.word	583
+	.byte	8,2,168,3,9,8,9
+	.byte	'AddrValue',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	'Extension',0
+	.word	129
+	.byte	1,2,35,4,0,19
+	.byte	'Xcp_AddrType_t',0,2,172,3,3
+	.word	2453
+	.byte	19
+	.byte	'Xcp_PduIdType',0,2,174,3,15
+	.word	129
+	.byte	19
+	.byte	'Xcp_ErrorCode',0,2,204,3,2
+	.word	679
+	.byte	6,2,207,3,9,4,7
+	.byte	'XCP_DAQ_STATE_NO_DAQ',0,0,7
+	.byte	'XCP_DAQ_STATE_FREE_DAQ',0,1,7
+	.byte	'XCP_DAQ_STATE_ALLOC_DAQ',0,2,7
+	.byte	'XCP_DAQ_STATE_ALLOC_ODT',0,3,7
+	.byte	'XCP_DAQ_STATE_ALLOC_ODT_ENTRY',0,4,7
+	.byte	'XCP_DAQ_STATE_WRITE_DAQ',0,5,7
+	.byte	'XCP_DAQ_STATE_PREPARE_START',0,6,7
+	.byte	'XCP_DAQ_STATE_SHIFTING',0,7,7
+	.byte	'XCP_DAQ_STATE_STOP_REQUESTED',0,8,7
+	.byte	'XCP_DAQ_STATE_READY_TO_RUN',0,9,7
+	.byte	'XCP_DAQ_STATE_RUNNING',0,10,0,19
+	.byte	'Xcp_DaqState_t',0,2,220,3,2
+	.word	2568
+	.byte	6,2,223,3,9,4,7
+	.byte	'XCP_DAQ_NO_OVERLOAD_INDICATION',0,0,7
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_PID',0,1,7
+	.byte	'XCP_DAQ_OVERLOAD_INDICATION_EVENT',0,2,0,19
+	.byte	'Xcp_Overload_t',0,2,228,3,2
+	.word	2896
+	.byte	6,2,233,3,9,4,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_ABSOLUTE',0,1,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_BYTE',0,2,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD',0,3,7
+	.byte	'XCP_IDENTIFICATION_FIELD_TYPE_RELATIVE_WORD_ALIGNED',0,4,0,19
+	.byte	'Xcp_IdField_t',0,2,239,3,2
+	.word	3030
+	.byte	6,2,242,3,9,4,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_DEFAULT',0,0,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_16',0,1,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_32',0,2,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_64',0,3,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_ODT_TYPE_ALIGNMENT',0,4,7
+	.byte	'XCP_ODT_OPTIMIZATION_OM_MAX_ENTRY_SIZE',0,5,0,19
+	.byte	'Xcp_OdtOptimizationType_t',0,2,250,3,2
+	.word	3247
+	.byte	6,2,253,3,9,4,7
+	.byte	'XCP_CONSISTENCY_ODT',0,0,7
+	.byte	'XCP_CONSISTENCY_DAQ',0,1,7
+	.byte	'XCP_CONSISTENCY_EVENT',0,2,7
+	.byte	'XCP_CONSISTENCY_NONE',0,3,0,19
+	.byte	'Xcp_Consistency_t',0,2,131,4,2
+	.word	3523
+	.byte	6,2,134,4,9,4,7
+	.byte	'XCP_TIMESTAMP_TYPE_NO_TIME_STAMP',0,0,7
+	.byte	'XCP_TIMESTAMP_TYPE_ONE_BYTE',0,1,7
+	.byte	'XCP_TIMESTAMP_TYPE_TWO_BYTE',0,2,7
+	.byte	'XCP_TIMESTAMP_TYPE_FOUR_BYTE',0,4,0,19
+	.byte	'Xcp_Timestamp_t',0,2,140,4,2
+	.word	3648
+	.byte	19
+	.byte	'Xcp_GetStatus_t',0,2,164,4,2
+	.word	436
+	.byte	19
+	.byte	'Xcp_GetState_t',0,2,172,4,2
+	.word	323
+	.byte	20,8
+	.word	129
+	.byte	21,7,0,8,2,174,4,9,12,9
+	.byte	'Buffer_au8',0
+	.word	3855
+	.byte	8,2,35,0,9
+	.byte	'Length_u32',0
+	.word	583
+	.byte	4,2,35,8,0,19
+	.byte	'Xcp_Cto8_t',0,2,178,4,2
+	.word	3864
+	.byte	14
+	.word	1716
+	.byte	13
+	.word	3931
+	.byte	22
+	.word	129
+	.byte	1,1,23
+	.word	3936
+	.byte	23
+	.word	129
+	.byte	23
+	.word	129
+	.byte	0,13
+	.word	3941
+	.byte	24,1,1,23
+	.word	129
+	.byte	23
+	.word	129
+	.byte	0,13
+	.word	3969
+	.byte	24,1,1,23
+	.word	129
+	.byte	0,13
+	.word	3988
+	.byte	22
+	.word	129
+	.byte	1,1,23
+	.word	129
+	.byte	0,13
+	.word	4002
+	.byte	13
+	.word	1716
+	.byte	24,1,1,23
+	.word	3936
+	.byte	23
+	.word	4020
+	.byte	23
+	.word	129
+	.byte	0,13
+	.word	4025
+	.byte	22
+	.word	129
+	.byte	1,1,23
+	.word	129
+	.byte	23
+	.word	1694
+	.byte	23
+	.word	129
+	.byte	0,13
+	.word	4049
+	.byte	8,9,164,1,9,56,9
+	.byte	'TLTransmit_pfct',0
+	.word	3964
+	.byte	4,2,35,0,9
+	.byte	'TLInit_pfct',0
+	.word	3983
+	.byte	4,2,35,4,9
+	.byte	'TLConnect_pfct',0
+	.word	3997
+	.byte	4,2,35,8,9
+	.byte	'TLDisconnect_pfct',0
+	.word	4015
+	.byte	4,2,35,12,9
+	.byte	'TLTransportLayerCmd_pfct',0
+	.word	4044
+	.byte	4,2,35,16,9
+	.byte	'TLGetTxPduId_pfct',0
+	.word	4072
+	.byte	4,2,35,20,9
+	.byte	'MaxCto_u8',0
+	.word	129
+	.byte	1,2,35,24,9
+	.byte	'MaxDto_u16',0
+	.word	1694
+	.byte	2,2,35,26,9
+	.byte	'TimestampType_en',0
+	.word	3648
+	.byte	4,2,35,28,9
+	.byte	'IdFieldType_en',0
+	.word	3030
+	.byte	4,2,35,32,9
+	.byte	'OverloadType_en',0
+	.word	2896
+	.byte	4,2,35,36,9
+	.byte	'OdtOptimizationType_en',0
+	.word	3247
+	.byte	4,2,35,40,9
+	.byte	'Consistency_en',0
+	.word	3523
+	.byte	4,2,35,44,9
+	.byte	'PdRam_u32',0
+	.word	583
+	.byte	4,2,35,48,9
+	.byte	'EdRam_u32',0
+	.word	583
+	.byte	4,2,35,52,0,19
+	.byte	'Xcp_PL_TL_Cfg_t',0,9,184,1,2
+	.word	4077
+	.byte	6,9,188,1,9,4,7
+	.byte	'XCP_RAMSECTION_INVALID',0,0,7
+	.byte	'XCP_RAMSECTION_PD',0,1,7
+	.byte	'XCP_RAMSECTION_ED',0,2,0,19
+	.byte	'Xcp_RamSectionType_t',0,9,193,1,2
+	.word	4475
+	.byte	8,9,195,1,9,12,9
+	.byte	'DaqRamPtr_pu8',0
+	.word	1689
+	.byte	4,2,35,0,9
+	.byte	'DaqRamTotalSize_u32',0
+	.word	583
+	.byte	4,2,35,4,9
+	.byte	'RamSectionType_en',0
+	.word	4475
+	.byte	4,2,35,8,0,19
+	.byte	'Xcp_DaqRamSection_Cfg_t',0,9,200,1,2
+	.word	4577
+	.byte	20,1
+	.word	129
+	.byte	21,0,0,8,9,203,1,9,8,9
+	.byte	'DaqRamFreeSize_u32',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	'PLConnected_ab',0
+	.word	4696
+	.byte	1,2,35,4,0,19
+	.byte	'Xcp_DaqRamSections_t',0,9,207,1,2
+	.word	4705
+	.byte	8,9,230,1,9,4,9
+	.byte	'EventChannelDirection_u8',0
+	.word	129
+	.byte	1,2,35,0,9
+	.byte	'EventChannelTimeCycle_u8',0
+	.word	129
+	.byte	1,2,35,1,9
+	.byte	'EventChannelTimeUnit_u8',0
+	.word	129
+	.byte	1,2,35,2,9
+	.byte	'EventChannelPriority_u8',0
+	.word	129
+	.byte	1,2,35,3,0,19
+	.byte	'Xcp_EventChannel_Cfg_t',0,9,236,1,2
+	.word	4794
+	.byte	20,56
+	.word	4077
+	.byte	21,0,0,20,12
+	.word	4577
+	.byte	21,0,0,20,12
+	.word	4794
+	.byte	21,2,0,8,9,240,1,9,80,9
+	.byte	'TlCfg',0
+	.word	4967
+	.byte	56,2,35,0,9
+	.byte	'DaqRamCfg',0
+	.word	4976
+	.byte	12,2,35,56,9
+	.byte	'EventChannelCfg',0
+	.word	4985
+	.byte	12,2,35,68,0,19
+	.byte	'Xcp_PlCfgConst_t',0,9,131,2,2
+	.word	4994
+	.byte	14
+	.word	4994
+	.byte	25
+	.byte	'Xcp_PlCfgConst',0,9,140,2,31
+	.word	5086
+	.byte	1,1,19
+	.byte	'rba_BswSrv_uint64',0,10,66,28
+	.word	2022
+	.byte	19
+	.byte	'Can_IdType',0,11,32,16
+	.word	583
+	.byte	19
+	.byte	'Can_HwHandleType',0,11,43,16
+	.word	1694
+	.byte	8,12,93,9,8,9
+	.byte	'Class',0
+	.word	129
+	.byte	1,2,35,0,9
+	.byte	'TIN',0
+	.word	129
+	.byte	1,2,35,1,9
+	.byte	'ReturnAddress',0
+	.word	583
+	.byte	4,2,35,4,0,19
+	.byte	'OsTrapInfoType',0,12,97,3
+	.word	5187
+	.byte	20,68
+	.word	583
+	.byte	21,16,0,8,12,154,1,9,68,9
+	.byte	'store',0
+	.word	5267
+	.byte	68,2,35,0,0,20,68
+	.word	5276
+	.byte	21,0,0,19
+	.byte	'Os_JumpBufType',0,12,156,1,3
+	.word	5298
+	.byte	19
+	.byte	'Os_StackTraceType',0,12,174,1,18
+	.word	583
+	.byte	8,12,175,1,9,8,9
+	.byte	'sp',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	'ctx',0
+	.word	583
+	.byte	4,2,35,4,0,19
+	.byte	'Os_StackValueType',0,12,175,1,63
+	.word	5358
+	.byte	19
+	.byte	'Os_StackSizeType',0,12,176,1,27
+	.word	5358
+	.byte	26,1,1,13
+	.word	5443
+	.byte	19
+	.byte	'Os_VoidVoidFunctionType',0,12,179,1,16
+	.word	5446
+	.byte	19
+	.byte	'ApplicationType',0,12,193,1,23
+	.word	129
+	.byte	27
+	.byte	'Os_ApplicationConfigurationType_s',0,12,198,1,16,2,9
+	.byte	'app_id',0
+	.word	129
+	.byte	1,2,35,0,9
+	.byte	'access',0
+	.word	129
+	.byte	1,2,35,1,0,19
+	.byte	'Os_ApplicationConfigurationType',0,12,201,1,3
+	.word	5509
+	.byte	19
+	.byte	'Os_CoreStateType',0,12,203,1,16
+	.word	583
+	.byte	19
+	.byte	'AreaIdType',0,12,204,1,16
+	.word	1694
+	.byte	19
+	.byte	'Os_PeripheralAddressType',0,12,212,1,22
+	.word	583
+	.byte	19
+	.byte	'TickType',0,12,221,1,22
+	.word	583
+	.byte	19
+	.byte	'Os_StopwatchTickType',0,12,225,1,22
+	.word	583
+	.byte	13
+	.word	583
+	.byte	19
+	.byte	'Os_Lockable',0,12,234,1,18
+	.word	5751
+	.byte	19
+	.byte	'CoreIdType',0,12,236,1,16
+	.word	1694
+	.byte	19
+	.byte	'SpinlockIdType',0,12,237,1,16
+	.word	1694
+	.byte	6,12,239,1,9,4,7
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,7
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,19
+	.byte	'TryToGetSpinlockType',0,12,239,1,74
+	.word	5821
+	.byte	6,12,174,2,9,4,7
+	.byte	'APPLICATION_ACCESSIBLE',0,0,7
+	.byte	'APPLICATION_RESTARTING',0,1,7
+	.byte	'APPLICATION_TERMINATED',0,2,0,19
+	.byte	'ApplicationStateType',0,12,174,2,92
+	.word	5914
+	.byte	28
+	.byte	'void',0,13
+	.word	6026
+	.byte	24,1,1,23
+	.word	129
+	.byte	23
+	.word	6032
+	.byte	0,13
+	.word	6037
+	.byte	19
+	.byte	'Os_FunctionEntryType',0,12,183,2,16
+	.word	6051
+	.byte	27
+	.byte	'Os_MeterInfoType_s',0,12,193,2,16,48,9
+	.byte	'elapsed',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	'previous',0
+	.word	583
+	.byte	4,2,35,4,9
+	.byte	'max',0
+	.word	583
+	.byte	4,2,35,8,9
+	.byte	'cumulative',0
+	.word	583
+	.byte	4,2,35,12,9
+	.byte	'stackbase',0
+	.word	5358
+	.byte	8,2,35,16,9
+	.byte	'stackusage',0
+	.word	5358
+	.byte	8,2,35,24,9
+	.byte	'stackmax',0
+	.word	5358
+	.byte	8,2,35,32,9
+	.byte	'stackbudget',0
+	.word	5358
+	.byte	8,2,35,40,0,19
+	.byte	'Os_MeterInfoType',0,12,202,2,3
+	.word	6086
+	.byte	13
+	.word	6086
+	.byte	19
+	.byte	'Os_MeterInfoRefType',0,12,203,2,50
+	.word	6284
+	.byte	19
+	.byte	'EventMaskType',0,12,206,2,15
+	.word	129
+	.byte	19
+	.byte	'Os_imaskType',0,12,211,2,16
+	.word	583
+	.byte	27
+	.byte	'Os_ISRDynType_s',0,12,213,2,16,48,9
+	.byte	'meter',0
+	.word	6086
+	.byte	48,2,35,0,0,19
+	.byte	'Os_ISRDynType',0,12,215,2,3
+	.word	6363
+	.byte	13
+	.word	6363
+	.byte	14
+	.word	6424
+	.byte	27
+	.byte	'Os_ISRType_s',0,12,216,2,16,24,9
+	.byte	'entry_function',0
+	.word	5451
+	.byte	4,2,35,0,9
+	.byte	'dynamic',0
+	.word	6429
+	.byte	4,2,35,4,9
+	.byte	'imask',0
+	.word	583
+	.byte	4,2,35,8,9
+	.byte	'stackbudget',0
+	.word	5358
+	.byte	8,2,35,12,9
+	.byte	'access',0
+	.word	129
+	.byte	1,2,35,20,9
+	.byte	'application',0
+	.word	129
+	.byte	1,2,35,21,0,19
+	.byte	'Os_ISRType',0,12,223,2,3
+	.word	6434
+	.byte	13
+	.word	5443
+	.byte	14
+	.word	6434
+	.byte	13
+	.word	6593
+	.byte	19
+	.byte	'ISRType',0,12,224,2,46
+	.word	6598
+	.byte	19
+	.byte	'Os_bitmask',0,12,239,2,22
+	.word	583
+	.byte	19
+	.byte	'Os_pset0Type',0,12,240,2,20
+	.word	583
+	.byte	19
+	.byte	'Os_pset1Type',0,12,241,2,20
+	.word	583
+	.byte	19
+	.byte	'Os_pset2Type',0,12,242,2,20
+	.word	583
+	.byte	29,12,243,2,9,4,9
+	.byte	'p0',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	'p1',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	'p2',0
+	.word	583
+	.byte	4,2,35,0,0,19
+	.byte	'Os_psetType',0,12,247,2,3
+	.word	6706
+	.byte	29,12,249,2,9,4,9
+	.byte	't0',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	't1',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	't2',0
+	.word	583
+	.byte	4,2,35,0,0,19
+	.byte	'Os_tpmaskType',0,12,253,2,3
+	.word	6770
+	.byte	19
+	.byte	'Os_ActivationCountType',0,12,254,2,23
+	.word	129
+	.byte	27
+	.byte	'Os_TaskDynType_s',0,12,128,3,16,120,9
+	.byte	'terminate_jump_buf',0
+	.word	5307
+	.byte	68,2,35,0,9
+	.byte	'meter',0
+	.word	6086
+	.byte	48,2,35,68,9
+	.byte	'activation_count',0
+	.word	129
+	.byte	1,2,35,116,0,19
+	.byte	'Os_TaskDynType',0,12,132,3,3
+	.word	6868
+	.byte	20,68
+	.word	5276
+	.byte	21,0,0,13
+	.word	6868
+	.byte	14
+	.word	6994
+	.byte	27
+	.byte	'Os_TaskType_s',0,12,134,3,16,40,9
+	.byte	'dynamic',0
+	.word	6999
+	.byte	4,2,35,0,9
+	.byte	'entry_function',0
+	.word	5451
+	.byte	4,2,35,4,9
+	.byte	'pset',0
+	.word	6706
+	.byte	4,2,35,8,9
+	.byte	'base_tpmask',0
+	.word	6770
+	.byte	4,2,35,12,9
+	.byte	'tpmask',0
+	.word	6770
+	.byte	4,2,35,16,9
+	.byte	'core_id',0
+	.word	1694
+	.byte	2,2,35,20,9
+	.byte	'index',0
+	.word	583
+	.byte	4,2,35,24,9
+	.byte	'stackbudget',0
+	.word	5358
+	.byte	8,2,35,28,9
+	.byte	'activation_count',0
+	.word	129
+	.byte	1,2,35,36,9
+	.byte	'access',0
+	.word	129
+	.byte	1,2,35,37,9
+	.byte	'application',0
+	.word	129
+	.byte	1,2,35,38,0,19
+	.byte	'Os_TaskType',0,12,146,3,3
+	.word	7004
+	.byte	14
+	.word	7004
+	.byte	13
+	.word	7254
+	.byte	19
+	.byte	'TaskType',0,12,147,3,47
+	.word	7259
+	.byte	30
+	.byte	'Os_TaskStateType',0,12,155,3,6,4,7
+	.byte	'SUSPENDED',0,0,7
+	.byte	'READY',0,1,7
+	.byte	'WAITING',0,2,7
+	.byte	'RUNNING',0,3,0,19
+	.byte	'TaskStateType',0,12,156,3,31
+	.word	7282
+	.byte	29,12,167,3,3,4,9
+	.byte	'tpmask',0
+	.word	6770
+	.byte	4,2,35,0,0,27
+	.byte	'Os_ResourceDynType_s',0,12,166,3,16,4,9
+	.byte	'saved_priority',0
+	.word	7369
+	.byte	4,2,35,0,0,19
+	.byte	'Os_ResourceDynType',0,12,170,3,3
+	.word	7392
+	.byte	13
+	.word	7392
+	.byte	14
+	.word	7472
+	.byte	27
+	.byte	'Os_ResourceType_s',0,12,171,3,16,12,9
+	.byte	'dynamic',0
+	.word	7477
+	.byte	4,2,35,0,9
+	.byte	'tpmask',0
+	.word	6770
+	.byte	4,2,35,4,9
+	.byte	'access',0
+	.word	129
+	.byte	1,2,35,8,0,19
+	.byte	'Os_ResourceType',0,12,175,3,3
+	.word	7482
+	.byte	8,12,181,3,9,12,9
+	.byte	'maxallowedvalue',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	'ticksperbase',0
+	.word	583
+	.byte	4,2,35,4,9
+	.byte	'mincycle',0
+	.word	583
+	.byte	4,2,35,8,0,19
+	.byte	'AlarmBaseType',0,12,185,3,3
+	.word	7581
+	.byte	8,12,206,3,9,8,9
+	.byte	'Running',0
+	.word	129
+	.byte	1,2,35,0,9
+	.byte	'Pending',0
+	.word	129
+	.byte	1,2,35,1,9
+	.byte	'Delay',0
+	.word	583
+	.byte	4,2,35,4,0,19
+	.byte	'Os_CounterStatusType',0,12,210,3,3
+	.word	7676
+	.byte	31
+	.word	129
+	.byte	1,1,13
+	.word	7762
+	.byte	19
+	.byte	'Os_CounterIncrAdvType',0,12,217,3,22
+	.word	7769
+	.byte	27
+	.byte	's_swd',0,12,222,3,12,4,9
+	.byte	'count',0
+	.word	583
+	.byte	4,2,35,0,0,29,12,221,3,3,4,9
+	.byte	'sw',0
+	.word	7805
+	.byte	4,2,35,0,0,27
+	.byte	'Os_CounterDynType_s',0,12,220,3,16,4,9
+	.byte	'type_dependent',0
+	.word	7833
+	.byte	4,2,35,0,0,19
+	.byte	'Os_CounterDynType',0,12,226,3,3
+	.word	7852
+	.byte	13
+	.word	7852
+	.byte	14
+	.word	7930
+	.byte	27
+	.byte	'Os_CounterType_s',0,12,227,3,16,28,9
+	.byte	'dynamic',0
+	.word	7935
+	.byte	4,2,35,0,9
+	.byte	'advincr',0
+	.word	7774
+	.byte	4,2,35,4,9
+	.byte	'base',0
+	.word	7581
+	.byte	12,2,35,8,9
+	.byte	'core',0
+	.word	6032
+	.byte	4,2,35,20,9
+	.byte	'access',0
+	.word	129
+	.byte	1,2,35,24,9
+	.byte	'application',0
+	.word	129
+	.byte	1,2,35,25,0,19
+	.byte	'Os_CounterType',0,12,234,3,3
+	.word	7940
+	.byte	13
+	.word	7762
+	.byte	14
+	.word	7940
+	.byte	13
+	.word	8092
+	.byte	19
+	.byte	'CounterType',0,12,235,3,52
+	.word	8097
+	.byte	30
+	.byte	'Os_ScheduleTableStatusType',0,12,240,3,6,4,7
+	.byte	'SCHEDULETABLE_STOPPED',0,0,7
+	.byte	'SCHEDULETABLE_NEXT',0,1,7
+	.byte	'SCHEDULETABLE_WAITING',0,2,7
+	.byte	'SCHEDULETABLE_RUNNING',0,3,7
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,19
+	.byte	'ScheduleTableStatusType',0,12,241,3,41
+	.word	8123
+	.byte	14
+	.word	.L232-.L85
+	.byte	13
+	.word	8323
+	.byte	19
+	.byte	'ScheduleTableType',0,12,128,4,58
+	.word	8328
+	.byte	27
+	.byte	'Os_ScheduleTableDynType_s',0,12,130,4,16,16,9
+	.byte	'match',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	'next',0
+	.word	8333
+	.byte	4,2,35,4,9
+	.byte	'state',0
+	.word	8123
+	.byte	4,2,35,8,9
+	.byte	'config',0
+	.word	1694
+	.byte	2,2,35,12,0,13
+	.word	8360
+	.byte	14
+	.word	8453
+.L232:
+	.byte	27
+	.byte	'Os_ScheduleTableType_s',0,12,247,3,16,16,9
+	.byte	'dynamic',0
+	.word	8458
+	.byte	4,2,35,0,9
+	.byte	'counter',0
+	.word	8102
+	.byte	4,2,35,4,9
+	.byte	'repeat',0
+	.word	129
+	.byte	1,2,35,8,9
+	.byte	'config',0
+	.word	1694
+	.byte	2,2,35,10,9
+	.byte	'initial',0
+	.word	129
+	.byte	1,2,35,12,9
+	.byte	'access',0
+	.word	129
+	.byte	1,2,35,13,9
+	.byte	'application',0
+	.word	129
+	.byte	1,2,35,14,0,19
+	.byte	'Os_ScheduleTableType',0,12,255,3,3
+	.word	8463
+	.byte	14
+	.word	8463
+	.byte	13
+	.word	8643
+	.byte	14
+	.word	7940
+	.byte	13
+	.word	8653
+	.byte	32
+	.word	5756
+	.byte	32
+	.word	6706
+	.byte	32
+	.word	6603
+	.byte	32
+	.word	7264
+	.byte	32
+	.word	6770
+	.byte	32
+	.word	129
+	.byte	32
+	.word	7264
+	.byte	27
+	.byte	'Os_ControlledCoreType_s',0,12,251,6,16,112,9
+	.byte	'TrapInfo',0
+	.word	5187
+	.byte	8,2,35,0,9
+	.byte	'lock_taskaccess',0
+	.word	8663
+	.byte	4,2,35,8,9
+	.byte	'ReadyTasks',0
+	.word	8668
+	.byte	4,2,35,12,9
+	.byte	'RunningISR',0
+	.word	8673
+	.byte	4,2,35,16,9
+	.byte	'RunningTask',0
+	.word	8678
+	.byte	4,2,35,20,9
+	.byte	'RunningTPMask',0
+	.word	8683
+	.byte	4,2,35,24,9
+	.byte	'CurrentMeteredObject',0
+	.word	6289
+	.byte	4,2,35,28,9
+	.byte	'IdleMeter',0
+	.word	6086
+	.byte	48,2,35,32,9
+	.byte	'AppAccess',0
+	.word	129
+	.byte	1,2,35,80,9
+	.byte	'AppOverride',0
+	.word	8688
+	.byte	1,2,35,81,9
+	.byte	'GetStackValueAdjust',0
+	.word	5358
+	.byte	8,2,35,84,9
+	.byte	'InErrorHook',0
+	.word	129
+	.byte	1,2,35,92,9
+	.byte	'ChainTaskRef',0
+	.word	8693
+	.byte	4,2,35,96,9
+	.byte	'GetStackUsageAdjust',0
+	.word	5358
+	.byte	8,2,35,100,9
+	.byte	'InProtectionHook',0
+	.word	129
+	.byte	1,2,35,108,9
+	.byte	'CoreIsActive',0
+	.word	129
+	.byte	1,2,35,109,9
+	.byte	'InShutdownHook',0
+	.word	129
+	.byte	1,2,35,110,0,19
+	.byte	'Os_ControlledCoreType',0,12,141,7,3
+	.word	8698
+	.byte	13
+	.word	583
+	.byte	14
+	.word	6434
+	.byte	13
+	.word	9154
+	.byte	14
+	.word	7004
+	.byte	13
+	.word	9164
+	.byte	13
+	.word	6086
+	.byte	27
+	.byte	'Os_AnyCoreType_s',0,12,151,7,16,96,9
+	.byte	'DisableAllImask',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	'SuspendAllImask',0
+	.word	583
+	.byte	4,2,35,4,9
+	.byte	'SuspendOSImask',0
+	.word	583
+	.byte	4,2,35,8,9
+	.byte	'DisableAllCount',0
+	.word	583
+	.byte	4,2,35,12,9
+	.byte	'SuspendAllCount',0
+	.word	583
+	.byte	4,2,35,16,9
+	.byte	'SuspendOSCount',0
+	.word	583
+	.byte	4,2,35,20,9
+	.byte	'RestartJumpBuf',0
+	.word	5307
+	.byte	68,2,35,24,9
+	.byte	'Restartable',0
+	.word	129
+	.byte	1,2,35,92,0,19
+	.byte	'Os_AnyCoreType',0,12,160,7,3
+	.word	9179
+	.byte	19
+	.byte	'Can_TxObjPriorityClassType',0,13,219,3,16
+	.word	583
+	.byte	27
+	.byte	'Can_TxHwObjectConfigType',0,13,231,3,16,8,9
+	.byte	'MsgObjId',0
+	.word	129
+	.byte	1,2,35,0,9
+	.byte	'HwControllerId',0
+	.word	129
+	.byte	1,2,35,1,9
+	.byte	'TxObjPriorityClass',0
+	.word	583
+	.byte	4,2,35,4,0,19
+	.byte	'Can_TxHwObjectConfigType',0,13,252,3,3
+	.word	9456
+	.byte	27
+	.byte	'Can_RxHwObjectConfigType',0,13,129,4,16,12,9
+	.byte	'MaskRef',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	'MsgId',0
+	.word	583
+	.byte	4,2,35,4,9
+	.byte	'MsgObjId',0
+	.word	129
+	.byte	1,2,35,8,9
+	.byte	'HwControllerId',0
+	.word	129
+	.byte	1,2,35,9,0,19
+	.byte	'Can_RxHwObjectConfigType',0,13,147,4,3
+	.word	9592
+	.byte	20,4
+	.word	129
+	.byte	21,3,0,27
+	.byte	'Can_ControllerMOMapConfigType',0,13,181,4,16,4,9
+	.byte	'ControllerMOMap',0
+	.word	9732
+	.byte	4,2,35,0,0,19
+	.byte	'Can_ControllerMOMapConfigType',0,13,184,4,3
+	.word	9741
+	.byte	27
+	.byte	'Can_NPCRValueType',0,13,188,4,16,2,9
+	.byte	'Can_NPCRValue',0
+	.word	1694
+	.byte	2,2,35,0,0,19
+	.byte	'Can_NPCRValueType',0,13,191,4,3
+	.word	9842
+	.byte	27
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,194,4,16,8,9
+	.byte	'CanControllerBaudrate',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	'CanControllerBaudrateCfg',0
+	.word	1694
+	.byte	2,2,35,4,0,19
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,198,4,3
+	.word	9917
+	.byte	14
+	.word	9917
+	.byte	13
+	.word	10082
+	.byte	27
+	.byte	'Can_BaudrateConfigPtrType',0,13,201,4,16,4,9
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	10087
+	.byte	4,2,35,0,0,19
+	.byte	'Can_BaudrateConfigPtrType',0,13,204,4,3
+	.word	10092
+	.byte	27
+	.byte	'Can_EventHandlingType',0,13,226,4,16,4,9
+	.byte	'CanEventType',0
+	.word	9732
+	.byte	4,2,35,0,0,19
+	.byte	'Can_EventHandlingType',0,13,229,4,3
+	.word	10192
+	.byte	19
+	.byte	'Rte_TransformerErrorCode',0,14,130,1,15
+	.word	129
+	.byte	19
+	.byte	'Rte_TransformerClass',0,14,131,1,15
+	.word	129
+	.byte	8,14,168,1,9,12,9
+	.byte	'in',0
+	.word	6032
+	.byte	4,2,35,0,9
+	.byte	'out',0
+	.word	6032
+	.byte	4,2,35,4,9
+	.byte	'used',0
+	.word	1694
+	.byte	2,2,35,8,9
+	.byte	'lost_data',0
+	.word	129
+	.byte	1,2,35,10,0,19
+	.byte	'Rte_QDynType',0,14,173,1,3
+	.word	10338
+	.byte	6,14,175,1,9,4,7
+	.byte	'RTE_DRA',0,0,7
+	.byte	'RTE_WOWP',0,1,7
+	.byte	'RTE_TASK',0,2,7
+	.byte	'RTE_ARE',0,3,7
+	.byte	'RTE_EV',0,4,7
+	.byte	'RTE_MSI',0,5,0,19
+	.byte	'Rte_NotificationType',0,14,182,1,3
+	.word	10425
+	.byte	20,128,8
+	.word	129
+	.byte	21,255,7,0,19
+	.byte	'Impl_NVM_DstPtrType_1024',0,15,50,15
+	.word	10523
+	.byte	19
+	.byte	'CanIf_u32_impl',0,15,69,16
+	.word	583
+	.byte	19
+	.byte	'CanIf_u16_impl',0,15,71,16
+	.word	1694
+	.byte	19
+	.byte	'CanIf_u8_impl',0,15,73,15
+	.word	129
+	.byte	19
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,15,88,15
+	.word	129
+	.byte	19
+	.byte	'CanIf_PduModeType_Enum_impl',0,15,90,15
+	.word	129
+	.byte	8,15,92,9,2,9
+	.byte	'DeviceMode',0
+	.word	129
+	.byte	1,2,35,0,9
+	.byte	'ChannelMode',0
+	.word	129
+	.byte	1,2,35,1,0,19
+	.byte	'CanIf_ControllerStateType_struct_impl',0,15,95,3
+	.word	10714
+	.byte	19
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,15,100,15
+	.word	129
+	.byte	19
+	.byte	'CanSM_boolean_Impl',0,15,120,15
+	.word	129
+	.byte	19
+	.byte	'CanSM_u8_Impl',0,15,123,15
+	.word	129
+	.byte	19
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,15,128,1,15
+	.word	129
+	.byte	19
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,15,132,1,15
+	.word	129
+	.byte	19
+	.byte	'CanSM_u16_Impl',0,15,136,1,16
+	.word	1694
+	.byte	19
+	.byte	'CanSM_TimerStateType_Enum_impl',0,15,138,1,15
+	.word	129
+	.byte	8,15,140,1,9,4,9
+	.byte	'cntTick_u16',0
+	.word	1694
+	.byte	2,2,35,0,9
+	.byte	'stTimer',0
+	.word	129
+	.byte	1,2,35,2,0,19
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,15,143,1,3
+	.word	11055
+	.byte	19
+	.byte	'Com_impl_u16',0,15,154,1,16
+	.word	1694
+	.byte	19
+	.byte	'Com_impl_u8',0,15,157,1,15
+	.word	129
+	.byte	19
+	.byte	'ComM_uint32_Impl',0,15,173,1,16
+	.word	583
+	.byte	19
+	.byte	'ComM_uint16_Impl',0,15,175,1,16
+	.word	1694
+	.byte	19
+	.byte	'ComM_uint8_Impl',0,15,177,1,15
+	.word	129
+	.byte	19
+	.byte	'ComM_bool_Impl',0,15,179,1,15
+	.word	129
+	.byte	8,15,181,1,9,24,9
+	.byte	'ChannelState_e',0
+	.word	583
+	.byte	4,2,35,0,9
+	.byte	'LightTimeoutCtr_u32',0
+	.word	583
+	.byte	4,2,35,4,9
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	1694
+	.byte	2,2,35,8,9
+	.byte	'ChannelMode_u8',0
+	.word	129
+	.byte	1,2,35,10,9
+	.byte	'BusSmMode_u8',0
+	.word	129
+	.byte	1,2,35,11,9
+	.byte	'UserRequestCtr_u8',0
+	.word	129
+	.byte	1,2,35,12,9
+	.byte	'PassiveRequestState_u8',0
+	.word	129
+	.byte	1,2,35,13,9
+	.byte	'PncRequestCtr_u8',0
+	.word	129
+	.byte	1,2,35,14,9
+	.byte	'InhibitionReqStatus_u8',0
+	.word	129
+	.byte	1,2,35,15,9
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	129
+	.byte	1,2,35,16,9
+	.byte	'DiagnosticRequestState_b',0
+	.word	129
+	.byte	1,2,35,17,9
+	.byte	'CommunicationAllowed_b',0
+	.word	129
+	.byte	1,2,35,18,9
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	129
+	.byte	1,2,35,19,9
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	129
+	.byte	1,2,35,20,9
+	.byte	'NmNetworkModeStatus_b',0
+	.word	129
+	.byte	1,2,35,21,0,19
+	.byte	'ComM_ChannelStruct_Impl',0,15,197,1,3
+	.word	11287
+	.byte	8,15,206,1,9,10,9
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	1694
+	.byte	2,2,35,0,9
+	.byte	'LimitToNoComCtr_u16',0
+	.word	1694
+	.byte	2,2,35,2,9
+	.byte	'RequestedUserMode_t',0
+	.word	129
+	.byte	1,2,35,4,9
+	.byte	'IndicatedUserMode_t',0
+	.word	129
+	.byte	1,2,35,5,9
+	.byte	'numChannelsInFullCom_u8',0
+	.word	129
+	.byte	1,2,35,6,9
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	129
+	.byte	1,2,35,7,9
+	.byte	'numChannelsInNoCom_u8',0
+	.word	129
+	.byte	1,2,35,8,0,19
+	.byte	'ComM_UserStruct_Impl',0,15,214,1,3
+	.word	11791
+	.byte	19
+	.byte	'Dcm_IOOperationResponseType',0,15,252,1,15
+	.word	129
+	.byte	19
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	15,138,2,15
+	.word	129
+	.byte	19
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,15,146,2,15
+	.word	129
+	.byte	19
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,15,150,2,15
+	.word	129
+	.byte	19
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,15,154,2,15
+	.word	129
+	.byte	19
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,15,243,3,34
+	.word	10534
+	.byte	20,128,8
+	.word	129
+	.byte	21,255,7,0,19
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,15,246,3,34
+	.word	10534
+	.byte	6,4,216,1,9,4,7
+	.byte	'XCP_BG_IDLE',0,0,7
+	.byte	'XCP_BG_CHKSUM',0,1,7
+	.byte	'XCP_BG_MEM_WRITE',0,2,7
+	.byte	'XCP_BG_REPEAT_CMD',0,3,7
+	.byte	'XCP_BG_DO_DISCONNECT',0,4,7
+	.byte	'XCP_BG_CANCEL_REQ',0,5,0,19
+	.byte	'Xcp_BgActivity_t',0,4,224,1,3
+	.word	12609
+	.byte	24,1,1,23
+	.word	3936
+	.byte	23
+	.word	129
+	.byte	0,13
+	.word	12754
+	.byte	19
+	.byte	'Xcp_CmdFunctionPtr',0,4,230,1,16
+	.word	12768
+	.byte	8,4,241,1,9,8,9
+	.byte	'WritePos_u16',0
+	.word	1694
+	.byte	2,2,35,0,9
+	.byte	'ReadPos_u16',0
+	.word	1694
+	.byte	2,2,35,2,9
+	.byte	'ReadPos_OdtNum_u16',0
+	.word	1694
+	.byte	2,2,35,4,9
+	.byte	'QueSize_u16',0
+	.word	1694
+	.byte	2,2,35,6,0,19
+	.byte	'Xcp_Que_t',0,4,247,1,3
+	.word	12801
+	.byte	8,4,250,1,9,24,9
+	.byte	'XcpState_en',0
+	.word	202
+	.byte	4,2,35,0,9
+	.byte	'ConnectedTlId_u8',0
+	.word	129
+	.byte	1,2,35,4,9
+	.byte	'ResourceProtStatus_u8',0
+	.word	129
+	.byte	1,2,35,5,9
+	.byte	'Mta',0
+	.word	2453
+	.byte	8,2,35,8,9
+	.byte	'MaxDto_u16',0
+	.word	1694
+	.byte	2,2,35,16,9
+	.byte	'MaxDtoAligned_u16',0
+	.word	1694
+	.byte	2,2,35,18,9
+	.byte	'MaxCto_u8',0
+	.word	129
+	.byte	1,2,35,20,0,19
+	.byte	'Xcp_Session_t',0,4,138,2,2
+	.word	12919
+	.byte	8,4,149,2,9,12,9
+	.byte	'Buffer_au8',0
+	.word	3855
+	.byte	8,2,35,0,9
+	.byte	'Length_u32',0
+	.word	583
+	.byte	4,2,35,8,0,19
+	.byte	'Xcp_CtoMax_t',0,4,153,2,2
+	.word	13106
+	.byte	20,255,1
+	.word	129
+	.byte	21,254,1,0,8,4,157,2,9,132,2,9
+	.byte	'UploadRunning_b',0
+	.word	129
+	.byte	1,2,35,0,9
+	.byte	'RemainingSize_u8',0
+	.word	129
+	.byte	1,2,35,1,9
+	.byte	'DownloadSize_u8',0
+	.word	129
+	.byte	1,2,35,2,9
+	.byte	'ReceivedSize_u8',0
+	.word	129
+	.byte	1,2,35,3,9
+	.byte	'DownloadBuffer_au8',0
+	.word	13175
+	.byte	255,1,2,35,4,0,19
+	.byte	'Xcp_Mem_t',0,4,178,2,2
+	.word	13186
+	.byte	8,4,183,2,9,2,9
+	.byte	'SeedWaitingKey_b',0
+	.word	129
+	.byte	1,2,35,0,9
+	.byte	'SeedRemaingSize_u8',0
+	.word	129
+	.byte	1,2,35,1,0,19
+	.byte	'Xcp_SeedAndKey_t',0,4,187,2,2
+	.word	13343
+	.byte	8,4,192,2,9,4,9
+	.byte	'BlockSize_u32',0
+	.word	583
+	.byte	4,2,35,0,0,19
+	.byte	'Xcp_Checksum_t',0,4,198,2,2
+	.word	13430
+	.byte	8,4,203,2,9,18,9
+	.byte	'Xcp_Debug_TransmitOkCtr',0
+	.word	1694
+	.byte	2,2,35,0,9
+	.byte	'Xcp_Debug_TransmitNotOkCtr',0
+	.word	1694
+	.byte	2,2,35,2,9
+	.byte	'Xcp_Debug_SendResTxConfCtr',0
+	.word	1694
+	.byte	2,2,35,4,9
+	.byte	'Xcp_Debug_SendResCtr',0
+	.word	1694
+	.byte	2,2,35,6,9
+	.byte	'Xcp_Debug_SendEvTxConfCtr',0
+	.word	1694
+	.byte	2,2,35,8,9
+	.byte	'Xcp_Debug_SendEvCtr',0
+	.word	1694
+	.byte	2,2,35,10,9
+	.byte	'Xcp_Debug_SendDaqTxConfCtr',0
+	.word	1694
+	.byte	2,2,35,12,9
+	.byte	'Xcp_Debug_SendDaqCtr',0
+	.word	1694
+	.byte	2,2,35,14,9
+	.byte	'Xcp_Debug_TxConfCtr',0
+	.word	1694
+	.byte	2,2,35,16,0,19
+	.byte	'Xcp_Debug_t',0,4,216,2,2
+	.word	13484
+	.byte	8,4,225,2,9,8,9
+	.byte	'OdtEntryPos_u16',0
+	.word	1694
+	.byte	2,2,35,0,9
+	.byte	'OdtEntryMax_u16',0
+	.word	1694
+	.byte	2,2,35,2,9
+	.byte	'DaqListNum_u16',0
+	.word	1694
+	.byte	2,2,35,4,9
+	.byte	'AbsOdtNum_u16',0
+	.word	1694
+	.byte	2,2,35,6,0,19
+	.byte	'Xcp_SelectedOdtEntry_t',0,4,231,2,2
+	.word	13806
+	.byte	8,4,234,2,9,6,9
+	.byte	'OdtEntryFirst_u16',0
+	.word	1694
+	.byte	2,2,35,0,9
+	.byte	'OdtEntryCnt_u8',0
+	.word	129
+	.byte	1,2,35,2,9
+	.byte	'CopyRoutine_u8',0
+	.word	129
+	.byte	1,2,35,3,9
+	.byte	'Length_u16',0
+	.word	1694
+	.byte	2,2,35,4,0,19
+	.byte	'Xcp_Odt_t',0,4,240,2,2
+	.word	13942
+	.byte	32
+	.word	129
+	.byte	32
+	.word	129
+	.byte	8,4,254,2,9,24,9
+	.byte	'DaqListQue_p',0
+	.word	1689
+	.byte	4,2,35,0,9
+	.byte	'DaqListQuePos',0
+	.word	12801
+	.byte	8,2,35,4,9
+	.byte	'OdtFirst_u16',0
+	.word	1694
+	.byte	2,2,35,12,9
+	.byte	'EventChannelNum_u16',0
+	.word	1694
+	.byte	2,2,35,14,9
+	.byte	'OdtCnt_u8',0
+	.word	129
+	.byte	1,2,35,16,9
+	.byte	'XcpTxPduId',0
+	.word	129
+	.byte	1,2,35,17,9
+	.byte	'Prescaler_u8',0
+	.word	129
+	.byte	1,2,35,18,9
+	.byte	'CycleCnt_u8',0
+	.word	129
+	.byte	1,2,35,19,9
+	.byte	'Priority_u8',0
+	.word	129
+	.byte	1,2,35,20,9
+	.byte	'Flags_u8',0
+	.word	129
+	.byte	1,2,35,21,9
+	.byte	'Mode_u8',0
+	.word	14063
+	.byte	1,2,35,22,9
+	.byte	'CurrentlyRunning_b',0
+	.word	14068
+	.byte	1,2,35,23,0,19
+	.byte	'Xcp_DaqList_t',0,4,143,3,2
+	.word	14073
+	.byte	13
+	.word	14073
+	.byte	13
+	.word	13942
+	.byte	13
+	.word	583
+	.byte	13
+	.word	1694
+	.byte	8,4,146,3,9,56,9
+	.byte	'DaqList_p',0
+	.word	14365
+	.byte	4,2,35,0,9
+	.byte	'Odt_p',0
+	.word	14370
+	.byte	4,2,35,4,9
+	.byte	'OdtEntryAddress_p',0
+	.word	14375
+	.byte	4,2,35,8,9
+	.byte	'OdtEntrySize_p',0
+	.word	1689
+	.byte	4,2,35,12,9
+	.byte	'PriorityList_p',0
+	.word	14380
+	.byte	4,2,35,16,9
+	.byte	'DaqQue_p',0
+	.word	1689
+	.byte	4,2,35,20,9
+	.byte	'DaqListCnt_u16',0
+	.word	1694
+	.byte	2,2,35,24,9
+	.byte	'OdtCnt_u16',0
+	.word	1694
+	.byte	2,2,35,26,9
+	.byte	'OdtEntryCnt_u16',0
+	.word	1694
+	.byte	2,2,35,28,9
+	.byte	'SelectedOdtEntry',0
+	.word	13806
+	.byte	8,2,35,30,9
+	.byte	'DaqRamPtr_pu8',0
+	.word	1689
+	.byte	4,2,35,40,9
+	.byte	'DaqRamSize_u32',0
+	.word	583
+	.byte	4,2,35,44,9
+	.byte	'DaqListSendingCnt_u16',0
+	.word	1694
+	.byte	2,2,35,48,9
+	.byte	'DaqListSending_u16',0
+	.word	1694
+	.byte	2,2,35,50,9
+	.byte	'DaqState_en',0
+	.word	2568
+	.byte	4,2,35,52,0,19
+	.byte	'Xcp_DaqConfig_t',0,4,180,3,2
+	.word	14385
+	.byte	8,4,225,3,9,80,9
+	.byte	'Session',0
+	.word	12919
+	.byte	24,2,35,0,9
+	.byte	'DaqConfig',0
+	.word	14385
+	.byte	56,2,35,24,0,19
+	.byte	'Xcp_NoInit_t',0,4,234,3,2
+	.word	14766
+	.byte	20,8
+	.word	4705
+	.byte	21,0,0,20,1
+	.word	129
+	.byte	21,0,0
+.L174:
+	.byte	8,4,236,3,9,12,9
+	.byte	'DaqRamSections',0
+	.word	14831
+	.byte	8,2,35,0,9
+	.byte	'DaqTransmissionStopped_b',0
+	.word	129
+	.byte	1,2,35,8,9
+	.byte	'Tl2PlRef_au8',0
+	.word	14840
+	.byte	1,2,35,9,9
+	.byte	'EnabledResources_u8',0
+	.word	129
+	.byte	1,2,35,10,9
+	.byte	'InitStatus_u8',0
+	.word	129
+	.byte	1,2,35,11,0,19
+	.byte	'Xcp_GlobalNoInit_t',0,4,255,3,2
+	.word	14849
+	.byte	8,4,130,4,9,208,2,9
+	.byte	'Wait4TxConfCtr_u8',0
+	.word	129
+	.byte	1,2,35,0,9
+	.byte	'BgDoDisconnect_Response',0
+	.word	679
+	.byte	4,2,35,4,9
+	.byte	'BgActivityState',0
+	.word	12609
+	.byte	4,2,35,8,9
+	.byte	'ResBuffer',0
+	.word	13106
+	.byte	12,2,35,12,9
+	.byte	'EvBuffer',0
+	.word	3864
+	.byte	12,2,35,24,9
+	.byte	'CmdBuffer',0
+	.word	3864
+	.byte	12,2,35,36,9
+	.byte	'Mem',0
+	.word	13186
+	.byte	132,2,2,35,48,9
+	.byte	'SeedAndKey',0
+	.word	13343
+	.byte	2,3,35,180,2,9
+	.byte	'Checksum',0
+	.word	13430
+	.byte	4,3,35,184,2,9
+	.byte	'Debug',0
+	.word	13484
+	.byte	18,3,35,188,2,0,19
+	.byte	'Xcp_Cleared_t',0,4,150,4,2
+	.word	15016
+.L173:
+	.byte	20,80
+	.word	14766
+	.byte	21,0,0
+.L175:
+	.byte	20,208,2
+	.word	15016
+	.byte	21,0,0,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L86:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,46,1,3,8,32,13,58,15,59,15
+	.byte	57,15,54,15,39,12,0,0,4,5,0,3,8,58,15,59,15,57,15,73,19,0,0,5,11,0,0,0,6,4,1,58,15,59,15,57,15,11,15,0
+	.byte	0,7,40,0,3,8,28,13,0,0,8,19,1,58,15,59,15,57,15,11,15,0,0,9,13,0,3,8,73,19,11,15,56,9,0,0,10,46,1,3,8
+	.byte	58,15,59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,11,46,0,3,8,58,15,59,15,57,15,73,19,54,15,39,12,63
+	.byte	12,60,12,0,0,12,46,1,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0,13,15,0,73,19,0,0,14,38,0,73,19
+	.byte	0,0,15,46,1,49,19,0,0,16,5,0,49,19,0,0,17,46,0,3,8,58,15,59,15,57,15,54,15,63,12,60,12,0,0,18,21,0,54
+	.byte	15,0,0,19,22,0,3,8,58,15,59,15,57,15,73,19,0,0,20,1,1,11,15,73,19,0,0,21,33,0,47,15,0,0,22,21,1,73,19
+	.byte	54,15,39,12,0,0,23,5,0,73,19,0,0,24,21,1,54,15,39,12,0,0,25,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60
+	.byte	12,0,0,26,21,0,54,15,39,12,0,0,27,19,1,3,8,58,15,59,15,57,15,11,15,0,0,28,59,0,3,8,0,0,29,23,1,58,15,59
+	.byte	15,57,15,11,15,0,0,30,4,1,3,8,58,15,59,15,57,15,11,15,0,0,31,21,0,73,19,54,15,39,12,0,0,32,53,0,73,19
+	.byte	0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L87:
+	.word	.L234-.L233
+.L233:
+	.half	3
+	.word	.L236-.L235
+.L235:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Cbk.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\api\\Xcp_Priv.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Xcp\\Xcp_Cfg.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0,0
+.L236:
+.L234:
+	.sdecl	'.debug_info',debug,cluster('Xcp_MainFunction')
+	.sect	'.debug_info'
+.L88:
+	.word	333
+	.half	3
+	.word	.L89
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L91,.L90
+	.byte	2
+	.word	.L84
+	.byte	3
+	.byte	'Xcp_MainFunction',0,1,54,6,1,1,1
+	.word	.L69,.L134,.L68
+	.byte	4
+	.word	.L69,.L134
+	.byte	5
+	.byte	'ProtocolLayerId',0,1,60,9
+	.word	.L135,.L136
+	.byte	5
+	.byte	'TransportLayerId',0,1,61,9
+	.word	.L135,.L137
+	.byte	5
+	.byte	'connected',0,1,62,11
+	.word	.L135,.L138
+	.byte	6
+	.word	.L139,.L140,.L14
+	.byte	7
+	.word	.L141,.L142
+	.byte	8
+	.word	.L143,.L140,.L14
+	.byte	0,6
+	.word	.L139,.L11,.L8
+	.byte	7
+	.word	.L141,.L142
+	.byte	8
+	.word	.L143,.L11,.L8
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_MainFunction')
+	.sect	'.debug_abbrev'
+.L89:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,6,29,1
+	.byte	49,16,17,1,18,1,0,0,7,5,0,49,16,2,6,0,0,8,11,0,49,16,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Xcp_MainFunction')
+	.sect	'.debug_line'
+.L90:
+	.word	.L238-.L237
+.L237:
+	.half	3
+	.word	.L240-.L239
+.L239:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0,0,0,0,0
+.L240:
+	.byte	5,13,7,0,5,2
+	.word	.L69
+	.byte	3,192,0,1,5,24,9
+	.half	.L176-.L69
+	.byte	3,3,1,5,57,9
+	.half	.L177-.L176
+	.byte	1,5,9,9
+	.half	.L3-.L177
+	.byte	3,2,1,5,19,9
+	.half	.L241-.L3
+	.byte	1,5,44,9
+	.half	.L242-.L241
+	.byte	1,5,5,9
+	.half	.L243-.L242
+	.byte	1,5,17,9
+	.half	.L244-.L243
+	.byte	3,2,1,5,11,9
+	.half	.L4-.L244
+	.byte	3,3,1,5,60,7,9
+	.half	.L245-.L4
+	.byte	3,1,1,5,28,7,9
+	.half	.L5-.L245
+	.byte	3,3,1,5,11,9
+	.half	.L179-.L5
+	.byte	3,6,1,5,22,9
+	.half	.L246-.L179
+	.byte	1,5,39,9
+	.half	.L247-.L246
+	.byte	1,5,7,9
+	.half	.L248-.L247
+	.byte	1,5,55,7,9
+	.half	.L249-.L248
+	.byte	3,2,1,5,48,9
+	.half	.L6-.L249
+	.byte	3,9,1,5,12,9
+	.half	.L250-.L6
+	.byte	1,5,14,7,9
+	.half	.L251-.L250
+	.byte	3,1,1,5,13,9
+	.half	.L252-.L251
+	.byte	1,5,92,7,9
+	.half	.L253-.L252
+	.byte	1,5,111,9
+	.half	.L254-.L253
+	.byte	1,5,26,7,9
+	.half	.L9-.L254
+	.byte	3,4,1,5,7,9
+	.half	.L180-.L9
+	.byte	3,1,1,5,13,7,9
+	.half	.L255-.L180
+	.byte	3,2,1,5,33,9
+	.half	.L256-.L255
+	.byte	1,5,51,9
+	.half	.L257-.L256
+	.byte	1,5,70,9
+	.half	.L258-.L257
+	.byte	1,5,9,9
+	.half	.L181-.L258
+	.byte	1,5,11,7,9
+	.half	.L259-.L181
+	.byte	3,3,1,5,27,9
+	.half	.L260-.L259
+	.byte	1,5,40,9
+	.half	.L261-.L260
+	.byte	1,5,61,9
+	.half	.L262-.L261
+	.byte	1,5,59,9
+	.half	.L263-.L262
+	.byte	1,5,21,9
+	.half	.L140-.L263
+	.byte	3,224,1,1,5,3,9
+	.half	.L183-.L140
+	.byte	3,4,1,5,39,9
+	.half	.L264-.L183
+	.byte	1,5,37,9
+	.half	.L265-.L264
+	.byte	1,5,23,9
+	.half	.L266-.L265
+	.byte	3,1,1,5,3,9
+	.half	.L267-.L266
+	.byte	1,5,55,7,9
+	.half	.L268-.L267
+	.byte	3,3,1,5,53,9
+	.half	.L269-.L268
+	.byte	1,5,73,9
+	.half	.L270-.L269
+	.byte	1,5,55,9
+	.half	.L13-.L270
+	.byte	3,4,1,5,53,9
+	.half	.L271-.L13
+	.byte	1,5,85,9
+	.half	.L14-.L271
+	.byte	3,148,126,1,5,9,9
+	.half	.L15-.L14
+	.byte	3,4,1,5,21,9
+	.half	.L11-.L15
+	.byte	3,220,1,1,5,3,9
+	.half	.L185-.L11
+	.byte	3,4,1,5,39,9
+	.half	.L272-.L185
+	.byte	1,5,37,9
+	.half	.L273-.L272
+	.byte	1,5,7,9
+	.half	.L274-.L273
+	.byte	3,1,1,5,23,9
+	.half	.L275-.L274
+	.byte	1,5,3,9
+	.half	.L276-.L275
+	.byte	1,5,55,7,9
+	.half	.L277-.L276
+	.byte	3,3,1,5,53,9
+	.half	.L278-.L277
+	.byte	1,5,73,9
+	.half	.L279-.L278
+	.byte	1,5,55,9
+	.half	.L17-.L279
+	.byte	3,4,1,5,53,9
+	.half	.L280-.L17
+	.byte	1,5,74,9
+	.half	.L8-.L280
+	.byte	3,237,125,1,5,57,9
+	.half	.L2-.L8
+	.byte	1,5,3,7,9
+	.half	.L281-.L2
+	.byte	3,59,1,5,31,7,9
+	.half	.L282-.L281
+	.byte	3,8,1,5,1,9
+	.half	.L19-.L282
+	.byte	3,6,1,7,9
+	.half	.L92-.L19
+	.byte	0,1,1
+.L238:
+	.sdecl	'.debug_ranges',debug,cluster('Xcp_MainFunction')
+	.sect	'.debug_ranges'
+.L91:
+	.word	-1,.L69,0,.L92-.L69,0,0
+	.sdecl	'.debug_info',debug,cluster('Xcp_SetControlMode')
+	.sect	'.debug_info'
+.L93:
+	.word	265
+	.half	3
+	.word	.L94
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L96,.L95
+	.byte	2
+	.word	.L84
+	.byte	3
+	.byte	'Xcp_SetControlMode',0,1,225,3,6,1,1,1
+	.word	.L77,.L144,.L76
+	.byte	4
+	.byte	'Xcp_CtlMode_u8',0,1,225,3,31
+	.word	.L135,.L145
+	.byte	5
+	.word	.L77,.L144
+	.byte	6
+	.byte	'ProtocolLayerId',0,1,230,3,9
+	.word	.L135,.L146
+	.byte	6
+	.byte	'Resources',0,1,231,3,9
+	.word	.L135,.L147
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_SetControlMode')
+	.sect	'.debug_abbrev'
+.L94:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Xcp_SetControlMode')
+	.sect	'.debug_line'
+.L95:
+	.word	.L284-.L283
+.L283:
+	.half	3
+	.word	.L286-.L285
+.L285:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0,0,0,0,0
+.L286:
+	.byte	5,30,7,0,5,2
+	.word	.L77
+	.byte	3,233,3,1,5,9,9
+	.half	.L221-.L77
+	.byte	3,14,1,5,25,9
+	.half	.L287-.L221
+	.byte	1,5,3,9
+	.half	.L288-.L287
+	.byte	3,116,1,5,26,7,9
+	.half	.L289-.L288
+	.byte	3,3,1,5,59,9
+	.half	.L222-.L289
+	.byte	1,5,41,9
+	.half	.L51-.L222
+	.byte	3,3,1,5,76,9
+	.half	.L224-.L51
+	.byte	3,125,1,5,59,9
+	.half	.L50-.L224
+	.byte	1,7,9
+	.half	.L290-.L50
+	.byte	1,5,25,9
+	.half	.L49-.L290
+	.byte	3,9,1,5,5,9
+	.half	.L291-.L49
+	.byte	1,5,28,7,9
+	.half	.L292-.L291
+	.byte	3,2,1,5,61,9
+	.half	.L225-.L292
+	.byte	1,5,9,9
+	.half	.L55-.L225
+	.byte	3,3,1,5,19,9
+	.half	.L293-.L55
+	.byte	1,5,59,9
+	.half	.L294-.L293
+	.byte	1,5,57,9
+	.half	.L295-.L294
+	.byte	1,5,78,9
+	.half	.L296-.L295
+	.byte	3,125,1,5,61,9
+	.half	.L54-.L296
+	.byte	1,5,40,7,9
+	.half	.L52-.L54
+	.byte	3,9,1,5,1,9
+	.half	.L297-.L52
+	.byte	3,4,1,7,9
+	.half	.L97-.L297
+	.byte	0,1,1
+.L284:
+	.sdecl	'.debug_ranges',debug,cluster('Xcp_SetControlMode')
+	.sect	'.debug_ranges'
+.L96:
+	.word	-1,.L77,0,.L97-.L77,0,0
+	.sdecl	'.debug_info',debug,cluster('Xcp_GetControlMode')
+	.sect	'.debug_info'
+.L98:
+	.word	188
+	.half	3
+	.word	.L99
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L101,.L100
+	.byte	2
+	.word	.L84
+	.byte	3
+	.byte	'Xcp_GetControlMode',0,1,152,4,7
+	.word	.L135
+	.byte	1,1,1
+	.word	.L79,.L148,.L78
+	.byte	4
+	.word	.L79,.L148
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_GetControlMode')
+	.sect	'.debug_abbrev'
+.L99:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Xcp_GetControlMode')
+	.sect	'.debug_line'
+.L100:
+	.word	.L299-.L298
+.L298:
+	.half	3
+	.word	.L301-.L300
+.L300:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0,0,0,0,0
+.L301:
+	.byte	5,10,7,0,5,2
+	.word	.L79
+	.byte	3,153,4,1,5,26,9
+	.half	.L302-.L79
+	.byte	1,5,3,9
+	.half	.L303-.L302
+	.byte	1,5,1,9
+	.half	.L56-.L303
+	.byte	3,1,1,7,9
+	.half	.L102-.L56
+	.byte	0,1,1
+.L299:
+	.sdecl	'.debug_ranges',debug,cluster('Xcp_GetControlMode')
+	.sect	'.debug_ranges'
+.L101:
+	.word	-1,.L79,0,.L102-.L79,0,0
+	.sdecl	'.debug_info',debug,cluster('Xcp_GetConnectedTransportLayerId')
+	.sect	'.debug_info'
+.L103:
+	.word	231
+	.half	3
+	.word	.L104
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L106,.L105
+	.byte	2
+	.word	.L84
+	.byte	3
+	.byte	'Xcp_GetConnectedTransportLayerId',0,1,163,4,7
+	.word	.L135
+	.byte	1,1,1
+	.word	.L81,.L149,.L80
+	.byte	4
+	.byte	'ProtocolLayerId',0,1,163,4,46
+	.word	.L135,.L150
+	.byte	5
+	.word	.L81,.L149
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_GetConnectedTransportLayerId')
+	.sect	'.debug_abbrev'
+.L104:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Xcp_GetConnectedTransportLayerId')
+	.sect	'.debug_line'
+.L105:
+	.word	.L305-.L304
+.L304:
+	.half	3
+	.word	.L307-.L306
+.L306:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0,0,0,0,0
+.L307:
+	.byte	5,20,7,0,5,2
+	.word	.L81
+	.byte	3,164,4,1,5,10,9
+	.half	.L308-.L81
+	.byte	1,5,20,9
+	.half	.L309-.L308
+	.byte	1,5,45,9
+	.half	.L310-.L309
+	.byte	1,5,3,9
+	.half	.L311-.L310
+	.byte	1,5,1,9
+	.half	.L57-.L311
+	.byte	3,1,1,7,9
+	.half	.L107-.L57
+	.byte	0,1,1
+.L305:
+	.sdecl	'.debug_ranges',debug,cluster('Xcp_GetConnectedTransportLayerId')
+	.sect	'.debug_ranges'
+.L106:
+	.word	-1,.L81,0,.L107-.L81,0,0
+	.sdecl	'.debug_info',debug,cluster('Xcp_GetStateForCalSup')
+	.sect	'.debug_info'
+.L108:
+	.word	237
+	.half	3
+	.word	.L109
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L111,.L110
+	.byte	2
+	.word	.L84
+	.byte	3
+	.byte	'Xcp_GetStateForCalSup',0,1,239,2,16
+	.word	.L151
+	.byte	1,1,1
+	.word	.L75,.L152,.L74
+	.byte	4
+	.word	.L75,.L152
+	.byte	5
+	.byte	'retVal',0,1,245,2,18
+	.word	.L151,.L153
+	.byte	5
+	.byte	'protLayerId',0,1,246,2,16
+	.word	.L154,.L155
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_GetStateForCalSup')
+	.sect	'.debug_abbrev'
+.L109:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Xcp_GetStateForCalSup')
+	.sect	'.debug_line'
+.L110:
+	.word	.L313-.L312
+.L312:
+	.half	3
+	.word	.L315-.L314
+.L314:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0,0,0,0,0
+.L315:
+	.byte	5,25,7,0,5,2
+	.word	.L75
+	.byte	3,249,2,1,9
+	.half	.L316-.L75
+	.byte	3,1,1,5,23,9
+	.half	.L219-.L316
+	.byte	1,5,25,9
+	.half	.L317-.L219
+	.byte	3,1,1,5,23,9
+	.half	.L318-.L317
+	.byte	1,5,25,9
+	.half	.L319-.L318
+	.byte	3,1,1,5,23,9
+	.half	.L320-.L319
+	.byte	1,5,20,9
+	.half	.L321-.L320
+	.byte	3,3,1,5,49,9
+	.half	.L220-.L321
+	.byte	1,5,11,9
+	.half	.L43-.L220
+	.byte	3,2,1,5,21,9
+	.half	.L322-.L43
+	.byte	1,5,42,9
+	.half	.L323-.L322
+	.byte	1,5,10,9
+	.half	.L324-.L323
+	.byte	1,5,55,7,9
+	.half	.L325-.L324
+	.byte	3,1,1,5,26,7,9
+	.half	.L44-.L325
+	.byte	3,4,1,5,7,9
+	.half	.L326-.L44
+	.byte	3,1,1,5,62,9
+	.half	.L45-.L326
+	.byte	3,120,1,5,49,9
+	.half	.L42-.L45
+	.byte	1,5,7,7,9
+	.half	.L46-.L42
+	.byte	3,58,1,5,23,9
+	.half	.L327-.L46
+	.byte	1,5,3,9
+	.half	.L328-.L327
+	.byte	1,5,49,7,9
+	.half	.L329-.L328
+	.byte	3,3,1,5,47,9
+	.half	.L330-.L329
+	.byte	1,5,11,9
+	.half	.L331-.L330
+	.byte	3,2,1,5,24,9
+	.half	.L332-.L331
+	.byte	1,5,3,9
+	.half	.L47-.L332
+	.byte	3,17,1,5,1,9
+	.half	.L48-.L47
+	.byte	3,1,1,7,9
+	.half	.L112-.L48
+	.byte	0,1,1
+.L313:
+	.sdecl	'.debug_ranges',debug,cluster('Xcp_GetStateForCalSup')
+	.sect	'.debug_ranges'
+.L111:
+	.word	-1,.L75,0,.L112-.L75,0,0
+	.sdecl	'.debug_info',debug,cluster('Xcp_GetStatus')
+	.sect	'.debug_info'
+.L113:
+	.word	338
+	.half	3
+	.word	.L114
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L116,.L115
+	.byte	2
+	.word	.L84
+	.byte	3
+	.byte	'Xcp_GetStatus',0,1,188,4,17
+	.word	.L156
+	.byte	1,1,1
+	.word	.L83,.L157,.L82
+	.byte	4
+	.word	.L83,.L157
+	.byte	5
+	.byte	'retVal',0,1,191,4,19
+	.word	.L156,.L158
+	.byte	5
+	.byte	'protLayerId',0,1,192,4,15
+	.word	.L154,.L159
+	.byte	5
+	.byte	'daqNum',0,1,194,4,16
+	.word	.L154,.L160
+	.byte	5
+	.byte	'daqListMode',0,1,195,4,9
+	.word	.L135,.L161
+	.byte	5
+	.byte	'daqListTypesToCheck',0,1,196,4,9
+	.word	.L135,.L162
+	.byte	5
+	.byte	'daqListTypesFound',0,1,197,4,9
+	.word	.L135,.L163
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_GetStatus')
+	.sect	'.debug_abbrev'
+.L114:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Xcp_GetStatus')
+	.sect	'.debug_line'
+.L115:
+	.word	.L334-.L333
+.L333:
+	.half	3
+	.word	.L336-.L335
+.L335:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0,0,0,0,0
+.L336:
+	.byte	5,25,7,0,5,2
+	.word	.L83
+	.byte	3,200,4,1,5,24,9
+	.half	.L337-.L83
+	.byte	3,1,1,5,22,9
+	.half	.L226-.L337
+	.byte	1,5,25,9
+	.half	.L338-.L226
+	.byte	3,1,1,5,23,9
+	.half	.L339-.L338
+	.byte	1,5,21,9
+	.half	.L340-.L339
+	.byte	3,4,1,5,20,9
+	.half	.L227-.L340
+	.byte	3,8,1,5,49,9
+	.half	.L228-.L227
+	.byte	1,5,10,9
+	.half	.L59-.L228
+	.byte	3,2,1,5,20,9
+	.half	.L341-.L59
+	.byte	1,5,41,9
+	.half	.L342-.L341
+	.byte	1,5,9,9
+	.half	.L343-.L342
+	.byte	1,5,57,7,9
+	.half	.L344-.L343
+	.byte	3,1,1,5,29,7,9
+	.half	.L60-.L344
+	.byte	3,4,1,5,14,9
+	.half	.L345-.L60
+	.byte	3,2,1,5,119,9
+	.half	.L229-.L345
+	.byte	3,2,1,5,66,9
+	.half	.L63-.L229
+	.byte	3,5,1,5,56,9
+	.half	.L346-.L63
+	.byte	1,5,66,9
+	.half	.L347-.L346
+	.byte	1,5,74,9
+	.half	.L348-.L347
+	.byte	1,5,9,9
+	.half	.L230-.L348
+	.byte	3,3,1,5,11,7,9
+	.half	.L349-.L230
+	.byte	3,11,1,5,34,7,9
+	.half	.L350-.L349
+	.byte	3,2,1,5,32,9
+	.half	.L231-.L350
+	.byte	1,5,51,9
+	.half	.L351-.L231
+	.byte	3,1,1,5,15,9
+	.half	.L64-.L351
+	.byte	3,4,1,5,57,9
+	.half	.L62-.L64
+	.byte	3,102,1,5,14,9
+	.half	.L352-.L62
+	.byte	1,5,96,7,9
+	.half	.L353-.L352
+	.byte	1,5,62,7,9
+	.half	.L61-.L353
+	.byte	3,117,1,5,49,9
+	.half	.L58-.L61
+	.byte	1,5,3,7,9
+	.half	.L354-.L58
+	.byte	3,42,1,5,1,9
+	.half	.L67-.L354
+	.byte	3,1,1,7,9
+	.half	.L117-.L67
+	.byte	0,1,1
+.L334:
+	.sdecl	'.debug_ranges',debug,cluster('Xcp_GetStatus')
+	.sect	'.debug_ranges'
+.L116:
+	.word	-1,.L83,0,.L117-.L83,0,0
+	.sdecl	'.debug_info',debug,cluster('Xcp_DoDisconnect')
+	.sect	'.debug_info'
+.L118:
+	.word	229
+	.half	3
+	.word	.L119
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L121,.L120
+	.byte	2
+	.word	.L84
+	.byte	3
+	.byte	'Xcp_DoDisconnect',0,1,238,1,6,1,1,1
+	.word	.L73,.L164,.L72
+	.byte	4
+	.byte	'protLayerId',0,1,238,1,29
+	.word	.L135,.L165
+	.byte	4
+	.byte	'Response',0,1,238,1,56
+	.word	.L166,.L167
+	.byte	5
+	.word	.L73,.L164
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_DoDisconnect')
+	.sect	'.debug_abbrev'
+.L119:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Xcp_DoDisconnect')
+	.sect	'.debug_line'
+.L120:
+	.word	.L356-.L355
+.L355:
+	.half	3
+	.word	.L358-.L357
+.L357:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0,0,0,0,0
+.L358:
+	.byte	5,6,7,0,5,2
+	.word	.L73
+	.byte	3,237,1,1,5,18,9
+	.half	.L359-.L73
+	.byte	3,26,1,5,7,9
+	.half	.L193-.L359
+	.byte	1,5,18,9
+	.half	.L360-.L193
+	.byte	1,5,31,9
+	.half	.L361-.L360
+	.byte	1,5,28,9
+	.half	.L194-.L361
+	.byte	3,109,1,5,44,9
+	.half	.L191-.L194
+	.byte	1,5,5,9
+	.half	.L362-.L191
+	.byte	1,5,17,7,9
+	.half	.L196-.L362
+	.byte	3,7,1,5,7,9
+	.half	.L197-.L196
+	.byte	1,5,17,9
+	.half	.L363-.L197
+	.byte	1,5,55,9
+	.half	.L364-.L363
+	.byte	1,5,53,9
+	.half	.L365-.L364
+	.byte	1,5,44,9
+	.half	.L366-.L365
+	.byte	3,8,1,5,42,9
+	.half	.L367-.L366
+	.byte	1,5,44,9
+	.half	.L368-.L367
+	.byte	3,2,1,5,42,9
+	.half	.L369-.L368
+	.byte	1,5,50,9
+	.half	.L370-.L369
+	.byte	3,2,1,5,48,9
+	.half	.L371-.L370
+	.byte	1,5,26,9
+	.half	.L372-.L371
+	.byte	3,5,1,5,42,9
+	.half	.L373-.L372
+	.byte	1,5,58,9
+	.half	.L198-.L373
+	.byte	1,5,22,9
+	.half	.L200-.L198
+	.byte	3,3,1,5,24,9
+	.half	.L202-.L200
+	.byte	3,2,1,9
+	.half	.L204-.L202
+	.byte	3,3,1,5,23,9
+	.half	.L206-.L204
+	.byte	3,3,1,9
+	.half	.L208-.L206
+	.byte	3,6,1,5,7,9
+	.half	.L209-.L208
+	.byte	1,5,24,7,9
+	.half	.L210-.L209
+	.byte	3,2,1,5,36,9
+	.half	.L212-.L210
+	.byte	1,5,28,9
+	.half	.L35-.L212
+	.byte	3,2,1,5,12,9
+	.half	.L213-.L35
+	.byte	1,7,9
+	.half	.L214-.L213
+	.byte	1,5,27,9
+	.half	.L37-.L214
+	.byte	3,4,1,5,12,9
+	.half	.L215-.L37
+	.byte	1,5,34,7,9
+	.half	.L217-.L215
+	.byte	3,3,1,5,46,9
+	.half	.L374-.L217
+	.byte	1,5,53,9
+	.half	.L36-.L374
+	.byte	3,8,1,5,51,9
+	.half	.L375-.L36
+	.byte	1,5,76,9
+	.half	.L376-.L375
+	.byte	1,5,56,9
+	.half	.L34-.L376
+	.byte	3,6,1,5,50,9
+	.half	.L218-.L34
+	.byte	3,1,1,5,48,9
+	.half	.L377-.L218
+	.byte	1,5,1,9
+	.half	.L41-.L377
+	.byte	3,6,1,7,9
+	.half	.L122-.L41
+	.byte	0,1,1
+.L356:
+	.sdecl	'.debug_ranges',debug,cluster('Xcp_DoDisconnect')
+	.sect	'.debug_ranges'
+.L121:
+	.word	-1,.L73,0,.L122-.L73,0,0
+	.sdecl	'.debug_info',debug,cluster('Xcp_Background_Tasks')
+	.sect	'.debug_info'
+.L123:
+	.word	248
+	.half	3
+	.word	.L124
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L126,.L125
+	.byte	2
+	.word	.L84
+	.byte	3
+	.byte	'Xcp_Background_Tasks',0,1,150,1,13,1,1
+	.word	.L71,.L168,.L70
+	.byte	4
+	.byte	'ProtocolLayerId',0,1,150,1,40
+	.word	.L135,.L169
+	.byte	5
+	.word	.L71,.L168
+	.byte	5
+	.word	.L23,.L170
+	.byte	6
+	.byte	'XcpPacket',0,1,181,1,19
+	.word	.L171,.L172
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_Background_Tasks')
+	.sect	'.debug_abbrev'
+.L124:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3,8,58
+	.byte	15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Xcp_Background_Tasks')
+	.sect	'.debug_line'
+.L125:
+	.word	.L379-.L378
+.L378:
+	.half	3
+	.word	.L381-.L380
+.L380:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0,0,0,0,0
+.L381:
+	.byte	5,13,7,0,5,2
+	.word	.L71
+	.byte	3,149,1,1,5,11,9
+	.half	.L186-.L71
+	.byte	3,2,1,5,22,9
+	.half	.L382-.L186
+	.byte	1,5,39,9
+	.half	.L383-.L382
+	.byte	1,5,10,9
+	.half	.L384-.L383
+	.byte	3,48,1,9
+	.half	.L385-.L384
+	.byte	3,92,1,9
+	.half	.L386-.L385
+	.byte	3,8,1,9
+	.half	.L387-.L386
+	.byte	3,7,1,9
+	.half	.L388-.L387
+	.byte	3,15,1,9
+	.half	.L389-.L388
+	.byte	3,90,1,5,27,9
+	.half	.L25-.L389
+	.byte	3,2,1,5,5,9
+	.half	.L187-.L25
+	.byte	3,2,1,5,37,9
+	.half	.L21-.L187
+	.byte	3,6,1,5,5,9
+	.half	.L188-.L21
+	.byte	3,2,1,5,32,9
+	.half	.L22-.L188
+	.byte	3,6,1,5,5,9
+	.half	.L189-.L22
+	.byte	3,2,1,5,54,9
+	.half	.L23-.L189
+	.byte	3,8,1,5,52,9
+	.half	.L390-.L23
+	.byte	1,5,45,9
+	.half	.L391-.L390
+	.byte	3,3,1,5,27,9
+	.half	.L392-.L391
+	.byte	1,5,30,9
+	.half	.L393-.L392
+	.byte	3,1,1,5,28,9
+	.half	.L394-.L393
+	.byte	1,5,27,9
+	.half	.L395-.L394
+	.byte	3,2,1,5,38,9
+	.half	.L396-.L395
+	.byte	1,5,5,9
+	.half	.L170-.L396
+	.byte	3,2,1,5,69,9
+	.half	.L24-.L170
+	.byte	3,4,1,5,5,9
+	.half	.L190-.L24
+	.byte	3,2,1,9
+	.half	.L20-.L190
+	.byte	3,6,1,5,54,9
+	.half	.L26-.L20
+	.byte	3,4,1,5,52,9
+	.half	.L397-.L26
+	.byte	1,5,5,9
+	.half	.L398-.L397
+	.byte	3,2,1,5,1,9
+	.half	.L27-.L398
+	.byte	3,10,1,7,9
+	.half	.L127-.L27
+	.byte	0,1,1
+.L379:
+	.sdecl	'.debug_ranges',debug,cluster('Xcp_Background_Tasks')
+	.sect	'.debug_ranges'
+.L126:
+	.word	-1,.L71,0,.L127-.L71,0,0
+	.sdecl	'.debug_info',debug,cluster('Xcp_NoInit')
+	.sect	'.debug_info'
+.L128:
+	.word	153
+	.half	3
+	.word	.L129
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L84
+	.byte	3
+	.byte	'Xcp_NoInit',0,1,16,22
+	.word	.L173
+	.byte	1,5,3
+	.word	Xcp_NoInit
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_NoInit')
+	.sect	'.debug_abbrev'
+.L129:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Xcp_GlobalNoInit')
+	.sect	'.debug_info'
+.L130:
+	.word	159
+	.half	3
+	.word	.L131
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L84
+	.byte	3
+	.byte	'Xcp_GlobalNoInit',0,1,17,22
+	.word	.L174
+	.byte	1,5,3
+	.word	Xcp_GlobalNoInit
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_GlobalNoInit')
+	.sect	'.debug_abbrev'
+.L131:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Xcp_Cleared')
+	.sect	'.debug_info'
+.L132:
+	.word	154
+	.half	3
+	.word	.L133
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Xcp\\src\\Xcp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L84
+	.byte	3
+	.byte	'Xcp_Cleared',0,1,23,22
+	.word	.L175
+	.byte	1,5,3
+	.word	Xcp_Cleared
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Xcp_Cleared')
+	.sect	'.debug_abbrev'
+.L133:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_loc',debug,cluster('Xcp_Background_Tasks')
+	.sect	'.debug_loc'
+.L169:
+	.word	-1,.L71,0,.L187-.L71
+	.half	1
+	.byte	84
+	.word	.L21-.L71,.L188-.L71
+	.half	1
+	.byte	84
+	.word	.L22-.L71,.L189-.L71
+	.half	1
+	.byte	84
+	.word	.L23-.L71,.L170-.L71
+	.half	1
+	.byte	84
+	.word	.L24-.L71,.L190-.L71
+	.half	1
+	.byte	84
+	.word	.L20-.L71,.L27-.L71
+	.half	1
+	.byte	84
+	.word	0,0
+.L172:
+	.word	-1,.L71,0,.L168-.L71
+	.half	2
+	.byte	145,120
+	.word	0,0
+.L70:
+	.word	-1,.L71,0,.L186-.L71
+	.half	2
+	.byte	138,0
+	.word	.L186-.L71,.L168-.L71
+	.half	2
+	.byte	138,8
+	.word	.L168-.L71,.L168-.L71
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Xcp_DoDisconnect')
+	.sect	'.debug_loc'
+.L167:
+	.word	-1,.L73,0,.L191-.L73
+	.half	1
+	.byte	85
+	.word	.L209-.L73,.L210-.L73
+	.half	1
+	.byte	89
+	.word	.L213-.L73,.L214-.L73
+	.half	1
+	.byte	89
+	.word	.L215-.L73,.L216-.L73
+	.half	1
+	.byte	89
+	.word	.L34-.L73,.L218-.L73
+	.half	1
+	.byte	89
+	.word	0,0
+.L72:
+	.word	-1,.L73,0,.L164-.L73
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L165:
+	.word	-1,.L73,0,.L191-.L73
+	.half	1
+	.byte	84
+	.word	.L192-.L73,.L193-.L73
+	.half	1
+	.byte	88
+	.word	.L194-.L73,.L195-.L73
+	.half	1
+	.byte	88
+	.word	.L196-.L73,.L197-.L73
+	.half	1
+	.byte	88
+	.word	.L198-.L73,.L199-.L73
+	.half	1
+	.byte	88
+	.word	.L199-.L73,.L200-.L73
+	.half	1
+	.byte	85
+	.word	.L200-.L73,.L201-.L73
+	.half	1
+	.byte	88
+	.word	.L201-.L73,.L202-.L73
+	.half	1
+	.byte	84
+	.word	.L202-.L73,.L203-.L73
+	.half	1
+	.byte	88
+	.word	.L203-.L73,.L204-.L73
+	.half	1
+	.byte	84
+	.word	.L204-.L73,.L205-.L73
+	.half	1
+	.byte	88
+	.word	.L205-.L73,.L206-.L73
+	.half	1
+	.byte	84
+	.word	.L206-.L73,.L207-.L73
+	.half	1
+	.byte	88
+	.word	.L207-.L73,.L208-.L73
+	.half	1
+	.byte	84
+	.word	.L210-.L73,.L211-.L73
+	.half	1
+	.byte	88
+	.word	.L211-.L73,.L212-.L73
+	.half	1
+	.byte	84
+	.word	.L217-.L73,.L216-.L73
+	.half	1
+	.byte	88
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Xcp_GetConnectedTransportLayerId')
+	.sect	'.debug_loc'
+.L150:
+	.word	-1,.L81,0,.L149-.L81
+	.half	1
+	.byte	84
+	.word	0,0
+.L80:
+	.word	-1,.L81,0,.L149-.L81
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Xcp_GetControlMode')
+	.sect	'.debug_loc'
+.L78:
+	.word	-1,.L79,0,.L148-.L79
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Xcp_GetStateForCalSup')
+	.sect	'.debug_loc'
+.L74:
+	.word	-1,.L75,0,.L152-.L75
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L155:
+	.word	-1,.L75,.L220-.L75,.L152-.L75
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L153:
+	.word	-1,.L75,.L219-.L75,.L152-.L75
+	.half	2
+	.byte	144,33
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Xcp_GetStatus')
+	.sect	'.debug_loc'
+.L82:
+	.word	-1,.L83,0,.L157-.L83
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L161:
+	.word	-1,.L83,.L230-.L83,.L231-.L83
+	.half	1
+	.byte	95
+	.word	0,0
+.L163:
+	.word	-1,.L83,.L227-.L83,.L157-.L83
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L162:
+	.word	0,0
+.L160:
+	.word	-1,.L83,.L229-.L83,.L61-.L83
+	.half	1
+	.byte	84
+	.word	0,0
+.L159:
+	.word	-1,.L83,.L228-.L83,.L157-.L83
+	.half	1
+	.byte	81
+	.word	0,0
+.L158:
+	.word	-1,.L83,.L226-.L83,.L157-.L83
+	.half	2
+	.byte	144,33
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Xcp_MainFunction')
+	.sect	'.debug_loc'
+.L136:
+	.word	-1,.L69,.L177-.L69,.L134-.L69
+	.half	1
+	.byte	89
+	.word	.L178-.L69,.L179-.L69
+	.half	1
+	.byte	84
+	.word	.L182-.L69,.L183-.L69
+	.half	1
+	.byte	84
+	.word	.L184-.L69,.L185-.L69
+	.half	1
+	.byte	84
+	.word	0,0
+.L142:
+	.word	0,0
+.L137:
+	.word	-1,.L69,.L180-.L69,.L181-.L69
+	.half	1
+	.byte	84
+	.word	.L11-.L69,.L184-.L69
+	.half	1
+	.byte	84
+	.word	0,0
+.L68:
+	.word	-1,.L69,0,.L134-.L69
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L138:
+	.word	-1,.L69,.L176-.L69,.L134-.L69
+	.half	1
+	.byte	88
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Xcp_SetControlMode')
+	.sect	'.debug_loc'
+.L146:
+	.word	-1,.L77,.L222-.L77,.L49-.L77
+	.half	1
+	.byte	95
+	.word	.L223-.L77,.L224-.L77
+	.half	1
+	.byte	84
+	.word	.L225-.L77,.L52-.L77
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L147:
+	.word	-1,.L77,.L221-.L77,.L144-.L77
+	.half	1
+	.byte	88
+	.word	0,0
+.L145:
+	.word	-1,.L77,0,.L51-.L77
+	.half	1
+	.byte	84
+	.word	.L49-.L77,.L52-.L77
+	.half	1
+	.byte	84
+	.word	0,0
+.L76:
+	.word	-1,.L77,0,.L144-.L77
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L399:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Xcp_MainFunction')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L399,.L69,.L134-.L69
+	.sdecl	'.debug_frame',debug,cluster('Xcp_Background_Tasks')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L399,.L71,.L168-.L71
+	.byte	4
+	.word	(.L186-.L71)/2
+	.byte	19,8,22,26,3,19,138,8,4
+	.word	(.L168-.L186)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('Xcp_DoDisconnect')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L399,.L73,.L164-.L73
+	.sdecl	'.debug_frame',debug,cluster('Xcp_GetStateForCalSup')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L399,.L75,.L152-.L75
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Xcp_SetControlMode')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L399,.L77,.L144-.L77
+	.sdecl	'.debug_frame',debug,cluster('Xcp_GetControlMode')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L399,.L79,.L148-.L79
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Xcp_GetConnectedTransportLayerId')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L399,.L81,.L149-.L81
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Xcp_GetStatus')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L399,.L83,.L157-.L83
+	.byte	8,19,8,20,8,21,8,22,8,23,0,0
+
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   643  
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   644  #define XCP_STOP_SEC_CODE
+; BSW\src\BSW\Gen\Xcp\src\Xcp.c	   645  #include "Xcp_MemMap.h"
+
+	; Module end

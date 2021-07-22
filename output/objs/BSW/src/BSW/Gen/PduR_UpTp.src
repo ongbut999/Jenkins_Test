@@ -1,0 +1,3225 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc17772a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\PduR_UpTp.src BSW\\src\\BSW\\Gen\\PduR\\PduR_UpTp.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\PduR\\PduR_UpTp.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.PduR_UpTp.PduR_DcmTransmit',code,cluster('PduR_DcmTransmit')
+	.sect	'.text.PduR_UpTp.PduR_DcmTransmit'
+	.align	2
+	
+	.global	PduR_DcmTransmit
+
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	     1  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	     2  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	     3  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	     4   
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	     5  /*<VersionHead>
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	     6   * This Configuration File is generated using versions (automatically filled in) as listed below.
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	     7   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	     8   * $Generator__: PduR  / AR42.6.0.0                Module Package Version
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	     9   * $Editor_____: ISOLAR-A/B 6.0.1_6.0.1                Tool Version
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    10   * $Model______: 2.3.0.4                ECU Parameter Definition Version
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    11   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    12   
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    13   </VersionHead>*/
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    14  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    15  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    16  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    17  #include "PduR_Prv.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    18  #include "PduR_Cfg.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    19  /* Appropriate header files are included to declare the prototypes
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    20   */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    21  #include "PduR_UpTp.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    22  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    23  #if defined(PDUR_CANTP_CHANGE_PARAMETER_SUPPORT) && (PDUR_CANTP_CHANGE_PARAMETER_SUPPORT != 0)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    24  #include "PduR_CanTp.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    25  #endif
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    26  #if defined(PDUR_FRTP_CHANGE_PARAMETER_SUPPORT) && (PDUR_FRTP_CHANGE_PARAMETER_SUPPORT != 0)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    27  #include "PduR_FrTp.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    28  #endif
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    29  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    30  #include "PduR_Dcm.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    31  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    32  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    33  /* Begin section for code */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    34  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    35  #define PDUR_START_SEC_CODE
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    36  #include "PduR_MemMap.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    37  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    38  /**
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    39   **************************************************************************************************
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    40   * PduR_DcmTransmit
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    41   *      This function is called by the DCM to request a transmission.
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    42   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    43   * \param           PduIdType id: ID of DCM I-PDU to be transmitted.
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    44   *                  P2CONST( PduInfoType, TYPEDEF, PDUR_APPL_DATA ) ptr: Pointer to a structure with I-PDU related data that shall be transmitted:
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    45   *                                         data length and pointer to I-SDU buffer
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    46   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    47   * \retval          E_OK Transmit request has been accepted
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    48   *                  E_NOT_OK Transmit request has not been accepted
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    49   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    50   * \seealso         PDUR202, PDUR206
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    51   * \usedresources
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    52   **************************************************************************************************
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    53   */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    54  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    55  FUNC( Std_ReturnType, PDUR_CODE ) PduR_DcmTransmit( VAR(PduIdType, AUTOMATIC) id, P2CONST( PduInfoType, TYPEDEF, PDUR_APPL_DATA ) ptr)
+; Function PduR_DcmTransmit
+.L10:
+PduR_DcmTransmit:	.type	func
+
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    56  {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    57      return (PduR_rDcmTransmit( (id) , (ptr)));
+	call	PduR_dDcmTransmit
+.L36:
+	j	.L2
+
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    58  }
+.L2:
+	ret
+.L28:
+	
+__PduR_DcmTransmit_function_end:
+	.size	PduR_DcmTransmit,__PduR_DcmTransmit_function_end-PduR_DcmTransmit
+.L21:
+	; End of function
+	
+	.sdecl	'.text.PduR_UpTp.PduR_DcmCancelTransmit',code,cluster('PduR_DcmCancelTransmit')
+	.sect	'.text.PduR_UpTp.PduR_DcmCancelTransmit'
+	.align	2
+	
+	.global	PduR_DcmCancelTransmit
+
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    59  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    60  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    61  /* End section for code */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    62  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    63  #define PDUR_STOP_SEC_CODE
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    64  #include "PduR_MemMap.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    65  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    66  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    67  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    68  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    69  /* Begin section for code */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    70  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    71  #define PDUR_START_SEC_CODE
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    72  #include "PduR_MemMap.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    73  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    74  /**
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    75   **************************************************************************************************
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    76   * PduR_DcmCancelTransmit
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    77   *      This function is called by the DCM to request a transmission cancellation
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    78   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    79   * \param           PduIdType id: ID of DCM I-PDU to be cancelled the transmission.
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    80   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    81   * \retval          E_OK Cancellation request has been accepted
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    82   *                  E_NOT_OK Cancellation request has not been accepted
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    83   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    84   **************************************************************************************************
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    85   */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    86  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    87  FUNC( Std_ReturnType, PDUR_CODE ) PduR_DcmCancelTransmit( VAR(PduIdType,AUTOMATIC) id)
+; Function PduR_DcmCancelTransmit
+.L12:
+PduR_DcmCancelTransmit:	.type	func
+
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    88  {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    89      VAR( Std_ReturnType, AUTOMATIC) r;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    90  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    91  #if defined(PDUR_DEV_ERROR_DETECT) && (PDUR_DEV_ERROR_DETECT != STD_OFF)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    92      /* DET Checks if DET is enabled */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    93      PDUR_CHECK_STATE_RET(PDUR_SID_DCMCNCLTX, E_NOT_OK)
+	movh.a	a15,#@his(PduR_State)
+	lea	a15,[a15]@los(PduR_State)
+	ld.w	d15,[a15]
+	jne	d15,#0,.L3
+	mov	d4,#51
+.L37:
+	mov	d5,#0
+	mov	d6,#12
+	mov	d7,#1
+	call	Det_ReportError
+	mov	d2,#1
+	j	.L4
+.L3:
+
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    94  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    95      if ( ( id >= PDUR_NR_VALID_DCM_IDS ) || ( PduR_iDcmCancelTransmitFunc(id) == NULL_PTR ) )
+	movh.a	a15,#@his(PduR_Base)
+	lea	a15,[a15]@los(PduR_Base)
+	ld.a	a15,[a15]
+	ld.a	a15,[a15]20
+	ld.hu	d15,[a15]8
+.L54:
+	jge.u	d4,d15,.L5
+.L55:
+	ld.a	a15,[a15]
+	addsc.a	a15,a15,d4,#2
+	ld.bu	d15,[a15]3
+	movh.a	a2,#@his(PduR_loCancelTransmitTable)
+	lea	a2,[a2]@los(PduR_loCancelTransmitTable)
+	addsc.a	a2,a2,d15,#2
+	ld.a	a2,[a2]
+.L56:
+	jnz.a	a2,.L6
+.L5:
+
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    96      {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    97          PDUR_REPORT_ERROR(PDUR_SID_DCMCNCLTX, PDUR_E_PDU_ID_INVALID);
+	mov	d4,#51
+.L38:
+	mov	d5,#0
+	mov	d6,#12
+	mov	d7,#2
+	call	Det_ReportError
+.L57:
+
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    98          return  E_NOT_OK;
+	mov	d2,#1
+.L58:
+	j	.L7
+.L6:
+
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	    99      }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   100  #endif /* PDUR_DEV_ERROR_DETECT */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   101  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   102      r = PduR_iDcmCancelTransmitFunc(id)( PduR_iDcmCancelTransmitID(id) );
+	ld.hu	d4,[a15]0
+.L39:
+	calli	a2
+.L40:
+
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   103  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   104      return r;
+	j	.L8
+
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   105  }
+.L8:
+.L7:
+.L4:
+	ret
+.L33:
+	
+__PduR_DcmCancelTransmit_function_end:
+	.size	PduR_DcmCancelTransmit,__PduR_DcmCancelTransmit_function_end-PduR_DcmCancelTransmit
+.L26:
+	; End of function
+	
+	.calls	'PduR_DcmTransmit','PduR_dDcmTransmit'
+	.calls	'PduR_DcmCancelTransmit','Det_ReportError'
+	.calls	'PduR_DcmCancelTransmit','__INDIRECT__'
+	.calls	'PduR_DcmTransmit','',0
+	.extern	Det_ReportError
+	.extern	PduR_Base
+	.extern	PduR_State
+	.extern	PduR_loCancelTransmitTable
+	.extern	PduR_dDcmTransmit
+	.extern	__INDIRECT__
+	.calls	'PduR_DcmCancelTransmit','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L14:
+	.word	19888
+	.half	3
+	.word	.L15
+	.byte	4
+.L13:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\PduR\\PduR_UpTp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L16
+.L27:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.word	132
+	.byte	4
+	.byte	'rba_DiagLib_Bit8SetBit',0,3,1,36,19,1,1,5
+	.byte	'buffer',0,1,36,49
+	.word	149
+	.byte	5
+	.byte	'bit_position',0,1,36,63
+	.word	132
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBit',0,3,1,42,19,1,1,5
+	.byte	'buffer',0,1,42,51
+	.word	149
+	.byte	5
+	.byte	'bit_position',0,1,42,65
+	.word	132
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit8GetSingleBit',0,3,1,60,20
+	.word	132
+	.byte	1,1,5
+	.byte	'value',0,1,60,55
+	.word	132
+	.byte	5
+	.byte	'bit_position',0,1,60,68
+	.word	132
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBits',0,3,1,77,19,1,1,5
+	.byte	'value',0,1,77,52
+	.word	149
+	.byte	5
+	.byte	'bit_position',0,1,77,65
+	.word	132
+	.byte	5
+	.byte	'number_of_bits',0,1,77,85
+	.word	132
+	.byte	6,0
+.L29:
+	.byte	2
+	.byte	'unsigned short int',0,2,7,3
+	.word	462
+	.byte	4
+	.byte	'rba_DiagLib_Bit16SetBit',0,3,2,36,19,1,1,5
+	.byte	'buffer',0,2,36,51
+	.word	484
+	.byte	5
+	.byte	'bit_position',0,2,36,65
+	.word	132
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBit',0,3,2,42,19,1,1,5
+	.byte	'buffer',0,2,42,53
+	.word	484
+	.byte	5
+	.byte	'bit_position',0,2,42,67
+	.word	132
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit16GetSingleBit',0,3,2,60,21
+	.word	462
+	.byte	1,1,5
+	.byte	'value',0,2,60,58
+	.word	462
+	.byte	5
+	.byte	'bit_position',0,2,60,71
+	.word	132
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBits',0,3,2,78,19,1,1,5
+	.byte	'value',0,2,78,54
+	.word	484
+	.byte	5
+	.byte	'bit_position',0,2,78,67
+	.word	132
+	.byte	5
+	.byte	'number_of_bits',0,2,78,87
+	.word	132
+	.byte	6,0,2
+	.byte	'unsigned int',0,4,7,3
+	.word	801
+	.byte	4
+	.byte	'rba_DiagLib_Bit32SetBit',0,3,3,36,19,1,1,5
+	.byte	'buffer',0,3,36,51
+	.word	817
+	.byte	5
+	.byte	'bit_position',0,3,36,65
+	.word	132
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBit',0,3,3,42,19,1,1,5
+	.byte	'buffer',0,3,42,53
+	.word	817
+	.byte	5
+	.byte	'bit_position',0,3,42,67
+	.word	132
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit32GetSingleBit',0,3,3,60,21
+	.word	801
+	.byte	1,1,5
+	.byte	'value',0,3,60,58
+	.word	801
+	.byte	5
+	.byte	'bit_position',0,3,60,71
+	.word	132
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBits',0,3,3,78,19,1,1,5
+	.byte	'value',0,3,78,54
+	.word	817
+	.byte	5
+	.byte	'bit_position',0,3,78,67
+	.word	132
+	.byte	5
+	.byte	'number_of_bits',0,3,78,87
+	.word	132
+	.byte	6,0,8
+	.word	154
+	.byte	9
+	.word	184
+	.byte	9
+	.word	199
+	.byte	6,0,8
+	.word	222
+	.byte	9
+	.word	254
+	.byte	9
+	.word	269
+	.byte	6,0,8
+	.word	292
+	.byte	9
+	.word	332
+	.byte	9
+	.word	346
+	.byte	6,0,8
+	.word	369
+	.byte	9
+	.word	402
+	.byte	9
+	.word	416
+	.byte	9
+	.word	437
+	.byte	6,0,8
+	.word	489
+	.byte	9
+	.word	520
+	.byte	9
+	.word	535
+	.byte	6,0,8
+	.word	558
+	.byte	9
+	.word	591
+	.byte	9
+	.word	606
+	.byte	6,0,8
+	.word	629
+	.byte	9
+	.word	670
+	.byte	9
+	.word	684
+	.byte	6,0,8
+	.word	707
+	.byte	9
+	.word	741
+	.byte	9
+	.word	755
+	.byte	9
+	.word	776
+	.byte	6,0,8
+	.word	822
+	.byte	9
+	.word	853
+	.byte	9
+	.word	868
+	.byte	6,0,8
+	.word	891
+	.byte	9
+	.word	924
+	.byte	9
+	.word	939
+	.byte	6,0,8
+	.word	962
+	.byte	9
+	.word	1003
+	.byte	9
+	.word	1017
+	.byte	6,0,8
+	.word	1040
+	.byte	9
+	.word	1074
+	.byte	9
+	.word	1088
+	.byte	9
+	.word	1109
+	.byte	6,0,10
+	.byte	'Det_ReportError',0,4,112,16
+	.word	132
+	.byte	1,1,1,1,5
+	.byte	'ModuleId',0,4,112,39
+	.word	462
+	.byte	5
+	.byte	'InstanceId',0,4,112,55
+	.word	132
+	.byte	5
+	.byte	'ApiId',0,4,112,73
+	.word	132
+	.byte	5
+	.byte	'ErrorId',0,4,112,86
+	.word	132
+	.byte	0,11,5,71,9,8,12
+	.byte	'SduDataPtr',0
+	.word	149
+	.byte	4,2,35,0,12
+	.byte	'SduLength',0
+	.word	462
+	.byte	2,2,35,4,0,13
+	.word	1448
+.L31:
+	.byte	3
+	.word	1493
+	.byte	10
+	.byte	'PduR_dDcmTransmit',0,6,35,42
+	.word	132
+	.byte	1,1,1,1,5
+	.byte	'id',0,6,35,87
+	.word	462
+	.byte	5
+	.byte	'ptr',0,6,35,139,1
+	.word	1498
+	.byte	0,14
+	.byte	'__INDIRECT__',0,7,1,1,1,1,1,15,1,3
+	.word	1578
+	.byte	16
+	.byte	'__codeptr',0,7,1,1
+	.word	1580
+	.byte	2
+	.byte	'char',0,1,6,16
+	.byte	'sint8',0,8,76,25
+	.word	1603
+	.byte	16
+	.byte	'uint8',0,8,81,25
+	.word	132
+	.byte	16
+	.byte	'uint16',0,8,91,25
+	.word	462
+	.byte	16
+	.byte	'uint32',0,8,106,24
+	.word	801
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,16
+	.byte	'uint64',0,8,111,30
+	.word	1669
+	.byte	16
+	.byte	'boolean',0,8,127,25
+	.word	132
+	.byte	2
+	.byte	'unsigned long int',0,4,7,16
+	.byte	'uint16_least',0,8,147,1,25
+	.word	1726
+	.byte	16
+	.byte	'StatusType',0,9,191,1,27
+	.word	132
+	.byte	16
+	.byte	'Std_ReturnType',0,9,199,1,15
+	.word	132
+	.byte	11,9,206,1,9,8,12
+	.byte	'vendorID',0
+	.word	462
+	.byte	2,2,35,0,12
+	.byte	'moduleID',0
+	.word	462
+	.byte	2,2,35,2,12
+	.byte	'sw_major_version',0
+	.word	132
+	.byte	1,2,35,4,12
+	.byte	'sw_minor_version',0
+	.word	132
+	.byte	1,2,35,5,12
+	.byte	'sw_patch_version',0
+	.word	132
+	.byte	1,2,35,6,0,16
+	.byte	'Std_VersionInfoType',0,9,213,1,3
+	.word	1813
+	.byte	16
+	.byte	'PduIdType',0,10,22,19
+	.word	462
+	.byte	16
+	.byte	'PduLengthType',0,10,26,19
+	.word	462
+	.byte	16
+	.byte	'PduInfoType',0,5,75,3
+	.word	1448
+	.byte	17,5,90,9,4,18
+	.byte	'BUFREQ_OK',0,0,18
+	.byte	'BUFREQ_E_NOT_OK',0,1,18
+	.byte	'BUFREQ_E_BUSY',0,2,18
+	.byte	'BUFREQ_E_OVFL',0,3,0,16
+	.byte	'BufReq_ReturnType',0,5,96,3
+	.word	2023
+	.byte	17,5,113,9,4,18
+	.byte	'TP_DATACONF',0,0,18
+	.byte	'TP_DATARETRY',0,1,18
+	.byte	'TP_CONFPENDING',0,2,0,16
+	.byte	'TpDataStateType',0,5,118,3
+	.word	2117
+	.byte	16
+	.byte	'NetworkHandleType',0,5,128,1,17
+	.word	132
+	.byte	16
+	.byte	'Can_IdType',0,11,32,16
+	.word	801
+	.byte	16
+	.byte	'Can_HwHandleType',0,11,43,16
+	.word	462
+	.byte	11,12,93,9,8,12
+	.byte	'Class',0
+	.word	132
+	.byte	1,2,35,0,12
+	.byte	'TIN',0
+	.word	132
+	.byte	1,2,35,1,12
+	.byte	'ReturnAddress',0
+	.word	801
+	.byte	4,2,35,4,0,16
+	.byte	'OsTrapInfoType',0,12,97,3
+	.word	2264
+	.byte	19,68
+	.word	801
+	.byte	20,16,0,11,12,154,1,9,68,12
+	.byte	'store',0
+	.word	2344
+	.byte	68,2,35,0,0,19,68
+	.word	2353
+	.byte	20,0,0,16
+	.byte	'Os_JumpBufType',0,12,156,1,3
+	.word	2375
+	.byte	16
+	.byte	'Os_StackTraceType',0,12,174,1,18
+	.word	801
+	.byte	11,12,175,1,9,8,12
+	.byte	'sp',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'ctx',0
+	.word	801
+	.byte	4,2,35,4,0,16
+	.byte	'Os_StackValueType',0,12,175,1,63
+	.word	2435
+	.byte	16
+	.byte	'Os_StackSizeType',0,12,176,1,27
+	.word	2435
+	.byte	21,1,1,3
+	.word	2520
+	.byte	16
+	.byte	'Os_VoidVoidFunctionType',0,12,179,1,16
+	.word	2523
+	.byte	16
+	.byte	'ApplicationType',0,12,193,1,23
+	.word	132
+	.byte	22
+	.byte	'Os_ApplicationConfigurationType_s',0,12,198,1,16,2,12
+	.byte	'app_id',0
+	.word	132
+	.byte	1,2,35,0,12
+	.byte	'access',0
+	.word	132
+	.byte	1,2,35,1,0,16
+	.byte	'Os_ApplicationConfigurationType',0,12,201,1,3
+	.word	2586
+	.byte	16
+	.byte	'Os_CoreStateType',0,12,203,1,16
+	.word	801
+	.byte	16
+	.byte	'AreaIdType',0,12,204,1,16
+	.word	462
+	.byte	16
+	.byte	'Os_PeripheralAddressType',0,12,212,1,22
+	.word	801
+	.byte	16
+	.byte	'TickType',0,12,221,1,22
+	.word	801
+	.byte	16
+	.byte	'Os_StopwatchTickType',0,12,225,1,22
+	.word	801
+	.byte	16
+	.byte	'Os_Lockable',0,12,234,1,18
+	.word	817
+	.byte	16
+	.byte	'CoreIdType',0,12,236,1,16
+	.word	462
+	.byte	16
+	.byte	'SpinlockIdType',0,12,237,1,16
+	.word	462
+	.byte	17,12,239,1,9,4,18
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,18
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,16
+	.byte	'TryToGetSpinlockType',0,12,239,1,74
+	.word	2893
+	.byte	17,12,174,2,9,4,18
+	.byte	'APPLICATION_ACCESSIBLE',0,0,18
+	.byte	'APPLICATION_RESTARTING',0,1,18
+	.byte	'APPLICATION_TERMINATED',0,2,0,16
+	.byte	'ApplicationStateType',0,12,174,2,92
+	.word	2986
+	.byte	23
+	.byte	'void',0,3
+	.word	3098
+	.byte	24,1,1,25
+	.word	132
+	.byte	25
+	.word	3104
+	.byte	0,3
+	.word	3109
+	.byte	16
+	.byte	'Os_FunctionEntryType',0,12,183,2,16
+	.word	3123
+	.byte	22
+	.byte	'Os_MeterInfoType_s',0,12,193,2,16,48,12
+	.byte	'elapsed',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'previous',0
+	.word	801
+	.byte	4,2,35,4,12
+	.byte	'max',0
+	.word	801
+	.byte	4,2,35,8,12
+	.byte	'cumulative',0
+	.word	801
+	.byte	4,2,35,12,12
+	.byte	'stackbase',0
+	.word	2435
+	.byte	8,2,35,16,12
+	.byte	'stackusage',0
+	.word	2435
+	.byte	8,2,35,24,12
+	.byte	'stackmax',0
+	.word	2435
+	.byte	8,2,35,32,12
+	.byte	'stackbudget',0
+	.word	2435
+	.byte	8,2,35,40,0,16
+	.byte	'Os_MeterInfoType',0,12,202,2,3
+	.word	3158
+	.byte	3
+	.word	3158
+	.byte	16
+	.byte	'Os_MeterInfoRefType',0,12,203,2,50
+	.word	3356
+	.byte	16
+	.byte	'EventMaskType',0,12,206,2,15
+	.word	132
+	.byte	16
+	.byte	'Os_imaskType',0,12,211,2,16
+	.word	801
+	.byte	22
+	.byte	'Os_ISRDynType_s',0,12,213,2,16,48,12
+	.byte	'meter',0
+	.word	3158
+	.byte	48,2,35,0,0,16
+	.byte	'Os_ISRDynType',0,12,215,2,3
+	.word	3435
+	.byte	3
+	.word	3435
+	.byte	13
+	.word	3496
+	.byte	22
+	.byte	'Os_ISRType_s',0,12,216,2,16,24,12
+	.byte	'entry_function',0
+	.word	2528
+	.byte	4,2,35,0,12
+	.byte	'dynamic',0
+	.word	3501
+	.byte	4,2,35,4,12
+	.byte	'imask',0
+	.word	801
+	.byte	4,2,35,8,12
+	.byte	'stackbudget',0
+	.word	2435
+	.byte	8,2,35,12,12
+	.byte	'access',0
+	.word	132
+	.byte	1,2,35,20,12
+	.byte	'application',0
+	.word	132
+	.byte	1,2,35,21,0,16
+	.byte	'Os_ISRType',0,12,223,2,3
+	.word	3506
+	.byte	3
+	.word	2520
+	.byte	13
+	.word	3506
+	.byte	3
+	.word	3665
+	.byte	16
+	.byte	'ISRType',0,12,224,2,46
+	.word	3670
+	.byte	16
+	.byte	'Os_bitmask',0,12,239,2,22
+	.word	801
+	.byte	16
+	.byte	'Os_pset0Type',0,12,240,2,20
+	.word	801
+	.byte	16
+	.byte	'Os_pset1Type',0,12,241,2,20
+	.word	801
+	.byte	16
+	.byte	'Os_pset2Type',0,12,242,2,20
+	.word	801
+	.byte	26,12,243,2,9,4,12
+	.byte	'p0',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'p1',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'p2',0
+	.word	801
+	.byte	4,2,35,0,0,16
+	.byte	'Os_psetType',0,12,247,2,3
+	.word	3778
+	.byte	26,12,249,2,9,4,12
+	.byte	't0',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	't1',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	't2',0
+	.word	801
+	.byte	4,2,35,0,0,16
+	.byte	'Os_tpmaskType',0,12,253,2,3
+	.word	3842
+	.byte	16
+	.byte	'Os_ActivationCountType',0,12,254,2,23
+	.word	132
+	.byte	22
+	.byte	'Os_TaskDynType_s',0,12,128,3,16,120,12
+	.byte	'terminate_jump_buf',0
+	.word	2384
+	.byte	68,2,35,0,12
+	.byte	'meter',0
+	.word	3158
+	.byte	48,2,35,68,12
+	.byte	'activation_count',0
+	.word	132
+	.byte	1,2,35,116,0,16
+	.byte	'Os_TaskDynType',0,12,132,3,3
+	.word	3940
+	.byte	19,68
+	.word	2353
+	.byte	20,0,0,3
+	.word	3940
+	.byte	13
+	.word	4066
+	.byte	22
+	.byte	'Os_TaskType_s',0,12,134,3,16,40,12
+	.byte	'dynamic',0
+	.word	4071
+	.byte	4,2,35,0,12
+	.byte	'entry_function',0
+	.word	2528
+	.byte	4,2,35,4,12
+	.byte	'pset',0
+	.word	3778
+	.byte	4,2,35,8,12
+	.byte	'base_tpmask',0
+	.word	3842
+	.byte	4,2,35,12,12
+	.byte	'tpmask',0
+	.word	3842
+	.byte	4,2,35,16,12
+	.byte	'core_id',0
+	.word	462
+	.byte	2,2,35,20,12
+	.byte	'index',0
+	.word	801
+	.byte	4,2,35,24,12
+	.byte	'stackbudget',0
+	.word	2435
+	.byte	8,2,35,28,12
+	.byte	'activation_count',0
+	.word	132
+	.byte	1,2,35,36,12
+	.byte	'access',0
+	.word	132
+	.byte	1,2,35,37,12
+	.byte	'application',0
+	.word	132
+	.byte	1,2,35,38,0,16
+	.byte	'Os_TaskType',0,12,146,3,3
+	.word	4076
+	.byte	13
+	.word	4076
+	.byte	3
+	.word	4326
+	.byte	16
+	.byte	'TaskType',0,12,147,3,47
+	.word	4331
+	.byte	27
+	.byte	'Os_TaskStateType',0,12,155,3,6,4,18
+	.byte	'SUSPENDED',0,0,18
+	.byte	'READY',0,1,18
+	.byte	'WAITING',0,2,18
+	.byte	'RUNNING',0,3,0,16
+	.byte	'TaskStateType',0,12,156,3,31
+	.word	4354
+	.byte	26,12,167,3,3,4,12
+	.byte	'tpmask',0
+	.word	3842
+	.byte	4,2,35,0,0,22
+	.byte	'Os_ResourceDynType_s',0,12,166,3,16,4,12
+	.byte	'saved_priority',0
+	.word	4441
+	.byte	4,2,35,0,0,16
+	.byte	'Os_ResourceDynType',0,12,170,3,3
+	.word	4464
+	.byte	3
+	.word	4464
+	.byte	13
+	.word	4544
+	.byte	22
+	.byte	'Os_ResourceType_s',0,12,171,3,16,12,12
+	.byte	'dynamic',0
+	.word	4549
+	.byte	4,2,35,0,12
+	.byte	'tpmask',0
+	.word	3842
+	.byte	4,2,35,4,12
+	.byte	'access',0
+	.word	132
+	.byte	1,2,35,8,0,16
+	.byte	'Os_ResourceType',0,12,175,3,3
+	.word	4554
+	.byte	11,12,181,3,9,12,12
+	.byte	'maxallowedvalue',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'ticksperbase',0
+	.word	801
+	.byte	4,2,35,4,12
+	.byte	'mincycle',0
+	.word	801
+	.byte	4,2,35,8,0,16
+	.byte	'AlarmBaseType',0,12,185,3,3
+	.word	4653
+	.byte	11,12,206,3,9,8,12
+	.byte	'Running',0
+	.word	132
+	.byte	1,2,35,0,12
+	.byte	'Pending',0
+	.word	132
+	.byte	1,2,35,1,12
+	.byte	'Delay',0
+	.word	801
+	.byte	4,2,35,4,0,16
+	.byte	'Os_CounterStatusType',0,12,210,3,3
+	.word	4748
+	.byte	28
+	.word	132
+	.byte	1,1,3
+	.word	4834
+	.byte	16
+	.byte	'Os_CounterIncrAdvType',0,12,217,3,22
+	.word	4841
+	.byte	22
+	.byte	's_swd',0,12,222,3,12,4,12
+	.byte	'count',0
+	.word	801
+	.byte	4,2,35,0,0,26,12,221,3,3,4,12
+	.byte	'sw',0
+	.word	4877
+	.byte	4,2,35,0,0,22
+	.byte	'Os_CounterDynType_s',0,12,220,3,16,4,12
+	.byte	'type_dependent',0
+	.word	4905
+	.byte	4,2,35,0,0,16
+	.byte	'Os_CounterDynType',0,12,226,3,3
+	.word	4924
+	.byte	3
+	.word	4924
+	.byte	13
+	.word	5002
+	.byte	22
+	.byte	'Os_CounterType_s',0,12,227,3,16,28,12
+	.byte	'dynamic',0
+	.word	5007
+	.byte	4,2,35,0,12
+	.byte	'advincr',0
+	.word	4846
+	.byte	4,2,35,4,12
+	.byte	'base',0
+	.word	4653
+	.byte	12,2,35,8,12
+	.byte	'core',0
+	.word	3104
+	.byte	4,2,35,20,12
+	.byte	'access',0
+	.word	132
+	.byte	1,2,35,24,12
+	.byte	'application',0
+	.word	132
+	.byte	1,2,35,25,0,16
+	.byte	'Os_CounterType',0,12,234,3,3
+	.word	5012
+	.byte	3
+	.word	4834
+	.byte	13
+	.word	5012
+	.byte	3
+	.word	5164
+	.byte	16
+	.byte	'CounterType',0,12,235,3,52
+	.word	5169
+	.byte	27
+	.byte	'Os_ScheduleTableStatusType',0,12,240,3,6,4,18
+	.byte	'SCHEDULETABLE_STOPPED',0,0,18
+	.byte	'SCHEDULETABLE_NEXT',0,1,18
+	.byte	'SCHEDULETABLE_WAITING',0,2,18
+	.byte	'SCHEDULETABLE_RUNNING',0,3,18
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,16
+	.byte	'ScheduleTableStatusType',0,12,241,3,41
+	.word	5195
+	.byte	13
+	.word	.L41-.L14
+	.byte	3
+	.word	5395
+	.byte	16
+	.byte	'ScheduleTableType',0,12,128,4,58
+	.word	5400
+	.byte	22
+	.byte	'Os_ScheduleTableDynType_s',0,12,130,4,16,16,12
+	.byte	'match',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'next',0
+	.word	5405
+	.byte	4,2,35,4,12
+	.byte	'state',0
+	.word	5195
+	.byte	4,2,35,8,12
+	.byte	'config',0
+	.word	462
+	.byte	2,2,35,12,0,3
+	.word	5432
+	.byte	13
+	.word	5525
+.L41:
+	.byte	22
+	.byte	'Os_ScheduleTableType_s',0,12,247,3,16,16,12
+	.byte	'dynamic',0
+	.word	5530
+	.byte	4,2,35,0,12
+	.byte	'counter',0
+	.word	5174
+	.byte	4,2,35,4,12
+	.byte	'repeat',0
+	.word	132
+	.byte	1,2,35,8,12
+	.byte	'config',0
+	.word	462
+	.byte	2,2,35,10,12
+	.byte	'initial',0
+	.word	132
+	.byte	1,2,35,12,12
+	.byte	'access',0
+	.word	132
+	.byte	1,2,35,13,12
+	.byte	'application',0
+	.word	132
+	.byte	1,2,35,14,0,16
+	.byte	'Os_ScheduleTableType',0,12,255,3,3
+	.word	5535
+	.byte	13
+	.word	5535
+	.byte	3
+	.word	5715
+	.byte	13
+	.word	5012
+	.byte	3
+	.word	5725
+	.byte	29
+	.word	2828
+	.byte	29
+	.word	3778
+	.byte	29
+	.word	3675
+	.byte	29
+	.word	4336
+	.byte	29
+	.word	3842
+	.byte	29
+	.word	132
+	.byte	29
+	.word	4336
+	.byte	22
+	.byte	'Os_ControlledCoreType_s',0,12,251,6,16,112,12
+	.byte	'TrapInfo',0
+	.word	2264
+	.byte	8,2,35,0,12
+	.byte	'lock_taskaccess',0
+	.word	5735
+	.byte	4,2,35,8,12
+	.byte	'ReadyTasks',0
+	.word	5740
+	.byte	4,2,35,12,12
+	.byte	'RunningISR',0
+	.word	5745
+	.byte	4,2,35,16,12
+	.byte	'RunningTask',0
+	.word	5750
+	.byte	4,2,35,20,12
+	.byte	'RunningTPMask',0
+	.word	5755
+	.byte	4,2,35,24,12
+	.byte	'CurrentMeteredObject',0
+	.word	3361
+	.byte	4,2,35,28,12
+	.byte	'IdleMeter',0
+	.word	3158
+	.byte	48,2,35,32,12
+	.byte	'AppAccess',0
+	.word	132
+	.byte	1,2,35,80,12
+	.byte	'AppOverride',0
+	.word	5760
+	.byte	1,2,35,81,12
+	.byte	'GetStackValueAdjust',0
+	.word	2435
+	.byte	8,2,35,84,12
+	.byte	'InErrorHook',0
+	.word	132
+	.byte	1,2,35,92,12
+	.byte	'ChainTaskRef',0
+	.word	5765
+	.byte	4,2,35,96,12
+	.byte	'GetStackUsageAdjust',0
+	.word	2435
+	.byte	8,2,35,100,12
+	.byte	'InProtectionHook',0
+	.word	132
+	.byte	1,2,35,108,12
+	.byte	'CoreIsActive',0
+	.word	132
+	.byte	1,2,35,109,12
+	.byte	'InShutdownHook',0
+	.word	132
+	.byte	1,2,35,110,0,16
+	.byte	'Os_ControlledCoreType',0,12,141,7,3
+	.word	5770
+	.byte	3
+	.word	801
+	.byte	13
+	.word	3506
+	.byte	3
+	.word	6226
+	.byte	13
+	.word	4076
+	.byte	3
+	.word	6236
+	.byte	3
+	.word	3158
+	.byte	22
+	.byte	'Os_AnyCoreType_s',0,12,151,7,16,96,12
+	.byte	'DisableAllImask',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'SuspendAllImask',0
+	.word	801
+	.byte	4,2,35,4,12
+	.byte	'SuspendOSImask',0
+	.word	801
+	.byte	4,2,35,8,12
+	.byte	'DisableAllCount',0
+	.word	801
+	.byte	4,2,35,12,12
+	.byte	'SuspendAllCount',0
+	.word	801
+	.byte	4,2,35,16,12
+	.byte	'SuspendOSCount',0
+	.word	801
+	.byte	4,2,35,20,12
+	.byte	'RestartJumpBuf',0
+	.word	2384
+	.byte	68,2,35,24,12
+	.byte	'Restartable',0
+	.word	132
+	.byte	1,2,35,92,0,16
+	.byte	'Os_AnyCoreType',0,12,160,7,3
+	.word	6251
+	.byte	16
+	.byte	'Can_TxObjPriorityClassType',0,13,219,3,16
+	.word	801
+	.byte	22
+	.byte	'Can_TxHwObjectConfigType',0,13,231,3,16,8,12
+	.byte	'MsgObjId',0
+	.word	132
+	.byte	1,2,35,0,12
+	.byte	'HwControllerId',0
+	.word	132
+	.byte	1,2,35,1,12
+	.byte	'TxObjPriorityClass',0
+	.word	801
+	.byte	4,2,35,4,0,16
+	.byte	'Can_TxHwObjectConfigType',0,13,252,3,3
+	.word	6528
+	.byte	22
+	.byte	'Can_RxHwObjectConfigType',0,13,129,4,16,12,12
+	.byte	'MaskRef',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'MsgId',0
+	.word	801
+	.byte	4,2,35,4,12
+	.byte	'MsgObjId',0
+	.word	132
+	.byte	1,2,35,8,12
+	.byte	'HwControllerId',0
+	.word	132
+	.byte	1,2,35,9,0,16
+	.byte	'Can_RxHwObjectConfigType',0,13,147,4,3
+	.word	6664
+	.byte	19,4
+	.word	132
+	.byte	20,3,0,22
+	.byte	'Can_ControllerMOMapConfigType',0,13,181,4,16,4,12
+	.byte	'ControllerMOMap',0
+	.word	6804
+	.byte	4,2,35,0,0,16
+	.byte	'Can_ControllerMOMapConfigType',0,13,184,4,3
+	.word	6813
+	.byte	22
+	.byte	'Can_NPCRValueType',0,13,188,4,16,2,12
+	.byte	'Can_NPCRValue',0
+	.word	462
+	.byte	2,2,35,0,0,16
+	.byte	'Can_NPCRValueType',0,13,191,4,3
+	.word	6914
+	.byte	22
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,194,4,16,8,12
+	.byte	'CanControllerBaudrate',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'CanControllerBaudrateCfg',0
+	.word	462
+	.byte	2,2,35,4,0,16
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,198,4,3
+	.word	6989
+	.byte	13
+	.word	6989
+	.byte	3
+	.word	7154
+	.byte	22
+	.byte	'Can_BaudrateConfigPtrType',0,13,201,4,16,4,12
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	7159
+	.byte	4,2,35,0,0,16
+	.byte	'Can_BaudrateConfigPtrType',0,13,204,4,3
+	.word	7164
+	.byte	22
+	.byte	'Can_EventHandlingType',0,13,226,4,16,4,12
+	.byte	'CanEventType',0
+	.word	6804
+	.byte	4,2,35,0,0,16
+	.byte	'Can_EventHandlingType',0,13,229,4,3
+	.word	7264
+	.byte	16
+	.byte	'Rte_TransformerErrorCode',0,14,130,1,15
+	.word	132
+	.byte	16
+	.byte	'Rte_TransformerClass',0,14,131,1,15
+	.word	132
+	.byte	11,14,168,1,9,12,12
+	.byte	'in',0
+	.word	3104
+	.byte	4,2,35,0,12
+	.byte	'out',0
+	.word	3104
+	.byte	4,2,35,4,12
+	.byte	'used',0
+	.word	462
+	.byte	2,2,35,8,12
+	.byte	'lost_data',0
+	.word	132
+	.byte	1,2,35,10,0,16
+	.byte	'Rte_QDynType',0,14,173,1,3
+	.word	7410
+	.byte	17,14,175,1,9,4,18
+	.byte	'RTE_DRA',0,0,18
+	.byte	'RTE_WOWP',0,1,18
+	.byte	'RTE_TASK',0,2,18
+	.byte	'RTE_ARE',0,3,18
+	.byte	'RTE_EV',0,4,18
+	.byte	'RTE_MSI',0,5,0,16
+	.byte	'Rte_NotificationType',0,14,182,1,3
+	.word	7497
+	.byte	3
+	.word	7410
+	.byte	22
+	.byte	'Rte_QCmnType',0,14,184,1,16,24,12
+	.byte	'dynamic',0
+	.word	7595
+	.byte	4,2,35,0,12
+	.byte	'copy',0
+	.word	132
+	.byte	1,2,35,4,12
+	.byte	'queue_size',0
+	.word	462
+	.byte	2,2,35,6,12
+	.byte	'element_size',0
+	.word	462
+	.byte	2,2,35,8,12
+	.byte	'buffer_start',0
+	.word	3104
+	.byte	4,2,35,12,12
+	.byte	'buffer_end',0
+	.word	3104
+	.byte	4,2,35,16,12
+	.byte	'notification_type',0
+	.word	7497
+	.byte	4,2,35,20,0,16
+	.byte	'Rte_QCmnType',0,14,192,1,3
+	.word	7600
+	.byte	16
+	.byte	'Rte_AlarmRefType',0,14,224,1,32
+	.word	801
+	.byte	16
+	.byte	'Rte_AlarmIndexType',0,14,226,1,32
+	.word	462
+	.byte	19,128,8
+	.word	132
+	.byte	20,255,7,0,16
+	.byte	'Impl_NVM_DstPtrType_1024',0,15,50,15
+	.word	7838
+	.byte	16
+	.byte	'CanIf_u32_impl',0,15,69,16
+	.word	801
+	.byte	16
+	.byte	'CanIf_u16_impl',0,15,71,16
+	.word	462
+	.byte	16
+	.byte	'CanIf_u8_impl',0,15,73,15
+	.word	132
+	.byte	16
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,15,88,15
+	.word	132
+	.byte	16
+	.byte	'CanIf_PduModeType_Enum_impl',0,15,90,15
+	.word	132
+	.byte	11,15,92,9,2,12
+	.byte	'DeviceMode',0
+	.word	132
+	.byte	1,2,35,0,12
+	.byte	'ChannelMode',0
+	.word	132
+	.byte	1,2,35,1,0,16
+	.byte	'CanIf_ControllerStateType_struct_impl',0,15,95,3
+	.word	8029
+	.byte	16
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,15,100,15
+	.word	132
+	.byte	16
+	.byte	'CanSM_boolean_Impl',0,15,120,15
+	.word	132
+	.byte	16
+	.byte	'CanSM_u8_Impl',0,15,123,15
+	.word	132
+	.byte	16
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,15,128,1,15
+	.word	132
+	.byte	16
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,15,132,1,15
+	.word	132
+	.byte	16
+	.byte	'CanSM_u16_Impl',0,15,136,1,16
+	.word	462
+	.byte	16
+	.byte	'CanSM_TimerStateType_Enum_impl',0,15,138,1,15
+	.word	132
+	.byte	11,15,140,1,9,4,12
+	.byte	'cntTick_u16',0
+	.word	462
+	.byte	2,2,35,0,12
+	.byte	'stTimer',0
+	.word	132
+	.byte	1,2,35,2,0,16
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,15,143,1,3
+	.word	8370
+	.byte	16
+	.byte	'Com_impl_u16',0,15,154,1,16
+	.word	462
+	.byte	16
+	.byte	'Com_impl_u8',0,15,157,1,15
+	.word	132
+	.byte	16
+	.byte	'ComM_uint32_Impl',0,15,173,1,16
+	.word	801
+	.byte	16
+	.byte	'ComM_uint16_Impl',0,15,175,1,16
+	.word	462
+	.byte	16
+	.byte	'ComM_uint8_Impl',0,15,177,1,15
+	.word	132
+	.byte	16
+	.byte	'ComM_bool_Impl',0,15,179,1,15
+	.word	132
+	.byte	11,15,181,1,9,24,12
+	.byte	'ChannelState_e',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'LightTimeoutCtr_u32',0
+	.word	801
+	.byte	4,2,35,4,12
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	462
+	.byte	2,2,35,8,12
+	.byte	'ChannelMode_u8',0
+	.word	132
+	.byte	1,2,35,10,12
+	.byte	'BusSmMode_u8',0
+	.word	132
+	.byte	1,2,35,11,12
+	.byte	'UserRequestCtr_u8',0
+	.word	132
+	.byte	1,2,35,12,12
+	.byte	'PassiveRequestState_u8',0
+	.word	132
+	.byte	1,2,35,13,12
+	.byte	'PncRequestCtr_u8',0
+	.word	132
+	.byte	1,2,35,14,12
+	.byte	'InhibitionReqStatus_u8',0
+	.word	132
+	.byte	1,2,35,15,12
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	132
+	.byte	1,2,35,16,12
+	.byte	'DiagnosticRequestState_b',0
+	.word	132
+	.byte	1,2,35,17,12
+	.byte	'CommunicationAllowed_b',0
+	.word	132
+	.byte	1,2,35,18,12
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	132
+	.byte	1,2,35,19,12
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	132
+	.byte	1,2,35,20,12
+	.byte	'NmNetworkModeStatus_b',0
+	.word	132
+	.byte	1,2,35,21,0,16
+	.byte	'ComM_ChannelStruct_Impl',0,15,197,1,3
+	.word	8602
+	.byte	11,15,206,1,9,10,12
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	462
+	.byte	2,2,35,0,12
+	.byte	'LimitToNoComCtr_u16',0
+	.word	462
+	.byte	2,2,35,2,12
+	.byte	'RequestedUserMode_t',0
+	.word	132
+	.byte	1,2,35,4,12
+	.byte	'IndicatedUserMode_t',0
+	.word	132
+	.byte	1,2,35,5,12
+	.byte	'numChannelsInFullCom_u8',0
+	.word	132
+	.byte	1,2,35,6,12
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	132
+	.byte	1,2,35,7,12
+	.byte	'numChannelsInNoCom_u8',0
+	.word	132
+	.byte	1,2,35,8,0,16
+	.byte	'ComM_UserStruct_Impl',0,15,214,1,3
+	.word	9106
+	.byte	16
+	.byte	'Dcm_IOOperationResponseType',0,15,252,1,15
+	.word	132
+	.byte	16
+	.byte	'Dcm_NegativeResponseCodeType',0,15,132,2,15
+	.word	132
+	.byte	16
+	.byte	'Dcm_OpStatusType',0,15,134,2,15
+	.word	132
+	.byte	16
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	15,138,2,15
+	.word	132
+	.byte	16
+	.byte	'Dcm_SecLevelType',0,15,142,2,15
+	.word	132
+	.byte	16
+	.byte	'Dcm_SesCtrlType',0,15,144,2,15
+	.word	132
+	.byte	16
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,15,146,2,15
+	.word	132
+	.byte	16
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,15,150,2,15
+	.word	132
+	.byte	16
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,15,154,2,15
+	.word	132
+	.byte	16
+	.byte	'Dem_EventStatusType',0,15,170,2,15
+	.word	132
+	.byte	16
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,15,243,3,34
+	.word	7849
+	.byte	19,128,8
+	.word	132
+	.byte	20,255,7,0,16
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,15,246,3,34
+	.word	7849
+	.byte	16
+	.byte	'Rte_ModeType_DcmDiagnosticSessionControl',0,16,37,15
+	.word	132
+	.byte	16
+	.byte	'PduR_RoutingPathGroupIdType',0,17,156,1,17
+	.word	462
+	.byte	16
+	.byte	'rba_BswSrv_uint64',0,18,66,28
+	.word	1669
+	.byte	16
+	.byte	'Rte_TaskRefType',0,19,184,1,32
+	.word	4336
+	.byte	16
+	.byte	'Rte_EventRefType',0,19,185,1,32
+	.word	132
+	.byte	16
+	.byte	'Rte_EventType',0,19,186,1,32
+	.word	801
+	.byte	16
+	.byte	'Rte_REActCounterType',0,19,252,1,15
+	.word	132
+	.byte	3
+	.word	132
+	.byte	16
+	.byte	'Rte_REActCounterRefType',0,19,253,1,58
+	.word	10284
+	.byte	11,19,255,1,9,8,12
+	.byte	'task',0
+	.word	10180
+	.byte	4,2,35,0,12
+	.byte	'acnt',0
+	.word	10289
+	.byte	4,2,35,4,0,16
+	.byte	'Rte_REContainerType',0,19,130,2,3
+	.word	10322
+	.byte	13
+	.word	4076
+	.byte	3
+	.word	10386
+	.byte	3
+	.word	132
+	.byte	13
+	.word	10322
+	.byte	3
+	.word	10401
+	.byte	16
+	.byte	'Rte_REContainerRefType',0,19,132,2,60
+	.word	10406
+	.byte	16
+	.byte	'Rte_MSICounterType',0,19,149,2,16
+	.word	462
+	.byte	3
+	.word	462
+	.byte	16
+	.byte	'Rte_MSICounterRefType',0,19,150,2,56
+	.word	10471
+	.byte	16
+	.byte	'Rte_MSIPendingFlagType',0,19,152,2,17
+	.word	132
+	.byte	3
+	.word	132
+	.byte	16
+	.byte	'Rte_MSIPendingFlagRefType',0,19,153,2,60
+	.word	10539
+	.byte	11,19,163,2,9,24,12
+	.byte	'counter',0
+	.word	10476
+	.byte	4,2,35,0,12
+	.byte	'incCounter',0
+	.word	132
+	.byte	1,2,35,4,12
+	.byte	'pending',0
+	.word	10544
+	.byte	4,2,35,8,12
+	.byte	'osTask',0
+	.word	10180
+	.byte	4,2,35,12,12
+	.byte	'acnt',0
+	.word	10289
+	.byte	4,2,35,16,12
+	.byte	'osEvent',0
+	.word	132
+	.byte	1,2,35,20,12
+	.byte	'MSIInit',0
+	.word	462
+	.byte	2,2,35,22,0,16
+	.byte	'Rte_MSITableEntry',0,19,172,2,3
+	.word	10579
+	.byte	3
+	.word	462
+	.byte	3
+	.word	132
+	.byte	16
+	.byte	'Rte_TaskArrayIndex',0,19,179,2,16
+	.word	132
+	.byte	16
+	.byte	'Rte_NrWaitingTasks',0,19,180,2,16
+	.word	132
+	.byte	11,19,182,2,9,4,12
+	.byte	'pending',0
+	.word	132
+	.byte	1,2,35,0,12
+	.byte	'count',0
+	.word	132
+	.byte	1,2,35,1,12
+	.byte	'firstWaitingTask',0
+	.word	132
+	.byte	1,2,35,2,0,16
+	.byte	'Rte_WaitableDatum',0,19,186,2,3
+	.word	10797
+	.byte	3
+	.word	10797
+	.byte	11,19,226,2,9,12,12
+	.byte	'event_id',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'wd',0
+	.word	10889
+	.byte	4,2,35,4,12
+	.byte	'timeout',0
+	.word	801
+	.byte	4,2,35,8,0,16
+	.byte	'Rte_WOWP_NotificationType',0,19,230,2,3
+	.word	10894
+	.byte	13
+	.word	10894
+	.byte	3
+	.word	10983
+	.byte	16
+	.byte	'Rte_WOWP_NotificationRefType',0,19,232,2,66
+	.word	10988
+	.byte	16
+	.byte	'Rte_ARE_NotificationType',0,19,234,2,29
+	.word	10322
+	.byte	22
+	.byte	'Rte_QTaskType',0,19,243,2,16,28,12
+	.byte	'cmn',0
+	.word	7600
+	.byte	24,2,35,0,12
+	.byte	'task',0
+	.word	10180
+	.byte	4,2,35,24,0,16
+	.byte	'Rte_QTaskType',0,19,246,2,3
+	.word	11065
+	.byte	22
+	.byte	'Rte_QREType',0,19,250,2,16,28,12
+	.byte	'cmn',0
+	.word	7600
+	.byte	24,2,35,0,12
+	.byte	're',0
+	.word	10411
+	.byte	4,2,35,24,0,16
+	.byte	'Rte_QREType',0,19,253,2,3
+	.word	11136
+	.byte	13
+	.word	10322
+	.byte	3
+	.word	11201
+	.byte	22
+	.byte	'Rte_QWWPType',0,19,129,3,16,28,12
+	.byte	'cmn',0
+	.word	7600
+	.byte	24,2,35,0,12
+	.byte	'wwp',0
+	.word	10993
+	.byte	4,2,35,24,0,16
+	.byte	'Rte_QWWPType',0,19,132,3,3
+	.word	11211
+	.byte	13
+	.word	10894
+	.byte	3
+	.word	11279
+	.byte	22
+	.byte	'Rte_QEvType',0,19,136,3,16,36,12
+	.byte	'cmn',0
+	.word	7600
+	.byte	24,2,35,0,12
+	.byte	'task',0
+	.word	10180
+	.byte	4,2,35,24,12
+	.byte	'mask',0
+	.word	132
+	.byte	1,2,35,28,12
+	.byte	'acnt',0
+	.word	10289
+	.byte	4,2,35,32,0,16
+	.byte	'Rte_QEvType',0,19,141,3,3
+	.word	11289
+	.byte	22
+	.byte	'Rte_QMSIType',0,19,145,3,16,48,12
+	.byte	'cmn',0
+	.word	7600
+	.byte	24,2,35,0,12
+	.byte	'task',0
+	.word	10180
+	.byte	4,2,35,24,12
+	.byte	'mask',0
+	.word	132
+	.byte	1,2,35,28,12
+	.byte	'acnt',0
+	.word	10289
+	.byte	4,2,35,32,12
+	.byte	'msiCounter',0
+	.word	10476
+	.byte	4,2,35,36,12
+	.byte	'msiPending',0
+	.word	10544
+	.byte	4,2,35,40,12
+	.byte	'msiLimit',0
+	.word	462
+	.byte	2,2,35,44,0,16
+	.byte	'Rte_QMSIType',0,19,153,3,3
+	.word	11384
+	.byte	17,20,31,9,4,18
+	.byte	'PDUR_UNINIT',0,0,18
+	.byte	'PDUR_REDUCED',0,1,18
+	.byte	'PDUR_ONLINE',0,2,0,16
+	.byte	'PduR_StateType',0,20,35,3
+	.word	11539
+	.byte	16
+	.byte	'PduR_LayerType',0,20,132,1,15
+	.word	132
+	.byte	16
+	.byte	'PduR_BuffLockType',0,20,166,1,25
+	.word	132
+	.byte	13
+	.word	1448
+	.byte	3
+	.word	11662
+	.byte	30
+	.word	132
+	.byte	1,1,25
+	.word	462
+	.byte	25
+	.word	11667
+	.byte	0,3
+	.word	11672
+	.byte	11,20,218,1,9,4,12
+	.byte	'PduR_loTransmitFunc',0
+	.word	11690
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_loTransmitFuncType',0,20,221,1,2
+	.word	11695
+	.byte	30
+	.word	132
+	.byte	1,1,25
+	.word	462
+	.byte	0,3
+	.word	11764
+	.byte	11,20,243,1,9,4,12
+	.byte	'PduR_loCancelTransmitFunc',0
+	.word	11777
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_loCancelTransmitFuncType',0,20,246,1,2
+	.word	11782
+	.byte	11,20,130,2,9,4,12
+	.byte	'PduR_loCancelReceiveFunc',0
+	.word	11777
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_loCancelReceiveFuncType',0,20,133,2,2
+	.word	11863
+	.byte	24,1,1,25
+	.word	462
+	.byte	25
+	.word	11667
+	.byte	0,3
+	.word	11942
+	.byte	11,20,158,2,9,4,12
+	.byte	'PduR_upIfRxIndicationFunc',0
+	.word	11956
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_upIfRxIndicationFuncType',0,20,161,2,2
+	.word	11961
+	.byte	24,1,1,25
+	.word	462
+	.byte	0,3
+	.word	12042
+	.byte	11,20,199,2,9,4,12
+	.byte	'PduR_upIfTxConfirmationFunc',0
+	.word	12051
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_upIfTxConfirmationFuncType',0,20,202,2,2
+	.word	12056
+	.byte	3
+	.word	1448
+	.byte	30
+	.word	132
+	.byte	1,1,25
+	.word	462
+	.byte	25
+	.word	12141
+	.byte	0,3
+	.word	12146
+	.byte	11,20,230,2,9,4,12
+	.byte	'PduR_upIfTriggerTxFunc',0
+	.word	12164
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_upIfTriggerTxFuncType',0,20,233,2,2
+	.word	12169
+	.byte	3
+	.word	462
+	.byte	30
+	.word	2023
+	.byte	1,1,25
+	.word	462
+	.byte	25
+	.word	11667
+	.byte	25
+	.word	12244
+	.byte	0,3
+	.word	12249
+	.byte	11,20,134,3,9,4,12
+	.byte	'PduR_upTpCopyRxDataFunc',0
+	.word	12272
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_upTpCopyRxDataFuncType',0,20,137,3,2
+	.word	12277
+	.byte	30
+	.word	2023
+	.byte	1,1,25
+	.word	462
+	.byte	25
+	.word	11667
+	.byte	25
+	.word	462
+	.byte	25
+	.word	12244
+	.byte	0,3
+	.word	12354
+	.byte	11,20,158,3,9,4,12
+	.byte	'PduR_upTpStartOfReceptionFunc',0
+	.word	12382
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_upTpStartOfReceptionFuncType',0,20,161,3,2
+	.word	12387
+	.byte	24,1,1,25
+	.word	462
+	.byte	25
+	.word	132
+	.byte	0,3
+	.word	12476
+	.byte	11,20,190,3,9,4,12
+	.byte	'PduR_upTpRxIndicationFunc',0
+	.word	12490
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_upTpRxIndicationFuncType',0,20,193,3,2
+	.word	12495
+	.byte	11,5,121,9,8,12
+	.byte	'TpDataState',0
+	.word	2117
+	.byte	4,2,35,0,12
+	.byte	'TxTpDataCnt',0
+	.word	462
+	.byte	2,2,35,4,0,3
+	.word	12576
+	.byte	30
+	.word	2023
+	.byte	1,1,25
+	.word	462
+	.byte	25
+	.word	11667
+	.byte	25
+	.word	12624
+	.byte	25
+	.word	12244
+	.byte	0,3
+	.word	12629
+	.byte	11,20,223,3,9,4,12
+	.byte	'PduR_upTpCopyTxDataFunc',0
+	.word	12657
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_upTpCopyTxDataFuncType',0,20,227,3,2
+	.word	12662
+	.byte	11,20,129,4,9,4,12
+	.byte	'PduR_upTpTxConfirmationFunc',0
+	.word	12490
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_upTpTxConfirmationFuncType',0,20,132,4,2
+	.word	12739
+	.byte	16
+	.byte	'PduR_loTransmitFP',0,20,140,4,15
+	.word	132
+	.byte	16
+	.byte	'PduR_loCancelTransmitFP',0,20,146,4,15
+	.word	132
+	.byte	16
+	.byte	'PduR_upIfRxIndicationFP',0,20,152,4,15
+	.word	132
+	.byte	16
+	.byte	'PduR_upIfTxConfirmationFP',0,20,158,4,15
+	.word	132
+	.byte	16
+	.byte	'PduR_upIfTriggerTxFP',0,20,164,4,15
+	.word	132
+	.byte	16
+	.byte	'PduR_upTpStartOfReceptionFP',0,20,170,4,15
+	.word	132
+	.byte	16
+	.byte	'PduR_upTpProvideRxBufFP',0,20,176,4,15
+	.word	132
+	.byte	16
+	.byte	'PduR_upTpRxIndicationFP',0,20,182,4,15
+	.word	132
+	.byte	16
+	.byte	'PduR_upTpProvideTxBufFP',0,20,188,4,15
+	.word	132
+	.byte	16
+	.byte	'PduR_upTpTxConfirmationFP',0,20,194,4,15
+	.word	132
+	.byte	11,20,207,4,9,4,12
+	.byte	'loId',0
+	.word	462
+	.byte	2,2,35,0,12
+	.byte	'loTransmitID',0
+	.word	132
+	.byte	1,2,35,2,12
+	.byte	'loCancelTransmitID',0
+	.word	132
+	.byte	1,2,35,3,0,16
+	.byte	'PduR_RT_UpToLo',0,20,212,4,3
+	.word	13153
+	.byte	11,20,223,4,9,4,12
+	.byte	'upId',0
+	.word	462
+	.byte	2,2,35,0,12
+	.byte	'upRxIndicationID',0
+	.word	132
+	.byte	1,2,35,2,0,16
+	.byte	'PduR_RT_LoIfRxToUp',0,20,227,4,3
+	.word	13248
+	.byte	11,20,238,4,9,4,12
+	.byte	'upId',0
+	.word	462
+	.byte	2,2,35,0,12
+	.byte	'upTxConfirmationID',0
+	.word	132
+	.byte	1,2,35,2,0,16
+	.byte	'PduR_RT_LoIfTxToUp',0,20,242,4,3
+	.word	13323
+	.byte	11,20,254,4,9,4,12
+	.byte	'upId',0
+	.word	462
+	.byte	2,2,35,0,12
+	.byte	'upTriggerTxID',0
+	.word	132
+	.byte	1,2,35,2,12
+	.byte	'upTxConfirmationID',0
+	.word	132
+	.byte	1,2,35,3,0,16
+	.byte	'PduR_RT_LoTtIfTxToUp',0,20,131,5,4
+	.word	13400
+	.byte	11,20,144,5,9,6,12
+	.byte	'upId',0
+	.word	462
+	.byte	2,2,35,0,12
+	.byte	'upStartOfReceptionID',0
+	.word	132
+	.byte	1,2,35,2,12
+	.byte	'upProvideRxBufID',0
+	.word	132
+	.byte	1,2,35,3,12
+	.byte	'upRxIndicationID',0
+	.word	132
+	.byte	1,2,35,4,0,16
+	.byte	'PduR_RT_LoTpRxToUp',0,20,150,5,3
+	.word	13502
+	.byte	11,20,162,5,9,4,12
+	.byte	'upId',0
+	.word	462
+	.byte	2,2,35,0,12
+	.byte	'upProvideTxBufID',0
+	.word	132
+	.byte	1,2,35,2,12
+	.byte	'upTxConfirmationID',0
+	.word	132
+	.byte	1,2,35,3,0,16
+	.byte	'PduR_RT_LoTpTxToUp',0,20,167,5,3
+	.word	13633
+	.byte	11,20,183,5,9,12,12
+	.byte	'upToLo',0
+	.word	13153
+	.byte	4,2,35,0,12
+	.byte	'isTpModule',0
+	.word	132
+	.byte	1,2,35,4,12
+	.byte	'upId',0
+	.word	462
+	.byte	2,2,35,6,12
+	.byte	'upLayerSymName',0
+	.word	462
+	.byte	2,2,35,8,12
+	.byte	'upSrcLayerName',0
+	.word	132
+	.byte	1,2,35,10,0,16
+	.byte	'PduR_MT_UpToLo',0,20,194,5,3
+	.word	13736
+	.byte	11,20,205,5,9,6,12
+	.byte	'toUp',0
+	.word	13400
+	.byte	4,2,35,0,12
+	.byte	'destLowerLayers',0
+	.word	132
+	.byte	1,2,35,4,0,16
+	.byte	'PduR_MT_LoIfTxToUp',0,20,209,5,3
+	.word	13865
+	.byte	3
+	.word	1448
+	.byte	11,20,221,5,9,12,12
+	.byte	'pduPtr',0
+	.word	13939
+	.byte	4,2,35,0,12
+	.byte	'allocError',0
+	.word	2023
+	.byte	4,2,35,4,12
+	.byte	'txFailure',0
+	.word	132
+	.byte	1,2,35,8,12
+	.byte	'txConf',0
+	.word	132
+	.byte	1,2,35,9,0,16
+	.byte	'PduR_MS_LoTpTxToUp',0,20,227,5,5
+	.word	13944
+	.byte	11,20,237,5,9,6,12
+	.byte	'toUp',0
+	.word	13633
+	.byte	4,2,35,0,12
+	.byte	'destLowerLayers',0
+	.word	132
+	.byte	1,2,35,4,0,16
+	.byte	'PduR_MT_LoTpTxToUp',0,20,241,5,3
+	.word	14050
+	.byte	11,20,255,5,9,6,12
+	.byte	'length',0
+	.word	462
+	.byte	2,2,35,0,12
+	.byte	'loId',0
+	.word	462
+	.byte	2,2,35,2,12
+	.byte	'transmitID',0
+	.word	132
+	.byte	1,2,35,4,0,16
+	.byte	'PduR_GT_IfTx',0,20,132,6,3
+	.word	14124
+	.byte	13
+	.word	3098
+	.byte	3
+	.word	14203
+	.byte	11,20,147,6,9,8,12
+	.byte	'buffer',0
+	.word	14208
+	.byte	4,2,35,0,12
+	.byte	'loId',0
+	.word	462
+	.byte	2,2,35,4,12
+	.byte	'transmitID',0
+	.word	132
+	.byte	1,2,35,6,12
+	.byte	'isFifoType',0
+	.word	132
+	.byte	1,2,35,7,0,16
+	.byte	'PduR_GT_If',0,20,153,6,3
+	.word	14213
+	.byte	11,20,181,6,9,32,12
+	.byte	'bufferPtr',0
+	.word	149
+	.byte	4,2,35,0,12
+	.byte	'readPtr',0
+	.word	149
+	.byte	4,2,35,4,12
+	.byte	'writePtr',0
+	.word	149
+	.byte	4,2,35,8,12
+	.byte	'numRxLength',0
+	.word	462
+	.byte	2,2,35,12,12
+	.byte	'numTxLength',0
+	.word	462
+	.byte	2,2,35,14,12
+	.byte	'SduLength',0
+	.word	462
+	.byte	2,2,35,16,12
+	.byte	'bufferLength',0
+	.word	462
+	.byte	2,2,35,18,12
+	.byte	'remainingBuffLength',0
+	.word	462
+	.byte	2,2,35,20,12
+	.byte	'RxChunkLength',0
+	.word	462
+	.byte	2,2,35,22,12
+	.byte	'TxChunkLength',0
+	.word	462
+	.byte	2,2,35,24,12
+	.byte	'Rx_Status',0
+	.word	132
+	.byte	1,2,35,26,12
+	.byte	'Tx_Status',0
+	.word	132
+	.byte	1,2,35,27,12
+	.byte	'Tx_E_OK_Count',0
+	.word	132
+	.byte	1,2,35,28,0,16
+	.byte	'PduR_TpSession_Dynamic',0,20,201,6,3
+	.word	14310
+	.byte	3
+	.word	14310
+	.byte	11,20,218,6,9,4,12
+	.byte	'GwTpSessionPtr',0
+	.word	14622
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_GwTp_SessionListType',0,20,221,6,2
+	.word	14627
+	.byte	11,20,250,6,9,4,12
+	.byte	'primarySession',0
+	.word	14622
+	.byte	4,2,35,0,0,16
+	.byte	'PduR_TpConnection_Dynamic',0,20,131,7,3
+	.word	14693
+	.byte	3
+	.word	14693
+	.byte	11,20,146,7,9,12,12
+	.byte	'begin',0
+	.word	149
+	.byte	4,2,35,0,12
+	.byte	'connectionTable',0
+	.word	14759
+	.byte	4,2,35,4,12
+	.byte	'eltSize',0
+	.word	462
+	.byte	2,2,35,8,12
+	.byte	'buffPoolId',0
+	.word	462
+	.byte	2,2,35,10,0,16
+	.byte	'PduR_FIFO_Tp_fixed',0,20,152,7,3
+	.word	14764
+	.byte	13
+	.word	14764
+	.byte	3
+	.word	14876
+	.byte	11,20,169,7,9,16,12
+	.byte	'buffer',0
+	.word	14881
+	.byte	4,2,35,0,12
+	.byte	'numOfLowerLayers',0
+	.word	462
+	.byte	2,2,35,4,12
+	.byte	'TpGwQueueSize',0
+	.word	462
+	.byte	2,2,35,6,12
+	.byte	'loId',0
+	.word	462
+	.byte	2,2,35,8,12
+	.byte	'upId',0
+	.word	462
+	.byte	2,2,35,10,12
+	.byte	'TpThreshold',0
+	.word	462
+	.byte	2,2,35,12,12
+	.byte	'loTransmitID',0
+	.word	132
+	.byte	1,2,35,14,0,16
+	.byte	'PduR_GT_Tp',0,20,180,7,3
+	.word	14886
+	.byte	16
+	.byte	'PduR_loCancelReceiveFP',0,20,202,7,15
+	.word	132
+	.byte	11,20,213,7,9,4,12
+	.byte	'LoTpRxId',0
+	.word	462
+	.byte	2,2,35,0,12
+	.byte	'CancelRxFP',0
+	.word	132
+	.byte	1,2,35,2,0,16
+	.byte	'PduR_RT_UpTpRxToLoTp',0,20,221,7,3
+	.word	15081
+	.byte	13
+	.word	15081
+	.byte	3
+	.word	15156
+	.byte	11,20,232,7,9,8,12
+	.byte	'UpTpToLoTp',0
+	.word	15161
+	.byte	4,2,35,0,12
+	.byte	'UpTpToLoTp_NrEntries',0
+	.word	462
+	.byte	2,2,35,4,0,16
+	.byte	'PduR_UpTpToLoTpRxConfig',0,20,236,7,3
+	.word	15166
+	.byte	3
+	.word	132
+	.byte	11,20,129,8,9,16,12
+	.byte	'info',0
+	.word	1448
+	.byte	8,2,35,0,12
+	.byte	'lockPtr',0
+	.word	15256
+	.byte	4,2,35,8,12
+	.byte	'readerPduInfo',0
+	.word	13939
+	.byte	4,2,35,12,0,16
+	.byte	'PduR_SingleEntryBuffer',0,20,134,8,3
+	.word	15261
+	.byte	11,20,155,8,9,12,12
+	.byte	'readPtr',0
+	.word	149
+	.byte	4,2,35,0,12
+	.byte	'writePtr',0
+	.word	149
+	.byte	4,2,35,4,12
+	.byte	'actLen',0
+	.word	462
+	.byte	2,2,35,8,12
+	.byte	'used',0
+	.word	132
+	.byte	1,2,35,10,12
+	.byte	'txConfPending',0
+	.word	132
+	.byte	1,2,35,11,0,16
+	.byte	'PduR_FIFO_If_dynamic',0,20,163,8,3
+	.word	15354
+	.byte	11,20,174,8,9,2,12
+	.byte	'byteDefaultValue',0
+	.word	132
+	.byte	1,2,35,0,12
+	.byte	'bytePosition',0
+	.word	132
+	.byte	1,2,35,1,0,16
+	.byte	'PduR_DefaultValues_fixed',0,20,178,8,3
+	.word	15479
+	.byte	11,20,219,8,9,12,12
+	.byte	'begin',0
+	.word	149
+	.byte	4,2,35,0,12
+	.byte	'dyn',0
+	.word	3104
+	.byte	4,2,35,4,12
+	.byte	'eltSize',0
+	.word	462
+	.byte	2,2,35,8,12
+	.byte	'nrElts',0
+	.word	132
+	.byte	1,2,35,10,0,16
+	.byte	'PduR_FIFO_fixed',0,20,225,8,3
+	.word	15568
+	.byte	13
+	.word	13153
+	.byte	3
+	.word	15661
+	.byte	13
+	.word	13736
+	.byte	3
+	.word	15671
+	.byte	11,20,246,8,9,12,12
+	.byte	'CddToLo',0
+	.word	15666
+	.byte	4,2,35,0,12
+	.byte	'CddToLoMc',0
+	.word	15676
+	.byte	4,2,35,4,12
+	.byte	'CddToLo_NrEntries',0
+	.word	462
+	.byte	2,2,35,8,0,16
+	.byte	'PduR_CddConfig',0,20,251,8,3
+	.word	15681
+	.byte	13
+	.word	13502
+	.byte	3
+	.word	15775
+	.byte	13
+	.word	13633
+	.byte	3
+	.word	15785
+	.byte	11,20,136,9,9,12,12
+	.byte	'LoTpRxToUp',0
+	.word	15780
+	.byte	4,2,35,0,12
+	.byte	'LoTpTxToUp',0
+	.word	15790
+	.byte	4,2,35,4,12
+	.byte	'LoTpRxToUp_NrEntries',0
+	.word	462
+	.byte	2,2,35,8,12
+	.byte	'LoTpTxToUp_NrEntries',0
+	.word	462
+	.byte	2,2,35,10,0,16
+	.byte	'PduR_LoTpConfig',0,20,142,9,3
+	.word	15795
+	.byte	11,20,154,9,9,12,12
+	.byte	'UpToLo',0
+	.word	15666
+	.byte	4,2,35,0,12
+	.byte	'UpToLoMc',0
+	.word	15676
+	.byte	4,2,35,4,12
+	.byte	'UpToLo_NrEntries',0
+	.word	462
+	.byte	2,2,35,8,0,16
+	.byte	'PduR_UpConfig',0,20,159,9,3
+	.word	15927
+	.byte	13
+	.word	13248
+	.byte	3
+	.word	16017
+	.byte	13
+	.word	13323
+	.byte	3
+	.word	16027
+	.byte	11,20,172,9,9,12,12
+	.byte	'LoIfRxToUp',0
+	.word	16022
+	.byte	4,2,35,0,12
+	.byte	'LoIfTxToUp',0
+	.word	16032
+	.byte	4,2,35,4,12
+	.byte	'LoIfRxToUp_NrEntries',0
+	.word	462
+	.byte	2,2,35,8,12
+	.byte	'LoIfTxToUp_NrEntries',0
+	.word	462
+	.byte	2,2,35,10,0,16
+	.byte	'PduR_LoIfDConfig',0,20,178,9,3
+	.word	16037
+	.byte	13
+	.word	13400
+	.byte	3
+	.word	16170
+	.byte	11,20,190,9,9,12,12
+	.byte	'LoIfRxToUp',0
+	.word	16022
+	.byte	4,2,35,0,12
+	.byte	'LoIfTxToUp',0
+	.word	16175
+	.byte	4,2,35,4,12
+	.byte	'LoIfRxToUp_NrEntries',0
+	.word	462
+	.byte	2,2,35,8,12
+	.byte	'LoIfTxToUp_NrEntries',0
+	.word	462
+	.byte	2,2,35,10,0,16
+	.byte	'PduR_LoIfTTConfig',0,20,196,9,3
+	.word	16180
+	.byte	16
+	.byte	'PduR_RPGVoidPtr',0,20,208,9,42
+	.word	3104
+	.byte	11,20,219,9,9,8,12
+	.byte	'destInfo',0
+	.word	16314
+	.byte	4,2,35,0,12
+	.byte	'pathType',0
+	.word	132
+	.byte	1,2,35,4,0,16
+	.byte	'PduR_TargetInfoType',0,20,223,9,3
+	.word	16339
+	.byte	3
+	.word	3098
+	.byte	13
+	.word	15479
+	.byte	3
+	.word	16416
+	.byte	11,20,236,9,9,12,12
+	.byte	'begin',0
+	.word	149
+	.byte	4,2,35,0,12
+	.byte	'defaultValueElement',0
+	.word	16421
+	.byte	4,2,35,4,12
+	.byte	'defaultValueSize',0
+	.word	132
+	.byte	1,2,35,8,0,16
+	.byte	'PduR_DefaultValue_Info',0,20,241,9,2
+	.word	16426
+	.byte	13
+	.word	11695
+	.byte	3
+	.word	16535
+	.byte	13
+	.word	11863
+	.byte	3
+	.word	16545
+	.byte	13
+	.word	11782
+	.byte	3
+	.word	16555
+	.byte	13
+	.word	11961
+	.byte	3
+	.word	16565
+	.byte	13
+	.word	12056
+	.byte	3
+	.word	16575
+	.byte	13
+	.word	12277
+	.byte	3
+	.word	16585
+	.byte	13
+	.word	12387
+	.byte	3
+	.word	16595
+	.byte	13
+	.word	12495
+	.byte	3
+	.word	16605
+	.byte	13
+	.word	12662
+	.byte	3
+	.word	16615
+	.byte	13
+	.word	12739
+	.byte	3
+	.word	16625
+	.byte	13
+	.word	12169
+	.byte	3
+	.word	16635
+	.byte	11,20,154,10,9,44,12
+	.byte	'loTxTablePtr',0
+	.word	16540
+	.byte	4,2,35,0,12
+	.byte	'loCancelRxTable',0
+	.word	16550
+	.byte	4,2,35,4,12
+	.byte	'loCnclTxTablePtr',0
+	.word	16560
+	.byte	4,2,35,8,12
+	.byte	'upIfRxIndTablePtr',0
+	.word	16570
+	.byte	4,2,35,12,12
+	.byte	'upIfTxConfTablePtr',0
+	.word	16580
+	.byte	4,2,35,16,12
+	.byte	'upTpRxDataTablePtr',0
+	.word	16590
+	.byte	4,2,35,20,12
+	.byte	'upTpStartRxTablePtr',0
+	.word	16600
+	.byte	4,2,35,24,12
+	.byte	'upTpRxIndTablePtr',0
+	.word	16610
+	.byte	4,2,35,28,12
+	.byte	'upTpTxDataTablePtr',0
+	.word	16620
+	.byte	4,2,35,32,12
+	.byte	'upTpTxConfTablePtr',0
+	.word	16630
+	.byte	4,2,35,36,12
+	.byte	'upIfTrigTxTablePtr',0
+	.word	16640
+	.byte	4,2,35,40,0,16
+	.byte	'PduR_RPTablesType',0,20,167,10,3
+	.word	16645
+	.byte	13
+	.word	15681
+	.byte	3
+	.word	16975
+	.byte	13
+	.word	15795
+	.byte	3
+	.word	16985
+	.byte	13
+	.word	16037
+	.byte	3
+	.word	16995
+	.byte	13
+	.word	16180
+	.byte	3
+	.word	17005
+	.byte	13
+	.word	15927
+	.byte	3
+	.word	17015
+	.byte	13
+	.word	13865
+	.byte	3
+	.word	17025
+	.byte	13
+	.word	14050
+	.byte	3
+	.word	17035
+	.byte	3
+	.word	13944
+	.byte	13
+	.word	14124
+	.byte	3
+	.word	17050
+	.byte	13
+	.word	14213
+	.byte	3
+	.word	17060
+	.byte	13
+	.word	14886
+	.byte	3
+	.word	17070
+	.byte	13
+	.word	16645
+	.byte	3
+	.word	17080
+	.byte	13
+	.word	15166
+	.byte	3
+	.word	17090
+	.byte	11,20,199,10,9,68,12
+	.byte	'cddConf',0
+	.word	16980
+	.byte	4,2,35,0,12
+	.byte	'LoTpConf',0
+	.word	16990
+	.byte	4,2,35,4,12
+	.byte	'LoIfDConf',0
+	.word	17000
+	.byte	4,2,35,8,12
+	.byte	'LoIfTTConf',0
+	.word	17010
+	.byte	4,2,35,12,12
+	.byte	'UpIfConf',0
+	.word	17020
+	.byte	4,2,35,16,12
+	.byte	'UpTpConf',0
+	.word	17020
+	.byte	4,2,35,20,12
+	.byte	'gwToLoMc',0
+	.word	15676
+	.byte	4,2,35,24,12
+	.byte	'loIfTxToUpMc',0
+	.word	17030
+	.byte	4,2,35,28,12
+	.byte	'loTpTxToUpMc',0
+	.word	17040
+	.byte	4,2,35,32,12
+	.byte	'loTpTxToUpMs',0
+	.word	17045
+	.byte	4,2,35,36,12
+	.byte	'gwIfTx',0
+	.word	17055
+	.byte	4,2,35,40,12
+	.byte	'gwIf',0
+	.word	17065
+	.byte	4,2,35,44,12
+	.byte	'gwTp',0
+	.word	17075
+	.byte	4,2,35,48,12
+	.byte	'PduR_RPTablesPtr',0
+	.word	17085
+	.byte	4,2,35,52,12
+	.byte	'PduR_UpTpToLoTpRxCfg',0
+	.word	17095
+	.byte	4,2,35,56,12
+	.byte	'configId',0
+	.word	462
+	.byte	2,2,35,60,12
+	.byte	'totalNoOfGwTpRps',0
+	.word	462
+	.byte	2,2,35,62,12
+	.byte	'totalNoOfGwIfRps',0
+	.word	462
+	.byte	2,2,35,64,12
+	.byte	'loTpTxToUpMc_NrEntries',0
+	.word	462
+	.byte	2,2,35,66,0,16
+	.byte	'PduR_PBConfigType',0,20,233,10,3
+	.word	17100
+	.byte	13
+	.word	17100
+	.byte	3
+	.word	17530
+	.byte	31
+	.byte	'PduR_Base',0,21,222,1,66
+	.word	17535
+	.byte	1,1,31
+	.byte	'PduR_State',0,21,181,3,40
+	.word	11539
+	.byte	1,1,32
+	.word	11782
+	.byte	33,0,13
+	.word	17583
+	.byte	31
+	.byte	'PduR_loCancelTransmitTable',0,21,227,5,58
+	.word	17590
+	.byte	1,1,16
+	.byte	'Dcm_MsgItemType',0,22,182,2,15
+	.word	132
+	.byte	3
+	.word	132
+	.byte	16
+	.byte	'Dcm_MsgType',0,22,188,2,57
+	.word	17658
+	.byte	16
+	.byte	'Dcm_MsgLenType',0,22,197,2,16
+	.word	801
+	.byte	11,22,206,2,9,4,12
+	.byte	'reqType',0
+	.word	132
+	.byte	1,2,35,0,12
+	.byte	'suppressPosResponse',0
+	.word	132
+	.byte	1,2,35,1,12
+	.byte	'sourceofRequest',0
+	.word	132
+	.byte	1,2,35,2,0,16
+	.byte	'Dcm_MsgAddInfoType',0,22,219,2,2
+	.word	17708
+	.byte	16
+	.byte	'Dcm_IdContextType',0,22,225,2,15
+	.word	132
+	.byte	11,22,238,5,9,32,12
+	.byte	'tx_buffer_pa',0
+	.word	17663
+	.byte	4,2,35,0,12
+	.byte	'rx_mainBuffer_pa',0
+	.word	17663
+	.byte	4,2,35,4,12
+	.byte	'tx_buffer_size_u32',0
+	.word	801
+	.byte	4,2,35,8,12
+	.byte	'rx_buffer_size_u32',0
+	.word	801
+	.byte	4,2,35,12,12
+	.byte	'dataP2TmrAdjust',0
+	.word	801
+	.byte	4,2,35,16,12
+	.byte	'dataP2StarTmrAdjust',0
+	.word	801
+	.byte	4,2,35,20,12
+	.byte	'protocolid_u8',0
+	.word	132
+	.byte	1,2,35,24,12
+	.byte	'sid_tableid_u8',0
+	.word	132
+	.byte	1,2,35,25,12
+	.byte	'premption_level_u8',0
+	.word	132
+	.byte	1,2,35,26,12
+	.byte	'pduinfo_idx_u8',0
+	.word	132
+	.byte	1,2,35,27,12
+	.byte	'nrc21_b',0
+	.word	132
+	.byte	1,2,35,28,12
+	.byte	'sendRespPendTransToBoot',0
+	.word	132
+	.byte	1,2,35,29,0,16
+	.byte	'Dcm_Dsld_protocol_tableType',0,22,143,6,2
+	.word	17841
+	.byte	3
+	.word	132
+	.byte	24,1,1,25
+	.word	132
+	.byte	25
+	.word	462
+	.byte	25
+	.word	462
+	.byte	25
+	.word	132
+	.byte	0,3
+	.word	18197
+	.byte	16
+	.byte	'Dcm_ConfirmationApiType',0,22,145,6,16
+	.word	18221
+	.byte	3
+	.word	132
+	.byte	30
+	.word	132
+	.byte	1,1,25
+	.word	18259
+	.byte	25
+	.word	132
+	.byte	25
+	.word	132
+	.byte	0,3
+	.word	18264
+	.byte	11,22,240,2,9,28,12
+	.byte	'resData',0
+	.word	17663
+	.byte	4,2,35,0,12
+	.byte	'reqData',0
+	.word	17663
+	.byte	4,2,35,4,12
+	.byte	'msgAddInfo',0
+	.word	17708
+	.byte	4,2,35,8,12
+	.byte	'resDataLen',0
+	.word	801
+	.byte	4,2,35,12,12
+	.byte	'reqDataLen',0
+	.word	801
+	.byte	4,2,35,16,12
+	.byte	'resMaxDataLen',0
+	.word	801
+	.byte	4,2,35,20,12
+	.byte	'idContext',0
+	.word	132
+	.byte	1,2,35,24,12
+	.byte	'dcmRxPduId',0
+	.word	462
+	.byte	2,2,35,26,0,3
+	.word	18292
+	.byte	30
+	.word	132
+	.byte	1,1,25
+	.word	132
+	.byte	25
+	.word	18455
+	.byte	25
+	.word	18259
+	.byte	0,3
+	.word	18460
+	.byte	11,22,158,6,9,20,12
+	.byte	'allowed_session_b32',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'allowed_security_b32',0
+	.word	801
+	.byte	4,2,35,4,12
+	.byte	'adrUserSubServiceModeRule_pfct',0
+	.word	18287
+	.byte	4,2,35,8,12
+	.byte	'SubFunc_fp',0
+	.word	18483
+	.byte	4,2,35,12,12
+	.byte	'subservice_id_u8',0
+	.word	132
+	.byte	1,2,35,16,12
+	.byte	'isDspRDTCSubFnc_b',0
+	.word	132
+	.byte	1,2,35,17,0,16
+	.byte	'Dcm_Dsld_SubServiceType',0,22,169,6,2
+	.word	18488
+	.byte	13
+	.word	18488
+	.byte	3
+	.word	18700
+	.byte	30
+	.word	132
+	.byte	1,1,25
+	.word	18259
+	.byte	25
+	.word	132
+	.byte	0,3
+	.word	18710
+	.byte	11,22,186,6,9,36,12
+	.byte	'allowed_session_b32',0
+	.word	801
+	.byte	4,2,35,0,12
+	.byte	'allowed_security_b32',0
+	.word	801
+	.byte	4,2,35,4,12
+	.byte	'service_handler_fp',0
+	.word	18483
+	.byte	4,2,35,8,12
+	.byte	'Service_init_fp',0
+	.word	2523
+	.byte	4,2,35,12,12
+	.byte	'sid_u8',0
+	.word	132
+	.byte	1,2,35,16,12
+	.byte	'subfunction_exist_b',0
+	.word	132
+	.byte	1,2,35,17,12
+	.byte	'servicelocator_b',0
+	.word	132
+	.byte	1,2,35,18,12
+	.byte	'ptr_subservice_table_pcs',0
+	.word	18705
+	.byte	4,2,35,20,12
+	.byte	'num_sf_u8',0
+	.word	132
+	.byte	1,2,35,24,12
+	.byte	'adrUserServiceModeRule_pfct',0
+	.word	18728
+	.byte	4,2,35,28,12
+	.byte	'Dcm_ConfirmationService',0
+	.word	18226
+	.byte	4,2,35,32,0,16
+	.byte	'Dcm_Dsld_ServiceType',0,22,204,6,3
+	.word	18733
+	.byte	3
+	.word	18197
+	.byte	13
+	.word	18733
+	.byte	3
+	.word	19081
+	.byte	11,22,218,6,9,8,12
+	.byte	'ptr_service_table_pcs',0
+	.word	19086
+	.byte	4,2,35,0,12
+	.byte	'num_services_u8',0
+	.word	132
+	.byte	1,2,35,4,12
+	.byte	'nrc_sessnot_supported_u8',0
+	.word	132
+	.byte	1,2,35,5,12
+	.byte	'cdtc_index_u8',0
+	.word	132
+	.byte	1,2,35,6,0,16
+	.byte	'Dcm_Dsld_sid_tableType',0,22,224,6,3
+	.word	19091
+	.byte	11,22,238,6,9,14,12
+	.byte	'protocol_num_u8',0
+	.word	132
+	.byte	1,2,35,0,12
+	.byte	'txpduid_num_u8',0
+	.word	462
+	.byte	2,2,35,2,12
+	.byte	'roetype2_txpdu_u8',0
+	.word	462
+	.byte	2,2,35,4,12
+	.byte	'rdpitype2_txpdu_u8',0
+	.word	462
+	.byte	2,2,35,6,12
+	.byte	'testaddr_u16',0
+	.word	462
+	.byte	2,2,35,8,12
+	.byte	'channel_idx_u8',0
+	.word	132
+	.byte	1,2,35,10,12
+	.byte	'ConnectionIndex_u8',0
+	.word	132
+	.byte	1,2,35,11,12
+	.byte	'NumberOfTxpdu_u8',0
+	.word	132
+	.byte	1,2,35,12,0,16
+	.byte	'Dcm_Dsld_connType',0,22,248,6,3
+	.word	19243
+	.byte	17,22,146,7,9,4,18
+	.byte	'DCM_DSLD_NO_COM_MODE',0,0,18
+	.byte	'DCM_DSLD_SILENT_COM_MODE',0,1,18
+	.byte	'DCM_DSLD_FULL_COM_MODE',0,2,0,16
+	.byte	'Dcm_Dsld_commodeType',0,22,151,7,2
+	.word	19481
+	.byte	17,23,200,1,9,4,18
+	.byte	'USE_ASYNCH_CLIENT_SERVER',0,0,18
+	.byte	'USE_ASYNCH_FNC',0,1,0,16
+	.byte	'DcmDspSecurityUsePort',0,23,204,1,2
+	.word	19593
+	.byte	17,24,22,9,4,18
+	.byte	'DCM_NO_BOOT',0,0,18
+	.byte	'DCM_OEM_BOOT',0,1,18
+	.byte	'DCM_SYS_BOOT',0,2,0,16
+	.byte	'Dcm_SessionForBootType',0,24,27,2
+	.word	19675
+	.byte	17,25,192,3,9,4,18
+	.byte	'DCM_READ_OK',0,0,18
+	.byte	'DCM_READ_FAILED',0,1,18
+	.byte	'DCM_READ_PENDING',0,2,18
+	.byte	'DCM_READ_FORCE_RCRRP',0,3,18
+	.byte	'DCM_READ_NOT_AVAILABLE',0,4,0,16
+	.byte	'Dcm_ReadMemoryRet_t',0,25,199,3,3
+	.word	19756
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L15:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32
+	.byte	13,58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,46,1,3,8,32,13
+	.byte	58,15,59,15,57,15,73,19,54,15,39,12,0,0,8,46,1,49,19,0,0,9,5,0,49,19,0,0,10,46,1,3,8,58,15,59,15,57,15
+	.byte	73,19,54,15,39,12,63,12,60,12,0,0,11,19,1,58,15,59,15,57,15,11,15,0,0,12,13,0,3,8,73,19,11,15,56,9,0,0
+	.byte	13,38,0,73,19,0,0,14,46,0,3,8,58,15,59,15,57,15,54,15,63,12,60,12,0,0,15,21,0,54,15,0,0,16,22,0,3,8,58
+	.byte	15,59,15,57,15,73,19,0,0,17,4,1,58,15,59,15,57,15,11,15,0,0,18,40,0,3,8,28,13,0,0,19,1,1,11,15,73,19,0
+	.byte	0,20,33,0,47,15,0,0,21,21,0,54,15,39,12,0,0,22,19,1,3,8,58,15,59,15,57,15,11,15,0,0,23,59,0,3,8,0,0,24
+	.byte	21,1,54,15,39,12,0,0,25,5,0,73,19,0,0,26,23,1,58,15,59,15,57,15,11,15,0,0,27,4,1,3,8,58,15,59,15,57,15
+	.byte	11,15,0,0,28,21,0,73,19,54,15,39,12,0,0,29,53,0,73,19,0,0,30,21,1,73,19,54,15,39,12,0,0,31,52,0,3,8,58
+	.byte	15,59,15,57,15,73,19,63,12,60,12,0,0,32,1,1,73,19,0,0,33,33,0,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L16:
+	.word	.L43-.L42
+.L42:
+	.half	3
+	.word	.L45-.L44
+.L44:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits8.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits16.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits32.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Det\\api\\Det.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\PduR\\PduR_Dcm_Up.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\PduR\\PduR_UpTp.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Dcm_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\PduR\\api\\PduR.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\PduR\\api\\PduR_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\PduR\\api\\PduR_Prv.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmCore_DslDsd_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Seca_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Dsc_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Uds_Pub.h',0,0,0,0,0
+.L45:
+.L43:
+	.sdecl	'.debug_info',debug,cluster('PduR_DcmTransmit')
+	.sect	'.debug_info'
+.L17:
+	.word	220
+	.half	3
+	.word	.L18
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\PduR\\PduR_UpTp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L20,.L19
+	.byte	2
+	.word	.L13
+	.byte	3
+	.byte	'PduR_DcmTransmit',0,1,55,35
+	.word	.L27
+	.byte	1,1,1
+	.word	.L10,.L28,.L9
+	.byte	4
+	.byte	'id',0,1,55,79
+	.word	.L29,.L30
+	.byte	4
+	.byte	'ptr',0,1,55,131,1
+	.word	.L31,.L32
+	.byte	5
+	.word	.L10,.L28
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('PduR_DcmTransmit')
+	.sect	'.debug_abbrev'
+.L18:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('PduR_DcmTransmit')
+	.sect	'.debug_line'
+.L19:
+	.word	.L47-.L46
+.L46:
+	.half	3
+	.word	.L49-.L48
+.L48:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\PduR\\PduR_UpTp.c',0,0,0,0,0
+.L49:
+	.byte	5,13,7,0,5,2
+	.word	.L10
+	.byte	3,56,1,5,5,9
+	.half	.L36-.L10
+	.byte	1,5,1,9
+	.half	.L2-.L36
+	.byte	3,1,1,7,9
+	.half	.L21-.L2
+	.byte	0,1,1
+.L47:
+	.sdecl	'.debug_ranges',debug,cluster('PduR_DcmTransmit')
+	.sect	'.debug_ranges'
+.L20:
+	.word	-1,.L10,0,.L21-.L10,0,0
+	.sdecl	'.debug_info',debug,cluster('PduR_DcmCancelTransmit')
+	.sect	'.debug_info'
+.L22:
+	.word	224
+	.half	3
+	.word	.L23
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\PduR\\PduR_UpTp.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L25,.L24
+	.byte	2
+	.word	.L13
+	.byte	3
+	.byte	'PduR_DcmCancelTransmit',0,1,87,35
+	.word	.L27
+	.byte	1,1,1
+	.word	.L12,.L33,.L11
+	.byte	4
+	.byte	'id',0,1,87,84
+	.word	.L29,.L34
+	.byte	5
+	.word	.L12,.L33
+	.byte	6
+	.byte	'r',0,1,89,37
+	.word	.L27,.L35
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('PduR_DcmCancelTransmit')
+	.sect	'.debug_abbrev'
+.L23:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('PduR_DcmCancelTransmit')
+	.sect	'.debug_line'
+.L24:
+	.word	.L51-.L50
+.L50:
+	.half	3
+	.word	.L53-.L52
+.L52:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\PduR\\PduR_UpTp.c',0,0,0,0,0
+.L53:
+	.byte	5,5,7,0,5,2
+	.word	.L12
+	.byte	3,220,0,1,5,18,9
+	.half	.L3-.L12
+	.byte	3,2,1,5,10,9
+	.half	.L54-.L3
+	.byte	1,5,47,7,9
+	.half	.L55-.L54
+	.byte	1,5,79,9
+	.half	.L56-.L55
+	.byte	1,5,9,7,9
+	.half	.L5-.L56
+	.byte	3,2,1,5,17,9
+	.half	.L57-.L5
+	.byte	3,1,1,5,9,9
+	.half	.L58-.L57
+	.byte	1,5,42,9
+	.half	.L6-.L58
+	.byte	3,4,1,5,5,9
+	.half	.L40-.L6
+	.byte	3,2,1,5,1,9
+	.half	.L4-.L40
+	.byte	3,1,1,7,9
+	.half	.L26-.L4
+	.byte	0,1,1
+.L51:
+	.sdecl	'.debug_ranges',debug,cluster('PduR_DcmCancelTransmit')
+	.sect	'.debug_ranges'
+.L25:
+	.word	-1,.L12,0,.L26-.L12,0,0
+	.sdecl	'.debug_loc',debug,cluster('PduR_DcmCancelTransmit')
+	.sect	'.debug_loc'
+.L11:
+	.word	-1,.L12,0,.L33-.L12
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L34:
+	.word	-1,.L12,0,.L37-.L12
+	.half	1
+	.byte	84
+	.word	.L3-.L12,.L38-.L12
+	.half	1
+	.byte	84
+	.word	.L6-.L12,.L39-.L12
+	.half	1
+	.byte	84
+	.word	0,0
+.L35:
+	.word	-1,.L12,.L40-.L12,.L4-.L12
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('PduR_DcmTransmit')
+	.sect	'.debug_loc'
+.L9:
+	.word	-1,.L10,0,.L28-.L10
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L30:
+	.word	-1,.L10,0,.L36-.L10
+	.half	1
+	.byte	84
+	.word	0,0
+.L32:
+	.word	-1,.L10,0,.L36-.L10
+	.half	1
+	.byte	100
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L59:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('PduR_DcmTransmit')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L59,.L10,.L28-.L10
+	.sdecl	'.debug_frame',debug,cluster('PduR_DcmCancelTransmit')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L59,.L12,.L33-.L12
+
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   106  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   107  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   108  /* End section for code */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   109  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   110  #define PDUR_STOP_SEC_CODE
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   111  #include "PduR_MemMap.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   112  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   113  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   114  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   115  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   116  /* Begin section for code */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   117  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   118  #if defined(PDUR_CHANGE_PARAMETER_SUPPORT) && (PDUR_CHANGE_PARAMETER_SUPPORT != 0)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   119  #define PDUR_START_SEC_CODE
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   120  #include "PduR_MemMap.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   121  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   122  /**
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   123   **************************************************************************************************
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   124   * PduR_DcmChangeParameter
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   125   *      This service primitive is used to request the change of the value of the PDUR_STMIN parameter.
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   126   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   127   * \param           parameter: Specify the parameter to which the value has to be changed (BS or STmin).
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   128   *                  PduId: Gives the ID of the connection (message) for whose channel the change shall be done.
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   129   *                  value: The new value of the parameter
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   130   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   131   * \retval          None
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   132   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   133   **************************************************************************************************
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   134   */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   135  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   136  FUNC( Std_ReturnType, PDUR_CODE ) PduR_DcmChangeParameter(VAR(PduIdType, AUTOMATIC) id,
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   137                                                      VAR(TPParameterType, AUTOMATIC) parameter,
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   138                                                      VAR(uint16, AUTOMATIC) value)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   139  {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   140  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   141  #if defined(PDUR_ZERO_COST_OPERATION) && (PDUR_ZERO_COST_OPERATION!= STD_OFF)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   142  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   143      PDUR_CONFIG_SINGLE_TPTX_LO(ChangeParameter)(id,parameter,value);
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   144  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   145  #else
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   146      Std_ReturnType          retval;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   147      PduR_LowerTpModuleName  lowerModule;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   148      PduIdType               lowerId;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   149  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   150      retval = E_NOT_OK;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   151      /*Checks the validity of id : if valid, calls the lower Tp module(CANTP/FRTP) change parameter function */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   152      if ( id < PDUR_NR_VALID_DCM_IDS  )
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   153      {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   154          /*Gets the lower Tp module name */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   155          lowerModule = PDUR_CHANGEPARAM_SUPPORT[id].loTp;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   156          /*Gets the id of I_PDU,corresponding to the lower module */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   157          lowerId     = PDUR_CHANGEPARAM_SUPPORT[id].loId;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   158  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   159          if(lowerModule == (PduR_LowerTpModuleName)PDUR_CANTP)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   160          {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   161              #if defined(PDUR_CANTP_CHANGE_PARAMETER_SUPPORT) && (PDUR_CANTP_CHANGE_PARAMETER_SUPPORT != 0)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   162  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   163                  retval = CanTp_ChangeParameter(lowerId,parameter,value);
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   164  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   165              #endif
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   166  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   167          }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   168          else if(lowerModule == (PduR_LowerTpModuleName)PDUR_FRTP)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   169          {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   170              #if defined(PDUR_FRTP_CHANGE_PARAMETER_SUPPORT) && (PDUR_FRTP_CHANGE_PARAMETER_SUPPORT != 0)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   171  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   172                  retval = FrTp_ChangeParameter(lowerId,parameter,value);
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   173  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   174              #endif
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   175  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   176          }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   177          else
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   178          {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   179              /*To remove Misra Warning*/
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   180          }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   181      }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   182      else
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   183      {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   184          /*Report error in case of invalid Id  */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   185          /* If the PDU identifier is not within the specified range then PDUR_E_PDU_ID_INVALID is reported via DET.*/
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   186          PDUR_REPORT_ERROR(PDUR_SID_DCMCHANGEPARAMETER, PDUR_E_PDU_ID_INVALID);
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   187      }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   188  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   189      return retval;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   190  #endif /*PDUR_ZERO_COST_OPERATION*/
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   191  }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   192  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   193  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   194  /* End section for code */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   195  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   196  #define PDUR_STOP_SEC_CODE
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   197  #include "PduR_MemMap.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   198  #endif  /* #if defined(PDUR_CHANGE_PARAMETER_SUPPORT) && (PDUR_CHANGE_PARAMETER_SUPPORT != 0) */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   199  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   200  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   201  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   202  /* Begin section for code */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   203  #if defined(PDUR_CHANGE_PARAMETER_SUPPORT) && (PDUR_CHANGE_PARAMETER_SUPPORT != 0)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   204  #define PDUR_START_SEC_CODE
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   205  #include "PduR_MemMap.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   206  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   207  /**
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   208   **************************************************************************************************
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   209   * PduR_DcmReadParameter
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   210   *      This service primitive is used to request the change of the value of the PDUR_STMIN parameter.
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   211   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   212   * \param           parameter: Specify the parameter to which the value has to be read (BS or STmin).
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   213   *                  id: Gives the ID of the connection (message).
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   214   *                  value: Pointer where the parameter value is stored
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   215   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   216   * \retval          E_OK    : The STmin value is updated in the buffer provided.
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   217                      E_NOT_OK: Invalid request / NULL_PTR passed etc
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   218   *
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   219   **************************************************************************************************
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   220   */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   221  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   222  FUNC( Std_ReturnType, PDUR_CODE ) PduR_DcmReadParameter( VAR(PduIdType, AUTOMATIC) id,
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   223                                                            VAR(TPParameterType, AUTOMATIC) parameter,
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   224                                                            P2VAR(uint16, AUTOMATIC, PDUR_APPL_DATA) value)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   225  {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   226  #if defined(PDUR_ZERO_COST_OPERATION) && (PDUR_ZERO_COST_OPERATION!= STD_OFF)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   227  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   228      return (PDUR_CONFIG_SINGLE_TPTX_LO(ReadParameter)(id,parameter,value));
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   229  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   230  #else
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   231      Std_ReturnType          retval;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   232      PduR_LowerTpModuleName  lowerModule;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   233      PduIdType               lowerId;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   234  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   235      retval      = E_NOT_OK;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   236      /*Checks the validity of id And value is not null  */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   237      if ( (id < PDUR_NR_VALID_DCM_IDS ) && (value != NULL_PTR))
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   238      {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   239          /* Gets the low layer name(cantp/frtp) and Id,then calls the lower Tp layer read parameter function */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   240          lowerModule = PDUR_CHANGEPARAM_SUPPORT[id].loTp;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   241          lowerId     = PDUR_CHANGEPARAM_SUPPORT[id].loId;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   242  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   243  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   244          if(lowerModule == (PduR_LowerTpModuleName)PDUR_CANTP)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   245          {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   246              #if defined(PDUR_CANTP_CHANGE_PARAMETER_SUPPORT) && (PDUR_CANTP_CHANGE_PARAMETER_SUPPORT != 0)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   247  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   248                  retval = CanTp_ReadParameter(lowerId,parameter,value);
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   249  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   250              #endif
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   251  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   252          }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   253          else if(lowerModule == (PduR_LowerTpModuleName)PDUR_FRTP)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   254          {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   255              #if defined(PDUR_FRTP_CHANGE_PARAMETER_SUPPORT) && (PDUR_FRTP_CHANGE_PARAMETER_SUPPORT != 0)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   256  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   257                  retval = FrTp_ReadParameter(lowerId,parameter,value);
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   258  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   259              #endif
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   260  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   261          }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   262          else
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   263          {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   264              /*To remove Misra Warning*/
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   265          }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   266      }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   267      else
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   268      {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   269          /*Report error in case of invalid Id and value is a null pointer */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   270          /* If the PDU identifier is not within the specified range then PDUR_E_PDU_ID_INVALID is reported via DET.*/
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   271          #if defined(PDUR_DEV_ERROR_DETECT) && (PDUR_DEV_ERROR_DETECT != STD_OFF)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   272          if(id >= PDUR_NR_VALID_DCM_IDS)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   273          {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   274              PDUR_REPORT_ERROR(PDUR_SID_DCMREADPARAMETER, PDUR_E_PDU_ID_INVALID);
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   275          }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   276          if(value == NULL_PTR)
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   277          {
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   278              PDUR_REPORT_ERROR(PDUR_SID_DCMREADPARAMETER, PDUR_E_NULL_POINTER);
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   279          }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   280          #endif
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   281  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   282      }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   283      return retval;
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   284  #endif /*PDUR_ZERO_COST_OPERATION*/
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   285  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   286  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   287  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   288  }
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   289  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   290  /* ------------------------------------------------------------------------ */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   291  /* End section for code */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   292  
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   293  #define PDUR_STOP_SEC_CODE
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   294  #include "PduR_MemMap.h"
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   295  #endif  /* #if defined(PDUR_CHANGE_PARAMETER_SUPPORT) && (PDUR_CHANGE_PARAMETER_SUPPORT != 0) */
+; BSW\src\BSW\Gen\PduR\PduR_UpTp.c	   296  
+
+	; Module end

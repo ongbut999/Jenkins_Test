@@ -1,0 +1,4418 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc920a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds_Rdtc_RepSuppDTC.src BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.DcmDspUds_Rdtc_RepSuppDTC.Dcm_Dsp_ReportSupportedDTC',code,cluster('Dcm_Dsp_ReportSupportedDTC')
+	.sect	'.text.DcmDspUds_Rdtc_RepSuppDTC.Dcm_Dsp_ReportSupportedDTC'
+	.align	2
+	
+	.global	Dcm_Dsp_ReportSupportedDTC
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	     1  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	     2  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	     3  #include "DcmDspUds_Rdtc_Inf.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	     4  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	     5  #if(DCM_CFG_DSPUDSSUPPORT_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	     6  #include "DcmDspUds_Rdtc_Priv.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	     7  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	     8  #if(   (DCM_CFG_DSP_RDTCSUBFUNC_0x02_ENABLED != DCM_CFG_OFF)\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	     9       ||(DCM_CFG_DSP_RDTCSUBFUNC_0x0A_ENABLED != DCM_CFG_OFF)\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    10       ||(DCM_CFG_DSP_RDTCSUBFUNC_0x15_ENABLED != DCM_CFG_OFF)\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    11         /* FC_VariationPoint_START */                        \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    12       ||(DCM_CFG_DSP_RDTCSUBFUNC_0x13_ENABLED != DCM_CFG_OFF)\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    13         /* FC_VariationPoint_END */                          \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    14       ||(DCM_CFG_DSP_RDTCSUBFUNC_0x0F_ENABLED != DCM_CFG_OFF)\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    15       ||(DCM_CFG_DSP_RDTCSUBFUNC_0x17_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    16  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    17  #define DCM_START_SEC_CODE /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    18  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    19  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    20  #if((DCM_PAGEDBUFFER_ENABLED != DCM_CFG_OFF) && (DCM_CFG_RDTCPAGEDBUFFERSUPPORT != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    21  static FUNC(Dcm_MsgLenType, DCM_CODE)Dcm_Dsp_CalTotalResLengthForDTC(VAR(uint16,AUTOMATIC) NumOfFltDTC_u16,VAR(uint8,AUTOMATIC) reqSubfunction);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    22  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    23  static FUNC(uint8, DCM_CODE)Dcm_Dsp_GetDTCRequestLength(CONST(uint8,AUTOMATIC) reqSubfunction);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    24  static FUNC(uint8, DCM_CODE)Dcm_Dsp_CalDTCActiveMask(CONST(uint8,AUTOMATIC) statusAvailMask_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    25                                                       CONST(uint8,AUTOMATIC) reqDtcStatus_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    26                                                       CONST(uint8,AUTOMATIC) reqSubfunction);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    27  static FUNC(void, DCM_CODE)Dcm_Dsp_CalDTCKindAndOrigin(P2VAR(Dem_DTCOriginType,AUTOMATIC,DCM_INTERN_DATA) dataDtcOrigin_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    28                                                         P2VAR(Dem_DTCKindType,AUTOMATIC,DCM_INTERN_DATA) dataDtcKind_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    29                                                         P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) dataDtcStatus_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    30                                                         CONST(uint8,AUTOMATIC) reqSubfunction,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    31                                                         CONST(uint8,AUTOMATIC) reqDtcOriginData);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    32  static FUNC(void, DCM_CODE)Dcm_Dsp_FillResBytesAndLength(P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    33                                                           CONST(uint8,AUTOMATIC) reqSubfunction,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    34                                                           CONST(uint8,AUTOMATIC) statusAvailMask_u8);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    35  static FUNC(Dem_ReturnGetNextFilteredDTCType, DCM_CODE)Dcm_Dsp_FillResDtcBuffer(VAR(uint32,AUTOMATIC) dtcData_u32,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    36                                                                                  P2VAR(Dcm_MsgLenType,AUTOMATIC,DCM_INTERN_DATA) respLenNr_u32,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    37                                                                                  VAR(uint8,AUTOMATIC) stDTCStatus_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    38                                                                                  P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    39                                                                                 );
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    40  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    41  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    42   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    43   * Dcm_Dsp_ReportSupportedDTC :
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    44   *  This function is used to implement the following subfunctions:
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    45   *  0x02( Report DTC By Status Mask       )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    46   *  0x0A( Report Supported DTCs           )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    47   *  0x15( Report DTC By Permanent Status  )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    48   *  0x0F( Report Mirror Memory DTC By StatusMask  )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    49   *  0x17( ReportUserDefMemoryDTCByStatusMask)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    50   * \param           pMsgContext    Pointer to message structure
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    51   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    52   * \retval          None
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    53   * \seealso
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    54   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    55   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    56   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    57  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    58  #if((DCM_PAGEDBUFFER_ENABLED != DCM_CFG_OFF) && (DCM_CFG_RDTCPAGEDBUFFERSUPPORT != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    59  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    60  FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    61  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    62      VAR(uint32,                              AUTOMATIC) dataDTC_u32;              /* Variable to store DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    63      VAR(uint8_least,                         AUTOMATIC) idxLoop_qu8;              /* Variable for loop counter */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    64      VAR(Dcm_MsgLenType,                      AUTOMATIC) nrRespLen_u32;            /* Local variable for response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    65      VAR(Dcm_MsgLenType,                      AUTOMATIC) nrResMaxDataLen_u32;      /* Variable to store max response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    66      VAR(uint16,                              AUTOMATIC) nrFltDTC_u16;             /* Variable to store number of filtered DTCs */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    67      VAR(uint8,                               AUTOMATIC) nrReqLength_u8;           /*Variable to store request length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    68      VAR(uint8,                               AUTOMATIC) dataStatusAvailMask_u8;   /* Variable to store status availability mask */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    69      VAR(uint8,                               AUTOMATIC) stDTCStatus_u8;           /* Variable to store effective status mask */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    70      VAR(Dem_ReturnGetNextFilteredDTCType,    AUTOMATIC) dataRetGetNextFiltDTC_u8; /* Return type for Dem_GetNextFilteredDTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    71      VAR(Dem_ReturnGetNumberOfFilteredDTCType,AUTOMATIC) dataRetNumFltDTC_u8;      /* Return type for Dem_GetNumberOfFilteredDTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    72      VAR(Dem_ReturnSetFilterType,             AUTOMATIC) dataRetSetDTCFilter_u8;   /* Return type for Dem_SetDTCFilter */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    73      VAR(uint8,                               AUTOMATIC) dataSubfunc_u8;           /* Local variable to store the subfunction */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    74      VAR(Dem_DTCOriginType,                   AUTOMATIC) dataDemDTCOrigin_u8;      /* Local variable to store the memory type */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    75      VAR(Dem_DTCKindType,                     AUTOMATIC) dataDemDTCKind_u8;        /* Local variable to store the DTC Kind */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    76      VAR(Std_ReturnType,                      AUTOMATIC) dataretVal_u8;            /* Variable to store the returnType from DcmAppl API          */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    77      VAR(boolean,                             AUTOMATIC) IsProtocolIPCanFD_b;      /* Local variable to check whether the protocol is CANFD SPECIFIC PROTOCOLS*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    78      static VAR(boolean,                        DCM_VAR) dataPending_flag_b;       /* varible to indicate datapending */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    79  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    80      /* Initialization of local variables */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    81      dataRetGetNextFiltDTC_u8 = DEM_FILTERED_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    82      *dataNegRespCode_u8     = 0x0;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    83      dataretVal_u8 = DCM_E_PENDING;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    84      /*Opstatus possed by the central statemachine is unused currently, opstatus variables related to service needs to be
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    85       * removed and the one passed by the central statemachine needs to be used, this would be taken care with task XXXXX*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    86      DCM_UNUSED_PARAM(OpStatus);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    87  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    88      /* State machine for Report Supported DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    89      /* Initialization state */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    90      if(Dcm_DspRDTCSubFunc_en == DSP_RDTC_SFINIT)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    91      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    92          /* Copy the subfunction parameter to the local variable */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    93          dataSubfunc_u8 = pMsgContext->reqData[0];
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    94          /* calculate the request length according to the request data (subfunction No.) */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    95          nrReqLength_u8 = Dcm_Dsp_GetDTCRequestLength(dataSubfunc_u8);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    96  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    97          /* Check for request length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    98          if(pMsgContext->reqDataLen == nrReqLength_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	    99          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   100              /* If the available status mask is read successfully */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   101              if(Dem_GetDTCStatusAvailabilityMask(&dataStatusAvailMask_u8) == E_OK)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   102              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   103                  /* Initializing the filled response length in page and the total filled response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   104                  Dcm_DspRDTCFilledRespLen_u32 = 0x00;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   105                  Dcm_DspTotalRespLenFilled_u32 = 0x00;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   106                  /* Set the variable to FALSE to indicate that the zero's should not be filled in page */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   107                  Dcm_DspFillZeroes_b     = FALSE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   108                  /* initial the local copy of available mask */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   109                  stDTCStatus_u8 = dataStatusAvailMask_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   110  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   111                  /* calculate the active DTC status mask for the service 0x02,0x13,0x0F and 0x17 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   112                  stDTCStatus_u8 = Dcm_Dsp_CalDTCActiveMask(dataStatusAvailMask_u8, pMsgContext->reqData[1],dataSubfunc_u8);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   113  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   114                  /* If the status mask is 0 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   115                  if(stDTCStatus_u8 != 0x0)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   116                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   117                      /* Assign the DTC Origin as Primary memory */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   118                      dataDemDTCOrigin_u8 = DEM_DTC_ORIGIN_PRIMARY_MEMORY;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   119                      /* Assign the Dtc kind as all DTCs*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   120                      dataDemDTCKind_u8 = DEM_DTC_KIND_ALL_DTCS;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   121  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   122                      /* calculation of DTC Origin and DTC kind, update DTC mask */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   123                      Dcm_Dsp_CalDTCKindAndOrigin(&dataDemDTCOrigin_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   124                                                  &dataDemDTCKind_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   125                                                  &stDTCStatus_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   126                                                  dataSubfunc_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   127                                                  pMsgContext->reqData[2]
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   128                                                 );
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   129  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   130                      /* Set the calculated info. to the DTC Filter in DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   131                      dataRetSetDTCFilter_u8 = Dem_SetDTCFilter(stDTCStatus_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   132                                                                dataDemDTCKind_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   133                                                                DEM_DTC_FORMAT_UDS,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   134                                                                dataDemDTCOrigin_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   135                                                                DEM_FILTER_WITH_SEVERITY_NO,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   136                                                                DEM_SEVERITY_NO_SEVERITY,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   137                                                                DEM_FILTER_FOR_FDC_NO
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   138                                                               );
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   139  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   140                      /* If the Filter Mask sent is accepted by DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   141                      if(dataRetSetDTCFilter_u8 == DEM_FILTER_ACCEPTED)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   142                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   143                          /* Move the state to calculate the number of filtered DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   144                          Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFCALCNUMDTC;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   145                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   146                      /* Filter Mask not accepted by DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   147                      else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   148                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   149                          /* Set Negative response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   150                          *dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   151                          dataretVal_u8 = E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   152                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   153                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   154                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   155                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   156                      /* Do Nothing */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   157                      dataretVal_u8 = E_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   158                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   159                  /* Fill response bytes for subfunction 0x02,0x13,0x0F,0x15,0x17 or 0x0A */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   160                  Dcm_Dsp_FillResBytesAndLength(pMsgContext,dataSubfunc_u8, dataStatusAvailMask_u8);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   161              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   162              /* Status mask is not read properly from DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   163              else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   164              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   165                  /* Set Negative response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   166                  *dataNegRespCode_u8 = DCM_E_CONDITIONSNOTCORRECT;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   167                  dataretVal_u8 = E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   168              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   169          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   170          /* Request Length not correct */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   171          else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   172          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   173              /* Set Negative response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   174              *dataNegRespCode_u8 = DCM_E_INCORRECTMESSAGELENGTHORINVALIDFORMAT;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   175              dataretVal_u8 = E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   176          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   177      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   178  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   179      /* State to calculate the number of filtered DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   180      if(Dcm_DspRDTCSubFunc_en == DSP_RDTC_SFCALCNUMDTC)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   181      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   182          dataSubfunc_u8 = pMsgContext->reqData[0];
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   183          /* Call the DEM API to get filtered number of DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   184          dataRetNumFltDTC_u8 = Dem_GetNumberOfFilteredDTC(&nrFltDTC_u16);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   185  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   186          /* If filtered DTC number is obtained without error */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   187          if(dataRetNumFltDTC_u8 == DEM_NUMBER_OK)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   188          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   189              /* Check if number of filtered DTCs is nonzero */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   190              if(nrFltDTC_u16 !=0)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   191              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   192                  /* Calculate total response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   193                  pMsgContext->resDataLen = Dcm_Dsp_CalTotalResLengthForDTC(nrFltDTC_u16,dataSubfunc_u8);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   194  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   195                  if(Dcm_Prv_CheckTotalResponseLength(pMsgContext->resDataLen)!=FALSE)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   196                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   197                      /* Set variable to FALSE to indicate that first page has not been sent */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   198                      Dcm_DspFirstPageSent_b  = FALSE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   199  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   200                      /* Move the state to next state */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   201                      Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFFILLRESP;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   202  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   203                      Dcm_adrUpdatePage_pfct = &Dcm_Dsp_RDTCUpdatePage;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   204  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   205                      /* Call the DCM API and start Paged processing */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   206                      Dcm_StartPagedProcessing(pMsgContext);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   207                      /* Update the filled response length variable and total response length filled */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   208                      Dcm_DspRDTCFilledRespLen_u32 = 2;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   209                      Dcm_DspTotalRespLenFilled_u32 = 2;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   210  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   211  #if (DCM_CFG_DSP_RDTCSUBFUNC_0x17_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   212                      if(dataSubfunc_u8 == DSP_REPORT_USER_DEFMEMORY_DTC_BY_STATUS_MASK)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   213                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   214                          /* Update the filled response length variable and total response length filled */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   215                          Dcm_DspRDTCFilledRespLen_u32 = 3;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   216                          Dcm_DspTotalRespLenFilled_u32 = 3;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   217                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   218  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   219                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   220                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   221                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   222                      /* Response buffer exceeded - set negative response code */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   223                      *dataNegRespCode_u8     = DCM_E_RESPONSETOOLONG;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   224                      dataretVal_u8 = E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   225                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   226              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   227              else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   228              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   229                  /* Move the state to default state */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   230                  Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFINIT;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   231                  dataretVal_u8 = E_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   232              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   233          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   234          /* If more time is needed for getting the number of filtered DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   235          else if(dataRetNumFltDTC_u8 == DEM_NUMBER_PENDING)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   236          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   237              /* Do nothing - remain in the same state and call the API again */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   238              dataretVal_u8 = DCM_E_PENDING;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   239          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   240          else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   241          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   242              /* Set negative response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   243              *dataNegRespCode_u8 = DCM_E_CONDITIONSNOTCORRECT;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   244              dataretVal_u8 = E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   245          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   246      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   247  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   248      /* State to get the filtered DTC and status from DEM then fill the response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   249      else if(Dcm_DspRDTCSubFunc_en == DSP_RDTC_SFFILLRESP)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   250      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   251          idxLoop_qu8 = 0;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   252          /* Store the maximum response length in local variable */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   253          nrResMaxDataLen_u32 = Dcm_DspRDTCMaxRespLen_u32;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   254  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   255          /* loop till the maximum DTC's are read and the filtered DTC is read without error */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   256          do
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   257          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   258              idxLoop_qu8++;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   259              /* Call the DEM API and read DTC and its status */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   260              dataRetGetNextFiltDTC_u8 = Dem_GetNextFilteredDTC(&dataDTC_u32, &stDTCStatus_u8);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   261              /* If the DTC is filtered without error */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   262              if(dataRetGetNextFiltDTC_u8 == DEM_FILTERED_OK)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   263              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   264                  if (   (Dcm_DsldPduInfo_st.SduLength != 0u)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   265                       &&(dataPending_flag_b == FALSE)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   266                     )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   267                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   268                      nrRespLen_u32 = 0 ;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   269                      Dcm_DspRDTCFilledRespLen_u32 = Dcm_DspRDTCFilledRespLen_u32 + Dcm_DsldPduInfo_st.SduLength;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   270                      dataPending_flag_b = TRUE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   271                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   272  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   273                  dataRetGetNextFiltDTC_u8 = Dcm_Dsp_FillResDtcBuffer(dataDTC_u32,&nrRespLen_u32,stDTCStatus_u8,pMsgContext);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   274              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   275              /* If more time is needed to get the filtered DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   276              else if(dataRetGetNextFiltDTC_u8 == DEM_FILTERED_PENDING)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   277              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   278                  /* Nothing to do - Remain in the same state */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   279                  dataretVal_u8 = DCM_E_PENDING;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   280                  break;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   281              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   282              /* If all the filtered DTC's are read */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   283              else if(dataRetGetNextFiltDTC_u8 == DEM_FILTERED_NO_MATCHING_DTC)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   284              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   285                  /* Do nothing */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   286              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   287              else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   288              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   289                  /* Check if first page is already sent or not */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   290                  if(Dcm_DspFirstPageSent_b == FALSE)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   291                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   292                      /* Set Negative response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   293                      *dataNegRespCode_u8 = DCM_E_GENERALREJECT;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   294                      dataretVal_u8 = E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   295                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   296                  /* First page is already sent so NRC cannot be set */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   297                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   298                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   299                      /* Call process page with zero length to stop the response transmission immediately */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   300                      Dcm_ProcessPage(0);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   301  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   302                      /* Move the state to default state */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   303                      Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFINIT;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   304                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   305              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   306  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   307              IsProtocolIPCanFD_b = Dcm_IsProtocolIPCanFD();
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   308              /* Check if the buffer overflow happens or all filtered DTC's are read */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   309              if(     ((IsProtocolIPCanFD_b) && ((Dcm_DspRDTCFilledRespLen_u32 + 0x04u) > nrResMaxDataLen_u32))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   310                  ||  ((!IsProtocolIPCanFD_b) && (Dcm_DspRDTCFilledRespLen_u32>=7u))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   311                  ||  (dataRetGetNextFiltDTC_u8 == DEM_FILTERED_NO_MATCHING_DTC)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   312                )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   313              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   314                  /* If first page is not sent yet */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   315                  if(Dcm_DspFirstPageSent_b == FALSE)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   316                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   317                      /* Set the variable to TRUE indicating first page is sent */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   318                      Dcm_DspFirstPageSent_b = TRUE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   319                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   320  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   321                  if(dataRetGetNextFiltDTC_u8 == DEM_FILTERED_NO_MATCHING_DTC)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   322                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   323                      if((Dcm_DsldPduInfo_st.SduLength != 0u) && (dataPending_flag_b == FALSE))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   324                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   325                          nrRespLen_u32 = 0 ;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   326                          Dcm_DspRDTCFilledRespLen_u32 = Dcm_DspRDTCFilledRespLen_u32 + Dcm_DsldPduInfo_st.SduLength;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   327                          dataPending_flag_b = TRUE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   328                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   329  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   330                      /* Calculating the number of remaining number of bytes to be filled in response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   331                      nrRespLen_u32 = pMsgContext->resDataLen - Dcm_DspTotalRespLenFilled_u32;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   332                      Dcm_Dsp_RDTCFillZero(nrRespLen_u32);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   333                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   334  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   335                  if(  ((Dcm_DspRDTCFilledRespLen_u32 +2u) >= Dcm_DslTransmit_st.TxResponseLength_u32)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   336                     ||((Dcm_DspRDTCFilledRespLen_u32 +2u) >= nrResMaxDataLen_u32)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   337                     ||((Dcm_DspTotalRespLenFilled_u32+1u) >= Dcm_DslTransmit_st.TxResponseLength_u32)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   338                    )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   339                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   340                      /* Move the state to next state */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   341                      Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFTXPAGE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   342                      /* Send the page for transmission */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   343                      Dcm_ProcessPage(Dcm_DspRDTCFilledRespLen_u32);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   344                      dataPending_flag_b =FALSE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   345                      /* Reset the response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   346                      Dcm_DspRDTCFilledRespLen_u32 = 0x0;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   347                      /* Change the return so that the loop won't get executed again */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   348                      dataRetGetNextFiltDTC_u8 = DEM_FILTERED_NO_MATCHING_DTC;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   349                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   350              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   351  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   352          }while((idxLoop_qu8 < DCM_CFG_RDTC_MAXNUMDTCREAD) && (dataRetGetNextFiltDTC_u8 == DEM_FILTERED_OK));
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   353      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   354      else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   355      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   356          /* Do nothing */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   357      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   358  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   359  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   360      if(Dcm_DspRDTCSubFunc_en == DSP_RDTC_SFTXPAGE)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   361      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   362          /* Wait in this state for transmission of page */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   363      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   364  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   365      /* State where zero's are filled in page if total response length filled is less than actual response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   366      if(Dcm_DspRDTCSubFunc_en == DSP_RDTC_SFFILLZERO)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   367      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   368          if((Dcm_DsldPduInfo_st.SduLength != 0u ) && (dataPending_flag_b == FALSE))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   369          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   370              nrRespLen_u32 = 0 ;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   371              Dcm_DspRDTCFilledRespLen_u32 = Dcm_DspRDTCFilledRespLen_u32 + Dcm_DsldPduInfo_st.SduLength;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   372              dataPending_flag_b = TRUE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   373          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   374          /* Calculating the number of remaining number of bytes to be filled in response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   375          nrRespLen_u32 = pMsgContext->resDataLen - Dcm_DspTotalRespLenFilled_u32;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   376          Dcm_Dsp_RDTCFillZero(nrRespLen_u32);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   377          /* Move the state to next state */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   378          Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFTXPAGE;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   379          /* Send the page for transmission */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   380          Dcm_ProcessPage(Dcm_DspRDTCFilledRespLen_u32);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   381          dataPending_flag_b = FALSE ;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   382          Dcm_DspRDTCFilledRespLen_u32 = 0;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   383      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   384      return dataretVal_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   385  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   386  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   387  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   388   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   389   * Dcm_Dsp_CalTotalResLengthForDTC :
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   390   *  This function is used to calcualte the total response length for the all dtcs for paged buffer
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   391   * \param           uint16    Nummer of filtered dtc
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   392   *                  uint8     requested sub function
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   393   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   394   * \retval          Dcm_MsgLenType  total length
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   395   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   396   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   397   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   398  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   399  static FUNC(Dcm_MsgLenType, DCM_CODE)Dcm_Dsp_CalTotalResLengthForDTC(VAR(uint16,AUTOMATIC) NumOfFltDTC_u16, VAR(uint8,AUTOMATIC) reqSubfunction)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   400  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   401      Dcm_MsgLenType totalLength = 0;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   402  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   403      totalLength = (Dcm_MsgLenType) ((((uint16) NumOfFltDTC_u16) << 0x02u) + 0x02);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   404  #if (DCM_CFG_DSP_RDTCSUBFUNC_0x17_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   405      if (reqSubfunction == DSP_REPORT_USER_DEFMEMORY_DTC_BY_STATUS_MASK)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   406      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   407          totalLength = (Dcm_MsgLenType) ((((uint16) NumOfFltDTC_u16) << 0x02u) + 0x03);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   408      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   409  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   410      return totalLength;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   411  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   412  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   413  #else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   414  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   415  FUNC(Std_ReturnType,DCM_CODE) Dcm_Dsp_ReportSupportedDTC (VAR(Dcm_SrvOpStatusType,AUTOMATIC) OpStatus,P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,P2VAR(Dcm_NegativeResponseCodeType,AUTOMATIC,DCM_INTERN_DATA) dataNegRespCode_u8)
+; Function Dcm_Dsp_ReportSupportedDTC
+.L44:
+Dcm_Dsp_ReportSupportedDTC:	.type	func
+	sub.a	a10,#24
+.L148:
+	mov.aa	a15,a4
+.L151:
+	mov.aa	a12,a5
+.L152:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   416  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   417      VAR(uint32,                           AUTOMATIC) dataDTC_u32;              /* Variable to store DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   418      VAR(Dcm_MsgLenType,                   AUTOMATIC) nrRespLen_u32;            /* Local variable for response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   419      VAR(Dcm_MsgLenType,                   AUTOMATIC) nrResMaxDataLen_u32;      /* Variable to store max response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   420      VAR(uint8_least,                      AUTOMATIC) idxLoop_qu8;              /* Variable for loop counter */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   421      VAR(uint8,                            AUTOMATIC) nrReqLength_u8;           /* Variable to store request length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   422      VAR(uint8,                            AUTOMATIC) stDTCStatus_u8;           /* Variable to store effective status mask */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   423      VAR(uint8,                            AUTOMATIC) dataStatusAvailMask_u8;   /* Variable to store status availability mask */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   424      VAR(uint8,                            AUTOMATIC) dataSubfunc_u8;           /* Local variable to store the subfunction */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   425      VAR(Dem_DTCOriginType,                AUTOMATIC) dataDemDTCOrigin_u8;      /* Local variable to store the memory type */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   426      VAR(Dem_DTCKindType,                  AUTOMATIC) dataDemDTCKind_u8;        /* Local variable to store the DTC Kind */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   427      VAR(Dem_ReturnSetFilterType,          AUTOMATIC) dataRetSetDTCFilter_u8;   /* Return type for Dem_SetDTCFilter */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   428      VAR(Dem_ReturnGetNextFilteredDTCType, AUTOMATIC) dataRetGetNextFiltDTC_u8; /* Return type for Dem_GetNextFilteredDTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   429      VAR(Std_ReturnType,                   AUTOMATIC) dataretVal_u8;            /* Variable to store the returnType from DcmAppl API */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   430      (void)OpStatus;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   431      /* Initialization of local variables */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   432      *dataNegRespCode_u8 = 0x0;
+	mov	d15,#0
+.L182:
+	st.b	[a12],d15
+.L183:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   433      dataretVal_u8=DCM_E_PENDING;
+	mov	d8,#10
+.L153:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   434  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   435      /* State machine for Report Supported DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   436      /* Initialization state */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   437      if(Dcm_DspRDTCSubFunc_en == DSP_RDTC_SFINIT)
+	movh.a	a13,#@his(Dcm_DspRDTCSubFunc_en)
+	lea	a13,[a13]@los(Dcm_DspRDTCSubFunc_en)
+	ld.w	d0,[a13]
+.L184:
+	jne	d0,#1,.L2
+.L185:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   438      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   439          /* Copy the subfunction parameter to the local variable */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   440          dataSubfunc_u8 = pMsgContext->reqData[0];
+	ld.a	a2,[a15]4
+.L186:
+	ld.bu	d9,[a2]
+.L154:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   441          /* calculate the request length according to the reqest data (subfunction No.) */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   442          nrReqLength_u8 = Dcm_Dsp_GetDTCRequestLength(dataSubfunc_u8);
+	mov	d4,d9
+.L149:
+	call	Dcm_Dsp_GetDTCRequestLength
+.L150:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   443  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   444          /* check for request length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   445          if(pMsgContext->reqDataLen == nrReqLength_u8)
+	ld.w	d15,[a15]16
+.L187:
+	jne	d15,d2,.L3
+.L188:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   446          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   447              /* If the available status mask is read successfully */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   448              if(Dem_GetDTCStatusAvailabilityMask(&dataStatusAvailMask_u8) == E_OK)
+	lea	a4,[a10]17
+	call	Dem_GetDTCStatusAvailabilityMask
+.L155:
+	jne	d2,#0,.L4
+.L189:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   449              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   450                  /* Store Status Availability mask in stDTCStatus_u8 for S/F 0x0A and 0x15 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   451                  stDTCStatus_u8  = dataStatusAvailMask_u8;
+	ld.bu	d15,[a10]17
+.L190:
+	st.b	[a10]16,d15
+.L191:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   452  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   453                  /* calculate the active DTC status mask for the service 0x02,0x13,0x0F and 0x17 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   454                  stDTCStatus_u8 = Dcm_Dsp_CalDTCActiveMask(dataStatusAvailMask_u8, pMsgContext->reqData[1],dataSubfunc_u8);
+	ld.a	a14,[a15]4
+.L192:
+	ld.bu	d4,[a10]17
+.L193:
+	ld.bu	d5,[a14]1
+.L194:
+	mov	d6,d9
+.L156:
+	call	Dcm_Dsp_CalDTCActiveMask
+.L157:
+	st.b	[a10]16,d2
+.L195:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   455  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   456                  /* If the status mask is 0 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   457                  if(stDTCStatus_u8 != 0x0u)
+	ld.bu	d15,[a10]16
+.L196:
+	jeq	d15,#0,.L5
+.L197:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   458                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   459                      /* Assign the DTC Origin as Primary memory */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   460                      dataDemDTCOrigin_u8 = DEM_DTC_ORIGIN_PRIMARY_MEMORY;
+	mov	d15,#1
+.L198:
+	st.b	[a10]18,d15
+.L199:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   461                      /* Assign the DTC kind as ALL DTCs */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   462                      dataDemDTCKind_u8 = DEM_DTC_KIND_ALL_DTCS;
+	mov	d15,#1
+.L200:
+	st.b	[a10]19,d15
+.L201:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   463  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   464                      /* calculation of DTC Origin and DTC kind, update DTC mask */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   465                       Dcm_Dsp_CalDTCKindAndOrigin(&dataDemDTCOrigin_u8,
+	lea	a4,[a10]18
+.L202:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   466                                                   &dataDemDTCKind_u8,
+	lea	a5,[a10]19
+.L203:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   467                                                   &stDTCStatus_u8,
+	lea	a6,[a10]16
+.L204:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   468                                                   dataSubfunc_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   469                                                   pMsgContext->reqData[2]
+	ld.bu	d5,[a14]2
+	mov	d4,d9
+.L158:
+	call	Dcm_Dsp_CalDTCKindAndOrigin
+.L159:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   470                                                  );
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   471  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   472  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   473                      /* Set the DTC Filter in DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   474                      dataRetSetDTCFilter_u8 = Dem_SetDTCFilter(stDTCStatus_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   475                                                                dataDemDTCKind_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   476                                                                DEM_DTC_FORMAT_UDS,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   477                                                                dataDemDTCOrigin_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   478                                                                DEM_FILTER_WITH_SEVERITY_NO,
+	mov	d0,#1
+	st.b	[a10],d0
+.L205:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   479                                                                DEM_SEVERITY_NO_SEVERITY,
+	mov	d15,#0
+	st.b	[a10]4,d15
+.L206:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   480                                                                DEM_FILTER_FOR_FDC_NO
+	mov	d15,#1
+	st.b	[a10]8,d15
+.L207:
+	ld.bu	d4,[a10]16
+.L208:
+	ld.bu	d5,[a10]19
+.L209:
+	mov	d6,#1
+.L210:
+	ld.bu	d7,[a10]18
+	call	Dem_SetDTCFilter
+.L160:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   481                                                               );
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   482                      /* If the Filter Mask sent is accepted by DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   483                      if(dataRetSetDTCFilter_u8 == DEM_FILTER_ACCEPTED)
+	jne	d2,#0,.L6
+.L211:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   484                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   485                          /* Move the state to fill the response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   486                          Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFFILLRESP;
+	mov	d15,#5
+.L212:
+	st.w	[a13],d15
+.L213:
+	j	.L7
+.L6:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   487                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   488                      /* Filter Mask not accepted by DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   489                      else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   490                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   491                          /* Set Negative response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   492                          *dataNegRespCode_u8 = DCM_E_REQUESTOUTOFRANGE;
+	mov	d15,#49
+.L214:
+	st.b	[a12],d15
+.L215:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   493                          dataretVal_u8=E_NOT_OK;
+	mov	d8,#1
+.L7:
+	j	.L8
+.L5:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   494                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   495                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   496                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   497                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   498                      /* Do nothing. Response buffer already filled with subfunction and status availability mask */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   499                      dataretVal_u8=E_OK;
+	mov	d8,#0
+.L8:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   500                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   501                  /* Fill the other response bytes for subfunction 0x02,0x13,0x0F,0x15,0x17 or 0x0A */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   502                  Dcm_Dsp_FillResBytesAndLength(pMsgContext,dataSubfunc_u8, dataStatusAvailMask_u8);
+	ld.bu	d5,[a10]17
+	mov.aa	a4,a15
+.L161:
+	mov	d4,d9
+.L163:
+	call	Dcm_Dsp_FillResBytesAndLength
+.L162:
+	j	.L9
+.L4:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   503              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   504              /* Status mask is not read properly from DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   505              else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   506              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   507                  /* Set Negative response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   508                  *dataNegRespCode_u8 = DCM_E_CONDITIONSNOTCORRECT;
+	mov	d15,#34
+.L216:
+	st.b	[a12],d15
+.L217:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   509                  dataretVal_u8=E_NOT_OK;
+	mov	d8,#1
+.L9:
+	j	.L10
+.L3:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   510              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   511          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   512          /* Request Length not correct */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   513          else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   514          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   515              /* Set Negative response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   516              *dataNegRespCode_u8 = DCM_E_INCORRECTMESSAGELENGTHORINVALIDFORMAT;
+	mov	d15,#19
+.L218:
+	st.b	[a12],d15
+.L219:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   517              dataretVal_u8=E_NOT_OK;
+	mov	d8,#1
+.L10:
+	j	.L11
+.L2:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   518          }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   519      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   520  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   521      /* State to get the filtered DTC and status from DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   522      else if(Dcm_DspRDTCSubFunc_en == DSP_RDTC_SFFILLRESP)
+	jne	d0,#5,.L12
+.L220:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   523      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   524          idxLoop_qu8 = 0x00;
+	mov	d9,#0
+.L164:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   525          /* Copy the maximum response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   526          nrResMaxDataLen_u32 = pMsgContext->resMaxDataLen;
+	ld.w	d10,[a15]20
+.L165:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   527  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   528          /* Copy the response length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   529          nrRespLen_u32 = pMsgContext->resDataLen;
+	ld.w	d11,[a15]12
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   530  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   531          /* Loop for maximum number of DTC's to read in a cycle */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   532          do
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   533          {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   534              idxLoop_qu8++;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   535              /* Get the DTC filtered and its status from DEM */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   536              dataRetGetNextFiltDTC_u8 = Dem_GetNextFilteredDTC(&dataDTC_u32, &stDTCStatus_u8);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   537  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   538              /* If the DTC was filtered without any error */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   539              if(dataRetGetNextFiltDTC_u8 == DEM_FILTERED_OK)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   540              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   541                  /* Check if the response buffer is available for filling the response */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   542                  if((nrRespLen_u32 + 0x04u) <= nrResMaxDataLen_u32)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   543                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   544                     (void)Dcm_Dsp_FillResDtcBuffer(dataDTC_u32, &nrRespLen_u32, stDTCStatus_u8,pMsgContext);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   545                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   546                  else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   547                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   548                      /* Response buffer exceeded - set negative response code */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   549                      *dataNegRespCode_u8     = DCM_E_RESPONSETOOLONG;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   550                      dataretVal_u8=E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   551                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   552              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   553              /* If more time is needed to get the filtered DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   554              else if(dataRetGetNextFiltDTC_u8 == DEM_FILTERED_PENDING)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   555              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   556                  /* Nothing to do - Remain in the same state */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   557                  dataretVal_u8=DCM_E_PENDING;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   558                  break;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   559              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   560              /* If all the DTC's are read completely */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   561              else if(dataRetGetNextFiltDTC_u8 == DEM_FILTERED_NO_MATCHING_DTC)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   562              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   563  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   564                  /*Reset State to DSP_RDTC_SFINIT*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   565                  Dcm_DspRDTCSubFunc_en = DSP_RDTC_SFINIT;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   566                  idxLoop_qu8            = DCM_CFG_RDTC_MAXNUMDTCREAD;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   567                  dataretVal_u8=E_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   568              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   569              else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   570              {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   571                  /* Some problems has occurred in DEM while reading DTC */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   572                  *dataNegRespCode_u8 = DCM_E_GENERALREJECT;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   573                  dataretVal_u8=E_NOT_OK;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   574              }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   575          }while((idxLoop_qu8 < DCM_CFG_RDTC_MAXNUMDTCREAD) && (*dataNegRespCode_u8==0));
+.L13:
+	add	d9,#1
+.L221:
+	lea	a4,[a10]12
+.L222:
+	lea	a5,[a10]16
+	call	Dem_GetNextFilteredDTC
+.L166:
+	jne	d2,#0,.L14
+.L223:
+	add	d15,d11,#4
+.L224:
+	jlt.u	d10,d15,.L15
+.L225:
+	st.w	[a10]20,d11
+.L226:
+	ld.w	d4,[a10]12
+.L227:
+	lea	a4,[a10]20
+.L228:
+	ld.bu	d5,[a10]16
+.L229:
+	mov.aa	a5,a15
+.L168:
+	call	Dcm_Dsp_FillResDtcBuffer
+.L167:
+	ld.w	d11,[a10]20
+.L230:
+	j	.L16
+.L15:
+	mov	d15,#20
+.L231:
+	st.b	[a12],d15
+.L232:
+	mov	d8,#1
+.L16:
+	j	.L17
+.L14:
+	jne	d2,#3,.L18
+.L233:
+	mov	d8,#10
+.L234:
+	j	.L19
+.L18:
+	jne	d2,#1,.L20
+.L235:
+	mov	d0,#1
+.L236:
+	st.w	[a13],d0
+.L237:
+	mov	d9,#5
+.L238:
+	mov	d8,#0
+.L239:
+	j	.L21
+.L20:
+	mov	d15,#16
+.L240:
+	st.b	[a12],d15
+.L241:
+	mov	d8,#1
+.L21:
+.L17:
+	jge.u	d9,#5,.L22
+.L242:
+	ld.bu	d15,[a12]
+.L243:
+	jeq	d15,#0,.L13
+.L22:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   576  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   577  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   578          /* Update the message table with response data length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   579          pMsgContext->resDataLen = nrRespLen_u32;
+.L19:
+	st.w	[a15]12,d11
+.L244:
+	j	.L23
+.L12:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   580      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   581      else
+.L23:
+.L11:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   582      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   583          /* Do nothing */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   584      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   585      return dataretVal_u8;
+	mov	d2,d8
+.L169:
+	j	.L24
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   586  }
+.L24:
+	ret
+.L90:
+	
+__Dcm_Dsp_ReportSupportedDTC_function_end:
+	.size	Dcm_Dsp_ReportSupportedDTC,__Dcm_Dsp_ReportSupportedDTC_function_end-Dcm_Dsp_ReportSupportedDTC
+.L63:
+	; End of function
+	
+	.sdecl	'.text.DcmDspUds_Rdtc_RepSuppDTC.Dcm_Dsp_GetDTCRequestLength',code,cluster('Dcm_Dsp_GetDTCRequestLength')
+	.sect	'.text.DcmDspUds_Rdtc_RepSuppDTC.Dcm_Dsp_GetDTCRequestLength'
+	.align	2
+	
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   587  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   588  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   589  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   590  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   591   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   592   * Dcm_Dsp_GetDTCRequestLength :
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   593   *  This function is used to calcualte the request length for different sub function
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   594   * \param           cosnt uint8     requested sub function
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   595   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   596   * \retval          uint8           length
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   597   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   598   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   599   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   600  static FUNC(uint8, DCM_CODE)Dcm_Dsp_GetDTCRequestLength(CONST(uint8,AUTOMATIC) reqSubfunction)
+; Function Dcm_Dsp_GetDTCRequestLength
+.L46:
+Dcm_Dsp_GetDTCRequestLength:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   601  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   602      VAR(uint8, AUTOMATIC) reqLength_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   603  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   604      /* Update the request length for sub functions 0xA and 0x15 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   605      reqLength_u8 = DSP_RDTC_0A_15_REQLEN;
+	mov	d2,#1
+.L170:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   606  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   607      /* Check if the subfunction is 0x02,0x13,0x0F or 0x17 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   608  #if((DCM_CFG_DSP_RDTCSUBFUNC_0x02_ENABLED != DCM_CFG_OFF)|| \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   609      /* FC_VariationPoint_START */                           \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   610      (DCM_CFG_DSP_RDTCSUBFUNC_0x13_ENABLED != DCM_CFG_OFF)|| \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   611      /* FC_VariationPoint_END */                             \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   612      (DCM_CFG_DSP_RDTCSUBFUNC_0x0F_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   613  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   614      if (    (reqSubfunction == DSP_REPORT_DTC_BY_STATUS_MASK)
+	jeq	d4,#2,.L25
+.L249:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   615              /* FC_VariationPoint_START */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   616           || (reqSubfunction == DSP_REPORT_OBD_DTC_BY_STATUS_MASK)
+	mov	d15,#19
+.L250:
+	jeq	d15,d4,.L26
+.L251:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   617              /* FC_VariationPoint_END */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   618           || (reqSubfunction == DSP_REPORT_MIRROR_MEMORY_DTC)
+	mov	d15,#15
+.L252:
+	jne	d15,d4,.L27
+.L26:
+.L25:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   619         )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   620      {   /* Update the request length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   621          reqLength_u8 = DSP_REPDTCBYSTMASK_REQLEN;
+	mov	d2,#2
+.L27:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   622      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   623  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   624  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   625  #if (DCM_CFG_DSP_RDTCSUBFUNC_0x17_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   626      if (reqSubfunction == DSP_REPORT_USER_DEFMEMORY_DTC_BY_STATUS_MASK)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   627      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   628          /* Update the request length */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   629          reqLength_u8 = DSP_RDTC_17_REQLEN;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   630      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   631  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   632  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   633      return reqLength_u8;
+	j	.L28
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   634  }
+.L28:
+	ret
+.L111:
+	
+__Dcm_Dsp_GetDTCRequestLength_function_end:
+	.size	Dcm_Dsp_GetDTCRequestLength,__Dcm_Dsp_GetDTCRequestLength_function_end-Dcm_Dsp_GetDTCRequestLength
+.L68:
+	; End of function
+	
+	.sdecl	'.text.DcmDspUds_Rdtc_RepSuppDTC.Dcm_Dsp_CalDTCActiveMask',code,cluster('Dcm_Dsp_CalDTCActiveMask')
+	.sect	'.text.DcmDspUds_Rdtc_RepSuppDTC.Dcm_Dsp_CalDTCActiveMask'
+	.align	2
+	
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   635  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   636  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   637   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   638   * Dcm_Dsp_CalDTCActiveMask :
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   639   *  This function is used to calcualte effective dtc mask for sub function 0x02, 0x13, 0x0F, 0x17
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   640   * \param           const uint8     statusAvailMask_u8
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   641   *                  const uint8     reqDtcStatus_u8
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   642   *                  const uint8     reqSubfunction
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   643   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   644   * \retval          uint8     calculated Dtc Status mask
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   645   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   646   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   647   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   648  static FUNC(uint8, DCM_CODE)Dcm_Dsp_CalDTCActiveMask(CONST(uint8,AUTOMATIC) statusAvailMask_u8, CONST(uint8,AUTOMATIC) reqDtcStatus_u8,CONST(uint8,AUTOMATIC) reqSubfunction )
+; Function Dcm_Dsp_CalDTCActiveMask
+.L48:
+Dcm_Dsp_CalDTCActiveMask:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   649  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   650      uint8 calDTCStatus_u8 = statusAvailMask_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   651  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   652  /* calculate the DTC status mask for the service 0x02,0x13,0x0F and 0x17 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   653  #if(  (DCM_CFG_DSP_RDTCSUBFUNC_0x02_ENABLED != DCM_CFG_OFF)   \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   654        /* FC_VariationPoint_START */                           \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   655      ||(DCM_CFG_DSP_RDTCSUBFUNC_0x13_ENABLED != DCM_CFG_OFF)   \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   656        /* FC_VariationPoint_END */                             \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   657      ||(DCM_CFG_DSP_RDTCSUBFUNC_0x0F_ENABLED != DCM_CFG_OFF)   \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   658      ||(DCM_CFG_DSP_RDTCSUBFUNC_0x17_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   659  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   660                  /* Check if the subfunction is 0x02,0x13,0x0F or 0x17 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   661                  if(     (reqSubfunction == DSP_REPORT_DTC_BY_STATUS_MASK)
+	jeq	d6,#2,.L29
+.L257:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   662                          /* FC_VariationPoint_START */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   663                        ||(reqSubfunction == DSP_REPORT_OBD_DTC_BY_STATUS_MASK)
+	mov	d15,#19
+.L258:
+	jeq	d15,d6,.L30
+.L259:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   664                          /* FC_VariationPoint_END */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   665                        ||(reqSubfunction == DSP_REPORT_MIRROR_MEMORY_DTC)
+	mov	d15,#15
+.L260:
+	jeq	d15,d6,.L31
+.L261:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   666                        ||(reqSubfunction == DSP_REPORT_USER_DEFMEMORY_DTC_BY_STATUS_MASK)
+	mov	d15,#23
+.L262:
+	jne	d15,d6,.L32
+.L31:
+.L30:
+.L29:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   667                    )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   668                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   669                      /* Calculate the effective status mask */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   670                      calDTCStatus_u8 = (statusAvailMask_u8 & reqDtcStatus_u8);
+	and	d4,d5
+.L32:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   671                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   672  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   673  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   674      return calDTCStatus_u8;
+	mov	d2,d4
+.L171:
+	j	.L33
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   675  }
+.L33:
+	ret
+.L115:
+	
+__Dcm_Dsp_CalDTCActiveMask_function_end:
+	.size	Dcm_Dsp_CalDTCActiveMask,__Dcm_Dsp_CalDTCActiveMask_function_end-Dcm_Dsp_CalDTCActiveMask
+.L73:
+	; End of function
+	
+	.sdecl	'.text.DcmDspUds_Rdtc_RepSuppDTC.Dcm_Dsp_CalDTCKindAndOrigin',code,cluster('Dcm_Dsp_CalDTCKindAndOrigin')
+	.sect	'.text.DcmDspUds_Rdtc_RepSuppDTC.Dcm_Dsp_CalDTCKindAndOrigin'
+	.align	2
+	
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   676  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   677  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   678   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   679   * Dcm_Dsp_CalDTCKindAndOrigin :
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   680   *  This function is used to calcualte dtc kind, dtc origin and dtc status for different sub function
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   681   * \param           *Dem_DTCOriginType     dtc origin
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   682   *                  *Dem_DTCKindType       dtc kind
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   683   *                  *uint8                 dtc status
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   684   *                  const uint8            requested sub function
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   685   *                  const uint8            requested origin data
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   686   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   687   * \retval          none
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   688   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   689   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   690   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   691  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   692  static FUNC(void, DCM_CODE)Dcm_Dsp_CalDTCKindAndOrigin(P2VAR(Dem_DTCOriginType,AUTOMATIC,DCM_INTERN_DATA) dataDtcOrigin_u8,
+; Function Dcm_Dsp_CalDTCKindAndOrigin
+.L50:
+Dcm_Dsp_CalDTCKindAndOrigin:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   693                          P2VAR(Dem_DTCKindType,AUTOMATIC,DCM_INTERN_DATA) dataDtcKind_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   694                          /*MR12 DIR 8.13 VIOLATION:It is not Const since it is being used for sunfunction 13*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   695                          P2VAR(uint8,AUTOMATIC,DCM_INTERN_DATA) dataDtcStatus_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   696                          CONST(uint8,AUTOMATIC) reqSubfunction,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   697                          CONST(uint8,AUTOMATIC) reqDtcOriginData
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   698                                                        )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   699  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   700  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   701  #if (DCM_CFG_DSP_RDTCSUBFUNC_0x17_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   702                      if(reqSubfunction == DSP_REPORT_USER_DEFMEMORY_DTC_BY_STATUS_MASK)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   703                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   704                          /* Set DTC origin as Memory selection from the request */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   705                          *dataDtcOrigin_u8 = reqDtcOriginData;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   706                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   707  #else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   708                      DCM_UNUSED_PARAM(reqDtcOriginData);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   709  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   710  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   711  #if(  (DCM_CFG_DSP_RDTCSUBFUNC_0x0A_ENABLED != DCM_CFG_OFF)\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   712      ||(DCM_CFG_DSP_RDTCSUBFUNC_0x15_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   713                     /* If the subfunction sent is 0x0A or 0x15 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   714                      if(  (reqSubfunction == DSP_REPORT_SUPPORTED_DTCS)
+	mov	d15,#10
+.L267:
+	jeq	d15,d4,.L34
+.L268:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   715                         ||(reqSubfunction == DSP_REPORT_DTC_PERMANENT_STATUS)
+	mov	d15,#21
+.L269:
+	jne	d15,d4,.L35
+.L34:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   716                        )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   717                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   718                          /* Status Mask assigned 0x00 , to filter all DTCs */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   719                          *dataDtcStatus_u8 = DSP_REPORT_ALL_DTC;
+	mov	d15,#0
+.L270:
+	st.b	[a6],d15
+.L35:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   720                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   721                      /* If the sunfunction sent is 0x15 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   722                      if(reqSubfunction == DSP_REPORT_DTC_PERMANENT_STATUS)
+	mov	d15,#21
+.L271:
+	jne	d15,d4,.L36
+.L272:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   723                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   724                          /* Assign the DTC Origin as Permanent memory */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   725                          *dataDtcOrigin_u8 = DEM_DTC_ORIGIN_PERMANENT_MEMORY;
+	mov	d15,#3
+.L273:
+	st.b	[a4],d15
+.L36:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   726                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   727  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   728  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   729  #if(DCM_CFG_DSP_RDTCSUBFUNC_0x0F_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   730                      /* Check if the subfunction is 0x0F */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   731                      if(reqSubfunction == DSP_REPORT_MIRROR_MEMORY_DTC)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   732                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   733                          /* Assign the DTC Origin as Mirror memory */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   734                          *dataDtcOrigin_u8 = DEM_DTC_ORIGIN_MIRROR_MEMORY;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   735                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   736  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   737                      /* FC_VariationPoint_START */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   738  #if(DCM_CFG_DSP_RDTCSUBFUNC_0x13_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   739                      /* Check if the subfunction is 0x13 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   740                      if(reqSubfunction == DSP_REPORT_OBD_DTC_BY_STATUS_MASK)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   741                      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   742                          /* Assign the DTC kind as emission related OBD */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   743                          *dataDtcKind_u8 = DEM_DTC_KIND_EMISSION_REL_DTCS;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   744                      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   745  #else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   746                      DCM_UNUSED_PARAM(dataDtcKind_u8);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   747  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   748                      /* FC_VariationPoint_END */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   749  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   750  }
+	ret
+.L123:
+	
+__Dcm_Dsp_CalDTCKindAndOrigin_function_end:
+	.size	Dcm_Dsp_CalDTCKindAndOrigin,__Dcm_Dsp_CalDTCKindAndOrigin_function_end-Dcm_Dsp_CalDTCKindAndOrigin
+.L78:
+	; End of function
+	
+	.sdecl	'.text.DcmDspUds_Rdtc_RepSuppDTC.Dcm_Dsp_FillResBytesAndLength',code,cluster('Dcm_Dsp_FillResBytesAndLength')
+	.sect	'.text.DcmDspUds_Rdtc_RepSuppDTC.Dcm_Dsp_FillResBytesAndLength'
+	.align	2
+	
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   751  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   752  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   753   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   754   * Dcm_Dsp_FillResBytesAndLength :
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   755   *  This function is used to fill the response bytes and update the length of pMsgcontext
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   756   * \param           *Dcm_MsgContextType         pMsgContext
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   757   *                  const uint8                 requested sub function
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   758   *                  const uint8                 available status mask
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   759   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   760   * \retval          none
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   761   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   762   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   763   */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   764  static FUNC(void, DCM_CODE)Dcm_Dsp_FillResBytesAndLength(P2VAR(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext,
+; Function Dcm_Dsp_FillResBytesAndLength
+.L52:
+Dcm_Dsp_FillResBytesAndLength:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   765                                                           CONST(uint8,AUTOMATIC) reqSubfunction,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   766                                                           CONST(uint8,AUTOMATIC) statusAvailMask_u8)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   767  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   768  #if(DCM_CFG_DSP_RDTCSUBFUNC_0x17_ENABLED != DCM_CFG_OFF)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   769                  if(reqSubfunction  == DSP_REPORT_USER_DEFMEMORY_DTC_BY_STATUS_MASK)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   770                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   771                      pMsgContext->resData[1] = pMsgContext->reqData[2];
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   772                      pMsgContext->resData[2] = statusAvailMask_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   773                      pMsgContext->resDataLen = 0x03;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   774                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   775  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   776  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   777  #if(  (DCM_CFG_DSP_RDTCSUBFUNC_0x02_ENABLED != DCM_CFG_OFF)\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   778      /* FC_VariationPoint_START */                          \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   779      ||(DCM_CFG_DSP_RDTCSUBFUNC_0x13_ENABLED != DCM_CFG_OFF)\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   780      /* FC_VariationPoint_END */                            \ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   781      ||(DCM_CFG_DSP_RDTCSUBFUNC_0x0F_ENABLED != DCM_CFG_OFF)\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   782      ||(DCM_CFG_DSP_RDTCSUBFUNC_0x0A_ENABLED != DCM_CFG_OFF)\ 
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   783      ||(DCM_CFG_DSP_RDTCSUBFUNC_0x15_ENABLED != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   784  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   785                  /* Check if the subfunction is 0x02,0x13,0x0F,0x0A or 0x15 */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   786                  if(   (reqSubfunction == DSP_REPORT_DTC_BY_STATUS_MASK)
+	jeq	d4,#2,.L37
+.L278:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   787                        /* FC_VariationPoint_START */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   788                      ||(reqSubfunction == DSP_REPORT_OBD_DTC_BY_STATUS_MASK)
+	mov	d15,#19
+.L279:
+	jeq	d15,d4,.L38
+.L280:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   789                        /* FC_VariationPoint_END */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   790                      ||(reqSubfunction == DSP_REPORT_MIRROR_MEMORY_DTC)
+	mov	d15,#15
+.L281:
+	jeq	d15,d4,.L39
+.L282:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   791                      ||(reqSubfunction == DSP_REPORT_SUPPORTED_DTCS)
+	mov	d15,#10
+.L283:
+	jeq	d15,d4,.L40
+.L284:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   792                      ||(reqSubfunction == DSP_REPORT_DTC_PERMANENT_STATUS)
+	mov	d15,#21
+.L285:
+	jne	d15,d4,.L41
+.L40:
+.L39:
+.L38:
+.L37:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   793                    )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   794                  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   795                      pMsgContext->resData[1] = statusAvailMask_u8;
+	ld.a	a15,[a4]
+.L286:
+	st.b	[a15]1,d5
+.L287:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   796                      pMsgContext->resDataLen = 0x02;
+	mov	d15,#2
+.L288:
+	st.w	[a4]12,d15
+.L41:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   797                  }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   798  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   799  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   800                  /* Fill the first response byte with subfunction No. */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   801                  pMsgContext->resData[0] = reqSubfunction;
+	ld.a	a15,[a4]
+.L289:
+	st.b	[a15],d4
+.L290:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   802  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   803  }
+	ret
+.L134:
+	
+__Dcm_Dsp_FillResBytesAndLength_function_end:
+	.size	Dcm_Dsp_FillResBytesAndLength,__Dcm_Dsp_FillResBytesAndLength_function_end-Dcm_Dsp_FillResBytesAndLength
+.L83:
+	; End of function
+	
+	.sdecl	'.text.DcmDspUds_Rdtc_RepSuppDTC.Dcm_Dsp_FillResDtcBuffer',code,cluster('Dcm_Dsp_FillResDtcBuffer')
+	.sect	'.text.DcmDspUds_Rdtc_RepSuppDTC.Dcm_Dsp_FillResDtcBuffer'
+	.align	2
+	
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   804  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   805  /**
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   806   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   807   * Dcm_Dsp_FillResDtcBuffer :
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   808   *  This function is used to fill response dtc buffer for paged buffer and none paged buffer
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   809   * \param           uint32                      dtc Data
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   810   *                  *Dcm_MsgLenType             response length
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   811   *                  uint8                       dtc status mask
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   812   *                  const * Dcm_MsgContextType  pMsgContext
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   813   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   814   * \retval          Dem_ReturnGetNextFilteredDTCType    next get dtc  return state
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   815   *
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   816   **************************************************************************************************
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   817  */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   818  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   819  static FUNC(Dem_ReturnGetNextFilteredDTCType, DCM_CODE)Dcm_Dsp_FillResDtcBuffer(    VAR(uint32,AUTOMATIC) dtcData_u32,
+; Function Dcm_Dsp_FillResDtcBuffer
+.L54:
+Dcm_Dsp_FillResDtcBuffer:	.type	func
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   820                                                                                    P2VAR(Dcm_MsgLenType,AUTOMATIC,DCM_INTERN_DATA) respLenNr_u32,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   821                                                                                      VAR(uint8,AUTOMATIC) stDTCStatus_u8,
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   822                                                                                  P2CONST(Dcm_MsgContextType,AUTOMATIC,DCM_INTERN_DATA) pMsgContext
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   823                                                                                 )
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   824  {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   825      Dem_ReturnGetNextFilteredDTCType RetGetNextFiltDtc = DEM_FILTERED_OK;
+	mov	d2,#0
+.L172:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   826  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   827  #if((DCM_PAGEDBUFFER_ENABLED != DCM_CFG_OFF) && (DCM_CFG_RDTCPAGEDBUFFERSUPPORT != DCM_CFG_OFF))
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   828      /* Copy the response length to local variable */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   829      *respLenNr_u32 = Dcm_DspRDTCFilledRespLen_u32;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   830  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   831  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   832      /* Fill the response buffer */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   833      Dcm_DspRDTCRespBufPtr_u8[*respLenNr_u32] = (uint8)(dtcData_u32 >> 16u);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   834      (*respLenNr_u32)++;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   835      Dcm_DspRDTCRespBufPtr_u8[*respLenNr_u32] = (uint8)(dtcData_u32 >> 8u);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   836      (*respLenNr_u32)++;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   837      Dcm_DspRDTCRespBufPtr_u8[*respLenNr_u32] = (uint8)(dtcData_u32);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   838      (*respLenNr_u32)++;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   839      Dcm_DspRDTCRespBufPtr_u8[*respLenNr_u32] = stDTCStatus_u8;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   840      (*respLenNr_u32)++;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   841  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   842      /* Copy back the response length to static variable */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   843      Dcm_DspRDTCFilledRespLen_u32 = *respLenNr_u32;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   844  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   845      /* Update the total response length filled with the bytes filled in the response in this iteration*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   846      Dcm_DspTotalRespLenFilled_u32 = (Dcm_DspTotalRespLenFilled_u32 + 0x04u);
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   847  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   848      /* Check if total response length filled is greater than actual response length calculated */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   849      if(Dcm_DspTotalRespLenFilled_u32 >= pMsgContext->resDataLen)
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   850      {
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   851          RetGetNextFiltDtc = DEM_FILTERED_NO_MATCHING_DTC;
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   852      }
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   853  #else
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   854  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   855          /* Fill the response buffer with DTC and status */
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   856          pMsgContext->resData[*respLenNr_u32] = (uint8)(dtcData_u32 >> 16u);
+	ld.a	a15,[a5]
+.L295:
+	ld.w	d15,[a4]
+.L296:
+	addsc.a	a15,a15,d15,#0
+.L297:
+	sh	d15,d4,#-16
+.L298:
+	st.b	[a15],d15
+.L299:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   857          (*respLenNr_u32)++;
+	ld.w	d15,[a4]
+.L300:
+	add	d15,#1
+	st.w	[a4],d15
+.L301:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   858          pMsgContext->resData[*respLenNr_u32] = (uint8)(dtcData_u32 >> 8u);
+	ld.a	a15,[a5]
+.L302:
+	ld.w	d15,[a4]
+.L303:
+	addsc.a	a15,a15,d15,#0
+.L304:
+	sh	d15,d4,#-8
+.L305:
+	st.b	[a15],d15
+.L306:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   859          (*respLenNr_u32)++;
+	ld.w	d15,[a4]
+.L307:
+	add	d15,#1
+	st.w	[a4],d15
+.L308:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   860          pMsgContext->resData[*respLenNr_u32] = (uint8)(dtcData_u32);
+	ld.a	a15,[a5]
+.L309:
+	ld.w	d15,[a4]
+.L310:
+	addsc.a	a15,a15,d15,#0
+.L311:
+	st.b	[a15],d4
+.L312:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   861          (*respLenNr_u32)++;
+	ld.w	d15,[a4]
+.L313:
+	add	d15,#1
+	st.w	[a4],d15
+.L314:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   862          pMsgContext->resData[*respLenNr_u32] = stDTCStatus_u8;
+	ld.a	a15,[a5]
+.L315:
+	ld.w	d15,[a4]
+.L316:
+	addsc.a	a15,a15,d15,#0
+.L317:
+	st.b	[a15],d5
+.L318:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   863          (*respLenNr_u32)++;
+	ld.w	d15,[a4]
+.L319:
+	add	d15,#1
+	st.w	[a4],d15
+.L320:
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   864  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   865  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   866      return RetGetNextFiltDtc;
+	j	.L42
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   867  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   868  }
+.L42:
+	ret
+.L140:
+	
+__Dcm_Dsp_FillResDtcBuffer_function_end:
+	.size	Dcm_Dsp_FillResDtcBuffer,__Dcm_Dsp_FillResDtcBuffer_function_end-Dcm_Dsp_FillResDtcBuffer
+.L88:
+	; End of function
+	
+	.calls	'Dcm_Dsp_ReportSupportedDTC','Dcm_Dsp_GetDTCRequestLength'
+	.calls	'Dcm_Dsp_ReportSupportedDTC','Dem_GetDTCStatusAvailabilityMask'
+	.calls	'Dcm_Dsp_ReportSupportedDTC','Dcm_Dsp_CalDTCActiveMask'
+	.calls	'Dcm_Dsp_ReportSupportedDTC','Dcm_Dsp_CalDTCKindAndOrigin'
+	.calls	'Dcm_Dsp_ReportSupportedDTC','Dem_SetDTCFilter'
+	.calls	'Dcm_Dsp_ReportSupportedDTC','Dcm_Dsp_FillResBytesAndLength'
+	.calls	'Dcm_Dsp_ReportSupportedDTC','Dem_GetNextFilteredDTC'
+	.calls	'Dcm_Dsp_ReportSupportedDTC','Dcm_Dsp_FillResDtcBuffer'
+	.calls	'Dcm_Dsp_ReportSupportedDTC','',24
+	.calls	'Dcm_Dsp_GetDTCRequestLength','',0
+	.calls	'Dcm_Dsp_CalDTCActiveMask','',0
+	.calls	'Dcm_Dsp_CalDTCKindAndOrigin','',0
+	.calls	'Dcm_Dsp_FillResBytesAndLength','',0
+	.extern	Dem_GetDTCStatusAvailabilityMask
+	.extern	Dem_SetDTCFilter
+	.extern	Dem_GetNextFilteredDTC
+	.extern	Dcm_DspRDTCSubFunc_en
+	.calls	'Dcm_Dsp_FillResDtcBuffer','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L56:
+	.word	15504
+	.half	3
+	.word	.L57
+	.byte	4
+.L55:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L58
+.L89:
+	.byte	2
+	.byte	'unsigned char',0,1,8
+.L128:
+	.byte	3
+	.word	168
+	.byte	4
+	.byte	'rba_DiagLib_Bit8SetBit',0,3,1,36,19,1,1,5
+	.byte	'buffer',0,1,36,49
+	.word	185
+	.byte	5
+	.byte	'bit_position',0,1,36,63
+	.word	168
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBit',0,3,1,42,19,1,1,5
+	.byte	'buffer',0,1,42,51
+	.word	185
+	.byte	5
+	.byte	'bit_position',0,1,42,65
+	.word	168
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit8GetSingleBit',0,3,1,60,20
+	.word	168
+	.byte	1,1,5
+	.byte	'value',0,1,60,55
+	.word	168
+	.byte	5
+	.byte	'bit_position',0,1,60,68
+	.word	168
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBits',0,3,1,77,19,1,1,5
+	.byte	'value',0,1,77,52
+	.word	185
+	.byte	5
+	.byte	'bit_position',0,1,77,65
+	.word	168
+	.byte	5
+	.byte	'number_of_bits',0,1,77,85
+	.word	168
+	.byte	6,0,2
+	.byte	'unsigned short int',0,2,7,3
+	.word	498
+	.byte	4
+	.byte	'rba_DiagLib_Bit16SetBit',0,3,2,36,19,1,1,5
+	.byte	'buffer',0,2,36,51
+	.word	520
+	.byte	5
+	.byte	'bit_position',0,2,36,65
+	.word	168
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBit',0,3,2,42,19,1,1,5
+	.byte	'buffer',0,2,42,53
+	.word	520
+	.byte	5
+	.byte	'bit_position',0,2,42,67
+	.word	168
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit16GetSingleBit',0,3,2,60,21
+	.word	498
+	.byte	1,1,5
+	.byte	'value',0,2,60,58
+	.word	498
+	.byte	5
+	.byte	'bit_position',0,2,60,71
+	.word	168
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBits',0,3,2,78,19,1,1,5
+	.byte	'value',0,2,78,54
+	.word	520
+	.byte	5
+	.byte	'bit_position',0,2,78,67
+	.word	168
+	.byte	5
+	.byte	'number_of_bits',0,2,78,87
+	.word	168
+	.byte	6,0
+.L96:
+	.byte	2
+	.byte	'unsigned int',0,4,7,3
+	.word	837
+	.byte	4
+	.byte	'rba_DiagLib_Bit32SetBit',0,3,3,36,19,1,1,5
+	.byte	'buffer',0,3,36,51
+	.word	853
+	.byte	5
+	.byte	'bit_position',0,3,36,65
+	.word	168
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBit',0,3,3,42,19,1,1,5
+	.byte	'buffer',0,3,42,53
+	.word	853
+	.byte	5
+	.byte	'bit_position',0,3,42,67
+	.word	168
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit32GetSingleBit',0,3,3,60,21
+	.word	837
+	.byte	1,1,5
+	.byte	'value',0,3,60,58
+	.word	837
+	.byte	5
+	.byte	'bit_position',0,3,60,71
+	.word	168
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBits',0,3,3,78,19,1,1,5
+	.byte	'value',0,3,78,54
+	.word	853
+	.byte	5
+	.byte	'bit_position',0,3,78,67
+	.word	168
+	.byte	5
+	.byte	'number_of_bits',0,3,78,87
+	.word	168
+	.byte	6,0,8
+	.word	190
+	.byte	9
+	.word	220
+	.byte	9
+	.word	235
+	.byte	6,0,8
+	.word	258
+	.byte	9
+	.word	290
+	.byte	9
+	.word	305
+	.byte	6,0,8
+	.word	328
+	.byte	9
+	.word	368
+	.byte	9
+	.word	382
+	.byte	6,0,8
+	.word	405
+	.byte	9
+	.word	438
+	.byte	9
+	.word	452
+	.byte	9
+	.word	473
+	.byte	6,0,8
+	.word	525
+	.byte	9
+	.word	556
+	.byte	9
+	.word	571
+	.byte	6,0,8
+	.word	594
+	.byte	9
+	.word	627
+	.byte	9
+	.word	642
+	.byte	6,0,8
+	.word	665
+	.byte	9
+	.word	706
+	.byte	9
+	.word	720
+	.byte	6,0,8
+	.word	743
+	.byte	9
+	.word	777
+	.byte	9
+	.word	791
+	.byte	9
+	.word	812
+	.byte	6,0,8
+	.word	858
+	.byte	9
+	.word	889
+	.byte	9
+	.word	904
+	.byte	6,0,8
+	.word	927
+	.byte	9
+	.word	960
+	.byte	9
+	.word	975
+	.byte	6,0,8
+	.word	998
+	.byte	9
+	.word	1039
+	.byte	9
+	.word	1053
+	.byte	6,0,8
+	.word	1076
+	.byte	9
+	.word	1110
+	.byte	9
+	.word	1124
+	.byte	9
+	.word	1145
+	.byte	6,0,10
+	.byte	'Dem_GetDTCStatusAvailabilityMask',0,4,54,16
+	.word	168
+	.byte	1,1,1,1,5
+	.byte	'DTCStatusMask',0,4,54,56
+	.word	185
+	.byte	0,10
+	.byte	'Dem_SetDTCFilter',0,4,128,1,25
+	.word	168
+	.byte	1,1,1,1,5
+	.byte	'DTCStatusMask',0,4,128,1,48
+	.word	168
+	.byte	5
+	.byte	'DTCKind',0,4,129,1,58
+	.word	168
+	.byte	5
+	.byte	'DTCFormat',0,4,130,1,60
+	.word	168
+	.byte	5
+	.byte	'DTCOrigin',0,4,131,1,60
+	.word	168
+	.byte	5
+	.byte	'FilterWithSeverity',0,4,132,1,69
+	.word	168
+	.byte	5
+	.byte	'DTCSeverityMask',0,4,133,1,62
+	.word	168
+	.byte	5
+	.byte	'FilterForFaultDetectionCounter',0,4,134,1,63
+	.word	168
+	.byte	0,10
+	.byte	'Dem_GetNextFilteredDTC',0,4,160,1,34
+	.word	168
+	.byte	1,1,1,1,5
+	.byte	'DTC',0,4,160,1,65
+	.word	853
+	.byte	5
+	.byte	'DTCStatus',0,4,160,1,77
+	.word	185
+	.byte	0,3
+	.word	168
+	.byte	11
+	.byte	'Dcm_MsgType',0,5,188,2,57
+	.word	1728
+	.byte	12,5,206,2,9,4,13
+	.byte	'reqType',0
+	.word	168
+	.byte	1,2,35,0,13
+	.byte	'suppressPosResponse',0
+	.word	168
+	.byte	1,2,35,1,13
+	.byte	'sourceofRequest',0
+	.word	168
+	.byte	1,2,35,2,0,12,5,240,2,9,28,13
+	.byte	'resData',0
+	.word	1733
+	.byte	4,2,35,0,13
+	.byte	'reqData',0
+	.word	1733
+	.byte	4,2,35,4,13
+	.byte	'msgAddInfo',0
+	.word	1754
+	.byte	4,2,35,8,13
+	.byte	'resDataLen',0
+	.word	837
+	.byte	4,2,35,12,13
+	.byte	'reqDataLen',0
+	.word	837
+	.byte	4,2,35,16,13
+	.byte	'resMaxDataLen',0
+	.word	837
+	.byte	4,2,35,20,13
+	.byte	'idContext',0
+	.word	168
+	.byte	1,2,35,24,13
+	.byte	'dcmRxPduId',0
+	.word	498
+	.byte	2,2,35,26,0
+.L92:
+	.byte	3
+	.word	1832
+	.byte	3
+	.word	168
+.L94:
+	.byte	3
+	.word	168
+.L100:
+	.byte	2
+	.byte	'unsigned long int',0,4,7
+.L112:
+	.byte	14
+	.word	168
+.L116:
+	.byte	14
+	.word	168
+.L118:
+	.byte	14
+	.word	168
+.L120:
+	.byte	14
+	.word	168
+.L124:
+	.byte	3
+	.word	168
+.L126:
+	.byte	3
+	.word	168
+.L130:
+	.byte	14
+	.word	168
+.L132:
+	.byte	14
+	.word	168
+.L136:
+	.byte	14
+	.word	168
+.L138:
+	.byte	14
+	.word	168
+.L142:
+	.byte	3
+	.word	837
+	.byte	14
+	.word	1832
+.L145:
+	.byte	3
+	.word	2086
+	.byte	15,1,3
+	.word	2096
+	.byte	11
+	.byte	'__codeptr',0,6,1,1
+	.word	2098
+	.byte	2
+	.byte	'char',0,1,6,11
+	.byte	'sint8',0,7,76,25
+	.word	2121
+	.byte	11
+	.byte	'uint8',0,7,81,25
+	.word	168
+	.byte	11
+	.byte	'uint16',0,7,91,25
+	.word	498
+	.byte	11
+	.byte	'uint32',0,7,106,24
+	.word	837
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,11
+	.byte	'uint64',0,7,111,30
+	.word	2187
+	.byte	11
+	.byte	'boolean',0,7,127,25
+	.word	168
+	.byte	11
+	.byte	'uint16_least',0,7,147,1,25
+	.word	2010
+	.byte	11
+	.byte	'StatusType',0,8,191,1,27
+	.word	168
+	.byte	11
+	.byte	'Std_ReturnType',0,8,199,1,15
+	.word	168
+	.byte	12,8,206,1,9,8,13
+	.byte	'vendorID',0
+	.word	498
+	.byte	2,2,35,0,13
+	.byte	'moduleID',0
+	.word	498
+	.byte	2,2,35,2,13
+	.byte	'sw_major_version',0
+	.word	168
+	.byte	1,2,35,4,13
+	.byte	'sw_minor_version',0
+	.word	168
+	.byte	1,2,35,5,13
+	.byte	'sw_patch_version',0
+	.word	168
+	.byte	1,2,35,6,0,11
+	.byte	'Std_VersionInfoType',0,8,213,1,3
+	.word	2310
+	.byte	11
+	.byte	'PduIdType',0,9,22,19
+	.word	498
+	.byte	11
+	.byte	'PduLengthType',0,9,26,19
+	.word	498
+	.byte	12,10,71,9,8,13
+	.byte	'SduDataPtr',0
+	.word	185
+	.byte	4,2,35,0,13
+	.byte	'SduLength',0
+	.word	498
+	.byte	2,2,35,4,0,11
+	.byte	'PduInfoType',0,10,75,3
+	.word	2500
+	.byte	16,10,113,9,4,17
+	.byte	'TP_DATACONF',0,0,17
+	.byte	'TP_DATARETRY',0,1,17
+	.byte	'TP_CONFPENDING',0,2,0,11
+	.byte	'TpDataStateType',0,10,118,3
+	.word	2565
+	.byte	11
+	.byte	'NetworkHandleType',0,10,128,1,17
+	.word	168
+	.byte	11
+	.byte	'Can_IdType',0,11,32,16
+	.word	837
+	.byte	11
+	.byte	'Can_HwHandleType',0,11,43,16
+	.word	498
+	.byte	12,12,93,9,8,13
+	.byte	'Class',0
+	.word	168
+	.byte	1,2,35,0,13
+	.byte	'TIN',0
+	.word	168
+	.byte	1,2,35,1,13
+	.byte	'ReturnAddress',0
+	.word	837
+	.byte	4,2,35,4,0,11
+	.byte	'OsTrapInfoType',0,12,97,3
+	.word	2712
+	.byte	18,68
+	.word	837
+	.byte	19,16,0,12,12,154,1,9,68,13
+	.byte	'store',0
+	.word	2792
+	.byte	68,2,35,0,0,18,68
+	.word	2801
+	.byte	19,0,0,11
+	.byte	'Os_JumpBufType',0,12,156,1,3
+	.word	2823
+	.byte	11
+	.byte	'Os_StackTraceType',0,12,174,1,18
+	.word	837
+	.byte	12,12,175,1,9,8,13
+	.byte	'sp',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'ctx',0
+	.word	837
+	.byte	4,2,35,4,0,11
+	.byte	'Os_StackValueType',0,12,175,1,63
+	.word	2883
+	.byte	11
+	.byte	'Os_StackSizeType',0,12,176,1,27
+	.word	2883
+	.byte	20,1,1,3
+	.word	2968
+	.byte	11
+	.byte	'Os_VoidVoidFunctionType',0,12,179,1,16
+	.word	2971
+	.byte	11
+	.byte	'ApplicationType',0,12,193,1,23
+	.word	168
+	.byte	21
+	.byte	'Os_ApplicationConfigurationType_s',0,12,198,1,16,2,13
+	.byte	'app_id',0
+	.word	168
+	.byte	1,2,35,0,13
+	.byte	'access',0
+	.word	168
+	.byte	1,2,35,1,0,11
+	.byte	'Os_ApplicationConfigurationType',0,12,201,1,3
+	.word	3034
+	.byte	11
+	.byte	'Os_CoreStateType',0,12,203,1,16
+	.word	837
+	.byte	11
+	.byte	'AreaIdType',0,12,204,1,16
+	.word	498
+	.byte	11
+	.byte	'Os_PeripheralAddressType',0,12,212,1,22
+	.word	837
+	.byte	11
+	.byte	'TickType',0,12,221,1,22
+	.word	837
+	.byte	11
+	.byte	'Os_StopwatchTickType',0,12,225,1,22
+	.word	837
+	.byte	11
+	.byte	'Os_Lockable',0,12,234,1,18
+	.word	853
+	.byte	11
+	.byte	'CoreIdType',0,12,236,1,16
+	.word	498
+	.byte	11
+	.byte	'SpinlockIdType',0,12,237,1,16
+	.word	498
+	.byte	16,12,239,1,9,4,17
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,17
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,11
+	.byte	'TryToGetSpinlockType',0,12,239,1,74
+	.word	3341
+	.byte	16,12,174,2,9,4,17
+	.byte	'APPLICATION_ACCESSIBLE',0,0,17
+	.byte	'APPLICATION_RESTARTING',0,1,17
+	.byte	'APPLICATION_TERMINATED',0,2,0,11
+	.byte	'ApplicationStateType',0,12,174,2,92
+	.word	3434
+	.byte	22
+	.byte	'void',0,3
+	.word	3546
+	.byte	23,1,1,24
+	.word	168
+	.byte	24
+	.word	3552
+	.byte	0,3
+	.word	3557
+	.byte	11
+	.byte	'Os_FunctionEntryType',0,12,183,2,16
+	.word	3571
+	.byte	21
+	.byte	'Os_MeterInfoType_s',0,12,193,2,16,48,13
+	.byte	'elapsed',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'previous',0
+	.word	837
+	.byte	4,2,35,4,13
+	.byte	'max',0
+	.word	837
+	.byte	4,2,35,8,13
+	.byte	'cumulative',0
+	.word	837
+	.byte	4,2,35,12,13
+	.byte	'stackbase',0
+	.word	2883
+	.byte	8,2,35,16,13
+	.byte	'stackusage',0
+	.word	2883
+	.byte	8,2,35,24,13
+	.byte	'stackmax',0
+	.word	2883
+	.byte	8,2,35,32,13
+	.byte	'stackbudget',0
+	.word	2883
+	.byte	8,2,35,40,0,11
+	.byte	'Os_MeterInfoType',0,12,202,2,3
+	.word	3606
+	.byte	3
+	.word	3606
+	.byte	11
+	.byte	'Os_MeterInfoRefType',0,12,203,2,50
+	.word	3804
+	.byte	11
+	.byte	'EventMaskType',0,12,206,2,15
+	.word	168
+	.byte	11
+	.byte	'Os_imaskType',0,12,211,2,16
+	.word	837
+	.byte	21
+	.byte	'Os_ISRDynType_s',0,12,213,2,16,48,13
+	.byte	'meter',0
+	.word	3606
+	.byte	48,2,35,0,0,11
+	.byte	'Os_ISRDynType',0,12,215,2,3
+	.word	3883
+	.byte	3
+	.word	3883
+	.byte	14
+	.word	3944
+	.byte	21
+	.byte	'Os_ISRType_s',0,12,216,2,16,24,13
+	.byte	'entry_function',0
+	.word	2976
+	.byte	4,2,35,0,13
+	.byte	'dynamic',0
+	.word	3949
+	.byte	4,2,35,4,13
+	.byte	'imask',0
+	.word	837
+	.byte	4,2,35,8,13
+	.byte	'stackbudget',0
+	.word	2883
+	.byte	8,2,35,12,13
+	.byte	'access',0
+	.word	168
+	.byte	1,2,35,20,13
+	.byte	'application',0
+	.word	168
+	.byte	1,2,35,21,0,11
+	.byte	'Os_ISRType',0,12,223,2,3
+	.word	3954
+	.byte	3
+	.word	2968
+	.byte	14
+	.word	3954
+	.byte	3
+	.word	4113
+	.byte	11
+	.byte	'ISRType',0,12,224,2,46
+	.word	4118
+	.byte	11
+	.byte	'Os_bitmask',0,12,239,2,22
+	.word	837
+	.byte	11
+	.byte	'Os_pset0Type',0,12,240,2,20
+	.word	837
+	.byte	11
+	.byte	'Os_pset1Type',0,12,241,2,20
+	.word	837
+	.byte	11
+	.byte	'Os_pset2Type',0,12,242,2,20
+	.word	837
+	.byte	25,12,243,2,9,4,13
+	.byte	'p0',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'p1',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'p2',0
+	.word	837
+	.byte	4,2,35,0,0,11
+	.byte	'Os_psetType',0,12,247,2,3
+	.word	4226
+	.byte	25,12,249,2,9,4,13
+	.byte	't0',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	't1',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	't2',0
+	.word	837
+	.byte	4,2,35,0,0,11
+	.byte	'Os_tpmaskType',0,12,253,2,3
+	.word	4290
+	.byte	11
+	.byte	'Os_ActivationCountType',0,12,254,2,23
+	.word	168
+	.byte	21
+	.byte	'Os_TaskDynType_s',0,12,128,3,16,120,13
+	.byte	'terminate_jump_buf',0
+	.word	2832
+	.byte	68,2,35,0,13
+	.byte	'meter',0
+	.word	3606
+	.byte	48,2,35,68,13
+	.byte	'activation_count',0
+	.word	168
+	.byte	1,2,35,116,0,11
+	.byte	'Os_TaskDynType',0,12,132,3,3
+	.word	4388
+	.byte	18,68
+	.word	2801
+	.byte	19,0,0,3
+	.word	4388
+	.byte	14
+	.word	4514
+	.byte	21
+	.byte	'Os_TaskType_s',0,12,134,3,16,40,13
+	.byte	'dynamic',0
+	.word	4519
+	.byte	4,2,35,0,13
+	.byte	'entry_function',0
+	.word	2976
+	.byte	4,2,35,4,13
+	.byte	'pset',0
+	.word	4226
+	.byte	4,2,35,8,13
+	.byte	'base_tpmask',0
+	.word	4290
+	.byte	4,2,35,12,13
+	.byte	'tpmask',0
+	.word	4290
+	.byte	4,2,35,16,13
+	.byte	'core_id',0
+	.word	498
+	.byte	2,2,35,20,13
+	.byte	'index',0
+	.word	837
+	.byte	4,2,35,24,13
+	.byte	'stackbudget',0
+	.word	2883
+	.byte	8,2,35,28,13
+	.byte	'activation_count',0
+	.word	168
+	.byte	1,2,35,36,13
+	.byte	'access',0
+	.word	168
+	.byte	1,2,35,37,13
+	.byte	'application',0
+	.word	168
+	.byte	1,2,35,38,0,11
+	.byte	'Os_TaskType',0,12,146,3,3
+	.word	4524
+	.byte	14
+	.word	4524
+	.byte	3
+	.word	4774
+	.byte	11
+	.byte	'TaskType',0,12,147,3,47
+	.word	4779
+	.byte	26
+	.byte	'Os_TaskStateType',0,12,155,3,6,4,17
+	.byte	'SUSPENDED',0,0,17
+	.byte	'READY',0,1,17
+	.byte	'WAITING',0,2,17
+	.byte	'RUNNING',0,3,0,11
+	.byte	'TaskStateType',0,12,156,3,31
+	.word	4802
+	.byte	25,12,167,3,3,4,13
+	.byte	'tpmask',0
+	.word	4290
+	.byte	4,2,35,0,0,21
+	.byte	'Os_ResourceDynType_s',0,12,166,3,16,4,13
+	.byte	'saved_priority',0
+	.word	4889
+	.byte	4,2,35,0,0,11
+	.byte	'Os_ResourceDynType',0,12,170,3,3
+	.word	4912
+	.byte	3
+	.word	4912
+	.byte	14
+	.word	4992
+	.byte	21
+	.byte	'Os_ResourceType_s',0,12,171,3,16,12,13
+	.byte	'dynamic',0
+	.word	4997
+	.byte	4,2,35,0,13
+	.byte	'tpmask',0
+	.word	4290
+	.byte	4,2,35,4,13
+	.byte	'access',0
+	.word	168
+	.byte	1,2,35,8,0,11
+	.byte	'Os_ResourceType',0,12,175,3,3
+	.word	5002
+	.byte	12,12,181,3,9,12,13
+	.byte	'maxallowedvalue',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'ticksperbase',0
+	.word	837
+	.byte	4,2,35,4,13
+	.byte	'mincycle',0
+	.word	837
+	.byte	4,2,35,8,0,11
+	.byte	'AlarmBaseType',0,12,185,3,3
+	.word	5101
+	.byte	12,12,206,3,9,8,13
+	.byte	'Running',0
+	.word	168
+	.byte	1,2,35,0,13
+	.byte	'Pending',0
+	.word	168
+	.byte	1,2,35,1,13
+	.byte	'Delay',0
+	.word	837
+	.byte	4,2,35,4,0,11
+	.byte	'Os_CounterStatusType',0,12,210,3,3
+	.word	5196
+	.byte	27
+	.word	168
+	.byte	1,1,3
+	.word	5282
+	.byte	11
+	.byte	'Os_CounterIncrAdvType',0,12,217,3,22
+	.word	5289
+	.byte	21
+	.byte	's_swd',0,12,222,3,12,4,13
+	.byte	'count',0
+	.word	837
+	.byte	4,2,35,0,0,25,12,221,3,3,4,13
+	.byte	'sw',0
+	.word	5325
+	.byte	4,2,35,0,0,21
+	.byte	'Os_CounterDynType_s',0,12,220,3,16,4,13
+	.byte	'type_dependent',0
+	.word	5353
+	.byte	4,2,35,0,0,11
+	.byte	'Os_CounterDynType',0,12,226,3,3
+	.word	5372
+	.byte	3
+	.word	5372
+	.byte	14
+	.word	5450
+	.byte	21
+	.byte	'Os_CounterType_s',0,12,227,3,16,28,13
+	.byte	'dynamic',0
+	.word	5455
+	.byte	4,2,35,0,13
+	.byte	'advincr',0
+	.word	5294
+	.byte	4,2,35,4,13
+	.byte	'base',0
+	.word	5101
+	.byte	12,2,35,8,13
+	.byte	'core',0
+	.word	3552
+	.byte	4,2,35,20,13
+	.byte	'access',0
+	.word	168
+	.byte	1,2,35,24,13
+	.byte	'application',0
+	.word	168
+	.byte	1,2,35,25,0,11
+	.byte	'Os_CounterType',0,12,234,3,3
+	.word	5460
+	.byte	3
+	.word	5282
+	.byte	14
+	.word	5460
+	.byte	3
+	.word	5612
+	.byte	11
+	.byte	'CounterType',0,12,235,3,52
+	.word	5617
+	.byte	26
+	.byte	'Os_ScheduleTableStatusType',0,12,240,3,6,4,17
+	.byte	'SCHEDULETABLE_STOPPED',0,0,17
+	.byte	'SCHEDULETABLE_NEXT',0,1,17
+	.byte	'SCHEDULETABLE_WAITING',0,2,17
+	.byte	'SCHEDULETABLE_RUNNING',0,3,17
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,11
+	.byte	'ScheduleTableStatusType',0,12,241,3,41
+	.word	5643
+	.byte	14
+	.word	.L173-.L56
+	.byte	3
+	.word	5843
+	.byte	11
+	.byte	'ScheduleTableType',0,12,128,4,58
+	.word	5848
+	.byte	21
+	.byte	'Os_ScheduleTableDynType_s',0,12,130,4,16,16,13
+	.byte	'match',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'next',0
+	.word	5853
+	.byte	4,2,35,4,13
+	.byte	'state',0
+	.word	5643
+	.byte	4,2,35,8,13
+	.byte	'config',0
+	.word	498
+	.byte	2,2,35,12,0,3
+	.word	5880
+	.byte	14
+	.word	5973
+.L173:
+	.byte	21
+	.byte	'Os_ScheduleTableType_s',0,12,247,3,16,16,13
+	.byte	'dynamic',0
+	.word	5978
+	.byte	4,2,35,0,13
+	.byte	'counter',0
+	.word	5622
+	.byte	4,2,35,4,13
+	.byte	'repeat',0
+	.word	168
+	.byte	1,2,35,8,13
+	.byte	'config',0
+	.word	498
+	.byte	2,2,35,10,13
+	.byte	'initial',0
+	.word	168
+	.byte	1,2,35,12,13
+	.byte	'access',0
+	.word	168
+	.byte	1,2,35,13,13
+	.byte	'application',0
+	.word	168
+	.byte	1,2,35,14,0,11
+	.byte	'Os_ScheduleTableType',0,12,255,3,3
+	.word	5983
+	.byte	14
+	.word	5983
+	.byte	3
+	.word	6163
+	.byte	14
+	.word	5460
+	.byte	3
+	.word	6173
+	.byte	28
+	.word	3276
+	.byte	28
+	.word	4226
+	.byte	28
+	.word	4123
+	.byte	28
+	.word	4784
+	.byte	28
+	.word	4290
+	.byte	28
+	.word	168
+	.byte	28
+	.word	4784
+	.byte	21
+	.byte	'Os_ControlledCoreType_s',0,12,251,6,16,112,13
+	.byte	'TrapInfo',0
+	.word	2712
+	.byte	8,2,35,0,13
+	.byte	'lock_taskaccess',0
+	.word	6183
+	.byte	4,2,35,8,13
+	.byte	'ReadyTasks',0
+	.word	6188
+	.byte	4,2,35,12,13
+	.byte	'RunningISR',0
+	.word	6193
+	.byte	4,2,35,16,13
+	.byte	'RunningTask',0
+	.word	6198
+	.byte	4,2,35,20,13
+	.byte	'RunningTPMask',0
+	.word	6203
+	.byte	4,2,35,24,13
+	.byte	'CurrentMeteredObject',0
+	.word	3809
+	.byte	4,2,35,28,13
+	.byte	'IdleMeter',0
+	.word	3606
+	.byte	48,2,35,32,13
+	.byte	'AppAccess',0
+	.word	168
+	.byte	1,2,35,80,13
+	.byte	'AppOverride',0
+	.word	6208
+	.byte	1,2,35,81,13
+	.byte	'GetStackValueAdjust',0
+	.word	2883
+	.byte	8,2,35,84,13
+	.byte	'InErrorHook',0
+	.word	168
+	.byte	1,2,35,92,13
+	.byte	'ChainTaskRef',0
+	.word	6213
+	.byte	4,2,35,96,13
+	.byte	'GetStackUsageAdjust',0
+	.word	2883
+	.byte	8,2,35,100,13
+	.byte	'InProtectionHook',0
+	.word	168
+	.byte	1,2,35,108,13
+	.byte	'CoreIsActive',0
+	.word	168
+	.byte	1,2,35,109,13
+	.byte	'InShutdownHook',0
+	.word	168
+	.byte	1,2,35,110,0,11
+	.byte	'Os_ControlledCoreType',0,12,141,7,3
+	.word	6218
+	.byte	3
+	.word	837
+	.byte	14
+	.word	3954
+	.byte	3
+	.word	6674
+	.byte	14
+	.word	4524
+	.byte	3
+	.word	6684
+	.byte	3
+	.word	3606
+	.byte	21
+	.byte	'Os_AnyCoreType_s',0,12,151,7,16,96,13
+	.byte	'DisableAllImask',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'SuspendAllImask',0
+	.word	837
+	.byte	4,2,35,4,13
+	.byte	'SuspendOSImask',0
+	.word	837
+	.byte	4,2,35,8,13
+	.byte	'DisableAllCount',0
+	.word	837
+	.byte	4,2,35,12,13
+	.byte	'SuspendAllCount',0
+	.word	837
+	.byte	4,2,35,16,13
+	.byte	'SuspendOSCount',0
+	.word	837
+	.byte	4,2,35,20,13
+	.byte	'RestartJumpBuf',0
+	.word	2832
+	.byte	68,2,35,24,13
+	.byte	'Restartable',0
+	.word	168
+	.byte	1,2,35,92,0,11
+	.byte	'Os_AnyCoreType',0,12,160,7,3
+	.word	6699
+	.byte	11
+	.byte	'Can_TxObjPriorityClassType',0,13,219,3,16
+	.word	837
+	.byte	21
+	.byte	'Can_TxHwObjectConfigType',0,13,231,3,16,8,13
+	.byte	'MsgObjId',0
+	.word	168
+	.byte	1,2,35,0,13
+	.byte	'HwControllerId',0
+	.word	168
+	.byte	1,2,35,1,13
+	.byte	'TxObjPriorityClass',0
+	.word	837
+	.byte	4,2,35,4,0,11
+	.byte	'Can_TxHwObjectConfigType',0,13,252,3,3
+	.word	6976
+	.byte	21
+	.byte	'Can_RxHwObjectConfigType',0,13,129,4,16,12,13
+	.byte	'MaskRef',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'MsgId',0
+	.word	837
+	.byte	4,2,35,4,13
+	.byte	'MsgObjId',0
+	.word	168
+	.byte	1,2,35,8,13
+	.byte	'HwControllerId',0
+	.word	168
+	.byte	1,2,35,9,0,11
+	.byte	'Can_RxHwObjectConfigType',0,13,147,4,3
+	.word	7112
+	.byte	18,4
+	.word	168
+	.byte	19,3,0,21
+	.byte	'Can_ControllerMOMapConfigType',0,13,181,4,16,4,13
+	.byte	'ControllerMOMap',0
+	.word	7252
+	.byte	4,2,35,0,0,11
+	.byte	'Can_ControllerMOMapConfigType',0,13,184,4,3
+	.word	7261
+	.byte	21
+	.byte	'Can_NPCRValueType',0,13,188,4,16,2,13
+	.byte	'Can_NPCRValue',0
+	.word	498
+	.byte	2,2,35,0,0,11
+	.byte	'Can_NPCRValueType',0,13,191,4,3
+	.word	7362
+	.byte	21
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,194,4,16,8,13
+	.byte	'CanControllerBaudrate',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'CanControllerBaudrateCfg',0
+	.word	498
+	.byte	2,2,35,4,0,11
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,13,198,4,3
+	.word	7437
+	.byte	14
+	.word	7437
+	.byte	3
+	.word	7602
+	.byte	21
+	.byte	'Can_BaudrateConfigPtrType',0,13,201,4,16,4,13
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	7607
+	.byte	4,2,35,0,0,11
+	.byte	'Can_BaudrateConfigPtrType',0,13,204,4,3
+	.word	7612
+	.byte	21
+	.byte	'Can_EventHandlingType',0,13,226,4,16,4,13
+	.byte	'CanEventType',0
+	.word	7252
+	.byte	4,2,35,0,0,11
+	.byte	'Can_EventHandlingType',0,13,229,4,3
+	.word	7712
+	.byte	11
+	.byte	'Rte_TransformerErrorCode',0,14,130,1,15
+	.word	168
+	.byte	11
+	.byte	'Rte_TransformerClass',0,14,131,1,15
+	.word	168
+	.byte	12,14,168,1,9,12,13
+	.byte	'in',0
+	.word	3552
+	.byte	4,2,35,0,13
+	.byte	'out',0
+	.word	3552
+	.byte	4,2,35,4,13
+	.byte	'used',0
+	.word	498
+	.byte	2,2,35,8,13
+	.byte	'lost_data',0
+	.word	168
+	.byte	1,2,35,10,0,11
+	.byte	'Rte_QDynType',0,14,173,1,3
+	.word	7858
+	.byte	16,14,175,1,9,4,17
+	.byte	'RTE_DRA',0,0,17
+	.byte	'RTE_WOWP',0,1,17
+	.byte	'RTE_TASK',0,2,17
+	.byte	'RTE_ARE',0,3,17
+	.byte	'RTE_EV',0,4,17
+	.byte	'RTE_MSI',0,5,0,11
+	.byte	'Rte_NotificationType',0,14,182,1,3
+	.word	7945
+	.byte	3
+	.word	7858
+	.byte	21
+	.byte	'Rte_QCmnType',0,14,184,1,16,24,13
+	.byte	'dynamic',0
+	.word	8043
+	.byte	4,2,35,0,13
+	.byte	'copy',0
+	.word	168
+	.byte	1,2,35,4,13
+	.byte	'queue_size',0
+	.word	498
+	.byte	2,2,35,6,13
+	.byte	'element_size',0
+	.word	498
+	.byte	2,2,35,8,13
+	.byte	'buffer_start',0
+	.word	3552
+	.byte	4,2,35,12,13
+	.byte	'buffer_end',0
+	.word	3552
+	.byte	4,2,35,16,13
+	.byte	'notification_type',0
+	.word	7945
+	.byte	4,2,35,20,0,11
+	.byte	'Rte_QCmnType',0,14,192,1,3
+	.word	8048
+	.byte	11
+	.byte	'Rte_AlarmRefType',0,14,224,1,32
+	.word	837
+	.byte	11
+	.byte	'Rte_AlarmIndexType',0,14,226,1,32
+	.word	498
+	.byte	18,128,8
+	.word	168
+	.byte	19,255,7,0,11
+	.byte	'Impl_NVM_DstPtrType_1024',0,15,50,15
+	.word	8286
+	.byte	11
+	.byte	'CanIf_u32_impl',0,15,69,16
+	.word	837
+	.byte	11
+	.byte	'CanIf_u16_impl',0,15,71,16
+	.word	498
+	.byte	11
+	.byte	'CanIf_u8_impl',0,15,73,15
+	.word	168
+	.byte	11
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,15,88,15
+	.word	168
+	.byte	11
+	.byte	'CanIf_PduModeType_Enum_impl',0,15,90,15
+	.word	168
+	.byte	12,15,92,9,2,13
+	.byte	'DeviceMode',0
+	.word	168
+	.byte	1,2,35,0,13
+	.byte	'ChannelMode',0
+	.word	168
+	.byte	1,2,35,1,0,11
+	.byte	'CanIf_ControllerStateType_struct_impl',0,15,95,3
+	.word	8477
+	.byte	11
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,15,100,15
+	.word	168
+	.byte	11
+	.byte	'CanSM_boolean_Impl',0,15,120,15
+	.word	168
+	.byte	11
+	.byte	'CanSM_u8_Impl',0,15,123,15
+	.word	168
+	.byte	11
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,15,128,1,15
+	.word	168
+	.byte	11
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,15,132,1,15
+	.word	168
+	.byte	11
+	.byte	'CanSM_u16_Impl',0,15,136,1,16
+	.word	498
+	.byte	11
+	.byte	'CanSM_TimerStateType_Enum_impl',0,15,138,1,15
+	.word	168
+	.byte	12,15,140,1,9,4,13
+	.byte	'cntTick_u16',0
+	.word	498
+	.byte	2,2,35,0,13
+	.byte	'stTimer',0
+	.word	168
+	.byte	1,2,35,2,0,11
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,15,143,1,3
+	.word	8818
+	.byte	11
+	.byte	'Com_impl_u16',0,15,154,1,16
+	.word	498
+	.byte	11
+	.byte	'Com_impl_u8',0,15,157,1,15
+	.word	168
+	.byte	11
+	.byte	'ComM_uint32_Impl',0,15,173,1,16
+	.word	837
+	.byte	11
+	.byte	'ComM_uint16_Impl',0,15,175,1,16
+	.word	498
+	.byte	11
+	.byte	'ComM_uint8_Impl',0,15,177,1,15
+	.word	168
+	.byte	11
+	.byte	'ComM_bool_Impl',0,15,179,1,15
+	.word	168
+	.byte	12,15,181,1,9,24,13
+	.byte	'ChannelState_e',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'LightTimeoutCtr_u32',0
+	.word	837
+	.byte	4,2,35,4,13
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	498
+	.byte	2,2,35,8,13
+	.byte	'ChannelMode_u8',0
+	.word	168
+	.byte	1,2,35,10,13
+	.byte	'BusSmMode_u8',0
+	.word	168
+	.byte	1,2,35,11,13
+	.byte	'UserRequestCtr_u8',0
+	.word	168
+	.byte	1,2,35,12,13
+	.byte	'PassiveRequestState_u8',0
+	.word	168
+	.byte	1,2,35,13,13
+	.byte	'PncRequestCtr_u8',0
+	.word	168
+	.byte	1,2,35,14,13
+	.byte	'InhibitionReqStatus_u8',0
+	.word	168
+	.byte	1,2,35,15,13
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	168
+	.byte	1,2,35,16,13
+	.byte	'DiagnosticRequestState_b',0
+	.word	168
+	.byte	1,2,35,17,13
+	.byte	'CommunicationAllowed_b',0
+	.word	168
+	.byte	1,2,35,18,13
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	168
+	.byte	1,2,35,19,13
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	168
+	.byte	1,2,35,20,13
+	.byte	'NmNetworkModeStatus_b',0
+	.word	168
+	.byte	1,2,35,21,0,11
+	.byte	'ComM_ChannelStruct_Impl',0,15,197,1,3
+	.word	9050
+	.byte	12,15,206,1,9,10,13
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	498
+	.byte	2,2,35,0,13
+	.byte	'LimitToNoComCtr_u16',0
+	.word	498
+	.byte	2,2,35,2,13
+	.byte	'RequestedUserMode_t',0
+	.word	168
+	.byte	1,2,35,4,13
+	.byte	'IndicatedUserMode_t',0
+	.word	168
+	.byte	1,2,35,5,13
+	.byte	'numChannelsInFullCom_u8',0
+	.word	168
+	.byte	1,2,35,6,13
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	168
+	.byte	1,2,35,7,13
+	.byte	'numChannelsInNoCom_u8',0
+	.word	168
+	.byte	1,2,35,8,0,11
+	.byte	'ComM_UserStruct_Impl',0,15,214,1,3
+	.word	9554
+	.byte	11
+	.byte	'Dcm_ConfirmationStatusType',0,15,243,1,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_IOOperationResponseType',0,15,252,1,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_NegativeResponseCodeType',0,15,132,2,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_OpStatusType',0,15,134,2,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	15,138,2,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_SecLevelType',0,15,142,2,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_SesCtrlType',0,15,144,2,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,15,146,2,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,15,150,2,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,15,154,2,15
+	.word	168
+	.byte	11
+	.byte	'Dem_DTCFormatType',0,15,160,2,15
+	.word	168
+	.byte	11
+	.byte	'Dem_DTCOriginType',0,15,162,2,15
+	.word	168
+	.byte	11
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,15,243,3,34
+	.word	8297
+	.byte	18,128,8
+	.word	168
+	.byte	19,255,7,0,11
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,15,246,3,34
+	.word	8297
+	.byte	11
+	.byte	'Rte_ModeType_DcmDiagnosticSessionControl',0,16,37,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_SrvOpStatusType',0,5,62,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_MsgItemType',0,5,182,2,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_MsgLenType',0,5,197,2,16
+	.word	837
+	.byte	11
+	.byte	'Dcm_MsgAddInfoType',0,5,219,2,2
+	.word	1754
+	.byte	11
+	.byte	'Dcm_IdContextType',0,5,225,2,15
+	.word	168
+	.byte	11
+	.byte	'Dcm_MsgContextType',0,5,188,3,2
+	.word	1832
+	.byte	12,5,238,5,9,32,13
+	.byte	'tx_buffer_pa',0
+	.word	1733
+	.byte	4,2,35,0,13
+	.byte	'rx_mainBuffer_pa',0
+	.word	1733
+	.byte	4,2,35,4,13
+	.byte	'tx_buffer_size_u32',0
+	.word	837
+	.byte	4,2,35,8,13
+	.byte	'rx_buffer_size_u32',0
+	.word	837
+	.byte	4,2,35,12,13
+	.byte	'dataP2TmrAdjust',0
+	.word	837
+	.byte	4,2,35,16,13
+	.byte	'dataP2StarTmrAdjust',0
+	.word	837
+	.byte	4,2,35,20,13
+	.byte	'protocolid_u8',0
+	.word	168
+	.byte	1,2,35,24,13
+	.byte	'sid_tableid_u8',0
+	.word	168
+	.byte	1,2,35,25,13
+	.byte	'premption_level_u8',0
+	.word	168
+	.byte	1,2,35,26,13
+	.byte	'pduinfo_idx_u8',0
+	.word	168
+	.byte	1,2,35,27,13
+	.byte	'nrc21_b',0
+	.word	168
+	.byte	1,2,35,28,13
+	.byte	'sendRespPendTransToBoot',0
+	.word	168
+	.byte	1,2,35,29,0,11
+	.byte	'Dcm_Dsld_protocol_tableType',0,5,143,6,2
+	.word	10786
+	.byte	23,1,1,24
+	.word	168
+	.byte	24
+	.word	498
+	.byte	24
+	.word	498
+	.byte	24
+	.word	168
+	.byte	0,3
+	.word	11137
+	.byte	11
+	.byte	'Dcm_ConfirmationApiType',0,5,145,6,16
+	.word	11161
+	.byte	3
+	.word	168
+	.byte	29
+	.word	168
+	.byte	1,1,24
+	.word	11199
+	.byte	24
+	.word	168
+	.byte	24
+	.word	168
+	.byte	0,3
+	.word	11204
+	.byte	3
+	.word	1832
+	.byte	29
+	.word	168
+	.byte	1,1,24
+	.word	168
+	.byte	24
+	.word	11232
+	.byte	24
+	.word	11199
+	.byte	0,3
+	.word	11237
+	.byte	12,5,158,6,9,20,13
+	.byte	'allowed_session_b32',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'allowed_security_b32',0
+	.word	837
+	.byte	4,2,35,4,13
+	.byte	'adrUserSubServiceModeRule_pfct',0
+	.word	11227
+	.byte	4,2,35,8,13
+	.byte	'SubFunc_fp',0
+	.word	11260
+	.byte	4,2,35,12,13
+	.byte	'subservice_id_u8',0
+	.word	168
+	.byte	1,2,35,16,13
+	.byte	'isDspRDTCSubFnc_b',0
+	.word	168
+	.byte	1,2,35,17,0,11
+	.byte	'Dcm_Dsld_SubServiceType',0,5,169,6,2
+	.word	11265
+	.byte	14
+	.word	11265
+	.byte	3
+	.word	11477
+	.byte	29
+	.word	168
+	.byte	1,1,24
+	.word	11199
+	.byte	24
+	.word	168
+	.byte	0,3
+	.word	11487
+	.byte	12,5,186,6,9,36,13
+	.byte	'allowed_session_b32',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'allowed_security_b32',0
+	.word	837
+	.byte	4,2,35,4,13
+	.byte	'service_handler_fp',0
+	.word	11260
+	.byte	4,2,35,8,13
+	.byte	'Service_init_fp',0
+	.word	2971
+	.byte	4,2,35,12,13
+	.byte	'sid_u8',0
+	.word	168
+	.byte	1,2,35,16,13
+	.byte	'subfunction_exist_b',0
+	.word	168
+	.byte	1,2,35,17,13
+	.byte	'servicelocator_b',0
+	.word	168
+	.byte	1,2,35,18,13
+	.byte	'ptr_subservice_table_pcs',0
+	.word	11482
+	.byte	4,2,35,20,13
+	.byte	'num_sf_u8',0
+	.word	168
+	.byte	1,2,35,24,13
+	.byte	'adrUserServiceModeRule_pfct',0
+	.word	11505
+	.byte	4,2,35,28,13
+	.byte	'Dcm_ConfirmationService',0
+	.word	11166
+	.byte	4,2,35,32,0,11
+	.byte	'Dcm_Dsld_ServiceType',0,5,204,6,3
+	.word	11510
+	.byte	3
+	.word	11137
+	.byte	14
+	.word	11510
+	.byte	3
+	.word	11858
+	.byte	12,5,218,6,9,8,13
+	.byte	'ptr_service_table_pcs',0
+	.word	11863
+	.byte	4,2,35,0,13
+	.byte	'num_services_u8',0
+	.word	168
+	.byte	1,2,35,4,13
+	.byte	'nrc_sessnot_supported_u8',0
+	.word	168
+	.byte	1,2,35,5,13
+	.byte	'cdtc_index_u8',0
+	.word	168
+	.byte	1,2,35,6,0,11
+	.byte	'Dcm_Dsld_sid_tableType',0,5,224,6,3
+	.word	11868
+	.byte	12,5,238,6,9,14,13
+	.byte	'protocol_num_u8',0
+	.word	168
+	.byte	1,2,35,0,13
+	.byte	'txpduid_num_u8',0
+	.word	498
+	.byte	2,2,35,2,13
+	.byte	'roetype2_txpdu_u8',0
+	.word	498
+	.byte	2,2,35,4,13
+	.byte	'rdpitype2_txpdu_u8',0
+	.word	498
+	.byte	2,2,35,6,13
+	.byte	'testaddr_u16',0
+	.word	498
+	.byte	2,2,35,8,13
+	.byte	'channel_idx_u8',0
+	.word	168
+	.byte	1,2,35,10,13
+	.byte	'ConnectionIndex_u8',0
+	.word	168
+	.byte	1,2,35,11,13
+	.byte	'NumberOfTxpdu_u8',0
+	.word	168
+	.byte	1,2,35,12,0,11
+	.byte	'Dcm_Dsld_connType',0,5,248,6,3
+	.word	12020
+	.byte	16,5,146,7,9,4,17
+	.byte	'DCM_DSLD_NO_COM_MODE',0,0,17
+	.byte	'DCM_DSLD_SILENT_COM_MODE',0,1,17
+	.byte	'DCM_DSLD_FULL_COM_MODE',0,2,0,11
+	.byte	'Dcm_Dsld_commodeType',0,5,151,7,2
+	.word	12258
+	.byte	16,17,200,1,9,4,17
+	.byte	'USE_ASYNCH_CLIENT_SERVER',0,0,17
+	.byte	'USE_ASYNCH_FNC',0,1,0,11
+	.byte	'DcmDspSecurityUsePort',0,17,204,1,2
+	.word	12370
+	.byte	16,18,22,9,4,17
+	.byte	'DCM_NO_BOOT',0,0,17
+	.byte	'DCM_OEM_BOOT',0,1,17
+	.byte	'DCM_SYS_BOOT',0,2,0,11
+	.byte	'Dcm_SessionForBootType',0,18,27,2
+	.word	12452
+	.byte	16,19,192,3,9,4,17
+	.byte	'DCM_READ_OK',0,0,17
+	.byte	'DCM_READ_FAILED',0,1,17
+	.byte	'DCM_READ_PENDING',0,2,17
+	.byte	'DCM_READ_FORCE_RCRRP',0,3,17
+	.byte	'DCM_READ_NOT_AVAILABLE',0,4,0,11
+	.byte	'Dcm_ReadMemoryRet_t',0,19,199,3,3
+	.word	12533
+	.byte	11
+	.byte	'Dem_ReturnSetFilterType',0,20,193,1,15
+	.word	168
+	.byte	11
+	.byte	'Dem_FilterWithSeverityType',0,20,203,1,15
+	.word	168
+	.byte	11
+	.byte	'Dem_DTCSeverityType',0,20,217,1,15
+	.word	168
+	.byte	11
+	.byte	'Dem_FilterForFDCType',0,20,229,1,15
+	.word	168
+	.byte	11
+	.byte	'Dem_DTCKindType',0,20,145,3,16
+	.word	168
+	.byte	11
+	.byte	'Dem_ReturnGetNextFilteredDTCType',0,20,186,3,15
+	.word	168
+	.byte	11
+	.byte	'Rte_TaskRefType',0,21,184,1,32
+	.word	4784
+	.byte	11
+	.byte	'Rte_EventRefType',0,21,185,1,32
+	.word	168
+	.byte	11
+	.byte	'Rte_EventType',0,21,186,1,32
+	.word	837
+	.byte	11
+	.byte	'Rte_REActCounterType',0,21,252,1,15
+	.word	168
+	.byte	3
+	.word	168
+	.byte	11
+	.byte	'Rte_REActCounterRefType',0,21,253,1,58
+	.word	12967
+	.byte	12,21,255,1,9,8,13
+	.byte	'task',0
+	.word	12863
+	.byte	4,2,35,0,13
+	.byte	'acnt',0
+	.word	12972
+	.byte	4,2,35,4,0,11
+	.byte	'Rte_REContainerType',0,21,130,2,3
+	.word	13005
+	.byte	14
+	.word	4524
+	.byte	3
+	.word	13069
+	.byte	3
+	.word	168
+	.byte	14
+	.word	13005
+	.byte	3
+	.word	13084
+	.byte	11
+	.byte	'Rte_REContainerRefType',0,21,132,2,60
+	.word	13089
+	.byte	11
+	.byte	'Rte_MSICounterType',0,21,149,2,16
+	.word	498
+	.byte	3
+	.word	498
+	.byte	11
+	.byte	'Rte_MSICounterRefType',0,21,150,2,56
+	.word	13154
+	.byte	11
+	.byte	'Rte_MSIPendingFlagType',0,21,152,2,17
+	.word	168
+	.byte	3
+	.word	168
+	.byte	11
+	.byte	'Rte_MSIPendingFlagRefType',0,21,153,2,60
+	.word	13222
+	.byte	12,21,163,2,9,24,13
+	.byte	'counter',0
+	.word	13159
+	.byte	4,2,35,0,13
+	.byte	'incCounter',0
+	.word	168
+	.byte	1,2,35,4,13
+	.byte	'pending',0
+	.word	13227
+	.byte	4,2,35,8,13
+	.byte	'osTask',0
+	.word	12863
+	.byte	4,2,35,12,13
+	.byte	'acnt',0
+	.word	12972
+	.byte	4,2,35,16,13
+	.byte	'osEvent',0
+	.word	168
+	.byte	1,2,35,20,13
+	.byte	'MSIInit',0
+	.word	498
+	.byte	2,2,35,22,0,11
+	.byte	'Rte_MSITableEntry',0,21,172,2,3
+	.word	13262
+	.byte	3
+	.word	498
+	.byte	3
+	.word	168
+	.byte	11
+	.byte	'Rte_TaskArrayIndex',0,21,179,2,16
+	.word	168
+	.byte	11
+	.byte	'Rte_NrWaitingTasks',0,21,180,2,16
+	.word	168
+	.byte	12,21,182,2,9,4,13
+	.byte	'pending',0
+	.word	168
+	.byte	1,2,35,0,13
+	.byte	'count',0
+	.word	168
+	.byte	1,2,35,1,13
+	.byte	'firstWaitingTask',0
+	.word	168
+	.byte	1,2,35,2,0,11
+	.byte	'Rte_WaitableDatum',0,21,186,2,3
+	.word	13480
+	.byte	3
+	.word	13480
+	.byte	12,21,226,2,9,12,13
+	.byte	'event_id',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'wd',0
+	.word	13572
+	.byte	4,2,35,4,13
+	.byte	'timeout',0
+	.word	837
+	.byte	4,2,35,8,0,11
+	.byte	'Rte_WOWP_NotificationType',0,21,230,2,3
+	.word	13577
+	.byte	14
+	.word	13577
+	.byte	3
+	.word	13666
+	.byte	11
+	.byte	'Rte_WOWP_NotificationRefType',0,21,232,2,66
+	.word	13671
+	.byte	11
+	.byte	'Rte_ARE_NotificationType',0,21,234,2,29
+	.word	13005
+	.byte	21
+	.byte	'Rte_QTaskType',0,21,243,2,16,28,13
+	.byte	'cmn',0
+	.word	8048
+	.byte	24,2,35,0,13
+	.byte	'task',0
+	.word	12863
+	.byte	4,2,35,24,0,11
+	.byte	'Rte_QTaskType',0,21,246,2,3
+	.word	13748
+	.byte	21
+	.byte	'Rte_QREType',0,21,250,2,16,28,13
+	.byte	'cmn',0
+	.word	8048
+	.byte	24,2,35,0,13
+	.byte	're',0
+	.word	13094
+	.byte	4,2,35,24,0,11
+	.byte	'Rte_QREType',0,21,253,2,3
+	.word	13819
+	.byte	14
+	.word	13005
+	.byte	3
+	.word	13884
+	.byte	21
+	.byte	'Rte_QWWPType',0,21,129,3,16,28,13
+	.byte	'cmn',0
+	.word	8048
+	.byte	24,2,35,0,13
+	.byte	'wwp',0
+	.word	13676
+	.byte	4,2,35,24,0,11
+	.byte	'Rte_QWWPType',0,21,132,3,3
+	.word	13894
+	.byte	14
+	.word	13577
+	.byte	3
+	.word	13962
+	.byte	21
+	.byte	'Rte_QEvType',0,21,136,3,16,36,13
+	.byte	'cmn',0
+	.word	8048
+	.byte	24,2,35,0,13
+	.byte	'task',0
+	.word	12863
+	.byte	4,2,35,24,13
+	.byte	'mask',0
+	.word	168
+	.byte	1,2,35,28,13
+	.byte	'acnt',0
+	.word	12972
+	.byte	4,2,35,32,0,11
+	.byte	'Rte_QEvType',0,21,141,3,3
+	.word	13972
+	.byte	21
+	.byte	'Rte_QMSIType',0,21,145,3,16,48,13
+	.byte	'cmn',0
+	.word	8048
+	.byte	24,2,35,0,13
+	.byte	'task',0
+	.word	12863
+	.byte	4,2,35,24,13
+	.byte	'mask',0
+	.word	168
+	.byte	1,2,35,28,13
+	.byte	'acnt',0
+	.word	12972
+	.byte	4,2,35,32,13
+	.byte	'msiCounter',0
+	.word	13159
+	.byte	4,2,35,36,13
+	.byte	'msiPending',0
+	.word	13227
+	.byte	4,2,35,40,13
+	.byte	'msiLimit',0
+	.word	498
+	.byte	2,2,35,44,0,11
+	.byte	'Rte_QMSIType',0,21,153,3,3
+	.word	14067
+	.byte	16,22,21,9,4,17
+	.byte	'DSD_IDLE',0,0,17
+	.byte	'DSD_VERIFY_DIAGNOSTIC_DATA',0,1,17
+	.byte	'DSD_CALL_SERVICE',0,2,17
+	.byte	'DSD_WAITFORTXCONF',0,3,17
+	.byte	'DSD_SENDTXCONF_APPL',0,4,0,11
+	.byte	'Dcm_DsdStatesType_ten',0,22,28,2
+	.word	14222
+	.byte	16,23,215,2,9,4,17
+	.byte	'DCM_DSLD_POS_RESPONSE',0,0,17
+	.byte	'DCM_DSLD_NEG_RESPONSE',0,1,0,11
+	.byte	'Dcm_DsldResponseType_ten',0,23,219,2,2
+	.word	14359
+	.byte	16,24,148,1,9,4,17
+	.byte	'DCM_ROE_CLEARED',0,0,17
+	.byte	'DCM_ROE_STOPPED',0,1,17
+	.byte	'DCM_ROE_STARTED',0,2,0,11
+	.byte	'Dcm_DspRoeEventState_ten',0,24,153,1,2
+	.word	14448
+	.byte	16,24,231,1,9,4,17
+	.byte	'DCM_CONTROLMASK_NO',0,0,17
+	.byte	'DCM_CONTROLMASK_INTERNAL',0,1,17
+	.byte	'DCM_CONTROLMASK_EXTERNAL',0,2,0,11
+	.byte	'Dcm_Dsp_IocbiCtrlMask_ten',0,24,236,1,2
+	.word	14543
+	.byte	16,19,203,1,9,4,17
+	.byte	'DCM_SUPPORT_READ',0,0,17
+	.byte	'DCM_SUPPORT_WRITE',0,1,17
+	.byte	'DCM_SUPPORT_IOCONTROL',0,2,0,29
+	.word	168
+	.byte	1,1,24
+	.word	11199
+	.byte	24
+	.word	498
+	.byte	24
+	.word	14660
+	.byte	0,3
+	.word	14730
+	.byte	12,24,239,1,9,44,13
+	.byte	'dataAllowedSessRead_u32',0
+	.word	837
+	.byte	4,2,35,0,13
+	.byte	'dataAllowedSecRead_u32',0
+	.word	837
+	.byte	4,2,35,4,13
+	.byte	'adrUserReadModeRule_pfct',0
+	.word	14753
+	.byte	4,2,35,8,13
+	.byte	'dataAllowedSessWrite_u32',0
+	.word	837
+	.byte	4,2,35,12,13
+	.byte	'dataAllowedSecWrite_u32',0
+	.word	837
+	.byte	4,2,35,16,13
+	.byte	'adrUserWriteModeRule_pfct',0
+	.word	14753
+	.byte	4,2,35,20,13
+	.byte	'dataSessBitMask_u32',0
+	.word	837
+	.byte	4,2,35,24,13
+	.byte	'dataSecBitMask_u32',0
+	.word	837
+	.byte	4,2,35,28,13
+	.byte	'adrUserControlModeRule_pfct',0
+	.word	14753
+	.byte	4,2,35,32,13
+	.byte	'dataCtrlMask_en',0
+	.word	14543
+	.byte	4,2,35,36,13
+	.byte	'dataCtrlMaskSize_u8',0
+	.word	168
+	.byte	1,2,35,40,13
+	.byte	'dataIocbirst_b',0
+	.word	168
+	.byte	1,2,35,41,13
+	.byte	'statusmaskIOControl_u8',0
+	.word	168
+	.byte	1,2,35,42,0,11
+	.byte	'Dcm_ExtendedDIDConfig_tst',0,24,141,2,3
+	.word	14758
+	.byte	12,24,200,2,9,4,13
+	.byte	'posnSigBit_u16',0
+	.word	498
+	.byte	2,2,35,0,13
+	.byte	'idxDcmDspDatainfo_u16',0
+	.word	498
+	.byte	2,2,35,2,0,11
+	.byte	'Dcm_SignalDIDConfig_tst',0,24,204,2,3
+	.word	15205
+	.byte	16,25,106,9,4,17
+	.byte	'DSP_RDTC_SFUNINIT',0,0,17
+	.byte	'DSP_RDTC_SFINIT',0,1,17
+	.byte	'DSP_RDTC_SFCALCNUMDTC',0,2,17
+	.byte	'DSP_RDTC_GETFFSIZE',0,3,17
+	.byte	'DSP_RDTC_UPDATEDISABLED',0,4,17
+	.byte	'DSP_RDTC_SFFILLRESP',0,5,0,11
+	.byte	'Dcm_DspRDTCSubFuncStates_ten',0,25,123,2
+	.word	15300
+	.byte	30
+	.byte	'Dcm_DspRDTCSubFunc_en',0,25,136,1,54
+	.word	15300
+	.byte	1,1,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L57:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32
+	.byte	13,58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,46,1,3,8,32,13
+	.byte	58,15,59,15,57,15,73,19,54,15,39,12,0,0,8,46,1,49,19,0,0,9,5,0,49,19,0,0,10,46,1,3,8,58,15,59,15,57,15
+	.byte	73,19,54,15,39,12,63,12,60,12,0,0,11,22,0,3,8,58,15,59,15,57,15,73,19,0,0,12,19,1,58,15,59,15,57,15,11
+	.byte	15,0,0,13,13,0,3,8,73,19,11,15,56,9,0,0,14,38,0,73,19,0,0,15,21,0,54,15,0,0,16,4,1,58,15,59,15,57,15,11
+	.byte	15,0,0,17,40,0,3,8,28,13,0,0,18,1,1,11,15,73,19,0,0,19,33,0,47,15,0,0,20,21,0,54,15,39,12,0,0,21,19,1
+	.byte	3,8,58,15,59,15,57,15,11,15,0,0,22,59,0,3,8,0,0,23,21,1,54,15,39,12,0,0,24,5,0,73,19,0,0,25,23,1,58,15
+	.byte	59,15,57,15,11,15,0,0,26,4,1,3,8,58,15,59,15,57,15,11,15,0,0,27,21,0,73,19,54,15,39,12,0,0,28,53,0,73
+	.byte	19,0,0,29,21,1,73,19,54,15,39,12,0,0,30,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L58:
+	.word	.L175-.L174
+.L174:
+	.half	3
+	.word	.L177-.L176
+.L176:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits8.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits16.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits32.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\api\\Dem_Dcm.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmCore_DslDsd_Pub.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Dcm_Type.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Seca_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Dsc_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\api\\DcmDspUds_Uds_Pub.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dem\\api\\Dem_Types.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\Dsd\\Dcm_Dsd.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmCore\\DcmCoreDslDsd\\DcmCore_DslDsd_Prot.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Uds_Prot.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_Priv.h',0,0,0,0,0
+.L177:
+.L175:
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_ReportSupportedDTC')
+	.sect	'.debug_info'
+.L59:
+	.word	712
+	.half	3
+	.word	.L60
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L62,.L61
+	.byte	2
+	.word	.L55
+	.byte	3
+	.byte	'Dcm_Dsp_ReportSupportedDTC',0,1,159,3,31
+	.word	.L89
+	.byte	1,1,1
+	.word	.L44,.L90,.L43
+	.byte	4
+	.byte	'OpStatus',0,1,159,3,94
+	.word	.L89,.L91
+	.byte	4
+	.byte	'pMsgContext',0,1,159,3,155,1
+	.word	.L92,.L93
+	.byte	4
+	.byte	'dataNegRespCode_u8',0,1,159,3,229,1
+	.word	.L94,.L95
+	.byte	5
+	.word	.L44,.L90
+	.byte	6
+	.byte	'dataDTC_u32',0,1,161,3,54
+	.word	.L96,.L97
+	.byte	6
+	.byte	'nrRespLen_u32',0,1,162,3,54
+	.word	.L96,.L98
+	.byte	6
+	.byte	'nrResMaxDataLen_u32',0,1,163,3,54
+	.word	.L96,.L99
+	.byte	6
+	.byte	'idxLoop_qu8',0,1,164,3,54
+	.word	.L100,.L101
+	.byte	6
+	.byte	'nrReqLength_u8',0,1,165,3,54
+	.word	.L89,.L102
+	.byte	6
+	.byte	'stDTCStatus_u8',0,1,166,3,54
+	.word	.L89,.L103
+	.byte	6
+	.byte	'dataStatusAvailMask_u8',0,1,167,3,54
+	.word	.L89,.L104
+	.byte	6
+	.byte	'dataSubfunc_u8',0,1,168,3,54
+	.word	.L89,.L105
+	.byte	6
+	.byte	'dataDemDTCOrigin_u8',0,1,169,3,54
+	.word	.L89,.L106
+	.byte	6
+	.byte	'dataDemDTCKind_u8',0,1,170,3,54
+	.word	.L89,.L107
+	.byte	6
+	.byte	'dataRetSetDTCFilter_u8',0,1,171,3,54
+	.word	.L89,.L108
+	.byte	6
+	.byte	'dataRetGetNextFiltDTC_u8',0,1,172,3,54
+	.word	.L89,.L109
+	.byte	6
+	.byte	'dataretVal_u8',0,1,173,3,54
+	.word	.L89,.L110
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_ReportSupportedDTC')
+	.sect	'.debug_abbrev'
+.L60:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Dsp_ReportSupportedDTC')
+	.sect	'.debug_line'
+.L61:
+	.word	.L179-.L178
+.L178:
+	.half	3
+	.word	.L181-.L180
+.L180:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0,0,0,0,0
+.L181:
+	.byte	5,31,7,0,5,2
+	.word	.L44
+	.byte	3,158,3,1,5,27,9
+	.half	.L152-.L44
+	.byte	3,17,1,5,25,9
+	.half	.L182-.L152
+	.byte	1,5,18,9
+	.half	.L183-.L182
+	.byte	3,1,1,5,8,9
+	.half	.L153-.L183
+	.byte	3,4,1,5,5,9
+	.half	.L184-.L153
+	.byte	1,5,37,7,9
+	.half	.L185-.L184
+	.byte	3,3,1,5,46,9
+	.half	.L186-.L185
+	.byte	1,5,54,9
+	.half	.L154-.L186
+	.byte	3,2,1,5,23,9
+	.half	.L150-.L154
+	.byte	3,3,1,5,9,9
+	.half	.L187-.L150
+	.byte	1,5,50,7,9
+	.half	.L188-.L187
+	.byte	3,3,1,5,13,9
+	.half	.L155-.L188
+	.byte	1,5,35,7,9
+	.half	.L189-.L155
+	.byte	3,3,1,5,33,9
+	.half	.L190-.L189
+	.byte	1,5,94,9
+	.half	.L191-.L190
+	.byte	3,3,1,5,59,9
+	.half	.L192-.L191
+	.byte	1,5,103,9
+	.half	.L193-.L192
+	.byte	1,5,107,9
+	.half	.L194-.L193
+	.byte	1,5,32,9
+	.half	.L157-.L194
+	.byte	1,5,20,9
+	.half	.L195-.L157
+	.byte	3,3,1,5,17,9
+	.half	.L196-.L195
+	.byte	1,5,43,7,9
+	.half	.L197-.L196
+	.byte	3,3,1,5,41,9
+	.half	.L198-.L197
+	.byte	1,9
+	.half	.L199-.L198
+	.byte	3,2,1,5,39,9
+	.half	.L200-.L199
+	.byte	1,5,51,9
+	.half	.L201-.L200
+	.byte	3,3,1,9
+	.half	.L202-.L201
+	.byte	3,1,1,9
+	.half	.L203-.L202
+	.byte	3,1,1,5,70,9
+	.half	.L204-.L203
+	.byte	3,2,1,5,63,9
+	.half	.L159-.L204
+	.byte	3,9,1,9
+	.half	.L205-.L159
+	.byte	3,1,1,9
+	.half	.L206-.L205
+	.byte	3,1,1,9
+	.half	.L207-.L206
+	.byte	3,122,1,9
+	.half	.L208-.L207
+	.byte	3,1,1,9
+	.half	.L209-.L208
+	.byte	3,1,1,9
+	.half	.L210-.L209
+	.byte	3,1,1,5,21,9
+	.half	.L160-.L210
+	.byte	3,6,1,5,49,7,9
+	.half	.L211-.L160
+	.byte	3,3,1,5,47,9
+	.half	.L212-.L211
+	.byte	1,5,68,9
+	.half	.L213-.L212
+	.byte	1,5,47,9
+	.half	.L6-.L213
+	.byte	3,6,1,5,45,9
+	.half	.L214-.L6
+	.byte	1,5,38,9
+	.half	.L215-.L214
+	.byte	3,1,1,5,21,9
+	.half	.L7-.L215
+	.byte	3,124,1,5,34,9
+	.half	.L5-.L7
+	.byte	3,10,1,5,75,9
+	.half	.L8-.L5
+	.byte	3,3,1,5,98,9
+	.half	.L162-.L8
+	.byte	1,5,39,9
+	.half	.L4-.L162
+	.byte	3,6,1,5,37,9
+	.half	.L216-.L4
+	.byte	1,5,30,9
+	.half	.L217-.L216
+	.byte	3,1,1,5,13,9
+	.half	.L9-.L217
+	.byte	3,124,1,5,35,9
+	.half	.L3-.L9
+	.byte	3,11,1,5,33,9
+	.half	.L218-.L3
+	.byte	1,5,26,9
+	.half	.L219-.L218
+	.byte	3,1,1,5,9,9
+	.half	.L10-.L219
+	.byte	3,124,1,5,10,9
+	.half	.L2-.L10
+	.byte	3,9,1,5,21,7,9
+	.half	.L220-.L2
+	.byte	3,2,1,5,42,9
+	.half	.L164-.L220
+	.byte	3,2,1,5,36,9
+	.half	.L165-.L164
+	.byte	3,3,1,5,24,9
+	.half	.L13-.L165
+	.byte	3,5,1,5,64,9
+	.half	.L221-.L13
+	.byte	3,2,1,5,78,9
+	.half	.L222-.L221
+	.byte	1,5,13,9
+	.half	.L166-.L222
+	.byte	3,3,1,5,35,7,9
+	.half	.L223-.L166
+	.byte	3,3,1,5,17,9
+	.half	.L224-.L223
+	.byte	1,5,65,7,9
+	.half	.L225-.L224
+	.byte	3,2,1,5,51,9
+	.half	.L226-.L225
+	.byte	1,5,65,9
+	.half	.L227-.L226
+	.byte	1,5,80,9
+	.half	.L228-.L227
+	.byte	1,5,95,9
+	.half	.L229-.L228
+	.byte	1,5,65,9
+	.half	.L167-.L229
+	.byte	1,5,107,9
+	.half	.L230-.L167
+	.byte	1,5,47,9
+	.half	.L15-.L230
+	.byte	3,5,1,5,45,9
+	.half	.L231-.L15
+	.byte	1,5,34,9
+	.half	.L232-.L231
+	.byte	3,1,1,5,17,9
+	.half	.L16-.L232
+	.byte	3,124,1,5,18,9
+	.half	.L14-.L16
+	.byte	3,8,1,5,30,7,9
+	.half	.L233-.L14
+	.byte	3,3,1,5,17,9
+	.half	.L234-.L233
+	.byte	3,1,1,5,18,9
+	.half	.L18-.L234
+	.byte	3,3,1,5,41,7,9
+	.half	.L235-.L18
+	.byte	3,4,1,5,39,9
+	.half	.L236-.L235
+	.byte	1,5,40,9
+	.half	.L237-.L236
+	.byte	3,1,1,5,30,9
+	.half	.L238-.L237
+	.byte	3,1,1,5,56,9
+	.half	.L239-.L238
+	.byte	3,126,1,5,39,9
+	.half	.L20-.L239
+	.byte	3,7,1,5,37,9
+	.half	.L240-.L20
+	.byte	1,5,30,9
+	.half	.L241-.L240
+	.byte	3,1,1,5,16,9
+	.half	.L17-.L241
+	.byte	3,2,1,5,63,7,9
+	.half	.L242-.L17
+	.byte	1,5,82,9
+	.half	.L243-.L242
+	.byte	1,5,33,7,9
+	.half	.L19-.L243
+	.byte	3,4,1,5,48,9
+	.half	.L244-.L19
+	.byte	1,5,5,9
+	.half	.L11-.L244
+	.byte	3,6,1,5,1,9
+	.half	.L24-.L11
+	.byte	3,1,1,7,9
+	.half	.L63-.L24
+	.byte	0,1,1
+.L179:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Dsp_ReportSupportedDTC')
+	.sect	'.debug_ranges'
+.L62:
+	.word	-1,.L44,0,.L63-.L44,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_GetDTCRequestLength')
+	.sect	'.debug_info'
+.L64:
+	.word	290
+	.half	3
+	.word	.L65
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L67,.L66
+	.byte	2
+	.word	.L55
+	.byte	3
+	.byte	'Dcm_Dsp_GetDTCRequestLength',0,1,216,4,29
+	.word	.L89
+	.byte	1,1
+	.word	.L46,.L111,.L45
+	.byte	4
+	.byte	'reqSubfunction',0,1,216,4,80
+	.word	.L112,.L113
+	.byte	5
+	.word	.L46,.L111
+	.byte	6
+	.byte	'reqLength_u8',0,1,218,4,27
+	.word	.L89,.L114
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_GetDTCRequestLength')
+	.sect	'.debug_abbrev'
+.L65:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Dsp_GetDTCRequestLength')
+	.sect	'.debug_line'
+.L66:
+	.word	.L246-.L245
+.L245:
+	.half	3
+	.word	.L248-.L247
+.L247:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0,0,0,0,0
+.L248:
+	.byte	5,18,7,0,5,2
+	.word	.L46
+	.byte	3,220,4,1,5,13,9
+	.half	.L170-.L46
+	.byte	3,9,1,5,32,7,9
+	.half	.L249-.L170
+	.byte	3,2,1,5,29,9
+	.half	.L250-.L249
+	.byte	1,5,32,7,9
+	.half	.L251-.L250
+	.byte	3,2,1,5,29,9
+	.half	.L252-.L251
+	.byte	1,5,22,7,9
+	.half	.L25-.L252
+	.byte	3,3,1,5,5,9
+	.half	.L27-.L25
+	.byte	3,12,1,5,1,9
+	.half	.L28-.L27
+	.byte	3,1,1,7,9
+	.half	.L68-.L28
+	.byte	0,1,1
+.L246:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Dsp_GetDTCRequestLength')
+	.sect	'.debug_ranges'
+.L67:
+	.word	-1,.L46,0,.L68-.L46,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_CalDTCActiveMask')
+	.sect	'.debug_info'
+.L69:
+	.word	352
+	.half	3
+	.word	.L70
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L72,.L71
+	.byte	2
+	.word	.L55
+	.byte	3
+	.byte	'Dcm_Dsp_CalDTCActiveMask',0,1,136,5,29
+	.word	.L89
+	.byte	1,1
+	.word	.L48,.L115,.L47
+	.byte	4
+	.byte	'statusAvailMask_u8',0,1,136,5,77
+	.word	.L116,.L117
+	.byte	4
+	.byte	'reqDtcStatus_u8',0,1,136,5,120
+	.word	.L118,.L119
+	.byte	4
+	.byte	'reqSubfunction',0,1,136,5,159,1
+	.word	.L120,.L121
+	.byte	5
+	.word	.L48,.L115
+	.byte	6
+	.byte	'calDTCStatus_u8',0,1,138,5,11
+	.word	.L89,.L122
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_CalDTCActiveMask')
+	.sect	'.debug_abbrev'
+.L70:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Dsp_CalDTCActiveMask')
+	.sect	'.debug_line'
+.L71:
+	.word	.L254-.L253
+.L253:
+	.half	3
+	.word	.L256-.L255
+.L255:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0,0,0,0,0
+.L256:
+	.byte	5,25,7,0,5,2
+	.word	.L48
+	.byte	3,148,5,1,5,44,7,9
+	.half	.L257-.L48
+	.byte	3,2,1,5,41,9
+	.half	.L258-.L257
+	.byte	1,5,44,7,9
+	.half	.L259-.L258
+	.byte	3,2,1,5,41,9
+	.half	.L260-.L259
+	.byte	1,5,44,7,9
+	.half	.L261-.L260
+	.byte	3,1,1,5,41,9
+	.half	.L262-.L261
+	.byte	1,5,59,7,9
+	.half	.L29-.L262
+	.byte	3,4,1,5,5,9
+	.half	.L32-.L29
+	.byte	3,4,1,5,1,9
+	.half	.L33-.L32
+	.byte	3,1,1,7,9
+	.half	.L73-.L33
+	.byte	0,1,1
+.L254:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Dsp_CalDTCActiveMask')
+	.sect	'.debug_ranges'
+.L72:
+	.word	-1,.L48,0,.L73-.L48,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_CalDTCKindAndOrigin')
+	.sect	'.debug_info'
+.L74:
+	.word	377
+	.half	3
+	.word	.L75
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L77,.L76
+	.byte	2
+	.word	.L55
+	.byte	3
+	.byte	'Dcm_Dsp_CalDTCKindAndOrigin',0,1,180,5,28,1,1
+	.word	.L50,.L123,.L49
+	.byte	4
+	.byte	'dataDtcOrigin_u8',0,1,180,5,107
+	.word	.L124,.L125
+	.byte	4
+	.byte	'dataDtcKind_u8',0,1,181,5,74
+	.word	.L126,.L127
+	.byte	4
+	.byte	'dataDtcStatus_u8',0,1,183,5,64
+	.word	.L128,.L129
+	.byte	4
+	.byte	'reqSubfunction',0,1,184,5,48
+	.word	.L130,.L131
+	.byte	4
+	.byte	'reqDtcOriginData',0,1,185,5,48
+	.word	.L132,.L133
+	.byte	5
+	.word	.L50,.L123
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_CalDTCKindAndOrigin')
+	.sect	'.debug_abbrev'
+.L75:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Dsp_CalDTCKindAndOrigin')
+	.sect	'.debug_line'
+.L76:
+	.word	.L264-.L263
+.L263:
+	.half	3
+	.word	.L266-.L265
+.L265:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0,0,0,0,0
+.L266:
+	.byte	5,45,7,0,5,2
+	.word	.L50
+	.byte	3,201,5,1,5,26,9
+	.half	.L267-.L50
+	.byte	1,5,45,7,9
+	.half	.L268-.L267
+	.byte	3,1,1,5,42,9
+	.half	.L269-.L268
+	.byte	1,5,45,7,9
+	.half	.L34-.L269
+	.byte	3,4,1,5,43,9
+	.half	.L270-.L34
+	.byte	1,5,42,9
+	.half	.L35-.L270
+	.byte	3,3,1,5,21,9
+	.half	.L271-.L35
+	.byte	1,5,45,7,9
+	.half	.L272-.L271
+	.byte	3,3,1,5,43,9
+	.half	.L273-.L272
+	.byte	1,5,1,9
+	.half	.L36-.L273
+	.byte	3,25,1,7,9
+	.half	.L78-.L36
+	.byte	0,1,1
+.L264:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Dsp_CalDTCKindAndOrigin')
+	.sect	'.debug_ranges'
+.L77:
+	.word	-1,.L50,0,.L78-.L50,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_FillResBytesAndLength')
+	.sect	'.debug_info'
+.L79:
+	.word	318
+	.half	3
+	.word	.L80
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L82,.L81
+	.byte	2
+	.word	.L55
+	.byte	3
+	.byte	'Dcm_Dsp_FillResBytesAndLength',0,1,252,5,28,1,1
+	.word	.L52,.L134,.L51
+	.byte	4
+	.byte	'pMsgContext',0,1,252,5,110
+	.word	.L92,.L135
+	.byte	4
+	.byte	'reqSubfunction',0,1,253,5,81
+	.word	.L136,.L137
+	.byte	4
+	.byte	'statusAvailMask_u8',0,1,254,5,81
+	.word	.L138,.L139
+	.byte	5
+	.word	.L52,.L134
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_FillResBytesAndLength')
+	.sect	'.debug_abbrev'
+.L80:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Dsp_FillResBytesAndLength')
+	.sect	'.debug_line'
+.L81:
+	.word	.L275-.L274
+.L274:
+	.half	3
+	.word	.L277-.L276
+.L276:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0,0,0,0,0
+.L277:
+	.byte	5,23,7,0,5,2
+	.word	.L52
+	.byte	3,145,6,1,5,42,7,9
+	.half	.L278-.L52
+	.byte	3,2,1,5,39,9
+	.half	.L279-.L278
+	.byte	1,5,42,7,9
+	.half	.L280-.L279
+	.byte	3,2,1,5,39,9
+	.half	.L281-.L280
+	.byte	1,5,42,7,9
+	.half	.L282-.L281
+	.byte	3,1,1,5,39,9
+	.half	.L283-.L282
+	.byte	1,5,42,7,9
+	.half	.L284-.L283
+	.byte	3,1,1,5,39,9
+	.half	.L285-.L284
+	.byte	1,5,32,7,9
+	.half	.L37-.L285
+	.byte	3,3,1,5,45,9
+	.half	.L286-.L37
+	.byte	1,5,47,9
+	.half	.L287-.L286
+	.byte	3,1,1,5,45,9
+	.half	.L288-.L287
+	.byte	1,5,28,9
+	.half	.L41-.L288
+	.byte	3,5,1,5,41,9
+	.half	.L289-.L41
+	.byte	1,5,1,9
+	.half	.L290-.L289
+	.byte	3,2,1,7,9
+	.half	.L83-.L290
+	.byte	0,1,1
+.L275:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Dsp_FillResBytesAndLength')
+	.sect	'.debug_ranges'
+.L82:
+	.word	-1,.L52,0,.L83-.L52,0,0
+	.sdecl	'.debug_info',debug,cluster('Dcm_Dsp_FillResDtcBuffer')
+	.sect	'.debug_info'
+.L84:
+	.word	371
+	.half	3
+	.word	.L85
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L87,.L86
+	.byte	2
+	.word	.L55
+	.byte	3
+	.byte	'Dcm_Dsp_FillResDtcBuffer',0,1,179,6,56
+	.word	.L89
+	.byte	1,1
+	.word	.L54,.L140,.L53
+	.byte	4
+	.byte	'dtcData_u32',0,1,179,6,107
+	.word	.L96,.L141
+	.byte	4
+	.byte	'respLenNr_u32',0,1,180,6,131,1
+	.word	.L142,.L143
+	.byte	4
+	.byte	'stDTCStatus_u8',0,1,181,6,106
+	.word	.L89,.L144
+	.byte	4
+	.byte	'pMsgContext',0,1,182,6,135,1
+	.word	.L145,.L146
+	.byte	5
+	.word	.L54,.L140
+	.byte	6
+	.byte	'RetGetNextFiltDtc',0,1,185,6,38
+	.word	.L89,.L147
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dcm_Dsp_FillResDtcBuffer')
+	.sect	'.debug_abbrev'
+.L85:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dcm_Dsp_FillResDtcBuffer')
+	.sect	'.debug_line'
+.L86:
+	.word	.L292-.L291
+.L291:
+	.half	3
+	.word	.L294-.L293
+.L293:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Dcm\\src\\DcmDsp\\DcmDspUds\\DcmDspUds_Rdtc_RepSuppDTC.c',0,0,0,0,0
+.L294:
+	.byte	5,56,7,0,5,2
+	.word	.L54
+	.byte	3,184,6,1,5,20,9
+	.half	.L172-.L54
+	.byte	3,31,1,5,30,9
+	.half	.L295-.L172
+	.byte	1,5,29,9
+	.half	.L296-.L295
+	.byte	1,5,68,9
+	.half	.L297-.L296
+	.byte	1,5,46,9
+	.half	.L298-.L297
+	.byte	1,5,11,9
+	.half	.L299-.L298
+	.byte	3,1,1,5,25,9
+	.half	.L300-.L299
+	.byte	1,5,20,9
+	.half	.L301-.L300
+	.byte	3,1,1,5,30,9
+	.half	.L302-.L301
+	.byte	1,5,29,9
+	.half	.L303-.L302
+	.byte	1,5,68,9
+	.half	.L304-.L303
+	.byte	1,5,46,9
+	.half	.L305-.L304
+	.byte	1,5,11,9
+	.half	.L306-.L305
+	.byte	3,1,1,5,25,9
+	.half	.L307-.L306
+	.byte	1,5,20,9
+	.half	.L308-.L307
+	.byte	3,1,1,5,30,9
+	.half	.L309-.L308
+	.byte	1,5,29,9
+	.half	.L310-.L309
+	.byte	1,5,46,9
+	.half	.L311-.L310
+	.byte	1,5,11,9
+	.half	.L312-.L311
+	.byte	3,1,1,5,25,9
+	.half	.L313-.L312
+	.byte	1,5,20,9
+	.half	.L314-.L313
+	.byte	3,1,1,5,30,9
+	.half	.L315-.L314
+	.byte	1,5,29,9
+	.half	.L316-.L315
+	.byte	1,5,46,9
+	.half	.L317-.L316
+	.byte	1,5,11,9
+	.half	.L318-.L317
+	.byte	3,1,1,5,25,9
+	.half	.L319-.L318
+	.byte	1,5,5,9
+	.half	.L320-.L319
+	.byte	3,3,1,5,1,9
+	.half	.L42-.L320
+	.byte	3,2,1,7,9
+	.half	.L88-.L42
+	.byte	0,1,1
+.L292:
+	.sdecl	'.debug_ranges',debug,cluster('Dcm_Dsp_FillResDtcBuffer')
+	.sect	'.debug_ranges'
+.L87:
+	.word	-1,.L54,0,.L88-.L54,0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Dsp_CalDTCActiveMask')
+	.sect	'.debug_loc'
+.L47:
+	.word	-1,.L48,0,.L115-.L48
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L122:
+	.word	-1,.L48,0,.L115-.L48
+	.half	1
+	.byte	84
+	.word	.L171-.L48,.L115-.L48
+	.half	1
+	.byte	82
+	.word	0,0
+.L119:
+	.word	-1,.L48,0,.L115-.L48
+	.half	1
+	.byte	85
+	.word	0,0
+.L121:
+	.word	-1,.L48,0,.L115-.L48
+	.half	1
+	.byte	86
+	.word	0,0
+.L117:
+	.word	-1,.L48,0,.L115-.L48
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Dsp_CalDTCKindAndOrigin')
+	.sect	'.debug_loc'
+.L49:
+	.word	-1,.L50,0,.L123-.L50
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L127:
+	.word	-1,.L50,0,.L123-.L50
+	.half	1
+	.byte	101
+	.word	0,0
+.L125:
+	.word	-1,.L50,0,.L123-.L50
+	.half	1
+	.byte	100
+	.word	0,0
+.L129:
+	.word	-1,.L50,0,.L123-.L50
+	.half	1
+	.byte	102
+	.word	0,0
+.L133:
+	.word	-1,.L50,0,.L123-.L50
+	.half	1
+	.byte	85
+	.word	0,0
+.L131:
+	.word	-1,.L50,0,.L123-.L50
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Dsp_FillResBytesAndLength')
+	.sect	'.debug_loc'
+.L51:
+	.word	-1,.L52,0,.L134-.L52
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L135:
+	.word	-1,.L52,0,.L134-.L52
+	.half	1
+	.byte	100
+	.word	0,0
+.L137:
+	.word	-1,.L52,0,.L134-.L52
+	.half	1
+	.byte	84
+	.word	0,0
+.L139:
+	.word	-1,.L52,0,.L134-.L52
+	.half	1
+	.byte	85
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Dsp_FillResDtcBuffer')
+	.sect	'.debug_loc'
+.L53:
+	.word	-1,.L54,0,.L140-.L54
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L147:
+	.word	-1,.L54,.L172-.L54,.L140-.L54
+	.half	1
+	.byte	82
+	.word	0,0
+.L141:
+	.word	-1,.L54,0,.L140-.L54
+	.half	1
+	.byte	84
+	.word	0,0
+.L146:
+	.word	-1,.L54,0,.L140-.L54
+	.half	1
+	.byte	101
+	.word	0,0
+.L143:
+	.word	-1,.L54,0,.L140-.L54
+	.half	1
+	.byte	100
+	.word	0,0
+.L144:
+	.word	-1,.L54,0,.L140-.L54
+	.half	1
+	.byte	85
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Dsp_GetDTCRequestLength')
+	.sect	'.debug_loc'
+.L45:
+	.word	-1,.L46,0,.L111-.L46
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L114:
+	.word	-1,.L46,.L170-.L46,.L111-.L46
+	.half	1
+	.byte	82
+	.word	0,0
+.L113:
+	.word	-1,.L46,0,.L111-.L46
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dcm_Dsp_ReportSupportedDTC')
+	.sect	'.debug_loc'
+.L43:
+	.word	-1,.L44,0,.L148-.L44
+	.half	2
+	.byte	138,0
+	.word	.L148-.L44,.L90-.L44
+	.half	2
+	.byte	138,24
+	.word	.L90-.L44,.L90-.L44
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L91:
+	.word	-1,.L44,0,.L149-.L44
+	.half	1
+	.byte	84
+	.word	.L2-.L44,.L13-.L44
+	.half	1
+	.byte	84
+	.word	0,0
+.L97:
+	.word	-1,.L44,0,.L90-.L44
+	.half	2
+	.byte	145,116
+	.word	0,0
+.L107:
+	.word	-1,.L44,0,.L90-.L44
+	.half	2
+	.byte	145,123
+	.word	0,0
+.L106:
+	.word	-1,.L44,0,.L90-.L44
+	.half	2
+	.byte	145,122
+	.word	0,0
+.L95:
+	.word	-1,.L44,0,.L150-.L44
+	.half	1
+	.byte	101
+	.word	.L152-.L44,.L90-.L44
+	.half	1
+	.byte	108
+	.word	.L2-.L44,.L13-.L44
+	.half	1
+	.byte	101
+	.word	0,0
+.L109:
+	.word	-1,.L44,.L166-.L44,.L167-.L44
+	.half	1
+	.byte	82
+	.word	.L15-.L44,.L16-.L44
+	.half	1
+	.byte	82
+	.word	.L14-.L44,.L17-.L44
+	.half	1
+	.byte	82
+	.word	0,0
+.L108:
+	.word	-1,.L44,.L160-.L44,.L5-.L44
+	.half	1
+	.byte	82
+	.word	0,0
+.L104:
+	.word	-1,.L44,0,.L90-.L44
+	.half	2
+	.byte	145,121
+	.word	0,0
+.L105:
+	.word	-1,.L44,.L154-.L44,.L2-.L44
+	.half	1
+	.byte	89
+	.word	.L149-.L44,.L150-.L44
+	.half	1
+	.byte	84
+	.word	.L156-.L44,.L157-.L44
+	.half	1
+	.byte	86
+	.word	.L158-.L44,.L159-.L44
+	.half	1
+	.byte	84
+	.word	.L163-.L44,.L162-.L44
+	.half	1
+	.byte	84
+	.word	0,0
+.L110:
+	.word	-1,.L44,.L153-.L44,.L90-.L44
+	.half	1
+	.byte	88
+	.word	.L169-.L44,.L90-.L44
+	.half	1
+	.byte	82
+	.word	0,0
+.L101:
+	.word	-1,.L44,.L164-.L44,.L11-.L44
+	.half	1
+	.byte	89
+	.word	0,0
+.L102:
+	.word	-1,.L44,.L150-.L44,.L155-.L44
+	.half	1
+	.byte	82
+	.word	.L3-.L44,.L10-.L44
+	.half	1
+	.byte	82
+	.word	0,0
+.L99:
+	.word	-1,.L44,.L165-.L44,.L11-.L44
+	.half	1
+	.byte	90
+	.word	0,0
+.L98:
+	.word	-1,.L44,.L13-.L44,.L11-.L44
+	.half	1
+	.byte	91
+	.word	0,0
+.L93:
+	.word	-1,.L44,0,.L150-.L44
+	.half	1
+	.byte	100
+	.word	.L151-.L44,.L90-.L44
+	.half	1
+	.byte	111
+	.word	.L161-.L44,.L162-.L44
+	.half	1
+	.byte	100
+	.word	.L2-.L44,.L13-.L44
+	.half	1
+	.byte	100
+	.word	.L168-.L44,.L167-.L44
+	.half	1
+	.byte	101
+	.word	0,0
+.L103:
+	.word	-1,.L44,0,.L90-.L44
+	.half	2
+	.byte	145,120
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L321:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Dsp_ReportSupportedDTC')
+	.sect	'.debug_frame'
+	.word	36
+	.word	.L321,.L44,.L90-.L44
+	.byte	4
+	.word	(.L148-.L44)/2
+	.byte	19,24,22,26,3,19,138,24,4
+	.word	(.L90-.L148)/2
+	.byte	19,0,8,26,0,0
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Dsp_GetDTCRequestLength')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L321,.L46,.L111-.L46
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Dsp_CalDTCActiveMask')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L321,.L48,.L115-.L48
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Dsp_CalDTCKindAndOrigin')
+	.sect	'.debug_frame'
+	.word	20
+	.word	.L321,.L50,.L123-.L50
+	.byte	8,18,8,19,8,21,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Dsp_FillResBytesAndLength')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L321,.L52,.L134-.L52
+	.byte	8,18,8,19,8,21,8,22,8,23,0,0
+	.sdecl	'.debug_frame',debug,cluster('Dcm_Dsp_FillResDtcBuffer')
+	.sect	'.debug_frame'
+	.word	20
+	.word	.L321,.L54,.L140-.L54
+	.byte	8,18,8,19,8,22,8,23
+
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   869  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   870  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   871  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   872  #define DCM_STOP_SEC_CODE /*Adding this for memory mapping*/
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   873  #include "Dcm_Cfg_MemMap.h"
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   874  
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   875  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   876  #endif
+; BSW\src\BSW\Gen\Dcm\src\DcmDsp\DcmDspUds\DcmDspUds_Rdtc_RepSuppDTC.c	   877  
+
+	; Module end

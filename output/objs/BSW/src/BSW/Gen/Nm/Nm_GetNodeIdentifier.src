@@ -1,0 +1,1615 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc15616a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Nm\\Nm_GetNodeIdentifier.src BSW\\src\\BSW\\Gen\\Nm\\src\\Nm_GetNodeIdentifier.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Nm\\src\\Nm_GetNodeIdentifier.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.Nm_GetNodeIdentifier.Nm_GetNodeIdentifier',code,cluster('Nm_GetNodeIdentifier')
+	.sect	'.text.Nm_GetNodeIdentifier.Nm_GetNodeIdentifier'
+	.align	2
+	
+	.global	Nm_GetNodeIdentifier
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	     1  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	     2  /*
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	     3   ***************************************************************************************************
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	     4   * Includes
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	     5   ***************************************************************************************************
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	     6   */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	     7  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	     8  /* NM Interface private header file, this file is included only by Nm module */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	     9  #include "Nm_Priv.h"
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    10  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    11  /*
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    12   ***************************************************************************************************
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    13   * Variables
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    14   ***************************************************************************************************
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    15   */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    16  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    17  /*
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    18   ***************************************************************************************************
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    19   * Defines
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    20   ***************************************************************************************************
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    21   */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    22  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    23  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    24  /*************************************************************************************************************
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    25   * Function
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    26   *************************************************************************************************************
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    27   *************************************************************************************************************
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    28   * Function Name: Nm_GetNodeIdentifier
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    29  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    30   * Description:   This function is used to get the node identifier out of the last NM message received on the bus.
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    31   * Parameter1:    NetworkHandle   - Identification of the NM-channel
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    32   * Parameter2:    nmNodeIdPtr     - Pointer where node identifier out of the last successfully
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    33   *                                  received NM message shall be copied to
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    34   * Return:        Std_ReturnType
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    35   * Retval:        E_OK         - Getting of node identifier is successful
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    36   * Retval:        E_NOT_OK     - Getting of node identifier has failed
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    37   ************************************************************************************************************/
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    38  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    39  /* This function is only available if NmNodeIdEnabled is set to TRUE */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    40  #if(NM_NODE_ID_ENABLED != STD_OFF)
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    41  #define NM_START_SEC_CODE
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    42  #include "Nm_MemMap.h"
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    43  FUNC(Std_ReturnType, NM_CODE) Nm_GetNodeIdentifier(
+; Function Nm_GetNodeIdentifier
+.L12:
+Nm_GetNodeIdentifier:	.type	func
+	mov	d8,d4
+.L33:
+	mov.aa	a12,a4
+.L34:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    44                                                    VAR(NetworkHandleType, AUTOMATIC) NetworkHandle,
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    45                                                    P2VAR(uint8, AUTOMATIC, NM_APPL_DATA) nmNodeIdPtr
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    46                                                   )
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    47  {
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    48      P2CONST(Nm_ConfigType,AUTOMATIC,NM_APPL_CONST)      ConfDataPtr; /* Configuration pointer holds referrence of configuration data */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    49      P2CONST(Nm_BusNmApiType,AUTOMATIC,NM_APPL_CONST)    FuncPtr;     /* Pointer to Bus specific APIs */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    50      VAR(Std_ReturnType, AUTOMATIC) RetVal = E_NOT_OK;                /* Return value */
+	mov	d2,#1
+.L35:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    51      VAR(NetworkHandleType, AUTOMATIC) Nm_NetworkHandle;              /* Network handle is received from ComM */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    52      /**** End of declarations ****/
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    53  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    54      /* Receive the Internal NmChannel structure index from the received ComM NetworkHandle*/
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    55      Nm_NetworkHandle = NM_GET_HANDLE(NetworkHandle);
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    56  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    57      /* process only if the channel handle is within allowed range and the Node Id pointer is valid */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    58      if ((Nm_NetworkHandle < NM_NUMBER_OF_CHANNELS) && (nmNodeIdPtr != NULL_PTR))
+	jne	d8,#0,.L2
+.L54:
+	jz.a	a12,.L3
+.L55:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    59      {
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    60          /* Configuration pointer initialization */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    61          ConfDataPtr = &Nm_ConfData_cs[Nm_NetworkHandle];
+	movh.a	a15,#@his(Nm_ConfData_cs)
+	lea	a15,[a15]@los(Nm_ConfData_cs)
+.L56:
+	mul	d15,d8,#20
+	addsc.a	a15,a15,d15,#0
+.L37:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    62          /* Holds the reference to Bus specific APIs */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    63  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    64          if(ConfDataPtr->NmNodeIdEnabled)
+	ld.bu	d15,[a15]17
+.L57:
+	jeq	d15,#0,.L4
+.L58:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    65          {
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    66  	        FuncPtr = &Nm_BusNmApi[ConfDataPtr->BusNmType];
+	ld.w	d15,[a15]4
+.L59:
+	mul	d15,d15,#60
+.L60:
+	movh.a	a15,#@his(Nm_BusNmApi)
+.L38:
+	lea	a15,[a15]@los(Nm_BusNmApi)
+.L61:
+	addsc.a	a15,a15,d15,#0
+.L39:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    67  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    68  	        /* Calls the Bus specific API */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    69  	        RetVal = (*FuncPtr->BusNm_GetNodeIdentifier)(NetworkHandle, nmNodeIdPtr);
+	ld.a	a15,[a15]32
+.L40:
+	mov	d4,d8
+	mov.aa	a4,a12
+	calli	a15
+.L4:
+	j	.L5
+.L3:
+.L2:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    70          }
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    71      }
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    72      else
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    73      {
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    74  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    75          if (!(Nm_NetworkHandle < NM_NUMBER_OF_CHANNELS))
+	jeq	d8,#0,.L6
+.L62:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    76          {
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    77              /* Report to DET as the network handle parameter is not a configured network handle */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    78               NM_DET_REPORT_ERROR(NetworkHandle, NM_SID_GETNODEIDENTIFIER, NM_E_HANDLE_UNDEF);
+	mov	d4,#29
+.L41:
+	mov	d6,#10
+	mov	d7,#1
+	mov	d5,d8
+.L42:
+	call	Det_ReportError
+.L36:
+	j	.L7
+.L6:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    79          }
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    80          else
+.L7:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    81          {
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    82              //do nothing
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    83          }
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    84          if (nmNodeIdPtr == NULL_PTR)
+	jnz.a	a12,.L8
+.L63:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    85          {
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    86              /* Report to DET as the parameter passed is  a null pointer*/
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    87              NM_DET_REPORT_ERROR(NetworkHandle, NM_SID_GETNODEIDENTIFIER, NM_E_PARAM_POINTER);
+	mov	d4,#29
+	mov	d6,#10
+	mov	d7,#2
+	mov	d5,d8
+.L43:
+	call	Det_ReportError
+.L44:
+	j	.L9
+.L8:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    88          }
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    89          else
+.L9:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    90          {
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    91              //do nothing
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    92          }
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    93  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    94  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    95          /* Reject the call: either Nm_NetworkHandle is not within allowed range or nodeId pointer is invalid */
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    96          RetVal = E_NOT_OK;
+	mov	d2,#1
+.L5:
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    97      }
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    98  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	    99  
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	   100      return(RetVal);
+	j	.L10
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	   101  }
+.L10:
+	ret
+.L23:
+	
+__Nm_GetNodeIdentifier_function_end:
+	.size	Nm_GetNodeIdentifier,__Nm_GetNodeIdentifier_function_end-Nm_GetNodeIdentifier
+.L21:
+	; End of function
+	
+	.calls	'Nm_GetNodeIdentifier','__INDIRECT__'
+	.calls	'Nm_GetNodeIdentifier','Det_ReportError'
+	.extern	Det_ReportError
+	.extern	Nm_ConfData_cs
+	.extern	Nm_BusNmApi
+	.extern	__INDIRECT__
+	.calls	'Nm_GetNodeIdentifier','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L14:
+	.word	10231
+	.half	3
+	.word	.L15
+	.byte	4
+.L13:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Nm\\src\\Nm_GetNodeIdentifier.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L16
+.L22:
+	.byte	2
+	.byte	'unsigned char',0,1,8,2
+	.byte	'unsigned short int',0,2,7,3
+	.byte	'Det_ReportError',0,1,112,16
+	.word	145
+	.byte	1,1,1,1,4
+	.byte	'ModuleId',0,1,112,39
+	.word	162
+	.byte	4
+	.byte	'InstanceId',0,1,112,55
+	.word	145
+	.byte	4
+	.byte	'ApiId',0,1,112,73
+	.word	145
+	.byte	4
+	.byte	'ErrorId',0,1,112,86
+	.word	145
+	.byte	0
+.L25:
+	.byte	5
+	.word	145
+	.byte	2
+	.byte	'unsigned int',0,4,7,6,3,186,1,10,4,7
+	.byte	'NM_BUS_TYPE_CAN',0,0,0,6,4,116,9,4,7
+	.byte	'NM_ACTIVE_CHANNEL',0,0,7
+	.byte	'NM_PASSIVE_CHANNEL',0,1,0,8,2,95,9,20,9
+	.byte	'ShutdownDelay',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	'BusNmType',0
+	.word	300
+	.byte	4,2,35,4,9
+	.byte	'NmChannelType',0
+	.word	325
+	.byte	4,2,35,8,9
+	.byte	'ClusterIdx',0
+	.word	145
+	.byte	1,2,35,12,9
+	.byte	'comMHandle',0
+	.word	145
+	.byte	1,2,35,13,9
+	.byte	'NmChannelSleepMaster',0
+	.word	145
+	.byte	1,2,35,14,9
+	.byte	'NmSynchronizingNetwork',0
+	.word	145
+	.byte	1,2,35,15,9
+	.byte	'NmNodeDetectionEnabled',0
+	.word	145
+	.byte	1,2,35,16,9
+	.byte	'NmNodeIdEnabled',0
+	.word	145
+	.byte	1,2,35,17,9
+	.byte	'NmRepeatMsgIndEnabled',0
+	.word	145
+	.byte	1,2,35,18,0,10
+	.word	372
+.L27:
+	.byte	5
+	.word	633
+	.byte	11
+	.word	145
+	.byte	1,1,12
+	.word	145
+	.byte	0,5
+	.word	643
+	.byte	5
+	.word	145
+	.byte	11
+	.word	145
+	.byte	1,1,12
+	.word	145
+	.byte	12
+	.word	661
+	.byte	0,5
+	.word	666
+	.byte	6,4,67,9,4,7
+	.byte	'NM_STATE_UNINIT',0,0,7
+	.byte	'NM_STATE_BUS_SLEEP',0,1,7
+	.byte	'NM_STATE_PREPARE_BUS_SLEEP',0,2,7
+	.byte	'NM_STATE_READY_SLEEP',0,3,7
+	.byte	'NM_STATE_NORMAL_OPERATION',0,4,7
+	.byte	'NM_STATE_REPEAT_MESSAGE',0,5,7
+	.byte	'NM_STATE_SYNCHRONIZE',0,6,7
+	.byte	'NM_STATE_OFFLINE',0,7,0,5
+	.word	689
+	.byte	6,4,43,9,4,7
+	.byte	'NM_MODE_BUS_SLEEP',0,0,7
+	.byte	'NM_MODE_PREPARE_BUS_SLEEP',0,1,7
+	.byte	'NM_MODE_SYNCHRONIZE',0,2,7
+	.byte	'NM_MODE_NETWORK',0,3,0,5
+	.word	887
+	.byte	11
+	.word	145
+	.byte	1,1,12
+	.word	145
+	.byte	12
+	.word	882
+	.byte	12
+	.word	981
+	.byte	0,5
+	.word	986
+	.byte	10
+	.word	145
+	.byte	5
+	.word	1014
+	.byte	11
+	.word	145
+	.byte	1,1,12
+	.word	145
+	.byte	12
+	.word	1019
+	.byte	0,5
+	.word	1024
+	.byte	11
+	.word	145
+	.byte	1,1,12
+	.word	145
+	.byte	12
+	.word	145
+	.byte	0,5
+	.word	1047
+	.byte	8,5,156,4,9,60,9
+	.byte	'BusNm_NetworkRelease',0
+	.word	656
+	.byte	4,2,35,0,9
+	.byte	'BusNm_NetworkRequest',0
+	.word	656
+	.byte	4,2,35,4,9
+	.byte	'BusNm_PassiveStartUp',0
+	.word	656
+	.byte	4,2,35,8,9
+	.byte	'BusNm_RequestBusSynchronization',0
+	.word	656
+	.byte	4,2,35,12,9
+	.byte	'BusNm_CheckRemoteSleepIndication',0
+	.word	684
+	.byte	4,2,35,16,9
+	.byte	'BusNm_DisableCommunication',0
+	.word	656
+	.byte	4,2,35,20,9
+	.byte	'BusNm_EnableCommunication',0
+	.word	656
+	.byte	4,2,35,24,9
+	.byte	'BusNm_GetLocalNodeIdentifier',0
+	.word	684
+	.byte	4,2,35,28,9
+	.byte	'BusNm_GetNodeIdentifier',0
+	.word	684
+	.byte	4,2,35,32,9
+	.byte	'BusNm_GetPduData',0
+	.word	684
+	.byte	4,2,35,36,9
+	.byte	'BusNm_GetState',0
+	.word	1009
+	.byte	4,2,35,40,9
+	.byte	'BusNm_GetUserData',0
+	.word	684
+	.byte	4,2,35,44,9
+	.byte	'BusNm_RepeatMessageRequest',0
+	.word	656
+	.byte	4,2,35,48,9
+	.byte	'BusNm_SetUserData',0
+	.word	1042
+	.byte	4,2,35,52,9
+	.byte	'BusNm_SetSleepReadyBit',0
+	.word	1065
+	.byte	4,2,35,56,0,10
+	.word	1070
+.L29:
+	.byte	5
+	.word	1564
+	.byte	13
+	.byte	'__INDIRECT__',0,6,1,1,1,1,1,14,1,5
+	.word	1594
+	.byte	15
+	.byte	'__codeptr',0,6,1,1
+	.word	1596
+	.byte	15
+	.byte	'Nm_ChannelType',0,4,120,3
+	.word	325
+	.byte	2
+	.byte	'char',0,1,6,15
+	.byte	'sint8',0,7,76,25
+	.word	1642
+	.byte	15
+	.byte	'uint8',0,7,81,25
+	.word	145
+	.byte	15
+	.byte	'uint16',0,7,91,25
+	.word	162
+	.byte	15
+	.byte	'uint32',0,7,106,24
+	.word	284
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,15
+	.byte	'uint64',0,7,111,30
+	.word	1708
+	.byte	15
+	.byte	'boolean',0,7,127,25
+	.word	145
+	.byte	15
+	.byte	'StatusType',0,8,191,1,27
+	.word	145
+	.byte	15
+	.byte	'Std_ReturnType',0,8,199,1,15
+	.word	145
+	.byte	8,8,206,1,9,8,9
+	.byte	'vendorID',0
+	.word	162
+	.byte	2,2,35,0,9
+	.byte	'moduleID',0
+	.word	162
+	.byte	2,2,35,2,9
+	.byte	'sw_major_version',0
+	.word	145
+	.byte	1,2,35,4,9
+	.byte	'sw_minor_version',0
+	.word	145
+	.byte	1,2,35,5,9
+	.byte	'sw_patch_version',0
+	.word	145
+	.byte	1,2,35,6,0,15
+	.byte	'Std_VersionInfoType',0,8,213,1,3
+	.word	1809
+	.byte	15
+	.byte	'PduIdType',0,9,22,19
+	.word	162
+	.byte	15
+	.byte	'PduLengthType',0,9,26,19
+	.word	162
+	.byte	6,10,113,9,4,7
+	.byte	'TP_DATACONF',0,0,7
+	.byte	'TP_DATARETRY',0,1,7
+	.byte	'TP_CONFPENDING',0,2,0,15
+	.byte	'TpDataStateType',0,10,118,3
+	.word	1999
+	.byte	15
+	.byte	'NetworkHandleType',0,10,128,1,17
+	.word	145
+	.byte	15
+	.byte	'CanNm_TimerType',0,11,74,17
+	.word	284
+	.byte	15
+	.byte	'Can_IdType',0,12,32,16
+	.word	284
+	.byte	15
+	.byte	'Can_HwHandleType',0,12,43,16
+	.word	162
+	.byte	8,13,93,9,8,9
+	.byte	'Class',0
+	.word	145
+	.byte	1,2,35,0,9
+	.byte	'TIN',0
+	.word	145
+	.byte	1,2,35,1,9
+	.byte	'ReturnAddress',0
+	.word	284
+	.byte	4,2,35,4,0,15
+	.byte	'OsTrapInfoType',0,13,97,3
+	.word	2170
+	.byte	16,68
+	.word	284
+	.byte	17,16,0,8,13,154,1,9,68,9
+	.byte	'store',0
+	.word	2250
+	.byte	68,2,35,0,0,16,68
+	.word	2259
+	.byte	17,0,0,15
+	.byte	'Os_JumpBufType',0,13,156,1,3
+	.word	2281
+	.byte	15
+	.byte	'Os_StackTraceType',0,13,174,1,18
+	.word	284
+	.byte	8,13,175,1,9,8,9
+	.byte	'sp',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	'ctx',0
+	.word	284
+	.byte	4,2,35,4,0,15
+	.byte	'Os_StackValueType',0,13,175,1,63
+	.word	2341
+	.byte	15
+	.byte	'Os_StackSizeType',0,13,176,1,27
+	.word	2341
+	.byte	18,1,1,5
+	.word	2426
+	.byte	15
+	.byte	'Os_VoidVoidFunctionType',0,13,179,1,16
+	.word	2429
+	.byte	15
+	.byte	'ApplicationType',0,13,193,1,23
+	.word	145
+	.byte	19
+	.byte	'Os_ApplicationConfigurationType_s',0,13,198,1,16,2,9
+	.byte	'app_id',0
+	.word	145
+	.byte	1,2,35,0,9
+	.byte	'access',0
+	.word	145
+	.byte	1,2,35,1,0,15
+	.byte	'Os_ApplicationConfigurationType',0,13,201,1,3
+	.word	2492
+	.byte	15
+	.byte	'Os_CoreStateType',0,13,203,1,16
+	.word	284
+	.byte	15
+	.byte	'AreaIdType',0,13,204,1,16
+	.word	162
+	.byte	15
+	.byte	'Os_PeripheralAddressType',0,13,212,1,22
+	.word	284
+	.byte	15
+	.byte	'TickType',0,13,221,1,22
+	.word	284
+	.byte	15
+	.byte	'Os_StopwatchTickType',0,13,225,1,22
+	.word	284
+	.byte	5
+	.word	284
+	.byte	15
+	.byte	'Os_Lockable',0,13,234,1,18
+	.word	2734
+	.byte	15
+	.byte	'CoreIdType',0,13,236,1,16
+	.word	162
+	.byte	15
+	.byte	'SpinlockIdType',0,13,237,1,16
+	.word	162
+	.byte	6,13,239,1,9,4,7
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,7
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,15
+	.byte	'TryToGetSpinlockType',0,13,239,1,74
+	.word	2804
+	.byte	6,13,174,2,9,4,7
+	.byte	'APPLICATION_ACCESSIBLE',0,0,7
+	.byte	'APPLICATION_RESTARTING',0,1,7
+	.byte	'APPLICATION_TERMINATED',0,2,0,15
+	.byte	'ApplicationStateType',0,13,174,2,92
+	.word	2897
+	.byte	20
+	.byte	'void',0,5
+	.word	3009
+	.byte	21,1,1,12
+	.word	145
+	.byte	12
+	.word	3015
+	.byte	0,5
+	.word	3020
+	.byte	15
+	.byte	'Os_FunctionEntryType',0,13,183,2,16
+	.word	3034
+	.byte	19
+	.byte	'Os_MeterInfoType_s',0,13,193,2,16,48,9
+	.byte	'elapsed',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	'previous',0
+	.word	284
+	.byte	4,2,35,4,9
+	.byte	'max',0
+	.word	284
+	.byte	4,2,35,8,9
+	.byte	'cumulative',0
+	.word	284
+	.byte	4,2,35,12,9
+	.byte	'stackbase',0
+	.word	2341
+	.byte	8,2,35,16,9
+	.byte	'stackusage',0
+	.word	2341
+	.byte	8,2,35,24,9
+	.byte	'stackmax',0
+	.word	2341
+	.byte	8,2,35,32,9
+	.byte	'stackbudget',0
+	.word	2341
+	.byte	8,2,35,40,0,15
+	.byte	'Os_MeterInfoType',0,13,202,2,3
+	.word	3069
+	.byte	5
+	.word	3069
+	.byte	15
+	.byte	'Os_MeterInfoRefType',0,13,203,2,50
+	.word	3267
+	.byte	15
+	.byte	'EventMaskType',0,13,206,2,15
+	.word	145
+	.byte	15
+	.byte	'Os_imaskType',0,13,211,2,16
+	.word	284
+	.byte	19
+	.byte	'Os_ISRDynType_s',0,13,213,2,16,48,9
+	.byte	'meter',0
+	.word	3069
+	.byte	48,2,35,0,0,15
+	.byte	'Os_ISRDynType',0,13,215,2,3
+	.word	3346
+	.byte	5
+	.word	3346
+	.byte	10
+	.word	3407
+	.byte	19
+	.byte	'Os_ISRType_s',0,13,216,2,16,24,9
+	.byte	'entry_function',0
+	.word	2434
+	.byte	4,2,35,0,9
+	.byte	'dynamic',0
+	.word	3412
+	.byte	4,2,35,4,9
+	.byte	'imask',0
+	.word	284
+	.byte	4,2,35,8,9
+	.byte	'stackbudget',0
+	.word	2341
+	.byte	8,2,35,12,9
+	.byte	'access',0
+	.word	145
+	.byte	1,2,35,20,9
+	.byte	'application',0
+	.word	145
+	.byte	1,2,35,21,0,15
+	.byte	'Os_ISRType',0,13,223,2,3
+	.word	3417
+	.byte	5
+	.word	2426
+	.byte	10
+	.word	3417
+	.byte	5
+	.word	3576
+	.byte	15
+	.byte	'ISRType',0,13,224,2,46
+	.word	3581
+	.byte	15
+	.byte	'Os_bitmask',0,13,239,2,22
+	.word	284
+	.byte	15
+	.byte	'Os_pset0Type',0,13,240,2,20
+	.word	284
+	.byte	15
+	.byte	'Os_pset1Type',0,13,241,2,20
+	.word	284
+	.byte	15
+	.byte	'Os_pset2Type',0,13,242,2,20
+	.word	284
+	.byte	22,13,243,2,9,4,9
+	.byte	'p0',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	'p1',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	'p2',0
+	.word	284
+	.byte	4,2,35,0,0,15
+	.byte	'Os_psetType',0,13,247,2,3
+	.word	3689
+	.byte	22,13,249,2,9,4,9
+	.byte	't0',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	't1',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	't2',0
+	.word	284
+	.byte	4,2,35,0,0,15
+	.byte	'Os_tpmaskType',0,13,253,2,3
+	.word	3753
+	.byte	15
+	.byte	'Os_ActivationCountType',0,13,254,2,23
+	.word	145
+	.byte	19
+	.byte	'Os_TaskDynType_s',0,13,128,3,16,120,9
+	.byte	'terminate_jump_buf',0
+	.word	2290
+	.byte	68,2,35,0,9
+	.byte	'meter',0
+	.word	3069
+	.byte	48,2,35,68,9
+	.byte	'activation_count',0
+	.word	145
+	.byte	1,2,35,116,0,15
+	.byte	'Os_TaskDynType',0,13,132,3,3
+	.word	3851
+	.byte	16,68
+	.word	2259
+	.byte	17,0,0,5
+	.word	3851
+	.byte	10
+	.word	3977
+	.byte	19
+	.byte	'Os_TaskType_s',0,13,134,3,16,40,9
+	.byte	'dynamic',0
+	.word	3982
+	.byte	4,2,35,0,9
+	.byte	'entry_function',0
+	.word	2434
+	.byte	4,2,35,4,9
+	.byte	'pset',0
+	.word	3689
+	.byte	4,2,35,8,9
+	.byte	'base_tpmask',0
+	.word	3753
+	.byte	4,2,35,12,9
+	.byte	'tpmask',0
+	.word	3753
+	.byte	4,2,35,16,9
+	.byte	'core_id',0
+	.word	162
+	.byte	2,2,35,20,9
+	.byte	'index',0
+	.word	284
+	.byte	4,2,35,24,9
+	.byte	'stackbudget',0
+	.word	2341
+	.byte	8,2,35,28,9
+	.byte	'activation_count',0
+	.word	145
+	.byte	1,2,35,36,9
+	.byte	'access',0
+	.word	145
+	.byte	1,2,35,37,9
+	.byte	'application',0
+	.word	145
+	.byte	1,2,35,38,0,15
+	.byte	'Os_TaskType',0,13,146,3,3
+	.word	3987
+	.byte	10
+	.word	3987
+	.byte	5
+	.word	4237
+	.byte	15
+	.byte	'TaskType',0,13,147,3,47
+	.word	4242
+	.byte	23
+	.byte	'Os_TaskStateType',0,13,155,3,6,4,7
+	.byte	'SUSPENDED',0,0,7
+	.byte	'READY',0,1,7
+	.byte	'WAITING',0,2,7
+	.byte	'RUNNING',0,3,0,15
+	.byte	'TaskStateType',0,13,156,3,31
+	.word	4265
+	.byte	22,13,167,3,3,4,9
+	.byte	'tpmask',0
+	.word	3753
+	.byte	4,2,35,0,0,19
+	.byte	'Os_ResourceDynType_s',0,13,166,3,16,4,9
+	.byte	'saved_priority',0
+	.word	4352
+	.byte	4,2,35,0,0,15
+	.byte	'Os_ResourceDynType',0,13,170,3,3
+	.word	4375
+	.byte	5
+	.word	4375
+	.byte	10
+	.word	4455
+	.byte	19
+	.byte	'Os_ResourceType_s',0,13,171,3,16,12,9
+	.byte	'dynamic',0
+	.word	4460
+	.byte	4,2,35,0,9
+	.byte	'tpmask',0
+	.word	3753
+	.byte	4,2,35,4,9
+	.byte	'access',0
+	.word	145
+	.byte	1,2,35,8,0,15
+	.byte	'Os_ResourceType',0,13,175,3,3
+	.word	4465
+	.byte	8,13,181,3,9,12,9
+	.byte	'maxallowedvalue',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	'ticksperbase',0
+	.word	284
+	.byte	4,2,35,4,9
+	.byte	'mincycle',0
+	.word	284
+	.byte	4,2,35,8,0,15
+	.byte	'AlarmBaseType',0,13,185,3,3
+	.word	4564
+	.byte	8,13,206,3,9,8,9
+	.byte	'Running',0
+	.word	145
+	.byte	1,2,35,0,9
+	.byte	'Pending',0
+	.word	145
+	.byte	1,2,35,1,9
+	.byte	'Delay',0
+	.word	284
+	.byte	4,2,35,4,0,15
+	.byte	'Os_CounterStatusType',0,13,210,3,3
+	.word	4659
+	.byte	24
+	.word	145
+	.byte	1,1,5
+	.word	4745
+	.byte	15
+	.byte	'Os_CounterIncrAdvType',0,13,217,3,22
+	.word	4752
+	.byte	19
+	.byte	's_swd',0,13,222,3,12,4,9
+	.byte	'count',0
+	.word	284
+	.byte	4,2,35,0,0,22,13,221,3,3,4,9
+	.byte	'sw',0
+	.word	4788
+	.byte	4,2,35,0,0,19
+	.byte	'Os_CounterDynType_s',0,13,220,3,16,4,9
+	.byte	'type_dependent',0
+	.word	4816
+	.byte	4,2,35,0,0,15
+	.byte	'Os_CounterDynType',0,13,226,3,3
+	.word	4835
+	.byte	5
+	.word	4835
+	.byte	10
+	.word	4913
+	.byte	19
+	.byte	'Os_CounterType_s',0,13,227,3,16,28,9
+	.byte	'dynamic',0
+	.word	4918
+	.byte	4,2,35,0,9
+	.byte	'advincr',0
+	.word	4757
+	.byte	4,2,35,4,9
+	.byte	'base',0
+	.word	4564
+	.byte	12,2,35,8,9
+	.byte	'core',0
+	.word	3015
+	.byte	4,2,35,20,9
+	.byte	'access',0
+	.word	145
+	.byte	1,2,35,24,9
+	.byte	'application',0
+	.word	145
+	.byte	1,2,35,25,0,15
+	.byte	'Os_CounterType',0,13,234,3,3
+	.word	4923
+	.byte	5
+	.word	4745
+	.byte	10
+	.word	4923
+	.byte	5
+	.word	5075
+	.byte	15
+	.byte	'CounterType',0,13,235,3,52
+	.word	5080
+	.byte	23
+	.byte	'Os_ScheduleTableStatusType',0,13,240,3,6,4,7
+	.byte	'SCHEDULETABLE_STOPPED',0,0,7
+	.byte	'SCHEDULETABLE_NEXT',0,1,7
+	.byte	'SCHEDULETABLE_WAITING',0,2,7
+	.byte	'SCHEDULETABLE_RUNNING',0,3,7
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,15
+	.byte	'ScheduleTableStatusType',0,13,241,3,41
+	.word	5106
+	.byte	10
+	.word	.L45-.L14
+	.byte	5
+	.word	5306
+	.byte	15
+	.byte	'ScheduleTableType',0,13,128,4,58
+	.word	5311
+	.byte	19
+	.byte	'Os_ScheduleTableDynType_s',0,13,130,4,16,16,9
+	.byte	'match',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	'next',0
+	.word	5316
+	.byte	4,2,35,4,9
+	.byte	'state',0
+	.word	5106
+	.byte	4,2,35,8,9
+	.byte	'config',0
+	.word	162
+	.byte	2,2,35,12,0,5
+	.word	5343
+	.byte	10
+	.word	5436
+.L45:
+	.byte	19
+	.byte	'Os_ScheduleTableType_s',0,13,247,3,16,16,9
+	.byte	'dynamic',0
+	.word	5441
+	.byte	4,2,35,0,9
+	.byte	'counter',0
+	.word	5085
+	.byte	4,2,35,4,9
+	.byte	'repeat',0
+	.word	145
+	.byte	1,2,35,8,9
+	.byte	'config',0
+	.word	162
+	.byte	2,2,35,10,9
+	.byte	'initial',0
+	.word	145
+	.byte	1,2,35,12,9
+	.byte	'access',0
+	.word	145
+	.byte	1,2,35,13,9
+	.byte	'application',0
+	.word	145
+	.byte	1,2,35,14,0,15
+	.byte	'Os_ScheduleTableType',0,13,255,3,3
+	.word	5446
+	.byte	10
+	.word	5446
+	.byte	5
+	.word	5626
+	.byte	10
+	.word	4923
+	.byte	5
+	.word	5636
+	.byte	25
+	.word	2739
+	.byte	25
+	.word	3689
+	.byte	25
+	.word	3586
+	.byte	25
+	.word	4247
+	.byte	25
+	.word	3753
+	.byte	25
+	.word	145
+	.byte	25
+	.word	4247
+	.byte	19
+	.byte	'Os_ControlledCoreType_s',0,13,251,6,16,112,9
+	.byte	'TrapInfo',0
+	.word	2170
+	.byte	8,2,35,0,9
+	.byte	'lock_taskaccess',0
+	.word	5646
+	.byte	4,2,35,8,9
+	.byte	'ReadyTasks',0
+	.word	5651
+	.byte	4,2,35,12,9
+	.byte	'RunningISR',0
+	.word	5656
+	.byte	4,2,35,16,9
+	.byte	'RunningTask',0
+	.word	5661
+	.byte	4,2,35,20,9
+	.byte	'RunningTPMask',0
+	.word	5666
+	.byte	4,2,35,24,9
+	.byte	'CurrentMeteredObject',0
+	.word	3272
+	.byte	4,2,35,28,9
+	.byte	'IdleMeter',0
+	.word	3069
+	.byte	48,2,35,32,9
+	.byte	'AppAccess',0
+	.word	145
+	.byte	1,2,35,80,9
+	.byte	'AppOverride',0
+	.word	5671
+	.byte	1,2,35,81,9
+	.byte	'GetStackValueAdjust',0
+	.word	2341
+	.byte	8,2,35,84,9
+	.byte	'InErrorHook',0
+	.word	145
+	.byte	1,2,35,92,9
+	.byte	'ChainTaskRef',0
+	.word	5676
+	.byte	4,2,35,96,9
+	.byte	'GetStackUsageAdjust',0
+	.word	2341
+	.byte	8,2,35,100,9
+	.byte	'InProtectionHook',0
+	.word	145
+	.byte	1,2,35,108,9
+	.byte	'CoreIsActive',0
+	.word	145
+	.byte	1,2,35,109,9
+	.byte	'InShutdownHook',0
+	.word	145
+	.byte	1,2,35,110,0,15
+	.byte	'Os_ControlledCoreType',0,13,141,7,3
+	.word	5681
+	.byte	5
+	.word	284
+	.byte	10
+	.word	3417
+	.byte	5
+	.word	6137
+	.byte	10
+	.word	3987
+	.byte	5
+	.word	6147
+	.byte	5
+	.word	3069
+	.byte	19
+	.byte	'Os_AnyCoreType_s',0,13,151,7,16,96,9
+	.byte	'DisableAllImask',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	'SuspendAllImask',0
+	.word	284
+	.byte	4,2,35,4,9
+	.byte	'SuspendOSImask',0
+	.word	284
+	.byte	4,2,35,8,9
+	.byte	'DisableAllCount',0
+	.word	284
+	.byte	4,2,35,12,9
+	.byte	'SuspendAllCount',0
+	.word	284
+	.byte	4,2,35,16,9
+	.byte	'SuspendOSCount',0
+	.word	284
+	.byte	4,2,35,20,9
+	.byte	'RestartJumpBuf',0
+	.word	2290
+	.byte	68,2,35,24,9
+	.byte	'Restartable',0
+	.word	145
+	.byte	1,2,35,92,0,15
+	.byte	'Os_AnyCoreType',0,13,160,7,3
+	.word	6162
+	.byte	15
+	.byte	'Can_TxObjPriorityClassType',0,14,219,3,16
+	.word	284
+	.byte	19
+	.byte	'Can_TxHwObjectConfigType',0,14,231,3,16,8,9
+	.byte	'MsgObjId',0
+	.word	145
+	.byte	1,2,35,0,9
+	.byte	'HwControllerId',0
+	.word	145
+	.byte	1,2,35,1,9
+	.byte	'TxObjPriorityClass',0
+	.word	284
+	.byte	4,2,35,4,0,15
+	.byte	'Can_TxHwObjectConfigType',0,14,252,3,3
+	.word	6439
+	.byte	19
+	.byte	'Can_RxHwObjectConfigType',0,14,129,4,16,12,9
+	.byte	'MaskRef',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	'MsgId',0
+	.word	284
+	.byte	4,2,35,4,9
+	.byte	'MsgObjId',0
+	.word	145
+	.byte	1,2,35,8,9
+	.byte	'HwControllerId',0
+	.word	145
+	.byte	1,2,35,9,0,15
+	.byte	'Can_RxHwObjectConfigType',0,14,147,4,3
+	.word	6575
+	.byte	16,4
+	.word	145
+	.byte	17,3,0,19
+	.byte	'Can_ControllerMOMapConfigType',0,14,181,4,16,4,9
+	.byte	'ControllerMOMap',0
+	.word	6715
+	.byte	4,2,35,0,0,15
+	.byte	'Can_ControllerMOMapConfigType',0,14,184,4,3
+	.word	6724
+	.byte	19
+	.byte	'Can_NPCRValueType',0,14,188,4,16,2,9
+	.byte	'Can_NPCRValue',0
+	.word	162
+	.byte	2,2,35,0,0,15
+	.byte	'Can_NPCRValueType',0,14,191,4,3
+	.word	6825
+	.byte	19
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,14,194,4,16,8,9
+	.byte	'CanControllerBaudrate',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	'CanControllerBaudrateCfg',0
+	.word	162
+	.byte	2,2,35,4,0,15
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,14,198,4,3
+	.word	6900
+	.byte	10
+	.word	6900
+	.byte	5
+	.word	7065
+	.byte	19
+	.byte	'Can_BaudrateConfigPtrType',0,14,201,4,16,4,9
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	7070
+	.byte	4,2,35,0,0,15
+	.byte	'Can_BaudrateConfigPtrType',0,14,204,4,3
+	.word	7075
+	.byte	19
+	.byte	'Can_EventHandlingType',0,14,226,4,16,4,9
+	.byte	'CanEventType',0
+	.word	6715
+	.byte	4,2,35,0,0,15
+	.byte	'Can_EventHandlingType',0,14,229,4,3
+	.word	7175
+	.byte	15
+	.byte	'Rte_TransformerErrorCode',0,15,130,1,15
+	.word	145
+	.byte	15
+	.byte	'Rte_TransformerClass',0,15,131,1,15
+	.word	145
+	.byte	8,15,168,1,9,12,9
+	.byte	'in',0
+	.word	3015
+	.byte	4,2,35,0,9
+	.byte	'out',0
+	.word	3015
+	.byte	4,2,35,4,9
+	.byte	'used',0
+	.word	162
+	.byte	2,2,35,8,9
+	.byte	'lost_data',0
+	.word	145
+	.byte	1,2,35,10,0,15
+	.byte	'Rte_QDynType',0,15,173,1,3
+	.word	7321
+	.byte	6,15,175,1,9,4,7
+	.byte	'RTE_DRA',0,0,7
+	.byte	'RTE_WOWP',0,1,7
+	.byte	'RTE_TASK',0,2,7
+	.byte	'RTE_ARE',0,3,7
+	.byte	'RTE_EV',0,4,7
+	.byte	'RTE_MSI',0,5,0,15
+	.byte	'Rte_NotificationType',0,15,182,1,3
+	.word	7408
+	.byte	16,128,8
+	.word	145
+	.byte	17,255,7,0,15
+	.byte	'Impl_NVM_DstPtrType_1024',0,16,50,15
+	.word	7506
+	.byte	15
+	.byte	'CanIf_u32_impl',0,16,69,16
+	.word	284
+	.byte	15
+	.byte	'CanIf_u16_impl',0,16,71,16
+	.word	162
+	.byte	15
+	.byte	'CanIf_u8_impl',0,16,73,15
+	.word	145
+	.byte	15
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,16,88,15
+	.word	145
+	.byte	15
+	.byte	'CanIf_PduModeType_Enum_impl',0,16,90,15
+	.word	145
+	.byte	8,16,92,9,2,9
+	.byte	'DeviceMode',0
+	.word	145
+	.byte	1,2,35,0,9
+	.byte	'ChannelMode',0
+	.word	145
+	.byte	1,2,35,1,0,15
+	.byte	'CanIf_ControllerStateType_struct_impl',0,16,95,3
+	.word	7697
+	.byte	15
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,16,100,15
+	.word	145
+	.byte	15
+	.byte	'CanSM_boolean_Impl',0,16,120,15
+	.word	145
+	.byte	15
+	.byte	'CanSM_u8_Impl',0,16,123,15
+	.word	145
+	.byte	15
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,16,128,1,15
+	.word	145
+	.byte	15
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,16,132,1,15
+	.word	145
+	.byte	15
+	.byte	'CanSM_u16_Impl',0,16,136,1,16
+	.word	162
+	.byte	15
+	.byte	'CanSM_TimerStateType_Enum_impl',0,16,138,1,15
+	.word	145
+	.byte	8,16,140,1,9,4,9
+	.byte	'cntTick_u16',0
+	.word	162
+	.byte	2,2,35,0,9
+	.byte	'stTimer',0
+	.word	145
+	.byte	1,2,35,2,0,15
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,16,143,1,3
+	.word	8038
+	.byte	15
+	.byte	'Com_impl_u16',0,16,154,1,16
+	.word	162
+	.byte	15
+	.byte	'Com_impl_u8',0,16,157,1,15
+	.word	145
+	.byte	15
+	.byte	'ComM_uint32_Impl',0,16,173,1,16
+	.word	284
+	.byte	15
+	.byte	'ComM_uint16_Impl',0,16,175,1,16
+	.word	162
+	.byte	15
+	.byte	'ComM_uint8_Impl',0,16,177,1,15
+	.word	145
+	.byte	15
+	.byte	'ComM_bool_Impl',0,16,179,1,15
+	.word	145
+	.byte	8,16,181,1,9,24,9
+	.byte	'ChannelState_e',0
+	.word	284
+	.byte	4,2,35,0,9
+	.byte	'LightTimeoutCtr_u32',0
+	.word	284
+	.byte	4,2,35,4,9
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	162
+	.byte	2,2,35,8,9
+	.byte	'ChannelMode_u8',0
+	.word	145
+	.byte	1,2,35,10,9
+	.byte	'BusSmMode_u8',0
+	.word	145
+	.byte	1,2,35,11,9
+	.byte	'UserRequestCtr_u8',0
+	.word	145
+	.byte	1,2,35,12,9
+	.byte	'PassiveRequestState_u8',0
+	.word	145
+	.byte	1,2,35,13,9
+	.byte	'PncRequestCtr_u8',0
+	.word	145
+	.byte	1,2,35,14,9
+	.byte	'InhibitionReqStatus_u8',0
+	.word	145
+	.byte	1,2,35,15,9
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	145
+	.byte	1,2,35,16,9
+	.byte	'DiagnosticRequestState_b',0
+	.word	145
+	.byte	1,2,35,17,9
+	.byte	'CommunicationAllowed_b',0
+	.word	145
+	.byte	1,2,35,18,9
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	145
+	.byte	1,2,35,19,9
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	145
+	.byte	1,2,35,20,9
+	.byte	'NmNetworkModeStatus_b',0
+	.word	145
+	.byte	1,2,35,21,0,15
+	.byte	'ComM_ChannelStruct_Impl',0,16,197,1,3
+	.word	8270
+	.byte	8,16,206,1,9,10,9
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	162
+	.byte	2,2,35,0,9
+	.byte	'LimitToNoComCtr_u16',0
+	.word	162
+	.byte	2,2,35,2,9
+	.byte	'RequestedUserMode_t',0
+	.word	145
+	.byte	1,2,35,4,9
+	.byte	'IndicatedUserMode_t',0
+	.word	145
+	.byte	1,2,35,5,9
+	.byte	'numChannelsInFullCom_u8',0
+	.word	145
+	.byte	1,2,35,6,9
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	145
+	.byte	1,2,35,7,9
+	.byte	'numChannelsInNoCom_u8',0
+	.word	145
+	.byte	1,2,35,8,0,15
+	.byte	'ComM_UserStruct_Impl',0,16,214,1,3
+	.word	8774
+	.byte	15
+	.byte	'Dcm_IOOperationResponseType',0,16,252,1,15
+	.word	145
+	.byte	15
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	16,138,2,15
+	.word	145
+	.byte	15
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,16,146,2,15
+	.word	145
+	.byte	15
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,16,150,2,15
+	.word	145
+	.byte	15
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,16,154,2,15
+	.word	145
+	.byte	15
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,16,243,3,34
+	.word	7517
+	.byte	16,128,8
+	.word	145
+	.byte	17,255,7,0,15
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,16,246,3,34
+	.word	7517
+	.byte	15
+	.byte	'Nm_BusType',0,3,189,1,3
+	.word	300
+	.byte	15
+	.byte	'Nm_TimerType',0,2,73,16
+	.word	284
+	.byte	15
+	.byte	'Nm_ConfigType',0,2,111,3
+	.word	372
+	.byte	15
+	.byte	'rba_BswSrv_uint64',0,17,66,28
+	.word	1708
+	.byte	6,5,136,3,9,4,7
+	.byte	'NM_SYNCPOINT_INVALID',0,0,7
+	.byte	'NM_SYNCPOINT_INIT',0,1,7
+	.byte	'NM_SYNCPOINT_READY',0,2,7
+	.byte	'NM_SYNCPOINT_REACHED',0,3,0,15
+	.byte	'Nm_SynchType',0,5,142,3,3
+	.word	9681
+	.byte	6,5,155,3,9,4,7
+	.byte	'NM_CLUSTER_INIT',0,0,7
+	.byte	'NM_CLUSTER_PASSIVE',0,1,7
+	.byte	'NM_CLUSTER_ACTIVE_ACTIVE',0,2,7
+	.byte	'NM_CLUSTER_ACTIVE_PASSIVE',0,3,0,15
+	.byte	'Nm_ClusterStateType',0,5,161,3,3
+	.word	9797
+	.byte	6,5,177,3,9,4,7
+	.byte	'NM_CHANNEL_STATE_UNINIT',0,0,7
+	.byte	'NM_CHANNEL_STATE_INIT',0,1,7
+	.byte	'NM_CHANNEL_STATE_NORMAL',0,2,7
+	.byte	'NM_CHANNEL_STATE_PREPARE_WAIT_SLEEP',0,3,7
+	.byte	'NM_CHANNEL_STATE_WAIT_SLEEP',0,4,7
+	.byte	'NM_CHANNEL_STATE_BUS_SLEEP',0,5,0,15
+	.byte	'Nm_ChannelStateType',0,5,186,3,3
+	.word	9927
+	.byte	15
+	.byte	'Nm_BusNmApiType',0,5,182,4,3
+	.word	1070
+	.byte	26
+	.word	372
+	.byte	27,0,10
+	.word	10161
+	.byte	28
+	.byte	'Nm_ConfData_cs',0,5,226,4,39
+	.word	10168
+	.byte	1,1,26
+	.word	1070
+	.byte	27,0,10
+	.word	10199
+	.byte	28
+	.byte	'Nm_BusNmApi',0,5,237,4,41
+	.word	10206
+	.byte	1,1,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L15:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,46,1,3,8,58,15,59,15,57,15
+	.byte	73,19,54,15,39,12,63,12,60,12,0,0,4,5,0,3,8,58,15,59,15,57,15,73,19,0,0,5,15,0,73,19,0,0,6,4,1,58,15,59
+	.byte	15,57,15,11,15,0,0,7,40,0,3,8,28,13,0,0,8,19,1,58,15,59,15,57,15,11,15,0,0,9,13,0,3,8,73,19,11,15,56,9
+	.byte	0,0,10,38,0,73,19,0,0,11,21,1,73,19,54,15,39,12,0,0,12,5,0,73,19,0,0,13,46,0,3,8,58,15,59,15,57,15,54
+	.byte	15,63,12,60,12,0,0,14,21,0,54,15,0,0,15,22,0,3,8,58,15,59,15,57,15,73,19,0,0,16,1,1,11,15,73,19,0,0,17
+	.byte	33,0,47,15,0,0,18,21,0,54,15,39,12,0,0,19,19,1,3,8,58,15,59,15,57,15,11,15,0,0,20,59,0,3,8,0,0,21,21,1
+	.byte	54,15,39,12,0,0,22,23,1,58,15,59,15,57,15,11,15,0,0,23,4,1,3,8,58,15,59,15,57,15,11,15,0,0,24,21,0,73
+	.byte	19,54,15,39,12,0,0,25,53,0,73,19,0,0,26,1,1,73,19,0,0,27,33,0,0,0,28,52,0,3,8,58,15,59,15,57,15,73,19
+	.byte	63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L16:
+	.word	.L47-.L46
+.L46:
+	.half	3
+	.word	.L49-.L48
+.L48:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Det\\api\\Det.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Nm\\api\\Nm.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Nm\\Nm_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Nm\\api\\NmStack_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Nm\\api\\Nm_Priv.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Nm\\src\\Nm_GetNodeIdentifier.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\CanNm_PreCompile_and_PB_Variant\\CanNm_Cfg.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0,0
+.L49:
+.L47:
+	.sdecl	'.debug_info',debug,cluster('Nm_GetNodeIdentifier')
+	.sect	'.debug_info'
+.L17:
+	.word	348
+	.half	3
+	.word	.L18
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Nm\\src\\Nm_GetNodeIdentifier.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L20,.L19
+	.byte	2
+	.word	.L13
+	.byte	3
+	.byte	'Nm_GetNodeIdentifier',0,1,43,31
+	.word	.L22
+	.byte	1,1,1
+	.word	.L12,.L23,.L11
+	.byte	4
+	.byte	'NetworkHandle',0,1,44,85
+	.word	.L22,.L24
+	.byte	4
+	.byte	'nmNodeIdPtr',0,1,45,89
+	.word	.L25,.L26
+	.byte	5
+	.word	.L12,.L23
+	.byte	6
+	.byte	'ConfDataPtr',0,1,48,57
+	.word	.L27,.L28
+	.byte	6
+	.byte	'FuncPtr',0,1,49,57
+	.word	.L29,.L30
+	.byte	6
+	.byte	'RetVal',0,1,50,36
+	.word	.L22,.L31
+	.byte	6
+	.byte	'Nm_NetworkHandle',0,1,51,39
+	.word	.L22,.L32
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Nm_GetNodeIdentifier')
+	.sect	'.debug_abbrev'
+.L18:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Nm_GetNodeIdentifier')
+	.sect	'.debug_line'
+.L19:
+	.word	.L51-.L50
+.L50:
+	.half	3
+	.word	.L53-.L52
+.L52:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Nm\\src\\Nm_GetNodeIdentifier.c',0,0,0,0,0
+.L53:
+	.byte	5,31,7,0,5,2
+	.word	.L12
+	.byte	3,42,1,5,43,9
+	.half	.L34-.L12
+	.byte	3,7,1,5,9,9
+	.half	.L35-.L34
+	.byte	3,8,1,5,68,7,9
+	.half	.L54-.L35
+	.byte	1,5,24,7,9
+	.half	.L55-.L54
+	.byte	3,3,1,5,38,9
+	.half	.L56-.L55
+	.byte	1,5,23,9
+	.half	.L37-.L56
+	.byte	3,3,1,5,9,9
+	.half	.L57-.L37
+	.byte	1,5,44,7,9
+	.half	.L58-.L57
+	.byte	3,2,1,5,32,9
+	.half	.L59-.L58
+	.byte	1,5,21,9
+	.half	.L60-.L59
+	.byte	1,5,32,9
+	.half	.L61-.L60
+	.byte	1,5,28,9
+	.half	.L39-.L61
+	.byte	3,3,1,5,70,9
+	.half	.L40-.L39
+	.byte	1,5,9,9
+	.half	.L4-.L40
+	.byte	3,123,1,5,14,9
+	.half	.L2-.L4
+	.byte	3,11,1,7,9
+	.half	.L62-.L2
+	.byte	3,3,1,5,93,9
+	.half	.L36-.L62
+	.byte	1,5,9,9
+	.half	.L7-.L36
+	.byte	3,6,1,5,13,7,9
+	.half	.L63-.L7
+	.byte	3,3,1,5,93,9
+	.half	.L44-.L63
+	.byte	1,5,16,9
+	.half	.L9-.L44
+	.byte	3,9,1,5,5,9
+	.half	.L5-.L9
+	.byte	3,4,1,5,1,9
+	.half	.L10-.L5
+	.byte	3,1,1,7,9
+	.half	.L21-.L10
+	.byte	0,1,1
+.L51:
+	.sdecl	'.debug_ranges',debug,cluster('Nm_GetNodeIdentifier')
+	.sect	'.debug_ranges'
+.L20:
+	.word	-1,.L12,0,.L21-.L12,0,0
+	.sdecl	'.debug_loc',debug,cluster('Nm_GetNodeIdentifier')
+	.sect	'.debug_loc'
+.L28:
+	.word	-1,.L12,.L37-.L12,.L38-.L12
+	.half	1
+	.byte	111
+	.word	0,0
+.L30:
+	.word	-1,.L12,.L39-.L12,.L40-.L12
+	.half	1
+	.byte	111
+	.word	0,0
+.L24:
+	.word	-1,.L12,0,.L4-.L12
+	.half	1
+	.byte	84
+	.word	.L33-.L12,.L23-.L12
+	.half	1
+	.byte	88
+	.word	.L2-.L12,.L41-.L12
+	.half	1
+	.byte	84
+	.word	.L42-.L12,.L36-.L12
+	.half	1
+	.byte	85
+	.word	.L43-.L12,.L44-.L12
+	.half	1
+	.byte	85
+	.word	0,0
+.L11:
+	.word	-1,.L12,0,.L23-.L12
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L32:
+	.word	0,0
+.L31:
+	.word	-1,.L12,.L35-.L12,.L36-.L12
+	.half	1
+	.byte	82
+	.word	.L5-.L12,.L23-.L12
+	.half	1
+	.byte	82
+	.word	0,0
+.L26:
+	.word	-1,.L12,0,.L4-.L12
+	.half	1
+	.byte	100
+	.word	.L34-.L12,.L23-.L12
+	.half	1
+	.byte	108
+	.word	.L2-.L12,.L36-.L12
+	.half	1
+	.byte	100
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L64:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Nm_GetNodeIdentifier')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L64,.L12,.L23-.L12
+
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	   102  #define NM_STOP_SEC_CODE
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	   103  #include "Nm_MemMap.h"
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	   104  #endif
+; BSW\src\BSW\Gen\Nm\src\Nm_GetNodeIdentifier.c	   105  
+
+	; Module end

@@ -1,0 +1,3142 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc14220a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\ASW\\ASW_Diag\\SWC_Diag.src ASW\\ASW_Diag\\src\\SWC_Diag.c"
+	.compiler_name		"ctc"
+	;source	'ASW\\ASW_Diag\\src\\SWC_Diag.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.SWC_Diag.Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func',code,cluster('Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func')
+	.sect	'.text.SWC_Diag.Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func'
+	.align	2
+	
+	.global	Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	     1  /* *****************************************************************************
+; ASW\ASW_Diag\src\SWC_Diag.c	     2   * BEGIN: Banner
+; ASW\ASW_Diag\src\SWC_Diag.c	     3   *-----------------------------------------------------------------------------
+; ASW\ASW_Diag\src\SWC_Diag.c	     4   *                                 ETAS GmbH
+; ASW\ASW_Diag\src\SWC_Diag.c	     5   *                      D-70469 Stuttgart, Borsigstr. 14
+; ASW\ASW_Diag\src\SWC_Diag.c	     6   *-----------------------------------------------------------------------------
+; ASW\ASW_Diag\src\SWC_Diag.c	     7   *    Administrative Information (automatically filled in by ISOLAR)         
+; ASW\ASW_Diag\src\SWC_Diag.c	     8   *-----------------------------------------------------------------------------
+; ASW\ASW_Diag\src\SWC_Diag.c	     9   * Name: 
+; ASW\ASW_Diag\src\SWC_Diag.c	    10   * Description:
+; ASW\ASW_Diag\src\SWC_Diag.c	    11   * Version: 1.0
+; ASW\ASW_Diag\src\SWC_Diag.c	    12   *-----------------------------------------------------------------------------
+; ASW\ASW_Diag\src\SWC_Diag.c	    13   * END: Banner
+; ASW\ASW_Diag\src\SWC_Diag.c	    14   ******************************************************************************
+; ASW\ASW_Diag\src\SWC_Diag.c	    15  
+; ASW\ASW_Diag\src\SWC_Diag.c	    16   * Project : ETAS_TMS570_AR422_3p0
+; ASW\ASW_Diag\src\SWC_Diag.c	    17   * Component: /ARPackage_0/Diag_SWC
+; ASW\ASW_Diag\src\SWC_Diag.c	    18   * Runnable : All Runnables in SwComponent
+; ASW\ASW_Diag\src\SWC_Diag.c	    19   *****************************************************************************
+; ASW\ASW_Diag\src\SWC_Diag.c	    20   * Tool Version: ISOLAR-AB 4.0.2
+; ASW\ASW_Diag\src\SWC_Diag.c	    21   * Author: gbi81hc
+; ASW\ASW_Diag\src\SWC_Diag.c	    22   * Date : Fri May 31 16:36:07 2019
+; ASW\ASW_Diag\src\SWC_Diag.c	    23   ****************************************************************************/
+; ASW\ASW_Diag\src\SWC_Diag.c	    24  
+; ASW\ASW_Diag\src\SWC_Diag.c	    25  #include "Rte_ASW_Diag.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	    26  
+; ASW\ASW_Diag\src\SWC_Diag.c	    27  /*PROTECTED REGION ID(FileHeaderUserDefinedIncludes :Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	    28  /* Start of user defined includes  - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	    29  /* End of user defined includes - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	    30  /*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	    31  
+; ASW\ASW_Diag\src\SWC_Diag.c	    32  /*PROTECTED REGION ID(FileHeaderUserDefinedConstants :Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	    33  /* Start of user defined constant definitions - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	    34  /* End of user defined constant definitions - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	    35  /*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	    36  
+; ASW\ASW_Diag\src\SWC_Diag.c	    37  /*PROTECTED REGION ID(FileHeaderUserDefinedVariables :Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	    38  /* Start of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    39  /* End of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    40  /*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	    41  
+; ASW\ASW_Diag\src\SWC_Diag.c	    42  
+; ASW\ASW_Diag\src\SWC_Diag.c	    43  #define START_ROUTINE 1
+; ASW\ASW_Diag\src\SWC_Diag.c	    44  #define STOP_ROUTINE 2
+; ASW\ASW_Diag\src\SWC_Diag.c	    45  #define REQUEST_ROUTINE 3
+; ASW\ASW_Diag\src\SWC_Diag.c	    46  
+; ASW\ASW_Diag\src\SWC_Diag.c	    47  static Dcm_DataArrayTypeUint8_DcmDspData_SystemFaultRankType DID_2311;
+; ASW\ASW_Diag\src\SWC_Diag.c	    48  
+; ASW\ASW_Diag\src\SWC_Diag.c	    49  static Dcm_DataArrayTypeUint8_DcmDspData_VehicleSpeedType DID_2310;
+; ASW\ASW_Diag\src\SWC_Diag.c	    50  
+; ASW\ASW_Diag\src\SWC_Diag.c	    51  static Dcm_DataArrayTypeUint8_DcmDspData_VacuumPumpPressure_1100Type VacuumPumpPressure_Data;
+; ASW\ASW_Diag\src\SWC_Diag.c	    52  
+; ASW\ASW_Diag\src\SWC_Diag.c	    53  static uint8 mode_routine;
+; ASW\ASW_Diag\src\SWC_Diag.c	    54  
+; ASW\ASW_Diag\src\SWC_Diag.c	    55  #define Diag_SWC_START_SEC_CODE                   
+; ASW\ASW_Diag\src\SWC_Diag.c	    56  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	    57  FUNC (Std_ReturnType, AUTOMATIC) Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func/* return value & FctID */
+; Function Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func
+.L11:
+Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func:	.type	func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	    58  (
+; ASW\ASW_Diag\src\SWC_Diag.c	    59  		CONSTP2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_APPL_DATA) ErrorCode
+; ASW\ASW_Diag\src\SWC_Diag.c	    60  )
+; ASW\ASW_Diag\src\SWC_Diag.c	    61  {
+; ASW\ASW_Diag\src\SWC_Diag.c	    62  
+; ASW\ASW_Diag\src\SWC_Diag.c	    63  	/* Local Data Declaration */
+; ASW\ASW_Diag\src\SWC_Diag.c	    64  
+; ASW\ASW_Diag\src\SWC_Diag.c	    65  	/*PROTECTED REGION ID(UserVariables :Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	    66  	/* Start of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    67  	/* End of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    68  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	    69  	Std_ReturnType retValue = RTE_E_OK;
+	mov	d2,#0
+.L137:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	    70  	/*  -------------------------------------- Data Read -----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    71  
+; ASW\ASW_Diag\src\SWC_Diag.c	    72  	/*  -------------------------------------- Server Call Point  --------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    73  
+; ASW\ASW_Diag\src\SWC_Diag.c	    74  	/*  -------------------------------------- CDATA ---------------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    75  
+; ASW\ASW_Diag\src\SWC_Diag.c	    76  	/*  -------------------------------------- Data Write ----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    77  
+; ASW\ASW_Diag\src\SWC_Diag.c	    78  	/*  -------------------------------------- Trigger Interface ---------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    79  
+; ASW\ASW_Diag\src\SWC_Diag.c	    80  	/*  -------------------------------------- Mode Management -----------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    81  
+; ASW\ASW_Diag\src\SWC_Diag.c	    82  	/*  -------------------------------------- Port Handling -------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    83  
+; ASW\ASW_Diag\src\SWC_Diag.c	    84  	/*  -------------------------------------- Exclusive Area ------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    85  
+; ASW\ASW_Diag\src\SWC_Diag.c	    86  	/*  -------------------------------------- Multiple Instantiation ----------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	    87  
+; ASW\ASW_Diag\src\SWC_Diag.c	    88  	/*PROTECTED REGION ID(User Logic :Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	    89  	/* Start of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	    90  	/* End of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	    91  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	    92  	VacuumPumpPressure_Data[0] = 0xBB;
+	movh.a	a15,#@his(VacuumPumpPressure_Data)
+	lea	a15,[a15]@los(VacuumPumpPressure_Data)
+.L163:
+	mov	d15,#187
+.L164:
+	st.b	[a15],d15
+.L165:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	    93  	VacuumPumpPressure_Data[1] = 0xBB;
+	mov	d15,#187
+.L166:
+	st.b	[a15]1,d15
+.L167:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	    94  	*ErrorCode = 0;
+	mov	d15,#0
+.L168:
+	st.b	[a4],d15
+.L169:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	    95  	return retValue;
+	j	.L2
+
+; ASW\ASW_Diag\src\SWC_Diag.c	    96  
+; ASW\ASW_Diag\src\SWC_Diag.c	    97  }
+.L2:
+	ret
+.L90:
+	
+__Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func_function_end:
+	.size	Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func,__Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func_function_end-Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func
+.L41:
+	; End of function
+	
+	.sdecl	'.text.SWC_Diag.Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func',code,cluster('Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func')
+	.sect	'.text.SWC_Diag.Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func'
+	.align	2
+	
+	.global	Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	    98  
+; ASW\ASW_Diag\src\SWC_Diag.c	    99  #define Diag_SWC_STOP_SEC_CODE                       
+; ASW\ASW_Diag\src\SWC_Diag.c	   100  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   101  #define Diag_SWC_START_SEC_CODE                   
+; ASW\ASW_Diag\src\SWC_Diag.c	   102  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   103  FUNC (Std_ReturnType, AUTOMATIC) Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func/* return value & FctID */
+; Function Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func
+.L13:
+Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func:	.type	func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   104  (
+; ASW\ASW_Diag\src\SWC_Diag.c	   105          P2CONST(uint8, AUTOMATIC, RTE_APPL_DATA) ControlStateInfo, CONSTP2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_APPL_DATA) ErrorCode)
+; ASW\ASW_Diag\src\SWC_Diag.c	   106  {
+; ASW\ASW_Diag\src\SWC_Diag.c	   107  
+; ASW\ASW_Diag\src\SWC_Diag.c	   108  	/* Local Data Declaration */
+; ASW\ASW_Diag\src\SWC_Diag.c	   109  
+; ASW\ASW_Diag\src\SWC_Diag.c	   110  	/*PROTECTED REGION ID(UserVariables :Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   111  	/* Start of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   112  	/* End of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   113  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   114  	Std_ReturnType retValue = RTE_E_OK;
+	mov	d2,#0
+.L138:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   115  	/*  -------------------------------------- Data Read -----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   116  
+; ASW\ASW_Diag\src\SWC_Diag.c	   117  	/*  -------------------------------------- Server Call Point  --------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   118  
+; ASW\ASW_Diag\src\SWC_Diag.c	   119  	/*  -------------------------------------- CDATA ---------------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   120  
+; ASW\ASW_Diag\src\SWC_Diag.c	   121  	/*  -------------------------------------- Data Write ----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   122  
+; ASW\ASW_Diag\src\SWC_Diag.c	   123  	/*  -------------------------------------- Trigger Interface ---------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   124  
+; ASW\ASW_Diag\src\SWC_Diag.c	   125  	/*  -------------------------------------- Mode Management -----------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   126  
+; ASW\ASW_Diag\src\SWC_Diag.c	   127  	/*  -------------------------------------- Port Handling -------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   128  
+; ASW\ASW_Diag\src\SWC_Diag.c	   129  	/*  -------------------------------------- Exclusive Area ------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   130  
+; ASW\ASW_Diag\src\SWC_Diag.c	   131  	/*  -------------------------------------- Multiple Instantiation ----------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   132  
+; ASW\ASW_Diag\src\SWC_Diag.c	   133  	/*PROTECTED REGION ID(User Logic :Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   134  	/* Start of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   135  	/* End of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   136  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   137      VacuumPumpPressure_Data[0] = *ControlStateInfo;
+	movh.a	a15,#@his(VacuumPumpPressure_Data)
+	lea	a15,[a15]@los(VacuumPumpPressure_Data)
+.L196:
+	ld.bu	d15,[a4]
+.L197:
+	st.b	[a15],d15
+.L198:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   138      VacuumPumpPressure_Data[1] = *(ControlStateInfo+1);
+	ld.bu	d15,[a4]1
+.L199:
+	st.b	[a15]1,d15
+.L200:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   139      *ErrorCode = 0;
+	mov	d15,#0
+.L201:
+	st.b	[a5],d15
+.L202:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   140      return retValue;
+	j	.L3
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   141      /* End of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   142  
+; ASW\ASW_Diag\src\SWC_Diag.c	   143  }
+.L3:
+	ret
+.L102:
+	
+__Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func_function_end:
+	.size	Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func,__Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func_function_end-Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func
+.L56:
+	; End of function
+	
+	.sdecl	'.text.SWC_Diag.Diag_RoutineServices_DriveVacuumPump_Start_func',code,cluster('Diag_RoutineServices_DriveVacuumPump_Start_func')
+	.sect	'.text.SWC_Diag.Diag_RoutineServices_DriveVacuumPump_Start_func'
+	.align	2
+	
+	.global	Diag_RoutineServices_DriveVacuumPump_Start_func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   144  
+; ASW\ASW_Diag\src\SWC_Diag.c	   145  #define Diag_SWC_STOP_SEC_CODE                       
+; ASW\ASW_Diag\src\SWC_Diag.c	   146  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   147  #define Diag_SWC_START_SEC_CODE                   
+; ASW\ASW_Diag\src\SWC_Diag.c	   148  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   149  FUNC (Std_ReturnType, AUTOMATIC) Diag_RoutineServices_DriveVacuumPump_Start_func/* return value & FctID */
+; Function Diag_RoutineServices_DriveVacuumPump_Start_func
+.L15:
+Diag_RoutineServices_DriveVacuumPump_Start_func:	.type	func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   150  (
+; ASW\ASW_Diag\src\SWC_Diag.c	   151  		VAR(Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalType, AUTOMATIC) DataIn_DcmDspStartRoutineInSignal,
+; ASW\ASW_Diag\src\SWC_Diag.c	   152  		VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus,
+; ASW\ASW_Diag\src\SWC_Diag.c	   153  		CONSTP2VAR(Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalType, AUTOMATIC, RTE_APPL_DATA) DataOut_DcmDspStartRoutineOutSignal,
+; ASW\ASW_Diag\src\SWC_Diag.c	   154  		CONSTP2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_APPL_DATA) ErrorCode
+; ASW\ASW_Diag\src\SWC_Diag.c	   155  )
+; ASW\ASW_Diag\src\SWC_Diag.c	   156  {
+; ASW\ASW_Diag\src\SWC_Diag.c	   157  
+; ASW\ASW_Diag\src\SWC_Diag.c	   158  	/* Local Data Declaration */
+; ASW\ASW_Diag\src\SWC_Diag.c	   159  
+; ASW\ASW_Diag\src\SWC_Diag.c	   160  	/*PROTECTED REGION ID(UserVariables :Diag_RoutineServices_DriveVacuumPump_Start_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   161  	/* Start of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   162  	/* End of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   163  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   164  	Std_ReturnType retValue = RTE_E_OK;
+	mov	d2,#0
+.L139:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   165  	/*  -------------------------------------- Data Read -----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   166  
+; ASW\ASW_Diag\src\SWC_Diag.c	   167  	/*  -------------------------------------- Server Call Point  --------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   168  
+; ASW\ASW_Diag\src\SWC_Diag.c	   169  	/*  -------------------------------------- CDATA ---------------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   170  
+; ASW\ASW_Diag\src\SWC_Diag.c	   171  	/*  -------------------------------------- Data Write ----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   172  
+; ASW\ASW_Diag\src\SWC_Diag.c	   173  	/*  -------------------------------------- Trigger Interface ---------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   174  
+; ASW\ASW_Diag\src\SWC_Diag.c	   175  	/*  -------------------------------------- Mode Management -----------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   176  
+; ASW\ASW_Diag\src\SWC_Diag.c	   177  	/*  -------------------------------------- Port Handling -------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   178  
+; ASW\ASW_Diag\src\SWC_Diag.c	   179  	/*  -------------------------------------- Exclusive Area ------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   180  
+; ASW\ASW_Diag\src\SWC_Diag.c	   181  	/*  -------------------------------------- Multiple Instantiation ----------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   182  
+; ASW\ASW_Diag\src\SWC_Diag.c	   183  	/*PROTECTED REGION ID(User Logic :Diag_RoutineServices_DriveVacuumPump_Start_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   184  	/* Start of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   185  	/* End of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   186  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   187  
+; ASW\ASW_Diag\src\SWC_Diag.c	   188  	mode_routine = START_ROUTINE;
+	movh.a	a15,#@his(mode_routine)
+	lea	a15,[a15]@los(mode_routine)
+.L214:
+	mov	d15,#1
+.L215:
+	st.b	[a15],d15
+.L216:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   189  	return retValue;
+	j	.L4
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   190  }
+.L4:
+	ret
+.L115:
+	
+__Diag_RoutineServices_DriveVacuumPump_Start_func_function_end:
+	.size	Diag_RoutineServices_DriveVacuumPump_Start_func,__Diag_RoutineServices_DriveVacuumPump_Start_func_function_end-Diag_RoutineServices_DriveVacuumPump_Start_func
+.L66:
+	; End of function
+	
+	.sdecl	'.text.SWC_Diag.Diag_RoutineServices_DriveVacuumPump_Stop_func',code,cluster('Diag_RoutineServices_DriveVacuumPump_Stop_func')
+	.sect	'.text.SWC_Diag.Diag_RoutineServices_DriveVacuumPump_Stop_func'
+	.align	2
+	
+	.global	Diag_RoutineServices_DriveVacuumPump_Stop_func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   191  
+; ASW\ASW_Diag\src\SWC_Diag.c	   192  #define Diag_SWC_STOP_SEC_CODE                       
+; ASW\ASW_Diag\src\SWC_Diag.c	   193  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   194  #define Diag_SWC_START_SEC_CODE                   
+; ASW\ASW_Diag\src\SWC_Diag.c	   195  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   196  FUNC (Std_ReturnType, AUTOMATIC) Diag_RoutineServices_DriveVacuumPump_Stop_func/* return value & FctID */
+; Function Diag_RoutineServices_DriveVacuumPump_Stop_func
+.L17:
+Diag_RoutineServices_DriveVacuumPump_Stop_func:	.type	func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   197  (
+; ASW\ASW_Diag\src\SWC_Diag.c	   198  		VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus,
+; ASW\ASW_Diag\src\SWC_Diag.c	   199  		CONSTP2VAR(Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalType, AUTOMATIC, RTE_APPL_DATA) DataOut_DcmDspStopRoutineOutSignal,
+; ASW\ASW_Diag\src\SWC_Diag.c	   200  		CONSTP2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_APPL_DATA) ErrorCode
+; ASW\ASW_Diag\src\SWC_Diag.c	   201  )
+; ASW\ASW_Diag\src\SWC_Diag.c	   202  {
+; ASW\ASW_Diag\src\SWC_Diag.c	   203  
+; ASW\ASW_Diag\src\SWC_Diag.c	   204  	/* Local Data Declaration */
+; ASW\ASW_Diag\src\SWC_Diag.c	   205  
+; ASW\ASW_Diag\src\SWC_Diag.c	   206  	/*PROTECTED REGION ID(UserVariables :Diag_RoutineServices_DriveVacuumPump_Stop_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   207  	/* Start of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   208  	/* End of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   209  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   210  	Std_ReturnType retValue = RTE_E_OK;
+	mov	d2,#0
+.L140:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   211  	/*  -------------------------------------- Data Read -----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   212  
+; ASW\ASW_Diag\src\SWC_Diag.c	   213  	/*  -------------------------------------- Server Call Point  --------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   214  
+; ASW\ASW_Diag\src\SWC_Diag.c	   215  	/*  -------------------------------------- CDATA ---------------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   216  
+; ASW\ASW_Diag\src\SWC_Diag.c	   217  	/*  -------------------------------------- Data Write ----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   218  
+; ASW\ASW_Diag\src\SWC_Diag.c	   219  	/*  -------------------------------------- Trigger Interface ---------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   220  
+; ASW\ASW_Diag\src\SWC_Diag.c	   221  	/*  -------------------------------------- Mode Management -----------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   222  
+; ASW\ASW_Diag\src\SWC_Diag.c	   223  	/*  -------------------------------------- Port Handling -------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   224  
+; ASW\ASW_Diag\src\SWC_Diag.c	   225  	/*  -------------------------------------- Exclusive Area ------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   226  
+; ASW\ASW_Diag\src\SWC_Diag.c	   227  	/*  -------------------------------------- Multiple Instantiation ----------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   228  
+; ASW\ASW_Diag\src\SWC_Diag.c	   229  	/*PROTECTED REGION ID(User Logic :Diag_RoutineServices_DriveVacuumPump_Stop_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   230  	/* Start of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   231  	/* End of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   232  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   233  
+; ASW\ASW_Diag\src\SWC_Diag.c	   234  	/*User integration code*/
+; ASW\ASW_Diag\src\SWC_Diag.c	   235  	mode_routine = STOP_ROUTINE;
+	movh.a	a15,#@his(mode_routine)
+	lea	a15,[a15]@los(mode_routine)
+.L221:
+	mov	d15,#2
+.L222:
+	st.b	[a15],d15
+.L223:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   236  	return retValue;
+	j	.L5
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   237  }
+.L5:
+	ret
+.L123:
+	
+__Diag_RoutineServices_DriveVacuumPump_Stop_func_function_end:
+	.size	Diag_RoutineServices_DriveVacuumPump_Stop_func,__Diag_RoutineServices_DriveVacuumPump_Stop_func_function_end-Diag_RoutineServices_DriveVacuumPump_Stop_func
+.L71:
+	; End of function
+	
+	.sdecl	'.text.SWC_Diag.Diag_IOControl_VacuumPumpPressure_resetToDefault_func',code,cluster('Diag_IOControl_VacuumPumpPressure_resetToDefault_func')
+	.sect	'.text.SWC_Diag.Diag_IOControl_VacuumPumpPressure_resetToDefault_func'
+	.align	2
+	
+	.global	Diag_IOControl_VacuumPumpPressure_resetToDefault_func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   238  
+; ASW\ASW_Diag\src\SWC_Diag.c	   239  #define Diag_SWC_STOP_SEC_CODE                       
+; ASW\ASW_Diag\src\SWC_Diag.c	   240  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   241  #define Diag_SWC_START_SEC_CODE                   
+; ASW\ASW_Diag\src\SWC_Diag.c	   242  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   243  FUNC (Std_ReturnType, AUTOMATIC) Diag_IOControl_VacuumPumpPressure_resetToDefault_func/* return value & FctID */
+; Function Diag_IOControl_VacuumPumpPressure_resetToDefault_func
+.L19:
+Diag_IOControl_VacuumPumpPressure_resetToDefault_func:	.type	func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   244  (
+; ASW\ASW_Diag\src\SWC_Diag.c	   245  		CONSTP2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_APPL_DATA) ErrorCode
+; ASW\ASW_Diag\src\SWC_Diag.c	   246  )
+; ASW\ASW_Diag\src\SWC_Diag.c	   247  {
+; ASW\ASW_Diag\src\SWC_Diag.c	   248  
+; ASW\ASW_Diag\src\SWC_Diag.c	   249  	/* Local Data Declaration */
+; ASW\ASW_Diag\src\SWC_Diag.c	   250  
+; ASW\ASW_Diag\src\SWC_Diag.c	   251  	/*PROTECTED REGION ID(UserVariables :Diag_IOControl_VacuumPumpPressure_resetToDefault_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   252  	/* Start of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   253  	/* End of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   254  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   255  	Std_ReturnType retValue = RTE_E_OK;
+	mov	d2,#0
+.L141:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   256  	/*  -------------------------------------- Data Read -----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   257  
+; ASW\ASW_Diag\src\SWC_Diag.c	   258  	/*  -------------------------------------- Server Call Point  --------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   259  
+; ASW\ASW_Diag\src\SWC_Diag.c	   260  	/*  -------------------------------------- CDATA ---------------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   261  
+; ASW\ASW_Diag\src\SWC_Diag.c	   262  	/*  -------------------------------------- Data Write ----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   263  
+; ASW\ASW_Diag\src\SWC_Diag.c	   264  	/*  -------------------------------------- Trigger Interface ---------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   265  
+; ASW\ASW_Diag\src\SWC_Diag.c	   266  	/*  -------------------------------------- Mode Management -----------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   267  
+; ASW\ASW_Diag\src\SWC_Diag.c	   268  	/*  -------------------------------------- Port Handling -------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   269  
+; ASW\ASW_Diag\src\SWC_Diag.c	   270  	/*  -------------------------------------- Exclusive Area ------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   271  
+; ASW\ASW_Diag\src\SWC_Diag.c	   272  	/*  -------------------------------------- Multiple Instantiation ----------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   273  
+; ASW\ASW_Diag\src\SWC_Diag.c	   274  	/*PROTECTED REGION ID(User Logic :Diag_IOControl_VacuumPumpPressure_resetToDefault_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   275  	/* Start of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   276  	/* End of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   277  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   278      VacuumPumpPressure_Data[0] = 0x10;
+	movh.a	a15,#@his(VacuumPumpPressure_Data)
+	lea	a15,[a15]@los(VacuumPumpPressure_Data)
+.L174:
+	mov	d15,#16
+.L175:
+	st.b	[a15],d15
+.L176:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   279      VacuumPumpPressure_Data[1] = 0x10;
+	mov	d15,#16
+.L177:
+	st.b	[a15]1,d15
+.L178:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   280      *ErrorCode = 0;
+	mov	d15,#0
+.L179:
+	st.b	[a4],d15
+.L180:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   281      return retValue;
+	j	.L6
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   282  
+; ASW\ASW_Diag\src\SWC_Diag.c	   283  }
+.L6:
+	ret
+.L94:
+	
+__Diag_IOControl_VacuumPumpPressure_resetToDefault_func_function_end:
+	.size	Diag_IOControl_VacuumPumpPressure_resetToDefault_func,__Diag_IOControl_VacuumPumpPressure_resetToDefault_func_function_end-Diag_IOControl_VacuumPumpPressure_resetToDefault_func
+.L46:
+	; End of function
+	
+	.sdecl	'.text.SWC_Diag.Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func',code,cluster('Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func')
+	.sect	'.text.SWC_Diag.Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func'
+	.align	2
+	
+	.global	Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   284  
+; ASW\ASW_Diag\src\SWC_Diag.c	   285  #define Diag_SWC_STOP_SEC_CODE                       
+; ASW\ASW_Diag\src\SWC_Diag.c	   286  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   287  #define Diag_SWC_START_SEC_CODE                   
+; ASW\ASW_Diag\src\SWC_Diag.c	   288  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   289  FUNC (Std_ReturnType, AUTOMATIC) Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func/* return value & FctID */
+; Function Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func
+.L21:
+Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func:	.type	func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   290  (
+; ASW\ASW_Diag\src\SWC_Diag.c	   291  		VAR(Dcm_OpStatusType, AUTOMATIC) OpStatus,
+; ASW\ASW_Diag\src\SWC_Diag.c	   292  		CONSTP2VAR(Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0Type, AUTOMATIC, RTE_APPL_DATA) DataOut_DcmDspRequestRoutineResultsOutSignal_0,
+; ASW\ASW_Diag\src\SWC_Diag.c	   293  		CONSTP2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_APPL_DATA) ErrorCode
+; ASW\ASW_Diag\src\SWC_Diag.c	   294  )
+; ASW\ASW_Diag\src\SWC_Diag.c	   295  {
+; ASW\ASW_Diag\src\SWC_Diag.c	   296  
+; ASW\ASW_Diag\src\SWC_Diag.c	   297  	/* Local Data Declaration */
+; ASW\ASW_Diag\src\SWC_Diag.c	   298  
+; ASW\ASW_Diag\src\SWC_Diag.c	   299  	/*PROTECTED REGION ID(UserVariables :Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   300  	/* Start of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   301  	/* End of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   302  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   303  	Std_ReturnType retValue = RTE_E_OK;
+	mov	d2,#0
+.L142:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   304  	/*  -------------------------------------- Data Read -----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   305  
+; ASW\ASW_Diag\src\SWC_Diag.c	   306  	/*  -------------------------------------- Server Call Point  --------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   307  
+; ASW\ASW_Diag\src\SWC_Diag.c	   308  	/*  -------------------------------------- CDATA ---------------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   309  
+; ASW\ASW_Diag\src\SWC_Diag.c	   310  	/*  -------------------------------------- Data Write ----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   311  
+; ASW\ASW_Diag\src\SWC_Diag.c	   312  	/*  -------------------------------------- Trigger Interface ---------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   313  
+; ASW\ASW_Diag\src\SWC_Diag.c	   314  	/*  -------------------------------------- Mode Management -----------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   315  
+; ASW\ASW_Diag\src\SWC_Diag.c	   316  	/*  -------------------------------------- Port Handling -------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   317  
+; ASW\ASW_Diag\src\SWC_Diag.c	   318  	/*  -------------------------------------- Exclusive Area ------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   319  
+; ASW\ASW_Diag\src\SWC_Diag.c	   320  	/*  -------------------------------------- Multiple Instantiation ----------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   321  
+; ASW\ASW_Diag\src\SWC_Diag.c	   322  	/*PROTECTED REGION ID(User Logic :Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   323  	/* Start of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   324  	/* End of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   325  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   326  	mode_routine = REQUEST_ROUTINE;
+	movh.a	a15,#@his(mode_routine)
+	lea	a15,[a15]@los(mode_routine)
+.L207:
+	mov	d15,#3
+.L208:
+	st.b	[a15],d15
+.L209:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   327  	return retValue;
+	j	.L7
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   328  }
+.L7:
+	ret
+.L108:
+	
+__Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func_function_end:
+	.size	Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func,__Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func_function_end-Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func
+.L61:
+	; End of function
+	
+	.sdecl	'.text.SWC_Diag.Diag_IOControl_VacuumPumpPressure_ReadData_func',code,cluster('Diag_IOControl_VacuumPumpPressure_ReadData_func')
+	.sect	'.text.SWC_Diag.Diag_IOControl_VacuumPumpPressure_ReadData_func'
+	.align	2
+	
+	.global	Diag_IOControl_VacuumPumpPressure_ReadData_func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   329  
+; ASW\ASW_Diag\src\SWC_Diag.c	   330  #define Diag_SWC_STOP_SEC_CODE                       
+; ASW\ASW_Diag\src\SWC_Diag.c	   331  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   332  #define Diag_SWC_START_SEC_CODE                   
+; ASW\ASW_Diag\src\SWC_Diag.c	   333  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   334  FUNC (Std_ReturnType, AUTOMATIC) Diag_IOControl_VacuumPumpPressure_ReadData_func/* return value & FctID */
+; Function Diag_IOControl_VacuumPumpPressure_ReadData_func
+.L23:
+Diag_IOControl_VacuumPumpPressure_ReadData_func:	.type	func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   335  (
+; ASW\ASW_Diag\src\SWC_Diag.c	   336          CONSTP2VAR(uint8, AUTOMATIC, RTE_APPL_DATA) Data
+; ASW\ASW_Diag\src\SWC_Diag.c	   337  )
+; ASW\ASW_Diag\src\SWC_Diag.c	   338  {
+; ASW\ASW_Diag\src\SWC_Diag.c	   339  
+; ASW\ASW_Diag\src\SWC_Diag.c	   340  	/* Local Data Declaration */
+; ASW\ASW_Diag\src\SWC_Diag.c	   341  
+; ASW\ASW_Diag\src\SWC_Diag.c	   342  	/*PROTECTED REGION ID(UserVariables :Diag_IOControl_VacuumPumpPressure_ReadData_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   343  	/* Start of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   344  	/* End of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   345  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   346  	Std_ReturnType retValue = RTE_E_OK;
+	mov	d2,#0
+.L143:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   347  	/*  -------------------------------------- Data Read -----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   348  
+; ASW\ASW_Diag\src\SWC_Diag.c	   349  	/*  -------------------------------------- Server Call Point  --------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   350  
+; ASW\ASW_Diag\src\SWC_Diag.c	   351  	/*  -------------------------------------- CDATA ---------------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   352  
+; ASW\ASW_Diag\src\SWC_Diag.c	   353  	/*  -------------------------------------- Data Write ----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   354  
+; ASW\ASW_Diag\src\SWC_Diag.c	   355  	/*  -------------------------------------- Trigger Interface ---------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   356  
+; ASW\ASW_Diag\src\SWC_Diag.c	   357  	/*  -------------------------------------- Mode Management -----------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   358  
+; ASW\ASW_Diag\src\SWC_Diag.c	   359  	/*  -------------------------------------- Port Handling -------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   360  
+; ASW\ASW_Diag\src\SWC_Diag.c	   361  	/*  -------------------------------------- Exclusive Area ------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   362  
+; ASW\ASW_Diag\src\SWC_Diag.c	   363  	/*  -------------------------------------- Multiple Instantiation ----------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   364  
+; ASW\ASW_Diag\src\SWC_Diag.c	   365  	/*PROTECTED REGION ID(User Logic :Diag_IOControl_VacuumPumpPressure_ReadData_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   366  	/* Start of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   367  	/* End of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   368  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   369  	*Data = VacuumPumpPressure_Data[0];
+	movh.a	a15,#@his(VacuumPumpPressure_Data)
+	lea	a15,[a15]@los(VacuumPumpPressure_Data)
+.L154:
+	ld.bu	d15,[a15]
+.L155:
+	st.b	[a4],d15
+.L156:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   370  	*(Data+1) = VacuumPumpPressure_Data[1];
+	ld.bu	d15,[a15]1
+.L157:
+	st.b	[a4]1,d15
+.L158:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   371  	return retValue;
+	j	.L8
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   372  }
+.L8:
+	ret
+.L86:
+	
+__Diag_IOControl_VacuumPumpPressure_ReadData_func_function_end:
+	.size	Diag_IOControl_VacuumPumpPressure_ReadData_func,__Diag_IOControl_VacuumPumpPressure_ReadData_func_function_end-Diag_IOControl_VacuumPumpPressure_ReadData_func
+.L36:
+	; End of function
+	
+	.sdecl	'.text.SWC_Diag.RE_Diag_SWC_func',code,cluster('RE_Diag_SWC_func')
+	.sect	'.text.SWC_Diag.RE_Diag_SWC_func'
+	.align	2
+	
+	.global	RE_Diag_SWC_func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   373  
+; ASW\ASW_Diag\src\SWC_Diag.c	   374  #define Diag_SWC_STOP_SEC_CODE                       
+; ASW\ASW_Diag\src\SWC_Diag.c	   375  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   376  #define Diag_SWC_START_SEC_CODE                   
+; ASW\ASW_Diag\src\SWC_Diag.c	   377  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   378  
+; ASW\ASW_Diag\src\SWC_Diag.c	   379  
+; ASW\ASW_Diag\src\SWC_Diag.c	   380  FUNC (void, Diag_SWC_CODE) RE_Diag_SWC_func/* return value & FctID */
+; Function RE_Diag_SWC_func
+.L25:
+RE_Diag_SWC_func:	.type	func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   381  (
+; ASW\ASW_Diag\src\SWC_Diag.c	   382  		void
+; ASW\ASW_Diag\src\SWC_Diag.c	   383  )
+; ASW\ASW_Diag\src\SWC_Diag.c	   384  {
+; ASW\ASW_Diag\src\SWC_Diag.c	   385  
+; ASW\ASW_Diag\src\SWC_Diag.c	   386      Std_ReturnType retRead1;
+; ASW\ASW_Diag\src\SWC_Diag.c	   387      Std_ReturnType retRead2;
+; ASW\ASW_Diag\src\SWC_Diag.c	   388      Std_ReturnType retWrite3;
+; ASW\ASW_Diag\src\SWC_Diag.c	   389      Std_ReturnType retWrite4;
+; ASW\ASW_Diag\src\SWC_Diag.c	   390  
+; ASW\ASW_Diag\src\SWC_Diag.c	   391  	/* Local Data Declaration */
+; ASW\ASW_Diag\src\SWC_Diag.c	   392  
+; ASW\ASW_Diag\src\SWC_Diag.c	   393  	/*PROTECTED REGION ID(UserVariables :RE_Diag_SWC_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   394  	/* Start of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   395  	/* End of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   396  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   397  	Std_ReturnType retValue = RTE_E_OK;
+; ASW\ASW_Diag\src\SWC_Diag.c	   398  	/*  -------------------------------------- Data Read -----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   399  	retRead1 = Rte_Read_RPort_DataServices_DcmDspData_SystemFaultRank_Write_Data(&DID_2311);
+	movh.a	a15,#@his(DID_2311)
+	lea	a15,[a15]@los(DID_2311)
+	movh.a	a2,#@his(Rte_Rx_000008)
+	lea	a2,[a2]@los(Rte_Rx_000008)
+	ld.bu	d15,[a2]
+	st.b	[a15],d15
+.L228:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   400  	retRead2 = Rte_Read_RPort_DataServices_DcmDspData_VehicleSpeed_Write_Data(&DID_2310);
+	movh.a	a2,#@his(DID_2310)
+	lea	a2,[a2]@los(DID_2310)
+	movh.a	a4,#@his(Rte_Rx_000009)
+	lea	a4,[a4]@los(Rte_Rx_000009)
+	ld.bu	d15,[a4]
+	st.b	[a2],d15
+.L229:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   401  
+; ASW\ASW_Diag\src\SWC_Diag.c	   402  	/*  -------------------------------------- Server Call Point  --------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   403  
+; ASW\ASW_Diag\src\SWC_Diag.c	   404  	/*  -------------------------------------- CDATA ---------------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   405  
+; ASW\ASW_Diag\src\SWC_Diag.c	   406  	/*  -------------------------------------- Data Write ----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   407  	retWrite3 = Rte_Write_P_DataServices_DcmDspData_SystemFaultRank_Read_Data(DID_2311);
+	movh.a	a4,#@his(Rte_Rx_000010)
+	lea	a4,[a4]@los(Rte_Rx_000010)
+	ld.bu	d15,[a15]
+	st.b	[a4],d15
+.L230:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   408  	retWrite4 = Rte_Write_P_DataServices_DcmDspData_VehicleSpeed_Read_Data(DID_2310);
+	movh.a	a15,#@his(Rte_Rx_000011)
+	lea	a15,[a15]@los(Rte_Rx_000011)
+	ld.bu	d15,[a2]
+	st.b	[a15],d15
+.L231:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   409  
+; ASW\ASW_Diag\src\SWC_Diag.c	   410  	/*  -------------------------------------- Trigger Interface ---------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   411  
+; ASW\ASW_Diag\src\SWC_Diag.c	   412  	/*  -------------------------------------- Mode Management -----------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   413  
+; ASW\ASW_Diag\src\SWC_Diag.c	   414  	/*  -------------------------------------- Port Handling -------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   415  
+; ASW\ASW_Diag\src\SWC_Diag.c	   416  	/*  -------------------------------------- Exclusive Area ------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   417  
+; ASW\ASW_Diag\src\SWC_Diag.c	   418  	/*  -------------------------------------- Multiple Instantiation ----------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   419  
+; ASW\ASW_Diag\src\SWC_Diag.c	   420  	/*PROTECTED REGION ID(User Logic :RE_Diag_SWC_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   421  	/* Start of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   422  	/* End of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   423  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   424  
+; ASW\ASW_Diag\src\SWC_Diag.c	   425  }
+	ret
+.L130:
+	
+__RE_Diag_SWC_func_function_end:
+	.size	RE_Diag_SWC_func,__RE_Diag_SWC_func_function_end-RE_Diag_SWC_func
+.L76:
+	; End of function
+	
+	.sdecl	'.text.SWC_Diag.Diag_IOControl_VacuumPumpPressure_returnControlToECU_func',code,cluster('Diag_IOControl_VacuumPumpPressure_returnControlToECU_func')
+	.sect	'.text.SWC_Diag.Diag_IOControl_VacuumPumpPressure_returnControlToECU_func'
+	.align	2
+	
+	.global	Diag_IOControl_VacuumPumpPressure_returnControlToECU_func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   426  
+; ASW\ASW_Diag\src\SWC_Diag.c	   427  #define Diag_SWC_STOP_SEC_CODE                       
+; ASW\ASW_Diag\src\SWC_Diag.c	   428  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   429  #define Diag_SWC_START_SEC_CODE                   
+; ASW\ASW_Diag\src\SWC_Diag.c	   430  #include "ASW_Diag_MemMap.h"
+; ASW\ASW_Diag\src\SWC_Diag.c	   431  FUNC (Std_ReturnType, AUTOMATIC) Diag_IOControl_VacuumPumpPressure_returnControlToECU_func/* return value & FctID */
+; Function Diag_IOControl_VacuumPumpPressure_returnControlToECU_func
+.L27:
+Diag_IOControl_VacuumPumpPressure_returnControlToECU_func:	.type	func
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   432  (
+; ASW\ASW_Diag\src\SWC_Diag.c	   433  		CONSTP2VAR(Dcm_NegativeResponseCodeType, AUTOMATIC, RTE_APPL_DATA) ErrorCode
+; ASW\ASW_Diag\src\SWC_Diag.c	   434  )
+; ASW\ASW_Diag\src\SWC_Diag.c	   435  {
+; ASW\ASW_Diag\src\SWC_Diag.c	   436  
+; ASW\ASW_Diag\src\SWC_Diag.c	   437  	/* Local Data Declaration */
+; ASW\ASW_Diag\src\SWC_Diag.c	   438  
+; ASW\ASW_Diag\src\SWC_Diag.c	   439  	/*PROTECTED REGION ID(UserVariables :Diag_IOControl_VacuumPumpPressure_returnControlToECU_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   440  	/* Start of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   441  	/* End of user variable defintions - Do not remove this comment  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   442  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   443  	Std_ReturnType retValue = RTE_E_OK;
+	mov	d2,#0
+.L144:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   444  	/*  -------------------------------------- Data Read -----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   445  
+; ASW\ASW_Diag\src\SWC_Diag.c	   446  	/*  -------------------------------------- Server Call Point  --------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   447  
+; ASW\ASW_Diag\src\SWC_Diag.c	   448  	/*  -------------------------------------- CDATA ---------------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   449  
+; ASW\ASW_Diag\src\SWC_Diag.c	   450  	/*  -------------------------------------- Data Write ----------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   451  
+; ASW\ASW_Diag\src\SWC_Diag.c	   452  	/*  -------------------------------------- Trigger Interface ---------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   453  
+; ASW\ASW_Diag\src\SWC_Diag.c	   454  	/*  -------------------------------------- Mode Management -----------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   455  
+; ASW\ASW_Diag\src\SWC_Diag.c	   456  	/*  -------------------------------------- Port Handling -------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   457  
+; ASW\ASW_Diag\src\SWC_Diag.c	   458  	/*  -------------------------------------- Exclusive Area ------------------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   459  
+; ASW\ASW_Diag\src\SWC_Diag.c	   460  	/*  -------------------------------------- Multiple Instantiation ----------------------------  */
+; ASW\ASW_Diag\src\SWC_Diag.c	   461  
+; ASW\ASW_Diag\src\SWC_Diag.c	   462  	/*PROTECTED REGION ID(User Logic :Diag_IOControl_VacuumPumpPressure_returnControlToECU_func) ENABLED START */
+; ASW\ASW_Diag\src\SWC_Diag.c	   463  	/* Start of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   464  	/* End of user code - Do not remove this comment */
+; ASW\ASW_Diag\src\SWC_Diag.c	   465  	/*PROTECTED REGION END */
+; ASW\ASW_Diag\src\SWC_Diag.c	   466  
+; ASW\ASW_Diag\src\SWC_Diag.c	   467      VacuumPumpPressure_Data[0] = 0xAA;
+	movh.a	a15,#@his(VacuumPumpPressure_Data)
+	lea	a15,[a15]@los(VacuumPumpPressure_Data)
+.L185:
+	mov	d15,#170
+.L186:
+	st.b	[a15],d15
+.L187:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   468      VacuumPumpPressure_Data[1] = 0xAA;
+	mov	d15,#170
+.L188:
+	st.b	[a15]1,d15
+.L189:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   469      *ErrorCode = 0;
+	mov	d15,#0
+.L190:
+	st.b	[a4],d15
+.L191:
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   470      return retValue;
+	j	.L9
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   471  
+; ASW\ASW_Diag\src\SWC_Diag.c	   472  }
+.L9:
+	ret
+.L98:
+	
+__Diag_IOControl_VacuumPumpPressure_returnControlToECU_func_function_end:
+	.size	Diag_IOControl_VacuumPumpPressure_returnControlToECU_func,__Diag_IOControl_VacuumPumpPressure_returnControlToECU_func_function_end-Diag_IOControl_VacuumPumpPressure_returnControlToECU_func
+.L51:
+	; End of function
+	
+	.sdecl	'.bss.SWC_Diag.DID_2311',data,cluster('DID_2311')
+	.sect	'.bss.SWC_Diag.DID_2311'
+DID_2311:	.type	object
+	.size	DID_2311,1
+	.space	1
+	.sdecl	'.bss.SWC_Diag.DID_2310',data,cluster('DID_2310')
+	.sect	'.bss.SWC_Diag.DID_2310'
+DID_2310:	.type	object
+	.size	DID_2310,1
+	.space	1
+	.sdecl	'.bss.SWC_Diag.VacuumPumpPressure_Data',data,cluster('VacuumPumpPressure_Data')
+	.sect	'.bss.SWC_Diag.VacuumPumpPressure_Data'
+VacuumPumpPressure_Data:	.type	object
+	.size	VacuumPumpPressure_Data,2
+	.space	2
+	.sdecl	'.bss.SWC_Diag.mode_routine',data,cluster('mode_routine')
+	.sect	'.bss.SWC_Diag.mode_routine'
+mode_routine:	.type	object
+	.size	mode_routine,1
+	.space	1
+	.calls	'Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func','',0
+	.calls	'Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func','',0
+	.calls	'Diag_RoutineServices_DriveVacuumPump_Start_func','',0
+	.calls	'Diag_RoutineServices_DriveVacuumPump_Stop_func','',0
+	.calls	'Diag_IOControl_VacuumPumpPressure_resetToDefault_func','',0
+	.calls	'Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func','',0
+	.calls	'Diag_IOControl_VacuumPumpPressure_ReadData_func','',0
+	.calls	'RE_Diag_SWC_func','',0
+	.extern	Rte_Rx_000008
+	.extern	Rte_Rx_000009
+	.extern	Rte_Rx_000010
+	.extern	Rte_Rx_000011
+	.calls	'Diag_IOControl_VacuumPumpPressure_returnControlToECU_func','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L29:
+	.word	10530
+	.half	3
+	.word	.L30
+	.byte	4
+.L28:
+	.byte	1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L31
+.L85:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.word	127
+.L87:
+	.byte	4
+	.word	144
+	.byte	3
+	.word	127
+.L91:
+	.byte	4
+	.word	154
+.L95:
+	.byte	4
+	.word	154
+.L99:
+	.byte	4
+	.word	154
+	.byte	4
+	.word	127
+.L103:
+	.byte	3
+	.word	174
+.L105:
+	.byte	4
+	.word	154
+	.byte	3
+	.word	127
+.L110:
+	.byte	4
+	.word	189
+.L112:
+	.byte	4
+	.word	154
+	.byte	3
+	.word	127
+.L118:
+	.byte	4
+	.word	204
+.L120:
+	.byte	4
+	.word	154
+	.byte	3
+	.word	127
+.L125:
+	.byte	4
+	.word	219
+.L127:
+	.byte	4
+	.word	154
+	.byte	5,1,3
+	.word	234
+	.byte	6
+	.byte	'__codeptr',0,1,1,1
+	.word	236
+	.byte	2
+	.byte	'char',0,1,6,6
+	.byte	'sint8',0,2,76,25
+	.word	259
+	.byte	6
+	.byte	'uint8',0,2,81,25
+	.word	127
+	.byte	2
+	.byte	'unsigned short int',0,2,7,6
+	.byte	'uint16',0,2,91,25
+	.word	295
+	.byte	2
+	.byte	'unsigned int',0,4,7,6
+	.byte	'uint32',0,2,106,24
+	.word	332
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,6
+	.byte	'uint64',0,2,111,30
+	.word	363
+	.byte	6
+	.byte	'boolean',0,2,127,25
+	.word	127
+	.byte	6
+	.byte	'StatusType',0,3,191,1,27
+	.word	127
+	.byte	6
+	.byte	'Std_ReturnType',0,3,199,1,15
+	.word	127
+	.byte	7,3,206,1,9,8,8
+	.byte	'vendorID',0
+	.word	295
+	.byte	2,2,35,0,8
+	.byte	'moduleID',0
+	.word	295
+	.byte	2,2,35,2,8
+	.byte	'sw_major_version',0
+	.word	127
+	.byte	1,2,35,4,8
+	.byte	'sw_minor_version',0
+	.word	127
+	.byte	1,2,35,5,8
+	.byte	'sw_patch_version',0
+	.word	127
+	.byte	1,2,35,6,0,6
+	.byte	'Std_VersionInfoType',0,3,213,1,3
+	.word	464
+	.byte	6
+	.byte	'PduIdType',0,4,22,19
+	.word	295
+	.byte	6
+	.byte	'PduLengthType',0,4,26,19
+	.word	295
+	.byte	9,5,113,9,4,10
+	.byte	'TP_DATACONF',0,0,10
+	.byte	'TP_DATARETRY',0,1,10
+	.byte	'TP_CONFPENDING',0,2,0,6
+	.byte	'TpDataStateType',0,5,118,3
+	.word	654
+	.byte	6
+	.byte	'Can_IdType',0,6,32,16
+	.word	332
+	.byte	6
+	.byte	'Can_HwHandleType',0,6,43,16
+	.word	295
+	.byte	7,7,93,9,8,8
+	.byte	'Class',0
+	.word	127
+	.byte	1,2,35,0,8
+	.byte	'TIN',0
+	.word	127
+	.byte	1,2,35,1,8
+	.byte	'ReturnAddress',0
+	.word	332
+	.byte	4,2,35,4,0,6
+	.byte	'OsTrapInfoType',0,7,97,3
+	.word	774
+	.byte	11,68
+	.word	332
+	.byte	12,16,0,7,7,154,1,9,68,8
+	.byte	'store',0
+	.word	854
+	.byte	68,2,35,0,0,11,68
+	.word	863
+	.byte	12,0,0,6
+	.byte	'Os_JumpBufType',0,7,156,1,3
+	.word	885
+	.byte	6
+	.byte	'Os_StackTraceType',0,7,174,1,18
+	.word	332
+	.byte	7,7,175,1,9,8,8
+	.byte	'sp',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	'ctx',0
+	.word	332
+	.byte	4,2,35,4,0,6
+	.byte	'Os_StackValueType',0,7,175,1,63
+	.word	945
+	.byte	6
+	.byte	'Os_StackSizeType',0,7,176,1,27
+	.word	945
+	.byte	13,1,1,3
+	.word	1030
+	.byte	6
+	.byte	'Os_VoidVoidFunctionType',0,7,179,1,16
+	.word	1033
+	.byte	6
+	.byte	'ApplicationType',0,7,193,1,23
+	.word	127
+	.byte	14
+	.byte	'Os_ApplicationConfigurationType_s',0,7,198,1,16,2,8
+	.byte	'app_id',0
+	.word	127
+	.byte	1,2,35,0,8
+	.byte	'access',0
+	.word	127
+	.byte	1,2,35,1,0,6
+	.byte	'Os_ApplicationConfigurationType',0,7,201,1,3
+	.word	1096
+	.byte	6
+	.byte	'Os_CoreStateType',0,7,203,1,16
+	.word	332
+	.byte	6
+	.byte	'AreaIdType',0,7,204,1,16
+	.word	295
+	.byte	6
+	.byte	'Os_PeripheralAddressType',0,7,212,1,22
+	.word	332
+	.byte	6
+	.byte	'TickType',0,7,221,1,22
+	.word	332
+	.byte	6
+	.byte	'Os_StopwatchTickType',0,7,225,1,22
+	.word	332
+	.byte	3
+	.word	332
+	.byte	6
+	.byte	'Os_Lockable',0,7,234,1,18
+	.word	1338
+	.byte	6
+	.byte	'CoreIdType',0,7,236,1,16
+	.word	295
+	.byte	6
+	.byte	'SpinlockIdType',0,7,237,1,16
+	.word	295
+	.byte	9,7,239,1,9,4,10
+	.byte	'TRYTOGETSPINLOCK_SUCCESS',0,0,10
+	.byte	'TRYTOGETSPINLOCK_NOSUCCESS',0,1,0,6
+	.byte	'TryToGetSpinlockType',0,7,239,1,74
+	.word	1408
+	.byte	9,7,174,2,9,4,10
+	.byte	'APPLICATION_ACCESSIBLE',0,0,10
+	.byte	'APPLICATION_RESTARTING',0,1,10
+	.byte	'APPLICATION_TERMINATED',0,2,0,6
+	.byte	'ApplicationStateType',0,7,174,2,92
+	.word	1501
+	.byte	15
+	.byte	'void',0,3
+	.word	1613
+	.byte	16,1,1,17
+	.word	127
+	.byte	17
+	.word	1619
+	.byte	0,3
+	.word	1624
+	.byte	6
+	.byte	'Os_FunctionEntryType',0,7,183,2,16
+	.word	1638
+	.byte	14
+	.byte	'Os_MeterInfoType_s',0,7,193,2,16,48,8
+	.byte	'elapsed',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	'previous',0
+	.word	332
+	.byte	4,2,35,4,8
+	.byte	'max',0
+	.word	332
+	.byte	4,2,35,8,8
+	.byte	'cumulative',0
+	.word	332
+	.byte	4,2,35,12,8
+	.byte	'stackbase',0
+	.word	945
+	.byte	8,2,35,16,8
+	.byte	'stackusage',0
+	.word	945
+	.byte	8,2,35,24,8
+	.byte	'stackmax',0
+	.word	945
+	.byte	8,2,35,32,8
+	.byte	'stackbudget',0
+	.word	945
+	.byte	8,2,35,40,0,6
+	.byte	'Os_MeterInfoType',0,7,202,2,3
+	.word	1673
+	.byte	3
+	.word	1673
+	.byte	6
+	.byte	'Os_MeterInfoRefType',0,7,203,2,50
+	.word	1871
+	.byte	6
+	.byte	'EventMaskType',0,7,206,2,15
+	.word	127
+	.byte	6
+	.byte	'Os_imaskType',0,7,211,2,16
+	.word	332
+	.byte	14
+	.byte	'Os_ISRDynType_s',0,7,213,2,16,48,8
+	.byte	'meter',0
+	.word	1673
+	.byte	48,2,35,0,0,6
+	.byte	'Os_ISRDynType',0,7,215,2,3
+	.word	1950
+	.byte	3
+	.word	1950
+	.byte	4
+	.word	2011
+	.byte	14
+	.byte	'Os_ISRType_s',0,7,216,2,16,24,8
+	.byte	'entry_function',0
+	.word	1038
+	.byte	4,2,35,0,8
+	.byte	'dynamic',0
+	.word	2016
+	.byte	4,2,35,4,8
+	.byte	'imask',0
+	.word	332
+	.byte	4,2,35,8,8
+	.byte	'stackbudget',0
+	.word	945
+	.byte	8,2,35,12,8
+	.byte	'access',0
+	.word	127
+	.byte	1,2,35,20,8
+	.byte	'application',0
+	.word	127
+	.byte	1,2,35,21,0,6
+	.byte	'Os_ISRType',0,7,223,2,3
+	.word	2021
+	.byte	3
+	.word	1030
+	.byte	4
+	.word	2021
+	.byte	3
+	.word	2180
+	.byte	6
+	.byte	'ISRType',0,7,224,2,46
+	.word	2185
+	.byte	6
+	.byte	'Os_bitmask',0,7,239,2,22
+	.word	332
+	.byte	6
+	.byte	'Os_pset0Type',0,7,240,2,20
+	.word	332
+	.byte	6
+	.byte	'Os_pset1Type',0,7,241,2,20
+	.word	332
+	.byte	6
+	.byte	'Os_pset2Type',0,7,242,2,20
+	.word	332
+	.byte	18,7,243,2,9,4,8
+	.byte	'p0',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	'p1',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	'p2',0
+	.word	332
+	.byte	4,2,35,0,0,6
+	.byte	'Os_psetType',0,7,247,2,3
+	.word	2293
+	.byte	18,7,249,2,9,4,8
+	.byte	't0',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	't1',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	't2',0
+	.word	332
+	.byte	4,2,35,0,0,6
+	.byte	'Os_tpmaskType',0,7,253,2,3
+	.word	2357
+	.byte	6
+	.byte	'Os_ActivationCountType',0,7,254,2,23
+	.word	127
+	.byte	14
+	.byte	'Os_TaskDynType_s',0,7,128,3,16,120,8
+	.byte	'terminate_jump_buf',0
+	.word	894
+	.byte	68,2,35,0,8
+	.byte	'meter',0
+	.word	1673
+	.byte	48,2,35,68,8
+	.byte	'activation_count',0
+	.word	127
+	.byte	1,2,35,116,0,6
+	.byte	'Os_TaskDynType',0,7,132,3,3
+	.word	2455
+	.byte	11,68
+	.word	863
+	.byte	12,0,0,3
+	.word	2455
+	.byte	4
+	.word	2581
+	.byte	14
+	.byte	'Os_TaskType_s',0,7,134,3,16,40,8
+	.byte	'dynamic',0
+	.word	2586
+	.byte	4,2,35,0,8
+	.byte	'entry_function',0
+	.word	1038
+	.byte	4,2,35,4,8
+	.byte	'pset',0
+	.word	2293
+	.byte	4,2,35,8,8
+	.byte	'base_tpmask',0
+	.word	2357
+	.byte	4,2,35,12,8
+	.byte	'tpmask',0
+	.word	2357
+	.byte	4,2,35,16,8
+	.byte	'core_id',0
+	.word	295
+	.byte	2,2,35,20,8
+	.byte	'index',0
+	.word	332
+	.byte	4,2,35,24,8
+	.byte	'stackbudget',0
+	.word	945
+	.byte	8,2,35,28,8
+	.byte	'activation_count',0
+	.word	127
+	.byte	1,2,35,36,8
+	.byte	'access',0
+	.word	127
+	.byte	1,2,35,37,8
+	.byte	'application',0
+	.word	127
+	.byte	1,2,35,38,0,6
+	.byte	'Os_TaskType',0,7,146,3,3
+	.word	2591
+	.byte	4
+	.word	2591
+	.byte	3
+	.word	2841
+	.byte	6
+	.byte	'TaskType',0,7,147,3,47
+	.word	2846
+	.byte	19
+	.byte	'Os_TaskStateType',0,7,155,3,6,4,10
+	.byte	'SUSPENDED',0,0,10
+	.byte	'READY',0,1,10
+	.byte	'WAITING',0,2,10
+	.byte	'RUNNING',0,3,0,6
+	.byte	'TaskStateType',0,7,156,3,31
+	.word	2869
+	.byte	18,7,167,3,3,4,8
+	.byte	'tpmask',0
+	.word	2357
+	.byte	4,2,35,0,0,14
+	.byte	'Os_ResourceDynType_s',0,7,166,3,16,4,8
+	.byte	'saved_priority',0
+	.word	2956
+	.byte	4,2,35,0,0,6
+	.byte	'Os_ResourceDynType',0,7,170,3,3
+	.word	2979
+	.byte	3
+	.word	2979
+	.byte	4
+	.word	3059
+	.byte	14
+	.byte	'Os_ResourceType_s',0,7,171,3,16,12,8
+	.byte	'dynamic',0
+	.word	3064
+	.byte	4,2,35,0,8
+	.byte	'tpmask',0
+	.word	2357
+	.byte	4,2,35,4,8
+	.byte	'access',0
+	.word	127
+	.byte	1,2,35,8,0,6
+	.byte	'Os_ResourceType',0,7,175,3,3
+	.word	3069
+	.byte	7,7,181,3,9,12,8
+	.byte	'maxallowedvalue',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	'ticksperbase',0
+	.word	332
+	.byte	4,2,35,4,8
+	.byte	'mincycle',0
+	.word	332
+	.byte	4,2,35,8,0,6
+	.byte	'AlarmBaseType',0,7,185,3,3
+	.word	3168
+	.byte	7,7,206,3,9,8,8
+	.byte	'Running',0
+	.word	127
+	.byte	1,2,35,0,8
+	.byte	'Pending',0
+	.word	127
+	.byte	1,2,35,1,8
+	.byte	'Delay',0
+	.word	332
+	.byte	4,2,35,4,0,6
+	.byte	'Os_CounterStatusType',0,7,210,3,3
+	.word	3263
+	.byte	20
+	.word	127
+	.byte	1,1,3
+	.word	3349
+	.byte	6
+	.byte	'Os_CounterIncrAdvType',0,7,217,3,22
+	.word	3356
+	.byte	14
+	.byte	's_swd',0,7,222,3,12,4,8
+	.byte	'count',0
+	.word	332
+	.byte	4,2,35,0,0,18,7,221,3,3,4,8
+	.byte	'sw',0
+	.word	3392
+	.byte	4,2,35,0,0,14
+	.byte	'Os_CounterDynType_s',0,7,220,3,16,4,8
+	.byte	'type_dependent',0
+	.word	3420
+	.byte	4,2,35,0,0,6
+	.byte	'Os_CounterDynType',0,7,226,3,3
+	.word	3439
+	.byte	3
+	.word	3439
+	.byte	4
+	.word	3517
+	.byte	14
+	.byte	'Os_CounterType_s',0,7,227,3,16,28,8
+	.byte	'dynamic',0
+	.word	3522
+	.byte	4,2,35,0,8
+	.byte	'advincr',0
+	.word	3361
+	.byte	4,2,35,4,8
+	.byte	'base',0
+	.word	3168
+	.byte	12,2,35,8,8
+	.byte	'core',0
+	.word	1619
+	.byte	4,2,35,20,8
+	.byte	'access',0
+	.word	127
+	.byte	1,2,35,24,8
+	.byte	'application',0
+	.word	127
+	.byte	1,2,35,25,0,6
+	.byte	'Os_CounterType',0,7,234,3,3
+	.word	3527
+	.byte	3
+	.word	3349
+	.byte	4
+	.word	3527
+	.byte	3
+	.word	3679
+	.byte	6
+	.byte	'CounterType',0,7,235,3,52
+	.word	3684
+	.byte	19
+	.byte	'Os_ScheduleTableStatusType',0,7,240,3,6,4,10
+	.byte	'SCHEDULETABLE_STOPPED',0,0,10
+	.byte	'SCHEDULETABLE_NEXT',0,1,10
+	.byte	'SCHEDULETABLE_WAITING',0,2,10
+	.byte	'SCHEDULETABLE_RUNNING',0,3,10
+	.byte	'SCHEDULETABLE_RUNNING_AND_SYNCHRONOUS',0,4,0,6
+	.byte	'ScheduleTableStatusType',0,7,241,3,41
+	.word	3710
+	.byte	4
+	.word	.L145-.L29
+	.byte	3
+	.word	3910
+	.byte	6
+	.byte	'ScheduleTableType',0,7,128,4,58
+	.word	3915
+	.byte	14
+	.byte	'Os_ScheduleTableDynType_s',0,7,130,4,16,16,8
+	.byte	'match',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	'next',0
+	.word	3920
+	.byte	4,2,35,4,8
+	.byte	'state',0
+	.word	3710
+	.byte	4,2,35,8,8
+	.byte	'config',0
+	.word	295
+	.byte	2,2,35,12,0,3
+	.word	3947
+	.byte	4
+	.word	4040
+.L145:
+	.byte	14
+	.byte	'Os_ScheduleTableType_s',0,7,247,3,16,16,8
+	.byte	'dynamic',0
+	.word	4045
+	.byte	4,2,35,0,8
+	.byte	'counter',0
+	.word	3689
+	.byte	4,2,35,4,8
+	.byte	'repeat',0
+	.word	127
+	.byte	1,2,35,8,8
+	.byte	'config',0
+	.word	295
+	.byte	2,2,35,10,8
+	.byte	'initial',0
+	.word	127
+	.byte	1,2,35,12,8
+	.byte	'access',0
+	.word	127
+	.byte	1,2,35,13,8
+	.byte	'application',0
+	.word	127
+	.byte	1,2,35,14,0,6
+	.byte	'Os_ScheduleTableType',0,7,255,3,3
+	.word	4050
+	.byte	4
+	.word	4050
+	.byte	3
+	.word	4230
+	.byte	4
+	.word	3527
+	.byte	3
+	.word	4240
+	.byte	21
+	.word	1343
+	.byte	21
+	.word	2293
+	.byte	21
+	.word	2190
+	.byte	21
+	.word	2851
+	.byte	21
+	.word	2357
+	.byte	21
+	.word	127
+	.byte	21
+	.word	2851
+	.byte	14
+	.byte	'Os_ControlledCoreType_s',0,7,251,6,16,112,8
+	.byte	'TrapInfo',0
+	.word	774
+	.byte	8,2,35,0,8
+	.byte	'lock_taskaccess',0
+	.word	4250
+	.byte	4,2,35,8,8
+	.byte	'ReadyTasks',0
+	.word	4255
+	.byte	4,2,35,12,8
+	.byte	'RunningISR',0
+	.word	4260
+	.byte	4,2,35,16,8
+	.byte	'RunningTask',0
+	.word	4265
+	.byte	4,2,35,20,8
+	.byte	'RunningTPMask',0
+	.word	4270
+	.byte	4,2,35,24,8
+	.byte	'CurrentMeteredObject',0
+	.word	1876
+	.byte	4,2,35,28,8
+	.byte	'IdleMeter',0
+	.word	1673
+	.byte	48,2,35,32,8
+	.byte	'AppAccess',0
+	.word	127
+	.byte	1,2,35,80,8
+	.byte	'AppOverride',0
+	.word	4275
+	.byte	1,2,35,81,8
+	.byte	'GetStackValueAdjust',0
+	.word	945
+	.byte	8,2,35,84,8
+	.byte	'InErrorHook',0
+	.word	127
+	.byte	1,2,35,92,8
+	.byte	'ChainTaskRef',0
+	.word	4280
+	.byte	4,2,35,96,8
+	.byte	'GetStackUsageAdjust',0
+	.word	945
+	.byte	8,2,35,100,8
+	.byte	'InProtectionHook',0
+	.word	127
+	.byte	1,2,35,108,8
+	.byte	'CoreIsActive',0
+	.word	127
+	.byte	1,2,35,109,8
+	.byte	'InShutdownHook',0
+	.word	127
+	.byte	1,2,35,110,0,6
+	.byte	'Os_ControlledCoreType',0,7,141,7,3
+	.word	4285
+	.byte	3
+	.word	332
+	.byte	4
+	.word	2021
+	.byte	3
+	.word	4741
+	.byte	4
+	.word	2591
+	.byte	3
+	.word	4751
+	.byte	3
+	.word	1673
+	.byte	14
+	.byte	'Os_AnyCoreType_s',0,7,151,7,16,96,8
+	.byte	'DisableAllImask',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	'SuspendAllImask',0
+	.word	332
+	.byte	4,2,35,4,8
+	.byte	'SuspendOSImask',0
+	.word	332
+	.byte	4,2,35,8,8
+	.byte	'DisableAllCount',0
+	.word	332
+	.byte	4,2,35,12,8
+	.byte	'SuspendAllCount',0
+	.word	332
+	.byte	4,2,35,16,8
+	.byte	'SuspendOSCount',0
+	.word	332
+	.byte	4,2,35,20,8
+	.byte	'RestartJumpBuf',0
+	.word	894
+	.byte	68,2,35,24,8
+	.byte	'Restartable',0
+	.word	127
+	.byte	1,2,35,92,0,6
+	.byte	'Os_AnyCoreType',0,7,160,7,3
+	.word	4766
+	.byte	6
+	.byte	'Can_TxObjPriorityClassType',0,8,219,3,16
+	.word	332
+	.byte	14
+	.byte	'Can_TxHwObjectConfigType',0,8,231,3,16,8,8
+	.byte	'MsgObjId',0
+	.word	127
+	.byte	1,2,35,0,8
+	.byte	'HwControllerId',0
+	.word	127
+	.byte	1,2,35,1,8
+	.byte	'TxObjPriorityClass',0
+	.word	332
+	.byte	4,2,35,4,0,6
+	.byte	'Can_TxHwObjectConfigType',0,8,252,3,3
+	.word	5043
+	.byte	14
+	.byte	'Can_RxHwObjectConfigType',0,8,129,4,16,12,8
+	.byte	'MaskRef',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	'MsgId',0
+	.word	332
+	.byte	4,2,35,4,8
+	.byte	'MsgObjId',0
+	.word	127
+	.byte	1,2,35,8,8
+	.byte	'HwControllerId',0
+	.word	127
+	.byte	1,2,35,9,0,6
+	.byte	'Can_RxHwObjectConfigType',0,8,147,4,3
+	.word	5179
+	.byte	11,4
+	.word	127
+	.byte	12,3,0,14
+	.byte	'Can_ControllerMOMapConfigType',0,8,181,4,16,4,8
+	.byte	'ControllerMOMap',0
+	.word	5319
+	.byte	4,2,35,0,0,6
+	.byte	'Can_ControllerMOMapConfigType',0,8,184,4,3
+	.word	5328
+	.byte	14
+	.byte	'Can_NPCRValueType',0,8,188,4,16,2,8
+	.byte	'Can_NPCRValue',0
+	.word	295
+	.byte	2,2,35,0,0,6
+	.byte	'Can_NPCRValueType',0,8,191,4,3
+	.word	5429
+	.byte	14
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,8,194,4,16,8,8
+	.byte	'CanControllerBaudrate',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	'CanControllerBaudrateCfg',0
+	.word	295
+	.byte	2,2,35,4,0,6
+	.byte	'Can_17_MCanP_ControllerBaudrateConfigType',0,8,198,4,3
+	.word	5504
+	.byte	4
+	.word	5504
+	.byte	3
+	.word	5669
+	.byte	14
+	.byte	'Can_BaudrateConfigPtrType',0,8,201,4,16,4,8
+	.byte	'Can_kBaudrateConfigPtr',0
+	.word	5674
+	.byte	4,2,35,0,0,6
+	.byte	'Can_BaudrateConfigPtrType',0,8,204,4,3
+	.word	5679
+	.byte	14
+	.byte	'Can_EventHandlingType',0,8,226,4,16,4,8
+	.byte	'CanEventType',0
+	.word	5319
+	.byte	4,2,35,0,0,6
+	.byte	'Can_EventHandlingType',0,8,229,4,3
+	.word	5779
+	.byte	6
+	.byte	'Rte_TransformerErrorCode',0,9,130,1,15
+	.word	127
+	.byte	6
+	.byte	'Rte_TransformerClass',0,9,131,1,15
+	.word	127
+	.byte	7,9,168,1,9,12,8
+	.byte	'in',0
+	.word	1619
+	.byte	4,2,35,0,8
+	.byte	'out',0
+	.word	1619
+	.byte	4,2,35,4,8
+	.byte	'used',0
+	.word	295
+	.byte	2,2,35,8,8
+	.byte	'lost_data',0
+	.word	127
+	.byte	1,2,35,10,0,6
+	.byte	'Rte_QDynType',0,9,173,1,3
+	.word	5925
+	.byte	9,9,175,1,9,4,10
+	.byte	'RTE_DRA',0,0,10
+	.byte	'RTE_WOWP',0,1,10
+	.byte	'RTE_TASK',0,2,10
+	.byte	'RTE_ARE',0,3,10
+	.byte	'RTE_EV',0,4,10
+	.byte	'RTE_MSI',0,5,0,6
+	.byte	'Rte_NotificationType',0,9,182,1,3
+	.word	6012
+	.byte	3
+	.word	5925
+	.byte	14
+	.byte	'Rte_QCmnType',0,9,184,1,16,24,8
+	.byte	'dynamic',0
+	.word	6110
+	.byte	4,2,35,0,8
+	.byte	'copy',0
+	.word	127
+	.byte	1,2,35,4,8
+	.byte	'queue_size',0
+	.word	295
+	.byte	2,2,35,6,8
+	.byte	'element_size',0
+	.word	295
+	.byte	2,2,35,8,8
+	.byte	'buffer_start',0
+	.word	1619
+	.byte	4,2,35,12,8
+	.byte	'buffer_end',0
+	.word	1619
+	.byte	4,2,35,16,8
+	.byte	'notification_type',0
+	.word	6012
+	.byte	4,2,35,20,0,6
+	.byte	'Rte_QCmnType',0,9,192,1,3
+	.word	6115
+	.byte	6
+	.byte	'Rte_AlarmRefType',0,9,224,1,32
+	.word	332
+	.byte	6
+	.byte	'Rte_AlarmIndexType',0,9,226,1,32
+	.word	295
+	.byte	6
+	.byte	'Rte_TaskRefType',0,10,184,1,32
+	.word	2851
+	.byte	6
+	.byte	'Rte_EventRefType',0,10,185,1,32
+	.word	127
+	.byte	6
+	.byte	'Rte_EventType',0,10,186,1,32
+	.word	332
+	.byte	6
+	.byte	'Rte_REActCounterType',0,10,252,1,15
+	.word	127
+	.byte	3
+	.word	127
+	.byte	6
+	.byte	'Rte_REActCounterRefType',0,10,253,1,58
+	.word	6457
+	.byte	7,10,255,1,9,8,8
+	.byte	'task',0
+	.word	6353
+	.byte	4,2,35,0,8
+	.byte	'acnt',0
+	.word	6462
+	.byte	4,2,35,4,0,6
+	.byte	'Rte_REContainerType',0,10,130,2,3
+	.word	6495
+	.byte	4
+	.word	2591
+	.byte	3
+	.word	6559
+	.byte	3
+	.word	127
+	.byte	4
+	.word	6495
+	.byte	3
+	.word	6574
+	.byte	6
+	.byte	'Rte_REContainerRefType',0,10,132,2,60
+	.word	6579
+	.byte	6
+	.byte	'Rte_MSICounterType',0,10,149,2,16
+	.word	295
+	.byte	3
+	.word	295
+	.byte	6
+	.byte	'Rte_MSICounterRefType',0,10,150,2,56
+	.word	6644
+	.byte	6
+	.byte	'Rte_MSIPendingFlagType',0,10,152,2,17
+	.word	127
+	.byte	3
+	.word	127
+	.byte	6
+	.byte	'Rte_MSIPendingFlagRefType',0,10,153,2,60
+	.word	6712
+	.byte	7,10,163,2,9,24,8
+	.byte	'counter',0
+	.word	6649
+	.byte	4,2,35,0,8
+	.byte	'incCounter',0
+	.word	127
+	.byte	1,2,35,4,8
+	.byte	'pending',0
+	.word	6717
+	.byte	4,2,35,8,8
+	.byte	'osTask',0
+	.word	6353
+	.byte	4,2,35,12,8
+	.byte	'acnt',0
+	.word	6462
+	.byte	4,2,35,16,8
+	.byte	'osEvent',0
+	.word	127
+	.byte	1,2,35,20,8
+	.byte	'MSIInit',0
+	.word	295
+	.byte	2,2,35,22,0,6
+	.byte	'Rte_MSITableEntry',0,10,172,2,3
+	.word	6752
+	.byte	3
+	.word	295
+	.byte	3
+	.word	127
+	.byte	6
+	.byte	'Rte_TaskArrayIndex',0,10,179,2,16
+	.word	127
+	.byte	6
+	.byte	'Rte_NrWaitingTasks',0,10,180,2,16
+	.word	127
+	.byte	7,10,182,2,9,4,8
+	.byte	'pending',0
+	.word	127
+	.byte	1,2,35,0,8
+	.byte	'count',0
+	.word	127
+	.byte	1,2,35,1,8
+	.byte	'firstWaitingTask',0
+	.word	127
+	.byte	1,2,35,2,0,6
+	.byte	'Rte_WaitableDatum',0,10,186,2,3
+	.word	6970
+	.byte	3
+	.word	6970
+	.byte	7,10,226,2,9,12,8
+	.byte	'event_id',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	'wd',0
+	.word	7062
+	.byte	4,2,35,4,8
+	.byte	'timeout',0
+	.word	332
+	.byte	4,2,35,8,0,6
+	.byte	'Rte_WOWP_NotificationType',0,10,230,2,3
+	.word	7067
+	.byte	4
+	.word	7067
+	.byte	3
+	.word	7156
+	.byte	6
+	.byte	'Rte_WOWP_NotificationRefType',0,10,232,2,66
+	.word	7161
+	.byte	6
+	.byte	'Rte_ARE_NotificationType',0,10,234,2,29
+	.word	6495
+	.byte	14
+	.byte	'Rte_QTaskType',0,10,243,2,16,28,8
+	.byte	'cmn',0
+	.word	6115
+	.byte	24,2,35,0,8
+	.byte	'task',0
+	.word	6353
+	.byte	4,2,35,24,0,6
+	.byte	'Rte_QTaskType',0,10,246,2,3
+	.word	7238
+	.byte	14
+	.byte	'Rte_QREType',0,10,250,2,16,28,8
+	.byte	'cmn',0
+	.word	6115
+	.byte	24,2,35,0,8
+	.byte	're',0
+	.word	6584
+	.byte	4,2,35,24,0,6
+	.byte	'Rte_QREType',0,10,253,2,3
+	.word	7309
+	.byte	4
+	.word	6495
+	.byte	3
+	.word	7374
+	.byte	14
+	.byte	'Rte_QWWPType',0,10,129,3,16,28,8
+	.byte	'cmn',0
+	.word	6115
+	.byte	24,2,35,0,8
+	.byte	'wwp',0
+	.word	7166
+	.byte	4,2,35,24,0,6
+	.byte	'Rte_QWWPType',0,10,132,3,3
+	.word	7384
+	.byte	4
+	.word	7067
+	.byte	3
+	.word	7452
+	.byte	14
+	.byte	'Rte_QEvType',0,10,136,3,16,36,8
+	.byte	'cmn',0
+	.word	6115
+	.byte	24,2,35,0,8
+	.byte	'task',0
+	.word	6353
+	.byte	4,2,35,24,8
+	.byte	'mask',0
+	.word	127
+	.byte	1,2,35,28,8
+	.byte	'acnt',0
+	.word	6462
+	.byte	4,2,35,32,0,6
+	.byte	'Rte_QEvType',0,10,141,3,3
+	.word	7462
+	.byte	14
+	.byte	'Rte_QMSIType',0,10,145,3,16,48,8
+	.byte	'cmn',0
+	.word	6115
+	.byte	24,2,35,0,8
+	.byte	'task',0
+	.word	6353
+	.byte	4,2,35,24,8
+	.byte	'mask',0
+	.word	127
+	.byte	1,2,35,28,8
+	.byte	'acnt',0
+	.word	6462
+	.byte	4,2,35,32,8
+	.byte	'msiCounter',0
+	.word	6649
+	.byte	4,2,35,36,8
+	.byte	'msiPending',0
+	.word	6717
+	.byte	4,2,35,40,8
+	.byte	'msiLimit',0
+	.word	295
+	.byte	2,2,35,44,0,6
+	.byte	'Rte_QMSIType',0,10,153,3,3
+	.word	7557
+	.byte	11,128,8
+	.word	127
+	.byte	12,255,7,0,6
+	.byte	'Impl_NVM_DstPtrType_1024',0,11,50,15
+	.word	7712
+	.byte	6
+	.byte	'CanIf_u32_impl',0,11,69,16
+	.word	332
+	.byte	6
+	.byte	'CanIf_u16_impl',0,11,71,16
+	.word	295
+	.byte	6
+	.byte	'CanIf_u8_impl',0,11,73,15
+	.word	127
+	.byte	6
+	.byte	'CanIf_ControllerModeType_Enum_impl',0,11,88,15
+	.word	127
+	.byte	6
+	.byte	'CanIf_PduModeType_Enum_impl',0,11,90,15
+	.word	127
+	.byte	7,11,92,9,2,8
+	.byte	'DeviceMode',0
+	.word	127
+	.byte	1,2,35,0,8
+	.byte	'ChannelMode',0
+	.word	127
+	.byte	1,2,35,1,0,6
+	.byte	'CanIf_ControllerStateType_struct_impl',0,11,95,3
+	.word	7903
+	.byte	6
+	.byte	'CanIf_NotifStatusType_Enum_impl',0,11,100,15
+	.word	127
+	.byte	6
+	.byte	'CanSM_boolean_Impl',0,11,120,15
+	.word	127
+	.byte	6
+	.byte	'CanSM_u8_Impl',0,11,123,15
+	.word	127
+	.byte	6
+	.byte	'CanSM_BusOffRecoveryStateType_Enum_impl',0,11,128,1,15
+	.word	127
+	.byte	6
+	.byte	'CanSM_NetworkModeStateType_Enum_impl',0,11,132,1,15
+	.word	127
+	.byte	6
+	.byte	'CanSM_u16_Impl',0,11,136,1,16
+	.word	295
+	.byte	6
+	.byte	'CanSM_TimerStateType_Enum_impl',0,11,138,1,15
+	.word	127
+	.byte	7,11,140,1,9,4,8
+	.byte	'cntTick_u16',0
+	.word	295
+	.byte	2,2,35,0,8
+	.byte	'stTimer',0
+	.word	127
+	.byte	1,2,35,2,0,6
+	.byte	'CanSM_TimerConfig_tst_struct_impl',0,11,143,1,3
+	.word	8244
+	.byte	6
+	.byte	'Com_impl_u16',0,11,154,1,16
+	.word	295
+	.byte	6
+	.byte	'Com_impl_u8',0,11,157,1,15
+	.word	127
+	.byte	6
+	.byte	'ComM_uint32_Impl',0,11,173,1,16
+	.word	332
+	.byte	6
+	.byte	'ComM_uint16_Impl',0,11,175,1,16
+	.word	295
+	.byte	6
+	.byte	'ComM_uint8_Impl',0,11,177,1,15
+	.word	127
+	.byte	6
+	.byte	'ComM_bool_Impl',0,11,179,1,15
+	.word	127
+	.byte	7,11,181,1,9,24,8
+	.byte	'ChannelState_e',0
+	.word	332
+	.byte	4,2,35,0,8
+	.byte	'LightTimeoutCtr_u32',0
+	.word	332
+	.byte	4,2,35,4,8
+	.byte	'MinFullComTimeoutCtr_u16',0
+	.word	295
+	.byte	2,2,35,8,8
+	.byte	'ChannelMode_u8',0
+	.word	127
+	.byte	1,2,35,10,8
+	.byte	'BusSmMode_u8',0
+	.word	127
+	.byte	1,2,35,11,8
+	.byte	'UserRequestCtr_u8',0
+	.word	127
+	.byte	1,2,35,12,8
+	.byte	'PassiveRequestState_u8',0
+	.word	127
+	.byte	1,2,35,13,8
+	.byte	'PncRequestCtr_u8',0
+	.word	127
+	.byte	1,2,35,14,8
+	.byte	'InhibitionReqStatus_u8',0
+	.word	127
+	.byte	1,2,35,15,8
+	.byte	'NmNetworkRequestStatus_b',0
+	.word	127
+	.byte	1,2,35,16,8
+	.byte	'DiagnosticRequestState_b',0
+	.word	127
+	.byte	1,2,35,17,8
+	.byte	'CommunicationAllowed_b',0
+	.word	127
+	.byte	1,2,35,18,8
+	.byte	'NmBusSleepIndicationStatus_b',0
+	.word	127
+	.byte	1,2,35,19,8
+	.byte	'NmPrepareBusSleepIndicationStatus_b',0
+	.word	127
+	.byte	1,2,35,20,8
+	.byte	'NmNetworkModeStatus_b',0
+	.word	127
+	.byte	1,2,35,21,0,6
+	.byte	'ComM_ChannelStruct_Impl',0,11,197,1,3
+	.word	8476
+	.byte	7,11,206,1,9,10,8
+	.byte	'WakeUpInhibitionCtr_u16',0
+	.word	295
+	.byte	2,2,35,0,8
+	.byte	'LimitToNoComCtr_u16',0
+	.word	295
+	.byte	2,2,35,2,8
+	.byte	'RequestedUserMode_t',0
+	.word	127
+	.byte	1,2,35,4,8
+	.byte	'IndicatedUserMode_t',0
+	.word	127
+	.byte	1,2,35,5,8
+	.byte	'numChannelsInFullCom_u8',0
+	.word	127
+	.byte	1,2,35,6,8
+	.byte	'numChannelsInSilentCom_u8',0
+	.word	127
+	.byte	1,2,35,7,8
+	.byte	'numChannelsInNoCom_u8',0
+	.word	127
+	.byte	1,2,35,8,0,6
+	.byte	'ComM_UserStruct_Impl',0,11,214,1,3
+	.word	8980
+	.byte	6
+	.byte	'Dcm_DataArrayTypeUint8_DcmDspData_SystemFaultRankType',0,11,245,1,15
+	.word	127
+	.byte	11,2
+	.word	127
+	.byte	12,1,0
+.L136:
+	.byte	6
+	.byte	'Dcm_DataArrayTypeUint8_DcmDspData_VacuumPumpPressure_1100Type',0,11,247,1,15
+	.word	9299
+	.byte	6
+	.byte	'Dcm_DataArrayTypeUint8_DcmDspData_VehicleSpeedType',0,11,248,1,15
+	.word	127
+	.byte	6
+	.byte	'Dcm_IOOperationResponseType',0,11,252,1,15
+	.word	127
+	.byte	6
+	.byte	'Dcm_NegativeResponseCodeType',0,11,132,2,15
+	.word	127
+	.byte	6
+	.byte	'Dcm_OpStatusType',0,11,134,2,15
+	.word	127
+	.byte	6
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0PrimitivType',0
+	.byte	11,138,2,15
+	.word	127
+	.byte	6
+	.byte	'Dcm_RequestDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspRequestRoutineResultsOutSignal_0Type',0,11,140
+	.byte	2,109
+	.word	127
+	.byte	6
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalPrimitivType',0,11,146,2,15
+	.word	127
+	.byte	6
+	.byte	'Dcm_StartDataIn_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineInSignalType',0,11,148,2,94
+	.word	127
+	.byte	6
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalPrimitivType',0,11,150,2,15
+	.word	127
+	.byte	6
+	.byte	'Dcm_StartDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStartRoutineOutSignalType',0,11,152,2,96
+	.word	127
+	.byte	6
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalPrimitivType',0,11,154,2,15
+	.word	127
+	.byte	6
+	.byte	'Dcm_StopDataOut_DcmDspRoutine_DriveVacuumPump_DcmDspStopRoutineOutSignalType',0,11,156,2,94
+	.word	127
+	.byte	6
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockNative_1024_Type',0,11,243,3,34
+	.word	7723
+	.byte	11,128,8
+	.word	127
+	.byte	12,255,7,0,6
+	.byte	'Rte_PimType_ASW_NVM_ASW_NVM_BlockRedundant_1024_Type',0,11,246,3,34
+	.word	7723
+	.byte	22
+	.byte	'Rte_Rx_000008',0,12,118,77
+	.word	127
+	.byte	1,1,22
+	.byte	'Rte_Rx_000009',0,12,123,74
+	.word	127
+	.byte	1,1,22
+	.byte	'Rte_Rx_000010',0,12,128,1,77
+	.word	127
+	.byte	1,1,22
+	.byte	'Rte_Rx_000011',0,12,133,1,74
+	.word	127
+	.byte	1,1,11,2
+	.word	127
+	.byte	12,1,0,0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L30:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,38,0,73,19
+	.byte	0,0,5,21,0,54,15,0,0,6,22,0,3,8,58,15,59,15,57,15,73,19,0,0,7,19,1,58,15,59,15,57,15,11,15,0,0,8,13,0
+	.byte	3,8,73,19,11,15,56,9,0,0,9,4,1,58,15,59,15,57,15,11,15,0,0,10,40,0,3,8,28,13,0,0,11,1,1,11,15,73,19,0
+	.byte	0,12,33,0,47,15,0,0,13,21,0,54,15,39,12,0,0,14,19,1,3,8,58,15,59,15,57,15,11,15,0,0,15,59,0,3,8,0,0,16
+	.byte	21,1,54,15,39,12,0,0,17,5,0,73,19,0,0,18,23,1,58,15,59,15,57,15,11,15,0,0,19,4,1,3,8,58,15,59,15,57,15
+	.byte	11,15,0,0,20,21,0,73,19,54,15,39,12,0,0,21,53,0,73,19,0,0,22,52,0,3,8,58,15,59,15,57,15,73,19,63,12,60
+	.byte	12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L31:
+	.word	.L147-.L146
+.L146:
+	.half	3
+	.word	.L149-.L148
+.L148:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Std_Types.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Cfg.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\ComStack\\ComStack_Types.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\Can_GeneralTypes.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\RTOS_T\\Gen\\inc\\Os.h',0,0,0,0
+	.byte	'.\\Targets\\TC275\\MCAL\\MCAL_Modules\\Can_17_MCanP\\inc\\Can_17_MCanP.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Intl.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_Type.h',0,0,0,0
+	.byte	'.\\RTE\\gen\\Rte_ASW_Diag.h',0,0,0,0,0
+.L149:
+.L147:
+	.sdecl	'.debug_info',debug,cluster('Diag_IOControl_VacuumPumpPressure_ReadData_func')
+	.sect	'.debug_info'
+.L32:
+	.word	256
+	.half	3
+	.word	.L33
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L35,.L34
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'Diag_IOControl_VacuumPumpPressure_ReadData_func',0,1,206,2,34
+	.word	.L85
+	.byte	1,1,1
+	.word	.L23,.L86,.L22
+	.byte	4
+	.byte	'Data',0,1,208,2,53
+	.word	.L87,.L88
+	.byte	5
+	.word	.L23,.L86
+	.byte	6
+	.byte	'retValue',0,1,218,2,17
+	.word	.L85,.L89
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Diag_IOControl_VacuumPumpPressure_ReadData_func')
+	.sect	'.debug_abbrev'
+.L33:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Diag_IOControl_VacuumPumpPressure_ReadData_func')
+	.sect	'.debug_line'
+.L34:
+	.word	.L151-.L150
+.L150:
+	.half	3
+	.word	.L153-.L152
+.L152:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0,0,0,0,0
+.L153:
+	.byte	5,26,7,0,5,2
+	.word	.L23
+	.byte	3,217,2,1,5,10,9
+	.half	.L143-.L23
+	.byte	3,23,1,5,33,9
+	.half	.L154-.L143
+	.byte	1,5,8,9
+	.half	.L155-.L154
+	.byte	1,5,37,9
+	.half	.L156-.L155
+	.byte	3,1,1,5,12,9
+	.half	.L157-.L156
+	.byte	1,5,2,9
+	.half	.L158-.L157
+	.byte	3,1,1,5,1,9
+	.half	.L8-.L158
+	.byte	3,1,1,7,9
+	.half	.L36-.L8
+	.byte	0,1,1
+.L151:
+	.sdecl	'.debug_ranges',debug,cluster('Diag_IOControl_VacuumPumpPressure_ReadData_func')
+	.sect	'.debug_ranges'
+.L35:
+	.word	-1,.L23,0,.L36-.L23,0,0
+	.sdecl	'.debug_info',debug,cluster('Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func')
+	.sect	'.debug_info'
+.L37:
+	.word	268
+	.half	3
+	.word	.L38
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L40,.L39
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func',0,1,57,34
+	.word	.L85
+	.byte	1,1,1
+	.word	.L11,.L90,.L10
+	.byte	4
+	.byte	'ErrorCode',0,1,59,70
+	.word	.L91,.L92
+	.byte	5
+	.word	.L11,.L90
+	.byte	6
+	.byte	'retValue',0,1,69,17
+	.word	.L85,.L93
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func')
+	.sect	'.debug_abbrev'
+.L38:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func')
+	.sect	'.debug_line'
+.L39:
+	.word	.L160-.L159
+.L159:
+	.half	3
+	.word	.L162-.L161
+.L161:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0,0,0,0,0
+.L162:
+	.byte	5,26,7,0,5,2
+	.word	.L11
+	.byte	3,196,0,1,5,2,9
+	.half	.L137-.L11
+	.byte	3,23,1,5,31,9
+	.half	.L163-.L137
+	.byte	1,5,29,9
+	.half	.L164-.L163
+	.byte	1,5,31,9
+	.half	.L165-.L164
+	.byte	3,1,1,5,29,9
+	.half	.L166-.L165
+	.byte	1,5,15,9
+	.half	.L167-.L166
+	.byte	3,1,1,5,13,9
+	.half	.L168-.L167
+	.byte	1,5,2,9
+	.half	.L169-.L168
+	.byte	3,1,1,5,1,9
+	.half	.L2-.L169
+	.byte	3,2,1,7,9
+	.half	.L41-.L2
+	.byte	0,1,1
+.L160:
+	.sdecl	'.debug_ranges',debug,cluster('Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func')
+	.sect	'.debug_ranges'
+.L40:
+	.word	-1,.L11,0,.L41-.L11,0,0
+	.sdecl	'.debug_info',debug,cluster('Diag_IOControl_VacuumPumpPressure_resetToDefault_func')
+	.sect	'.debug_info'
+.L42:
+	.word	267
+	.half	3
+	.word	.L43
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L45,.L44
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'Diag_IOControl_VacuumPumpPressure_resetToDefault_func',0,1,243,1,34
+	.word	.L85
+	.byte	1,1,1
+	.word	.L19,.L94,.L18
+	.byte	4
+	.byte	'ErrorCode',0,1,245,1,70
+	.word	.L95,.L96
+	.byte	5
+	.word	.L19,.L94
+	.byte	6
+	.byte	'retValue',0,1,255,1,17
+	.word	.L85,.L97
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Diag_IOControl_VacuumPumpPressure_resetToDefault_func')
+	.sect	'.debug_abbrev'
+.L43:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Diag_IOControl_VacuumPumpPressure_resetToDefault_func')
+	.sect	'.debug_line'
+.L44:
+	.word	.L171-.L170
+.L170:
+	.half	3
+	.word	.L173-.L172
+.L172:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0,0,0,0,0
+.L173:
+	.byte	5,26,7,0,5,2
+	.word	.L19
+	.byte	3,254,1,1,5,5,9
+	.half	.L141-.L19
+	.byte	3,23,1,5,34,9
+	.half	.L174-.L141
+	.byte	1,5,32,9
+	.half	.L175-.L174
+	.byte	1,5,34,9
+	.half	.L176-.L175
+	.byte	3,1,1,5,32,9
+	.half	.L177-.L176
+	.byte	1,5,18,9
+	.half	.L178-.L177
+	.byte	3,1,1,5,16,9
+	.half	.L179-.L178
+	.byte	1,5,5,9
+	.half	.L180-.L179
+	.byte	3,1,1,5,1,9
+	.half	.L6-.L180
+	.byte	3,2,1,7,9
+	.half	.L46-.L6
+	.byte	0,1,1
+.L171:
+	.sdecl	'.debug_ranges',debug,cluster('Diag_IOControl_VacuumPumpPressure_resetToDefault_func')
+	.sect	'.debug_ranges'
+.L45:
+	.word	-1,.L19,0,.L46-.L19,0,0
+	.sdecl	'.debug_info',debug,cluster('Diag_IOControl_VacuumPumpPressure_returnControlToECU_func')
+	.sect	'.debug_info'
+.L47:
+	.word	271
+	.half	3
+	.word	.L48
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L50,.L49
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'Diag_IOControl_VacuumPumpPressure_returnControlToECU_func',0,1,175,3,34
+	.word	.L85
+	.byte	1,1,1
+	.word	.L27,.L98,.L26
+	.byte	4
+	.byte	'ErrorCode',0,1,177,3,70
+	.word	.L99,.L100
+	.byte	5
+	.word	.L27,.L98
+	.byte	6
+	.byte	'retValue',0,1,187,3,17
+	.word	.L85,.L101
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Diag_IOControl_VacuumPumpPressure_returnControlToECU_func')
+	.sect	'.debug_abbrev'
+.L48:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Diag_IOControl_VacuumPumpPressure_returnControlToECU_func')
+	.sect	'.debug_line'
+.L49:
+	.word	.L182-.L181
+.L181:
+	.half	3
+	.word	.L184-.L183
+.L183:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0,0,0,0,0
+.L184:
+	.byte	5,26,7,0,5,2
+	.word	.L27
+	.byte	3,186,3,1,5,5,9
+	.half	.L144-.L27
+	.byte	3,24,1,5,34,9
+	.half	.L185-.L144
+	.byte	1,5,32,9
+	.half	.L186-.L185
+	.byte	1,5,34,9
+	.half	.L187-.L186
+	.byte	3,1,1,5,32,9
+	.half	.L188-.L187
+	.byte	1,5,18,9
+	.half	.L189-.L188
+	.byte	3,1,1,5,16,9
+	.half	.L190-.L189
+	.byte	1,5,5,9
+	.half	.L191-.L190
+	.byte	3,1,1,5,1,9
+	.half	.L9-.L191
+	.byte	3,2,1,7,9
+	.half	.L51-.L9
+	.byte	0,1,1
+.L182:
+	.sdecl	'.debug_ranges',debug,cluster('Diag_IOControl_VacuumPumpPressure_returnControlToECU_func')
+	.sect	'.debug_ranges'
+.L50:
+	.word	-1,.L27,0,.L51-.L27,0,0
+	.sdecl	'.debug_info',debug,cluster('Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func')
+	.sect	'.debug_info'
+.L52:
+	.word	299
+	.half	3
+	.word	.L53
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L55,.L54
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func',0,1,103,34
+	.word	.L85
+	.byte	1,1,1
+	.word	.L13,.L102,.L12
+	.byte	4
+	.byte	'ControlStateInfo',0,1,105,50
+	.word	.L103,.L104
+	.byte	4
+	.byte	'ErrorCode',0,1,105,135,1
+	.word	.L105,.L106
+	.byte	5
+	.word	.L13,.L102
+	.byte	6
+	.byte	'retValue',0,1,114,17
+	.word	.L85,.L107
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func')
+	.sect	'.debug_abbrev'
+.L53:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func')
+	.sect	'.debug_line'
+.L54:
+	.word	.L193-.L192
+.L192:
+	.half	3
+	.word	.L195-.L194
+.L194:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0,0,0,0,0
+.L195:
+	.byte	5,26,7,0,5,2
+	.word	.L13
+	.byte	3,241,0,1,5,5,9
+	.half	.L138-.L13
+	.byte	3,23,1,5,34,9
+	.half	.L196-.L138
+	.byte	1,5,32,9
+	.half	.L197-.L196
+	.byte	1,5,34,9
+	.half	.L198-.L197
+	.byte	3,1,1,5,32,9
+	.half	.L199-.L198
+	.byte	1,5,18,9
+	.half	.L200-.L199
+	.byte	3,1,1,5,16,9
+	.half	.L201-.L200
+	.byte	1,5,5,9
+	.half	.L202-.L201
+	.byte	3,1,1,5,1,9
+	.half	.L3-.L202
+	.byte	3,3,1,7,9
+	.half	.L56-.L3
+	.byte	0,1,1
+.L193:
+	.sdecl	'.debug_ranges',debug,cluster('Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func')
+	.sect	'.debug_ranges'
+.L55:
+	.word	-1,.L13,0,.L56-.L13,0,0
+	.sdecl	'.debug_info',debug,cluster('Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func')
+	.sect	'.debug_info'
+.L57:
+	.word	360
+	.half	3
+	.word	.L58
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L60,.L59
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func',0,1,161,2,34
+	.word	.L85
+	.byte	1,1,1
+	.word	.L21,.L108,.L20
+	.byte	4
+	.byte	'OpStatus',0,1,163,2,36
+	.word	.L85,.L109
+	.byte	4
+	.byte	'DataOut_DcmDspRequestRoutineResultsOutSignal_0',0,1,164,2,133,1
+	.word	.L110,.L111
+	.byte	4
+	.byte	'ErrorCode',0,1,165,2,70
+	.word	.L112,.L113
+	.byte	5
+	.word	.L21,.L108
+	.byte	6
+	.byte	'retValue',0,1,175,2,17
+	.word	.L85,.L114
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func')
+	.sect	'.debug_abbrev'
+.L58:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func')
+	.sect	'.debug_line'
+.L59:
+	.word	.L204-.L203
+.L203:
+	.half	3
+	.word	.L206-.L205
+.L205:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0,0,0,0,0
+.L206:
+	.byte	5,26,7,0,5,2
+	.word	.L21
+	.byte	3,174,2,1,5,2,9
+	.half	.L142-.L21
+	.byte	3,23,1,5,17,9
+	.half	.L207-.L142
+	.byte	1,5,15,9
+	.half	.L208-.L207
+	.byte	1,5,2,9
+	.half	.L209-.L208
+	.byte	3,1,1,5,1,9
+	.half	.L7-.L209
+	.byte	3,1,1,7,9
+	.half	.L61-.L7
+	.byte	0,1,1
+.L204:
+	.sdecl	'.debug_ranges',debug,cluster('Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func')
+	.sect	'.debug_ranges'
+.L60:
+	.word	-1,.L21,0,.L61-.L21,0,0
+	.sdecl	'.debug_info',debug,cluster('Diag_RoutineServices_DriveVacuumPump_Start_func')
+	.sect	'.debug_info'
+.L62:
+	.word	379
+	.half	3
+	.word	.L63
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L65,.L64
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'Diag_RoutineServices_DriveVacuumPump_Start_func',0,1,149,1,34
+	.word	.L85
+	.byte	1,1,1
+	.word	.L15,.L115,.L14
+	.byte	4
+	.byte	'DataIn_DcmDspStartRoutineInSignal',0,1,151,1,96
+	.word	.L85,.L116
+	.byte	4
+	.byte	'OpStatus',0,1,152,1,36
+	.word	.L85,.L117
+	.byte	4
+	.byte	'DataOut_DcmDspStartRoutineOutSignal',0,1,153,1,120
+	.word	.L118,.L119
+	.byte	4
+	.byte	'ErrorCode',0,1,154,1,70
+	.word	.L120,.L121
+	.byte	5
+	.word	.L15,.L115
+	.byte	6
+	.byte	'retValue',0,1,164,1,17
+	.word	.L85,.L122
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Diag_RoutineServices_DriveVacuumPump_Start_func')
+	.sect	'.debug_abbrev'
+.L63:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Diag_RoutineServices_DriveVacuumPump_Start_func')
+	.sect	'.debug_line'
+.L64:
+	.word	.L211-.L210
+.L210:
+	.half	3
+	.word	.L213-.L212
+.L212:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0,0,0,0,0
+.L213:
+	.byte	5,26,7,0,5,2
+	.word	.L15
+	.byte	3,163,1,1,5,2,9
+	.half	.L139-.L15
+	.byte	3,24,1,5,17,9
+	.half	.L214-.L139
+	.byte	1,5,15,9
+	.half	.L215-.L214
+	.byte	1,5,2,9
+	.half	.L216-.L215
+	.byte	3,1,1,5,1,9
+	.half	.L4-.L216
+	.byte	3,1,1,7,9
+	.half	.L66-.L4
+	.byte	0,1,1
+.L211:
+	.sdecl	'.debug_ranges',debug,cluster('Diag_RoutineServices_DriveVacuumPump_Start_func')
+	.sect	'.debug_ranges'
+.L65:
+	.word	-1,.L15,0,.L66-.L15,0,0
+	.sdecl	'.debug_info',debug,cluster('Diag_RoutineServices_DriveVacuumPump_Stop_func')
+	.sect	'.debug_info'
+.L67:
+	.word	330
+	.half	3
+	.word	.L68
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L70,.L69
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'Diag_RoutineServices_DriveVacuumPump_Stop_func',0,1,196,1,34
+	.word	.L85
+	.byte	1,1,1
+	.word	.L17,.L123,.L16
+	.byte	4
+	.byte	'OpStatus',0,1,198,1,36
+	.word	.L85,.L124
+	.byte	4
+	.byte	'DataOut_DcmDspStopRoutineOutSignal',0,1,199,1,118
+	.word	.L125,.L126
+	.byte	4
+	.byte	'ErrorCode',0,1,200,1,70
+	.word	.L127,.L128
+	.byte	5
+	.word	.L17,.L123
+	.byte	6
+	.byte	'retValue',0,1,210,1,17
+	.word	.L85,.L129
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Diag_RoutineServices_DriveVacuumPump_Stop_func')
+	.sect	'.debug_abbrev'
+.L68:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Diag_RoutineServices_DriveVacuumPump_Stop_func')
+	.sect	'.debug_line'
+.L69:
+	.word	.L218-.L217
+.L217:
+	.half	3
+	.word	.L220-.L219
+.L219:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0,0,0,0,0
+.L220:
+	.byte	5,26,7,0,5,2
+	.word	.L17
+	.byte	3,209,1,1,5,2,9
+	.half	.L140-.L17
+	.byte	3,25,1,5,17,9
+	.half	.L221-.L140
+	.byte	1,5,15,9
+	.half	.L222-.L221
+	.byte	1,5,2,9
+	.half	.L223-.L222
+	.byte	3,1,1,5,1,9
+	.half	.L5-.L223
+	.byte	3,1,1,7,9
+	.half	.L71-.L5
+	.byte	0,1,1
+.L218:
+	.sdecl	'.debug_ranges',debug,cluster('Diag_RoutineServices_DriveVacuumPump_Stop_func')
+	.sect	'.debug_ranges'
+.L70:
+	.word	-1,.L17,0,.L71-.L17,0,0
+	.sdecl	'.debug_info',debug,cluster('RE_Diag_SWC_func')
+	.sect	'.debug_info'
+.L72:
+	.word	293
+	.half	3
+	.word	.L73
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L75,.L74
+	.byte	2
+	.word	.L28
+	.byte	3
+	.byte	'RE_Diag_SWC_func',0,1,252,2,28,1,1,1
+	.word	.L25,.L130,.L24
+	.byte	4
+	.word	.L25,.L130
+	.byte	5
+	.byte	'retRead1',0,1,130,3,20
+	.word	.L85,.L131
+	.byte	5
+	.byte	'retRead2',0,1,131,3,20
+	.word	.L85,.L132
+	.byte	5
+	.byte	'retWrite3',0,1,132,3,20
+	.word	.L85,.L133
+	.byte	5
+	.byte	'retWrite4',0,1,133,3,20
+	.word	.L85,.L134
+	.byte	5
+	.byte	'retValue',0,1,141,3,17
+	.word	.L85,.L135
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('RE_Diag_SWC_func')
+	.sect	'.debug_abbrev'
+.L73:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,1,17,1,18,1,0,0,5,52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('RE_Diag_SWC_func')
+	.sect	'.debug_line'
+.L74:
+	.word	.L225-.L224
+.L224:
+	.half	3
+	.word	.L227-.L226
+.L226:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0,0,0,0,0
+.L227:
+	.byte	5,13,7,0,5,2
+	.word	.L25
+	.byte	3,142,3,1,9
+	.half	.L228-.L25
+	.byte	3,1,1,5,14,9
+	.half	.L229-.L228
+	.byte	3,7,1,9
+	.half	.L230-.L229
+	.byte	3,1,1,5,1,9
+	.half	.L231-.L230
+	.byte	3,17,1,7,9
+	.half	.L76-.L231
+	.byte	0,1,1
+.L225:
+	.sdecl	'.debug_ranges',debug,cluster('RE_Diag_SWC_func')
+	.sect	'.debug_ranges'
+.L75:
+	.word	-1,.L25,0,.L76-.L25,0,0
+	.sdecl	'.debug_info',debug,cluster('DID_2311')
+	.sect	'.debug_info'
+.L77:
+	.word	148
+	.half	3
+	.word	.L78
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L28
+	.byte	3
+	.byte	'DID_2311',0,1,47,62
+	.word	.L85
+	.byte	5,3
+	.word	DID_2311
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('DID_2311')
+	.sect	'.debug_abbrev'
+.L78:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('DID_2310')
+	.sect	'.debug_info'
+.L79:
+	.word	148
+	.half	3
+	.word	.L80
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L28
+	.byte	3
+	.byte	'DID_2310',0,1,49,59
+	.word	.L85
+	.byte	5,3
+	.word	DID_2310
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('DID_2310')
+	.sect	'.debug_abbrev'
+.L80:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('VacuumPumpPressure_Data')
+	.sect	'.debug_info'
+.L81:
+	.word	163
+	.half	3
+	.word	.L82
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L28
+	.byte	3
+	.byte	'VacuumPumpPressure_Data',0,1,51,70
+	.word	.L136
+	.byte	5,3
+	.word	VacuumPumpPressure_Data
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('VacuumPumpPressure_Data')
+	.sect	'.debug_abbrev'
+.L82:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('mode_routine')
+	.sect	'.debug_info'
+.L83:
+	.word	152
+	.half	3
+	.word	.L84
+	.byte	4,1
+	.byte	'ASW\\ASW_Diag\\src\\SWC_Diag.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1,2
+	.word	.L28
+	.byte	3
+	.byte	'mode_routine',0,1,53,14
+	.word	.L85
+	.byte	5,3
+	.word	mode_routine
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('mode_routine')
+	.sect	'.debug_abbrev'
+.L84:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_loc',debug,cluster('Diag_IOControl_VacuumPumpPressure_ReadData_func')
+	.sect	'.debug_loc'
+.L88:
+	.word	-1,.L23,0,.L86-.L23
+	.half	1
+	.byte	100
+	.word	0,0
+.L22:
+	.word	-1,.L23,0,.L86-.L23
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L89:
+	.word	-1,.L23,.L143-.L23,.L86-.L23
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func')
+	.sect	'.debug_loc'
+.L10:
+	.word	-1,.L11,0,.L90-.L11
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L92:
+	.word	-1,.L11,0,.L90-.L11
+	.half	1
+	.byte	100
+	.word	0,0
+.L93:
+	.word	-1,.L11,.L137-.L11,.L90-.L11
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Diag_IOControl_VacuumPumpPressure_resetToDefault_func')
+	.sect	'.debug_loc'
+.L18:
+	.word	-1,.L19,0,.L94-.L19
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L96:
+	.word	-1,.L19,0,.L94-.L19
+	.half	1
+	.byte	100
+	.word	0,0
+.L97:
+	.word	-1,.L19,.L141-.L19,.L94-.L19
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Diag_IOControl_VacuumPumpPressure_returnControlToECU_func')
+	.sect	'.debug_loc'
+.L26:
+	.word	-1,.L27,0,.L98-.L27
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L100:
+	.word	-1,.L27,0,.L98-.L27
+	.half	1
+	.byte	100
+	.word	0,0
+.L101:
+	.word	-1,.L27,.L144-.L27,.L98-.L27
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func')
+	.sect	'.debug_loc'
+.L104:
+	.word	-1,.L13,0,.L102-.L13
+	.half	1
+	.byte	100
+	.word	0,0
+.L12:
+	.word	-1,.L13,0,.L102-.L13
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L106:
+	.word	-1,.L13,0,.L102-.L13
+	.half	1
+	.byte	101
+	.word	0,0
+.L107:
+	.word	-1,.L13,.L138-.L13,.L102-.L13
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func')
+	.sect	'.debug_loc'
+.L111:
+	.word	-1,.L21,0,.L108-.L21
+	.half	1
+	.byte	100
+	.word	0,0
+.L20:
+	.word	-1,.L21,0,.L108-.L21
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L113:
+	.word	-1,.L21,0,.L108-.L21
+	.half	1
+	.byte	101
+	.word	0,0
+.L109:
+	.word	-1,.L21,0,.L108-.L21
+	.half	1
+	.byte	84
+	.word	0,0
+.L114:
+	.word	-1,.L21,.L142-.L21,.L108-.L21
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Diag_RoutineServices_DriveVacuumPump_Start_func')
+	.sect	'.debug_loc'
+.L116:
+	.word	-1,.L15,0,.L115-.L15
+	.half	1
+	.byte	84
+	.word	0,0
+.L119:
+	.word	-1,.L15,0,.L115-.L15
+	.half	1
+	.byte	100
+	.word	0,0
+.L14:
+	.word	-1,.L15,0,.L115-.L15
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L121:
+	.word	-1,.L15,0,.L115-.L15
+	.half	1
+	.byte	101
+	.word	0,0
+.L117:
+	.word	-1,.L15,0,.L115-.L15
+	.half	1
+	.byte	85
+	.word	0,0
+.L122:
+	.word	-1,.L15,.L139-.L15,.L115-.L15
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Diag_RoutineServices_DriveVacuumPump_Stop_func')
+	.sect	'.debug_loc'
+.L126:
+	.word	-1,.L17,0,.L123-.L17
+	.half	1
+	.byte	100
+	.word	0,0
+.L16:
+	.word	-1,.L17,0,.L123-.L17
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L128:
+	.word	-1,.L17,0,.L123-.L17
+	.half	1
+	.byte	101
+	.word	0,0
+.L124:
+	.word	-1,.L17,0,.L123-.L17
+	.half	1
+	.byte	84
+	.word	0,0
+.L129:
+	.word	-1,.L17,.L140-.L17,.L123-.L17
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('RE_Diag_SWC_func')
+	.sect	'.debug_loc'
+.L24:
+	.word	-1,.L25,0,.L130-.L25
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L131:
+	.word	0,0
+.L132:
+	.word	0,0
+.L135:
+	.word	0,0
+.L133:
+	.word	0,0
+.L134:
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L232:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Diag_IOControl_VacuumPumpPressure_freezeCurrentState_func')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L232,.L11,.L90-.L11
+	.byte	8,18,8,19,8,21,8,22,8,23,0,0
+	.sdecl	'.debug_frame',debug,cluster('Diag_IOControl_VacuumPumpPressure_shortTermAdjustment_func')
+	.sect	'.debug_frame'
+	.word	20
+	.word	.L232,.L13,.L102-.L13
+	.byte	8,18,8,19,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Diag_RoutineServices_DriveVacuumPump_Start_func')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L232,.L15,.L115-.L15
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Diag_RoutineServices_DriveVacuumPump_Stop_func')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L232,.L17,.L123-.L17
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Diag_IOControl_VacuumPumpPressure_resetToDefault_func')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L232,.L19,.L94-.L19
+	.byte	8,18,8,19,8,21,8,22,8,23,0,0
+	.sdecl	'.debug_frame',debug,cluster('Diag_RoutineServices_DriveVacuumPump_RequestRoutineResults_func')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L232,.L21,.L108-.L21
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Diag_IOControl_VacuumPumpPressure_ReadData_func')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L232,.L23,.L86-.L23
+	.byte	8,18,8,19,8,21,8,22,8,23,0,0
+	.sdecl	'.debug_frame',debug,cluster('RE_Diag_SWC_func')
+	.sect	'.debug_frame'
+	.word	20
+	.word	.L232,.L25,.L130-.L25
+	.byte	8,19,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Diag_IOControl_VacuumPumpPressure_returnControlToECU_func')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L232,.L27,.L98-.L27
+	.byte	8,18,8,19,8,21,8,22,8,23,0,0
+
+; ASW\ASW_Diag\src\SWC_Diag.c	   473  
+; ASW\ASW_Diag\src\SWC_Diag.c	   474  #define Diag_SWC_STOP_SEC_CODE                       
+; ASW\ASW_Diag\src\SWC_Diag.c	   475  #include "ASW_Diag_MemMap.h"
+
+	; Module end

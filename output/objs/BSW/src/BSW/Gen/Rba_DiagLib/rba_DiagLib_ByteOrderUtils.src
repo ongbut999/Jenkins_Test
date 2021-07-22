@@ -1,0 +1,418 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for TriCore: C compiler v6.2r2 Build 19053136 SN 09001910"
+	.compiler_invocation	"ctc -f cc16908a -c99 --integer-enumeration -D__CPU__=tc27x -D__CPU_TC27X__ --core=tc1.6.x --eabi-compliant --fp-model=-float -D_TASKING_C_TRICORE_=1 -I.\\output\\inc -g2 -t4 --language=-comments,-gcc,+volatile,-strings --default-near-size=0 -O2ROPYGKLF-predict --default-a1-size=0 --default-a0-size=0 --source --switch=auto -o output\\objs\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\rba_DiagLib_ByteOrderUtils.src BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_ByteOrderUtils.c"
+	.compiler_name		"ctc"
+	;source	'BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_ByteOrderUtils.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.rba_DiagLib_ByteOrderUtils.rba_DiagLib_ByteOrderUtils_Dummy',code,cluster('rba_DiagLib_ByteOrderUtils_Dummy')
+	.sect	'.text.rba_DiagLib_ByteOrderUtils.rba_DiagLib_ByteOrderUtils_Dummy'
+	.align	2
+	
+	.global	rba_DiagLib_ByteOrderUtils_Dummy
+
+; BSW\src\BSW\Gen\Rba_DiagLib\src\rba_DiagLib_ByteOrderUtils.c	     1  
+; BSW\src\BSW\Gen\Rba_DiagLib\src\rba_DiagLib_ByteOrderUtils.c	     2  
+; BSW\src\BSW\Gen\Rba_DiagLib\src\rba_DiagLib_ByteOrderUtils.c	     3  #include "rba_DiagLib.h"
+; BSW\src\BSW\Gen\Rba_DiagLib\src\rba_DiagLib_ByteOrderUtils.c	     4  
+; BSW\src\BSW\Gen\Rba_DiagLib\src\rba_DiagLib_ByteOrderUtils.c	     5  //this function is only necessary until another function is implemented
+; BSW\src\BSW\Gen\Rba_DiagLib\src\rba_DiagLib_ByteOrderUtils.c	     6  //it is only temporarely necessary for the coverage and misra tests
+; BSW\src\BSW\Gen\Rba_DiagLib\src\rba_DiagLib_ByteOrderUtils.c	     7  boolean rba_DiagLib_ByteOrderUtils_Dummy(void){
+; Function rba_DiagLib_ByteOrderUtils_Dummy
+.L4:
+rba_DiagLib_ByteOrderUtils_Dummy:	.type	func
+
+; BSW\src\BSW\Gen\Rba_DiagLib\src\rba_DiagLib_ByteOrderUtils.c	     8      return TRUE;
+	mov	d2,#1
+.L24:
+	j	.L2
+
+; BSW\src\BSW\Gen\Rba_DiagLib\src\rba_DiagLib_ByteOrderUtils.c	     9  }
+.L2:
+	ret
+.L15:
+	
+__rba_DiagLib_ByteOrderUtils_Dummy_function_end:
+	.size	rba_DiagLib_ByteOrderUtils_Dummy,__rba_DiagLib_ByteOrderUtils_Dummy_function_end-rba_DiagLib_ByteOrderUtils_Dummy
+.L13:
+	; End of function
+	
+	.calls	'rba_DiagLib_ByteOrderUtils_Dummy','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L6:
+	.word	1877
+	.half	3
+	.word	.L7
+	.byte	4
+.L5:
+	.byte	1
+	.byte	'BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_ByteOrderUtils.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L8
+.L14:
+	.byte	2
+	.byte	'unsigned char',0,1,8,3
+	.word	160
+	.byte	4
+	.byte	'rba_DiagLib_Bit8SetBit',0,3,1,36,19,1,1,5
+	.byte	'buffer',0,1,36,49
+	.word	177
+	.byte	5
+	.byte	'bit_position',0,1,36,63
+	.word	160
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBit',0,3,1,42,19,1,1,5
+	.byte	'buffer',0,1,42,51
+	.word	177
+	.byte	5
+	.byte	'bit_position',0,1,42,65
+	.word	160
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit8GetSingleBit',0,3,1,60,20
+	.word	160
+	.byte	1,1,5
+	.byte	'value',0,1,60,55
+	.word	160
+	.byte	5
+	.byte	'bit_position',0,1,60,68
+	.word	160
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit8ClearBits',0,3,1,77,19,1,1,5
+	.byte	'value',0,1,77,52
+	.word	177
+	.byte	5
+	.byte	'bit_position',0,1,77,65
+	.word	160
+	.byte	5
+	.byte	'number_of_bits',0,1,77,85
+	.word	160
+	.byte	6,0,2
+	.byte	'unsigned short int',0,2,7,3
+	.word	490
+	.byte	4
+	.byte	'rba_DiagLib_Bit16SetBit',0,3,2,36,19,1,1,5
+	.byte	'buffer',0,2,36,51
+	.word	512
+	.byte	5
+	.byte	'bit_position',0,2,36,65
+	.word	160
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBit',0,3,2,42,19,1,1,5
+	.byte	'buffer',0,2,42,53
+	.word	512
+	.byte	5
+	.byte	'bit_position',0,2,42,67
+	.word	160
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit16GetSingleBit',0,3,2,60,21
+	.word	490
+	.byte	1,1,5
+	.byte	'value',0,2,60,58
+	.word	490
+	.byte	5
+	.byte	'bit_position',0,2,60,71
+	.word	160
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit16ClearBits',0,3,2,78,19,1,1,5
+	.byte	'value',0,2,78,54
+	.word	512
+	.byte	5
+	.byte	'bit_position',0,2,78,67
+	.word	160
+	.byte	5
+	.byte	'number_of_bits',0,2,78,87
+	.word	160
+	.byte	6,0,2
+	.byte	'unsigned int',0,4,7,3
+	.word	829
+	.byte	4
+	.byte	'rba_DiagLib_Bit32SetBit',0,3,3,36,19,1,1,5
+	.byte	'buffer',0,3,36,51
+	.word	845
+	.byte	5
+	.byte	'bit_position',0,3,36,65
+	.word	160
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBit',0,3,3,42,19,1,1,5
+	.byte	'buffer',0,3,42,53
+	.word	845
+	.byte	5
+	.byte	'bit_position',0,3,42,67
+	.word	160
+	.byte	6,0,7
+	.byte	'rba_DiagLib_Bit32GetSingleBit',0,3,3,60,21
+	.word	829
+	.byte	1,1,5
+	.byte	'value',0,3,60,58
+	.word	829
+	.byte	5
+	.byte	'bit_position',0,3,60,71
+	.word	160
+	.byte	6,0,4
+	.byte	'rba_DiagLib_Bit32ClearBits',0,3,3,78,19,1,1,5
+	.byte	'value',0,3,78,54
+	.word	845
+	.byte	5
+	.byte	'bit_position',0,3,78,67
+	.word	160
+	.byte	5
+	.byte	'number_of_bits',0,3,78,87
+	.word	160
+	.byte	6,0,7
+	.byte	'rba_BswSrv_ByteOrderSwap32',0,3,4,125,21
+	.word	829
+	.byte	1,1,5
+	.byte	'Input_u32',0,4,125,55
+	.word	829
+	.byte	6,0,7
+	.byte	'rba_BswSrv_ByteOrderSwap16',0,3,4,150,1,21
+	.word	490
+	.byte	1,1,5
+	.byte	'Input_u16',0,4,150,1,55
+	.word	490
+	.byte	6,0,7
+	.byte	'rba_DiagLib_ByteOrderUtils_SwapByteOrderS',0,3,5,36,21
+	.word	490
+	.byte	1,1,5
+	.byte	'val',0,5,36,70
+	.word	490
+	.byte	8,6,0,0,7
+	.byte	'rba_DiagLib_ByteOrderUtils_SwapByteOrderL',0,3,5,41,21
+	.word	829
+	.byte	1,1,5
+	.byte	'val',0,5,41,70
+	.word	829
+	.byte	8,6,0,0,9
+	.word	182
+	.byte	10
+	.word	212
+	.byte	10
+	.word	227
+	.byte	6,0,9
+	.word	250
+	.byte	10
+	.word	282
+	.byte	10
+	.word	297
+	.byte	6,0,9
+	.word	320
+	.byte	10
+	.word	360
+	.byte	10
+	.word	374
+	.byte	6,0,9
+	.word	397
+	.byte	10
+	.word	430
+	.byte	10
+	.word	444
+	.byte	10
+	.word	465
+	.byte	6,0,9
+	.word	517
+	.byte	10
+	.word	548
+	.byte	10
+	.word	563
+	.byte	6,0,9
+	.word	586
+	.byte	10
+	.word	619
+	.byte	10
+	.word	634
+	.byte	6,0,9
+	.word	657
+	.byte	10
+	.word	698
+	.byte	10
+	.word	712
+	.byte	6,0,9
+	.word	735
+	.byte	10
+	.word	769
+	.byte	10
+	.word	783
+	.byte	10
+	.word	804
+	.byte	6,0,9
+	.word	850
+	.byte	10
+	.word	881
+	.byte	10
+	.word	896
+	.byte	6,0,9
+	.word	919
+	.byte	10
+	.word	952
+	.byte	10
+	.word	967
+	.byte	6,0,9
+	.word	990
+	.byte	10
+	.word	1031
+	.byte	10
+	.word	1045
+	.byte	6,0,9
+	.word	1068
+	.byte	10
+	.word	1102
+	.byte	10
+	.word	1116
+	.byte	10
+	.word	1137
+	.byte	6,0,9
+	.word	1162
+	.byte	10
+	.word	1200
+	.byte	6,0,9
+	.word	1220
+	.byte	10
+	.word	1259
+	.byte	6,0,9
+	.word	1280
+	.byte	10
+	.word	1333
+	.byte	8,11
+	.word	1220
+	.byte	10
+	.word	1259
+	.byte	12
+	.word	1278
+	.byte	0,6,0,0,9
+	.word	1349
+	.byte	10
+	.word	1402
+	.byte	8,11
+	.word	1162
+	.byte	10
+	.word	1200
+	.byte	12
+	.word	1218
+	.byte	0,6,0,0,13,1,3
+	.word	1721
+	.byte	14
+	.byte	'__codeptr',0,6,1,1
+	.word	1723
+	.byte	14
+	.byte	'uint8',0,7,81,25
+	.word	160
+	.byte	14
+	.byte	'uint16',0,7,91,25
+	.word	490
+	.byte	2
+	.byte	'int',0,4,5,14
+	.byte	'sint32',0,7,96,24
+	.word	1775
+	.byte	14
+	.byte	'uint32',0,7,106,24
+	.word	829
+	.byte	14
+	.byte	'boolean',0,7,127,25
+	.word	160
+	.byte	2
+	.byte	'unsigned long long int',0,8,7,14
+	.byte	'rba_BswSrv_uint64',0,4,66,28
+	.word	1828
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L7:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,15,0,73,19,0,0,4,46,1,3,8,32
+	.byte	13,58,15,59,15,57,15,54,15,39,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0,0,6,11,0,0,0,7,46,1,3,8,32,13
+	.byte	58,15,59,15,57,15,73,19,54,15,39,12,0,0,8,11,1,0,0,9,46,1,49,19,0,0,10,5,0,49,19,0,0,11,29,1,49,19,0,0
+	.byte	12,11,0,49,19,0,0,13,21,0,54,15,0,0,14,22,0,3,8,58,15,59,15,57,15,73,19,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L8:
+	.word	.L17-.L16
+.L16:
+	.half	3
+	.word	.L19-.L18
+.L18:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits8.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits16.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_Bits32.h',0,0,0,0
+	.byte	'.\\Integration\\BSW\\Include\\rba_BswSrv.h',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_ByteOrderUtils.h',0,0,0,0
+	.byte	'BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_ByteOrderUtils.c',0,0,0,0
+	.byte	'.\\BSW\\src\\BSW\\Gen\\Platform\\Platform_Types.h',0,0,0,0,0
+.L19:
+.L17:
+	.sdecl	'.debug_info',debug,cluster('rba_DiagLib_ByteOrderUtils_Dummy')
+	.sect	'.debug_info'
+.L9:
+	.word	232
+	.half	3
+	.word	.L10
+	.byte	4,1
+	.byte	'BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_ByteOrderUtils.c',0
+	.byte	'TASKING VX-toolset for TriCore: C compiler',0
+	.byte	'C:\\Users\\HUR4HC\\Desktop\\Main_extract\\',0,12,1
+	.word	.L12,.L11
+	.byte	2
+	.word	.L5
+	.byte	3
+	.byte	'rba_DiagLib_ByteOrderUtils_Dummy',0,1,7,9
+	.word	.L14
+	.byte	1,1,1
+	.word	.L4,.L15,.L3
+	.byte	4
+	.word	.L4,.L15
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('rba_DiagLib_ByteOrderUtils_Dummy')
+	.sect	'.debug_abbrev'
+.L10:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('rba_DiagLib_ByteOrderUtils_Dummy')
+	.sect	'.debug_line'
+.L11:
+	.word	.L21-.L20
+.L20:
+	.half	3
+	.word	.L23-.L22
+.L22:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'BSW\\src\\BSW\\Gen\\Rba_DiagLib\\src\\rba_DiagLib_ByteOrderUtils.c',0,0,0,0,0
+.L23:
+	.byte	5,12,7,0,5,2
+	.word	.L4
+	.byte	3,7,1,5,5,9
+	.half	.L24-.L4
+	.byte	1,5,1,9
+	.half	.L2-.L24
+	.byte	3,1,1,7,9
+	.half	.L13-.L2
+	.byte	0,1,1
+.L21:
+	.sdecl	'.debug_ranges',debug,cluster('rba_DiagLib_ByteOrderUtils_Dummy')
+	.sect	'.debug_ranges'
+.L12:
+	.word	-1,.L4,0,.L13-.L4,0,0
+	.sdecl	'.debug_loc',debug,cluster('rba_DiagLib_ByteOrderUtils_Dummy')
+	.sect	'.debug_loc'
+.L3:
+	.word	-1,.L4,0,.L15-.L4
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L25:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,27,8,26,8,28,8,29,8,30,8,31,8,34,8,35,8,32,8,33,8,16,8,17,8,24,8,25,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('rba_DiagLib_ByteOrderUtils_Dummy')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L25,.L4,.L15-.L4
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+
+
+	; Module end
