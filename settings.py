@@ -7,7 +7,7 @@ PROJ_NAME           = 'ENTRY_PLATFROM'
 SW_VERSION_MSB      = 0
 SW_VERSION_LSB      = 0
 
-#nothing222222
+#nothing333333
 # Compiler Type Choice 
 			# COMPILER_CHOICE = TASKING     : Tasking V4 Compiler
 			# COMPILER_CHOICE = GNU         : GNU Hightec Compiler
